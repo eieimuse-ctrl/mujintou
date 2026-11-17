@@ -72,6 +72,7 @@ export function createUI({ onSelectIslander, onCloseDetail, onSheetChange, onRec
   let returnView = null; // 詳細を閉じたときに戻る先（null ならシートを閉じる）
   let selected = -1;
   let nowLine = null;
+  let nowKey = '';
   let voteTimer = null;
 
   hydrateIcons();
@@ -333,7 +334,8 @@ export function createUI({ onSelectIslander, onCloseDetail, onSheetChange, onRec
     if (currentView !== 'detail') returnView = fromList || isSheetOpen() ? (currentView === 'detail' ? 'islanders' : currentView) : null;
     selected = index;
     const root = views.detail;
-    nowLine = el('p', { class: 'now-line', 'aria-live': 'polite' });
+    nowLine = el('div', { class: 'now-line', 'aria-live': 'polite' });
+    nowKey = '';
 
     const byId = new Map(islanders.map((q, i) => [q.id, i]));
     const rels = p.relationships
@@ -472,8 +474,17 @@ export function createUI({ onSelectIslander, onCloseDetail, onSheetChange, onRec
     isSheetOpen,
     isDesktop: () => desktop.matches,
     selectedIndex: () => selected,
-    setNowText: (text) => {
-      if (nowLine && nowLine.textContent !== text) nowLine.textContent = text;
+    // 詳細の「いま」：タグ（いま・仕事中）、文、このあとの予定。st は sim.status() の結果
+    setNow: (st) => {
+      if (!nowLine || !st) return;
+      const key = `${st.label}|${st.text}|${st.next}`;
+      if (key === nowKey) return;
+      nowKey = key;
+      fill(nowLine, [
+        el('span', { class: 'now-tag', text: st.label ? `いま・${st.label}` : 'いま' }),
+        el('p', { class: 'now-text', text: st.text }),
+        st.next ? el('p', { class: 'now-next', text: `このあと：${st.next}` }) : null,
+      ]);
     },
     // シート＋タブがステージに重なっている高さ（スマホのみ）
     overlapHeight: () => {
