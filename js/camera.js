@@ -12,7 +12,8 @@ export function createOrbit({ camera, dom, onTap, islandRadius = 100 }) {
     pol: 0.92, // 真上からの傾き（0 = 真上）
   };
   const goal = { target: state.target.clone(), dist: state.dist, az: state.az, pol: state.pol };
-  const limits = { minDist: 26, maxDist: 900, minPol: 0.3, maxPol: 1.28 };
+  const MAX_FIT = 2700; // 全体表示の距離の上限（広い島でも島全体が入るように。以前は 900）
+  const limits = { minDist: 26, maxDist: MAX_FIT, minPol: 0.3, maxPol: 1.28 };
   let follow = null; // () => Vector3
   let lastInput = -1e9;
   let autoOrbit = true;
@@ -118,7 +119,7 @@ export function createOrbit({ camera, dom, onTap, islandRadius = 100 }) {
     const hFov = 2 * Math.atan(Math.tan(vFov / 2) * camera.aspect);
     const byWidth = (islandRadius * 1.08) / Math.tan(hFov / 2);
     const byHeight = (islandRadius * 0.95) / Math.tan(vFov / 2);
-    return clamp(Math.max(byWidth, byHeight), 120, limits.maxDist);
+    return clamp(Math.max(byWidth, byHeight), 120, MAX_FIT);
   }
 
   function setSize(w, h) {

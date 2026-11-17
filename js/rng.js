@@ -70,3 +70,43 @@ export function makeNoise2D(seed) {
   }
   return { noise, fbm };
 }
+
+// 引数3つ固定の速いハッシュ（0以上1未満）。地形のように大量に呼ぶところで使う。
+export function hash3(a, b, c) {
+  let h = Math.imul(a | 0, 0x27d4eb2d) ^ Math.imul(b | 0, 0x165667b1) ^ Math.imul(c | 0, 0x9e3779b1);
+  h = Math.imul(h ^ (h >>> 15), 0x85ebca6b);
+  h = Math.imul(h ^ (h >>> 13), 0xc2b2ae35);
+  return ((h ^ (h >>> 16)) >>> 0) / 4294967296;
+}
+
+// 値ノイズ（-1〜1）の速い版。広い島（384×384マス）の地形生成用。
+export function makeFastNoise2D(seed) {
+  const lattice = (ix, iy) => hash3(ix, iy, seed) * 2 - 1;
+  function noise(x, y) {
+    const ix = Math.floor(x);
+    const iy = Math.floor(y);
+    let fx = x - ix;
+    let fy = y - iy;
+    fx = fx * fx * (3 - 2 * fx);
+    fy = fy * fy * (3 - 2 * fy);
+    const a = lattice(ix, iy);
+    const b = lattice(ix + 1, iy);
+    const c = lattice(ix, iy + 1);
+    const d = lattice(ix + 1, iy + 1);
+    return a + (b - a) * fx + (c - a) * fy + (a - b - c + d) * fx * fy;
+  }
+  function fbm(x, y, octaves = 4) {
+    let sum = 0;
+    let amp = 0.5;
+    let freq = 1;
+    let norm = 0;
+    for (let o = 0; o < octaves; o++) {
+      sum += noise(x * freq + o * 17.3, y * freq - o * 9.1) * amp;
+      norm += amp;
+      amp *= 0.5;
+      freq *= 2;
+    }
+    return sum / norm;
+  }
+  return { noise, fbm };
+}

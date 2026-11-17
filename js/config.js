@@ -18,11 +18,17 @@ export const DEMO_DATA_URLS = {
 };
 
 // 島民シミュレーションの基本パラメータ（全員の端末で同じ時刻＝同じ光景になる）
+//   島が広いので、島民は「いまいる場所の近所」でしばらく過ごし（epochSlots スロットぶん）、
+//   そのあと別の場所へ歩いて移動する（遠い場所へは何スロットもかけて歩く）。
 export const SIM = {
   slotSeconds: 60, // 1つの行動の長さ
+  epochSlots: 8, // 何スロットごとに「いる場所」を選びなおすか（切り替えの時刻は島民ごとにずれる）
   walkSpeed: 4.6, // 1秒あたりの移動量（ワールド単位）
-  gatherEvery: 5, // 平均して何スロットに1回、広場に集まるか
+  gatherEvery: 5, // 平均して何スロットに1回、集まり場の近くにいる島民が集まるか
   chatChance: 0.16, // 各スロットで会話を始める確率
+  localRadius: 60, // 「近所」の半径。1スロットの中ではこの範囲で行き来する
+  chatRadius: 70, // これより離れた場所にいる相手とは、おしゃべりしに行かない
+  gatherRadius: 100, // 集まり場からこれより遠い場所にいる島民は、集まりに行かない
 };
 
 // 名前ラベルを同時に出す上限（人口が増えたときの負荷対策）
@@ -65,14 +71,15 @@ export const BARRIERS = {
 };
 export const DEFAULT_BARRIER = { barrier: 'まだ誰も足を踏み入れていない', edge: '', look: '向こう側をながめている', lines: [] };
 
+// work: 仕事中の「いま」の文／task: 「このあと」の予定に出す短い呼び名
 export const JOBS = {
-  漁師: { hat: 'headband', tool: 'rod', work: '釣りをしている' },
-  農家: { hat: 'straw', tool: 'hoe', work: '畑を耕している' },
-  大工: { hat: 'helmet', tool: 'hammer', work: 'トンカン作業している' },
-  探検家: { hat: 'safari', tool: 'scope', work: 'あたりを調べている' },
-  料理人: { hat: 'chef', tool: 'ladle', work: '料理をしている' },
+  漁師: { hat: 'headband', tool: 'rod', work: '釣りをしている', task: '釣り' },
+  農家: { hat: 'straw', tool: 'hoe', work: '畑を耕している', task: '畑しごと' },
+  大工: { hat: 'helmet', tool: 'hammer', work: 'トンカン作業している', task: '大工しごと' },
+  探検家: { hat: 'safari', tool: 'scope', work: 'あたりを調べている', task: '調べもの' },
+  料理人: { hat: 'chef', tool: 'ladle', work: '料理をしている', task: '料理' },
 };
-export const DEFAULT_JOB = { hat: 'none', tool: 'none', work: 'はたらいている' };
+export const DEFAULT_JOB = { hat: 'none', tool: 'none', work: 'はたらいている', task: 'しごと' };
 
 export const RELATION_TYPES = {
   friend: { label: '仲良し', icon: 'note' },

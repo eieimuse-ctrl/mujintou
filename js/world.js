@@ -100,8 +100,8 @@ export function createWorld({ canvas, terrain, deco, buildings, hub = null, trai
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   const scene = new THREE.Scene();
   scene.background = C('#8fd6f5');
-  scene.fog = new THREE.Fog('#8fd6f5', 520, 1500);
-  const camera = new THREE.PerspectiveCamera(38, 1, 2, 3200);
+  scene.fog = new THREE.Fog('#8fd6f5', 1560, 4500);
+  const camera = new THREE.PerspectiveCamera(38, 1, 4, 9600);
 
   const hemi = new THREE.HemisphereLight('#ffffff', '#b9c9a0', 1.9);
   const sun = new THREE.DirectionalLight('#fff4dc', 2.1);
@@ -162,7 +162,10 @@ export function createWorld({ canvas, terrain, deco, buildings, hub = null, trai
     return { top, wall, row, variant: Math.floor(hash01(i, j, seed + 22) * 4) };
   }
 
-  function buildTerrain() {
+  // 地形は CHUNK×CHUNK マスごとのメッシュに分ける（視錐台カリングと pick を軽くする）
+  const CHUNK = 64;
+  const terrainMat = new THREE.MeshLambertMaterial({ vertexColors: true, map: atlasTex });
+  function buildChunk(i0, j0) {
     const pos = [];
     const nor = [];
     const col = [];
@@ -184,8 +187,8 @@ export function createWorld({ canvas, terrain, deco, buildings, hub = null, trai
       { di: 0, dj: 1, n: [0, 0, 1], c: [[0, 1], [1, 1]] },
       { di: 0, dj: -1, n: [0, 0, -1], c: [[1, 0], [0, 0]] },
     ];
-    for (let j = 0; j < N; j++) {
-      for (let i = 0; i < N; i++) {
+    for (let j = j0; j < Math.min(N, j0 + CHUNK); j++) {
+      for (let i = i0; i < Math.min(N, i0 + CHUNK); i++) {
         const y = h[idx(i, j)];
         if (y <= MIN_Y) continue;
         const st = cellStyle(i, j);
@@ -223,6 +226,7 @@ export function createWorld({ canvas, terrain, deco, buildings, hub = null, trai
         }
       }
     }
+    if (!index.length) return null;
     const g = new THREE.BufferGeometry();
     g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
     g.setAttribute('normal', new THREE.Float32BufferAttribute(nor, 3));
@@ -231,13 +235,19 @@ export function createWorld({ canvas, terrain, deco, buildings, hub = null, trai
     g.setIndex(index);
     g.computeBoundingSphere();
     g.computeBoundingBox();
-    return new THREE.Mesh(g, new THREE.MeshLambertMaterial({ vertexColors: true, map: atlasTex }));
+    return new THREE.Mesh(g, terrainMat);
   }
-  const terrainMesh = buildTerrain();
+  const terrainMesh = new THREE.Group();
+  for (let j0 = 0; j0 < N; j0 += CHUNK) {
+    for (let i0 = 0; i0 < N; i0 += CHUNK) {
+      const m = buildChunk(i0, j0);
+      if (m) terrainMesh.add(m);
+    }
+  }
   scene.add(terrainMesh);
 
   // ---- 海 ------------------------------------------------------------------
-  const SEA_SIZE = 6400;
+  const SEA_SIZE = 19200;
   const seaFloor = new THREE.Mesh(new THREE.PlaneGeometry(SEA_SIZE, SEA_SIZE), new THREE.MeshBasicMaterial({ color: COLORS.deep }));
   seaFloor.rotation.x = -Math.PI / 2;
   seaFloor.position.y = MIN_Y - 0.05;
@@ -250,8 +260,17 @@ export function createWorld({ canvas, terrain, deco, buildings, hub = null, trai
   scene.add(seaFloor, sea);
 
   // ---- 木・岩・草花（1つの InstancedMesh にまとめて描く） ----------------------
-  const voxels = [];
-  const vox = (x, y, z, w, hh, d, c) => voxels.push({ x, y, z, w, h: hh, d, c });
+  // 草花・貝がらは別メッシュにして、カメラが高いときは描かない
+  // どちらも地形と同じチャンク単位に分ける（寄ったとき、画面の外のぶんを描かない）
+  const voxels = new Map();
+  const smallVoxels = new Map();
+  let voxTarget = [];
+  const bucket = (map, x, z) => {
+    const key = Math.floor((x + HALF) / (CHUNK * CELL)) + Math.floor((z + HALF) / (CHUNK * CELL)) * 64;
+    if (!map.has(key)) map.set(key, []);
+    return map.get(key);
+  };
+  const vox = (x, y, z, w, hh, d, c) => voxTarget.push({ x, y, z, w, h: hh, d, c });
   const GREENS = [
     ['#2f8f3f', '#49b24f'],
     ['#2c8748', '#42a85a'],
@@ -260,6 +279,7 @@ export function createWorld({ canvas, terrain, deco, buildings, hub = null, trai
   ];
   for (const d of deco) {
     const s = d.scale;
+    voxTarget = bucket(d.kind === 'flower' || d.kind === 'shell' ? smallVoxels : voxels, d.x, d.z);
     const { x, z } = d;
     const y = d.y;
     if (d.kind === 'tree') {
@@ -311,24 +331,32 @@ export function createWorld({ canvas, terrain, deco, buildings, hub = null, trai
       vox(x, y + 0.1, z, 0.4, 0.2, 0.4, d.variant % 2 ? '#fff3e6' : '#ff9a6b');
     }
   }
-  const decoMesh = new THREE.InstancedMesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshLambertMaterial({ map: voxTex }), voxels.length);
-  {
+  const decoMat = new THREE.MeshLambertMaterial({ map: voxTex });
+  const boxGeo = new THREE.BoxGeometry(1, 1, 1);
+  function instanced(list, parent) {
+    const mesh = new THREE.InstancedMesh(boxGeo, decoMat, list.length);
     const m = new THREE.Matrix4();
     const q = new THREE.Quaternion();
     const p = new THREE.Vector3();
     const sc = new THREE.Vector3();
-    voxels.forEach((v, n) => {
+    list.forEach((v, n) => {
       p.set(v.x, v.y, v.z);
       sc.set(v.w, v.h, v.d);
       m.compose(p, q, sc);
-      decoMesh.setMatrixAt(n, m);
-      decoMesh.setColorAt(n, tmp.set(v.c));
+      mesh.setMatrixAt(n, m);
+      mesh.setColorAt(n, tmp.set(v.c));
     });
-    decoMesh.instanceMatrix.needsUpdate = true;
-    if (decoMesh.instanceColor) decoMesh.instanceColor.needsUpdate = true;
-    decoMesh.computeBoundingSphere();
+    mesh.instanceMatrix.needsUpdate = true;
+    if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
+    mesh.computeBoundingSphere();
+    parent.add(mesh);
   }
-  scene.add(decoMesh);
+  const decoMesh = new THREE.Group();
+  const smallMesh = new THREE.Group();
+  for (const list of voxels.values()) instanced(list, decoMesh);
+  for (const list of smallVoxels.values()) instanced(list, smallMesh);
+  scene.add(decoMesh, smallMesh);
+  const SMALL_HIDE_Y = 220;
 
   // ---- 建物 ----------------------------------------------------------------
   const buildingMat = new THREE.MeshLambertMaterial({ vertexColors: true, map: voxTex });
@@ -385,7 +413,8 @@ export function createWorld({ canvas, terrain, deco, buildings, hub = null, trai
     }
     const mesh = new THREE.Mesh(boxesToGeometry(boxes), cloudMat);
     const side = n % 2 ? 1 : -1;
-    mesh.userData = { lane: side * (210 + hash01(n, 7) * 150), y: 48 + hash01(n, 8) * 34, speed: 2.2 + hash01(n, 9) * 2.5, phase: hash01(n, 10) * 1400 };
+    mesh.scale.setScalar(2);
+    mesh.userData = { lane: side * (630 + hash01(n, 7) * 450), y: 144 + hash01(n, 8) * 102, speed: 2.2 + hash01(n, 9) * 2.5, phase: hash01(n, 10) * 4200 };
     scene.add(mesh);
     clouds.push(mesh);
   }
@@ -443,7 +472,7 @@ export function createWorld({ canvas, terrain, deco, buildings, hub = null, trai
     }
     for (const c of clouds) {
       const u = c.userData;
-      const span = 1500;
+      const span = 4500;
       const x = ((((t * u.speed + u.phase) % span) + span) % span) - span / 2;
       c.position.set(x, u.y, u.lane);
     }
@@ -462,10 +491,15 @@ export function createWorld({ canvas, terrain, deco, buildings, hub = null, trai
     ndc.set(nx, ny);
     raycaster.setFromCamera(ndc, camera);
     const hitB = raycaster.intersectObjects(buildingMeshes, false)[0];
-    const hitT = raycaster.intersectObject(terrainMesh, false)[0];
+    const hitT = raycaster.intersectObject(terrainMesh, true)[0];
     if (hitB && (!hitT || hitB.distance <= hitT.distance + 0.5)) return { type: 'building', building: hitB.object.userData.building, point: hitB.point };
     if (hitT) return { type: 'ground', point: hitT.point };
     return null;
+  }
+
+  function render() {
+    smallMesh.visible = camera.position.y <= SMALL_HIDE_Y;
+    renderer.render(scene, camera);
   }
 
   // 地区ラベルの位置
@@ -475,5 +509,5 @@ export function createWorld({ canvas, terrain, deco, buildings, hub = null, trai
     return { id: d.id, name: d.name, index: n, pos: new THREE.Vector3(x, Math.max(1, terrain.heightAt(x, z)) + (d.id === 'plain' ? 9 : 12), z) };
   });
 
-  return { renderer, scene, camera, terrainMesh, buildingMeshes, districtAnchors, update, resize, pick, setTimeOfDay, render: () => renderer.render(scene, camera) };
+  return { renderer, scene, camera, terrainMesh, buildingMeshes, districtAnchors, update, resize, pick, setTimeOfDay, render };
 }

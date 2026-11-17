@@ -2,7 +2,7 @@
 // 正規化は DOM に依存しないので Node でも検証できる。
 
 import { DEFAULT_ISLAND_NAME, DATA_URLS, DEMO_DATA_URLS, BARRIERS, DEFAULT_BARRIER } from './config.js';
-import { DISTRICTS, DISTRICT_INDEX, DISTRICT_ALIASES } from './terrain.js';
+import { DISTRICTS, DISTRICT_INDEX, DISTRICT_ALIASES, MAP_VERSION, HALF, V1_HALF } from './terrain.js';
 
 async function fetchJson(url) {
   const res = await fetch(url, { cache: 'no-cache' });
@@ -28,6 +28,8 @@ const voteOf = (v) => (v && typeof v === 'object' ? { question: str(v.question),
 export function normalizeData(stateRaw, rosterRaw) {
   const s = stateRaw && typeof stateRaw === 'object' ? stateRaw : {};
   const day = Math.max(1, int(s.day, 1));
+  // "map" が無いか 1 のデータは、版1（128×128マス）の座標。いまの地図の座標へ換算する。
+  const mapScale = int(s.map, 1) < MAP_VERSION ? HALF / V1_HALF : 1;
 
   // 島民の行動範囲。地区ごとに、範囲の中か（inRange）と、範囲が広がった日（expandedDay）・理由（reason）・
   // 決め手になった投票（vote）を持つ。範囲は運営が開けるものではなく、住民の投票で広がるもの。
@@ -58,7 +60,7 @@ export function normalizeData(stateRaw, rosterRaw) {
   const b0 = s.base;
   if (b0 && typeof b0 === 'object' && Number.isFinite(num(b0.x)) && Number.isFinite(num(b0.z))) {
     const decidedDay = dayOrNull(b0.decidedDay);
-    if (decidedDay === null || decidedDay <= day) base = { name: str(b0.name).trim() || '広場', x: num(b0.x), z: num(b0.z), decidedDay, note: str(b0.note) };
+    if (decidedDay === null || decidedDay <= day) base = { name: str(b0.name).trim() || '広場', x: num(b0.x) * mapScale, z: num(b0.z) * mapScale, decidedDay, note: str(b0.note) };
   }
 
   const buildings = (Array.isArray(s.buildings) ? s.buildings : [])
@@ -67,8 +69,8 @@ export function normalizeData(stateRaw, rosterRaw) {
       id: str(b.id, `building-${n + 1}`),
       type: str(b.type, 'unknown'),
       name: str(b.name),
-      x: Number(b.x),
-      z: Number(b.z),
+      x: Number(b.x) * mapScale,
+      z: Number(b.z) * mapScale,
       rot: Number(b.rot) || 0,
       builtDay: Number.isFinite(Number(b.builtDay)) ? int(b.builtDay) : null,
       note: str(b.note),

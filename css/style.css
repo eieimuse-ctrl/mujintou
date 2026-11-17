@@ -1107,11 +1107,30 @@ body[data-sheet='open'] #sheet {
 .now-line {
   min-height: 1.6em;
   margin-top: 5px;
-  padding: 2px 8px;
+  padding: 4px 8px;
   font-size: 13px;
   font-weight: 700;
   background: #e1f2d0;
   border-left: 4px solid var(--leaf);
+}
+
+.now-tag {
+  display: inline-block;
+  padding: 0 6px;
+  font-size: 11px;
+  color: #fff;
+  background: var(--leaf);
+}
+
+.now-text {
+  margin-top: 2px;
+}
+
+.now-next {
+  margin-top: 1px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink-soft);
 }
 
 .now-line:empty {
