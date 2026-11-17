@@ -12,6 +12,7 @@
   --leaf: #3f9a45;
   --gold: #f2c230;
   --pink: #e2607e;
+  --drift: #1d7fb3; /* 漂流者（沖の海）の色 */
   --sky: #8fd6f5;
   --tabs-h: 58px;
   --sheet-h: 50vh;
@@ -152,6 +153,11 @@ button {
   z-index: 1;
 }
 
+/* 漂流者の名前ラベル（沖の海にいる人。海の色） */
+.label.is-drifter {
+  background: rgba(20, 96, 146, 0.9);
+}
+
 .label.is-selected {
   z-index: 2;
   color: var(--ink);
@@ -290,6 +296,23 @@ button {
 
 .chip-day {
   background: var(--gold);
+}
+
+/* 漂流中 N人（N>0 のときだけ）。ヘッダーの下、投票のチップと同じ段の右はし */
+.chip-drift {
+  color: #fff;
+  background: var(--drift);
+}
+
+#drift-chip {
+  position: absolute;
+  top: calc(var(--safe-top) + 57px);
+  right: 10px;
+  pointer-events: none;
+}
+
+body.has-drifters #vote-chip {
+  max-width: calc(100% - 130px);
 }
 
 .chip-open {
@@ -762,6 +785,52 @@ body[data-sheet='open'] #sheet {
   line-height: 1;
 }
 
+/* 漂流中の人（島民タブのいちばん上） */
+.drifter-meta {
+  color: var(--drift);
+}
+
+.drifter-row {
+  grid-template-columns: 36px minmax(0, 1fr) auto;
+  padding-left: 6px;
+  background: #e8f6fc;
+}
+
+.tag-drift {
+  color: #fff;
+  background: var(--drift);
+  border-color: var(--ink);
+}
+
+/* 似顔絵の下のほうを水に沈める（3D の島と同じ見え方） */
+.portrait-sea {
+  position: relative;
+}
+
+.portrait-sea::after {
+  position: absolute;
+  inset: 64% 0 0 0;
+  content: '';
+  background: rgba(42, 159, 208, 0.72);
+  border-top: 2px solid #e8f8ff;
+}
+
+.drift-since {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.25;
+  white-space: nowrap;
+  color: var(--ink-soft);
+}
+
+.drift-since b {
+  font-size: 16px;
+  color: var(--ink);
+}
+
 /* 年表 */
 
 .chronicle {
@@ -1135,6 +1204,16 @@ body[data-sheet='open'] #sheet {
 
 .now-line:empty {
   visibility: hidden;
+}
+
+/* 漂流者の「🌊 漂流中」 */
+.now-line.is-drift {
+  background: #dcf1fa;
+  border-left-color: var(--drift);
+}
+
+.now-line.is-drift .now-tag {
+  background: var(--drift);
 }
 
 .facts {

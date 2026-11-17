@@ -60,6 +60,8 @@ python3 -m http.server 8000
 
 動画1本＝島の1日です。動画を出すたびに、次の順で `data/` を更新します。日常のデータ更新だけなら `sw.js` を触る必要はありません（データは常にネットワーク優先で読まれます）。
 
+**データの読み先（2026-11-17 Firebase移行）**：本番では、まず Firebase Realtime Database（`softevo-leaderboard` プロジェクトの `mujintou` ノード）を読み、届かない・形がおかしいときだけ同梱の `data/*.json` に切り替わります（`js/config.js` の `RTDB_BASE`、`js/data.js` の `loadData`）。日常の更新は RTDB への書き込みが正で、リポジトリの JSON はフォールバック用に同じ内容を保ちます。書き込みは運営だけが持つ鍵で行い、ツールは `~/workspace/mujintou/tools_fb/fb.py`（例：`python3 tools_fb/fb.py put state site/data/state.json`）。RTDB は空配列を保存しないため、読み側は「キーが無い＝空」として正規化します。
+
 1. **`state.json` の `day` を1つ進め、`updatedAt` をその日の日付にする**（例：`"2026-11-17"`）。
 2. **漂着者を名簿に足す**（`islanders.json`。書き方は「島民の追加」）。`joinedDay` はその日。
 3. **年表に出来事を足す**（`state.json` の `chronicle`）。採用された投票結果は `vote` に書く。
@@ -205,6 +207,28 @@ python3 -m http.server 8000
 - `"sample": true` はデモ用の印です。本番の島民には付けないでください。
 - 本人に自分の島民を見せたいときは `?who=<ID>` の URL を案内できます。
 
+## 漂流者（`data/drifters.json`）
+
+フォローしてから、次の動画で「漂着」して島民になるまでの人の名簿です。漂流者は、東の砂浜（漂着地点）の沖の海に、ドット絵の人型でただよって見えます。
+
+```json
+{ "updatedAt": "2026-11-17",
+  "drifters": [ { "id": "instagram_id", "name": "表示名", "since": "2026-11-17" } ] }
+```
+
+| 項目 | 内容 |
+| --- | --- |
+| `id` | Instagram のユーザー名 |
+| `name` | 表示名 |
+| `since` | 漂流を始めた日（日本時間、YYYY-MM-DD） |
+| `anonymous` | 名前を出したくない人は `true`（「匿名の漂流者」になる） |
+
+- **運用の流れ**：フォロワー検知（30分ごとの自動同期）→ `drifters.json` に追記（RTDB と リポジトリの両方）→ PWA の沖に「漂流中」で表示 → 次の動画の制作時に `islanders.json` へ移し（`joinedDay`＝その日）、`drifters.json` から外す。
+- **見え方**（`js/drift.js`）：場所は ID のハッシュで決定的に決まり（岸に沿って ±75、沖へ 15〜60）、波で上下 ±0.35 ほど揺れます。決して岸には着きません。全員の端末で同じ光景（データ×時刻の純関数）で、島民のシミュレーションには影響しません。服の色も ID のハッシュで決まります。名前ラベルは島民と同じズーム連動（遠景では出ない、上限も島民と合算）。
+- 島民タブには「漂流中」セクションが出て、検索もできます。詳細は「🌊 漂流中／まだ漂着していません。次の動画で島に流れ着きます。」と漂流開始日だけ（在住日数・関係は出しません）。画面には「漂流中 N人」のチップ（N>0 のときだけ）。
+- 読み込めなかったときは漂流者0人として扱い、島は通常どおり開きます。
+- デモ用は `data/demo/drifters.json`（サンプル2人）。`?demo` で見えます。
+
 ## デモデータ（`data/demo/`）の読み方
 
 `data/demo/` には「何日か開拓が進んだ島」の例（以前のサンプルデータ）が入っています。本番の画面では読み込まれません。
@@ -248,4 +272,12 @@ Three.js **r160** を `lib/three.module.js` に同梱しています（CDN か�
 for f in js/*.js sw.js; do node --check "$f"; done
 # JSON の文法チェック
 for f in data/*.json data/demo/*.json manifest.webmanifest; do python3 -m json.tool "$f" > /dev/null && echo "ok $f"; done
+```
+
+漂流者とデータ読み先の検証（Node＋ヘッドレスChrome、`~/workspace/mujintou/tools/drift/`）：
+
+```sh
+node tools/drift/driftcheck.mjs   # 正規化・配置・揺れの純関数性・島民simへの無影響
+node tools/drift/shots.mjs        # 画面表示・検索・詳細・ラベル上限・SW（スクショは previews/drift/）
+node tools/drift/rtdbcheck.mjs    # RTDB第一／遮断時の同梱JSONフォールバックの切り替え
 ```
