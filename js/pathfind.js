@@ -166,7 +166,8 @@ export function createPathfinder(terrain, nav) {
     const ct = cellOf(to.x, to.z);
     const kf = idx(cf.i, cf.j);
     const kt = idx(ct.i, ct.j);
-    const key = `${kf}:${kt}:${Math.round(from.x * 4)}:${Math.round(from.z * 4)}:${Math.round(to.x * 4)}:${Math.round(to.z * 4)}`;
+    // キーは丸めない（丸めると、先に計算した別の端点の結果を返してしまい、計算の順番で結果が変わる）
+    const key = `${kf}:${kt}:${from.x}:${from.z}:${to.x}:${to.z}`;
     const hit = cache.get(key);
     if (hit) return hit;
 
@@ -196,7 +197,7 @@ export function createPathfinder(terrain, nav) {
       }
       result = measure(pts);
     }
-    if (cache.size > 800) cache.clear();
+    if (cache.size > 3000) cache.clear();
     cache.set(key, result);
     return result;
   }
@@ -226,5 +227,25 @@ export function createPathfinder(terrain, nav) {
     return { x: a.x + (b.x - a.x) * t, z: a.z + (b.z - a.z) * t, dx: b.x - a.x, dz: b.z - a.z };
   }
 
-  return { findCells, findPath, pointAt, lineOK };
+  // 折れ線の角を、まっすぐ歩けるところは省いてなめらかにする（つないだ経路の継ぎ目用）
+  function smooth(points, look = 6) {
+    if (points.length < 3) return measure(points);
+    const pts = [points[0]];
+    let a = 0;
+    while (a < points.length - 1) {
+      let next = a + 1;
+      const far = Math.min(points.length - 1, a + look);
+      for (let b = far; b > a + 1; b--) {
+        if (lineOK(points[a], points[b])) {
+          next = b;
+          break;
+        }
+      }
+      pts.push(points[next]);
+      a = next;
+    }
+    return measure(pts);
+  }
+
+  return { findCells, findPath, pointAt, lineOK, measure, smooth };
 }
