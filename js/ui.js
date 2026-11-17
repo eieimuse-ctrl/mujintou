@@ -1,4 +1,4 @@
-// 画面のDOM部分：ヘッダー、タブ、島民検索・ランキング、年表、投票カード、詳細パネル。
+// 画面のDOM部分：ヘッダー、タブ、島民検索・ランキング（と漂流中の人）、年表、投票カード、詳細パネル。
 // データ由来の文字列はすべて textContent で入れる（HTMLとして解釈させない）。
 
 import { INSTAGRAM_URL, INSTAGRAM_HANDLE, RELATION_TYPES, DEFAULT_RELATION } from './config.js';
@@ -51,7 +51,13 @@ function formatRemaining(ms) {
   return `あと${Math.max(1, m)}分`;
 }
 
-export function createUI({ onSelectIslander, onCloseDetail, onSheetChange, onRecenter, now = () => Date.now() }) {
+// "2026-11-17" → "11/17"
+const monthDay = (ymd) => {
+  const m = /^\d{4}-(\d{2})-(\d{2})$/.exec(ymd || '');
+  return m ? `${Number(m[1])}/${Number(m[2])}` : '';
+};
+
+export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onSheetChange, onRecenter, now = () => Date.now() }) {
   const body = document.body;
   const panel = $('panel');
   const sheet = $('sheet');
@@ -67,10 +73,13 @@ export function createUI({ onSelectIslander, onCloseDetail, onSheetChange, onRec
   let state = null;
   let islanders = [];
   let ranked = [];
+  let drifters = []; // 漂流中の人（まだ漂着していない）
   let portraitFor = (p) => islanderPortrait(p);
+  let drifterPortraitFor = (p) => islanderPortrait(p);
   let currentView = 'islanders';
   let returnView = null; // 詳細を閉じたときに戻る先（null ならシートを閉じる）
   let selected = -1;
+  let selectedDrifter = -1;
   let nowLine = null;
   let nowKey = '';
   let voteTimer = null;
@@ -106,11 +115,12 @@ export function createUI({ onSelectIslander, onCloseDetail, onSheetChange, onRec
       const name = t.dataset.tab;
       if (name === 'island') {
         setView(currentView === 'detail' ? 'islanders' : currentView, { open: false });
-        if (selected >= 0) closeDetail(true);
+        if (selected >= 0 || selectedDrifter >= 0) closeDetail(true);
         return;
       }
-      if (currentView === 'detail' && selected >= 0) {
+      if (currentView === 'detail' && (selected >= 0 || selectedDrifter >= 0)) {
         selected = -1;
+        selectedDrifter = -1;
         onCloseDetail?.();
       }
       setView(name);
@@ -130,31 +140,74 @@ export function createUI({ onSelectIslander, onCloseDetail, onSheetChange, onRec
     document.title = state.islandName;
     $('day-chip').textContent = `${state.day}日目`;
     $('pop-chip').textContent = `島民 ${islanders.length}人`;
+    // 漂流中の人がいるときだけ（投票のチップと同じ段の右はし）
+    const driftChip = $('drift-chip');
+    driftChip.hidden = !drifters.length;
+    driftChip.textContent = `漂流中 ${drifters.length}人`;
+    body.classList.toggle('has-drifters', drifters.length > 0);
   }
 
-  // ---- 島民：検索とランキング --------------------------------------------------
+  // ---- 島民：検索とランキング（上に「漂流中」の人） ----------------------------------
   const searchInput = $('search');
   const listEl = $('islander-list');
-  const listMeta = $('list-meta');
+  const listMeta = $('list-meta'); // 検索したときの件数（島民と漂流者をあわせて）
+  const islanderMeta = $('islander-meta'); // ランキングの見出し
+  const driftGroup = $('drifter-group');
+  const driftMeta = $('drifter-meta');
+  const driftList = $('drifter-list');
 
   function matches(p, q) {
     if (!q) return true;
-    const hay = p.anonymous ? p.displayName : `${p.name}\n${p.id}\n${p.job}`;
+    const hay = p.anonymous ? p.displayName : `${p.name}\n${p.id}\n${p.job || ''}`;
     return hay.toLowerCase().includes(q);
   }
 
+  const query = () => searchInput.value.trim().toLowerCase().replace(/^@/, '');
+
+  // 漂流中の人（名前＋「漂流中」チップ＋漂流開始日）。押すと海の上のその人へ寄る
+  function renderDrifters(q) {
+    const rows = drifters.map((p, index) => ({ p, index })).filter((e) => matches(e.p, q));
+    driftGroup.hidden = !rows.length;
+    driftList.replaceChildren();
+    if (!rows.length) return rows;
+    driftMeta.textContent = `漂流中 ${rows.length}人・次の動画で島に漂着します`;
+    for (const { p, index } of rows) {
+      const since = monthDay(p.since);
+      const row = el(
+        'button',
+        { class: 'islander-row drifter-row', type: 'button', 'aria-label': `${p.displayName}、漂流中${since ? `、${since}から` : ''}。海で探す`, on: { click: () => onSelectDrifter?.(index, { fromList: true }) } },
+        [
+          el('span', { class: 'portrait-wrap portrait-sea' }, drifterPortraitFor(p, index)),
+          el('span', { class: 'who' }, [
+            el('span', { class: 'who-name' }, [el('span', { text: p.displayName }), el('span', { class: 'tag tag-drift', text: '漂流中' }), p.sample ? el('span', { class: 'tag tag-sample', text: 'サンプル' }) : null]),
+            el('span', { class: 'who-sub', text: p.anonymous ? '沖をただよっている' : `@${p.id}` }),
+          ]),
+          since ? el('span', { class: 'drift-since' }, [el('span', { text: '漂流開始' }), el('b', { text: since })]) : el('span'),
+        ],
+      );
+      driftList.append(el('li', {}, row));
+    }
+    return rows;
+  }
+
   function renderList() {
-    const q = searchInput.value.trim().toLowerCase().replace(/^@/, '');
+    const q = query();
+    const drifting = renderDrifters(q);
     const rows = ranked.filter((e) => matches(e.p, q));
     listEl.replaceChildren();
-    listMeta.textContent = q ? `「${searchInput.value.trim()}」の検索結果：${rows.length}人` : islanders.length ? `在住日数ランキング（全${islanders.length}人）` : '';
+    listMeta.textContent = q ? `「${searchInput.value.trim()}」の検索結果：${rows.length + drifting.length}人` : '';
+    listMeta.hidden = !q;
+    // ランキングの見出し。検索中は、漂流者もヒットしたときだけ「島民 N人」で区切る
+    islanderMeta.textContent = q ? (drifting.length && rows.length ? `島民 ${rows.length}人` : '') : islanders.length ? `在住日数ランキング（全${islanders.length}人）` : '';
     if (!rows.length) {
+      if (q && drifting.length) return; // 漂流者だけヒットした
+      const notFound = q && islanders.length + drifters.length > 0;
       listEl.append(
         el('li', { class: 'empty' }, [
-          el('p', { class: 'empty-title', text: islanders.length ? 'その名前の島民は見つかりませんでした' : 'まだ島民はいません' }),
+          el('p', { class: 'empty-title', text: notFound ? (drifters.length ? 'その名前の島民・漂流者は見つかりませんでした' : 'その名前の島民は見つかりませんでした') : 'まだ島民はいません' }),
           el('p', {
-            text: islanders.length
-              ? `まだ漂着していないのかもしれません。Instagram（@${INSTAGRAM_HANDLE}）をフォローした人は、動画の更新にあわせてこの島に漂着します。`
+            text: notFound
+              ? `まだ島に届いていないのかもしれません。Instagram（@${INSTAGRAM_HANDLE}）をフォローした人は、まず島の沖を漂流し、動画の更新にあわせてこの島に漂着します。`
               : `Instagram（@${INSTAGRAM_HANDLE}）をフォローすると、この島に漂着します。名簿は動画の更新にあわせて反映されます。`,
           }),
         ]),
@@ -184,12 +237,14 @@ export function createUI({ onSelectIslander, onCloseDetail, onSheetChange, onRec
   searchInput.addEventListener('input', renderList);
   $('search-form').addEventListener('submit', (ev) => {
     ev.preventDefault();
-    const q = searchInput.value.trim().toLowerCase().replace(/^@/, '');
-    const hit = ranked.find((e) => matches(e.p, q));
-    if (hit && q) {
-      searchInput.blur();
-      onSelectIslander?.(hit.index, { fromList: true });
-    }
+    const q = query();
+    if (!q) return;
+    // 一覧の上から順に（漂流中の人 → 島民）
+    const d = drifters.findIndex((p) => matches(p, q));
+    const hit = d < 0 ? ranked.find((e) => matches(e.p, q)) : null;
+    if (d >= 0 || hit) searchInput.blur();
+    if (d >= 0) onSelectDrifter?.(d, { fromList: true });
+    else if (hit) onSelectIslander?.(hit.index, { fromList: true });
   });
 
   // ---- 島のいま（拠点と、島民の行動範囲） ----------------------------------------
@@ -333,6 +388,7 @@ export function createUI({ onSelectIslander, onCloseDetail, onSheetChange, onRec
     if (!p) return;
     if (currentView !== 'detail') returnView = fromList || isSheetOpen() ? (currentView === 'detail' ? 'islanders' : currentView) : null;
     selected = index;
+    selectedDrifter = -1;
     const root = views.detail;
     nowLine = el('div', { class: 'now-line', 'aria-live': 'polite' });
     nowKey = '';
@@ -389,9 +445,33 @@ export function createUI({ onSelectIslander, onCloseDetail, onSheetChange, onRec
     setView('detail');
   }
 
+  // 漂流者の詳細：まだ漂着していないので、在住日数や関係は出さない
+  function showDrifter(index, { fromList = false } = {}) {
+    const p = drifters[index];
+    if (!p) return;
+    if (currentView !== 'detail') returnView = fromList || isSheetOpen() ? currentView : null;
+    selected = -1;
+    selectedDrifter = index;
+    nowLine = null;
+    fill(views.detail, [
+      detailHeader(el('span', { class: 'detail-kicker', text: '漂流者' })),
+      el('div', { class: 'profile' }, [
+        el('span', { class: 'portrait-wrap portrait-big portrait-sea' }, drifterPortraitFor(p, index)),
+        el('div', { class: 'profile-main' }, [
+          el('h3', {}, [el('span', { text: p.displayName }), p.sample ? el('span', { class: 'tag tag-sample', text: 'サンプル' }) : null]),
+          p.anonymous ? null : el('p', { class: 'profile-id', text: `@${p.id}` }),
+          el('div', { class: 'now-line is-drift' }, [el('span', { class: 'now-tag', text: '🌊 漂流中' }), el('p', { class: 'now-text', text: 'まだ漂着していません。次の動画で島に流れ着きます。' })]),
+        ]),
+      ]),
+      el('dl', { class: 'facts' }, [el('div', {}, [el('dt', { text: '漂流開始' }), el('dd', { text: p.since ? p.since.replaceAll('-', '/') : '—' })])]),
+    ]);
+    setView('detail');
+  }
+
   function showBuilding(b) {
     if (currentView !== 'detail') returnView = isSheetOpen() ? currentView : null;
     selected = -1;
+    selectedDrifter = -1;
     nowLine = null;
     const root = views.detail;
     fill(root, [
@@ -408,6 +488,7 @@ export function createUI({ onSelectIslander, onCloseDetail, onSheetChange, onRec
 
   function closeDetail(forceClose = false) {
     selected = -1;
+    selectedDrifter = -1;
     nowLine = null;
     if (currentView === 'detail') {
       if (returnView && !forceClose) setView(returnView);
@@ -447,14 +528,16 @@ export function createUI({ onSelectIslander, onCloseDetail, onSheetChange, onRec
   function renderData(data, opts = {}) {
     state = data.state;
     islanders = data.islanders;
+    drifters = data.drifters || [];
     ranked = rankIslanders(islanders);
     if (opts.portraitFor) portraitFor = opts.portraitFor;
+    if (opts.drifterPortraitFor) drifterPortraitFor = opts.drifterPortraitFor;
     renderHeader();
     renderList();
     renderIslandNow();
     renderChronicle();
     renderVote();
-    $('sample-note').hidden = !(state.sample || islanders.some((p) => p.sample));
+    $('sample-note').hidden = !(state.sample || islanders.some((p) => p.sample) || drifters.some((p) => p.sample));
     $('updated').textContent = state.updatedAt ? `データ更新：${state.updatedAt.replaceAll('-', '/')}` : '';
     clearInterval(voteTimer);
     voteTimer = setInterval(renderVote, 60000);
@@ -465,6 +548,7 @@ export function createUI({ onSelectIslander, onCloseDetail, onSheetChange, onRec
   return {
     renderData,
     showIslander,
+    showDrifter,
     showBuilding,
     closeDetail,
     setView,

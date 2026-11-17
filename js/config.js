@@ -10,11 +10,17 @@ export const INSTAGRAM_URL = 'https://www.instagram.com/eiei_mus/';
 export const DATA_URLS = {
   state: './data/state.json',
   islanders: './data/islanders.json',
+  drifters: './data/drifters.json', // 漂流者（読めなくても島はひらく。そのときは漂流者0人）
 };
-// ?demo をつけて開いたときに読む「育った島」のデモデータ（5日目・島民6人・建物あり）
+// 本番データの第一の読み先は Firebase Realtime Database（読み取りは公開、書き込みは運営の鍵だけ）。
+// 島のデータはここを書き換えるだけで全員の画面に反映される（アプリの更新は要らない）。
+// 届かない・形がおかしいときは、同梱の data/*.json（DATA_URLS）に自動で切り替わる。
+export const RTDB_BASE = 'https://softevo-leaderboard-default-rtdb.asia-southeast1.firebasedatabase.app/mujintou';
+// ?demo をつけて開いたときに読む「育った島」のデモデータ（5日目・島民6人・建物あり・漂流者2人）
 export const DEMO_DATA_URLS = {
   state: './data/demo/state.json',
   islanders: './data/demo/islanders.json',
+  drifters: './data/demo/drifters.json',
 };
 
 // 島民シミュレーションの基本パラメータ（全員の端末で同じ時刻＝同じ光景になる）
@@ -31,7 +37,20 @@ export const SIM = {
   gatherRadius: 100, // 集まり場からこれより遠い場所にいる島民は、集まりに行かない
 };
 
-// 名前ラベルを同時に出す上限（人口が増えたときの負荷対策）
+// 漂流者（フォローしてから、次の動画で漂着して島民になるまでの人）。東の砂浜（漂着地点）の沖の海にただよう。
+// 位置は id のハッシュで決まり、揺れは時刻だけで決まる往復（決して岸には着かない）。drift.js
+export const DRIFT = {
+  along: 75, // 漂着地点から岸に沿って、左右どこまで散らばるか（ワールド単位）
+  near: 15, // 岸（陸）からいちばん近いところ
+  far: 60, // 岸からいちばん遠いところ
+  bob: 0.35, // 波で上下にゆれる幅
+  sway: 0.45, // 前後左右にゆれる幅（ごく小さく）
+};
+
+// 服の色の候補（デモの島民6人と同じ色）。漂流者の服の色は id のハッシュでここから選ぶ。
+export const SHIRT_COLORS = ['#3f8fd6', '#e0862f', '#58b04a', '#8a63d2', '#e2607e', '#2fa39a'];
+
+// 名前ラベルを同時に出す上限（人口が増えたときの負荷対策）。島民と漂流者を合わせて、カメラに近い順
 export const MAX_LABELS = 40;
 
 // ラベルのズーム連動。距離は「画面の高さが refHeight(px) のときの距離」に換算して比べる
