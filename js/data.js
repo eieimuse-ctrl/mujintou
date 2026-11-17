@@ -1,20 +1,72 @@
 // data/*.json の読み込みと、欠けた項目を補う正規化。
 // 正規化は DOM に依存しないので Node でも検証できる。
 
-import { DEFAULT_ISLAND_NAME, DATA_URLS, DEMO_DATA_URLS, BARRIERS, DEFAULT_BARRIER } from './config.js';
+import { DEFAULT_ISLAND_NAME, DATA_URLS, DEMO_DATA_URLS, RTDB_BASE, BARRIERS, DEFAULT_BARRIER } from './config.js';
 import { DISTRICTS, DISTRICT_INDEX, DISTRICT_ALIASES, MAP_VERSION, HALF, V1_HALF } from './terrain.js';
+import { drifterColor } from './drift.js';
 
-async function fetchJson(url) {
-  const res = await fetch(url, { cache: 'no-cache' });
-  if (!res.ok) throw new Error(`${url} を読み込めませんでした（${res.status}）`);
-  return res.json();
+async function fetchJson(url, { timeoutMs = 0 } = {}) {
+  if (!timeoutMs) {
+    const res = await fetch(url, { cache: 'no-cache' });
+    if (!res.ok) throw new Error(`${url} を読み込めませんでした（${res.status}）`);
+    return res.json();
+  }
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+  try {
+    const res = await fetch(url, { cache: 'no-cache', signal: ctrl.signal });
+    if (!res.ok) throw new Error(`${url} を読み込めませんでした（${res.status}）`);
+    return await res.json();
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+// RTDB の REST は、配列を「数値キーのオブジェクト」で返すことがある。空配列は保存されず、キーごと消える。
+// 数値キーだけのオブジェクトは配列に戻し、それ以外はそのまま（中身は再帰で直す）。キー欠落の補完は正規化側の役目。
+function rtdbPlain(v) {
+  if (Array.isArray(v)) return v.map(rtdbPlain);
+  if (v && typeof v === 'object') {
+    const keys = Object.keys(v);
+    if (keys.length && keys.every((k) => /^\d+$/.test(k))) {
+      return keys.sort((a, b) => Number(a) - Number(b)).map((k) => rtdbPlain(v[k]));
+    }
+    const out = {};
+    for (const k of keys) out[k] = rtdbPlain(v[k]);
+    return out;
+  }
+  return v;
 }
 
 // demo: true なら data/demo/ の「育った島」のデモデータを読む（?demo で開いたとき）
+// 本番は Firebase RTDB を第一に読み、届かない・空・形がおかしいときは同梱の data/*.json に切り替える。
+// 漂流者（drifters.json）は読めなくても島はひらく（そのときは漂流者0人）。
 export async function loadData({ demo = false } = {}) {
-  const urls = demo ? DEMO_DATA_URLS : DATA_URLS;
-  const [stateRaw, rosterRaw] = await Promise.all([fetchJson(urls.state), fetchJson(urls.islanders)]);
-  return normalizeData(stateRaw, rosterRaw);
+  if (demo) {
+    const urls = DEMO_DATA_URLS;
+    const [stateRaw, rosterRaw, driftRaw] = await Promise.all([
+      fetchJson(urls.state),
+      fetchJson(urls.islanders),
+      urls.drifters ? fetchJson(urls.drifters).catch(() => null) : null,
+    ]);
+    return normalizeData(stateRaw, rosterRaw, driftRaw);
+  }
+  const urls = DATA_URLS;
+  const loadOne = async (name, localUrl, optional) => {
+    try {
+      const raw = await fetchJson(`${RTDB_BASE}/${name}.json`, { timeoutMs: 4000 });
+      if (raw && typeof raw === 'object') return rtdbPlain(raw);
+      throw new Error('RTDB のデータが空でした');
+    } catch {
+      return optional ? fetchJson(localUrl).catch(() => null) : fetchJson(localUrl);
+    }
+  };
+  const [stateRaw, rosterRaw, driftRaw] = await Promise.all([
+    loadOne('state', urls.state, false),
+    loadOne('islanders', urls.islanders, false),
+    loadOne('drifters', urls.drifters, true),
+  ]);
+  return normalizeData(stateRaw, rosterRaw, driftRaw);
 }
 
 const str = (v, fallback = '') => (typeof v === 'string' || typeof v === 'number' ? String(v) : fallback);
@@ -25,7 +77,8 @@ const dayOrNull = (v) => (Number.isFinite(num(v)) ? Math.max(1, Math.floor(num(v
 const districtId = (id) => DISTRICT_ALIASES[id] || id;
 const voteOf = (v) => (v && typeof v === 'object' ? { question: str(v.question), adopted: str(v.adopted), note: str(v.note) } : null);
 
-export function normalizeData(stateRaw, rosterRaw) {
+// driftRaw（漂流者）は省略できる。読めなかったとき（null）や形がおかしいときは漂流者0人。
+export function normalizeData(stateRaw, rosterRaw, driftRaw = null) {
   const s = stateRaw && typeof stateRaw === 'object' ? stateRaw : {};
   const day = Math.max(1, int(s.day, 1));
   // "map" が無いか 1 のデータは、版1（128×128マス）の座標。いまの地図の座標へ換算する。
@@ -162,7 +215,36 @@ export function normalizeData(stateRaw, rosterRaw) {
   // 島にいない相手との関係は表示しない
   for (const p of islanders) p.relationships = p.relationships.filter((r) => seen.has(r.id) && r.id !== p.id);
 
-  return { state, islanders };
+  return { state, islanders, drifters: normalizeDrifters(driftRaw, seen) };
+}
+
+// 漂流者：フォローしてから、次の動画で漂着して島民になるまでの人（drifters.json）。
+//   { "updatedAt": "2026-11-17", "drifters": [ { "id": "instagram_id", "name": "表示名", "since": "2026-11-17" } ] }
+// 名簿（islanders.json）にもう載っている人は、漂着ずみなので漂流者には出さない。
+// islanderIds: 島民の ID の Set
+export function normalizeDrifters(raw, islanderIds = new Set()) {
+  const list = Array.isArray(raw) ? raw : Array.isArray(raw?.drifters) ? raw.drifters : [];
+  const seen = new Set();
+  const drifters = [];
+  for (const p of list) {
+    if (!p || typeof p !== 'object') continue;
+    const id = str(p.id).trim();
+    if (!id || seen.has(id) || islanderIds.has(id)) continue;
+    seen.add(id);
+    const anonymous = p.anonymous === true;
+    const name = str(p.name).trim() || id;
+    const since = str(p.since).trim();
+    drifters.push({
+      id,
+      name,
+      anonymous,
+      displayName: anonymous ? '匿名の漂流者' : name,
+      since: /^\d{4}-\d{2}-\d{2}$/.test(since) ? since : '', // 漂流を始めた日（日本時間、YYYY-MM-DD）
+      color: drifterColor(id), // 服の色は id のハッシュで決まる
+      sample: p.sample === true,
+    });
+  }
+  return drifters;
 }
 
 // 在住日数ランキング（長い順。同じなら名簿の順）

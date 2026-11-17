@@ -1,13 +1,13 @@
 // Service Worker
 //   シェル（画面・プログラム・Three.js・アイコン）… キャッシュ優先。オフラインでも開ける。
-//   data/*.json（島の状態・名簿。data/demo/ も）   … ネットワーク優先。島の更新がすぐ届く。
+//   data/*.json（島の状態・名簿・漂流者。data/demo/ も）… ネットワーク優先。島の更新がすぐ届く。
 //                                                   通信できないとき（または遅いとき）は前回の控えで開く。
 //
 // プログラム（シェル）を変えたら VERSION を上げること。
 // 新しい版は裏で取り込まれ、画面が裏に回ったとき（アプリを閉じた・切り替えた）に入れ替わる（main.js）。
 // データ（data/*.json）だけの更新では VERSION を上げる必要はない。
 
-const VERSION = '2026-11-17.1';
+const VERSION = '2026-11-17.3';
 const SHELL_CACHE = `mujintou-shell-${VERSION}`;
 const DATA_CACHE = 'mujintou-data'; // 版をまたいで使う、データの控え
 const DATA_TIMEOUT_MS = 4000; // これ以上待たされたら、控えがあれば控えを返す
@@ -30,10 +30,11 @@ const SHELL = [
   './js/sim.js',
   './js/world.js',
   './js/actors.js',
+  './js/drift.js',
   './js/camera.js',
   './lib/three.module.js',
 ];
-const DATA = ['./data/state.json', './data/islanders.json'];
+const DATA = ['./data/state.json', './data/islanders.json', './data/drifters.json'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(

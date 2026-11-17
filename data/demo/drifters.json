@@ -1,0 +1,7 @@
+{
+  "updatedAt": "2026-11-16",
+  "drifters": [
+    { "id": "sample_shizuku", "name": "しずく", "since": "2026-11-16", "sample": true },
+    { "id": "sample_hayate", "name": "はやて", "since": "2026-11-16", "sample": true }
+  ]
+}

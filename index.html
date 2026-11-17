@@ -36,6 +36,7 @@
           <span id="vote-chip-text"></span>
           <span class="vote-chip-arrow" aria-hidden="true">›</span>
         </button>
+        <span class="chip chip-drift" id="drift-chip" hidden>漂流中 –人</span>
 
         <div id="loading">
           <span class="loading-icon" data-icon="island"></span>
@@ -52,13 +53,18 @@
         <div id="sheet">
           <div id="view-islanders" class="view">
             <h2 class="view-title"><span data-icon="people"></span>島民</h2>
-            <p id="sample-note" class="note" hidden>いまはデモ用のサンプル（島民・出来事）を表示しています。</p>
+            <p id="sample-note" class="note" hidden>いまはデモ用のサンプル（島民・漂流者・出来事）を表示しています。</p>
             <form id="search-form" role="search">
-              <label for="search" class="visually-hidden">島民を名前やIDで探す</label>
+              <label for="search" class="visually-hidden">島民や漂流者を名前やIDで探す</label>
               <span class="search-icon" data-icon="search"></span>
               <input id="search" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="名前やIDで探す" />
             </form>
-            <p id="list-meta" class="list-meta"></p>
+            <p id="list-meta" class="list-meta" hidden></p>
+            <section id="drifter-group" class="drifter-group" aria-labelledby="drifter-meta" hidden>
+              <p id="drifter-meta" class="list-meta drifter-meta"></p>
+              <ol id="drifter-list" class="islander-list"></ol>
+            </section>
+            <p id="islander-meta" class="list-meta"></p>
             <ol id="islander-list" class="islander-list"></ol>
           </div>
 

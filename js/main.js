@@ -7,6 +7,7 @@ import { resolveBuildings } from './buildings.js';
 import { createPathfinder } from './pathfind.js';
 import { createSim, resolveHub } from './sim.js';
 import { showDistrictLabels } from './zoom.js';
+import { layoutDrifters } from './drift.js';
 
 const params = new URLSearchParams(location.search);
 const DEBUG = params.has('debug');
@@ -28,6 +29,7 @@ const clock = (() => {
 const ui = createUI({
   now: clock.now,
   onSelectIslander: (index, opts) => selectIslander(index, opts),
+  onSelectDrifter: (index, opts) => selectDrifter(index, opts),
   onCloseDetail: () => deselect(),
   onSheetChange: () => syncViewShift(),
   onRecenter: () => {
@@ -37,10 +39,12 @@ const ui = createUI({
 });
 
 let app = null; // 3D一式（生成に失敗しても一覧・年表・投票は使える）
-let selected = -1;
+let selected = -1; // 選択中の島民
+let selectedDrifter = -1; // 選択中の漂流者
 
 function selectIslander(index, opts = {}) {
   selected = index;
+  selectedDrifter = -1;
   ui.showIslander(index, opts);
   if (app) {
     app.orbit.followTarget(() => app.actors.positionOf(index), 46);
@@ -48,8 +52,19 @@ function selectIslander(index, opts = {}) {
   }
 }
 
+function selectDrifter(index, opts = {}) {
+  selected = -1;
+  selectedDrifter = index;
+  ui.showDrifter(index, opts);
+  if (app) {
+    app.orbit.followTarget(() => app.actors.drifterPositionOf(index), 46);
+    syncViewShift();
+  }
+}
+
 function deselect() {
   selected = -1;
+  selectedDrifter = -1;
   app?.orbit.stopFollow();
   syncViewShift();
 }
@@ -84,26 +99,31 @@ async function boot() {
     return;
   }
   // 3D側で作ったスプライトを一覧のアイコンにも使い回す
+  const portraitOf = (atlas) => {
+    const c = document.createElement('canvas');
+    c.width = 18;
+    c.height = 24;
+    c.className = 'portrait';
+    if (atlas) c.getContext('2d').drawImage(atlas, 0, 0, 18, 24, 0, 0, 18, 24);
+    return c;
+  };
   ui.renderData(data, {
-    portraitFor: (p, index) => {
-      const c = document.createElement('canvas');
-      const atlas = app.actors.atlasOf(index);
-      c.width = 18;
-      c.height = 24;
-      c.className = 'portrait';
-      if (atlas) c.getContext('2d').drawImage(atlas, 0, 0, 18, 24, 0, 0, 18, 24);
-      return c;
-    },
+    portraitFor: (p, index) => portraitOf(app.actors.atlasOf(index)),
+    drifterPortraitFor: (p, index) => portraitOf(app.actors.drifterAtlasOf(index)),
   });
   ui.setLoading('');
   syncViewShift();
   if (params.has('who')) {
-    const i = data.islanders.findIndex((p) => p.id === params.get('who'));
+    // 島民でも漂流者でも、その人を選んだ状態で開く
+    const who = params.get('who');
+    const i = data.islanders.findIndex((p) => p.id === who);
+    const j = data.drifters.findIndex((p) => p.id === who);
     if (i >= 0) selectIslander(i, { fromList: false });
+    else if (j >= 0) selectDrifter(j, { fromList: false });
   }
 }
 
-async function buildIsland({ state, islanders }) {
+async function buildIsland({ state, islanders, drifters = [] }) {
   const THREE = await import('../lib/three.module.js');
   const { createWorld } = await import('./world.js');
   const { createActors } = await import('./actors.js');
@@ -142,8 +162,11 @@ async function buildIsland({ state, islanders }) {
   const pathfinder = createPathfinder(terrain, nav);
   const sim = createSim({ terrain, nav, pathfinder, islanders, buildings: built.list, hub, outOfRange });
 
+  // 漂流者は漂着地点の沖の海に（sim とは別。浅瀬の岩はよける）
+  const drifts = layoutDrifters(drifters, terrain, { avoid: deco.filter((d) => d.kind === 'searock') });
+
   const world = createWorld({ canvas, terrain, deco, buildings: built.list, hub, trailCells: sim.trails() });
-  const actors = createActors({ scene: world.scene, islanders, sim, labelLayer });
+  const actors = createActors({ scene: world.scene, islanders, sim, labelLayer, drifters, drifts });
 
   // 地区ラベル。拠点が決まったら、拠点のある地区は拠点の名前を拠点の位置に出す。
   const districtLabels = world.districtAnchors.map((a) => {
@@ -157,6 +180,8 @@ async function buildIsland({ state, islanders }) {
       name = hub.label;
       pos = new THREE.Vector3(hub.x, Math.max(1, terrain.heightAt(hub.x, hub.z)) + 4, hub.z);
       lift = true; // 拠点の真上に浮かべる（広場に集まった島民を隠さない）
+    } else if (a.id === 'beach' && drifts.length) {
+      lift = true; // 沖の漂流者を隠さないよう、砂浜の地区名は上に浮かべる
     }
     node.textContent = name;
     labelLayer.append(node);
@@ -172,9 +197,10 @@ async function buildIsland({ state, islanders }) {
   });
 
   function handleTap(x, y) {
-    const hit = actors.pickAt(x, y);
-    if (hit >= 0) {
-      selectIslander(hit, { fromList: false });
+    const hit = actors.pick(x, y);
+    if (hit) {
+      if (hit.kind === 'drifter') selectDrifter(hit.index, { fromList: false });
+      else selectIslander(hit.index, { fromList: false });
       return;
     }
     const nx = (x / viewport.w) * 2 - 1;
@@ -183,6 +209,7 @@ async function buildIsland({ state, islanders }) {
     if (!p) return;
     if (p.type === 'building') {
       selected = -1;
+      selectedDrifter = -1;
       ui.showBuilding(p.building);
       orbit.focus({ x: p.building.x, y: p.building.y + 2, z: p.building.z }, 58);
       syncViewShift();
@@ -229,7 +256,7 @@ async function buildIsland({ state, islanders }) {
 
     orbit.update(dt);
     world.update(t);
-    actors.update(t, dt, world.camera, viewport, selected, orbit.state.dist);
+    actors.update(t, dt, world.camera, viewport, selected, orbit.state.dist, selectedDrifter);
 
     // 地区名は引いたときだけ、島民名は寄ったときだけ（段階は zoom.js）
     const far = showDistrictLabels(orbit.state.dist, viewport.h);
@@ -253,7 +280,7 @@ async function buildIsland({ state, islanders }) {
   }
   requestAnimationFrame(frame);
 
-  const api = { world, actors, orbit, sim, terrain, nav, clock, hub };
+  const api = { world, actors, orbit, sim, terrain, nav, clock, hub, drifts };
   if (DEBUG) window.__island = api;
   return api;
 }
