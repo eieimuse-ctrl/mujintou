@@ -1,6 +1,30 @@
 {
   "updatedAt": "2026-11-17",
   "drifters": [
-    { "id": "sakasaka_1482", "name": "さか", "since": "2026-11-17" }
+    {
+      "id": "sakasaka_1482",
+      "name": "さか",
+      "since": "2026-11-17"
+    },
+    {
+      "id": "horiharu0220",
+      "name": "ほりはる",
+      "since": "2026-11-17"
+    },
+    {
+      "id": "shugo.77",
+      "name": "柊伍",
+      "since": "2026-11-17"
+    },
+    {
+      "id": "_shaun81",
+      "name": "しょうおん",
+      "since": "2026-11-17"
+    },
+    {
+      "id": "hori_harusabu",
+      "name": "堀はるサブ",
+      "since": "2026-11-17"
+    }
   ]
 }
