@@ -245,7 +245,7 @@ async function buildIsland({ state, islanders }) {
 
     if (selected >= 0 && nowPerf - lastNow > 500) {
       lastNow = nowPerf;
-      ui.setNowText(`いま：${sim.describe(selected, t)}`);
+      ui.setNow(sim.status(selected, t));
     }
 
     world.render();
