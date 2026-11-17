@@ -7,7 +7,7 @@
 // 新しい版は裏で取り込まれ、画面が裏に回ったとき（アプリを閉じた・切り替えた）に入れ替わる（main.js）。
 // データ（data/*.json）だけの更新では VERSION を上げる必要はない。
 
-const VERSION = '2026-11-16.1';
+const VERSION = '2026-11-17.1';
 const SHELL_CACHE = `mujintou-shell-${VERSION}`;
 const DATA_CACHE = 'mujintou-data'; // 版をまたいで使う、データの控え
 const DATA_TIMEOUT_MS = 4000; // これ以上待たされたら、控えがあれば控えを返す
