@@ -340,12 +340,13 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
 
     const remaining = v.deadline ? formatRemaining(v.deadline.getTime() - now()) : '';
     const url = v.postUrl || INSTAGRAM_URL;
+    const free = !v.options.length; // 選択肢のないお題＝自由コメント
     // 結果メモ・説明・締切は無いことがあるので fill() で入れる（append だと null が "null" と描かれる）
     fill(root, [
       el('div', { class: 'vote-head' }, [el('span', { class: `chip chip-${st.key}`, text: st.label }), el('span', { class: 'vote-kicker', text: '現在の投票お題' })]),
       el('h3', { class: 'vote-q', text: v.question }),
       v.description ? el('p', { class: 'vote-desc', text: v.description }) : null,
-      el(
+      free ? null : el(
         'ol',
         { class: 'vote-options' },
         v.options.map((o) =>
@@ -368,7 +369,10 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
       el('div', { class: 'vote-how' }, [
         el('p', { class: 'vote-how-title', text: '投票はInstagramのコメントで' }),
         el('p', { text: 'このアプリの中では投票できません。次の手順で参加してください。' }),
-        el('ol', {}, [el('li', { text: `Instagram（@${INSTAGRAM_HANDLE}）の最新の投稿をひらく` }), el('li', { text: `えらんだ案（${v.options.map((o) => o.key).join('・') || 'A・B・C'}）をコメントする` }), el('li', { text: 'いいねが一番多いコメントの案が採用されます' })]),
+        // 選択肢あり＝コメントの件数が一番多い案を採用／選択肢なし（自由コメント）＝いいねが一番多いコメントを採用
+        el('ol', {}, free
+          ? [el('li', { text: `Instagram（@${INSTAGRAM_HANDLE}）の最新の投稿をひらく` }), el('li', { text: '自由に案をコメントする' }), el('li', { text: 'いいなと思うコメントに、いいねする' }), el('li', { text: 'いいねが一番多いコメントが採用されます（同じ数なら、先に書かれたもの）' })]
+          : [el('li', { text: `Instagram（@${INSTAGRAM_HANDLE}）の最新の投稿をひらく` }), el('li', { text: `えらんだ案（${v.options.map((o) => o.key).join('・')}）をコメントする` }), el('li', { text: 'コメントが一番多い案が採用されます' })]),
         st.key === 'open' ? el('a', { class: 'btn btn-primary', href: url, target: '_blank', rel: 'noopener noreferrer', text: 'Instagramで投票する' }) : el('a', { class: 'btn', href: url, target: '_blank', rel: 'noopener noreferrer', text: 'Instagramをひらく' }),
       ]),
     ]);
