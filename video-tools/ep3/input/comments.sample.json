@@ -1,0 +1,262 @@
+{
+ "sample": true,
+ "note": "見本。11/18 22:28 時点で本人がチャットに貼った22件。本番は Muse が同じ形で comments.json を置く",
+ "post": {
+  "id": null,
+  "day": 2,
+  "question": "食料をどうする？",
+  "options": {
+   "A": "海で魚を捕る",
+   "B": "畑を作る",
+   "C": "森の実りを探す"
+  }
+ },
+ "fetchedAt": "2026-11-18T22:28:00+09:00",
+ "totalComments": 28,
+ "fetchedComments": 22,
+ "followers": null,
+ "comments": [
+  {
+   "commentId": null,
+   "userId": "nabemegane",
+   "name": "とも",
+   "text": "A",
+   "likes": 0,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "drifter"
+  },
+  {
+   "commentId": null,
+   "userId": "ibu131313",
+   "name": "ibu13",
+   "text": "魚は栄養素高いし、全員でやれば釣る確率も上がる",
+   "likes": 0,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "drifter"
+  },
+  {
+   "commentId": null,
+   "userId": "marumegane4",
+   "name": "🐸ま🐸",
+   "text": "AとBで半々で分かれたい。魚消えたら死ぬからA寄り",
+   "likes": 1,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "islander"
+  },
+  {
+   "commentId": null,
+   "userId": "analogayane",
+   "name": "あやね",
+   "text": "潮目なら資材も魚も流れてきてそう。Cも並行した方が良さそう",
+   "likes": 0,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "drifter"
+  },
+  {
+   "commentId": null,
+   "userId": "kazuzu4771",
+   "name": "TKD",
+   "text": "A 全員で地引き網",
+   "likes": 0,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "drifter"
+  },
+  {
+   "commentId": null,
+   "userId": null,
+   "name": "",
+   "text": "A",
+   "likes": 0,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "unknown"
+  },
+  {
+   "commentId": null,
+   "userId": "ichi.09",
+   "name": "Taichi Minami",
+   "text": "森が危険ならA",
+   "likes": 0,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "islander"
+  },
+  {
+   "commentId": null,
+   "userId": null,
+   "name": "鈴木達也",
+   "text": "B",
+   "likes": 0,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "unknown"
+  },
+  {
+   "commentId": null,
+   "userId": "takada_1gram",
+   "name": "高田鷹仁",
+   "text": "Ｂ",
+   "likes": 0,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "drifter"
+  },
+  {
+   "commentId": null,
+   "userId": "yamato_family327",
+   "name": "あゆさん",
+   "text": "b",
+   "likes": 0,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "islander"
+  },
+  {
+   "commentId": null,
+   "userId": "masatk_no_m",
+   "name": "まさたけM",
+   "text": "B",
+   "likes": 0,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "drifter"
+  },
+  {
+   "commentId": null,
+   "userId": "bear.44190633",
+   "name": "だん☄️",
+   "text": "C！飲み水確保してから海で魚を取って畑を作ろう",
+   "likes": 0,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "islander"
+  },
+  {
+   "commentId": null,
+   "userId": null,
+   "name": "つき",
+   "text": "食べ物を探すのと同時に危険な動物がいないか確認します",
+   "likes": 0,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "unknown"
+  },
+  {
+   "commentId": null,
+   "userId": null,
+   "name": "ももさん",
+   "text": "Cがいいと思います！",
+   "likes": 0,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "unknown"
+  },
+  {
+   "commentId": null,
+   "userId": "atsukidesu",
+   "name": "中村徳貴",
+   "text": "Ｃで！",
+   "likes": 0,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "islander"
+  },
+  {
+   "commentId": null,
+   "userId": null,
+   "name": "TKM_trb",
+   "text": "C",
+   "likes": 0,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "unknown"
+  },
+  {
+   "commentId": null,
+   "userId": "hyuga_0619",
+   "name": "ひゅうが",
+   "text": "簡単に安定した食べ物が取れる。ABは時間と体力が必要",
+   "likes": 0,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "islander"
+  },
+  {
+   "commentId": null,
+   "userId": "yuradayo0330",
+   "name": "ゆら",
+   "text": "島のことをよく知れるから",
+   "likes": 0,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "drifter"
+  },
+  {
+   "commentId": null,
+   "userId": "kubotto0505",
+   "name": "kubotto",
+   "text": "畑だと収穫に時間がかかる。釣りも全員分は難しそう",
+   "likes": 0,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "islander"
+  },
+  {
+   "commentId": null,
+   "userId": "nanasi774_ou",
+   "name": "774(名無し)",
+   "text": "畑は水と種がなきゃ作れないから",
+   "likes": 0,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "islander"
+  },
+  {
+   "commentId": null,
+   "userId": "_3yu.96_",
+   "name": "みゆ",
+   "text": "C",
+   "likes": 0,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "drifter"
+  },
+  {
+   "commentId": null,
+   "userId": "dosukoi.5845",
+   "name": "ヤッチャン",
+   "text": "C。けど、まずは飲み水を確保するべき",
+   "likes": 0,
+   "at": null,
+   "replyTo": null,
+   "source": "api",
+   "status": "islander"
+  }
+ ]
+}

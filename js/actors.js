@@ -155,8 +155,11 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
     for (const a of actors) a.selected = a.index === selected;
     for (const a of castaways) a.selected = a.index === selectedDrifter;
 
+    // 動画の録画用：globalThis.__stagePose(i, tMs) があれば、その演技（台本）で動かす。null を返した人はふだんの暮らし。
+    const stagePose = typeof globalThis.__stagePose === 'function' ? globalThis.__stagePose : null;
+    const stageDrift = typeof globalThis.__stageDrift === 'function' ? globalThis.__stageDrift : null;
     for (const a of actors) {
-      const s = sim.stateAt(a.index, tMs);
+      const s = (stagePose && stagePose(a.index, tMs)) || sim.stateAt(a.index, tMs);
 
       // 高さは段差でカクッとしないよう、少しなめらかに追いかける
       if (a.y === null || Math.abs(a.y - s.y) > 3) a.y = s.y;
@@ -181,7 +184,18 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
         hop = c === 0 ? 0.3 : 0;
       } else if (s.anim === 'talk') {
         hop = s.bubble && Math.floor(ph * 4) % 2 ? 0.14 : 0;
+      } else if (s.anim === 'sit') {
+        frame = FRAMES.sit;
+      } else if (s.anim === 'shock') {
+        frame = FRAMES.shock;
+        hop = Math.floor(ph * 6) % 2 ? 0.18 : 0;
+      } else if (s.anim === 'eat') {
+        frame = Math.floor(ph * 2) % 2 ? FRAMES.eat : FRAMES.idle;
+      } else if (s.anim === 'run') {
+        frame = [FRAMES.walkA, FRAMES.walkB][Math.floor(ph * 12) % 2];
+        hop = Math.floor(ph * 12) % 2 ? 0.2 : 0;
       }
+      if (s.frame != null && FRAMES[s.frame] != null) frame = FRAMES[s.frame];
       a.tex.offset.set(frame / FRAME_COUNT, a.facing > 0 ? 0.5 : 0);
 
       a.pos.set(s.x, a.y, s.z);
@@ -222,8 +236,11 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
 
     // 漂流者：位置と揺れは drift.js（データ × 時刻の純関数）。ときどき島に向かって手をふる
     for (const a of castaways) {
-      if (!a.drift) continue;
-      const s = driftPose(a.drift, tMs, a.pose);
+      if (!a.drift && !stageDrift) continue;
+      const staged = stageDrift && stageDrift(a.index, tMs, a.drift);
+      if (!staged && !a.drift) continue;
+      const s = staged || driftPose(a.drift, tMs, a.pose);
+      if (staged) a.sprite.visible = a.ripple.visible = !s.hide;
       const side = s.dx * right.x + s.dz * right.z;
       if (Math.abs(side) > 0.05 * Math.hypot(s.dx, s.dz)) a.facing = side > 0 ? 1 : -1;
       const frame = s.wave && Math.floor((t + (a.seed % 1000) / 500) * 2.6) % 2 === 0 ? FRAMES.cheer : FRAMES.idle;
@@ -241,7 +258,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       a.sprite.position.set(s.x, waterline, s.z);
       a.sprite.scale.set(SPRITE_W * k, SPRITE_H * k, 1);
       a.ripple.position.set(s.x, SEA_Y + 0.04, s.z);
-      a.ripple.scale.setScalar(k * (1 + 0.08 * Math.sin(t * a.drift.bobSpeed + a.drift.bobPhase)));
+      a.ripple.scale.setScalar(k * (1 + 0.08 * Math.sin(t * (a.drift?.bobSpeed ?? 1.3) + (a.drift?.bobPhase ?? a.seed % 7))));
 
       const above = SPRITE_H * k * DRIFT_VISIBLE; // 水の上に出ている高さ
       v.set(s.x, waterline + above * 0.5, s.z).project(camera);
@@ -319,7 +336,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
     let best = null;
     let bestD = Infinity;
     for (const a of everyone) {
-      if (!a.screen.visible || (a.drifter && !a.drift)) continue;
+      if (!a.screen.visible || (a.drifter && !a.drift && !a.sprite.visible)) continue;
       const d = Math.hypot(a.screen.x - x, a.screen.y - y);
       if (d <= a.screen.r + 8 && d < bestD) {
         bestD = d;
