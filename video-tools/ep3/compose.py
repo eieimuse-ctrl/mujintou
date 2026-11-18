@@ -28,7 +28,11 @@ N = round(S['duration'] * FPS)
 FONT = os.environ.get('FONT', '/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc')
 FONT_BLACK = os.environ.get('FONT_BLACK', '/usr/share/fonts/opentype/noto/NotoSansCJK-Black.ttc')
 EMOJI = os.environ.get('EMOJI_FONT', '/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf')
-if not os.path.exists(FONT_BLACK): FONT_BLACK = FONT
+if not os.path.exists(FONT_BLACK):
+    print(f'!! 太字フォントが無い（{FONT_BLACK}）。Bold で代用するので見た目が少し変わる：sudo apt install fonts-noto-cjk-extra')
+    FONT_BLACK = FONT
+if not os.path.exists(EMOJI):
+    print(f'!! 絵文字フォントが無い（{EMOJI}）。絵文字が出ない：sudo apt install fonts-noto-color-emoji')
 _fc = {}
 def font(size, black=False):
     k = (size, black)
@@ -83,7 +87,14 @@ def draw_text(img, d, x, y, text, size, fill, black=False, stroke=0, stroke_fill
             d.text((x, y), r, font=font(size, black), fill=fill, stroke_width=stroke, stroke_fill=stroke_fill)
             x += d.textlength(r, font=font(size, black))
 def wrap(d, text, size, maxw):
-    """句読点のあとを優先して折り返す（最大3行の目安）。"""
+    """コメントの改行は残し、そのうえで長い行は句読点のあとを優先して折り返す。"""
+    out = []
+    for para in str(text).replace('\r', '').split('\n'):
+        para = para.strip()
+        if para: out += wrap_line(d, para, size, maxw)
+    return out or ['']
+
+def wrap_line(d, text, size, maxw):
     lines, cur = [], ''
     for ch in text:
         if text_w(d, cur + ch, size) > maxw and cur:
@@ -233,6 +244,14 @@ if __name__ == '__main__':
     if fc: cmd += ['-filter_complex', fc, '-map', '0:v', '-map', '[aout]', '-c:a', 'aac', '-b:a', '192k']
     cmd += ['-vf', vf, '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20', '-color_primaries', 'bt709', '-color_trc', 'bt709', '-colorspace', 'bt709', '-movflags', '+faststart', '-t', str(S['duration']), master]
     subprocess.run(cmd, check=True)
+    # Instagram に上げられる大きさ（100MB 未満）に収める：超えたら CRF を上げて作り直す
+    crf = 20
+    while os.path.getsize(master) > 95 * 1024 * 1024 and crf < 32:
+        crf += 3
+        print(f'!! {os.path.getsize(master) / 1e6:.0f}MB あるので CRF {crf} で作り直す')
+        cmd[cmd.index('-crf') + 1] = str(crf)
+        subprocess.run(cmd, check=True)
+    print(f'投稿用 {os.path.getsize(master) / 1e6:.1f}MB（CRF {crf}）')
     prev = os.path.join(OUTDIR, f'{NAME}_preview.mp4')
     subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', master, '-vf', 'scale=780:1688', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '26', '-c:a', 'copy', '-movflags', '+faststart', prev], check=True)
     # 確認用のコマ一覧（1秒ごと）

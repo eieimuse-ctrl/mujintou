@@ -10,7 +10,7 @@ echo "ffmpeg: $(ffmpeg -version 2>&1 | head -1)"
 CH=$(ls -d "$HOME"/.cache/puppeteer/chrome-headless-shell/*/chrome-headless-shell-linux64/chrome-headless-shell 2>/dev/null | tail -1)
 echo "chrome-headless-shell: ${CH:-なし} $( [ -n "${CH:-}" ] && "$CH" --version 2>&1 )"
 echo "puppeteer-core: $(node -e "console.log(require('puppeteer-core/package.json').version)" 2>/dev/null || echo 'video-tools で npm ci が必要')"
-for f in /usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc /usr/share/fonts/opentype/noto/NotoSansCJK-Black.ttc; do
+for f in /usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc /usr/share/fonts/opentype/noto/NotoSansCJK-Black.ttc /usr/share/fonts/truetype/noto/NotoColorEmoji.ttf; do
   [ -f "$f" ] && echo "font: $f" || echo "font なし: $f"
 done
 echo "voicevox: $(curl -s -m 3 localhost:50021/version 2>&1 || echo '起動していない')"
