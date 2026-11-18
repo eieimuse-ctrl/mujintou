@@ -273,7 +273,8 @@ async function buildIsland({ state, islanders, drifters = [] }) {
     if (selected >= 0 && nowPerf - lastNow > 500) {
       lastNow = nowPerf;
       const lost = islanders[selected]?.missing;
-      ui.setNow(lost ? { label: '行方不明', text: lost.text, next: '', missing: true } : sim.status(selected, t));
+      const td = islanders[selected]?.today;
+      ui.setNow(lost ? { label: '行方不明', text: lost.text, next: '', missing: true } : td ? { label: 'きょうの行動', text: td.text, next: '次の動画まで続けています' } : sim.status(selected, t));
     }
 
     world.render();

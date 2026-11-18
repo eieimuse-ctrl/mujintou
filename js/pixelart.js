@@ -165,7 +165,7 @@ export function islanderLook(person) {
     accent: pick(ACCENT, h2 >>> 3),
     hairStyle: (hsh >>> 12) % HAIR_STYLES,
     hat: jobHat ? job.hat : pick(ownHats, h2 >>> 7),
-    tool: job.tool,
+    tool: person.today?.tool || job.tool, // きょうの行動で道具を持つことがある（釣り竿など）
     glasses: (h2 >>> 11) % 5 === 0,
     beard: (h2 >>> 13) % 6 === 0,
     blush: (h2 >>> 15) % 4 === 0,

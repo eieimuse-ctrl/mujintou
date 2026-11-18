@@ -211,6 +211,7 @@ export function normalizeData(stateRaw, rosterRaw, driftRaw = null) {
       sample: p.sample === true,
       days: day - joinedDay + 1, // 在住日数（漂着した日を1日目と数える）
       missing: normalizeMissing(p.missing, day),
+      today: normalizeToday(p.today, day),
     });
   }
   // 島にいない相手との関係は表示しない
@@ -228,6 +229,26 @@ function normalizeMissing(m, day) {
   if (from > day || m.found === true) return null;
   const num = (v, d) => (Number.isFinite(Number(v)) ? Number(v) : d);
   return { day: from, text: str(m.text).trim() || MISSING_DEFAULT.text, x: num(m.x, MISSING_DEFAULT.x), z: num(m.z, MISSING_DEFAULT.z) };
+}
+
+// きょうの行動（動画でやったことを、次の動画まで島で続ける）：
+//   { "day": 3, "text": "入り江で釣りをしている", "x": -9, "z": 187, "anim": "work", "tool": "rod", "dx": 0, "dz": 1 }
+//   day の日（島の◯日目）だけ有効。次の動画で day が進むと、ふだんの暮らしに戻る。
+const TODAY_ANIMS = new Set(['idle', 'work', 'sit', 'eat', 'cheer', 'shock', 'talk']);
+function normalizeToday(t, day) {
+  if (!t || typeof t !== 'object') return null;
+  if (int(t.day, 0) !== day) return null;
+  const x = Number(t.x), z = Number(t.z);
+  if (!Number.isFinite(x) || !Number.isFinite(z)) return null;
+  const anim = TODAY_ANIMS.has(str(t.anim)) ? str(t.anim) : 'idle';
+  return {
+    day,
+    text: str(t.text).trim() || 'きのうの続きをしている',
+    x, z, anim,
+    tool: str(t.tool).trim() || null,
+    dx: Number.isFinite(Number(t.dx)) ? Number(t.dx) : 0,
+    dz: Number.isFinite(Number(t.dz)) ? Number(t.dz) : 1,
+  };
 }
 
 // 漂流者：フォローしてから、次の動画で漂着して島民になるまでの人（drifters.json）。
