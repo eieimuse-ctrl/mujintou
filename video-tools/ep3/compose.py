@@ -202,17 +202,19 @@ def voice(text, speaker=8):
         return None
 
 def build_audio():
+    # ffmpeg の入力0はコマ画像（音声なし）なので、音声の入力番号は 1 から数える（src）。k は混ぜる本数
     inputs, filters, k = [], [], 0
+    src = lambda: k + 1
     for n in S.get('audio', {}).get('narration', []):
         f = voice(n['text'])
         if not f: continue
         inputs += ['-i', f]; ms = int(n['at'] * 1000)
-        filters.append(f'[{k}:a]adelay={ms}|{ms},volume=1.0[n{k}]'); k += 1
+        filters.append(f'[{src()}:a]adelay={ms}|{ms},volume=1.0[n{k}]'); k += 1
     bgm = os.environ.get('BGM', os.path.expanduser('~/workspace/mujintou/video/assets/bgm.mp3'))
     bg = S.get('audio', {}).get('bgm')
     if bg and os.path.exists(bgm):
         inputs += ['-i', bgm]; dur = S['duration']
-        filters.append(f'[{k}:a]atrim=0:{dur},asetpts=PTS-STARTPTS,volume={bg.get("volume", 0.18)},afade=t=in:d=0.5,afade=t=out:st={max(0, dur - 2)}:d=2[n{k}]'); k += 1
+        filters.append(f'[{src()}:a]atrim=0:{dur},asetpts=PTS-STARTPTS,volume={bg.get("volume", 0.18)},afade=t=in:d=0.5,afade=t=out:st={max(0, dur - 2)}:d=2[n{k}]'); k += 1
     elif bg:
         print(f'!! BGM が無い（{bgm}）。BGM なしで出す')
     if not k: return None, []
