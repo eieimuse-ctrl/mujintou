@@ -257,4 +257,26 @@ if __name__ == '__main__':
     # 確認用のコマ一覧（1秒ごと）
     sheet = os.path.join(OUTDIR, f'{NAME}_sheet.jpg')
     subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', master, '-vf', 'fps=1,scale=216:384,tile=7x2', '-frames:v', '1', sheet], check=True)
+    # 何から作ったかの記録（Claude と Muse で同じ入力かを照合する）
+    def sha(path):
+        try: return hashlib.sha256(open(path, 'rb').read()).hexdigest()[:16]
+        except Exception: return None
+    def run(c):
+        try: return subprocess.run(c, capture_output=True, text=True, cwd=HERE).stdout.strip()
+        except Exception: return None
+    env = json.load(open(os.path.join(BUILD, 'env.json'))) if os.path.exists(os.path.join(BUILD, 'env.json')) else {}
+    try: vv = urllib.request.urlopen(f'{VV}/version', timeout=3).read().decode().strip('"')
+    except Exception: vv = None
+    bgm_path = os.environ.get('BGM', os.path.expanduser('~/workspace/mujintou/video/assets/bgm.mp3'))
+    man = {
+        'story': os.path.relpath(story_path, os.path.join(HERE, '..', '..')), 'story_sha': sha(story_path),
+        'roster_sha': sha(os.path.join(os.path.dirname(story_path), S['roster'])),
+        'git_commit': run(['git', 'rev-parse', '--short', 'HEAD']), 'git_dirty': bool(run(['git', 'status', '--porcelain', '--', '.', '../../js'])),
+        'code_sha': {f: sha(os.path.join(HERE, f)) for f in ['rec.mjs', 'lib/stage.js', 'compose.py']},
+        'chrome': env.get('chrome'), 'voicevox': vv, 'bgm_sha': sha(bgm_path),
+        'fonts': {'bold': os.path.exists(FONT), 'black': FONT_BLACK != FONT, 'emoji': bool(emoji_font())},
+        'frames': N, 'size_mb': round(os.path.getsize(master) / 1e6, 1), 'crf': crf,
+    }
+    json.dump(man, open(os.path.join(OUTDIR, f'{NAME}_manifest.json'), 'w'), ensure_ascii=False, indent=1)
+    print('記録:', json.dumps(man, ensure_ascii=False))
     print('出力:', master, prev, sheet)

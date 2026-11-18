@@ -64,3 +64,9 @@ bash video-tools/ep3/run.sh video-tools/ep3/story/fish_test.json
 | `overlay.action` / `result` | 下の白文字（何をしたか）と黄文字（どうなったか）。**黄は結果が画面で分かった時刻から** |
 | `overlay.commenters` | 今回コメントした人と投票（小さな名札の色） |
 | `audio.narration` | `{at, text}`。春日部つむぎ（speaker 8） |
+
+## Claude と Muse で同じ動画になる仕組み
+- 動画は **台本（story JSON）＋名簿（input/islanders.json）＋このリポジトリのコード** だけから作られる。録画中は外へ通信しない（Firebase も読まない）
+- 1コマずつ時刻から決まるので、何度・どこで作っても同じコマになる
+- 合成のたびに `out/<名前>_manifest.json` に、台本・名簿・コードのハッシュ、git のコミット、Chrome・VOICEVOX の版、BGM のハッシュ、フォントの有無を書く。**Claude と Muse の manifest が一致すれば、入力は同じ**
+- 残る差は Chrome の版によるふちのなめらかさだけ（Claude の環境は Chrome 153、Muse は 157。Claude の環境からは 157 を入手できない）。**本番の正は Muse のマシンの出力**とし、Claude の出力は確認用
