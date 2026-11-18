@@ -1206,6 +1206,16 @@ body[data-sheet='open'] #sheet {
   visibility: hidden;
 }
 
+/* 行方不明（動画の筋書き） */
+.now-line.is-missing {
+  background: #f3e6d6;
+  border-left-color: #8a5a34;
+}
+
+.now-line.is-missing .now-tag {
+  background: #8a5a34;
+}
+
 /* 漂流者の「🌊 漂流中」 */
 .now-line.is-drift {
   background: #dcf1fa;

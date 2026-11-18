@@ -564,6 +564,7 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
       const key = `${st.label}|${st.text}|${st.next}`;
       if (key === nowKey) return;
       nowKey = key;
+      nowLine.classList.toggle('is-missing', !!st.missing);
       fill(nowLine, [
         el('span', { class: 'now-tag', text: st.label ? `いま・${st.label}` : 'いま' }),
         el('p', { class: 'now-text', text: st.text }),

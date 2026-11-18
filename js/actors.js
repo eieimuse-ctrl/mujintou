@@ -17,6 +17,36 @@ const MIN_PX = 30; // 引いて見ても、これより小さくはしない（�
 const WATERLINE = 0.4; // 漂流者のスプライトは、下からこの割合が水面の下
 const DRIFT_VISIBLE = 1 - WATERLINE;
 
+// 「？」の吹き出し（白地・濃い枠のドット絵）
+function questionCanvas() {
+  const rows = [
+    '..kkkkkkkk..',
+    '.kwwwwwwwwk.',
+    'kwwwkkkkwwwk',
+    'kwwkkwwkkwwk',
+    'kwwwwwwkkwwk',
+    'kwwwwwkkwwwk',
+    'kwwwwkkwwwwk',
+    'kwwwwkkwwwwk',
+    'kwwwwwwwwwwk',
+    'kwwwwkkwwwwk',
+    '.kwwwkkwwwk.',
+    '..kkkwwkkk..',
+    '....kwk.....',
+    '.....k......',
+  ];
+  const c = document.createElement('canvas');
+  c.width = rows[0].length;
+  c.height = rows.length;
+  const g = c.getContext('2d');
+  rows.forEach((r, y) => [...r].forEach((ch, x) => {
+    if (ch === '.') return;
+    g.fillStyle = ch === 'k' ? '#231d36' : '#ffffff';
+    g.fillRect(x, y, 1, 1);
+  }));
+  return c;
+}
+
 function pixelTexture(canvas) {
   const t = new THREE.CanvasTexture(canvas);
   t.magFilter = THREE.NearestFilter;
@@ -27,7 +57,7 @@ function pixelTexture(canvas) {
 }
 
 // drifters: 漂流者（data.js の正規化済み）、drifts: その場所と揺れ方（drift.js の layoutDrifters。drifters と同じ並び）
-export function createActors({ scene, islanders, sim, labelLayer, drifters = [], drifts = [] }) {
+export function createActors({ scene, islanders, sim, labelLayer, drifters = [], drifts = [], heightAt = null }) {
   const bubbleTex = {};
   for (const icon of ['talk', 'heart', 'note', 'bolt']) bubbleTex[icon] = pixelTexture(bubbleCanvas(icon));
 
@@ -142,6 +172,41 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
   });
   const everyone = [...actors, ...castaways];
 
+  // ---- 行方不明（data.js の missing）：森の奥に浮かぶ「？」と、そこへ続く足跡 ----
+  const groundAt = (x, z) => Math.max(0.45, (heightAt && heightAt(x, z)) || 0);
+  const qTex = pixelTexture(questionCanvas());
+  const stepGeo = new THREE.CircleGeometry(0.42, 8);
+  stepGeo.rotateX(-Math.PI / 2);
+  const stepMat = new THREE.MeshBasicMaterial({ color: '#3a2a1c', transparent: true, opacity: 0.55, depthWrite: false });
+  const missingMarks = [];
+  for (const a of actors) {
+    const m = a.person.missing;
+    if (!m) continue;
+    const q = new THREE.Sprite(new THREE.SpriteMaterial({ map: qTex, alphaTest: 0.5, transparent: false, depthTest: false, fog: false }));
+    q.center.set(0.5, 0);
+    q.renderOrder = 6;
+    const gy = groundAt(m.x, m.z);
+    scene.add(q);
+    // 足跡：森の入口から奥へ（左右交互）
+    const sx = m.x + 46, sz = m.z + 8;
+    const steps = [];
+    for (let k = 0; k < 14; k++) {
+      const u = k / 13;
+      const x = sx + (m.x - sx) * u, z = sz + (m.z - sz) * u;
+      const len = Math.hypot(m.x - sx, m.z - sz) || 1;
+      const side = k % 2 ? 0.5 : -0.5;
+      const fx = x + (-(m.z - sz) / len) * side, fz = z + ((m.x - sx) / len) * side;
+      const st = new THREE.Mesh(stepGeo, stepMat);
+      st.position.set(fx, groundAt(fx, fz) + 0.06, fz);
+      st.scale.set(0.7, 1, 1.15);
+      st.renderOrder = 3;
+      scene.add(st);
+      steps.push(st);
+    }
+    missingMarks.push({ a, q, gy, m });
+  }
+
+
   const right = new THREE.Vector3();
   const v = new THREE.Vector3();
   const order = [];
@@ -159,6 +224,16 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
     const stagePose = typeof globalThis.__stagePose === 'function' ? globalThis.__stagePose : null;
     const stageDrift = typeof globalThis.__stageDrift === 'function' ? globalThis.__stageDrift : null;
     for (const a of actors) {
+      if (a.person.missing && !stagePose) {
+        // 姿は消して、選んだときのカメラは森の奥の「？」へ
+        const m = a.person.missing;
+        a.sprite.visible = a.shadow.visible = a.bubble.visible = false;
+        a.pos.set(m.x, groundAt(m.x, m.z) + 9, m.z); // カメラは「？」の少し下を見る
+        a.screen.visible = false;
+        a.line = '';
+        continue;
+      }
+      a.sprite.visible = a.shadow.visible = true;
       const s = (stagePose && stagePose(a.index, tMs)) || sim.stateAt(a.index, tMs);
 
       // 高さは段差でカクッとしないよう、少しなめらかに追いかける
@@ -268,6 +343,14 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       a.screen.r = Math.max(20, above * pxPerUnit * 0.6);
       a.screen.dist = dist;
       a.screen.top = a.screen.y - above * pxPerUnit * 0.56;
+    }
+
+    for (const mk of missingMarks) {
+      const dist = camera.position.distanceTo(mk.a.pos);
+      const k = Math.max(1, (MIN_PX + 10) / ((SPRITE_H * pxPerUnitAt1) / Math.max(1, dist)));
+      mk.q.visible = !stagePose;
+      mk.q.position.set(mk.m.x, mk.gy + 10.5 + Math.sin(t * 2.2) * 0.4 * k, mk.m.z);
+      mk.q.scale.set(2.2 * k * 0.86, 2.2 * k, 1);
     }
 
     // ラベル：ズームの段階で出し分け（引きの全体表示では出さない）、

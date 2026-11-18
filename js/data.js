@@ -210,12 +210,24 @@ export function normalizeData(stateRaw, rosterRaw, driftRaw = null) {
         .map((r) => ({ id: str(r.id), type: str(r.type, 'friend'), affinity: Math.max(0, Math.min(100, int(r.affinity, 50))) })),
       sample: p.sample === true,
       days: day - joinedDay + 1, // 在住日数（漂着した日を1日目と数える）
+      missing: normalizeMissing(p.missing, day),
     });
   }
   // 島にいない相手との関係は表示しない
   for (const p of islanders) p.relationships = p.relationships.filter((r) => seen.has(r.id) && r.id !== p.id);
 
   return { state, islanders, drifters: normalizeDrifters(driftRaw, seen) };
+}
+
+// 行方不明（動画の筋書き）：{ "day": 3, "text": "…", "x": -125, "z": -35 }。day 以降だけ有効。
+//   地図の上ではその人の姿を消し、森の奥（x, z）に「？」と足跡を出す。詳細の「いま」は text。
+export const MISSING_DEFAULT = { x: -128, z: -34, text: '森の奥へ入ったまま、戻ってこない…' };
+function normalizeMissing(m, day) {
+  if (!m || typeof m !== 'object') return null;
+  const from = Math.max(1, int(m.day, 1));
+  if (from > day || m.found === true) return null;
+  const num = (v, d) => (Number.isFinite(Number(v)) ? Number(v) : d);
+  return { day: from, text: str(m.text).trim() || MISSING_DEFAULT.text, x: num(m.x, MISSING_DEFAULT.x), z: num(m.z, MISSING_DEFAULT.z) };
 }
 
 // 漂流者：フォローしてから、次の動画で漂着して島民になるまでの人（drifters.json）。
