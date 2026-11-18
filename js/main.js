@@ -166,7 +166,7 @@ async function buildIsland({ state, islanders, drifters = [] }) {
   const drifts = layoutDrifters(drifters, terrain, { avoid: deco.filter((d) => d.kind === 'searock') });
 
   const world = createWorld({ canvas, terrain, deco, buildings: built.list, hub, trailCells: sim.trails() });
-  const actors = createActors({ scene: world.scene, islanders, sim, labelLayer, drifters, drifts });
+  const actors = createActors({ scene: world.scene, islanders, sim, labelLayer, drifters, drifts, heightAt: (x, z) => terrain.heightAt(x, z) });
 
   // 地区ラベル。拠点が決まったら、拠点のある地区は拠点の名前を拠点の位置に出す。
   const districtLabels = world.districtAnchors.map((a) => {
@@ -272,7 +272,8 @@ async function buildIsland({ state, islanders, drifters = [] }) {
 
     if (selected >= 0 && nowPerf - lastNow > 500) {
       lastNow = nowPerf;
-      ui.setNow(sim.status(selected, t));
+      const lost = islanders[selected]?.missing;
+      ui.setNow(lost ? { label: '行方不明', text: lost.text, next: '', missing: true } : sim.status(selected, t));
     }
 
     world.render();
