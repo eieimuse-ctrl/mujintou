@@ -1,0 +1,11 @@
+{
+ "day": 3,
+ "roster": "../input/islanders.sample.json",
+ "missing": { "yuradayo0330": { "text": "森の奥へ探検に行ったまま、戻ってこない…" } },
+ "today": [
+  { "id": "ibu131313", "spot": "cove", "anim": "work", "tool": "rod", "text": "入り江で釣りをしている（昨日は1匹だけ釣れた）" },
+  { "id": "kubotto0505", "spot": "cove", "anim": "idle", "text": "釣りを見守っている。全員分は難しそう…" },
+  { "id": "kazuzu4771", "spot": "beach", "anim": "work", "text": "網の代わりになるものを探している" },
+  { "id": "masatk_no_m", "spot": "farm", "anim": "work", "tool": "hoe", "text": "種のない畑を耕している" }
+ ]
+}

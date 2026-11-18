@@ -70,3 +70,10 @@ bash video-tools/ep3/run.sh video-tools/ep3/story/fish_test.json
 - 1コマずつ時刻から決まるので、何度・どこで作っても同じコマになる
 - 合成のたびに `out/<名前>_manifest.json` に、台本・名簿・コードのハッシュ、git のコミット、Chrome・VOICEVOX の版、BGM のハッシュ、フォントの有無を書く。**Claude と Muse の manifest が一致すれば、入力は同じ**
 - 残る差は Chrome の版によるふちのなめらかさだけ（Claude の環境は Chrome 153、Muse は 157。Claude の環境からは 157 を入手できない）。**本番の正は Muse のマシンの出力**とし、Claude の出力は確認用
+
+## PWA に動画の続きを出す（きょうの行動・行方不明）
+- Claude が台本と一緒に `story/<名前>_pwa.json` を書く（だれが・どこで・何を続けているか、行方不明の人）
+- `python3 video-tools/ep3/pwa_patch.py video-tools/ep3/story/<名前>_pwa.json` → `video-tools/out/islanders_day<日>.json`（名簿まるごと）
+- **Muse は投稿の瞬間に、このファイルを Firebase の islanders に同期する**（`data/islanders.json` にも同じ内容を置く）
+- PWA の動き：`today` の人はその日だけ、その場所でその動きを続け、詳細に「いま・きょうの行動」と文が出る。次の動画で day が進むと自動でふだんの暮らしに戻る。`missing` の人は姿が消え、森の奥に「？」と足跡
+- 場所の名前：`cove`（入り江の岸）・`beach`（東の砂浜）・`farm`（平原の畑予定地）・`forestEdge`（森の入口）・`plaza`（中央の広場）

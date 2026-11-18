@@ -207,6 +207,21 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
   }
 
 
+  // きょうの行動：その場所でその動きを続ける（ときどき向きを変える程度）
+  const todayState = {};
+  function todayPose(a, td) {
+    todayState.x = td.x;
+    todayState.z = td.z;
+    todayState.y = groundAt(td.x, td.z);
+    todayState.dx = td.dx;
+    todayState.dz = td.dz;
+    todayState.anim = td.anim;
+    todayState.frame = null;
+    todayState.bubble = null;
+    todayState.line = '';
+    return todayState;
+  }
+
   const right = new THREE.Vector3();
   const v = new THREE.Vector3();
   const order = [];
@@ -234,7 +249,8 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
         continue;
       }
       a.sprite.visible = a.shadow.visible = true;
-      const s = (stagePose && stagePose(a.index, tMs)) || sim.stateAt(a.index, tMs);
+      const td = !stagePose && a.person.today;
+      const s = (stagePose && stagePose(a.index, tMs)) || (td ? todayPose(a, td) : sim.stateAt(a.index, tMs));
 
       // 高さは段差でカクッとしないよう、少しなめらかに追いかける
       if (a.y === null || Math.abs(a.y - s.y) > 3) a.y = s.y;
