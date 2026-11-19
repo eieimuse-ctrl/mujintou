@@ -9,18 +9,40 @@
    "C": "森の実りを探す"
   }
  },
- "fetchedAt": "2026-11-19T07:26:38+09:00",
- "totalComments": 34,
- "fetchedComments": 27,
- "followers": 134,
+ "fetchedAt": "2026-11-19T12:05:25+09:00",
+ "totalComments": 36,
+ "fetchedComments": 29,
+ "followers": 140,
  "comments": [
+  {
+   "commentId": "18058716515579821",
+   "userId": "ryuji_111",
+   "name": "Ryuji",
+   "text": "A",
+   "likes": 0,
+   "at": "2026-11-18T18:18:30+09:00",
+   "replyTo": null,
+   "source": "api",
+   "status": "drifter"
+  },
+  {
+   "commentId": "17981712347923116",
+   "userId": "abc.man13",
+   "name": "abc.m",
+   "text": "まずはA！私は漁で魚を取った経験がある。教えることもできる。栄養価なども考えて魚を取るのがいい。",
+   "likes": 0,
+   "at": "2026-11-18T16:59:42+09:00",
+   "replyTo": null,
+   "source": "api",
+   "status": "drifter"
+  },
   {
    "commentId": "18645132967009502",
    "userId": "saori.siegert",
    "name": "🇺🇸Saori Siegert | Mindset & Trader",
    "text": "A",
    "likes": 0,
-   "at": "2026-11-18T23:11:30+09:00",
+   "at": "2026-11-18T14:11:30+09:00",
    "replyTo": null,
    "source": "api",
    "status": "drifter"
@@ -31,7 +53,7 @@
    "name": "🇺🇸Saori Siegert | Mindset & Trader",
    "text": "フォローしました！早く島に着きたいです。\nc",
    "likes": 0,
-   "at": "2026-11-18T21:01:48+09:00",
+   "at": "2026-11-18T12:01:48+09:00",
    "replyTo": null,
    "source": "api",
    "status": "drifter"
@@ -42,7 +64,7 @@
    "name": "Rino",
    "text": "C!釣竿とか作るの時間かかるし畑も芽が出るのに時間がかかってしまうからみんなで協力して探そう！😆",
    "likes": 0,
-   "at": "2026-11-18T18:17:43+09:00",
+   "at": "2026-11-18T09:17:43+09:00",
    "replyTo": null,
    "source": "api",
    "status": "drifter"
@@ -53,7 +75,7 @@
    "name": "ゆきくん♂",
    "text": "A魚を取る",
    "likes": 0,
-   "at": "2026-11-18T16:32:59+09:00",
+   "at": "2026-11-18T07:32:59+09:00",
    "replyTo": null,
    "source": "api",
    "status": "drifter"
@@ -64,7 +86,7 @@
    "name": "浦本 泰志",
    "text": "A",
    "likes": 0,
-   "at": "2026-11-18T15:51:23+09:00",
+   "at": "2026-11-18T06:51:23+09:00",
    "replyTo": null,
    "source": "api",
    "status": "islander"
@@ -75,7 +97,7 @@
    "name": "だん☄️🥞🌕",
    "text": "C！\n飲み水確保してから海で魚を取って畑を作ろう！",
    "likes": 1,
-   "at": "2026-11-18T14:19:01+09:00",
+   "at": "2026-11-18T05:19:01+09:00",
    "replyTo": null,
    "source": "api",
    "status": "islander"
@@ -85,8 +107,8 @@
    "userId": "tsuki5747",
    "name": "つき",
    "text": "C\n食べ物を探すのと同時に 危険な動物がいないかも確認します もし出たら最前線で戦います",
-   "likes": 1,
-   "at": "2026-11-18T14:13:35+09:00",
+   "likes": 2,
+   "at": "2026-11-18T05:13:35+09:00",
    "replyTo": null,
    "source": "api",
    "status": "drifter"
@@ -97,7 +119,7 @@
    "name": "ももさん",
    "text": "Cがいいと思います！",
    "likes": 1,
-   "at": "2026-11-18T13:59:37+09:00",
+   "at": "2026-11-18T04:59:37+09:00",
    "replyTo": null,
    "source": "api",
    "status": "drifter"
@@ -108,7 +130,7 @@
    "name": "とも",
    "text": "A",
    "likes": 1,
-   "at": "2026-11-18T13:55:48+09:00",
+   "at": "2026-11-18T04:55:48+09:00",
    "replyTo": null,
    "source": "api",
    "status": "drifter"
@@ -119,7 +141,7 @@
    "name": "ibu13",
    "text": "aかなー魚は栄養素高いし、全員でやれば釣る確率も上がる",
    "likes": 1,
-   "at": "2026-11-18T13:43:01+09:00",
+   "at": "2026-11-18T04:43:01+09:00",
    "replyTo": null,
    "source": "api",
    "status": "drifter"
@@ -130,7 +152,7 @@
    "name": "中村徳貴",
    "text": "Ｃで！",
    "likes": 1,
-   "at": "2026-11-18T13:39:46+09:00",
+   "at": "2026-11-18T04:39:46+09:00",
    "replyTo": null,
    "source": "api",
    "status": "islander"
@@ -141,7 +163,7 @@
    "name": "TKM_trb",
    "text": "C",
    "likes": 1,
-   "at": "2026-11-18T13:30:31+09:00",
+   "at": "2026-11-18T04:30:31+09:00",
    "replyTo": null,
    "source": "api",
    "status": "none"
@@ -152,7 +174,7 @@
    "name": "🐸ま🐸",
    "text": "強欲だからAとBで半々でわかれたいな。魚消えたら死ぬからA寄り",
    "likes": 2,
-   "at": "2026-11-18T13:28:59+09:00",
+   "at": "2026-11-18T04:28:59+09:00",
    "replyTo": null,
    "source": "api",
    "status": "islander"
@@ -163,7 +185,7 @@
    "name": "あやね",
    "text": "A\nこれだけ漂流者が流れ着く潮目なら浜に資材とかも流れてきてそうだし、魚も回ってきてそう\nCも並行した方が良さそう",
    "likes": 1,
-   "at": "2026-11-18T13:09:59+09:00",
+   "at": "2026-11-18T04:09:59+09:00",
    "replyTo": null,
    "source": "api",
    "status": "drifter"
@@ -174,7 +196,7 @@
    "name": "TKD",
    "text": "A  全員で地引き網",
    "likes": 1,
-   "at": "2026-11-18T13:04:06+09:00",
+   "at": "2026-11-18T04:04:06+09:00",
    "replyTo": null,
    "source": "api",
    "status": "drifter"
@@ -182,10 +204,10 @@
   {
    "commentId": "18112413230280153",
    "userId": "savans880",
-   "name": "",
+   "name": "savan",
    "text": "A",
    "likes": 1,
-   "at": "2026-11-18T12:56:12+09:00",
+   "at": "2026-11-18T03:56:12+09:00",
    "replyTo": null,
    "source": "api",
    "status": "drifter"
@@ -196,7 +218,7 @@
    "name": "ひゅうが",
    "text": "C!簡単に安定した食べ物が取れるし、ABは時間と体力が必要になるから！",
    "likes": 1,
-   "at": "2026-11-18T12:47:24+09:00",
+   "at": "2026-11-18T03:47:24+09:00",
    "replyTo": null,
    "source": "api",
    "status": "islander"
@@ -207,7 +229,7 @@
    "name": "鈴木達也",
    "text": "B",
    "likes": 1,
-   "at": "2026-11-18T12:40:19+09:00",
+   "at": "2026-11-18T03:40:19+09:00",
    "replyTo": null,
    "source": "api",
    "status": "none"
@@ -218,7 +240,7 @@
    "name": "ゆら",
    "text": "C 島のことをよく知れるから",
    "likes": 1,
-   "at": "2026-11-18T12:37:35+09:00",
+   "at": "2026-11-18T03:37:35+09:00",
    "replyTo": null,
    "source": "api",
    "status": "drifter"
@@ -229,7 +251,7 @@
    "name": "Taichi Minami",
    "text": "森が危険ならA",
    "likes": 1,
-   "at": "2026-11-18T12:28:17+09:00",
+   "at": "2026-11-18T03:28:17+09:00",
    "replyTo": null,
    "source": "api",
    "status": "islander"
@@ -240,7 +262,7 @@
    "name": "高田 鷹仁",
    "text": "Ｂ",
    "likes": 1,
-   "at": "2026-11-18T12:21:11+09:00",
+   "at": "2026-11-18T03:21:11+09:00",
    "replyTo": null,
    "source": "api",
    "status": "drifter"
@@ -251,7 +273,7 @@
    "name": "kubotto",
    "text": "今を考えれば、\ncかな畑だと収穫に時間がかる\n釣りも全員分獲るのは難しいそう😓",
    "likes": 1,
-   "at": "2026-11-18T12:09:49+09:00",
+   "at": "2026-11-18T03:09:49+09:00",
    "replyTo": null,
    "source": "api",
    "status": "islander"
@@ -262,7 +284,7 @@
    "name": "774(名無し)",
    "text": "Cかな畑は水と種がなきゃ作れないから",
    "likes": 1,
-   "at": "2026-11-18T12:08:03+09:00",
+   "at": "2026-11-18T03:08:03+09:00",
    "replyTo": null,
    "source": "api",
    "status": "islander"
@@ -273,7 +295,7 @@
    "name": "みゆ",
    "text": "C",
    "likes": 1,
-   "at": "2026-11-18T12:06:48+09:00",
+   "at": "2026-11-18T03:06:48+09:00",
    "replyTo": null,
    "source": "api",
    "status": "drifter"
@@ -284,7 +306,7 @@
    "name": "あゆさん",
    "text": "b",
    "likes": 1,
-   "at": "2026-11-18T11:50:09+09:00",
+   "at": "2026-11-18T02:50:09+09:00",
    "replyTo": null,
    "source": "api",
    "status": "islander"
@@ -295,7 +317,7 @@
    "name": "ヤッチャン(20)",
    "text": "C､けど、まずは飲み水を確保するべきだと思う。",
    "likes": 1,
-   "at": "2026-11-18T11:49:56+09:00",
+   "at": "2026-11-18T02:49:56+09:00",
    "replyTo": null,
    "source": "api",
    "status": "islander"
@@ -306,7 +328,7 @@
    "name": "まさたけM",
    "text": "B",
    "likes": 1,
-   "at": "2026-11-18T11:48:11+09:00",
+   "at": "2026-11-18T02:48:11+09:00",
    "replyTo": null,
    "source": "api",
    "status": "drifter"
