@@ -275,6 +275,8 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
         hop = c === 0 ? 0.3 : 0;
       } else if (s.anim === 'talk') {
         hop = s.bubble && Math.floor(ph * 4) % 2 ? 0.14 : 0;
+      } else if (s.anim === 'sleep') {
+        frame = FRAMES.idle;
       } else if (s.anim === 'sit') {
         frame = FRAMES.sit;
       } else if (s.anim === 'shock') {
@@ -288,6 +290,8 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       }
       if (s.frame != null && FRAMES[s.frame] != null) frame = FRAMES[s.frame];
       a.tex.offset.set(frame / FRAME_COUNT, a.facing > 0 ? 0.5 : 0);
+      // 寝ている：横にたおす（足もとを軸に90度）
+      a.sprite.material.rotation = s.anim === 'sleep' ? (a.facing > 0 ? Math.PI / 2 : -Math.PI / 2) : 0;
 
       a.pos.set(s.x, a.y, s.z);
       const dist = camera.position.distanceTo(a.pos);
@@ -363,6 +367,8 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
 
     for (const mk of missingMarks) {
       const dist = camera.position.distanceTo(mk.a.pos);
+      v.set(mk.m.x, mk.gy + 11.5, mk.m.z).project(camera);
+      mk.screen = { visible: v.z > -1 && v.z < 1 && Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1, x: (v.x * 0.5 + 0.5) * viewport.w, y: (-v.y * 0.5 + 0.5) * viewport.h };
       const k = Math.max(1, (MIN_PX + 10) / ((SPRITE_H * pxPerUnitAt1) / Math.max(1, dist)));
       mk.q.visible = !stagePose;
       mk.q.position.set(mk.m.x, mk.gy + 10.5 + Math.sin(t * 2.2) * 0.4 * k, mk.m.z);
@@ -442,7 +448,12 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
         best = a;
       }
     }
-    return best ? { kind: best.drifter ? 'drifter' : 'islander', index: best.index } : null;
+    if (best) return { kind: best.drifter ? 'drifter' : 'islander', index: best.index };
+    // 森の奥の「？」をタップ → 行方不明の人を開く（動画では名前を出さず、ここで明かす）
+    for (const mk of missingMarks) {
+      if (mk.screen && mk.screen.visible && Math.hypot(mk.screen.x - x, mk.screen.y - y) < 44) return { kind: 'islander', index: mk.a.index };
+    }
+    return null;
   }
 
   // タップ位置に近い島民の番号（漂流者は含めない。以前からの呼び出し口）

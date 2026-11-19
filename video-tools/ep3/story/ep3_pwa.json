@@ -129,27 +129,27 @@
    "id": "analogayane",
    "spot": "beach",
    "anim": "idle",
-   "text": "浜で見つけた木箱を調べている"
+   "text": "浜で見つけた木箱のロープを調べている"
   },
   {
    "id": "masatk_no_m",
    "spot": "farm",
    "anim": "work",
-   "text": "種のない畑を耕している",
+   "text": "木の実の種をまいてみた畑を、耕している",
    "tool": "hoe"
   },
   {
    "id": "takada_1gram",
    "spot": "farm",
    "anim": "work",
-   "text": "種のない畑を耕している",
+   "text": "木の実の種をまいてみた畑を、耕している",
    "tool": "hoe"
   },
   {
    "id": "yamato_family327",
    "spot": "farm",
    "anim": "work",
-   "text": "種のない畑を耕している",
+   "text": "木の実の種をまいてみた畑を、耕している",
    "tool": "hoe"
   },
   {
