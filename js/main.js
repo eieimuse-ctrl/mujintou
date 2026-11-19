@@ -305,7 +305,7 @@ function forestRoadCells(road, terrain) {
     seg.push(len);
     total += len;
   }
-  const reach = total * Math.min(1, road.count / road.need);
+  const reach = road.open ? total : total * Math.min(1, road.count / road.need);
   const half = road.width / 2;
   let walked = 0;
   for (let n = 0; n < seg.length && walked < reach; n++) {

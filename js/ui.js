@@ -270,8 +270,10 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
           ? el('div', {}, [
               el('dt', { text: '森の道づくり' }),
               el('dd', {}, [
-                el('b', { text: `${Math.min(state.forestRoad.count, state.forestRoad.need)}／${state.forestRoad.need}人` }),
-                el('span', { text: state.forestRoad.count >= state.forestRoad.need ? `（${state.forestRoad.label}まで道がつながった）` : `（${state.forestRoad.label}まで、木が${state.forestRoad.need}本。島民1人が1本ずつ切りひらく。あと${state.forestRoad.need - state.forestRoad.count}人）` }),
+                state.forestRoad.open
+                  ? el('b', { text: `${state.forestRoad.label}まで開通` })
+                  : el('b', { text: `${Math.min(state.forestRoad.count, state.forestRoad.need)}／${state.forestRoad.need}人` }),
+                el('span', { text: state.forestRoad.open ? '（松明を持って、みんなで森へ入った。火の番は交代で道を守っている）' : state.forestRoad.count >= state.forestRoad.need ? `（${state.forestRoad.label}まで道がつながった）` : `（${state.forestRoad.label}まで、木が${state.forestRoad.need}本。島民1人が1本ずつ切りひらく。あと${state.forestRoad.need - state.forestRoad.count}人）` }),
               ]),
             ])
           : null,

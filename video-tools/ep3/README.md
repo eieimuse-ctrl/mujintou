@@ -87,3 +87,9 @@ bash video-tools/ep3/run.sh video-tools/ep3/story/fish_test.json
 - 道に沿って、島民が松明を手に持って立つ（火の番：獣は火をこわがり、火が消えると道は戻る。だから1本に1人が火の番。見張り場所は5本に1つで、受け持ちの5人が1時間ごとに交代）。当番中は「いま・火の番」。台本では pose に torch: true で持たせられる。島民の詳細に「火の番　森の道の◯本目」（島に来た順）
 - 建物の種類に `still`（砂と石の蒸留装置）を追加。小屋は `hut`。`buildings` に `{ "id", "type", "name", "x", "z", "rot", "builtDay" }`
 - 台本（story JSON）にも `forestRoad` と `buildings` を書けば、動画の島にも同じ道と建物が出る
+
+## 森に入る（2026-11-20 本人決定：300人の制限はやめる）
+- `forestRoad` に `"open": true` で、人数に関係なく光の場所まで道が開通（島のいまは「光の場所まで開通」）
+- `districts` の森を `{ "id": "forest", "inRange": true, "expandedDay": 4 }` に（年表に「行動範囲が森まで広がった」が自動で入る）
+- 建物に `ruins`（昔の住人の跡：くずれた小屋・炭の焚き火・石の道具）を追加
+- **座標の注意**：`state.json` に `"map"` が無い（＝旧版）ので、`base` と `buildings` の x・z は **ワールド座標の1/3** で書く（data.js が3倍する）。昔の住人の跡（ワールド -134, -38）は `"x": -44.7, "z": -12.7`。`forestRoad.points`・`today`・`missing` はワールド座標のまま
