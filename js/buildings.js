@@ -171,8 +171,34 @@ function signpost() {
   };
 }
 
-export const BUILDING_TYPES = { hut, field, pier, watchtower };
-export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台' };
+// 砂と石の蒸留装置：石のかまど＋海水の鍋＋竹の管＋受けのつぼ
+function still() {
+  const b = [];
+  const STONE = '#8d8f97', STONE_D = '#6f717a', SAND = '#e3cf96', POT = '#5a5f6b', WATER = '#7fc3e6', BAMBOO = '#a7b35a';
+  b.push(box(0, 0.15, 0, 3.2, 0.3, 2.4, SAND));
+  for (const [x, z] of [[-0.9, -0.7], [0.9, -0.7], [-0.9, 0.7], [0.9, 0.7], [0, -0.85], [0, 0.85], [-1.05, 0], [1.05, 0]]) b.push(box(x, 0.55, z, 0.55, 0.6, 0.55, (x + z) % 2 ? STONE : STONE_D));
+  b.push(box(0, 0.5, 0, 0.9, 0.3, 0.9, '#e4572e')); // 火
+  b.push(box(0, 1.15, 0, 1.5, 0.7, 1.5, POT));
+  b.push(box(0, 1.52, 0, 1.2, 0.06, 1.2, WATER));
+  b.push(box(0, 1.75, 0, 1.6, 0.12, 1.6, POT)); // ふた
+  b.push(box(1.05, 1.85, 0, 1.3, 0.16, 0.16, BAMBOO)); // 管
+  b.push(box(1.75, 1.2, 0, 0.16, 1.2, 0.16, BAMBOO));
+  b.push(box(1.75, 0.45, 0, 0.7, 0.6, 0.7, '#b07a44')); // 受けのつぼ
+  b.push(box(1.75, 0.77, 0, 0.5, 0.05, 0.5, WATER));
+  return {
+    label: '蒸留装置',
+    boxes: b,
+    height: 2.2,
+    footprint: { x0: -1.7, x1: 2.2, z0: -1.3, z1: 1.3 },
+    spots: [
+      { x: 0, z: 2.3, fx: 0, fz: 0, jobs: ['料理人', '大工'], label: '蒸留装置' },
+      { x: 2.6, z: 1.4, fx: 1.75, fz: 0, jobs: ['料理人'], label: '蒸留装置' },
+    ],
+  };
+}
+
+export const BUILDING_TYPES = { hut, field, pier, watchtower, still };
+export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台', still: '蒸留装置' };
 
 // 広場のたき火（建物データではなく、島に最初からある）
 export function campfireBoxes() {

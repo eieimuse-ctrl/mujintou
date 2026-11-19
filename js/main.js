@@ -149,6 +149,8 @@ async function buildIsland({ state, islanders, drifters = [] }) {
     for (let di = -2; di <= 2; di++) if (terrain.inGrid(hubCell.i + di, hubCell.j + dj)) built.reserved.add(terrain.idx(hubCell.i + di, hubCell.j + dj));
   }
   if (hub.isBase) built.blocked.add(terrain.idx(hubCell.i, hubCell.j)); // たき火のマス
+  const roadCells = forestRoadCells(state.forestRoad, terrain);
+  for (const k of roadCells) built.reserved.add(k);
   const deco = generateDeco(terrain, (i, j) => built.reserved.has(terrain.idx(i, j)));
   // 島民の行動範囲の外（森・高原などの自然の障壁の向こう）。集まり場のある地区は必ず範囲に入れる。
   const hubDistrict = terrain.district[terrain.idx(hubCell.i, hubCell.j)];
@@ -165,7 +167,9 @@ async function buildIsland({ state, islanders, drifters = [] }) {
   // 漂流者は漂着地点の沖の海に（sim とは別。浅瀬の岩はよける）
   const drifts = layoutDrifters(drifters, terrain, { avoid: deco.filter((d) => d.kind === 'searock') });
 
-  const world = createWorld({ canvas, terrain, deco, buildings: built.list, hub, trailCells: sim.trails() });
+  const trailCells = sim.trails();
+  for (const k of roadCells) trailCells.add(k);
+  const world = createWorld({ canvas, terrain, deco, buildings: built.list, hub, trailCells });
   const actors = createActors({ scene: world.scene, islanders, sim, labelLayer, drifters, drifts, heightAt: (x, z) => terrain.heightAt(x, z) });
 
   // 地区ラベル。拠点が決まったら、拠点のある地区は拠点の名前を拠点の位置に出す。
@@ -285,6 +289,42 @@ async function buildIsland({ state, islanders, drifters = [] }) {
   const api = { world, actors, orbit, sim, terrain, nav, clock, hub, drifts };
   if (DEBUG) window.__island = api;
   return api;
+}
+
+// 森の道づくり：森の入口から光の場所へ、島民の数 ÷ need の長さだけ道を切りひらく（その幅のマスは木が無く、道の色になる）
+function forestRoadCells(road, terrain) {
+  const cells = new Set();
+  if (!road) return cells;
+  const pts = road.points;
+  const seg = [];
+  let total = 0;
+  for (let n = 0; n < pts.length - 1; n++) {
+    const len = Math.hypot(pts[n + 1][0] - pts[n][0], pts[n + 1][1] - pts[n][1]);
+    seg.push(len);
+    total += len;
+  }
+  const reach = total * Math.min(1, road.count / road.need);
+  const half = road.width / 2;
+  let walked = 0;
+  for (let n = 0; n < seg.length && walked < reach; n++) {
+    const [x0, z0] = pts[n];
+    const [x1, z1] = pts[n + 1];
+    for (let s = 0; s <= seg[n] && walked + s <= reach; s += 0.5) {
+      const u = s / seg[n];
+      const x = x0 + (x1 - x0) * u;
+      const z = z0 + (z1 - z0) * u;
+      const c = terrain.cellOf(x, z);
+      for (let dj = -2; dj <= 2; dj++) {
+        for (let di = -2; di <= 2; di++) {
+          if (!terrain.inGrid(c.i + di, c.j + dj)) continue;
+          const cc = terrain.cellCenter(c.i + di, c.j + dj);
+          if (Math.hypot(cc.x - x, cc.z - z) <= half) cells.add(terrain.idx(c.i + di, c.j + dj));
+        }
+      }
+    }
+    walked += seg[n];
+  }
+  return cells;
 }
 
 boot();
