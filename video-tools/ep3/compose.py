@@ -372,8 +372,8 @@ def build_audio():
                 print(f'!! 収まらない：{n["at"]:.2f}s「{n["text"]}」声 {dur:.2f}s／使える {room:.2f}s（1.3倍速でも {dur / 1.3:.2f}s）')
         print(f'  {n["at"]:6.2f}s  {room:5.2f}s  {dur:5.2f}s  x{tempo:.2f}  {n["text"]}')
         inputs += ['-i', f]; ms = int(n['at'] * 1000)
-        speed = f',atempo={tempo:.3f}' if tempo > 1.0 else ''
-        filters.append(f'[{src()}:a]adelay={ms}|{ms}{speed},volume=1.0[n{k}]'); k += 1
+        speed = f'atempo={tempo:.3f},' if tempo > 1.0 else ''
+        filters.append(f'[{src()}:a]{speed}adelay={ms}|{ms},volume=1.0[n{k}]'); k += 1
     bgm = os.environ.get('BGM', os.path.expanduser('~/workspace/mujintou/video/assets/bgm.mp3'))
     bg = S.get('audio', {}).get('bgm')
     if bg and os.path.exists(bgm):
