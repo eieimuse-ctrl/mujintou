@@ -53,7 +53,19 @@ SAFE_BOTTOM, SAFE_RIGHT = 1520, 150
 def is_emoji(ch):
     o = ord(ch)
     return o >= 0x1F000 or 0x2600 <= o <= 0x27BF or o in (0x2B50, 0x2B55, 0x3030, 0x303D) or 0xFE00 <= o <= 0xFE0F or o == 0x200D
+def displayable(text):
+    """装飾文字（𝓗𝓲𝓻𝓸 など数学用の英字・丸文字）は、ふつうの文字にして描く（フォントに無く□になるため）"""
+    out = []
+    for ch in str(text):
+        o = ord(ch)
+        if 0x1D400 <= o <= 0x1D7FF or 0x2100 <= o <= 0x214F or 0x24B6 <= o <= 0x24E9 or 0xFF01 <= o <= 0xFF5E and False:
+            out.append(unicodedata.normalize('NFKC', ch))
+        else:
+            out.append(ch)
+    return ''.join(out)
+
 def runs(text):
+    text = displayable(text)
     out, cur, emo = [], '', None
     for ch in text:
         e = is_emoji(ch)
@@ -154,6 +166,86 @@ def stroke_center(img, d, text, y, size, fill):
     w = text_w(d, text, size, True)
     draw_text(img, d, W / 2 - w / 2, y - size * 0.7, text, size, fill, black=True, stroke=9)
 
+def caption(img, d, text, y, size, fill, alpha=1.0):
+    """中央の縁取り文字（つかみ・…1人足りない・あと◯人 など）"""
+    stroke_center(img, d, text, y, size, fill)
+
+def title_badge(img, d, text, t, a, b):
+    """大きな「◯日目」バッジ（つかみ）。入りで少し弾む"""
+    u = min(1, (t - a) / 0.25)
+    sc = 0.7 + 0.3 * (1 - (1 - u) ** 3) + (0.06 * (1 - u) if u < 1 else 0)
+    fs = int(120 * sc); w = int(text_w(d, text, fs, True)) + 110; h = int(fs * 1.5)
+    x0, y0 = W // 2 - w // 2, 430 - h // 2
+    d.rounded_rectangle([x0, y0, x0 + w, y0 + h], 40, fill=(244, 196, 64), outline=INK, width=8)
+    draw_text(img, d, W / 2 - (w - 110) / 2, y0 + h / 2 - fs * 0.72, text, fs, INK, black=True)
+
+def tally(img, d, T, t):
+    """集計バー：件数が伸びて、最多に「採用」"""
+    rows = T['rows']; mx = max(r['count'] for r in rows) or 1
+    g0, g1 = T.get('grow', [T['from'] + 0.3, T['from'] + 1.8])
+    u = max(0, min(1, (t - g0) / max(0.01, g1 - g0))); u = 1 - (1 - u) ** 3
+    x0, y0, bw = 90, 560, W - 90 - 90 - SAFE_RIGHT + 60
+    d.rounded_rectangle([60, y0 - 110, W - 60, y0 + len(rows) * 150 + 20], 30, fill=(255, 248, 230, 240), outline=INK, width=6)
+    draw_text(img, d, 100, y0 - 92, T.get('title', 'コメントの数'), 40, INK)
+    for i, r in enumerate(rows):
+        y = y0 + i * 150
+        d.rounded_rectangle([x0, y + 10, x0 + 70, y + 80], 14, fill=VOTE.get(r['key'], (150, 150, 150)))
+        d.text((x0 + 35, y + 45), r['key'], font=font(46, True), fill='white', anchor='mm')
+        draw_text(img, d, x0 + 90, y + 2, r['label'], 34, INK)
+        full = W - 180 - (x0 + 90) - 40
+        L = int(full * r['count'] / mx * u)
+        d.rounded_rectangle([x0 + 90, y + 56, x0 + 90 + max(10, L), y + 96], 10, fill=VOTE.get(r['key'], (150, 150, 150)))
+        n = round(r['count'] * u)
+        d.text((x0 + 90 + max(10, L) + 16, y + 76), f'{n}件', font=font(40, True), fill=INK, anchor='lm')
+        if T.get('winner') == r['key'] and t >= T.get('winnerAt', g1 + 0.3):
+            k = min(1, (t - T['winnerAt']) / 0.2)
+            sz = int(60 * (1.6 - 0.6 * k))
+            cx, cy = W - 170, y + 50
+            d.rounded_rectangle([cx - sz * 1.3, cy - sz * 0.7, cx + sz * 1.3, cy + sz * 0.7], 16, outline=(214, 60, 50), width=8, fill=(255, 255, 255, 230))
+            d.text((cx, cy), '採用', font=font(sz, True), fill=(214, 60, 50), anchor='mm')
+
+def wall(img, d, Wl, t):
+    """みんなの声：名前と一言のカードを順に出す（2列）"""
+    d.rounded_rectangle([40, 220, W - 40, 1500], 30, fill=(35, 29, 54, 200))
+    draw_text(img, d, 80, 236, Wl.get('title', 'みんなの声'), 48, (255, 214, 74), black=True)
+    items = Wl['items']; dt = Wl.get('step', 0.12)
+    colw = (W - 40 * 2 - 40 * 3) // 2
+    y = [330, 330]
+    for i, it in enumerate(items):
+        if t < Wl['from'] + 0.2 + i * dt: break
+        c = 0 if y[0] <= y[1] else 1
+        x = 80 + c * (colw + 40)
+        lines = wrap(d, it['text'], 30, colw - 40)[:3]
+        h = 62 + len(lines) * 40
+        if y[c] + h > 1480: continue
+        d.rounded_rectangle([x, y[c], x + colw, y[c] + h], 16, fill=CREAM)
+        d.ellipse([x + 16, y[c] + 18, x + 36, y[c] + 38], fill=VOTE.get(it.get('vote'), (150, 150, 150)))
+        draw_text(img, d, x + 46, y[c] + 8, it['name'], 28, INK)
+        for j, l in enumerate(lines): draw_text(img, d, x + 20, y[c] + 52 + j * 40, l, 30, (60, 54, 80))
+        y[c] += h + 16
+
+def chip(img, d, text, t, a, b):
+    """画面の隅の小さなチップ（URL の案内など）。動画は止めない"""
+    w = text_w(d, text, 30) + 90
+    x0, y0 = 40, 200
+    d.rounded_rectangle([x0, y0, x0 + w, y0 + 62], 31, fill=(255, 248, 230, 235), outline=INK, width=4)
+    d.ellipse([x0 + 18, y0 + 18, x0 + 44, y0 + 44], fill=(70, 160, 80))
+    draw_text(img, d, x0 + 58, y0 + 8, text, 30, INK)
+
+_imgs = {}
+def picture(img, P, t):
+    """画像（スマホ画面など）を下から差し込む"""
+    if P['file'] not in _imgs:
+        _imgs[P['file']] = Image.open(os.path.join(os.path.dirname(story_path), P['file'])).convert('RGBA')
+    im = _imgs[P['file']]
+    w = P.get('w', 600); h = int(im.height * w / im.width)
+    u = min(1, (t - P['from']) / 0.3); u = 1 - (1 - u) ** 3
+    x = P.get('x', (W - w) // 2); y = int(P.get('y', 260) + (1 - u) * 400)
+    frame = Image.new('RGBA', (w + 36, h + 36), (0, 0, 0, 0))
+    ImageDraw.Draw(frame).rounded_rectangle([0, 0, w + 35, h + 35], 44, fill=(35, 29, 54, 255))
+    frame.alpha_composite(im.resize((w, h), Image.LANCZOS), (18, 18))
+    img.alpha_composite(frame, (x - 18, y - 18))
+
 def fade(t, a, b, k=0.12):
     """a〜b の間だけ 1（入りと終わりを k 秒でふわっと）"""
     if t < a or t > b: return 0
@@ -162,6 +254,7 @@ def fade(t, a, b, k=0.12):
 # ---- 名簿（表示名） ----
 roster = json.load(open(os.path.join(os.path.dirname(story_path), S['roster']), encoding='utf-8'))
 NAMES = {p['id']: p.get('name') or p['id'] for p in roster['islanders']}
+NAMES.update(S.get('overlay', {}).get('names', {}))
 O = S['overlay']
 track = {}
 for line in open(os.path.join(BUILD, 'track.jsonl'), encoding='utf-8'):
@@ -178,7 +271,9 @@ def compose_frame(i):
     if base.size != (W, H): base = base.resize((W, H), Image.LANCZOS)
     layer = Image.new('RGBA', (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(layer)
     ppl = track.get(i, {})
-    banner(layer, d, O['banner'])
+    if not any(a <= t <= b for a, b in O.get('bannerOff', [])): banner(layer, d, O['banner'])
+    for c in O.get('chips', []):
+        if c['from'] <= t <= c['to']: chip(layer, d, c['text'], t, c['from'], c['to'])
     stars = [s for s in O.get('stars', []) if s['from'] <= t <= s['to']]
     star_ids = {s['who'] for s in stars}
     # 小さな名札（今回コメントした人、主役以外）。人が多い引きの画では出さない
@@ -186,12 +281,28 @@ def compose_frame(i):
         for uid, p in ppl.items():
             if uid in O.get('commenters', {}) and uid not in star_ids:
                 small_tag(layer, d, p['hx'] * W, head_y(p), NAMES.get(uid, uid), O['commenters'][uid])
+    # 全員に小さな名札を出す区間（動画に出ていない島民たちのカット）
+    if any(a <= t <= b for a, b in O.get('tagAll', [])) and len(ppl) <= 14:
+        for uid, p in ppl.items():
+            if uid not in star_ids: small_tag(layer, d, p['hx'] * W, head_y(p), NAMES.get(uid, uid), O.get('commenters', {}).get(uid, '-'))
     for s in stars:
+        if s.get('xy'):  # 姿のない人の名札（…1人足りない）
+            X, Y = s['xy'][0] * W, s['xy'][1] * H
+            y0 = big_tag(layer, d, X, Y, NAMES.get(s['who'], s['who']), s['who'], O.get('commenters', {}).get(s['who']))
+            continue
         p = ppl.get(s['who'])
         if not p: continue
         X, Y = p['hx'] * W, head_y(p)
         y0 = big_tag(layer, d, X, Y, NAMES.get(s['who'], s['who']), s['who'], O.get('commenters', {}).get(s['who']))
         if s.get('bubble'): bubble(layer, d, X, y0, s['bubble'])
+    for c in O.get('titles', []):
+        if c['from'] <= t <= c['to']: title_badge(layer, d, c['text'], t, c['from'], c['to'])
+    if O.get('tally') and O['tally']['from'] <= t <= O['tally']['to']: tally(layer, d, O['tally'], t)
+    if O.get('wall') and O['wall']['from'] <= t <= O['wall']['to']: wall(layer, d, O['wall'], t)
+    for P in O.get('images', []):
+        if P['from'] <= t <= P['to']: picture(layer, P, t)
+    for c in O.get('captions', []):
+        if c['from'] <= t <= c['to']: caption(layer, d, c['text'], c.get('y', 1290), c.get('size', 80), tuple(c.get('color', (255, 255, 255))))
     for a in O.get('action', []):
         if a['from'] <= t <= a['to']: stroke_center(layer, d, a['text'], 1290, 92, (255, 255, 255))
     for r in O.get('result', []):
@@ -257,6 +368,19 @@ if __name__ == '__main__':
     # 確認用のコマ一覧（1秒ごと）
     sheet = os.path.join(OUTDIR, f'{NAME}_sheet.jpg')
     subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', master, '-vf', 'fps=1,scale=216:384,tile=7x2', '-frames:v', '1', sheet], check=True)
+    # 表紙（ギャラリー用）：録画コマ1枚＋中央に黄色の「◯日目」＋看板＋一言の結果。3:4 の切り抜き（y 240〜1680）に収める
+    cv = S.get('cover')
+    if cv:
+        i = min(N - 1, round(cv['at'] * FPS))
+        im = Image.open(os.path.join(FR, f'f{i:05d}.jpg')).convert('RGBA').resize((W, H), Image.LANCZOS)
+        L = Image.new('RGBA', (W, H), (20, 30, 60, 70)); dd = ImageDraw.Draw(L)
+        fs = 150; tw = text_w(dd, cv['day'], fs, True)
+        dd.rounded_rectangle([W / 2 - tw / 2 - 60, 500, W / 2 + tw / 2 + 60, 720], 44, fill=(244, 196, 64), outline=INK, width=9)
+        draw_text(L, dd, W / 2 - tw / 2, 518, cv['day'], fs, INK, black=True)
+        stroke_center(L, dd, O['banner'].split('　')[0], 830, 66, (255, 255, 255))
+        for k, line in enumerate(cv['lines']):
+            stroke_center(L, dd, line, 1230 + k * 120, 84, YELLOW if k == 0 else (255, 255, 255))
+        Image.alpha_composite(im, L).convert('RGB').save(os.path.join(OUTDIR, f'{NAME}_cover.jpg'), quality=92)
     # 何から作ったかの記録（Claude と Muse で同じ入力かを照合する）
     def sha(path):
         try: return hashlib.sha256(open(path, 'rb').read()).hexdigest()[:16]

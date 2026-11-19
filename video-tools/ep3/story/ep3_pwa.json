@@ -1,0 +1,173 @@
+{
+ "day": 3,
+ "roster": "../input/islanders.json",
+ "today": [
+  {
+   "id": "rino._.15",
+   "spot": "forestEdge",
+   "anim": "work",
+   "text": "森の入口で、木の実を集めている"
+  },
+  {
+   "id": "hyuga_0619",
+   "spot": "forestEdge",
+   "anim": "work",
+   "text": "森の入口で、木の実を集めている"
+  },
+  {
+   "id": "atsukidesu",
+   "spot": "forestEdge",
+   "anim": "work",
+   "text": "森の入口で、木の実を集めている"
+  },
+  {
+   "id": "_3yu.96_",
+   "spot": "forestEdge",
+   "anim": "work",
+   "text": "森の入口で、木の実を集めている"
+  },
+  {
+   "id": "momosann.0420.sabu",
+   "spot": "forestEdge",
+   "anim": "work",
+   "text": "森の入口で、木の実を集めている"
+  },
+  {
+   "id": "bear.44190633",
+   "spot": "forestEdge",
+   "anim": "work",
+   "text": "森の入口で、木の実を集めている"
+  },
+  {
+   "id": "dosukoi.5845",
+   "spot": "forestEdge",
+   "anim": "work",
+   "text": "森の入口で、木の実を集めている"
+  },
+  {
+   "id": "nanasi774_ou",
+   "spot": "forestEdge",
+   "anim": "work",
+   "text": "森の入口で、木の実を集めている"
+  },
+  {
+   "id": "kubotto0505",
+   "spot": "forestEdge",
+   "anim": "work",
+   "text": "森の入口で、木の実を集めている"
+  },
+  {
+   "id": "tsuki5747",
+   "spot": "forestEdge",
+   "anim": "idle",
+   "text": "森の入口で見張りをしている（物音には真っ先に逃げた）",
+   "tool": "scope"
+  },
+  {
+   "id": "ibu131313",
+   "spot": "cove",
+   "anim": "work",
+   "text": "入り江で釣りをしている（昨日は1匹だけ釣れた）",
+   "tool": "rod"
+  },
+  {
+   "id": "nabemegane",
+   "spot": "cove",
+   "anim": "work",
+   "text": "入り江で釣りをしている",
+   "tool": "rod"
+  },
+  {
+   "id": "taishi.uramoto23",
+   "spot": "cove",
+   "anim": "work",
+   "text": "入り江で釣りをしている",
+   "tool": "rod"
+  },
+  {
+   "id": "yukikun4126",
+   "spot": "cove",
+   "anim": "work",
+   "text": "入り江で釣りをしている",
+   "tool": "rod"
+  },
+  {
+   "id": "savans880",
+   "spot": "cove",
+   "anim": "work",
+   "text": "入り江で釣りをしている",
+   "tool": "rod"
+  },
+  {
+   "id": "saori.siegert",
+   "spot": "cove",
+   "anim": "work",
+   "text": "入り江で釣りをしている",
+   "tool": "rod"
+  },
+  {
+   "id": "ichi.09",
+   "spot": "cove",
+   "anim": "work",
+   "text": "入り江で釣りをしている",
+   "tool": "rod"
+  },
+  {
+   "id": "marumegane4",
+   "spot": "cove",
+   "anim": "work",
+   "text": "入り江で釣りをしている",
+   "tool": "rod"
+  },
+  {
+   "id": "kazuzu4771",
+   "spot": "beach",
+   "anim": "work",
+   "text": "浜で、網の代わりになるものを探している"
+  },
+  {
+   "id": "analogayane",
+   "spot": "beach",
+   "anim": "idle",
+   "text": "浜で見つけた木箱を調べている"
+  },
+  {
+   "id": "masatk_no_m",
+   "spot": "farm",
+   "anim": "work",
+   "text": "種のない畑を耕している",
+   "tool": "hoe"
+  },
+  {
+   "id": "takada_1gram",
+   "spot": "farm",
+   "anim": "work",
+   "text": "種のない畑を耕している",
+   "tool": "hoe"
+  },
+  {
+   "id": "yamato_family327",
+   "spot": "farm",
+   "anim": "work",
+   "text": "種のない畑を耕している",
+   "tool": "hoe"
+  },
+  {
+   "id": "bear.44190633",
+   "spot": "beach",
+   "anim": "idle",
+   "text": "飲める水を探している"
+  },
+  {
+   "id": "dosukoi.5845",
+   "spot": "beach",
+   "anim": "idle",
+   "text": "海の水を飲んで、しょっぱい思いをした"
+  }
+ ],
+ "missing": {
+  "yuradayo0330": {
+   "text": "森の奥へ探検に行ったまま、戻ってこない…"
+  }
+ }
+}
