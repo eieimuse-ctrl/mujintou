@@ -1,17 +1,17 @@
 {
- "fetchedAt": "2026-11-19T07:26:38+09:00",
- "comments": 27,
- "voters": 26,
+ "fetchedAt": "2026-11-19T12:05:25+09:00",
+ "comments": 29,
+ "voters": 28,
  "tally": {
-  "A": 10,
+  "A": 12,
   "B": 4,
-  "C": 12
+  "C": 13
  },
  "winner": "C",
- "margin": 2,
- "followers": 134,
- "left": 166,
- "joined_day3": 59,
+ "margin": 1,
+ "followers": 140,
+ "left": 160,
+ "joined_day3": 68,
  "votes": {
   "まさたけM": "B",
   "ヤッチャン(20)": "C",
@@ -38,6 +38,8 @@
   "浦本 泰志": "A",
   "ゆきくん♂": "A",
   "Rino": "C",
-  "🇺🇸Saori Siegert | Mindset & Trader": "A"
+  "🇺🇸Saori Siegert | Mindset & Trader": "A",
+  "abc.m": "A",
+  "Ryuji": "A"
  }
 }

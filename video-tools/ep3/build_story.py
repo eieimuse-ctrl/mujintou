@@ -63,6 +63,11 @@ for c in sorted(C['comments'], key=lambda c: c.get('at') or ''):
 tally = {k: 0 for k in OPTS}
 for p in people.values():
     if p['vote'] in tally: tally[p['vote']] += 1
+# 同数のときの決め方（本人の判断）：12時の集計で A 12・C 12 → C を 13 にする（2026-11-19 12:10 本人の指示）
+TIE_ADD = {'C': 1}
+_o = sorted(tally, key=lambda k: -tally[k])
+if tally[_o[0]] == tally[_o[1]]:
+    for k, n in TIE_ADD.items(): tally[k] += n
 order = sorted(tally, key=lambda k: -tally[k])
 winner = order[0]
 if tally[order[0]] == tally[order[1]]:
