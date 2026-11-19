@@ -41,6 +41,34 @@ function torchCanvas() {
   return c;
 }
 
+// 焚き火の炎（ドット絵）
+function flameCanvas() {
+  const rows = ['...y....', '..yoy...', '.yoOoy..', 'yoOOOoy.', 'yoOOOoy.', '.ooOoo..', 'kbkbkbk.'];
+  const pal = { y: '#ffd04a', o: '#ff8a1e', O: '#fff3b0', k: '#3a2a1c', b: '#7a4f2c' };
+  const c = document.createElement('canvas');
+  c.width = rows[0].length;
+  c.height = rows.length;
+  const g = c.getContext('2d');
+  rows.forEach((r, y) => [...r].forEach((ch, x) => { if (pal[ch]) { g.fillStyle = pal[ch]; g.fillRect(x, y, 1, 1); } }));
+  return c;
+}
+
+// 光のにじみ（中心が明るい橙の円。加算で重ねる）
+function glowTexture() {
+  const c = document.createElement('canvas');
+  c.width = c.height = 64;
+  const g = c.getContext('2d');
+  const gr = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+  gr.addColorStop(0, 'rgba(255,200,110,1)');
+  gr.addColorStop(0.3, 'rgba(255,150,50,0.5)');
+  gr.addColorStop(1, 'rgba(255,120,30,0)');
+  g.fillStyle = gr;
+  g.fillRect(0, 0, 64, 64);
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace;
+  return t;
+}
+
 // 「？」の吹き出し（白地・濃い枠のドット絵）
 function questionCanvas() {
   const rows = [
@@ -227,7 +255,17 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       scene.add(st);
       steps.push(st);
     }
-    missingMarks.push({ a, q, gy, m });
+    // 森の奥の焚き火（行方不明の人が焚いている火）：炎と、遠くからも見える光のにじみ
+    const fx = m.x + 2.2, fz = m.z + 1.6, fy = groundAt(fx, fz);
+    const flame = new THREE.Sprite(new THREE.SpriteMaterial({ map: pixelTexture(flameCanvas()), alphaTest: 0.5, transparent: false, fog: false }));
+    flame.center.set(0.5, 0);
+    flame.position.set(fx, fy, fz);
+    flame.renderOrder = 5;
+    const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTexture(), transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending, fog: false }));
+    glow.position.set(fx, fy + 1.4, fz);
+    glow.renderOrder = 4;
+    scene.add(flame, glow);
+    missingMarks.push({ a, q, gy, m, flame, glow, fy });
   }
 
 
@@ -453,6 +491,11 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       mk.screen = { visible: v.z > -1 && v.z < 1 && Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1, x: (v.x * 0.5 + 0.5) * viewport.w, y: (-v.y * 0.5 + 0.5) * viewport.h };
       const k = Math.max(1, (MIN_PX + 10) / ((SPRITE_H * pxPerUnitAt1) / Math.max(1, dist)));
       mk.q.visible = !stagePose;
+      mk.flame.visible = mk.glow.visible = !stagePose;
+      const fk = Math.max(1, (MIN_PX * 0.7) / ((2.2 * pxPerUnitAt1) / Math.max(1, dist)));
+      mk.flame.scale.set(1.5 * fk, 1.9 * fk * (1 + 0.1 * Math.sin(t * 15)), 1);
+      const gk = Math.max(26, dist * 0.17) * (1 + 0.06 * Math.sin(t * 9));
+      mk.glow.scale.set(gk, gk, 1);
       mk.q.position.set(mk.m.x, mk.gy + 10.5 + Math.sin(t * 2.2) * 0.4 * k, mk.m.z);
       mk.q.scale.set(2.2 * k * 0.86, 2.2 * k, 1);
     }
