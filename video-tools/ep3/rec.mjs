@@ -41,7 +41,7 @@ const castPeople = castIds.map((id) => byId.get(id)).filter(Boolean).map((p) => 
 const missing = castIds.filter((id) => !byId.has(id));
 if (missing.length) console.log('名簿に無いので出さない:', missing.join(', '));
 const state = JSON.parse(fs.readFileSync(path.join(REPO, 'data/state.json'), 'utf8'));
-Object.assign(state, { day: story.day || 3, sample: false, base: story.base ?? { name: '中央の広場', x: 0, z: 5, decidedDay: 2 }, currentVote: null, buildings: story.buildings || [] });
+Object.assign(state, { day: story.day || 3, sample: false, base: story.base ?? { name: '中央の広場', x: 0, z: 5, decidedDay: 2 }, currentVote: null, buildings: story.buildings || [], forestRoad: story.forestRoad || null });
 const DATA = {
   state,
   islanders: { updatedAt: '2026-11-19', islanders: castPeople },

@@ -266,6 +266,15 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
           el('dt', { text: '行動範囲' }),
           el('dd', {}, [el('b', { text: inside.map((d) => d.name).join('・') || '—' }), ...inside.filter((d) => d.expandedDay).map((d) => el('span', { class: 'now-expanded', text: `${d.name}は${d.expandedDay}日目から` }))]),
         ]),
+        state.forestRoad
+          ? el('div', {}, [
+              el('dt', { text: '森の道づくり' }),
+              el('dd', {}, [
+                el('b', { text: `${Math.min(state.forestRoad.count, state.forestRoad.need)}／${state.forestRoad.need}人` }),
+                el('span', { text: state.forestRoad.count >= state.forestRoad.need ? `（${state.forestRoad.label}まで道がつながった）` : `（${state.forestRoad.label}まで、木が${state.forestRoad.need}本。島民1人が1本ずつ切りひらく。あと${state.forestRoad.need - state.forestRoad.count}人）` }),
+              ]),
+            ])
+          : null,
         outside.length
           ? el('div', {}, [
               el('dt', { text: '範囲の外' }),

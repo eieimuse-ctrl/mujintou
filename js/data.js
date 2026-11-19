@@ -170,7 +170,16 @@ export function normalizeData(stateRaw, rosterRaw, driftRaw = null) {
     };
   }
 
+  // 森の道づくり：森の入口から光の場所まで、木が need 本（既定300）。島民1人が1本ずつ切りひらく＝島民の数だけ道が伸びる
+  let forestRoad = null;
+  if (s.forestRoad && typeof s.forestRoad === 'object' && int(s.forestRoad.startDay, 1) <= day) {
+    const r = s.forestRoad;
+    const pts = (Array.isArray(r.points) ? r.points : []).filter((p) => Array.isArray(p) && p.length >= 2 && p.every((v) => Number.isFinite(Number(v)))).map((p) => [Number(p[0]), Number(p[1])]);
+    forestRoad = { points: pts.length >= 2 ? pts : [[-74, -22], [-128, -34]], need: Math.max(1, int(r.need, 300)), width: Number(r.width) > 0 ? Number(r.width) : 3.2, startDay: int(r.startDay, 1), count: 0, label: str(r.label, '光の場所') };
+  }
+
   const state = {
+    forestRoad,
     sample: s.sample === true,
     islandName: str(s.islandName).trim() || DEFAULT_ISLAND_NAME,
     day,
@@ -217,6 +226,7 @@ export function normalizeData(stateRaw, rosterRaw, driftRaw = null) {
   // 島にいない相手との関係は表示しない
   for (const p of islanders) p.relationships = p.relationships.filter((r) => seen.has(r.id) && r.id !== p.id);
 
+  if (state.forestRoad) state.forestRoad.count = islanders.length;
   return { state, islanders, drifters: normalizeDrifters(driftRaw, seen) };
 }
 

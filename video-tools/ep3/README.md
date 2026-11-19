@@ -77,3 +77,12 @@ bash video-tools/ep3/run.sh video-tools/ep3/story/fish_test.json
 - **Muse は投稿の瞬間に、このファイルを Firebase の islanders に同期する**（`data/islanders.json` にも同じ内容を置く）
 - PWA の動き：`today` の人はその日だけ、その場所でその動きを続け、詳細に「いま・きょうの行動」と文が出る。次の動画で day が進むと自動でふだんの暮らしに戻る。`missing` の人は姿が消え、森の奥に「？」と足跡
 - 場所の名前：`cove`（入り江の岸）・`beach`（東の砂浜）・`farm`（平原の畑予定地）・`forestEdge`（森の入口）・`plaza`（中央の広場）
+
+## 森の道づくり・建物（2026-11-20 追加）
+- `state.json`（Firebase の state）に `forestRoad` を書くと、森の入口から光の場所へ道が伸びる。長さ＝島民の数 ÷ need（既定300）。道の幅のマスは木が消えて道の色になる
+  ```json
+  "forestRoad": { "points": [[-74, -22], [-128, -34]], "need": 300, "startDay": 4, "label": "光の場所" }
+  ```
+  「島のいま」に「森の道づくり 120／300人（光の場所まで、木が300本。島民1人が1本ずつ切りひらく。あと180人）」と出る
+- 建物の種類に `still`（砂と石の蒸留装置）を追加。小屋は `hut`。`buildings` に `{ "id", "type", "name", "x", "z", "rot", "builtDay" }`
+- 台本（story JSON）にも `forestRoad` と `buildings` を書けば、動画の島にも同じ道と建物が出る
