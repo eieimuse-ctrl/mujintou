@@ -166,6 +166,17 @@ def stroke_center(img, d, text, y, size, fill):
     w = text_w(d, text, size, True)
     draw_text(img, d, W / 2 - w / 2, y - size * 0.7, text, size, fill, black=True, stroke=9)
 
+SIL = ['.....xxxxx......', '....xxxxxxx.....', '...xxxxxxxxx....', '...xxxxxxxxx....', '...xxxxxxxxx....', '....xxxxxxx.....',
+       '.....xxxxx......', '...xxxxxxxxx....', '..xxxxxxxxxxx...', '..xxxxxxxxxxx...', '..xxxxxxxxxxx...', '..xxxxxxxxxxx...',
+       '..xx.xxxxx.xx...', '....xxxxxxx.....', '....xxx.xxx.....', '....xxx.xxx.....', '....xxx.xxx.....', '...xxxx.xxxx....']
+def silhouette(img, X, Yfeet, px):
+    """ドット絵の人影（色はつけない）"""
+    d = ImageDraw.Draw(img)
+    h = len(SIL) * px; x0 = X - 8 * px; y0 = Yfeet - h
+    for j, row in enumerate(SIL):
+        for i, ch in enumerate(row):
+            if ch == 'x': d.rectangle([x0 + i * px, y0 + j * px, x0 + (i + 1) * px - 1, y0 + (j + 1) * px - 1], fill=(28, 24, 44, 235))
+
 def caption(img, d, text, y, size, fill, alpha=1.0):
     """中央の縁取り文字（つかみ・…1人足りない・あと◯人 など）"""
     stroke_center(img, d, text, y, size, fill)
@@ -245,6 +256,11 @@ def picture(img, P, t):
     ImageDraw.Draw(frame).rounded_rectangle([0, 0, w + 35, h + 35], 44, fill=(35, 29, 54, 255))
     frame.alpha_composite(im.resize((w, h), Image.LANCZOS), (18, 18))
     img.alpha_composite(frame, (x - 18, y - 18))
+    if P.get('note'):
+        dd = ImageDraw.Draw(img)
+        nw = text_w(dd, P['note'], 40) + 60
+        dd.rounded_rectangle([W / 2 - nw / 2, y + h + 30, W / 2 + nw / 2, y + h + 110], 40, fill=(255, 214, 74), outline=INK, width=5)
+        draw_text(img, dd, W / 2 - (nw - 60) / 2, y + h + 46, P['note'], 40, INK)
 
 def fade(t, a, b, k=0.12):
     """a〜b の間だけ 1（入りと終わりを k 秒でふわっと）"""
@@ -274,21 +290,30 @@ def compose_frame(i):
     if not any(a <= t <= b for a, b in O.get('bannerOff', [])): banner(layer, d, O['banner'])
     for c in O.get('chips', []):
         if c['from'] <= t <= c['to']: chip(layer, d, c['text'], t, c['from'], c['to'])
+    hidden = set(O.get('noTag', []))
     stars = [s for s in O.get('stars', []) if s['from'] <= t <= s['to']]
     star_ids = {s['who'] for s in stars}
     # 小さな名札（今回コメントした人、主役以外）。人が多い引きの画では出さない
     if len(ppl) <= O.get('smallTagsMax', 4):
         for uid, p in ppl.items():
-            if uid in O.get('commenters', {}) and uid not in star_ids:
+            if uid in O.get('commenters', {}) and uid not in star_ids and uid not in hidden:
                 small_tag(layer, d, p['hx'] * W, head_y(p), NAMES.get(uid, uid), O['commenters'][uid])
     # 全員に小さな名札を出す区間（動画に出ていない島民たちのカット）
-    if any(a <= t <= b for a, b in O.get('tagAll', [])) and len(ppl) <= 14:
-        for uid, p in ppl.items():
-            if uid not in star_ids: small_tag(layer, d, p['hx'] * W, head_y(p), NAMES.get(uid, uid), O.get('commenters', {}).get(uid, '-'))
+    hidden = set(O.get('noTag', []))
+    for ta in O.get('tagAll', []):
+        a, b = ta[0], ta[1]; step = ta[2] if len(ta) > 2 else 0
+        if not (a <= t <= b): continue
+        cand = sorted([(p['d'], uid) for uid, p in ppl.items() if uid not in star_ids and uid not in hidden])[:14]
+        cand = sorted(cand, key=lambda c: ppl[c[1]]['hx'])  # 左から順に
+        for k, (_, uid) in enumerate(cand):
+            if step and t < a + k * step: continue
+            p = ppl[uid]
+            small_tag(layer, d, p['hx'] * W, head_y(p), NAMES.get(uid, uid), O.get('commenters', {}).get(uid, '-'))
     for s in stars:
-        if s.get('xy'):  # 姿のない人の名札（…1人足りない）
+        if s.get('xy'):  # いなくなった人：黒いシルエットと「？？？」（名前は動画では明かさない）
             X, Y = s['xy'][0] * W, s['xy'][1] * H
-            y0 = big_tag(layer, d, X, Y, NAMES.get(s['who'], s['who']), s['who'], O.get('commenters', {}).get(s['who']))
+            silhouette(layer, X, Y + 300, 14)
+            big_tag(layer, d, X, Y, s.get('label', '？？？'), s.get('handle', '？？？'), None)
             continue
         p = ppl.get(s['who'])
         if not p: continue

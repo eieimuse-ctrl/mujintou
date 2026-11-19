@@ -213,6 +213,14 @@
         '....kwk.....',
         '.....k......',
       ], { k: '#231d36', w: '#ffffff' }),
+      zzz: pixel([
+        'kkkkk....',
+        '...k.....',
+        '..k..kkkk',
+        '.k.....k.',
+        'kkkkk.k..',
+        '.....kkkk',
+      ], { k: '#ffffff' }),
       splash: pixel([
         '.w...w...w.',
         '..w.www.w..',
@@ -222,7 +230,7 @@
     };
     const props = (story.props || []).map((pr) => {
       const art = ART[pr.type];
-      const sp2 = new SpriteC(new MatC({ map: art.tex, alphaTest: 0.5, transparent: false, depthTest: pr.type !== 'splash' && pr.type !== 'question', fog: pr.type !== 'question' }));
+      const sp2 = new SpriteC(new MatC({ map: art.tex, alphaTest: 0.5, transparent: false, depthTest: !['splash', 'question', 'zzz'].includes(pr.type), fog: pr.type !== 'question' }));
       const hgt = pr.size || 1.4;
       sp2.scale.set((hgt * art.w) / art.h, hgt, 1);
       sp2.center.set(0.5, 0);
@@ -238,7 +246,7 @@
       const u = ease((t - pr.t0) / Math.max(0.01, pr.t1 - pr.t0));
       const arc = (pr.arc || 0) * 4 * u * (1 - u);
       const x = A.x + (B.x - A.x) * u, z = A.z + (B.z - A.z) * u, y = A.y + (B.y - A.y) * u + arc;
-      const wob = pr.type === 'fish' ? Math.sin(t * 30) * 0.08 : 0;
+      const wob = pr.type === 'fish' ? Math.sin(t * 30) * 0.08 : pr.type === 'zzz' ? ((t * 0.8 + (pr.phase || 0)) % 1) * 1.2 : 0;
       P.sp.position.set(x, y + wob, z);
       P.sp.visible = true;
       return { x, y, z };

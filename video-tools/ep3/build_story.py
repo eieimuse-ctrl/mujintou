@@ -107,7 +107,8 @@ A = acts.append
 # 場面のはじめに、その場面の人をその群の持ち場へ（家は漂着した浜などになっているため）
 for g, t0 in [('forest', 0), ('beach', 2.4), ('cove', 19.2), ('net', 28.0), ('farm', 34.4), ('water', 39.6)]:
     mem = next(x for x in groups if x['name'] == g)['members']
-    A({'who': mem, 't': t0, 'at': {'slot': g}, 'anim': 'idle', 'face': 'front'})
+    A({'who': mem, 't': t0, 'at': {'slot': g}, 'anim': 'sleep' if g == 'beach' else 'idle', 'face': 'front'})
+A({'who': next(x for x in groups if x['name'] == 'beach')['members'], 't': 5.0, 'anim': 'sit', 'pick': 0.3, 'seed': 11})
 # S0 つかみ（森の入口で実を見つけて喜ぶ）
 A({'who': F['forest'], 't': 0, 'anim': 'cheer'})
 # S3 森：探す → 見つける
@@ -117,7 +118,7 @@ A({'who': F['forest'], 't': 12.8, 'anim': 'eat', 'face': 'front'})
 if F['forestStar']: A({'who': F['forestStar'], 't': 12.8, 'anim': 'cheer'})
 if F['watcher']: A({'who': F['watcher'], 't': 15.0, 'anim': 'idle', 'face': 'back', 'at': {'rel': 'g:forest', 't': -7, 'n': -1.5}})
 if F['missing']:  # ゆらさん：ひとりで森の奥へ歩いていく（伏線）→ 姿を消す
-    A({'who': F['missing'], 't': 16.4, 'to': {'rel': 'g:forest', 't': -3, 'n': -16}, 'dur': 2.6})
+    A({'who': F['missing'], 't': 16.4, 'to': {'rel': 'g:forest', 't': -3, 'n': 16}, 'dur': 2.6})
     A({'who': F['missing'], 't': 19.0, 'hide': True})
 # S4 入り江：一斉に竿 → 待つ → 1匹 → kubotto が来る
 cove_people = [x for x in groups[3]['members'] if x != fa]
@@ -152,8 +153,8 @@ forest_now = [x for x in groups[0]['members'] if x != F['missing']]
 A({'who': forest_now, 't': 44.0, 'at': {'slot': 'forest'}, 'anim': 'eat', 'hide': False})
 if F['watcher']: A({'who': F['watcher'], 't': 44.0, 'at': {'rel': 'g:forest', 't': -2, 'n': -1.2}})
 A({'who': forest_now, 't': 45.0, 'anim': 'shock', 'face': 'back'})
-if F['watcher']: A({'who': F['watcher'], 't': 45.3, 'to': {'rel': 'g:forest', 't': 6, 'n': 26}, 'dur': 1.6, 'run': True})
-A({'who': forest_now, 't': 45.8, 'to': {'rel': 'g:forest', 't': 0, 'n': 26}, 'dur': 1.4, 'run': True, 'except': [F['watcher']]})
+if F['watcher']: A({'who': F['watcher'], 't': 45.25, 'to': {'rel': 'g:forest', 't': 3, 'n': -30}, 'dur': 1.3, 'run': True, 'face': 'front'})
+A({'who': forest_now, 't': 45.9, 'to': {'rel': 'g:forest', 't': 0, 'n': -30}, 'dur': 1.5, 'run': True, 'except': [F['watcher']]})
 A({'who': plaza_ring, 't': 47.4, 'at': {'slot': 'plaza'}, 'anim': 'idle', 'hide': False, 'face': {'at': [0, 5]}})
 A({'who': plaza_ring, 't': 48.6, 'anim': 'shock', 'pick': 0.4, 'seed': 9})
 A({'who': plaza_ring, 't': 49.2, 'anim': 'idle'})
@@ -187,7 +188,8 @@ camera = [
 DUR = 72.0
 camera.append({'from': 68.5, 'to': DUR, 'hour': 18.3, 'keys': [{'t': 68.5, 'look': {'rel': 'g:plaza'}, 'dist': 260, 'az': 0.8, 'pol': 0.9, 'up': 0}, {'t': DUR, 'look': {'rel': 'g:plaza'}, 'dist': 300, 'az': 0.85, 'pol': 0.88, 'up': 0}]})
 
-props = [
+bmem = next(x for x in groups if x['name'] == 'beach')['members']
+props = [{'type': 'zzz', 'from': {'rel': i, 'up': 1.6, 't': 0.6}, 't0': 2.4, 't1': 2.41, 't2': 6.2, 'size': 0.9, 'phase': k * 0.3} for k, i in enumerate(bmem[:6])] + [
     {'type': 'fruit', 'from': {'rel': 'g:forest', 't': -1.2, 'up': 0.2}, 't0': 0, 't1': 0.01, 't2': 2.4, 'size': 0.9},
     {'type': 'fruit', 'from': {'rel': 'g:forest', 't': 1.5, 'up': 0.2}, 't0': 0, 't1': 0.01, 't2': 2.4, 'size': 0.9},
     {'type': 'fruit', 'from': {'rel': F['forestStar'] or 'g:forest', 't': 0.9, 'n': -1, 'up': 2.6}, 't0': 12.8, 't1': 12.81, 't2': 15.0, 'size': 0.8},
@@ -205,7 +207,7 @@ stars = [x for x in [
     star(ns, 28.1, 30.8), star(cs, 31.2, 34.4),
     star(F['farmStar'], 34.5, 36.2), star(F['farmAnswer'], 36.7, 39.6),
     star(F['waterStar'], 39.7, 42.4),
-    {'who': F['missing'], 'from': 49.0, 'to': 51.0, 'xy': [0.5, 0.55]} if F['missing'] else None,
+    {'who': F['missing'], 'from': 49.0, 'to': 51.0, 'xy': [0.5, 0.36], 'label': '？？？', 'handle': '？？？'} if F['missing'] else None,
 ] if x]
 VN = {'A': 'エー', 'B': 'ビー', 'C': 'シー'}
 overlay = {
@@ -221,6 +223,7 @@ overlay = {
     'captions': [
         {'text': '食料、どうなった？', 'from': 0.5, 'to': 2.4, 'y': 1290, 'size': 84},
         {'text': f'新しく{joined3}人が漂着', 'from': 2.8, 'to': 6.2, 'y': 1290, 'size': 76},
+        {'text': 'みんな、ぐっすり', 'from': 4.0, 'to': 6.2, 'y': 1400, 'size': 52, 'color': [255, 214, 74]},
         {'text': 'ガサッ', 'from': 44.9, 'to': 45.9, 'y': 700, 'size': 130},
         {'text': '…1人、足りない。', 'from': 48.6, 'to': 51.0, 'y': 1290, 'size': 84},
         {'text': '森の奥へ行けるのは、', 'from': 51.2, 'to': 54.0, 'y': 1230, 'size': 64},
@@ -240,27 +243,31 @@ overlay = {
         {'text': 'まずは飲み水', 'from': 39.8, 'to': 43.8},
     ],
     'result': [
-        {'text': '木の実が、見つかった！', 'from': 12.9, 'to': 15.0},
-        {'text': '…釣れたのは、1匹だけ。', 'from': 24.0, 'to': 25.6},
+        {'text': '木の実が、見つかった！', 'from': 12.9, 'to': 13.9},
+        {'text': '…でも、全員分には足りない。', 'from': 13.9, 'to': 15.0},
+        {'text': '…釣れたのは、1匹だけ。', 'from': 24.0, 'to': 25.0},
+        {'text': 'でも、島で初めての魚！', 'from': 25.0, 'to': 26.2},
         {'text': '…網が、ない。', 'from': 29.3, 'to': 31.0},
-        {'text': '木箱が流れ着いていた', 'from': 31.4, 'to': 34.4},
-        {'text': '…種が、ない。', 'from': 35.9, 'to': 39.6},
+        {'text': '木箱の中に、ロープが入っていた', 'from': 31.4, 'to': 34.4},
+        {'text': '…種が、ない。', 'from': 35.9, 'to': 37.8},
+        {'text': '木の実の種を、まいてみることに', 'from': 37.8, 'to': 39.6},
         {'text': '海の水は、飲めない。', 'from': 42.0, 'to': 43.8},
         {'text': f'あと{left}人', 'from': 52.0, 'to': 54.0},
     ],
     'wall': {'from': 54.0, 'to': 58.4, 'title': 'みんなの声', 'step': 0.1,
-             'items': [{'name': p['name'], 'text': EXCERPT.get(p['id']) or p['text'], 'vote': p['vote']} for p in people.values()]},
-    'images': [{'file': 'ep3_phone.png', 'from': 68.6, 'to': DUR, 'w': 560, 'y': 330}],
-    'tagAll': [[58.4, 62.2]],
+             'items': [{'name': p['name'], 'text': EXCERPT.get(p['id']) or p['text'], 'vote': p['vote']} for p in people.values() if p['id'] != F['missing']]},
+    'noTag': [F['missing']] if F['missing'] else [],
+    'images': [{'file': 'ep3_phone.png', 'from': 68.6, 'to': DUR, 'w': 430, 'y': 230, 'note': '森の「？」をタップすると…'}],
+    'tagAll': [[58.4, 62.2, 0.15], [2.6, 6.2, 0.2]],
     'smallTagsMax': 5,
 }
 overlay['captions'] += [
-    {'text': f'{ROSTER[F["missing"]]["name"]}さんのいまは、' if F['missing'] else 'あなたの島民のいまは、', 'from': 68.8, 'to': DUR, 'y': 1300, 'size': 54},
-    {'text': 'プロフィールのリンクから', 'from': 68.8, 'to': DUR, 'y': 1380, 'size': 54},
+    {'text': 'いなくなったのは、だれ？', 'from': 68.8, 'to': DUR, 'y': 1340, 'size': 62, 'color': [255, 214, 74]},
+    {'text': 'プロフィールのリンクから', 'from': 68.8, 'to': DUR, 'y': 1440, 'size': 52},
 ]
 narr = [
     {'at': 0.2, 'text': '3日目。食料は、どうなった？'},
-    {'at': 2.8, 'text': f'今日、新しく{joined3}人が流れ着きました。'},
+    {'at': 2.8, 'text': f'今日、新しく{joined3}人が流れ着きました。みんな、ぐっすり。'},
     {'at': 6.4, 'text': '昨日の質問、食料をどうする。'},
     {'at': 8.8, 'text': f'結果は、{VN[winner]}。{margin}件差でした。' if margin <= 3 else f'結果は、{VN[winner]}。'},
     {'at': 23.4, 'text': '釣れたのは…'},
@@ -270,7 +277,7 @@ narr = [
     {'at': 51.2, 'text': f'森の奥へ行けるのは、フォロワー300人から。あと{left}人。'},
     {'at': 58.6, 'text': '動画に出ていない人も、島で暮らしています。'},
     {'at': 62.6, 'text': '次の質問です。行方不明者がいる島で、みんなは何をする？自由にコメントしてね。'},
-    {'at': 68.8, 'text': 'ゆらさんのいまは、プロフィールのリンクから。では、また明日、4日目。'},
+    {'at': 68.8, 'text': 'いなくなったのは、だれ？プロフィールのリンクから。では、また明日、4日目。'},
 ]
 story = {
     'title': '3日目（本番）', 'roster': '../input/islanders.json', 'day': DAY, 'fps': 24, 'duration': DUR, 'hour': 10,
@@ -281,6 +288,33 @@ story = {
     'audio': {'narration': narr, 'bgm': {'volume': 0.18}},
     'cover': {'at': 12.9, 'day': f'{DAY}日目', 'lines': [f'食料は、{OPTS[winner]}' if winner != 'C' else '食料は、森の実りに', 'そして、1人いなくなった']},
 }
+TIME_KEYS = {'t', 'from', 'to', 'at', 't0', 't1', 't2', 'winnerAt'}
+def shift(o, at, by):
+    """at 以降の時刻を by 秒うしろへ。時刻の項目（TIME_KEYS）と、区間の並び（tagAll・bannerOff・grow）だけを動かす"""
+    def mv(v, end=False):
+        return round(v + by, 3) if (v > at + 1e-6 if end else v >= at - 1e-6) else v
+    if isinstance(o, dict):
+        for k, v in o.items():
+            if k in TIME_KEYS and isinstance(v, (int, float)): o[k] = mv(v, end=k in ('to', 't2'))
+            elif k in ('tagAll', 'bannerOff') and isinstance(v, list):
+                o[k] = [[mv(iv[0]), mv(iv[1], True), *iv[2:]] for iv in v]
+            elif k == 'grow' and isinstance(v, list): o[k] = [mv(x) for x in v]
+            elif isinstance(v, (dict, list)): shift(v, at, by)
+    elif isinstance(o, list):
+        for x in o:
+            if isinstance(x, (dict, list)): shift(x, at, by)
+INS, LEN = 2.4, 1.5
+for part in ('acts', 'props', 'camera', 'overlay', 'audio'): shift(story[part], INS, LEN)
+story['duration'] = DUR + LEN
+story['cover']['at'] += LEN
+story['camera'].insert(1, {'from': INS, 'to': INS + LEN, 'hour': 9.0, 'keys': [
+    {'t': INS, 'look': [15, 40], 'dist': 760, 'az': 0.5, 'pol': 0.78, 'up': 0, 'frame': 'cove'},
+    {'t': INS + LEN, 'look': [15, 40], 'dist': 700, 'az': 0.62, 'pol': 0.8, 'up': 0, 'frame': 'cove'}]})
+story['overlay']['captions'] += [{'text': '島のいまは、', 'from': INS + 0.1, 'to': INS + LEN, 'y': 1230, 'size': 62},
+                                  {'text': 'プロフィールのリンクから', 'from': INS + 0.1, 'to': INS + LEN, 'y': 1320, 'size': 62}]
+story['overlay']['bannerOff'][0] = [0, INS + LEN]
+story['audio']['narration'].append({'at': INS + 0.05, 'text': '島は、リンクから見られます。'})
+# 漂着の場面の名札は、起きている人も寝ている人も左から順に
 json.dump(story, open(os.path.join(HERE, 'story', 'ep3.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
 # ---- PWA の続き：きょうの行動・行方不明 ----
@@ -294,8 +328,8 @@ td(fs, 'cove', 'work', '入り江で釣りをしている（昨日は1匹だけ�
 for i in F['fishers']:
     if i not in (fs, ns): td(i, 'cove', 'work', '入り江で釣りをしている', 'rod')
 td(ns, 'beach', 'work', '浜で、網の代わりになるものを探している')
-td(cs, 'beach', 'idle', '浜で見つけた木箱を調べている')
-for i in F['farmers']: td(i, 'farm', 'work', '種のない畑を耕している', 'hoe')
+td(cs, 'beach', 'idle', '浜で見つけた木箱のロープを調べている')
+for i in F['farmers']: td(i, 'farm', 'work', '木の実の種をまいてみた畑を、耕している', 'hoe')
 td(F['waterStar'], 'beach', 'idle', '飲める水を探している')
 td(F['waterDrinker'], 'beach', 'idle', '海の水を飲んで、しょっぱい思いをした')
 pwa = {'day': DAY, 'roster': '../input/islanders.json', 'today': today,
