@@ -190,7 +190,7 @@ camera = [
     {'from': 58.4, 'to': 62.2, 'hour': 12, 'keys': [{'t': 58.4, 'look': {'rel': 'g:beach'}, 'dist': 20, 'az': 1.0, 'pol': 1.25, 'up': 2, 'frame': 'cove'}, {'t': 62.2, 'look': {'rel': 'g:beach'}, 'dist': 22, 'az': 1.3, 'pol': 1.25, 'up': 2, 'frame': 'cove'}]},
     {'from': 62.2, 'to': 68.5, 'hour': 17.8, 'keys': [{'t': 62.2, 'look': {'rel': 'g:plaza'}, 'dist': 60, 'az': 0.7, 'pol': 1.1, 'up': 1}, {'t': 68.5, 'look': {'rel': 'g:plaza'}, 'dist': 75, 'az': 0.8, 'pol': 1.05, 'up': 1}]},
 ]
-DUR = 72.0
+DUR = 74.0  # 最後の「リンクから」を言い切れるよう少し長め
 camera.append({'from': 68.5, 'to': DUR, 'hour': 18.3, 'keys': [{'t': 68.5, 'look': {'rel': 'g:plaza'}, 'dist': 260, 'az': 0.8, 'pol': 0.9, 'up': 0}, {'t': DUR, 'look': {'rel': 'g:plaza'}, 'dist': 300, 'az': 0.85, 'pol': 0.88, 'up': 0}]})
 
 bmem = next(x for x in groups if x['name'] == 'beach')['members']
@@ -228,7 +228,6 @@ overlay = {
     'captions': [
         {'text': '食料、どうなった？', 'from': 0.5, 'to': 2.4, 'y': 1290, 'size': 84},
         {'text': f'新しく{joined3}人が漂着', 'from': 2.8, 'to': 6.2, 'y': 1290, 'size': 76},
-        {'text': 'みんな、ぐっすり', 'from': 4.0, 'to': 6.2, 'y': 1400, 'size': 52, 'color': [255, 214, 74]},
         {'text': 'ガサッ', 'from': 44.9, 'to': 45.9, 'y': 700, 'size': 130},
         {'text': '…1人、足りない。', 'from': 48.6, 'to': 51.0, 'y': 1290, 'size': 84},
         {'text': '森の奥へ行けるのは、', 'from': 51.2, 'to': 54.0, 'y': 1230, 'size': 64},
@@ -270,19 +269,28 @@ overlay['captions'] += [
     {'text': 'いなくなったのは、だれ？', 'from': 68.8, 'to': DUR, 'y': 1340, 'size': 62, 'color': [255, 214, 74]},
     {'text': 'プロフィールのリンクから', 'from': 68.8, 'to': DUR, 'y': 1440, 'size': 52},
 ]
+# ナレーションは画面の文をそのまま読まず、場面に合わせた短い要約（at＝話し始め、until＝その場面の終わり）
 narr = [
-    {'at': 0.2, 'text': '3日目。食料は、どうなった？'},
-    {'at': 2.8, 'text': f'今日、新しく{joined3}人が流れ着きました。みんな、ぐっすり。'},
-    {'at': 6.4, 'text': '昨日の質問、食料をどうする。'},
-    {'at': 8.8, 'text': f'結果は、{VN[winner]}。{margin}件差でした。' if margin <= 3 else f'結果は、{VN[winner]}。'},
-    {'at': 23.4, 'text': '釣れたのは…'},
-    {'at': 24.05, 'text': '1匹だけ。'},
-    {'at': 44.6, 'text': '森で物音がして、みんなで逃げ帰ると…'},
-    {'at': 48.6, 'text': '1人、足りない。'},
-    {'at': 51.2, 'text': f'森の奥へ行けるのは、フォロワー300人から。あと{left}人。'},
-    {'at': 58.6, 'text': '動画に出ていない人も、島で暮らしています。'},
-    {'at': 62.6, 'text': '次の質問です。行方不明者がいる島で、みんなは何をする？自由にコメントしてね。'},
-    {'at': 68.8, 'text': 'いなくなったのは、だれ？プロフィールのリンクから。では、また明日、4日目。'},
+    {'at': 0.2, 'until': 2.4, 'text': '3日目。食料は、どうなった？'},
+    {'at': 2.8, 'until': 6.2, 'text': f'今日は、新しく{joined3}人が流れ着きました。'},
+    {'at': 6.4, 'until': 8.6, 'text': '昨日の質問の、結果は…'},
+    {'at': 8.8, 'until': 10.4, 'text': f'森の実り。{margin}件差でした。' if margin <= 3 else '森の実りに決定。'},
+    {'at': 10.8, 'until': 15.0, 'text': '森で木の実を探すも…全員分には、足りないみたい。'},
+    {'at': 15.4, 'until': 19.2, 'text': '危ない動物がいないか、見張る人も。'},
+    {'at': 19.6, 'until': 23.2, 'text': '海では、全員で釣れば、きっと釣れる…はず。'},
+    {'at': 23.4, 'until': 24.0, 'text': '釣れたのは…'},
+    {'at': 24.05, 'until': 26.2, 'text': '1匹だけ。でも、島で初めての魚！'},
+    {'at': 28.3, 'until': 31.0, 'text': '網を作りたいけど、網がない。'},
+    {'at': 31.4, 'until': 34.4, 'text': '浜には、ロープ入りの木箱が。'},
+    {'at': 34.6, 'until': 37.8, 'text': '畑を作ろうにも、種がない。'},
+    {'at': 37.9, 'until': 39.6, 'text': '木の実の種を、まくことに。'},
+    {'at': 39.9, 'until': 43.8, 'text': '飲み水も探したけど…海の水は、しょっぱい。'},
+    {'at': 44.6, 'until': 48.6, 'text': '森で物音がして、みんなで逃げ帰ると…'},
+    {'at': 48.7, 'until': 51.0, 'text': '1人、足りない。'},
+    {'at': 51.2, 'until': 56.2, 'text': f'森の奥へは、フォロワー300人から。あと{left}人。'},
+    {'at': 58.6, 'until': 62.2, 'text': '動画に出ていない人も、島で暮らしています。'},
+    {'at': 62.6, 'until': 68.5, 'text': '次の質問。行方不明者がいる島で、みんなは何をする？コメントしてね。'},
+    {'at': 68.8, 'until': DUR, 'text': 'いなくなったのは、だれ？プロフィールのリンクから、確かめてね。'},
 ]
 story = {
     'title': '3日目（本番）', 'roster': '../input/islanders.json', 'day': DAY, 'fps': 24, 'duration': DUR, 'hour': 10,
@@ -293,14 +301,14 @@ story = {
     'audio': {'narration': narr, 'bgm': {'volume': 0.18}},
     'cover': {'at': 12.9, 'day': f'{DAY}日目', 'lines': [f'食料は、{OPTS[winner]}' if winner != 'C' else '食料は、森の実りに', 'そして、1人いなくなった']},
 }
-TIME_KEYS = {'t', 'from', 'to', 'at', 't0', 't1', 't2', 'winnerAt'}
+TIME_KEYS = {'t', 'from', 'to', 'at', 't0', 't1', 't2', 'winnerAt', 'until'}
 def shift(o, at, by):
     """at 以降の時刻を by 秒うしろへ。時刻の項目（TIME_KEYS）と、区間の並び（tagAll・bannerOff・grow）だけを動かす"""
     def mv(v, end=False):
         return round(v + by, 3) if (v > at + 1e-6 if end else v >= at - 1e-6) else v
     if isinstance(o, dict):
         for k, v in o.items():
-            if k in TIME_KEYS and isinstance(v, (int, float)): o[k] = mv(v, end=k in ('to', 't2'))
+            if k in TIME_KEYS and isinstance(v, (int, float)): o[k] = mv(v, end=k in ('to', 't2', 'until'))
             elif k in ('tagAll', 'bannerOff') and isinstance(v, list):
                 o[k] = [[mv(iv[0]), mv(iv[1], True), *iv[2:]] for iv in v]
             elif k == 'grow' and isinstance(v, list): o[k] = [mv(x) for x in v]

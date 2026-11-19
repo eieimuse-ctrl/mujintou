@@ -352,11 +352,24 @@ def build_audio():
     # ffmpeg の入力0はコマ画像（音声なし）なので、音声の入力番号は 1 から数える（src）。k は混ぜる本数
     inputs, filters, k = [], [], 0
     src = lambda: k + 1
-    for n in S.get('audio', {}).get('narration', []):
+    narr = sorted(S.get('audio', {}).get('narration', []), key=lambda n: n['at'])
+    print('ナレーション（開始・使える長さ・声の長さ・速さ）')
+    for j, n in enumerate(narr):
         f = voice(n['text'])
         if not f: continue
+        # 使える長さ：次の文の開始（または台本の until、動画の終わり）まで
+        nxt = narr[j + 1]['at'] if j + 1 < len(narr) else S['duration'] - 0.2
+        room = min(n.get('until', nxt), nxt) - n['at'] - 0.12
+        with wave.open(f) as w: dur = w.getnframes() / w.getframerate()
+        tempo = 1.0
+        if dur > room:
+            tempo = min(1.3, dur / room)
+            if dur / tempo > room + 0.05:
+                print(f'!! 収まらない：{n["at"]:.2f}s「{n["text"]}」声 {dur:.2f}s／使える {room:.2f}s（1.3倍速でも {dur / 1.3:.2f}s）')
+        print(f'  {n["at"]:6.2f}s  {room:5.2f}s  {dur:5.2f}s  x{tempo:.2f}  {n["text"]}')
         inputs += ['-i', f]; ms = int(n['at'] * 1000)
-        filters.append(f'[{src()}:a]adelay={ms}|{ms},volume=1.0[n{k}]'); k += 1
+        speed = f',atempo={tempo:.3f}' if tempo > 1.0 else ''
+        filters.append(f'[{src()}:a]adelay={ms}|{ms}{speed},volume=1.0[n{k}]'); k += 1
     bgm = os.environ.get('BGM', os.path.expanduser('~/workspace/mujintou/video/assets/bgm.mp3'))
     bg = S.get('audio', {}).get('bgm')
     if bg and os.path.exists(bgm):
