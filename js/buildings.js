@@ -197,8 +197,37 @@ function still() {
   };
 }
 
-export const BUILDING_TYPES = { hut, field, pier, watchtower, still };
-export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台', still: '蒸留装置' };
+// 昔の住人の跡：くずれた小屋（柱と崩れた屋根）、炭になった焚き火、石の道具
+function ruins() {
+  const b = [];
+  const OLD = '#6e5a44', OLD_D = '#4f4032', MOSS = '#4f7a3a', ASH = '#3b3631', STONE = '#8d8f97';
+  b.push(box(0, 0.15, 0, 6.0, 0.3, 5.0, OLD_D));
+  for (const [x, z, h] of [[-2.6, -2.1, 2.6], [2.6, -2.1, 1.6], [-2.6, 2.1, 1.1], [2.6, 2.1, 2.2]]) b.push(box(x, 0.3 + h / 2, z, 0.5, h, 0.5, OLD));
+  b.push(box(-0.6, 2.4, -1.2, 4.6, 0.3, 2.6, OLD)); // 傾いた屋根の残り
+  b.push(box(1.4, 0.55, 1.0, 2.6, 0.5, 1.2, OLD_D)); // 崩れた屋根
+  b.push(box(-2.2, 0.45, -0.2, 1.2, 0.3, 1.2, MOSS));
+  b.push(box(1.0, 0.6, -0.9, 0.8, 0.12, 0.8, MOSS));
+  // 炭になった焚き火
+  for (const [x, z] of [[-0.6, 3.6], [0.6, 3.6], [0, 3.0], [0, 4.2]]) b.push(box(x, 0.35, z, 0.5, 0.4, 0.5, STONE));
+  b.push(box(0, 0.4, 3.6, 0.7, 0.2, 0.7, ASH));
+  // 石の道具（石斧・石のナイフ）
+  b.push(box(2.8, 0.42, 3.4, 0.9, 0.12, 0.16, OLD));
+  b.push(box(3.25, 0.45, 3.4, 0.35, 0.28, 0.3, STONE));
+  b.push(box(2.6, 0.4, 3.9, 0.6, 0.08, 0.2, STONE));
+  return {
+    label: '昔の住人の跡',
+    boxes: b,
+    height: 3.0,
+    footprint: { x0: -3.1, x1: 3.1, z0: -2.6, z1: 2.6 },
+    spots: [
+      { x: 0, z: 5.2, fx: 0, fz: 3.6, jobs: ['探検家'], label: '昔の住人の跡' },
+      { x: 3.6, z: 4.6, fx: 2.8, fz: 3.4, jobs: ['大工', '探検家'], label: '昔の住人の跡' },
+    ],
+  };
+}
+
+export const BUILDING_TYPES = { hut, field, pier, watchtower, still, ruins };
+export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台', still: '蒸留装置', ruins: '昔の住人の跡' };
 
 // 広場のたき火（建物データではなく、島に最初からある）
 export function campfireBoxes() {
