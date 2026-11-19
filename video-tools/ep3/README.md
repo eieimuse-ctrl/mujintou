@@ -84,5 +84,6 @@ bash video-tools/ep3/run.sh video-tools/ep3/story/fish_test.json
   "forestRoad": { "points": [[-74, -22], [-128, -34]], "need": 300, "startDay": 4, "label": "光の場所" }
   ```
   「島のいま」に「森の道づくり 120／300人（光の場所まで、木が300本。島民1人が1本ずつ切りひらく。あと180人）」と出る
+- 道に沿って松明が並ぶ（火の番：獣は火をこわがり、火が消えると道は戻る。だから1本に1人が火の番に立つ。見た目の松明は5人に1つ）。島民の詳細に「火の番　森の道の◯本目」（島に来た順）
 - 建物の種類に `still`（砂と石の蒸留装置）を追加。小屋は `hut`。`buildings` に `{ "id", "type", "name", "x", "z", "rot", "builtDay" }`
 - 台本（story JSON）にも `forestRoad` と `buildings` を書けば、動画の島にも同じ道と建物が出る
