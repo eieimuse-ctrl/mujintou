@@ -25,9 +25,10 @@ function findChrome() {
   if (process.env.CHROME) return process.env.CHROME;
   const base = path.join(process.env.HOME, '.cache/puppeteer/chrome-headless-shell');
   if (fs.existsSync(base)) {
-    const v = fs.readdirSync(base).sort().pop();
-    const p = path.join(base, v, 'chrome-headless-shell-linux64/chrome-headless-shell');
-    if (fs.existsSync(p)) return p;
+    for (const v of fs.readdirSync(base).sort().reverse()) {
+      const p = path.join(base, v, 'chrome-headless-shell-linux64/chrome-headless-shell');
+      if (fs.existsSync(p)) return p;
+    }
   }
   return '/usr/bin/google-chrome';
 }
@@ -35,8 +36,9 @@ function findChrome() {
 // 台本に出る人だけの名簿・島の状態
 const roster = JSON.parse(fs.readFileSync(path.resolve(path.dirname(storyPath), story.roster), 'utf8'));
 const byId = new Map(roster.islanders.map((p) => [p.id, p]));
-const castPeople = story.cast.map((id) => byId.get(id)).filter(Boolean).map((p) => ({ ...p, joinedDay: 1, ...(story.override?.[p.id] || {}), ...(story.overrideAll || {}) }));
-const missing = story.cast.filter((id) => !byId.has(id));
+const castIds = [...new Set([...(story.cast || []), ...(story.groups || []).flatMap((g) => g.members || [])])];
+const castPeople = castIds.map((id) => byId.get(id)).filter(Boolean).map((p) => ({ ...p, joinedDay: 1, ...(story.override?.[p.id] || {}), ...(story.overrideAll || {}) }));
+const missing = castIds.filter((id) => !byId.has(id));
 if (missing.length) console.log('名簿に無いので出さない:', missing.join(', '));
 const state = JSON.parse(fs.readFileSync(path.join(REPO, 'data/state.json'), 'utf8'));
 Object.assign(state, { day: story.day || 3, sample: false, base: story.base ?? { name: '中央の広場', x: 0, z: 5, decidedDay: 2 }, currentVote: null, buildings: story.buildings || [] });

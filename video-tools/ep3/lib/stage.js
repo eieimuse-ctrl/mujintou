@@ -33,39 +33,76 @@
   function setup(story) {
     const people = a.actors.actors.map((x) => x.person);
     const idx = new Map(people.map((p, i) => [p.id, i]));
-    const cast = story.cast.filter((id) => idx.has(id));
+    const castAll = [...new Set([...(story.cast || []), ...(story.groups || []).flatMap((g) => g.members || [])])];
+    const cast = castAll.filter((id) => idx.has(id));
 
-    // ---- 場所：岸に沿って並ぶ（shore） ----
-    const pl = story.place;
-    const sp = { x: pl.spot[0], z: pl.spot[1] };
-    let wx = 0, wz = 0;
-    for (let k = 0; k < 72; k++) { const g = (k / 72) * Math.PI * 2, cx = Math.sin(g), cz = Math.cos(g); if (T.heightAt(sp.x + cx * 8, sp.z + cz * 8) < 1) { wx += cx; wz += cz; } }
-    const wl = Math.hypot(wx, wz) || 1;
-    const W = { x: wx / wl, z: wz / wl }; // 海の向き
-    const Tg = { x: -W.z, z: W.x }; // 岸に沿う向き
-    const coast = (al) => {
-      const bx = sp.x + Tg.x * al, bz = sp.z + Tg.z * al;
-      let last = -30;
-      for (let s = -30; s <= 30; s += 0.25) if (T.heightAt(bx + W.x * s, bz + W.z * s) >= 1) last = s;
-      return { x: bx + W.x * (last - (pl.back ?? 1.4)), z: bz + W.z * (last - (pl.back ?? 1.4)) };
+    // ---- 置き場所（groups）：shore＝岸に沿って、line＝陸で横一列、ring＝輪になって ----
+    // 互換：story.place（shore 1つ）だけなら、cast 全員をその1群に入れる
+    const groupsIn = story.groups || [{ name: 'main', ...story.place, members: story.cast }];
+    const seaDir = (x, z) => {
+      let wx = 0, wz = 0;
+      for (let k = 0; k < 72; k++) { const g = (k / 72) * Math.PI * 2, cx = Math.sin(g), cz = Math.cos(g); if (T.heightAt(x + cx * 8, z + cz * 8) < 1) { wx += cx; wz += cz; } }
+      const l = Math.hypot(wx, wz) || 1;
+      return { x: wx / l, z: wz / l };
     };
-    // 並び：cast[0] が真ん中、あとは左右交互
-    const slot = new Map();
-    const gap = pl.gap ?? 2.4;
-    cast.forEach((id, k) => {
-      const side = k === 0 ? 0 : (k % 2 ? 1 : -1) * Math.ceil(k / 2);
-      const jitter = (hash01(id, 3) - 0.5) * (pl.jitter ?? 0.5);
-      slot.set(id, coast(side * gap + jitter));
-    });
-
-    // 相対位置 {rel: id|'line', t: 岸沿い, n: 陸の奥へ(+)／海へ(-), up}
-    const resolve = (r) => {
+    const G = new Map();
+    const slot = new Map(); // id → {x, z, g}（最初に入っている群＝その人の持ち場）
+    const gslot = new Map(); // 群の名前 → (id → {x, z, g})：その群の中での各人の場所（集合のとき使う）
+    for (const gi of groupsIn) {
+      const sp = { x: gi.spot[0], z: gi.spot[1] };
+      let F; // 群の「前」＝人が向く方向
+      if (gi.type === 'shore' || !gi.type) F = seaDir(sp.x, sp.z);
+      else if (Array.isArray(gi.face)) { const l = Math.hypot(gi.face[0], gi.face[1]) || 1; F = { x: gi.face[0] / l, z: gi.face[1] / l }; }
+      else F = { x: 0, z: 1 };
+      const Tg = { x: -F.z, z: F.x };
+      const g = { name: gi.name, type: gi.type || 'shore', sp, F, Tg, gap: gi.gap ?? 2.4, back: gi.back ?? 1.4 };
+      g.at = (al, n = 0) => {
+        let bx = sp.x + Tg.x * al, bz = sp.z + Tg.z * al;
+        if (g.type === 'shore') {
+          let last = -30;
+          for (let s2 = -30; s2 <= 30; s2 += 0.25) if (T.heightAt(bx + F.x * s2, bz + F.z * s2) >= 1) last = s2;
+          bx += F.x * (last - g.back); bz += F.z * (last - g.back);
+        }
+        return { x: bx - F.x * n, z: bz - F.z * n };
+      };
+      G.set(g.name, g);
+      const mem = (gi.members || []).filter((id) => idx.has(id));
+      const gs = new Map(); gslot.set(g.name, gs);
+      mem.forEach((id, k) => {
+        const jitter = (hash01(id, 3) - 0.5) * (gi.jitter ?? 0.5);
+        let p;
+        if (g.type === 'ring') {
+          // 輪：内側から 8, 14, 20 … 人ずつ
+          let r = 0, cap = 8, kk = k, ring = 0;
+          while (kk >= cap) { kk -= cap; ring++; cap += 6; }
+          r = (gi.radius ?? 5) + ring * (gi.gap ?? 2.6);
+          const ang = (2 * Math.PI * kk) / cap + ring * 0.4;
+          p = { x: sp.x + Math.sin(ang) * r + jitter, z: sp.z + Math.cos(ang) * r };
+        } else {
+          const side = k === 0 ? 0 : (k % 2 ? 1 : -1) * Math.ceil(k / 2);
+          const row = gi.rows ? Math.floor(Math.abs(side) / gi.rows) : 0;
+          p = g.at(side * g.gap + jitter, row * (gi.rowGap ?? 2.2));
+        }
+        gs.set(id, { x: p.x, z: p.z, g });
+        if (!slot.has(id)) slot.set(id, { x: p.x, z: p.z, g });
+      });
+    }
+    const firstG = G.values().next().value;
+    // 相対位置 {rel: ID か 'g:群の名前', t: 群の横方向, n: 群の奥(+)／前(-), up}
+    // t を渡すと、rel の人の「その時刻にいる場所」を基準にする（場面ごとに持ち場が変わるため）
+    const resolve = (r, t) => {
       if (!r) return null;
-      const base = r.rel === 'line' || !slot.has(r.rel) ? sp : slot.get(r.rel);
-      const x = base.x + Tg.x * (r.t || 0) - W.x * (r.n || 0);
-      const z = base.z + Tg.z * (r.t || 0) - W.z * (r.n || 0);
-      return { x, z, y: yAt(x, z) + (r.up || 0) };
+      if (Array.isArray(r)) return { x: r[0], z: r[1], y: yAt(r[0], r[1]) };
+      let base, g;
+      if (typeof r.rel === 'string' && r.rel.startsWith('g:')) { g = G.get(r.rel.slice(2)) || firstG; base = g.at(0); }
+      else if (slot.has(r.rel) && t != null && keys.has(r.rel)) { const s2 = stateOf(r.rel, t); g = s2.g || firstG; base = s2; }
+      else if (slot.has(r.rel)) { const s2 = slot.get(r.rel); g = s2.g; base = s2; }
+      else { g = firstG; base = g.sp; }
+      const x = base.x + g.Tg.x * (r.t || 0) - g.F.x * (r.n || 0);
+      const z = base.z + g.Tg.z * (r.t || 0) - g.F.z * (r.n || 0);
+      return { x, z, y: yAt(x, z) + (r.up || 0), g };
     };
+    const groupOf = (r) => (r && r.rel && String(r.rel).startsWith('g:') ? G.get(String(r.rel).slice(2)) : slot.get(r?.rel)?.g) || firstG;
 
     // ---- 島民の台本：人ごとのキーを時刻順に ----
     const keys = new Map(cast.map((id) => [id, []]));
@@ -80,11 +117,16 @@
 
     // 人ごとの状態（その時刻までのキーを積み上げる）
     const stateOf = (id, t) => {
-      const st = { pos: slot.get(id), anim: 'idle', frame: null, hide: false, face: 'water', move: null };
+      const home = slot.get(id) || { x: 0, z: 0, g: firstG };
+      const st = { pos: home, anim: 'idle', frame: null, hide: !slot.has(id), face: 'front', move: null, moveAnim: 'walk', g: home.g };
       for (const k of keys.get(id)) {
         if (k.t > t) break;
-        if (k.at) st.pos = resolve(k.at);
-        if (k.to) st.move = { from: st.pos, to: resolve(k.to), t0: k.t, t1: k.t + (k.dur || 1) };
+        const at = k.at && k.at.slot ? gslot.get(k.at.slot)?.get(id) : null;
+        const to = k.to && k.to.slot ? gslot.get(k.to.slot)?.get(id) : null;
+        if (at) { st.pos = at; st.g = at.g; st.move = null; }
+        else if (k.at) { const q = resolve(k.at, k.t); st.pos = q; st.g = q.g || groupOf(k.at); st.move = null; }
+        if (to) { st.move = { from: moving(st, k.t), to, t0: k.t, t1: k.t + (k.dur || 1) }; st.g = to.g; st.moveAnim = k.run ? 'run' : 'walk'; }
+        else if (k.to) { const q = resolve(k.to, k.t); st.move = { from: k.from ? resolve(k.from, k.t) : moving(st, k.t), to: q, t0: k.t, t1: k.t + (k.dur || 1) }; st.g = q.g || groupOf(k.to); st.moveAnim = k.run ? 'run' : 'walk'; }
         if (k.anim) { st.anim = k.anim; st.frame = null; }
         if (k.frame !== undefined) st.frame = k.frame;
         if (k.hide !== undefined) st.hide = k.hide;
@@ -96,15 +138,22 @@
         if (u < 1) { const e = Math.max(0, u); p = { x: st.move.from.x + (st.move.to.x - st.move.from.x) * e, z: st.move.from.z + (st.move.to.z - st.move.from.z) * e }; walking = true; }
         else p = st.move.to;
       }
-      let dx = W.x, dz = W.z;
+      const g = st.g || firstG;
+      let dx = g.F.x, dz = g.F.z;
       if (walking) { dx = st.move.to.x - st.move.from.x; dz = st.move.to.z - st.move.from.z; }
-      else if (st.face === 'land') { dx = -W.x; dz = -W.z; }
+      else if (st.face === 'back' || st.face === 'land') { dx = -g.F.x; dz = -g.F.z; }
       else if (st.face && st.face.to && slot.has(st.face.to)) { const q = posAt(st.face.to, t); dx = q.x - p.x; dz = q.z - p.z; }
-      else if (st.face === 'left') { dx = -Tg.x; dz = -Tg.z; }
-      else if (st.face === 'right') { dx = Tg.x; dz = Tg.z; }
-      return { x: p.x, z: p.z, dx, dz, anim: walking ? 'walk' : st.anim, frame: walking ? null : st.frame, hide: st.hide };
+      else if (st.face && st.face.at) { const q = resolve(st.face.at, t); dx = q.x - p.x; dz = q.z - p.z; }
+      else if (st.face === 'left') { dx = -g.Tg.x; dz = -g.Tg.z; }
+      else if (st.face === 'right') { dx = g.Tg.x; dz = g.Tg.z; }
+      return { x: p.x, z: p.z, g, dx, dz, anim: walking ? st.moveAnim : st.anim, frame: walking ? null : st.frame, hide: st.hide };
     };
     const posAt = (id, t) => { const s = stateOf(id, t); return { x: s.x, z: s.z }; };
+    function moving(st, t) {
+      if (!st.move) return st.pos;
+      const u = Math.min(1, Math.max(0, (t - st.move.t0) / (st.move.t1 - st.move.t0)));
+      return { x: st.move.from.x + (st.move.to.x - st.move.from.x) * u, z: st.move.from.z + (st.move.to.z - st.move.from.z) * u };
+    }
 
     // ---- 小道具（ドット絵のスプライト） ----
     const proto = a.actors.actors[0].sprite;
@@ -127,6 +176,43 @@
         '..kkbbbbk.kk',
         '....kkkk....',
       ], { k: '#231d36', b: '#7fb7e0', w: '#ffffff' }),
+      fruit: pixel([
+        '...gg...',
+        '..gg....',
+        '.rrrrr..',
+        'rrwrrrr.',
+        'rrrrrrr.',
+        'rrrrrrr.',
+        '.rrrrr..',
+        '..rrr...',
+      ], { g: '#3f8f3a', r: '#d94a5a', w: '#ffd0d6' }),
+      crate: pixel([
+        'kkkkkkkkkk',
+        'kbbbbbbbbk',
+        'kbkbbbbkbk',
+        'kbbkbbkbbk',
+        'kbbbkkbbbk',
+        'kbbkbbkbbk',
+        'kbkbbbbkbk',
+        'kbbbbbbbbk',
+        'kkkkkkkkkk',
+      ], { k: '#4a2f1b', b: '#b07a44' }),
+      question: pixel([
+        '..kkkkkkkk..',
+        '.kwwwwwwwwk.',
+        'kwwwkkkkwwwk',
+        'kwwkkwwkkwwk',
+        'kwwwwwwkkwwk',
+        'kwwwwwkkwwwk',
+        'kwwwwkkwwwwk',
+        'kwwwwkkwwwwk',
+        'kwwwwwwwwwwk',
+        'kwwwwkkwwwwk',
+        '.kwwwkkwwwk.',
+        '..kkkwwkkk..',
+        '....kwk.....',
+        '.....k......',
+      ], { k: '#231d36', w: '#ffffff' }),
       splash: pixel([
         '.w...w...w.',
         '..w.www.w..',
@@ -136,7 +222,7 @@
     };
     const props = (story.props || []).map((pr) => {
       const art = ART[pr.type];
-      const sp2 = new SpriteC(new MatC({ map: art.tex, alphaTest: 0.5, transparent: false, depthTest: pr.type !== 'splash' }));
+      const sp2 = new SpriteC(new MatC({ map: art.tex, alphaTest: 0.5, transparent: false, depthTest: pr.type !== 'splash' && pr.type !== 'question', fog: pr.type !== 'question' }));
       const hgt = pr.size || 1.4;
       sp2.scale.set((hgt * art.w) / art.h, hgt, 1);
       sp2.center.set(0.5, 0);
@@ -148,7 +234,7 @@
     const propAt = (P, t) => {
       const pr = P.pr;
       if (t < pr.t0 || t > (pr.t2 ?? pr.t1)) { P.sp.visible = false; return null; }
-      const A = resolve(pr.from), B = resolve(pr.to || pr.from);
+      const A = P.A || (P.A = resolve(pr.from, pr.t0)), B = P.B || (P.B = resolve(pr.to || pr.from, pr.t0));
       const u = ease((t - pr.t0) / Math.max(0.01, pr.t1 - pr.t0));
       const arc = (pr.arc || 0) * 4 * u * (1 - u);
       const x = A.x + (B.x - A.x) * u, z = A.z + (B.z - A.z) * u, y = A.y + (B.y - A.y) * u + arc;
@@ -159,10 +245,14 @@
     };
 
     // ---- カメラ：ショットごとにキー（look は相対位置）。az は「海側から見る」を0にした角度 ----
-    const baseAz = Math.atan2(W.x, W.z);
     const shots = story.camera.map((sh) => ({
       from: sh.from, to: sh.to, hour: sh.hour ?? story.hour ?? 10,
-      keys: sh.keys.map((k) => { const L = resolve(k.look); return { t: k.t, tx: L.x, ty: L.y + (k.up ?? 2), tz: L.z, dist: Math.log(k.dist), az: baseAz + (k.az || 0), pol: k.pol ?? 1.28, fov: k.fov ?? 40 }; }),
+      keys: sh.keys.map((k) => {
+        const L = resolve(k.look, k.t);
+        const g = k.frame ? G.get(k.frame) : L.g || firstG;
+        const baseAz = Math.atan2(g.F.x, g.F.z);
+        return { t: k.t, tx: L.x, ty: L.y + (k.up ?? 2), tz: L.z, dist: Math.log(k.dist), az: baseAz + (k.az || 0), pol: k.pol ?? 1.28, fov: k.fov ?? 40 };
+      }),
     }));
     const camAt = (t) => {
       const sh = shots.find((s) => t >= s.from && t < s.to) || shots[shots.length - 1];
@@ -172,7 +262,7 @@
       return o;
     };
 
-    S = { cast, idx, stateOf, props, propAt, camAt, story, W, Tg };
+    S = { cast, idx, stateOf, props, propAt, camAt, story };
     globalThis.__stagePose = (i) => {
       const id = people[i].id;
       if (!keys.has(id)) return { x: 0, y: -80, z: 0, dx: 0, dz: 1, anim: 'idle' };
@@ -180,7 +270,7 @@
       if (s.hide) return { x: s.x, y: -80, z: s.z, dx: 0, dz: 1, anim: 'idle' };
       return { x: s.x, y: yAt(s.x, s.z), z: s.z, dx: s.dx, dz: s.dz, anim: s.anim, frame: s.frame, bubble: null, line: '' };
     };
-    return { cast, missing: story.cast.filter((id) => !idx.has(id)), sea: W, n: cast.length };
+    return { cast, missing: castAll.filter((id) => !idx.has(id)), n: cast.length, groups: [...G.keys()] };
   }
 
   // 1コマ：カメラを置き、島民と小道具を動かして描く。名札用に各人の頭と足の画面位置を返す

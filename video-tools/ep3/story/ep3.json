@@ -1,0 +1,2495 @@
+{
+ "title": "3日目（本番）",
+ "roster": "../input/islanders.json",
+ "day": 3,
+ "fps": 24,
+ "duration": 72.0,
+ "hour": 10,
+ "baseTime": "2026-11-19T09:00:00+09:00",
+ "cast": [
+  "masatk_no_m",
+  "dosukoi.5845",
+  "yamato_family327",
+  "_3yu.96_",
+  "nanasi774_ou",
+  "kubotto0505",
+  "takada_1gram",
+  "ichi.09",
+  "yuradayo0330",
+  "hyuga_0619",
+  "savans880",
+  "kazuzu4771",
+  "analogayane",
+  "marumegane4",
+  "atsukidesu",
+  "ibu131313",
+  "nabemegane",
+  "momosann.0420.sabu",
+  "tsuki5747",
+  "bear.44190633",
+  "taishi.uramoto23",
+  "yukikun4126",
+  "rino._.15",
+  "saori.siegert",
+  "sakasaka_1482",
+  "horiharu0220",
+  "shugo.77",
+  "_shaun81",
+  "hori_harusabu",
+  "musashi.617",
+  "kosei20130324",
+  "s_02y.ayta",
+  "nintendo_3ds.12",
+  "hayato210165",
+  "sasa_mi42151315",
+  "tako1216yaki",
+  "s.sora1225",
+  "_otekat_____",
+  "shinohara_kohei",
+  "yuridazo68",
+  "aosan116",
+  "paianiyan",
+  "akuserumeihong",
+  "hiropone_89",
+  "yu._.u225",
+  "tokitin2014",
+  "max_no_otousan",
+  "fuse.daichi",
+  "shimadaaaa03",
+  "yo79499",
+  "hkssss69",
+  "yuzunasama8737",
+  "hafuki82",
+  "kame___1020",
+  "tarak_o002",
+  "bea_utiful183",
+  "singlepapatsu.i",
+  "oka_tomohiko"
+ ],
+ "groups": [
+  {
+   "name": "forest",
+   "type": "line",
+   "spot": [
+    -76,
+    -23
+   ],
+   "face": [
+    0.98,
+    0.2
+   ],
+   "gap": 2.6,
+   "members": [
+    "rino._.15",
+    "hyuga_0619",
+    "atsukidesu",
+    "_3yu.96_",
+    "momosann.0420.sabu",
+    "yuradayo0330",
+    "tsuki5747",
+    "bear.44190633",
+    "dosukoi.5845",
+    "nanasi774_ou",
+    "kubotto0505",
+    "sakasaka_1482",
+    "horiharu0220",
+    "shugo.77",
+    "_shaun81",
+    "hori_harusabu",
+    "musashi.617",
+    "kosei20130324",
+    "s_02y.ayta",
+    "nintendo_3ds.12",
+    "hayato210165"
+   ]
+  },
+  {
+   "name": "beach",
+   "type": "ring",
+   "spot": [
+    238,
+    125
+   ],
+   "radius": 3.2,
+   "gap": 2.6,
+   "members": [
+    "masatk_no_m",
+    "_3yu.96_",
+    "takada_1gram",
+    "yuradayo0330",
+    "savans880",
+    "kazuzu4771",
+    "analogayane",
+    "ibu131313",
+    "nabemegane",
+    "momosann.0420.sabu",
+    "r4im_s00",
+    "yuya71195",
+    "waka32034",
+    "yuto_0104_saiko",
+    "tkd3874",
+    "reito_0512h",
+    "mawl4566",
+    "watanabea1026",
+    "reka8181510",
+    "hayaton863",
+    "shun0505",
+    "t.waka0113",
+    "chibekoab",
+    "haijina"
+   ]
+  },
+  {
+   "name": "net",
+   "type": "shore",
+   "spot": [
+    236,
+    150
+   ],
+   "gap": 2.6,
+   "back": 1.6,
+   "members": [
+    "kazuzu4771",
+    "analogayane",
+    "sasa_mi42151315",
+    "tako1216yaki",
+    "s.sora1225",
+    "_otekat_____"
+   ]
+  },
+  {
+   "name": "cove",
+   "type": "shore",
+   "spot": [
+    -9,
+    189
+   ],
+   "gap": 2.4,
+   "back": 1.4,
+   "members": [
+    "ibu131313",
+    "nabemegane",
+    "taishi.uramoto23",
+    "yukikun4126",
+    "savans880",
+    "saori.siegert",
+    "ichi.09",
+    "marumegane4",
+    "shinohara_kohei",
+    "yuridazo68",
+    "aosan116",
+    "paianiyan",
+    "akuserumeihong",
+    "hiropone_89",
+    "yu._.u225",
+    "tokitin2014",
+    "max_no_otousan",
+    "fuse.daichi",
+    "shimadaaaa03",
+    "yo79499",
+    "hkssss69",
+    "yuzunasama8737",
+    "hafuki82",
+    "kame___1020"
+   ]
+  },
+  {
+   "name": "farm",
+   "type": "line",
+   "spot": [
+    -7,
+    99
+   ],
+   "face": [
+    0.6,
+    0.8
+   ],
+   "gap": 3.0,
+   "members": [
+    "masatk_no_m",
+    "takada_1gram",
+    "yamato_family327"
+   ]
+  },
+  {
+   "name": "water",
+   "type": "shore",
+   "spot": [
+    244,
+    110
+   ],
+   "gap": 2.6,
+   "back": 1.4,
+   "members": [
+    "bear.44190633",
+    "dosukoi.5845"
+   ]
+  },
+  {
+   "name": "plaza",
+   "type": "ring",
+   "spot": [
+    0,
+    5
+   ],
+   "radius": 7,
+   "gap": 2.8,
+   "members": [
+    "masatk_no_m",
+    "dosukoi.5845",
+    "yamato_family327",
+    "_3yu.96_",
+    "nanasi774_ou",
+    "kubotto0505",
+    "takada_1gram",
+    "ichi.09",
+    "hyuga_0619",
+    "savans880",
+    "kazuzu4771",
+    "analogayane",
+    "marumegane4",
+    "atsukidesu",
+    "ibu131313",
+    "nabemegane",
+    "momosann.0420.sabu",
+    "tsuki5747",
+    "bear.44190633",
+    "taishi.uramoto23",
+    "yukikun4126",
+    "rino._.15",
+    "saori.siegert",
+    "sakasaka_1482",
+    "horiharu0220",
+    "shugo.77",
+    "_shaun81",
+    "hori_harusabu",
+    "musashi.617",
+    "kosei20130324",
+    "s_02y.ayta",
+    "nintendo_3ds.12",
+    "hayato210165",
+    "sasa_mi42151315",
+    "tako1216yaki",
+    "s.sora1225",
+    "_otekat_____",
+    "shinohara_kohei",
+    "yuridazo68",
+    "aosan116",
+    "paianiyan",
+    "akuserumeihong",
+    "hiropone_89",
+    "yu._.u225",
+    "tokitin2014",
+    "max_no_otousan",
+    "fuse.daichi",
+    "shimadaaaa03",
+    "yo79499",
+    "hkssss69",
+    "yuzunasama8737",
+    "hafuki82",
+    "kame___1020",
+    "tarak_o002",
+    "bea_utiful183",
+    "singlepapatsu.i",
+    "oka_tomohiko"
+   ]
+  }
+ ],
+ "acts": [
+  {
+   "who": "*",
+   "t": 0,
+   "anim": "idle",
+   "face": "front"
+  },
+  {
+   "who": [
+    "rino._.15",
+    "hyuga_0619",
+    "atsukidesu",
+    "_3yu.96_",
+    "momosann.0420.sabu",
+    "yuradayo0330",
+    "tsuki5747",
+    "bear.44190633",
+    "dosukoi.5845",
+    "nanasi774_ou",
+    "kubotto0505",
+    "sakasaka_1482",
+    "horiharu0220",
+    "shugo.77",
+    "_shaun81",
+    "hori_harusabu",
+    "musashi.617",
+    "kosei20130324",
+    "s_02y.ayta",
+    "nintendo_3ds.12",
+    "hayato210165"
+   ],
+   "t": 0,
+   "at": {
+    "slot": "forest"
+   },
+   "anim": "idle",
+   "face": "front"
+  },
+  {
+   "who": [
+    "masatk_no_m",
+    "_3yu.96_",
+    "takada_1gram",
+    "yuradayo0330",
+    "savans880",
+    "kazuzu4771",
+    "analogayane",
+    "ibu131313",
+    "nabemegane",
+    "momosann.0420.sabu",
+    "r4im_s00",
+    "yuya71195",
+    "waka32034",
+    "yuto_0104_saiko",
+    "tkd3874",
+    "reito_0512h",
+    "mawl4566",
+    "watanabea1026",
+    "reka8181510",
+    "hayaton863",
+    "shun0505",
+    "t.waka0113",
+    "chibekoab",
+    "haijina"
+   ],
+   "t": 2.4,
+   "at": {
+    "slot": "beach"
+   },
+   "anim": "idle",
+   "face": "front"
+  },
+  {
+   "who": [
+    "ibu131313",
+    "nabemegane",
+    "taishi.uramoto23",
+    "yukikun4126",
+    "savans880",
+    "saori.siegert",
+    "ichi.09",
+    "marumegane4",
+    "shinohara_kohei",
+    "yuridazo68",
+    "aosan116",
+    "paianiyan",
+    "akuserumeihong",
+    "hiropone_89",
+    "yu._.u225",
+    "tokitin2014",
+    "max_no_otousan",
+    "fuse.daichi",
+    "shimadaaaa03",
+    "yo79499",
+    "hkssss69",
+    "yuzunasama8737",
+    "hafuki82",
+    "kame___1020"
+   ],
+   "t": 19.2,
+   "at": {
+    "slot": "cove"
+   },
+   "anim": "idle",
+   "face": "front"
+  },
+  {
+   "who": [
+    "kazuzu4771",
+    "analogayane",
+    "sasa_mi42151315",
+    "tako1216yaki",
+    "s.sora1225",
+    "_otekat_____"
+   ],
+   "t": 28.0,
+   "at": {
+    "slot": "net"
+   },
+   "anim": "idle",
+   "face": "front"
+  },
+  {
+   "who": [
+    "masatk_no_m",
+    "takada_1gram",
+    "yamato_family327"
+   ],
+   "t": 34.4,
+   "at": {
+    "slot": "farm"
+   },
+   "anim": "idle",
+   "face": "front"
+  },
+  {
+   "who": [
+    "bear.44190633",
+    "dosukoi.5845"
+   ],
+   "t": 39.6,
+   "at": {
+    "slot": "water"
+   },
+   "anim": "idle",
+   "face": "front"
+  },
+  {
+   "who": [
+    "rino._.15",
+    "hyuga_0619",
+    "atsukidesu",
+    "_3yu.96_",
+    "momosann.0420.sabu",
+    "yuradayo0330",
+    "tsuki5747",
+    "bear.44190633",
+    "dosukoi.5845",
+    "nanasi774_ou",
+    "kubotto0505"
+   ],
+   "t": 0,
+   "anim": "cheer"
+  },
+  {
+   "who": [
+    "rino._.15",
+    "hyuga_0619",
+    "atsukidesu",
+    "_3yu.96_",
+    "momosann.0420.sabu",
+    "yuradayo0330",
+    "tsuki5747",
+    "bear.44190633",
+    "dosukoi.5845",
+    "nanasi774_ou",
+    "kubotto0505"
+   ],
+   "t": 10.4,
+   "anim": "idle",
+   "face": "back"
+  },
+  {
+   "who": [
+    "rino._.15",
+    "hyuga_0619",
+    "atsukidesu",
+    "_3yu.96_",
+    "momosann.0420.sabu",
+    "yuradayo0330",
+    "tsuki5747",
+    "bear.44190633",
+    "dosukoi.5845",
+    "nanasi774_ou",
+    "kubotto0505"
+   ],
+   "t": 11.4,
+   "anim": "work",
+   "face": "back"
+  },
+  {
+   "who": [
+    "rino._.15",
+    "hyuga_0619",
+    "atsukidesu",
+    "_3yu.96_",
+    "momosann.0420.sabu",
+    "yuradayo0330",
+    "tsuki5747",
+    "bear.44190633",
+    "dosukoi.5845",
+    "nanasi774_ou",
+    "kubotto0505"
+   ],
+   "t": 12.8,
+   "anim": "eat",
+   "face": "front"
+  },
+  {
+   "who": "rino._.15",
+   "t": 12.8,
+   "anim": "cheer"
+  },
+  {
+   "who": "tsuki5747",
+   "t": 15.0,
+   "anim": "idle",
+   "face": "back",
+   "at": {
+    "rel": "g:forest",
+    "t": -7,
+    "n": -1.5
+   }
+  },
+  {
+   "who": "yuradayo0330",
+   "t": 16.4,
+   "to": {
+    "rel": "g:forest",
+    "t": -3,
+    "n": -16
+   },
+   "dur": 2.6
+  },
+  {
+   "who": "yuradayo0330",
+   "t": 19.0,
+   "hide": true
+  },
+  {
+   "who": [
+    "ibu131313",
+    "nabemegane",
+    "taishi.uramoto23",
+    "yukikun4126",
+    "savans880",
+    "saori.siegert",
+    "ichi.09",
+    "marumegane4",
+    "shinohara_kohei",
+    "yuridazo68",
+    "aosan116",
+    "paianiyan",
+    "akuserumeihong",
+    "hiropone_89",
+    "yu._.u225",
+    "tokitin2014",
+    "max_no_otousan",
+    "fuse.daichi",
+    "shimadaaaa03",
+    "yo79499",
+    "hkssss69",
+    "yuzunasama8737",
+    "hafuki82",
+    "kame___1020"
+   ],
+   "t": 19.6,
+   "anim": "work"
+  },
+  {
+   "who": [
+    "ibu131313",
+    "nabemegane",
+    "taishi.uramoto23",
+    "yukikun4126",
+    "savans880",
+    "saori.siegert",
+    "ichi.09",
+    "marumegane4",
+    "shinohara_kohei",
+    "yuridazo68",
+    "aosan116",
+    "paianiyan",
+    "akuserumeihong",
+    "hiropone_89",
+    "yu._.u225",
+    "tokitin2014",
+    "max_no_otousan",
+    "fuse.daichi",
+    "shimadaaaa03",
+    "yo79499",
+    "hkssss69",
+    "yuzunasama8737",
+    "hafuki82",
+    "kame___1020"
+   ],
+   "t": 20.4,
+   "frame": "workB"
+  },
+  {
+   "who": [
+    "ibu131313",
+    "nabemegane",
+    "taishi.uramoto23",
+    "yukikun4126",
+    "savans880",
+    "saori.siegert",
+    "ichi.09",
+    "marumegane4",
+    "shinohara_kohei",
+    "yuridazo68",
+    "aosan116",
+    "paianiyan",
+    "akuserumeihong",
+    "hiropone_89",
+    "yu._.u225",
+    "tokitin2014",
+    "max_no_otousan",
+    "fuse.daichi",
+    "shimadaaaa03",
+    "yo79499",
+    "hkssss69",
+    "yuzunasama8737",
+    "hafuki82",
+    "kame___1020"
+   ],
+   "t": 21.6,
+   "anim": "sit",
+   "pick": 0.35,
+   "seed": 3,
+   "except": [
+    "ibu131313"
+   ]
+  },
+  {
+   "who": "ibu131313",
+   "t": 23.4,
+   "frame": "workA"
+  },
+  {
+   "who": "ibu131313",
+   "t": 24.0,
+   "anim": "cheer"
+  },
+  {
+   "who": "kubotto0505",
+   "t": 0,
+   "hide": true
+  },
+  {
+   "who": "kubotto0505",
+   "t": 24.6,
+   "hide": false,
+   "at": {
+    "rel": "ibu131313",
+    "t": -10,
+    "n": -0.3
+   },
+   "to": {
+    "rel": "ibu131313",
+    "t": -1.3,
+    "n": -0.5
+   },
+   "dur": 1.0
+  },
+  {
+   "who": "kubotto0505",
+   "t": 25.7,
+   "anim": "idle",
+   "face": {
+    "to": "ibu131313"
+   }
+  },
+  {
+   "who": "kazuzu4771",
+   "t": 28.2,
+   "anim": "work"
+  },
+  {
+   "who": [
+    "kazuzu4771",
+    "analogayane",
+    "sasa_mi42151315",
+    "tako1216yaki",
+    "s.sora1225",
+    "_otekat_____"
+   ],
+   "t": 29.2,
+   "anim": "shock"
+  },
+  {
+   "who": [
+    "kazuzu4771",
+    "analogayane",
+    "sasa_mi42151315",
+    "tako1216yaki",
+    "s.sora1225",
+    "_otekat_____"
+   ],
+   "t": 29.9,
+   "anim": "idle"
+  },
+  {
+   "who": "analogayane",
+   "t": 31.4,
+   "anim": "cheer"
+  },
+  {
+   "who": [
+    "masatk_no_m",
+    "takada_1gram",
+    "yamato_family327"
+   ],
+   "t": 34.6,
+   "anim": "work"
+  },
+  {
+   "who": [
+    "masatk_no_m",
+    "takada_1gram",
+    "yamato_family327"
+   ],
+   "t": 35.8,
+   "anim": "shock"
+  },
+  {
+   "who": [
+    "masatk_no_m",
+    "takada_1gram",
+    "yamato_family327"
+   ],
+   "t": 36.4,
+   "anim": "idle"
+  },
+  {
+   "who": "nanasi774_ou",
+   "t": 36.0,
+   "at": {
+    "rel": "masatk_no_m",
+    "t": -9,
+    "n": -0.5
+   },
+   "to": {
+    "rel": "masatk_no_m",
+    "t": -3.2,
+    "n": -0.6
+   },
+   "dur": 0.6
+  },
+  {
+   "who": "nanasi774_ou",
+   "t": 36.7,
+   "anim": "idle",
+   "face": {
+    "to": "masatk_no_m"
+   }
+  },
+  {
+   "who": "dosukoi.5845",
+   "t": 41.0,
+   "anim": "eat",
+   "face": "front"
+  },
+  {
+   "who": "dosukoi.5845",
+   "t": 41.9,
+   "anim": "shock"
+  },
+  {
+   "who": [
+    "rino._.15",
+    "hyuga_0619",
+    "atsukidesu",
+    "_3yu.96_",
+    "momosann.0420.sabu",
+    "tsuki5747",
+    "bear.44190633",
+    "dosukoi.5845",
+    "nanasi774_ou",
+    "kubotto0505",
+    "sakasaka_1482",
+    "horiharu0220",
+    "shugo.77",
+    "_shaun81",
+    "hori_harusabu",
+    "musashi.617",
+    "kosei20130324",
+    "s_02y.ayta",
+    "nintendo_3ds.12",
+    "hayato210165"
+   ],
+   "t": 44.0,
+   "at": {
+    "slot": "forest"
+   },
+   "anim": "eat",
+   "hide": false
+  },
+  {
+   "who": "tsuki5747",
+   "t": 44.0,
+   "at": {
+    "rel": "g:forest",
+    "t": -2,
+    "n": -1.2
+   }
+  },
+  {
+   "who": [
+    "rino._.15",
+    "hyuga_0619",
+    "atsukidesu",
+    "_3yu.96_",
+    "momosann.0420.sabu",
+    "tsuki5747",
+    "bear.44190633",
+    "dosukoi.5845",
+    "nanasi774_ou",
+    "kubotto0505",
+    "sakasaka_1482",
+    "horiharu0220",
+    "shugo.77",
+    "_shaun81",
+    "hori_harusabu",
+    "musashi.617",
+    "kosei20130324",
+    "s_02y.ayta",
+    "nintendo_3ds.12",
+    "hayato210165"
+   ],
+   "t": 45.0,
+   "anim": "shock",
+   "face": "back"
+  },
+  {
+   "who": "tsuki5747",
+   "t": 45.3,
+   "to": {
+    "rel": "g:forest",
+    "t": 6,
+    "n": 26
+   },
+   "dur": 1.6,
+   "run": true
+  },
+  {
+   "who": [
+    "rino._.15",
+    "hyuga_0619",
+    "atsukidesu",
+    "_3yu.96_",
+    "momosann.0420.sabu",
+    "tsuki5747",
+    "bear.44190633",
+    "dosukoi.5845",
+    "nanasi774_ou",
+    "kubotto0505",
+    "sakasaka_1482",
+    "horiharu0220",
+    "shugo.77",
+    "_shaun81",
+    "hori_harusabu",
+    "musashi.617",
+    "kosei20130324",
+    "s_02y.ayta",
+    "nintendo_3ds.12",
+    "hayato210165"
+   ],
+   "t": 45.8,
+   "to": {
+    "rel": "g:forest",
+    "t": 0,
+    "n": 26
+   },
+   "dur": 1.4,
+   "run": true,
+   "except": [
+    "tsuki5747"
+   ]
+  },
+  {
+   "who": [
+    "masatk_no_m",
+    "dosukoi.5845",
+    "yamato_family327",
+    "_3yu.96_",
+    "nanasi774_ou",
+    "kubotto0505",
+    "takada_1gram",
+    "ichi.09",
+    "hyuga_0619",
+    "savans880",
+    "kazuzu4771",
+    "analogayane",
+    "marumegane4",
+    "atsukidesu",
+    "ibu131313",
+    "nabemegane",
+    "momosann.0420.sabu",
+    "tsuki5747",
+    "bear.44190633",
+    "taishi.uramoto23",
+    "yukikun4126",
+    "rino._.15",
+    "saori.siegert",
+    "sakasaka_1482",
+    "horiharu0220",
+    "shugo.77",
+    "_shaun81",
+    "hori_harusabu",
+    "musashi.617",
+    "kosei20130324",
+    "s_02y.ayta",
+    "nintendo_3ds.12",
+    "hayato210165",
+    "sasa_mi42151315",
+    "tako1216yaki",
+    "s.sora1225",
+    "_otekat_____",
+    "shinohara_kohei",
+    "yuridazo68",
+    "aosan116",
+    "paianiyan",
+    "akuserumeihong",
+    "hiropone_89",
+    "yu._.u225",
+    "tokitin2014",
+    "max_no_otousan",
+    "fuse.daichi",
+    "shimadaaaa03",
+    "yo79499",
+    "hkssss69",
+    "yuzunasama8737",
+    "hafuki82",
+    "kame___1020",
+    "tarak_o002",
+    "bea_utiful183",
+    "singlepapatsu.i",
+    "oka_tomohiko"
+   ],
+   "t": 47.4,
+   "at": {
+    "slot": "plaza"
+   },
+   "anim": "idle",
+   "hide": false,
+   "face": {
+    "at": [
+     0,
+     5
+    ]
+   }
+  },
+  {
+   "who": [
+    "masatk_no_m",
+    "dosukoi.5845",
+    "yamato_family327",
+    "_3yu.96_",
+    "nanasi774_ou",
+    "kubotto0505",
+    "takada_1gram",
+    "ichi.09",
+    "hyuga_0619",
+    "savans880",
+    "kazuzu4771",
+    "analogayane",
+    "marumegane4",
+    "atsukidesu",
+    "ibu131313",
+    "nabemegane",
+    "momosann.0420.sabu",
+    "tsuki5747",
+    "bear.44190633",
+    "taishi.uramoto23",
+    "yukikun4126",
+    "rino._.15",
+    "saori.siegert",
+    "sakasaka_1482",
+    "horiharu0220",
+    "shugo.77",
+    "_shaun81",
+    "hori_harusabu",
+    "musashi.617",
+    "kosei20130324",
+    "s_02y.ayta",
+    "nintendo_3ds.12",
+    "hayato210165",
+    "sasa_mi42151315",
+    "tako1216yaki",
+    "s.sora1225",
+    "_otekat_____",
+    "shinohara_kohei",
+    "yuridazo68",
+    "aosan116",
+    "paianiyan",
+    "akuserumeihong",
+    "hiropone_89",
+    "yu._.u225",
+    "tokitin2014",
+    "max_no_otousan",
+    "fuse.daichi",
+    "shimadaaaa03",
+    "yo79499",
+    "hkssss69",
+    "yuzunasama8737",
+    "hafuki82",
+    "kame___1020",
+    "tarak_o002",
+    "bea_utiful183",
+    "singlepapatsu.i",
+    "oka_tomohiko"
+   ],
+   "t": 48.6,
+   "anim": "shock",
+   "pick": 0.4,
+   "seed": 9
+  },
+  {
+   "who": [
+    "masatk_no_m",
+    "dosukoi.5845",
+    "yamato_family327",
+    "_3yu.96_",
+    "nanasi774_ou",
+    "kubotto0505",
+    "takada_1gram",
+    "ichi.09",
+    "hyuga_0619",
+    "savans880",
+    "kazuzu4771",
+    "analogayane",
+    "marumegane4",
+    "atsukidesu",
+    "ibu131313",
+    "nabemegane",
+    "momosann.0420.sabu",
+    "tsuki5747",
+    "bear.44190633",
+    "taishi.uramoto23",
+    "yukikun4126",
+    "rino._.15",
+    "saori.siegert",
+    "sakasaka_1482",
+    "horiharu0220",
+    "shugo.77",
+    "_shaun81",
+    "hori_harusabu",
+    "musashi.617",
+    "kosei20130324",
+    "s_02y.ayta",
+    "nintendo_3ds.12",
+    "hayato210165",
+    "sasa_mi42151315",
+    "tako1216yaki",
+    "s.sora1225",
+    "_otekat_____",
+    "shinohara_kohei",
+    "yuridazo68",
+    "aosan116",
+    "paianiyan",
+    "akuserumeihong",
+    "hiropone_89",
+    "yu._.u225",
+    "tokitin2014",
+    "max_no_otousan",
+    "fuse.daichi",
+    "shimadaaaa03",
+    "yo79499",
+    "hkssss69",
+    "yuzunasama8737",
+    "hafuki82",
+    "kame___1020",
+    "tarak_o002",
+    "bea_utiful183",
+    "singlepapatsu.i",
+    "oka_tomohiko"
+   ],
+   "t": 49.2,
+   "anim": "idle"
+  },
+  {
+   "who": [
+    "r4im_s00",
+    "yuya71195",
+    "waka32034",
+    "yuto_0104_saiko",
+    "tkd3874",
+    "reito_0512h",
+    "mawl4566",
+    "watanabea1026",
+    "reka8181510",
+    "hayaton863",
+    "shun0505",
+    "t.waka0113",
+    "chibekoab",
+    "haijina"
+   ],
+   "t": 58.4,
+   "at": {
+    "slot": "beach"
+   },
+   "anim": "idle",
+   "hide": false
+  },
+  {
+   "who": [
+    "r4im_s00",
+    "yuya71195",
+    "waka32034",
+    "yuto_0104_saiko",
+    "tkd3874",
+    "reito_0512h",
+    "mawl4566",
+    "watanabea1026",
+    "reka8181510",
+    "hayaton863",
+    "shun0505",
+    "t.waka0113",
+    "chibekoab",
+    "haijina"
+   ],
+   "t": 58.4,
+   "anim": "work",
+   "pick": 0.4,
+   "seed": 5
+  },
+  {
+   "who": [
+    "r4im_s00",
+    "yuya71195",
+    "waka32034",
+    "yuto_0104_saiko",
+    "tkd3874",
+    "reito_0512h",
+    "mawl4566",
+    "watanabea1026",
+    "reka8181510",
+    "hayaton863",
+    "shun0505",
+    "t.waka0113",
+    "chibekoab",
+    "haijina"
+   ],
+   "t": 58.4,
+   "anim": "sit",
+   "pick": 0.25,
+   "seed": 6
+  }
+ ],
+ "props": [
+  {
+   "type": "fruit",
+   "from": {
+    "rel": "g:forest",
+    "t": -1.2,
+    "up": 0.2
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.4,
+   "size": 0.9
+  },
+  {
+   "type": "fruit",
+   "from": {
+    "rel": "g:forest",
+    "t": 1.5,
+    "up": 0.2
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.4,
+   "size": 0.9
+  },
+  {
+   "type": "fruit",
+   "from": {
+    "rel": "rino._.15",
+    "t": 0.9,
+    "n": -1,
+    "up": 2.6
+   },
+   "t0": 12.8,
+   "t1": 12.81,
+   "t2": 15.0,
+   "size": 0.8
+  },
+  {
+   "type": "splash",
+   "from": {
+    "rel": "ibu131313",
+    "t": 1.2,
+    "n": -3.2,
+    "up": -0.2
+   },
+   "t0": 23.4,
+   "t1": 23.75,
+   "size": 1.2
+  },
+  {
+   "type": "fish",
+   "from": {
+    "rel": "ibu131313",
+    "t": 1.2,
+    "n": -3.2,
+    "up": -0.4
+   },
+   "to": {
+    "rel": "ibu131313",
+    "t": 0.9,
+    "up": 3.2
+   },
+   "t0": 23.45,
+   "t1": 24.0,
+   "t2": 28.0,
+   "arc": 3.0,
+   "size": 0.9
+  },
+  {
+   "type": "crate",
+   "from": {
+    "rel": "analogayane",
+    "t": 1.4,
+    "n": -1.2,
+    "up": 0
+   },
+   "t0": 31.2,
+   "t1": 31.21,
+   "t2": 34.4,
+   "size": 1.2
+  },
+  {
+   "type": "question",
+   "from": [
+    -128,
+    -34
+   ],
+   "t0": 51.0,
+   "t1": 51.01,
+   "t2": 54.0,
+   "size": 9
+  }
+ ],
+ "camera": [
+  {
+   "from": 0,
+   "to": 2.4,
+   "hour": 9.5,
+   "keys": [
+    {
+     "t": 0,
+     "look": {
+      "rel": "g:forest",
+      "t": 0
+     },
+     "dist": 21,
+     "az": 0.25,
+     "pol": 1.3,
+     "up": 2
+    },
+    {
+     "t": 2.4,
+     "look": {
+      "rel": "g:forest"
+     },
+     "dist": 18,
+     "az": 0.3,
+     "pol": 1.3,
+     "up": 2
+    }
+   ]
+  },
+  {
+   "from": 2.4,
+   "to": 6.2,
+   "hour": 7.5,
+   "keys": [
+    {
+     "t": 2.4,
+     "look": {
+      "rel": "g:beach"
+     },
+     "dist": 34,
+     "az": 1.1,
+     "pol": 1.2,
+     "up": 1.5,
+     "frame": "cove"
+    },
+    {
+     "t": 6.2,
+     "look": {
+      "rel": "g:beach"
+     },
+     "dist": 27,
+     "az": 1.2,
+     "pol": 1.22,
+     "up": 1.5,
+     "frame": "cove"
+    }
+   ]
+  },
+  {
+   "from": 6.2,
+   "to": 10.4,
+   "hour": 9.0,
+   "keys": [
+    {
+     "t": 6.2,
+     "look": {
+      "rel": "g:plaza"
+     },
+     "dist": 120,
+     "az": 0.3,
+     "pol": 0.95,
+     "up": 0
+    },
+    {
+     "t": 10.4,
+     "look": {
+      "rel": "g:plaza"
+     },
+     "dist": 105,
+     "az": 0.4,
+     "pol": 0.95,
+     "up": 0
+    }
+   ]
+  },
+  {
+   "from": 10.4,
+   "to": 15.0,
+   "hour": 10.0,
+   "keys": [
+    {
+     "t": 10.4,
+     "look": {
+      "rel": "rino._.15"
+     },
+     "dist": 15,
+     "az": 0.3,
+     "pol": 1.3,
+     "up": 2.2
+    },
+    {
+     "t": 15.0,
+     "look": {
+      "rel": "rino._.15",
+      "t": -2
+     },
+     "dist": 19,
+     "az": 0.25,
+     "pol": 1.3,
+     "up": 2.2
+    }
+   ]
+  },
+  {
+   "from": 15.0,
+   "to": 19.2,
+   "hour": 10.3,
+   "keys": [
+    {
+     "t": 15.0,
+     "look": {
+      "rel": "g:forest",
+      "t": -7,
+      "n": -1.5
+     },
+     "dist": 13,
+     "az": 0.35,
+     "pol": 1.3,
+     "up": 2.2
+    },
+    {
+     "t": 19.2,
+     "look": {
+      "rel": "g:forest",
+      "t": -5,
+      "n": -6
+     },
+     "dist": 17,
+     "az": 0.2,
+     "pol": 1.28,
+     "up": 2.2
+    }
+   ]
+  },
+  {
+   "from": 19.2,
+   "to": 21.4,
+   "hour": 11,
+   "keys": [
+    {
+     "t": 19.2,
+     "look": {
+      "rel": "ibu131313"
+     },
+     "dist": 13,
+     "az": 0.35,
+     "pol": 1.32,
+     "up": 2.2
+    },
+    {
+     "t": 20.0,
+     "look": {
+      "rel": "ibu131313"
+     },
+     "dist": 14,
+     "az": 0.33,
+     "pol": 1.31,
+     "up": 2.2
+    },
+    {
+     "t": 21.4,
+     "look": {
+      "rel": "ibu131313",
+      "t": -2
+     },
+     "dist": 60,
+     "az": 0.22,
+     "pol": 1.12,
+     "up": 1
+    }
+   ]
+  },
+  {
+   "from": 21.4,
+   "to": 23.2,
+   "hour": 11,
+   "keys": [
+    {
+     "t": 21.4,
+     "look": {
+      "rel": "ibu131313",
+      "t": -7
+     },
+     "dist": 24,
+     "az": 0.7,
+     "pol": 1.3,
+     "up": 1.6
+    },
+    {
+     "t": 23.2,
+     "look": {
+      "rel": "ibu131313",
+      "t": -5
+     },
+     "dist": 21,
+     "az": 0.65,
+     "pol": 1.3,
+     "up": 1.6
+    }
+   ]
+  },
+  {
+   "from": 23.2,
+   "to": 24.6,
+   "hour": 11,
+   "keys": [
+    {
+     "t": 23.2,
+     "look": {
+      "rel": "ibu131313",
+      "n": -1
+     },
+     "dist": 14,
+     "az": 0.3,
+     "pol": 1.3,
+     "up": 2.6
+    },
+    {
+     "t": 24.6,
+     "look": {
+      "rel": "ibu131313",
+      "n": -1
+     },
+     "dist": 12.5,
+     "az": 0.32,
+     "pol": 1.3,
+     "up": 2.6
+    }
+   ]
+  },
+  {
+   "from": 24.6,
+   "to": 28.0,
+   "hour": 11,
+   "keys": [
+    {
+     "t": 24.6,
+     "look": {
+      "rel": "ibu131313",
+      "t": -0.8
+     },
+     "dist": 14.5,
+     "az": 0.3,
+     "pol": 1.3,
+     "up": 2.2
+    },
+    {
+     "t": 28.0,
+     "look": {
+      "rel": "ibu131313",
+      "t": -0.8
+     },
+     "dist": 15.5,
+     "az": 0.28,
+     "pol": 1.3,
+     "up": 2.2
+    }
+   ]
+  },
+  {
+   "from": 28.0,
+   "to": 34.4,
+   "hour": 13,
+   "keys": [
+    {
+     "t": 28.0,
+     "look": {
+      "rel": "kazuzu4771"
+     },
+     "dist": 13,
+     "az": 0.3,
+     "pol": 1.3,
+     "up": 2.2
+    },
+    {
+     "t": 30.8,
+     "look": {
+      "rel": "kazuzu4771"
+     },
+     "dist": 15,
+     "az": 0.3,
+     "pol": 1.3,
+     "up": 2.2
+    },
+    {
+     "t": 31.2,
+     "look": {
+      "rel": "analogayane"
+     },
+     "dist": 13,
+     "az": 0.3,
+     "pol": 1.3,
+     "up": 2.2
+    },
+    {
+     "t": 34.4,
+     "look": {
+      "rel": "analogayane"
+     },
+     "dist": 14,
+     "az": 0.3,
+     "pol": 1.3,
+     "up": 2.2
+    }
+   ]
+  },
+  {
+   "from": 34.4,
+   "to": 39.6,
+   "hour": 14,
+   "keys": [
+    {
+     "t": 34.4,
+     "look": {
+      "rel": "masatk_no_m"
+     },
+     "dist": 16,
+     "az": 0.25,
+     "pol": 1.3,
+     "up": 2.2
+    },
+    {
+     "t": 39.6,
+     "look": {
+      "rel": "masatk_no_m"
+     },
+     "dist": 18,
+     "az": 0.3,
+     "pol": 1.3,
+     "up": 2.2
+    }
+   ]
+  },
+  {
+   "from": 39.6,
+   "to": 43.8,
+   "hour": 15.5,
+   "keys": [
+    {
+     "t": 39.6,
+     "look": {
+      "rel": "g:water"
+     },
+     "dist": 14,
+     "az": 0.3,
+     "pol": 1.3,
+     "up": 2.2
+    },
+    {
+     "t": 43.8,
+     "look": {
+      "rel": "g:water"
+     },
+     "dist": 13,
+     "az": 0.3,
+     "pol": 1.3,
+     "up": 2.2
+    }
+   ]
+  },
+  {
+   "from": 43.8,
+   "to": 47.4,
+   "hour": 16.5,
+   "keys": [
+    {
+     "t": 43.8,
+     "look": {
+      "rel": "g:forest"
+     },
+     "dist": 22,
+     "az": 0.2,
+     "pol": 1.3,
+     "up": 2
+    },
+    {
+     "t": 45.2,
+     "look": {
+      "rel": "g:forest"
+     },
+     "dist": 20,
+     "az": 0.22,
+     "pol": 1.3,
+     "up": 2
+    },
+    {
+     "t": 47.4,
+     "look": {
+      "rel": "g:forest",
+      "n": -14
+     },
+     "dist": 30,
+     "az": 0.2,
+     "pol": 1.25,
+     "up": 2
+    }
+   ]
+  },
+  {
+   "from": 47.4,
+   "to": 51.0,
+   "hour": 17.0,
+   "keys": [
+    {
+     "t": 47.4,
+     "look": {
+      "rel": "g:plaza"
+     },
+     "dist": 34,
+     "az": 0.3,
+     "pol": 1.05,
+     "up": 1
+    },
+    {
+     "t": 51.0,
+     "look": {
+      "rel": "g:plaza"
+     },
+     "dist": 30,
+     "az": 0.35,
+     "pol": 1.08,
+     "up": 1
+    }
+   ]
+  },
+  {
+   "from": 51.0,
+   "to": 54.0,
+   "hour": 17.2,
+   "keys": [
+    {
+     "t": 51.0,
+     "look": [
+      -128,
+      -34
+     ],
+     "dist": 120,
+     "az": 2.6,
+     "pol": 0.8,
+     "up": 6,
+     "frame": "forest"
+    },
+    {
+     "t": 54.0,
+     "look": [
+      -128,
+      -34
+     ],
+     "dist": 100,
+     "az": 2.7,
+     "pol": 0.82,
+     "up": 6,
+     "frame": "forest"
+    }
+   ]
+  },
+  {
+   "from": 54.0,
+   "to": 58.4,
+   "hour": 17.4,
+   "keys": [
+    {
+     "t": 54.0,
+     "look": {
+      "rel": "g:plaza"
+     },
+     "dist": 90,
+     "az": 0.5,
+     "pol": 0.9,
+     "up": 0
+    },
+    {
+     "t": 58.4,
+     "look": {
+      "rel": "g:plaza"
+     },
+     "dist": 80,
+     "az": 0.6,
+     "pol": 0.9,
+     "up": 0
+    }
+   ]
+  },
+  {
+   "from": 58.4,
+   "to": 62.2,
+   "hour": 12,
+   "keys": [
+    {
+     "t": 58.4,
+     "look": {
+      "rel": "g:beach"
+     },
+     "dist": 20,
+     "az": 1.0,
+     "pol": 1.25,
+     "up": 2,
+     "frame": "cove"
+    },
+    {
+     "t": 62.2,
+     "look": {
+      "rel": "g:beach"
+     },
+     "dist": 22,
+     "az": 1.3,
+     "pol": 1.25,
+     "up": 2,
+     "frame": "cove"
+    }
+   ]
+  },
+  {
+   "from": 62.2,
+   "to": 68.5,
+   "hour": 17.8,
+   "keys": [
+    {
+     "t": 62.2,
+     "look": {
+      "rel": "g:plaza"
+     },
+     "dist": 60,
+     "az": 0.7,
+     "pol": 1.1,
+     "up": 1
+    },
+    {
+     "t": 68.5,
+     "look": {
+      "rel": "g:plaza"
+     },
+     "dist": 75,
+     "az": 0.8,
+     "pol": 1.05,
+     "up": 1
+    }
+   ]
+  },
+  {
+   "from": 68.5,
+   "to": 72.0,
+   "hour": 18.3,
+   "keys": [
+    {
+     "t": 68.5,
+     "look": {
+      "rel": "g:plaza"
+     },
+     "dist": 260,
+     "az": 0.8,
+     "pol": 0.9,
+     "up": 0
+    },
+    {
+     "t": 72.0,
+     "look": {
+      "rel": "g:plaza"
+     },
+     "dist": 300,
+     "az": 0.85,
+     "pol": 0.88,
+     "up": 0
+    }
+   ]
+  }
+ ],
+ "overlay": {
+  "banner": "コメントで動く無人島　3日目",
+  "bannerOff": [
+   [
+    0,
+    2.4
+   ],
+   [
+    62.2,
+    72.0
+   ]
+  ],
+  "commenters": {
+   "masatk_no_m": "B",
+   "dosukoi.5845": "C",
+   "yamato_family327": "B",
+   "_3yu.96_": "C",
+   "nanasi774_ou": "C",
+   "kubotto0505": "C",
+   "takada_1gram": "B",
+   "ichi.09": "A",
+   "yuradayo0330": "C",
+   "hyuga_0619": "C",
+   "savans880": "A",
+   "kazuzu4771": "A",
+   "analogayane": "A",
+   "marumegane4": "A",
+   "atsukidesu": "C",
+   "ibu131313": "A",
+   "nabemegane": "A",
+   "momosann.0420.sabu": "C",
+   "tsuki5747": "C",
+   "bear.44190633": "C",
+   "taishi.uramoto23": "A",
+   "yukikun4126": "A",
+   "rino._.15": "C",
+   "saori.siegert": "A"
+  },
+  "names": {
+   "masatk_no_m": "まさたけM",
+   "dosukoi.5845": "ヤッチャン(20)",
+   "yamato_family327": "あゆさん",
+   "_3yu.96_": "みゆ",
+   "nanasi774_ou": "774(名無し)",
+   "kubotto0505": "kubotto",
+   "takada_1gram": "高田 鷹仁",
+   "ichi.09": "Taichi Minami",
+   "yuradayo0330": "ゆら",
+   "hyuga_0619": "ひゅうが",
+   "savans880": "savan",
+   "kazuzu4771": "TKD",
+   "analogayane": "あやね",
+   "marumegane4": "🐸ま🐸",
+   "atsukidesu": "中村徳貴",
+   "ibu131313": "ibu13",
+   "nabemegane": "とも",
+   "momosann.0420.sabu": "ももさん",
+   "tsuki5747": "つき",
+   "bear.44190633": "だん☄️🥞🌕",
+   "taishi.uramoto23": "浦本 泰志",
+   "yukikun4126": "ゆきくん♂",
+   "rino._.15": "Rino",
+   "saori.siegert": "🇺🇸Saori Siegert | Mindset & Trader"
+  },
+  "titles": [
+   {
+    "text": "3日目",
+    "from": 0.1,
+    "to": 2.4
+   }
+  ],
+  "stars": [
+   {
+    "who": "rino._.15",
+    "from": 10.6,
+    "to": 14.4,
+    "bubble": "みんなで協力して探そう！😆"
+   },
+   {
+    "who": "tsuki5747",
+    "from": 15.2,
+    "to": 19.0,
+    "bubble": "危険な動物がいないかも確認します　もし出たら最前線で戦います"
+   },
+   {
+    "who": "ibu131313",
+    "from": 19.3,
+    "to": 22.6,
+    "bubble": "魚は栄養素高いし、全員でやれば釣る確率も上がる"
+   },
+   {
+    "who": "ibu131313",
+    "from": 23.2,
+    "to": 24.6
+   },
+   {
+    "who": "kubotto0505",
+    "from": 25.7,
+    "to": 28.0,
+    "bubble": "…釣りも全員分獲るのは難しいそう😓"
+   },
+   {
+    "who": "kazuzu4771",
+    "from": 28.1,
+    "to": 30.8,
+    "bubble": "A  全員で地引き網"
+   },
+   {
+    "who": "analogayane",
+    "from": 31.2,
+    "to": 34.4,
+    "bubble": "浜に資材とかも流れてきてそう…"
+   },
+   {
+    "who": "masatk_no_m",
+    "from": 34.5,
+    "to": 36.2,
+    "bubble": "B"
+   },
+   {
+    "who": "nanasi774_ou",
+    "from": 36.7,
+    "to": 39.6,
+    "bubble": "畑は水と種がなきゃ作れないから"
+   },
+   {
+    "who": "bear.44190633",
+    "from": 39.7,
+    "to": 42.4,
+    "bubble": "飲み水確保してから海で魚を取って畑を作ろう！"
+   },
+   {
+    "who": "yuradayo0330",
+    "from": 49.0,
+    "to": 51.0,
+    "xy": [
+     0.5,
+     0.55
+    ]
+   }
+  ],
+  "tally": {
+   "from": 6.2,
+   "to": 10.4,
+   "title": "昨日の質問　食料をどうする？",
+   "grow": [
+    6.8,
+    8.4
+   ],
+   "winner": "C",
+   "winnerAt": 8.8,
+   "rows": [
+    {
+     "key": "A",
+     "label": "海で魚を捕る",
+     "count": 10
+    },
+    {
+     "key": "B",
+     "label": "畑を作る",
+     "count": 4
+    },
+    {
+     "key": "C",
+     "label": "森の実りを探す",
+     "count": 12
+    }
+   ]
+  },
+  "chips": [
+   {
+    "text": "この人のいまは、プロフィールのリンクから",
+    "from": 19.6,
+    "to": 22.6
+   }
+  ],
+  "captions": [
+   {
+    "text": "食料、どうなった？",
+    "from": 0.5,
+    "to": 2.4,
+    "y": 1290,
+    "size": 84
+   },
+   {
+    "text": "新しく59人が漂着",
+    "from": 2.8,
+    "to": 6.2,
+    "y": 1290,
+    "size": 76
+   },
+   {
+    "text": "ガサッ",
+    "from": 44.9,
+    "to": 45.9,
+    "y": 700,
+    "size": 130
+   },
+   {
+    "text": "…1人、足りない。",
+    "from": 48.6,
+    "to": 51.0,
+    "y": 1290,
+    "size": 84
+   },
+   {
+    "text": "森の奥へ行けるのは、",
+    "from": 51.2,
+    "to": 54.0,
+    "y": 1230,
+    "size": 64
+   },
+   {
+    "text": "フォロワー300人から",
+    "from": 51.2,
+    "to": 54.0,
+    "y": 1320,
+    "size": 64
+   },
+   {
+    "text": "動画に出ていない人も、",
+    "from": 58.6,
+    "to": 62.2,
+    "y": 1230,
+    "size": 60
+   },
+   {
+    "text": "島で暮らしています",
+    "from": 58.6,
+    "to": 62.2,
+    "y": 1320,
+    "size": 60
+   },
+   {
+    "text": "次の質問",
+    "from": 62.4,
+    "to": 68.5,
+    "y": 420,
+    "size": 70,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "行方不明者がいる島で、",
+    "from": 62.6,
+    "to": 68.5,
+    "y": 560,
+    "size": 72
+   },
+   {
+    "text": "みんなは何をする？",
+    "from": 62.6,
+    "to": 68.5,
+    "y": 670,
+    "size": 72
+   },
+   {
+    "text": "自由にコメントしてね",
+    "from": 64.0,
+    "to": 68.5,
+    "y": 1230,
+    "size": 52
+   },
+   {
+    "text": "いいなと思うコメントに、いいねを",
+    "from": 64.0,
+    "to": 68.5,
+    "y": 1310,
+    "size": 44
+   },
+   {
+    "text": "ゆらさんのいまは、",
+    "from": 68.8,
+    "to": 72.0,
+    "y": 1300,
+    "size": 54
+   },
+   {
+    "text": "プロフィールのリンクから",
+    "from": 68.8,
+    "to": 72.0,
+    "y": 1380,
+    "size": 54
+   }
+  ],
+  "action": [
+   {
+    "text": "森の実りを探す",
+    "from": 10.6,
+    "to": 15.0
+   },
+   {
+    "text": "見張り",
+    "from": 15.2,
+    "to": 19.0
+   },
+   {
+    "text": "全員で釣る",
+    "from": 19.4,
+    "to": 24.6
+   },
+   {
+    "text": "地引き網をする",
+    "from": 28.2,
+    "to": 31.0
+   },
+   {
+    "text": "浜を調べる",
+    "from": 31.2,
+    "to": 34.4
+   },
+   {
+    "text": "畑を作る",
+    "from": 34.6,
+    "to": 39.6
+   },
+   {
+    "text": "まずは飲み水",
+    "from": 39.8,
+    "to": 43.8
+   }
+  ],
+  "result": [
+   {
+    "text": "木の実が、見つかった！",
+    "from": 12.9,
+    "to": 15.0
+   },
+   {
+    "text": "…釣れたのは、1匹だけ。",
+    "from": 24.0,
+    "to": 25.6
+   },
+   {
+    "text": "…網が、ない。",
+    "from": 29.3,
+    "to": 31.0
+   },
+   {
+    "text": "木箱が流れ着いていた",
+    "from": 31.4,
+    "to": 34.4
+   },
+   {
+    "text": "…種が、ない。",
+    "from": 35.9,
+    "to": 39.6
+   },
+   {
+    "text": "海の水は、飲めない。",
+    "from": 42.0,
+    "to": 43.8
+   },
+   {
+    "text": "あと166人",
+    "from": 52.0,
+    "to": 54.0
+   }
+  ],
+  "wall": {
+   "from": 54.0,
+   "to": 58.4,
+   "title": "みんなの声",
+   "step": 0.1,
+   "items": [
+    {
+     "name": "まさたけM",
+     "text": "B",
+     "vote": "B"
+    },
+    {
+     "name": "ヤッチャン(20)",
+     "text": "まずは飲み水を確保するべきだと思う。",
+     "vote": "C"
+    },
+    {
+     "name": "あゆさん",
+     "text": "b",
+     "vote": "B"
+    },
+    {
+     "name": "みゆ",
+     "text": "C",
+     "vote": "C"
+    },
+    {
+     "name": "774(名無し)",
+     "text": "畑は水と種がなきゃ作れないから",
+     "vote": "C"
+    },
+    {
+     "name": "kubotto",
+     "text": "…釣りも全員分獲るのは難しいそう😓",
+     "vote": "C"
+    },
+    {
+     "name": "高田 鷹仁",
+     "text": "Ｂ",
+     "vote": "B"
+    },
+    {
+     "name": "Taichi Minami",
+     "text": "森が危険ならA",
+     "vote": "A"
+    },
+    {
+     "name": "ゆら",
+     "text": "C 島のことをよく知れるから",
+     "vote": "C"
+    },
+    {
+     "name": "鈴木達也",
+     "text": "B",
+     "vote": "B"
+    },
+    {
+     "name": "ひゅうが",
+     "text": "C!簡単に安定した食べ物が取れるし、ABは時間と体力が必要になるから！",
+     "vote": "C"
+    },
+    {
+     "name": "savan",
+     "text": "A",
+     "vote": "A"
+    },
+    {
+     "name": "TKD",
+     "text": "A  全員で地引き網",
+     "vote": "A"
+    },
+    {
+     "name": "あやね",
+     "text": "浜に資材とかも流れてきてそう…",
+     "vote": "A"
+    },
+    {
+     "name": "🐸ま🐸",
+     "text": "強欲だからAとBで半々でわかれたいな。魚消えたら死ぬからA寄り",
+     "vote": "A"
+    },
+    {
+     "name": "TKM_trb",
+     "text": "C",
+     "vote": "C"
+    },
+    {
+     "name": "中村徳貴",
+     "text": "Ｃで！",
+     "vote": "C"
+    },
+    {
+     "name": "ibu13",
+     "text": "魚は栄養素高いし、全員でやれば釣る確率も上がる",
+     "vote": "A"
+    },
+    {
+     "name": "とも",
+     "text": "A",
+     "vote": "A"
+    },
+    {
+     "name": "ももさん",
+     "text": "Cがいいと思います！",
+     "vote": "C"
+    },
+    {
+     "name": "つき",
+     "text": "危険な動物がいないかも確認します　もし出たら最前線で戦います",
+     "vote": "C"
+    },
+    {
+     "name": "だん☄️🥞🌕",
+     "text": "飲み水確保してから海で魚を取って畑を作ろう！",
+     "vote": "C"
+    },
+    {
+     "name": "浦本 泰志",
+     "text": "A",
+     "vote": "A"
+    },
+    {
+     "name": "ゆきくん♂",
+     "text": "A魚を取る",
+     "vote": "A"
+    },
+    {
+     "name": "Rino",
+     "text": "みんなで協力して探そう！😆",
+     "vote": "C"
+    },
+    {
+     "name": "🇺🇸Saori Siegert | Mindset & Trader",
+     "text": "A",
+     "vote": "A"
+    }
+   ]
+  },
+  "images": [
+   {
+    "file": "ep3_phone.png",
+    "from": 68.6,
+    "to": 72.0,
+    "w": 560,
+    "y": 330
+   }
+  ],
+  "tagAll": [
+   [
+    58.4,
+    62.2
+   ]
+  ],
+  "smallTagsMax": 5
+ },
+ "override": {
+  "tsuki5747": {
+   "job": "探検家"
+  },
+  "ibu131313": {
+   "job": "漁師"
+  },
+  "nabemegane": {
+   "job": "漁師"
+  },
+  "taishi.uramoto23": {
+   "job": "漁師"
+  },
+  "yukikun4126": {
+   "job": "漁師"
+  },
+  "savans880": {
+   "job": "漁師"
+  },
+  "saori.siegert": {
+   "job": "漁師"
+  },
+  "ichi.09": {
+   "job": "漁師"
+  },
+  "marumegane4": {
+   "job": "漁師"
+  },
+  "shinohara_kohei": {
+   "job": "漁師"
+  },
+  "yuridazo68": {
+   "job": "漁師"
+  },
+  "aosan116": {
+   "job": "漁師"
+  },
+  "paianiyan": {
+   "job": "漁師"
+  },
+  "akuserumeihong": {
+   "job": "漁師"
+  },
+  "hiropone_89": {
+   "job": "漁師"
+  },
+  "yu._.u225": {
+   "job": "漁師"
+  },
+  "tokitin2014": {
+   "job": "漁師"
+  },
+  "max_no_otousan": {
+   "job": "漁師"
+  },
+  "fuse.daichi": {
+   "job": "漁師"
+  },
+  "shimadaaaa03": {
+   "job": "漁師"
+  },
+  "yo79499": {
+   "job": "漁師"
+  },
+  "hkssss69": {
+   "job": "漁師"
+  },
+  "yuzunasama8737": {
+   "job": "漁師"
+  },
+  "hafuki82": {
+   "job": "漁師"
+  },
+  "kame___1020": {
+   "job": "漁師"
+  },
+  "masatk_no_m": {
+   "job": "農家"
+  },
+  "takada_1gram": {
+   "job": "農家"
+  },
+  "yamato_family327": {
+   "job": "農家"
+  }
+ },
+ "audio": {
+  "narration": [
+   {
+    "at": 0.2,
+    "text": "3日目。食料は、どうなった？"
+   },
+   {
+    "at": 2.8,
+    "text": "今日、新しく59人が流れ着きました。"
+   },
+   {
+    "at": 6.4,
+    "text": "昨日の質問、食料をどうする。"
+   },
+   {
+    "at": 8.8,
+    "text": "結果は、シー。2件差でした。"
+   },
+   {
+    "at": 23.4,
+    "text": "釣れたのは…"
+   },
+   {
+    "at": 24.05,
+    "text": "1匹だけ。"
+   },
+   {
+    "at": 44.6,
+    "text": "森で物音がして、みんなで逃げ帰ると…"
+   },
+   {
+    "at": 48.6,
+    "text": "1人、足りない。"
+   },
+   {
+    "at": 51.2,
+    "text": "森の奥へ行けるのは、フォロワー300人から。あと166人。"
+   },
+   {
+    "at": 58.6,
+    "text": "動画に出ていない人も、島で暮らしています。"
+   },
+   {
+    "at": 62.6,
+    "text": "次の質問です。行方不明者がいる島で、みんなは何をする？自由にコメントしてね。"
+   },
+   {
+    "at": 68.8,
+    "text": "ゆらさんのいまは、プロフィールのリンクから。では、また明日、4日目。"
+   }
+  ],
+  "bgm": {
+   "volume": 0.18
+  }
+ },
+ "cover": {
+  "at": 12.9,
+  "day": "3日目",
+  "lines": [
+   "食料は、森の実りに",
+   "そして、1人いなくなった"
+  ]
+ }
+}
