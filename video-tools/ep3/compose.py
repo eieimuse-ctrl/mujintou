@@ -128,6 +128,7 @@ def banner(img, d, text):
 def big_tag(img, d, X, Y, name, uid, vote):
     """主役の名札。(X, Y)＝頭の上。戻り値：名札の上端 y"""
     wn = text_w(d, name, 38); wi = d.textlength('@' + uid, font=font(24))
+    vote = vote if vote in VOTE else None  # 自由コメントの回は投票チップなし
     w = int(max(wn, wi)) + 40 + (64 if vote else 0); h = 96
     x0 = max(30, min(W - SAFE_RIGHT - w, X - w // 2)); y0 = Y - 14 - h
     d.rounded_rectangle([x0, y0, x0 + w, y0 + h], 16, fill=CREAM, outline=INK, width=5)
@@ -215,6 +216,26 @@ def tally(img, d, T, t):
             d.rounded_rectangle([cx - sz * 1.3, cy - sz * 0.7, cx + sz * 1.3, cy + sz * 0.7], 16, outline=(214, 60, 50), width=8, fill=(255, 255, 255, 230))
             d.text((cx, cy), '採用', font=font(sz, True), fill=(214, 60, 50), anchor='mm')
 
+def ranking(img, d, Rk, t):
+    """いいね順位（自由コメントの採用）：上位を1行ずつ出して、1位に「採用」"""
+    rows = Rk['rows']; y0 = 520
+    d.rounded_rectangle([60, y0 - 110, W - 60, y0 + len(rows) * 170], 30, fill=(255, 248, 230, 240), outline=INK, width=6)
+    draw_text(img, d, 100, y0 - 92, Rk.get('title', 'いいねの多かったコメント'), 40, INK)
+    for i, r in enumerate(rows):
+        if t < Rk['from'] + 0.3 + (len(rows) - 1 - i) * 0.45: continue  # 下の順位から出す
+        y = y0 + i * 170
+        d.rounded_rectangle([90, y, 160, y + 70], 14, fill=(214, 60, 50) if i == 0 else (120, 110, 140))
+        d.text((125, y + 35), f'{i + 1}', font=font(44, True), fill='white', anchor='mm')
+        draw_text(img, d, 180, y - 4, r['name'], 32, INK)
+        lines = wrap(d, r['text'], 34, W - 180 - 200)[:2]
+        for j, l in enumerate(lines): draw_text(img, d, 180, y + 40 + j * 44, l, 34, (60, 54, 80))
+        d.text((W - 110, y + 35), f"♥{r['likes']}", font=font(42, True), fill=(214, 60, 50), anchor='rm')
+        if i == 0 and t >= Rk.get('winnerAt', 99):
+            k = min(1, (t - Rk['winnerAt']) / 0.2); sz = int(54 * (1.6 - 0.6 * k))
+            cx, cy = W - 200, y - 40
+            d.rounded_rectangle([cx - sz * 1.3, cy - sz * 0.7, cx + sz * 1.3, cy + sz * 0.7], 16, outline=(214, 60, 50), width=8, fill=(255, 255, 255, 235))
+            d.text((cx, cy), '採用', font=font(sz, True), fill=(214, 60, 50), anchor='mm')
+
 def wall(img, d, Wl, t):
     """みんなの声：名前と一言のカードを順に出す（2列）"""
     d.rounded_rectangle([40, 220, W - 40, 1500], 30, fill=(35, 29, 54, 200))
@@ -256,6 +277,16 @@ def picture(img, P, t):
     ImageDraw.Draw(frame).rounded_rectangle([0, 0, w + 35, h + 35], 44, fill=(35, 29, 54, 255))
     frame.alpha_composite(im.resize((w, h), Image.LANCZOS), (18, 18))
     img.alpha_composite(frame, (x - 18, y - 18))
+    if P.get('tap'):  # ここを押す、の輪（脈打つ）
+        tx, ty = x + P['tap'][0] * w, y + P['tap'][1] * h
+        ph = ((t - P['from']) * 1.6) % 1
+        dd = ImageDraw.Draw(img)
+        for rr, a in [(46 + ph * 40, int(255 * (1 - ph))), (40, 255)]:
+            dd.ellipse([tx - rr, ty - rr * 0.55, tx + rr, ty + rr * 0.55], outline=(255, 214, 74, a), width=8)
+        if P.get('tapLabel'):
+            tw = text_w(dd, P['tapLabel'], 40) + 50
+            dd.rounded_rectangle([tx - tw / 2, ty + 70, tx + tw / 2, ty + 140], 34, fill=(255, 214, 74), outline=INK, width=5)
+            draw_text(img, dd, tx - (tw - 50) / 2, ty + 82, P['tapLabel'], 40, INK)
     if P.get('note'):
         dd = ImageDraw.Draw(img)
         nw = text_w(dd, P['note'], 40) + 60
@@ -324,6 +355,7 @@ def compose_frame(i):
         if c['from'] <= t <= c['to']: title_badge(layer, d, c['text'], t, c['from'], c['to'])
     if O.get('tally') and O['tally']['from'] <= t <= O['tally']['to']: tally(layer, d, O['tally'], t)
     if O.get('wall') and O['wall']['from'] <= t <= O['wall']['to']: wall(layer, d, O['wall'], t)
+    if O.get('ranking') and O['ranking']['from'] <= t <= O['ranking']['to']: ranking(layer, d, O['ranking'], t)
     for P in O.get('images', []):
         if P['from'] <= t <= P['to']: picture(layer, P, t)
     for c in O.get('captions', []):
