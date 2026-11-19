@@ -271,15 +271,15 @@ overlay['captions'] += [
 ]
 # ナレーションは画面の文をそのまま読まず、場面に合わせた短い要約（at＝話し始め、until＝その場面の終わり）
 narr = [
-    {'at': 0.2, 'until': 2.4, 'text': '3日目。食料は、どうなった？'},
+    {'at': 0.3, 'until': 2.4, 'text': '食料、どうなった？'},
     {'at': 2.8, 'until': 6.2, 'text': f'今日は、新しく{joined3}人が流れ着きました。'},
     {'at': 6.4, 'until': 8.6, 'text': '昨日の質問の、結果は…'},
-    {'at': 8.8, 'until': 10.4, 'text': f'森の実り。{margin}件差でした。' if margin <= 3 else '森の実りに決定。'},
+    {'at': 8.75, 'until': 10.4, 'text': f'森の実り。{margin}件差！' if margin <= 3 else '森の実りに決定！'},
     {'at': 10.8, 'until': 15.0, 'text': '森で木の実を探すも…全員分には、足りないみたい。'},
     {'at': 15.4, 'until': 19.2, 'text': '危ない動物がいないか、見張る人も。'},
     {'at': 19.6, 'until': 23.2, 'text': '海では、全員で釣れば、きっと釣れる…はず。'},
-    {'at': 23.4, 'until': 24.0, 'text': '釣れたのは…'},
-    {'at': 24.05, 'until': 26.2, 'text': '1匹だけ。でも、島で初めての魚！'},
+    {'at': 22.9, 'until': 24.0, 'text': '釣れたのは…'},
+    {'at': 24.05, 'until': 27.6, 'text': '1匹だけ。でも、初めての魚！'},
     {'at': 28.3, 'until': 31.0, 'text': '網を作りたいけど、網がない。'},
     {'at': 31.4, 'until': 34.4, 'text': '浜には、ロープ入りの木箱が。'},
     {'at': 34.6, 'until': 37.8, 'text': '畑を作ろうにも、種がない。'},
@@ -298,7 +298,7 @@ story = {
     'cast': ALL, 'groups': groups, 'acts': acts, 'props': props, 'camera': camera, 'overlay': overlay,
     'override': {**({F['watcher']: {'job': '探検家'}} if F['watcher'] else {}), **{i: {'job': '漁師'} for i in groups[3]['members']},
                  **{i: {'job': '農家'} for i in F['farmers']}},
-    'audio': {'narration': narr, 'bgm': {'volume': 0.18}},
+    'audio': {'narration': narr, 'bgm': {'volume': 0.18}, 'speed': 1.15},
     'cover': {'at': 12.9, 'day': f'{DAY}日目', 'lines': [f'食料は、{OPTS[winner]}' if winner != 'C' else '食料は、森の実りに', 'そして、1人いなくなった']},
 }
 TIME_KEYS = {'t', 'from', 'to', 'at', 't0', 't1', 't2', 'winnerAt', 'until'}
