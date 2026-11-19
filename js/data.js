@@ -226,7 +226,11 @@ export function normalizeData(stateRaw, rosterRaw, driftRaw = null) {
   // 島にいない相手との関係は表示しない
   for (const p of islanders) p.relationships = p.relationships.filter((r) => seen.has(r.id) && r.id !== p.id);
 
-  if (state.forestRoad) state.forestRoad.count = islanders.length;
+  if (state.forestRoad) {
+    state.forestRoad.count = islanders.length;
+    // 火の番：島に来た順に、森の道の1本目・2本目…（1本に1人。獣は火をこわがるので、火が消えると道は戻ってしまう）
+    islanders.forEach((p, i) => { p.torchNo = i < state.forestRoad.need ? i + 1 : null; });
+  }
   return { state, islanders, drifters: normalizeDrifters(driftRaw, seen) };
 }
 

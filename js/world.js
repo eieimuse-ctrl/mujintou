@@ -93,7 +93,7 @@ const SKY_KEYS = [
 
 // hub: 島民の集まり場（sim.js の resolveHub）。拠点（isBase）のときだけ、たき火と丸太のいすを置く。
 // 行動範囲の外の地区も見た目は変えない（壁ではなく、島民の行動で表す）。
-export function createWorld({ canvas, terrain, deco, buildings, hub = null, trailCells }) {
+export function createWorld({ canvas, terrain, deco, buildings, hub = null, trailCells, torches = [] }) {
   const { h, biome, idx, cellCenter, heightAtCell, seed } = terrain;
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: false, powerPreference: 'high-performance' });
@@ -351,6 +351,25 @@ export function createWorld({ canvas, terrain, deco, buildings, hub = null, trai
     mesh.computeBoundingSphere();
     parent.add(mesh);
   }
+  // 松明（森の道の火の番）：棒＋火。火は光の影響を受けない色で、夜に浮かび上がる
+  if (torches.length) {
+    const tb = new THREE.BoxGeometry(1, 1, 1);
+    const pole = new THREE.InstancedMesh(tb, new THREE.MeshLambertMaterial({ color: '#6b4426' }), torches.length);
+    const flame = new THREE.InstancedMesh(tb, new THREE.MeshBasicMaterial({ color: '#ffb02e', fog: false }), torches.length);
+    const core = new THREE.InstancedMesh(tb, new THREE.MeshBasicMaterial({ color: '#fff3b0', fog: false }), torches.length);
+    const m4 = new THREE.Matrix4();
+    torches.forEach((t, n) => {
+      m4.makeScale(0.28, 1.9, 0.28).setPosition(t.x, t.y + 0.95, t.z);
+      pole.setMatrixAt(n, m4);
+      m4.makeScale(0.5, 0.55, 0.5).setPosition(t.x, t.y + 2.1, t.z);
+      flame.setMatrixAt(n, m4);
+      m4.makeScale(0.24, 0.3, 0.24).setPosition(t.x, t.y + 2.15, t.z);
+      core.setMatrixAt(n, m4);
+    });
+    core.renderOrder = 2;
+    scene.add(pole, flame, core);
+  }
+
   const decoMesh = new THREE.Group();
   const smallMesh = new THREE.Group();
   for (const list of voxels.values()) instanced(list, decoMesh);

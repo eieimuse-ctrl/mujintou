@@ -149,7 +149,7 @@ async function buildIsland({ state, islanders, drifters = [] }) {
     for (let di = -2; di <= 2; di++) if (terrain.inGrid(hubCell.i + di, hubCell.j + dj)) built.reserved.add(terrain.idx(hubCell.i + di, hubCell.j + dj));
   }
   if (hub.isBase) built.blocked.add(terrain.idx(hubCell.i, hubCell.j)); // たき火のマス
-  const roadCells = forestRoadCells(state.forestRoad, terrain);
+  const { cells: roadCells, torches } = forestRoadCells(state.forestRoad, terrain);
   for (const k of roadCells) built.reserved.add(k);
   const deco = generateDeco(terrain, (i, j) => built.reserved.has(terrain.idx(i, j)));
   // 島民の行動範囲の外（森・高原などの自然の障壁の向こう）。集まり場のある地区は必ず範囲に入れる。
@@ -169,7 +169,7 @@ async function buildIsland({ state, islanders, drifters = [] }) {
 
   const trailCells = sim.trails();
   for (const k of roadCells) trailCells.add(k);
-  const world = createWorld({ canvas, terrain, deco, buildings: built.list, hub, trailCells });
+  const world = createWorld({ canvas, terrain, deco, buildings: built.list, hub, trailCells, torches });
   const actors = createActors({ scene: world.scene, islanders, sim, labelLayer, drifters, drifts, heightAt: (x, z) => terrain.heightAt(x, z) });
 
   // 地区ラベル。拠点が決まったら、拠点のある地区は拠点の名前を拠点の位置に出す。
@@ -294,7 +294,8 @@ async function buildIsland({ state, islanders, drifters = [] }) {
 // 森の道づくり：森の入口から光の場所へ、島民の数 ÷ need の長さだけ道を切りひらく（その幅のマスは木が無く、道の色になる）
 function forestRoadCells(road, terrain) {
   const cells = new Set();
-  if (!road) return cells;
+  const torches = [];
+  if (!road) return { cells, torches };
   const pts = road.points;
   const seg = [];
   let total = 0;
@@ -324,7 +325,25 @@ function forestRoadCells(road, terrain) {
     }
     walked += seg[n];
   }
-  return cells;
+  // 松明：道に沿って1本ごとに1つ（＝火の番が1人）。左右交互に、道のふちへ
+  const step = total / road.need;
+  const lit = Math.min(road.count, road.need);
+  // 道が短いので、見た目の松明は5人に1つ（火の番は1本に1人。番号は詳細に出る）
+  const EVERY = 5;
+  for (let k = 0; k < lit; k += EVERY) {
+    let d = (k + 0.5) * step;
+    let n = 0;
+    while (n < seg.length - 1 && d > seg[n]) { d -= seg[n]; n++; }
+    const [x0, z0] = pts[n];
+    const [x1, z1] = pts[n + 1];
+    const u = Math.min(1, d / seg[n]);
+    const nx = -(z1 - z0) / seg[n], nz = (x1 - x0) / seg[n];
+    const side = (k / EVERY) % 2 ? 1 : -1;
+    const x = x0 + (x1 - x0) * u + nx * side * (half + 0.4);
+    const z = z0 + (z1 - z0) * u + nz * side * (half + 0.4);
+    torches.push({ x, z, y: Math.max(1, terrain.heightAt(x, z)), n: k + 1 });
+  }
+  return { cells, torches };
 }
 
 boot();

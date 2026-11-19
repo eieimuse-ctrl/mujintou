@@ -426,6 +426,7 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
         el('div', {}, [el('dt', { text: '在住' }), el('dd', {}, [el('b', { text: String(p.days) }), el('span', { text: '日' })])]),
         el('div', {}, [el('dt', { text: '仕事' }), el('dd', { text: p.job })]),
         el('div', {}, [el('dt', { text: '漂着' }), el('dd', { text: `${p.joinedDay}日目` })]),
+        p.torchNo ? el('div', {}, [el('dt', { text: '火の番' }), el('dd', {}, [el('span', { text: '森の道の' }), el('b', { text: String(p.torchNo) }), el('span', { text: '本目' })])]) : null,
       ]),
       p.since ? el('p', { class: 'since', text: `在住の起点：${p.since.replaceAll('-', '/')}` }) : null,
       el('h4', { class: 'section-title', text: '関係' }),
