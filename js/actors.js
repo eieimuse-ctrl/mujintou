@@ -17,6 +17,30 @@ const MIN_PX = 30; // 引いて見ても、これより小さくはしない（�
 const WATERLINE = 0.4; // 漂流者のスプライトは、下からこの割合が水面の下
 const DRIFT_VISIBLE = 1 - WATERLINE;
 
+// 手に持つ松明（ドット絵：棒と火）
+function torchCanvas() {
+  const rows = [
+    '..y..',
+    '.yoy.',
+    'yooOy',
+    'yoOOy',
+    '.oOo.',
+    '..k..',
+    '..b..',
+    '..b..',
+    '..b..',
+    '..b..',
+    '..b..',
+  ];
+  const pal = { y: '#ffd04a', o: '#ff8a1e', O: '#fff3b0', k: '#3a2a1c', b: '#7a4f2c' };
+  const c = document.createElement('canvas');
+  c.width = rows[0].length;
+  c.height = rows.length;
+  const g = c.getContext('2d');
+  rows.forEach((r, y) => [...r].forEach((ch, x) => { if (pal[ch]) { g.fillStyle = pal[ch]; g.fillRect(x, y, 1, 1); } }));
+  return c;
+}
+
 // 「？」の吹き出し（白地・濃い枠のドット絵）
 function questionCanvas() {
   const rows = [
@@ -57,7 +81,7 @@ function pixelTexture(canvas) {
 }
 
 // drifters: 漂流者（data.js の正規化済み）、drifts: その場所と揺れ方（drift.js の layoutDrifters。drifters と同じ並び）
-export function createActors({ scene, islanders, sim, labelLayer, drifters = [], drifts = [], heightAt = null }) {
+export function createActors({ scene, islanders, sim, labelLayer, drifters = [], drifts = [], heightAt = null, torchPosts = [], torchEvery = 5 }) {
   const bubbleTex = {};
   for (const icon of ['talk', 'heart', 'note', 'bolt']) bubbleTex[icon] = pixelTexture(bubbleCanvas(icon));
 
@@ -207,6 +231,46 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
   }
 
 
+  // ---- 火の番：森の道の見張り場所（torchPosts）ごとに、島民が1人、松明を手に持って立つ ----
+  // 見張り場所 p は火の番の番号 p*torchEvery+1 〜 (p+1)*torchEvery の人たちが受け持ち、1時間ごとに交代する
+  const torchTex = pixelTexture(torchCanvas());
+  const torchSprites = new Map();
+  const HOUR = 3600000;
+  function dutyOf(i, tMs) {
+    const p = actors[i]?.person;
+    if (!p || !p.torchNo || p.missing || p.today || !torchPosts.length) return null;
+    const post = Math.floor((p.torchNo - 1) / torchEvery);
+    if (post >= torchPosts.length) return null;
+    const members = actors.filter((a) => a.person.torchNo && Math.floor((a.person.torchNo - 1) / torchEvery) === post && !a.person.missing && !a.person.today);
+    if (!members.length) return null;
+    const on = members[Math.floor(tMs / HOUR) % members.length];
+    if (on.index !== i) return null;
+    return { post: torchPosts[post], from: post * torchEvery + 1, to: post * torchEvery + torchEvery };
+  }
+  const dutyCache = { t: -1, map: new Map() };
+  function dutyNow(i, tMs) {
+    const slot = Math.floor(tMs / HOUR);
+    if (dutyCache.t !== slot) {
+      dutyCache.t = slot;
+      dutyCache.map.clear();
+      for (const a of actors) { const d = dutyOf(a.index, tMs); if (d) dutyCache.map.set(a.index, d); }
+    }
+    return dutyCache.map.get(i) || null;
+  }
+  const dutyState = {};
+  function dutyPose(d) {
+    dutyState.x = d.post.x;
+    dutyState.z = d.post.z;
+    dutyState.y = groundAt(d.post.x, d.post.z);
+    dutyState.dx = -128 - d.post.x; // 森の奥（光の場所）の方を向く
+    dutyState.dz = -34 - d.post.z;
+    dutyState.anim = 'idle';
+    dutyState.frame = null;
+    dutyState.bubble = null;
+    dutyState.line = '';
+    return dutyState;
+  }
+
   // きょうの行動：その場所でその動きを続ける（ときどき向きを変える程度）
   const todayState = {};
   function todayPose(a, td) {
@@ -250,7 +314,19 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       }
       a.sprite.visible = a.shadow.visible = true;
       const td = !stagePose && a.person.today;
-      const s = (stagePose && stagePose(a.index, tMs)) || (td ? todayPose(a, td) : sim.stateAt(a.index, tMs));
+      const duty = !stagePose && !td && dutyNow(a.index, tMs);
+      const s = (stagePose && stagePose(a.index, tMs)) || (td ? todayPose(a, td) : duty ? dutyPose(duty) : sim.stateAt(a.index, tMs));
+      // 手に持つ松明（火の番のとき、または台本で torch: true のとき）
+      const holdTorch = !!duty || !!(s && s.torch);
+      let ts = torchSprites.get(a.index);
+      if (holdTorch && !ts) {
+        ts = new THREE.Sprite(new THREE.SpriteMaterial({ map: torchTex, alphaTest: 0.5, transparent: false, fog: false }));
+        ts.center.set(0.5, 0);
+        ts.renderOrder = 2;
+        scene.add(ts);
+        torchSprites.set(a.index, ts);
+      }
+      if (ts) ts.visible = holdTorch;
 
       // 高さは段差でカクッとしないよう、少しなめらかに追いかける
       if (a.y === null || Math.abs(a.y - s.y) > 3) a.y = s.y;
@@ -304,6 +380,12 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       a.sprite.scale.set(SPRITE_W * k, SPRITE_H * k, 1);
       a.shadow.position.set(s.x, a.y + 0.07, s.z);
       a.shadow.scale.setScalar(k);
+      if (ts && ts.visible) {
+        const side = a.facing > 0 ? 1 : -1;
+        ts.position.set(s.x + right.x * side * 0.62 * k, a.y + 1.15 * k, s.z + right.z * side * 0.62 * k);
+        const fl = 1 + 0.08 * Math.sin(t * 13 + a.seed);
+        ts.scale.set(0.55 * k, 1.9 * k * fl, 1);
+      }
 
       // セリフ（'line'）は DOM の吹き出しで、名前ラベルの上に出す。それ以外はアイコンのスプライト。
       const iconBubble = s.bubble && s.bubble !== 'line';
@@ -478,6 +560,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
     pick,
     pickAt,
     positionOf: (i) => actors[i]?.pos,
+    dutyOf: (i, tMs) => dutyNow(i, tMs),
     atlasOf: (i) => actors[i]?.atlas,
     drifterPositionOf: (j) => castaways[j]?.pos,
     drifterAtlasOf: (j) => castaways[j]?.atlas,

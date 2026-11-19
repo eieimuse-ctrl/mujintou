@@ -170,7 +170,7 @@ async function buildIsland({ state, islanders, drifters = [] }) {
   const trailCells = sim.trails();
   for (const k of roadCells) trailCells.add(k);
   const world = createWorld({ canvas, terrain, deco, buildings: built.list, hub, trailCells, torches });
-  const actors = createActors({ scene: world.scene, islanders, sim, labelLayer, drifters, drifts, heightAt: (x, z) => terrain.heightAt(x, z) });
+  const actors = createActors({ scene: world.scene, islanders, sim, labelLayer, drifters, drifts, heightAt: (x, z) => terrain.heightAt(x, z), torchPosts: torches, torchEvery: 5 });
 
   // 地区ラベル。拠点が決まったら、拠点のある地区は拠点の名前を拠点の位置に出す。
   const districtLabels = world.districtAnchors.map((a) => {
@@ -278,7 +278,8 @@ async function buildIsland({ state, islanders, drifters = [] }) {
       lastNow = nowPerf;
       const lost = islanders[selected]?.missing;
       const td = islanders[selected]?.today;
-      ui.setNow(lost ? { label: '行方不明', text: lost.text, next: '', missing: true } : td ? { label: 'きょうの行動', text: td.text, next: '次の動画まで続けています' } : sim.status(selected, t));
+      const duty = actors.dutyOf(selected, t);
+      ui.setNow(lost ? { label: '行方不明', text: lost.text, next: '', missing: true } : td ? { label: 'きょうの行動', text: td.text, next: '次の動画まで続けています' } : duty ? { label: '火の番', text: `森の道の${duty.from}〜${duty.to}本目で、松明を持って見張っている`, next: '1時間ごとに交代' } : sim.status(selected, t));
     }
 
     world.render();

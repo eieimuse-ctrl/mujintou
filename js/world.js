@@ -352,7 +352,7 @@ export function createWorld({ canvas, terrain, deco, buildings, hub = null, trai
     parent.add(mesh);
   }
   // 松明（森の道の火の番）：棒＋火。火は光の影響を受けない色で、夜に浮かび上がる
-  if (torches.length) {
+  if (torches.length && false) { // 置き松明は使わない（火の番の島民が手に持つ。actors.js）
     const tb = new THREE.BoxGeometry(1, 1, 1);
     const pole = new THREE.InstancedMesh(tb, new THREE.MeshLambertMaterial({ color: '#6b4426' }), torches.length);
     const flame = new THREE.InstancedMesh(tb, new THREE.MeshBasicMaterial({ color: '#ffb02e', fog: false }), torches.length);
