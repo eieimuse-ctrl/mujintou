@@ -336,12 +336,16 @@ def compose_frame(i):
 
 # ---- 音：ナレーション（VOICEVOX 春日部つむぎ＝speaker 8）と BGM ----
 VV = os.environ.get('VOICEVOX', 'http://127.0.0.1:50021')
+SPEED = float(S.get('audio', {}).get('speed', 1.0))  # VOICEVOX の話す速さ（speedScale）
 def voice(text, speaker=8):
     os.makedirs(os.path.join(BUILD, 'voice'), exist_ok=True)
-    f = os.path.join(BUILD, 'voice', hashlib.md5(f'{speaker}:{text}'.encode()).hexdigest()[:12] + '.wav')
+    tag = f'{speaker}:{text}' if SPEED == 1.0 else f'{speaker}:{SPEED}:{text}'
+    f = os.path.join(BUILD, 'voice', hashlib.md5(tag.encode()).hexdigest()[:12] + '.wav')
     if os.path.exists(f): return f
     try:
         q = urllib.request.urlopen(urllib.request.Request(f'{VV}/audio_query?speaker={speaker}&text={urllib.parse.quote(text)}', method='POST'), timeout=20).read()
+        if SPEED != 1.0:
+            qj = json.loads(q); qj['speedScale'] = SPEED; q = json.dumps(qj).encode()
         wav = urllib.request.urlopen(urllib.request.Request(f'{VV}/synthesis?speaker={speaker}', data=q, headers={'content-type': 'application/json'}, method='POST'), timeout=60).read()
         open(f, 'wb').write(wav); return f
     except Exception as e:
