@@ -1,0 +1,53 @@
+{
+ "day": 4,
+ "roster": "../../ep3/input/islanders.json",
+ "today": [
+  {
+   "id": "yuradayo0330",
+   "spot": "plaza",
+   "anim": "talk",
+   "text": "森の奥で見つけた「昔の住人の跡」のことを、みんなに話している"
+  },
+  {
+   "id": "saori.siegert",
+   "spot": "forestEdge",
+   "anim": "work",
+   "text": "森の入口で、焚き火の番をしている"
+  },
+  {
+   "id": "tsuki5747",
+   "spot": "forestEdge",
+   "anim": "idle",
+   "text": "ゆらさん奪還作戦、成功。森の奥を見張っている",
+   "tool": "scope"
+  },
+  {
+   "id": "ao.030499",
+   "spot": "forestEdge",
+   "anim": "cheer",
+   "text": "戦闘係として、森の入口で気合十分に見張っている"
+  },
+  {
+   "id": "atsukidesu",
+   "spot": "forestEdge",
+   "anim": "idle",
+   "text": "森の奥の跡を、もう一度見に行く準備をしている",
+   "tool": "scope"
+  },
+  {
+   "id": "ryuji_111",
+   "spot": "forestEdge",
+   "anim": "idle",
+   "text": "森の奥の跡を、もう一度見に行く準備をしている",
+   "tool": "scope"
+  },
+  {
+   "id": "1kichi_chan",
+   "spot": "forestEdge",
+   "anim": "idle",
+   "text": "森の奥の跡を、もう一度見に行く準備をしている",
+   "tool": "scope"
+  }
+ ],
+ "missing": {}
+}

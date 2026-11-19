@@ -1,0 +1,70 @@
+{
+ "day": 4,
+ "forestRoad": {
+  "points": [
+   [
+    -74,
+    -22
+   ],
+   [
+    -128,
+    -34
+   ]
+  ],
+  "need": 300,
+  "startDay": 4,
+  "label": "光の場所",
+  "open": true
+ },
+ "districts_forest": {
+  "id": "forest",
+  "inRange": true,
+  "expandedDay": 4,
+  "reason": "松明を持って、みんなで森へ入った（獣は火をこわがる）"
+ },
+ "buildings_add": [
+  {
+   "id": "ruins-1",
+   "type": "ruins",
+   "name": "昔の住人の跡",
+   "x": -44.7,
+   "z": -12.7,
+   "rot": 0,
+   "builtDay": 1
+  }
+ ],
+ "chronicle_add": {
+  "day": 4,
+  "title": "火を持って森の奥へ。ゆらさん発見",
+  "text": "夜になる前に火を焚き、松明を持って森へ。奥の光はゆらさんの焚き火だった。そばには、昔だれかが暮らしていた跡が。",
+  "vote": {
+   "question": "行方不明者がいる島で、みんなは何をする？",
+   "adopted": "夜になる前に火を焚いてみる🔥🔥🔥",
+   "note": "いいね最多のコメントを採用"
+  }
+ },
+ "currentVote": {
+  "id": "vote-004-ruins",
+  "status": "open",
+  "question": "森の奥の、昔の住人の跡。どうする？",
+  "description": "A・B・C・D でコメントしてね。コメントが一番多い案を採用します（Dが一番多いときは、Dの中でいいねが一番多い案）",
+  "options": [
+   {
+    "key": "A",
+    "label": "跡を直して、森の拠点に"
+   },
+   {
+    "key": "B",
+    "label": "石の道具をまねて作る"
+   },
+   {
+    "key": "C",
+    "label": "昔の住人の行方を探す"
+   },
+   {
+    "key": "D",
+    "label": "自由に提案"
+   }
+  ]
+ }
+}

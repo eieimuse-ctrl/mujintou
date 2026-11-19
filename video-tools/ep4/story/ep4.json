@@ -1,0 +1,1568 @@
+{
+ "title": "4日目",
+ "roster": "../../ep3/input/islanders.json",
+ "day": 4,
+ "fps": 24,
+ "duration": 48.5,
+ "hour": 10,
+ "baseTime": "2026-11-20T09:00:00+09:00",
+ "base": {
+  "name": "中央の広場",
+  "x": 0,
+  "z": 5,
+  "decidedDay": 2
+ },
+ "forestRoad": {
+  "points": [
+   [
+    -74,
+    -22
+   ],
+   [
+    -128,
+    -34
+   ]
+  ],
+  "need": 300,
+  "startDay": 4,
+  "label": "光の場所",
+  "open": true
+ },
+ "buildings": [
+  {
+   "id": "ruins-1",
+   "type": "ruins",
+   "name": "昔の住人の跡",
+   "x": -44.7,
+   "z": -12.7,
+   "rot": 0,
+   "builtDay": 1
+  }
+ ],
+ "cast": [
+  "saori.siegert",
+  "tsuki5747",
+  "hyuga_0619",
+  "guernica.0712",
+  "nabemegane",
+  "atsukidesu",
+  "t.waka0113",
+  "1kichi_chan",
+  "sakusaku_ss0420",
+  "ryuji_111",
+  "ao.030499",
+  "kubotto0505",
+  "sakasaka_1482",
+  "horiharu0220",
+  "shugo.77",
+  "_shaun81",
+  "hori_harusabu",
+  "musashi.617",
+  "kosei20130324",
+  "s_02y.ayta",
+  "nintendo_3ds.12",
+  "hayato210165",
+  "sasa_mi42151315",
+  "marumegane4",
+  "tako1216yaki",
+  "s.sora1225",
+  "_otekat_____",
+  "ichi.09",
+  "shinohara_kohei",
+  "bear.44190633",
+  "dosukoi.5845",
+  "yuridazo68",
+  "nanasi774_ou",
+  "aosan116",
+  "paianiyan",
+  "akuserumeihong"
+ ],
+ "groups": [
+  {
+   "name": "beach",
+   "type": "ring",
+   "spot": [
+    238,
+    125
+   ],
+   "radius": 3.2,
+   "gap": 2.6,
+   "members": []
+  },
+  {
+   "name": "edge",
+   "type": "line",
+   "spot": [
+    -76,
+    -23
+   ],
+   "face": [
+    0.98,
+    0.2
+   ],
+   "gap": 2.6,
+   "members": [
+    "saori.siegert",
+    "nabemegane",
+    "ao.030499",
+    "sakasaka_1482",
+    "horiharu0220",
+    "shugo.77",
+    "_shaun81",
+    "hori_harusabu",
+    "musashi.617",
+    "kosei20130324",
+    "s_02y.ayta",
+    "nintendo_3ds.12",
+    "hayato210165",
+    "sasa_mi42151315",
+    "marumegane4"
+   ]
+  },
+  {
+   "name": "road",
+   "type": "line",
+   "spot": [
+    -82.1,
+    -23.8
+   ],
+   "face": [
+    0.22,
+    -0.97
+   ],
+   "gap": 2.2,
+   "members": [
+    "tsuki5747",
+    "atsukidesu",
+    "ryuji_111",
+    "1kichi_chan",
+    "tako1216yaki",
+    "s.sora1225",
+    "_otekat_____",
+    "ichi.09",
+    "shinohara_kohei",
+    "bear.44190633"
+   ]
+  },
+  {
+   "name": "ruins",
+   "type": "line",
+   "spot": [
+    -129,
+    -25
+   ],
+   "face": [
+    0.55,
+    0.83
+   ],
+   "gap": 2.6,
+   "members": [
+    "yuradayo0330",
+    "tsuki5747",
+    "atsukidesu",
+    "ryuji_111"
+   ]
+  },
+  {
+   "name": "plaza",
+   "type": "ring",
+   "spot": [
+    0,
+    15
+   ],
+   "radius": 7,
+   "gap": 2.8,
+   "members": [
+    "sakasaka_1482",
+    "horiharu0220",
+    "shugo.77",
+    "_shaun81",
+    "hori_harusabu",
+    "musashi.617",
+    "kosei20130324",
+    "s_02y.ayta",
+    "nintendo_3ds.12",
+    "hayato210165",
+    "sasa_mi42151315",
+    "marumegane4",
+    "tako1216yaki",
+    "s.sora1225",
+    "_otekat_____",
+    "ichi.09",
+    "shinohara_kohei",
+    "bear.44190633",
+    "dosukoi.5845",
+    "yuridazo68",
+    "nanasi774_ou",
+    "aosan116",
+    "paianiyan",
+    "akuserumeihong"
+   ]
+  }
+ ],
+ "acts": [
+  {
+   "who": "*",
+   "t": 0,
+   "anim": "idle",
+   "face": "front"
+  },
+  {
+   "who": [],
+   "t": 0,
+   "at": {
+    "slot": "beach"
+   },
+   "anim": "sleep"
+  },
+  {
+   "who": [],
+   "t": 1.2,
+   "anim": "sit",
+   "pick": 0.35,
+   "seed": 4
+  },
+  {
+   "who": [],
+   "t": 2.0,
+   "anim": "cheer",
+   "pick": 0.2,
+   "seed": 8
+  },
+  {
+   "who": [
+    "saori.siegert",
+    "nabemegane",
+    "ao.030499",
+    "sakasaka_1482",
+    "horiharu0220",
+    "shugo.77",
+    "_shaun81",
+    "hori_harusabu",
+    "musashi.617",
+    "kosei20130324",
+    "s_02y.ayta",
+    "nintendo_3ds.12",
+    "hayato210165",
+    "sasa_mi42151315",
+    "marumegane4"
+   ],
+   "t": 9.6,
+   "at": {
+    "slot": "edge"
+   },
+   "anim": "idle"
+  },
+  {
+   "who": "saori.siegert",
+   "t": 10.6,
+   "anim": "work"
+  },
+  {
+   "who": "nabemegane",
+   "t": 10.6,
+   "anim": "work"
+  },
+  {
+   "who": [
+    "saori.siegert",
+    "nabemegane",
+    "ao.030499",
+    "sakasaka_1482",
+    "horiharu0220",
+    "shugo.77",
+    "_shaun81",
+    "hori_harusabu",
+    "musashi.617",
+    "kosei20130324",
+    "s_02y.ayta",
+    "nintendo_3ds.12",
+    "hayato210165",
+    "sasa_mi42151315",
+    "marumegane4"
+   ],
+   "t": 12.6,
+   "torch": true,
+   "anim": "cheer"
+  },
+  {
+   "who": [
+    "saori.siegert",
+    "nabemegane",
+    "ao.030499",
+    "sakasaka_1482",
+    "horiharu0220",
+    "shugo.77",
+    "_shaun81",
+    "hori_harusabu",
+    "musashi.617",
+    "kosei20130324",
+    "s_02y.ayta",
+    "nintendo_3ds.12",
+    "hayato210165",
+    "sasa_mi42151315",
+    "marumegane4"
+   ],
+   "t": 13.4,
+   "anim": "idle"
+  },
+  {
+   "who": "tsuki5747",
+   "t": 14.6,
+   "at": [
+    -79.64,
+    -24.4
+   ],
+   "torch": true,
+   "anim": "idle",
+   "hide": false
+  },
+  {
+   "who": "tsuki5747",
+   "t": 15.0,
+   "to": [
+    -107.72,
+    -30.64
+   ],
+   "dur": 5.4
+  },
+  {
+   "who": "atsukidesu",
+   "t": 14.6,
+   "at": [
+    -80.78,
+    -22.36
+   ],
+   "torch": true,
+   "anim": "idle",
+   "hide": false
+  },
+  {
+   "who": "atsukidesu",
+   "t": 15.0,
+   "to": [
+    -108.59,
+    -28.54
+   ],
+   "dur": 5.4
+  },
+  {
+   "who": "ryuji_111",
+   "t": 14.6,
+   "at": [
+    -82.88,
+    -25.12
+   ],
+   "torch": true,
+   "anim": "idle",
+   "hide": false
+  },
+  {
+   "who": "ryuji_111",
+   "t": 15.0,
+   "to": [
+    -110.42,
+    -31.24
+   ],
+   "dur": 5.4
+  },
+  {
+   "who": "1kichi_chan",
+   "t": 14.6,
+   "at": [
+    -84.02000000000001,
+    -23.080000000000002
+   ],
+   "torch": true,
+   "anim": "idle",
+   "hide": false
+  },
+  {
+   "who": "1kichi_chan",
+   "t": 15.0,
+   "to": [
+    -111.29,
+    -29.14
+   ],
+   "dur": 5.4
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 14.6,
+   "at": [
+    -86.11999999999999,
+    -25.84
+   ],
+   "torch": true,
+   "anim": "idle",
+   "hide": false
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 15.0,
+   "to": [
+    -113.11999999999999,
+    -31.84
+   ],
+   "dur": 5.4
+  },
+  {
+   "who": "s.sora1225",
+   "t": 14.6,
+   "at": [
+    -87.26,
+    -23.8
+   ],
+   "torch": true,
+   "anim": "idle",
+   "hide": false
+  },
+  {
+   "who": "s.sora1225",
+   "t": 15.0,
+   "to": [
+    -113.99000000000001,
+    -29.740000000000002
+   ],
+   "dur": 5.4
+  },
+  {
+   "who": "_otekat_____",
+   "t": 14.6,
+   "at": [
+    -89.36,
+    -26.56
+   ],
+   "torch": true,
+   "anim": "idle",
+   "hide": false
+  },
+  {
+   "who": "_otekat_____",
+   "t": 15.0,
+   "to": [
+    -115.82,
+    -32.44
+   ],
+   "dur": 5.4
+  },
+  {
+   "who": "ichi.09",
+   "t": 14.6,
+   "at": [
+    -90.5,
+    -24.52
+   ],
+   "torch": true,
+   "anim": "idle",
+   "hide": false
+  },
+  {
+   "who": "ichi.09",
+   "t": 15.0,
+   "to": [
+    -116.69000000000001,
+    -30.34
+   ],
+   "dur": 5.4
+  },
+  {
+   "who": "shinohara_kohei",
+   "t": 14.6,
+   "at": [
+    -92.6,
+    -27.279999999999998
+   ],
+   "torch": true,
+   "anim": "idle",
+   "hide": false
+  },
+  {
+   "who": "shinohara_kohei",
+   "t": 15.0,
+   "to": [
+    -118.52,
+    -33.04
+   ],
+   "dur": 5.4
+  },
+  {
+   "who": "bear.44190633",
+   "t": 14.6,
+   "at": [
+    -93.74000000000001,
+    -25.240000000000002
+   ],
+   "torch": true,
+   "anim": "idle",
+   "hide": false
+  },
+  {
+   "who": "bear.44190633",
+   "t": 15.0,
+   "to": [
+    -119.39,
+    -30.94
+   ],
+   "dur": 5.4
+  },
+  {
+   "who": "yuradayo0330",
+   "t": 0,
+   "hide": true
+  },
+  {
+   "who": "yuradayo0330",
+   "t": 20.6,
+   "hide": false,
+   "at": [
+    -121.0,
+    -31.0
+   ],
+   "anim": "sit",
+   "face": {
+    "at": [
+     -119.6,
+     -30.2
+    ]
+   }
+  },
+  {
+   "who": "yuradayo0330",
+   "t": 22.4,
+   "anim": "cheer"
+  },
+  {
+   "who": "tsuki5747",
+   "t": 20.6,
+   "at": [
+    -112.0,
+    -28.5
+   ],
+   "to": [
+    -118.0,
+    -29.8
+   ],
+   "dur": 1.6,
+   "run": true,
+   "torch": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 22.4,
+   "anim": "cheer",
+   "face": {
+    "to": "yuradayo0330"
+   }
+  },
+  {
+   "who": "atsukidesu",
+   "t": 20.6,
+   "at": [
+    -110.4,
+    -29.3
+   ],
+   "to": [
+    -116.6,
+    -30.7
+   ],
+   "dur": 1.6,
+   "run": true,
+   "torch": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 22.4,
+   "anim": "cheer",
+   "face": {
+    "to": "yuradayo0330"
+   }
+  },
+  {
+   "who": "ryuji_111",
+   "t": 20.6,
+   "at": [
+    -108.8,
+    -30.1
+   ],
+   "to": [
+    -115.2,
+    -31.6
+   ],
+   "dur": 1.6,
+   "run": true,
+   "torch": true
+  },
+  {
+   "who": "ryuji_111",
+   "t": 22.4,
+   "anim": "cheer",
+   "face": {
+    "to": "yuradayo0330"
+   }
+  },
+  {
+   "who": "1kichi_chan",
+   "t": 20.6,
+   "at": [
+    -107.2,
+    -30.9
+   ],
+   "to": [
+    -113.8,
+    -32.5
+   ],
+   "dur": 1.6,
+   "run": true,
+   "torch": true
+  },
+  {
+   "who": "1kichi_chan",
+   "t": 22.4,
+   "anim": "cheer",
+   "face": {
+    "to": "yuradayo0330"
+   }
+  },
+  {
+   "who": [
+    "yuradayo0330",
+    "tsuki5747",
+    "atsukidesu",
+    "ryuji_111"
+   ],
+   "t": 26.0,
+   "at": {
+    "slot": "ruins"
+   },
+   "anim": "idle",
+   "torch": false,
+   "hide": false,
+   "face": "back"
+  },
+  {
+   "who": [
+    "yuradayo0330",
+    "tsuki5747",
+    "atsukidesu",
+    "ryuji_111"
+   ],
+   "t": 27.4,
+   "anim": "work",
+   "face": "back"
+  },
+  {
+   "who": "yuradayo0330",
+   "t": 28.0,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "ao.030499",
+   "t": 31.5,
+   "at": [
+    -70,
+    -21
+   ],
+   "torch": true,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": [
+    "saori.siegert",
+    "nabemegane",
+    "sakasaka_1482",
+    "horiharu0220",
+    "shugo.77",
+    "_shaun81",
+    "hori_harusabu",
+    "musashi.617",
+    "kosei20130324",
+    "s_02y.ayta",
+    "nintendo_3ds.12",
+    "hayato210165",
+    "sasa_mi42151315",
+    "marumegane4"
+   ],
+   "t": 31.5,
+   "at": {
+    "slot": "edge"
+   },
+   "torch": false,
+   "anim": "idle"
+  },
+  {
+   "who": [
+    "sakasaka_1482",
+    "horiharu0220",
+    "shugo.77",
+    "_shaun81",
+    "hori_harusabu",
+    "musashi.617",
+    "kosei20130324",
+    "s_02y.ayta",
+    "nintendo_3ds.12",
+    "hayato210165",
+    "sasa_mi42151315",
+    "marumegane4",
+    "tako1216yaki",
+    "s.sora1225",
+    "_otekat_____",
+    "ichi.09",
+    "shinohara_kohei",
+    "bear.44190633",
+    "dosukoi.5845",
+    "yuridazo68",
+    "nanasi774_ou",
+    "aosan116",
+    "paianiyan",
+    "akuserumeihong"
+   ],
+   "t": 34.3,
+   "at": {
+    "slot": "plaza"
+   },
+   "torch": false,
+   "anim": "idle",
+   "face": {
+    "at": [
+     0,
+     15
+    ]
+   }
+  }
+ ],
+ "props": [
+  {
+   "type": "flame",
+   "from": [
+    -73.5,
+    -19.5
+   ],
+   "t0": 10.8,
+   "t1": 10.81,
+   "t2": 14.6,
+   "size": 1.6
+  },
+  {
+   "type": "flame",
+   "from": [
+    -119.6,
+    -30.2
+   ],
+   "t0": 14.6,
+   "t1": 14.61,
+   "t2": 26.0,
+   "size": 1.6
+  }
+ ],
+ "camera": [
+  {
+   "from": 0,
+   "to": 3.0,
+   "hour": 7.5,
+   "keys": [
+    {
+     "t": 0,
+     "look": {
+      "rel": "g:beach"
+     },
+     "dist": 24,
+     "az": 1.1,
+     "pol": 1.22,
+     "up": 1.5,
+     "frame": "edge"
+    },
+    {
+     "t": 3.0,
+     "look": {
+      "rel": "g:beach"
+     },
+     "dist": 20,
+     "az": 1.2,
+     "pol": 1.24,
+     "up": 1.5,
+     "frame": "edge"
+    }
+   ]
+  },
+  {
+   "from": 3.0,
+   "to": 6.0,
+   "hour": 11,
+   "keys": [
+    {
+     "t": 3.0,
+     "look": [
+      15,
+      40
+     ],
+     "dist": 760,
+     "az": 0.5,
+     "pol": 0.78,
+     "up": 0,
+     "frame": "edge"
+    },
+    {
+     "t": 6.0,
+     "look": [
+      15,
+      40
+     ],
+     "dist": 700,
+     "az": 0.62,
+     "pol": 0.8,
+     "up": 0,
+     "frame": "edge"
+    }
+   ]
+  },
+  {
+   "from": 6.0,
+   "to": 9.6,
+   "hour": 16.5,
+   "keys": [
+    {
+     "t": 6.0,
+     "look": {
+      "rel": "g:edge"
+     },
+     "dist": 90,
+     "az": 0.3,
+     "pol": 1.0,
+     "up": 0
+    },
+    {
+     "t": 9.6,
+     "look": {
+      "rel": "g:edge"
+     },
+     "dist": 80,
+     "az": 0.35,
+     "pol": 1.0,
+     "up": 0
+    }
+   ]
+  },
+  {
+   "from": 9.6,
+   "to": 14.6,
+   "hour": 18.2,
+   "keys": [
+    {
+     "t": 9.6,
+     "look": {
+      "rel": "saori.siegert"
+     },
+     "dist": 15,
+     "az": 0.3,
+     "pol": 1.3,
+     "up": 2.2
+    },
+    {
+     "t": 12.4,
+     "look": {
+      "rel": "saori.siegert"
+     },
+     "dist": 16,
+     "az": 0.3,
+     "pol": 1.3,
+     "up": 2.2
+    },
+    {
+     "t": 14.6,
+     "look": {
+      "rel": "g:edge"
+     },
+     "dist": 26,
+     "az": 0.25,
+     "pol": 1.28,
+     "up": 2
+    }
+   ]
+  },
+  {
+   "from": 14.6,
+   "to": 20.6,
+   "hour": 20.5,
+   "keys": [
+    {
+     "t": 14.6,
+     "look": [
+      -84.8,
+      -24.4
+     ],
+     "dist": 18,
+     "az": -0.5,
+     "pol": 1.25,
+     "up": 2.4,
+     "frame": "road"
+    },
+    {
+     "t": 20.6,
+     "look": [
+      -107.48,
+      -29.44
+     ],
+     "dist": 18,
+     "az": -0.45,
+     "pol": 1.25,
+     "up": 2.4,
+     "frame": "road"
+    }
+   ]
+  },
+  {
+   "from": 20.6,
+   "to": 26.0,
+   "hour": 20.8,
+   "keys": [
+    {
+     "t": 20.6,
+     "look": [
+      -121.0,
+      -31.0
+     ],
+     "dist": 16,
+     "az": -0.2,
+     "pol": 1.28,
+     "up": 2.2,
+     "frame": "road"
+    },
+    {
+     "t": 26.0,
+     "look": [
+      -119.0,
+      -31.0
+     ],
+     "dist": 14,
+     "az": -0.15,
+     "pol": 1.28,
+     "up": 2.2,
+     "frame": "road"
+    }
+   ]
+  },
+  {
+   "from": 26.0,
+   "to": 31.5,
+   "hour": 8.0,
+   "keys": [
+    {
+     "t": 26.0,
+     "look": [
+      -134,
+      -37
+     ],
+     "dist": 34,
+     "az": 0,
+     "pol": 0.85,
+     "up": 1.0,
+     "frame": "ruins"
+    },
+    {
+     "t": 31.5,
+     "look": [
+      -134,
+      -37
+     ],
+     "dist": 28,
+     "az": 0.2,
+     "pol": 0.9,
+     "up": 1.0,
+     "frame": "ruins"
+    }
+   ]
+  },
+  {
+   "from": 31.5,
+   "to": 34.3,
+   "hour": 20.5,
+   "keys": [
+    {
+     "t": 31.5,
+     "look": [
+      -70,
+      -21
+     ],
+     "dist": 11,
+     "az": 0.3,
+     "pol": 1.3,
+     "up": 2.2,
+     "frame": "edge"
+    },
+    {
+     "t": 34.3,
+     "look": [
+      -70,
+      -21
+     ],
+     "dist": 10,
+     "az": 0.3,
+     "pol": 1.3,
+     "up": 2.2,
+     "frame": "edge"
+    }
+   ]
+  },
+  {
+   "from": 34.3,
+   "to": 44.5,
+   "hour": 9.5,
+   "keys": [
+    {
+     "t": 34.3,
+     "look": {
+      "rel": "g:plaza"
+     },
+     "dist": 90,
+     "az": 0.5,
+     "pol": 0.9,
+     "up": 0
+    },
+    {
+     "t": 44.5,
+     "look": {
+      "rel": "g:plaza"
+     },
+     "dist": 70,
+     "az": 0.7,
+     "pol": 0.92,
+     "up": 0
+    }
+   ]
+  },
+  {
+   "from": 44.5,
+   "to": 48.5,
+   "hour": 17.5,
+   "keys": [
+    {
+     "t": 44.5,
+     "look": [
+      15,
+      40
+     ],
+     "dist": 700,
+     "az": 0.8,
+     "pol": 0.85,
+     "up": 0,
+     "frame": "edge"
+    },
+    {
+     "t": 48.5,
+     "look": [
+      15,
+      40
+     ],
+     "dist": 760,
+     "az": 0.9,
+     "pol": 0.85,
+     "up": 0,
+     "frame": "edge"
+    }
+   ]
+  }
+ ],
+ "overlay": {
+  "banner": "コメントで動く無人島　4日目",
+  "bannerOff": [
+   [
+    0,
+    6.0
+   ],
+   [
+    44.5,
+    48.5
+   ]
+  ],
+  "commenters": {
+   "saori.siegert": "-",
+   "tsuki5747": "-",
+   "hyuga_0619": "-",
+   "guernica.0712": "-",
+   "nabemegane": "-",
+   "atsukidesu": "-",
+   "t.waka0113": "-",
+   "1kichi_chan": "-",
+   "sakusaku_ss0420": "-",
+   "ryuji_111": "-",
+   "ao.030499": "-",
+   "kubotto0505": "-"
+  },
+  "names": {
+   "saori.siegert": "Saori Siegert",
+   "tsuki5747": "つき",
+   "hyuga_0619": "ひゅうが",
+   "guernica.0712": "ざーふ",
+   "nabemegane": "とも",
+   "atsukidesu": "中村徳貴",
+   "t.waka0113": "waka .T",
+   "1kichi_chan": "わんきち",
+   "sakusaku_ss0420": "さくさくぱんだ",
+   "ryuji_111": "Ryuji",
+   "ao.030499": "ao.",
+   "kubotto0505": "kubotto"
+  },
+  "titles": [
+   {
+    "text": "4日目",
+    "from": 0.1,
+    "to": 3.0
+   }
+  ],
+  "tagAll": [
+   [
+    0.3,
+    3.0,
+    0.08
+   ]
+  ],
+  "stars": [
+   {
+    "who": "saori.siegert",
+    "from": 9.8,
+    "to": 12.6,
+    "bubble": "夜になる前に火を焚いてみる🔥🔥🔥"
+   },
+   {
+    "who": "nabemegane",
+    "from": 12.7,
+    "to": 14.5,
+    "bubble": "火おこしして目印にしよう！"
+   },
+   {
+    "who": "tsuki5747",
+    "from": 14.8,
+    "to": 18.2,
+    "bubble": "ゆらさん奪還作戦を開始する"
+   },
+   {
+    "who": "yuradayo0330",
+    "from": 22.2,
+    "to": 26.0
+   },
+   {
+    "who": "ao.030499",
+    "from": 31.6,
+    "to": 34.3,
+    "bubble": "戦闘係がいい！🔥"
+   }
+  ],
+  "ranking": {
+   "from": 6.0,
+   "to": 9.6,
+   "title": "昨日の質問　いいねが多かった案",
+   "winnerAt": 8.0,
+   "rows": [
+    {
+     "name": "Saori Siegert",
+     "text": "夜になる前に火を焚いてみる🔥🔥🔥",
+     "likes": 4
+    },
+    {
+     "name": "つき",
+     "text": "ゆらさん奪還作戦を開始する",
+     "likes": 3
+    },
+    {
+     "name": "ひゅうが",
+     "text": "島民の名簿とか作って管理する",
+     "likes": 2
+    }
+   ]
+  },
+  "images": [
+   {
+    "file": "profile.png",
+    "from": 3.0,
+    "to": 4.6,
+    "w": 900,
+    "y": 600,
+    "tap": [
+     0.24,
+     0.905
+    ],
+    "tapLabel": "フォローすると…"
+   },
+   {
+    "file": "profile.png",
+    "from": 4.6,
+    "to": 6.0,
+    "w": 900,
+    "y": 600,
+    "tap": [
+     0.37,
+     0.78
+    ],
+    "tapLabel": "島のいまは、ここ"
+   },
+   {
+    "file": "profile.png",
+    "from": 44.6,
+    "to": 48.5,
+    "w": 900,
+    "y": 520,
+    "tap": [
+     0.37,
+     0.78
+    ],
+    "tapLabel": "ここから"
+   }
+  ],
+  "captions": [
+   {
+    "text": "新しい仲間が、流れ着いた",
+    "from": 0.4,
+    "to": 3.0,
+    "y": 1290,
+    "size": 66
+   },
+   {
+    "text": "あなたも、次の動画で流れ着きます",
+    "from": 3.1,
+    "to": 4.6,
+    "y": 1400,
+    "size": 50,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "ゆらさん、発見",
+    "from": 24.6,
+    "to": 26.0,
+    "y": 1290,
+    "size": 84
+   },
+   {
+    "text": "この島には、前にも誰かいた…？",
+    "from": 29.6,
+    "to": 31.5,
+    "y": 360,
+    "size": 52,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "次の質問",
+    "from": 37.6,
+    "to": 44.5,
+    "y": 330,
+    "size": 64,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "森の奥の、昔の住人の跡。",
+    "from": 37.7,
+    "to": 44.5,
+    "y": 450,
+    "size": 60
+   },
+   {
+    "text": "どうする？",
+    "from": 37.7,
+    "to": 44.5,
+    "y": 545,
+    "size": 60
+   },
+   {
+    "text": "A 跡を直して、森の拠点に",
+    "from": 38.6,
+    "to": 44.5,
+    "y": 760,
+    "size": 52
+   },
+   {
+    "text": "B 石の道具をまねて作る",
+    "from": 39.2,
+    "to": 44.5,
+    "y": 860,
+    "size": 52
+   },
+   {
+    "text": "C 昔の住人の行方を探す",
+    "from": 39.8,
+    "to": 44.5,
+    "y": 960,
+    "size": 52
+   },
+   {
+    "text": "D 自由に提案",
+    "from": 40.4,
+    "to": 44.5,
+    "y": 1060,
+    "size": 52
+   },
+   {
+    "text": "A・B・C・Dでコメントしてね",
+    "from": 41.0,
+    "to": 44.5,
+    "y": 1300,
+    "size": 50,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "あなたの島民のいまは、",
+    "from": 44.7,
+    "to": 48.5,
+    "y": 1300,
+    "size": 54
+   },
+   {
+    "text": "プロフィールのリンクから",
+    "from": 44.7,
+    "to": 48.5,
+    "y": 1390,
+    "size": 54
+   }
+  ],
+  "action": [
+   {
+    "text": "火を焚く",
+    "from": 9.8,
+    "to": 14.6
+   },
+   {
+    "text": "松明を持って、森の奥へ",
+    "from": 14.8,
+    "to": 20.6
+   },
+   {
+    "text": "奥の光へ",
+    "from": 20.7,
+    "to": 22.2
+   },
+   {
+    "text": "戦闘係",
+    "from": 31.6,
+    "to": 34.3
+   }
+  ],
+  "result": [
+   {
+    "text": "獣は、火をこわがる",
+    "from": 12.8,
+    "to": 14.6
+   },
+   {
+    "text": "ゆらさんの、焚き火だった！",
+    "from": 22.3,
+    "to": 24.5
+   },
+   {
+    "text": "昔だれかが暮らしていた跡",
+    "from": 28.0,
+    "to": 31.5
+   },
+   {
+    "text": "…ひとりだけ、気合十分。",
+    "from": 33.0,
+    "to": 34.3
+   }
+  ],
+  "wall": {
+   "from": 34.3,
+   "to": 37.5,
+   "title": "みんなの声",
+   "step": 0.08,
+   "items": [
+    {
+     "name": "Saori Siegert",
+     "text": "夜になる前に火を焚いてみる🔥🔥🔥",
+     "vote": null
+    },
+    {
+     "name": "つき",
+     "text": "ゆらさん奪還作戦を開始する",
+     "vote": null
+    },
+    {
+     "name": "ひゅうが",
+     "text": "島民の名簿とか作って管理する",
+     "vote": null
+    },
+    {
+     "name": "名無し",
+     "text": "誰が来たのか管理する。あと、リーダー的なのを決めて10人くらいで会議を開く。リーダーは立候補から投票で選ぶ。",
+     "vote": null
+    },
+    {
+     "name": "ヘロルト",
+     "text": "安心して寝れるように簡単な小屋を作る",
+     "vote": null
+    },
+    {
+     "name": "ざーふ",
+     "text": "料理人になっていた",
+     "vote": null
+    },
+    {
+     "name": "とも",
+     "text": "火おこしして目印にしよう！",
+     "vote": null
+    },
+    {
+     "name": "中村徳貴",
+     "text": "探検家でグループ作って捜索ですね…",
+     "vote": null
+    },
+    {
+     "name": "せな",
+     "text": "集会を開く",
+     "vote": null
+    },
+    {
+     "name": "waka .T",
+     "text": "簡易的な蒸留装置をつくる",
+     "vote": null
+    },
+    {
+     "name": "わんきち",
+     "text": "探検家のみなさんに提案です。みんなで探しに行きませんか？？そのためにも身を守る道具など必要かも、、、大工さんなら作れそう？？",
+     "vote": null
+    },
+    {
+     "name": "さくさくぱんだ",
+     "text": "私も料理人だから心配……\nリーダーとか作りたいね！",
+     "vote": null
+    },
+    {
+     "name": "k",
+     "text": "近くの木を切ったり、木の実を拾ったりしたいです！",
+     "vote": null
+    },
+    {
+     "name": "Ryuji",
+     "text": "捜索開始‼️",
+     "vote": null
+    },
+    {
+     "name": "ao.",
+     "text": "戦闘係がいい！🔥",
+     "vote": null
+    },
+    {
+     "name": "スバル",
+     "text": "ワイワイ聞こえたから島に漂流してきちゃったよ〜",
+     "vote": null
+    },
+    {
+     "name": "kubotto",
+     "text": "とりあえず点呼とって、みんなでどうするのか相談する。",
+     "vote": null
+    }
+   ]
+  },
+  "smallTagsMax": 5
+ },
+ "override": {
+  "tsuki5747": {
+   "job": "探検家"
+  },
+  "atsukidesu": {
+   "job": "探検家"
+  },
+  "ryuji_111": {
+   "job": "探検家"
+  },
+  "1kichi_chan": {
+   "job": "探検家"
+  }
+ },
+ "audio": {
+  "narration": [
+   {
+    "at": 0.3,
+    "until": 3.0,
+    "text": "4日目。"
+   },
+   {
+    "at": 3.1,
+    "until": 4.6,
+    "text": "フォローすると、あなたも。"
+   },
+   {
+    "at": 4.7,
+    "until": 6.0,
+    "text": "島は、リンクから。"
+   },
+   {
+    "at": 6.1,
+    "until": 8.0,
+    "text": "昨日の一番人気は…"
+   },
+   {
+    "at": 8.1,
+    "until": 9.6,
+    "text": "夜になる前に、火を焚く！"
+   },
+   {
+    "at": 12.8,
+    "until": 14.6,
+    "text": "獣は、火をこわがる。"
+   },
+   {
+    "at": 15.0,
+    "until": 18.0,
+    "text": "松明を持って、森の奥へ。"
+   },
+   {
+    "at": 18.3,
+    "until": 20.6,
+    "text": "奥に見えた光は…"
+   },
+   {
+    "at": 22.3,
+    "until": 24.8,
+    "text": "ゆらさんの焚き火だった！"
+   },
+   {
+    "at": 26.2,
+    "until": 29.5,
+    "text": "ゆらさんが見つけたのは、昔だれかが暮らした跡。"
+   },
+   {
+    "at": 29.7,
+    "until": 31.5,
+    "text": "前にも、誰かいた…？"
+   },
+   {
+    "at": 37.7,
+    "until": 44.4,
+    "text": "次の質問。昔の住人の跡、どうする？エー、ビー、シー、ディーでコメントしてね。"
+   },
+   {
+    "at": 44.7,
+    "until": 48.5,
+    "text": "あなたの島民のいまは、プロフィールのリンクから。"
+   }
+  ],
+  "bgm": {
+   "volume": 0.18
+  },
+  "speed": 1.15
+ },
+ "cover": {
+  "at": 23.0,
+  "day": "4日目",
+  "lines": [
+   "火を持って、森の奥へ",
+   "そこにいたのは…"
+  ]
+ }
+}

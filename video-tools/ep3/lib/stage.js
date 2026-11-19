@@ -118,7 +118,7 @@
     // 人ごとの状態（その時刻までのキーを積み上げる）
     const stateOf = (id, t) => {
       const home = slot.get(id) || { x: 0, z: 0, g: firstG };
-      const st = { pos: home, anim: 'idle', frame: null, hide: !slot.has(id), face: 'front', move: null, moveAnim: 'walk', g: home.g };
+      const st = { pos: home, anim: 'idle', frame: null, hide: !slot.has(id), face: 'front', move: null, moveAnim: 'walk', g: home.g, torch: false };
       for (const k of keys.get(id)) {
         if (k.t > t) break;
         const at = k.at && k.at.slot ? gslot.get(k.at.slot)?.get(id) : null;
@@ -130,6 +130,7 @@
         if (k.anim) { st.anim = k.anim; st.frame = null; }
         if (k.frame !== undefined) st.frame = k.frame;
         if (k.hide !== undefined) st.hide = k.hide;
+        if (k.torch !== undefined) st.torch = k.torch;
         if (k.face) st.face = k.face;
       }
       let p = st.pos, walking = false;
@@ -146,7 +147,7 @@
       else if (st.face && st.face.at) { const q = resolve(st.face.at, t); dx = q.x - p.x; dz = q.z - p.z; }
       else if (st.face === 'left') { dx = -g.Tg.x; dz = -g.Tg.z; }
       else if (st.face === 'right') { dx = g.Tg.x; dz = g.Tg.z; }
-      return { x: p.x, z: p.z, g, dx, dz, anim: walking ? st.moveAnim : st.anim, frame: walking ? null : st.frame, hide: st.hide };
+      return { x: p.x, z: p.z, g, dx, dz, anim: walking ? st.moveAnim : st.anim, frame: walking ? null : st.frame, hide: st.hide, torch: st.torch };
     };
     const posAt = (id, t) => { const s = stateOf(id, t); return { x: s.x, z: s.z }; };
     function moving(st, t) {
@@ -213,6 +214,15 @@
         '....kwk.....',
         '.....k......',
       ], { k: '#231d36', w: '#ffffff' }),
+      flame: pixel([
+        '...y....',
+        '..yoy...',
+        '.yoOoy..',
+        'yoOOOoy.',
+        'yoOOOoy.',
+        '.ooOoo..',
+        'kbkbkbk.',
+      ], { y: '#ffd04a', o: '#ff8a1e', O: '#fff3b0', k: '#3a2a1c', b: '#7a4f2c' }),
       zzz: pixel([
         'kkkkk....',
         '...k.....',
@@ -230,7 +240,7 @@
     };
     const props = (story.props || []).map((pr) => {
       const art = ART[pr.type];
-      const sp2 = new SpriteC(new MatC({ map: art.tex, alphaTest: 0.5, transparent: false, depthTest: !['splash', 'question', 'zzz'].includes(pr.type), fog: pr.type !== 'question' }));
+      const sp2 = new SpriteC(new MatC({ map: art.tex, alphaTest: 0.5, transparent: false, depthTest: !['splash', 'question', 'zzz'].includes(pr.type), fog: !['question', 'flame'].includes(pr.type) }));
       const hgt = pr.size || 1.4;
       sp2.scale.set((hgt * art.w) / art.h, hgt, 1);
       sp2.center.set(0.5, 0);
@@ -247,6 +257,7 @@
       const arc = (pr.arc || 0) * 4 * u * (1 - u);
       const x = A.x + (B.x - A.x) * u, z = A.z + (B.z - A.z) * u, y = A.y + (B.y - A.y) * u + arc;
       const wob = pr.type === 'fish' ? Math.sin(t * 30) * 0.08 : pr.type === 'zzz' ? ((t * 0.8 + (pr.phase || 0)) % 1) * 1.2 : 0;
+      if (pr.type === 'flame') P.sp.scale.set(P.sp.scale.x, (pr.size || 1.4) * (1 + 0.1 * Math.sin(t * 17)), 1);
       P.sp.position.set(x, y + wob, z);
       P.sp.visible = true;
       return { x, y, z };
@@ -276,7 +287,7 @@
       if (!keys.has(id)) return { x: 0, y: -80, z: 0, dx: 0, dz: 1, anim: 'idle' };
       const s = stateOf(id, window.__filmT || 0);
       if (s.hide) return { x: s.x, y: -80, z: s.z, dx: 0, dz: 1, anim: 'idle' };
-      return { x: s.x, y: yAt(s.x, s.z), z: s.z, dx: s.dx, dz: s.dz, anim: s.anim, frame: s.frame, bubble: null, line: '' };
+      return { x: s.x, y: yAt(s.x, s.z), z: s.z, dx: s.dx, dz: s.dz, anim: s.anim, frame: s.frame, bubble: null, line: '', torch: s.torch };
     };
     return { cast, missing: castAll.filter((id) => !idx.has(id)), n: cast.length, groups: [...G.keys()] };
   }
