@@ -352,7 +352,42 @@
       }
     };
 
-    S = { cast, idx, stateOf, props, propAt, camAt, story, solids, solidAt };
+    // ---- 手前の木を消す（カットアウェイ）：カメラと、映したい人（注視点・画面に入る島民）を結ぶ線のそばにある木や岩を、そのコマだけ見えなくする ----
+    const deco = [];
+    scene.traverse((o) => {
+      if (!o.isInstancedMesh || o.count < 1) return;
+      const arr = o.instanceMatrix.array;
+      const pos = new Float32Array(o.count * 3);
+      for (let i = 0; i < o.count; i++) { pos[i * 3] = arr[i * 16 + 12]; pos[i * 3 + 1] = arr[i * 16 + 13]; pos[i * 3 + 2] = arr[i * 16 + 14]; }
+      deco.push({ o, orig: new Float32Array(arr), pos, hidden: [] });
+    });
+    const CUT_R = story.cutaway?.radius ?? 3.4;
+    const cutaway = (camPos, targets) => {
+      if (story.cutaway === false) return;
+      const segs = targets.map((q) => { const dx = q.x - camPos.x, dy = q.y - camPos.y, dz = q.z - camPos.z; const L = Math.hypot(dx, dy, dz) || 1; return { dx: dx / L, dy: dy / L, dz: dz / L, L }; });
+      for (const D of deco) {
+        const arr = D.o.instanceMatrix.array;
+        let dirty = false;
+        for (const i of D.hidden) { arr.set(D.orig.subarray(i * 16, i * 16 + 16), i * 16); dirty = true; }
+        D.hidden = [];
+        const P = D.pos, n = D.o.count;
+        for (let i = 0; i < n; i++) {
+          const px = P[i * 3] - camPos.x, py = P[i * 3 + 1] - camPos.y, pz = P[i * 3 + 2] - camPos.z;
+          for (const g of segs) {
+            const along = px * g.dx + py * g.dy + pz * g.dz;
+            if (along < 0.5 || along > g.L - 1.2) continue; // 人の後ろ（背景）は残す
+            const ox = px - g.dx * along, oy = py - g.dy * along, oz = pz - g.dz * along;
+            if (ox * ox + oy * oy + oz * oz < CUT_R * CUT_R) {
+              for (let k = 0; k < 16; k++) arr[i * 16 + k] = 0;
+              D.hidden.push(i); dirty = true; break;
+            }
+          }
+        }
+        if (dirty) D.o.instanceMatrix.needsUpdate = true;
+      }
+    };
+
+    S = { cast, idx, stateOf, props, propAt, camAt, story, solids, solidAt, cutaway };
     globalThis.__stagePose = (i) => {
       const id = people[i].id;
       if (!keys.has(id)) return { x: 0, y: -80, z: 0, dx: 0, dz: 1, anim: 'idle' };
@@ -379,6 +414,18 @@
     a.actors.update(tMs, 1 / 24, cam, { w: vw, h: vh }, -1, c.dist, -1);
     for (const P of S.props) S.propAt(P, t);
     for (const Q of S.solids) S.solidAt(Q, t);
+    {
+      const tg = [{ x: c.tx, y: c.ty, z: c.tz }];
+      for (const x of a.actors.actors) {
+        const q = x.sprite.position;
+        if (q.y < -50 || !x.sprite.visible) continue;
+        const k = x.scale || 1, hy = q.y + 3.0 * k;
+        tmp.set(q.x, hy, q.z).project(cam);
+        if (tmp.z < 1 && Math.abs(tmp.x) < 1.05 && Math.abs(tmp.y) < 1.05 && cam.position.distanceTo(q) < 60) tg.push({ x: q.x, y: hy, z: q.z });
+        if (tg.length > 16) break;
+      }
+      S.cutaway(cam.position, tg);
+    }
     a.world.render();
     const proj = (x, y, z) => { tmp.set(x, y, z).project(cam); return [+(tmp.x * 0.5 + 0.5).toFixed(4), +(-tmp.y * 0.5 + 0.5).toFixed(4), tmp.z < 1]; };
     const people = {};
