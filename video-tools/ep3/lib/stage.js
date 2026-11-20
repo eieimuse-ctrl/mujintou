@@ -281,7 +281,78 @@
       return o;
     };
 
-    S = { cast, idx, stateOf, props, propAt, camAt, story };
+    // ---- 3D の小道具：tree（切られて倒れる木）・build（建物が下から組み上がる） ----
+    let IM = null, GR = null;
+    scene.traverse((o) => { if (!IM && o.isInstancedMesh) IM = o; if (!GR && o.isGroup) GR = o; });
+    const BoxG = IM.geometry.constructor, LamM = IM.material.constructor, MeshC = Object.getPrototypeOf(IM.constructor.prototype).constructor, GroupC = GR.constructor;
+    const unit = new BoxG(1, 1, 1);
+    const mats = new Map();
+    const mat = (c) => { if (!mats.has(c)) mats.set(c, new LamM({ color: c })); return mats.get(c); };
+    const boxMesh = (x, y, z, w, h, d, c) => { const m = new MeshC(unit, mat(c)); m.position.set(x, y, z); m.scale.set(w, h, d); return m; };
+    const solids = [];
+    for (const pr of story.props3d || []) {
+      const g = new GroupC();
+      const P0 = resolve(pr.at, pr.t0 || 0);
+      g.position.set(P0.x, yAt(P0.x, P0.z) - 0.1, P0.z);
+      g.rotation.y = ((pr.rot || 0) * Math.PI) / 180;
+      const parts = [];
+      if (pr.type === 'tree') {
+        const s0 = pr.size || 1.25;
+        const pivot = new GroupC(); // 根元で倒す
+        pivot.add(boxMesh(0, 1.1 * s0, 0, 0.7 * s0, 2.2 * s0, 0.7 * s0, '#7a4f2c'));
+        pivot.add(boxMesh(0, 2.9 * s0, 0, 3.0 * s0, 1.7 * s0, 3.0 * s0, '#3a963a'));
+        pivot.add(boxMesh(0.2 * s0, 4.2 * s0, -0.15 * s0, 2.0 * s0, 1.2 * s0, 2.0 * s0, '#5cbc4a'));
+        g.add(pivot);
+        const stump = boxMesh(0, 0.25 * s0, 0, 0.75 * s0, 0.5 * s0, 0.75 * s0, '#8a5a34');
+        stump.visible = false;
+        g.add(stump);
+        parts.push(pivot, stump);
+      } else if (pr.type === 'build') {
+        const def = (window.__BUILD_DEFS || {})[pr.kind || 'hut'];
+        const order = def.boxes.map((b, i) => ({ b, i })).sort((p, q) => p.b.p[1] - p.b.p[1] || p.i - q.i).sort((p, q) => p.b.p[1] - q.b.p[1]);
+        for (const { b } of order) {
+          const m = boxMesh(b.p[0], b.p[1], b.p[2], b.s[0], b.s[1], b.s[2], b.c);
+          m.userData.full = [b.s[0], b.s[1], b.s[2]];
+          m.visible = false;
+          g.add(m);
+          parts.push(m);
+        }
+      } else if (pr.type === 'logs') {
+        for (let k = 0; k < (pr.count || 3); k++) {
+          const m = boxMesh(0, 0.35 + k * 0.62, (k % 2) * 0.3, 3.6, 0.6, 0.6, k % 2 ? '#8a5a34' : '#7a4f2c');
+          m.visible = false; g.add(m); parts.push(m);
+        }
+      }
+      scene.add(g);
+      solids.push({ pr, g, parts });
+    }
+    const solidAt = (Q, t) => {
+      const pr = Q.pr;
+      Q.g.visible = t >= (pr.show ?? 0) && t <= (pr.hide ?? 1e9);
+      if (pr.type === 'tree') {
+        const [pivot, stump] = Q.parts;
+        // 切る間は小刻みに揺れ、t0〜t1 で倒れ、そのあとは横たわる
+        let ang = 0, shake = 0;
+        if (t >= pr.t0 && t < pr.t1) { const u = (t - pr.t0) / (pr.t1 - pr.t0); ang = (Math.PI / 2) * u * u; }
+        else if (t >= pr.t1) ang = Math.PI / 2 - 0.04 * Math.max(0, 1 - (t - pr.t1) * 4) * Math.sin((t - pr.t1) * 30);
+        if (pr.chop != null && t >= pr.chop && t < pr.t0) shake = 0.05 * Math.sin(t * 40);
+        pivot.rotation.z = -(ang + shake);
+        stump.visible = t >= pr.t0;
+        pivot.visible = t <= (pr.t2 ?? 1e9);
+      } else if (pr.type === 'build') {
+        const n = Q.parts.length, u = Math.max(0, Math.min(1, (t - pr.t0) / (pr.t1 - pr.t0)));
+        Q.parts.forEach((m, k) => {
+          const st = k / n, e = Math.max(0, Math.min(1, (u - st) * n / 2.5));
+          m.visible = e > 0;
+          const f = m.userData.full, pop = e < 1 ? 0.6 + 0.4 * e : 1;
+          m.scale.set(f[0] * pop, f[1] * e, f[2] * pop);
+        });
+      } else if (pr.type === 'logs') {
+        Q.parts.forEach((m, k) => { m.visible = t >= pr.t0 + k * ((pr.t1 - pr.t0) / Q.parts.length); });
+      }
+    };
+
+    S = { cast, idx, stateOf, props, propAt, camAt, story, solids, solidAt };
     globalThis.__stagePose = (i) => {
       const id = people[i].id;
       if (!keys.has(id)) return { x: 0, y: -80, z: 0, dx: 0, dz: 1, anim: 'idle' };
@@ -307,6 +378,7 @@
     for (const x of a.actors.actors) x.y = null;
     a.actors.update(tMs, 1 / 24, cam, { w: vw, h: vh }, -1, c.dist, -1);
     for (const P of S.props) S.propAt(P, t);
+    for (const Q of S.solids) S.solidAt(Q, t);
     a.world.render();
     const proj = (x, y, z) => { tmp.set(x, y, z).project(cam); return [+(tmp.x * 0.5 + 0.5).toFixed(4), +(-tmp.y * 0.5 + 0.5).toFixed(4), tmp.z < 1]; };
     const people = {};

@@ -47,6 +47,7 @@ groups = [
     {'name': 'road', 'type': 'line', 'spot': P(0.15), 'face': [0.22, -0.97], 'gap': 2.2, 'members': searchers + crowd[12:18]},
     {'name': 'ruins', 'type': 'line', 'spot': [-129, -25], 'face': [0.55, 0.83], 'gap': 2.6, 'members': [x for x in [YURA] + searchers[:3] if inr(x)]},
     {'name': 'plaza', 'type': 'ring', 'spot': [0, 15], 'radius': 7, 'gap': 2.8, 'members': crowd},
+    {'name': 'trackcam', 'type': 'line', 'spot': P(0.1), 'face': [0.976, 0.217], 'members': []},  # カメラの向きの基準（道の入口側＝列の後ろ）
 ]
 acts = [{'who': '*', 't': 0, 'anim': 'idle', 'face': 'front'}]
 A = acts.append
@@ -64,10 +65,10 @@ A({'who': G['edge']['members'], 't': 13.4, 'anim': 'idle'})
 # S4 夜の森へ：捜索組が松明を持って道を奥へ
 road = G['road']['members']
 for k, i in enumerate(road):
-    side = 1.2 if k % 2 else -1.2
-    a0, a1 = P(0.10 + 0.03 * k), P(0.62 + 0.025 * k)
+    side = 1.1 if k % 2 else -1.1
+    a0, a1 = P(0.04 + 0.028 * k), P(0.60 + 0.028 * k)
     A({'who': i, 't': 14.6, 'at': [a0[0] + side * 0.2, a0[1] + side], 'torch': True, 'anim': 'idle', 'hide': False})
-    A({'who': i, 't': 15.0, 'to': [a1[0] + side * 0.2, a1[1] + side], 'dur': 5.4})
+    A({'who': i, 't': 14.9, 'to': [a1[0] + side * 0.2, a1[1] + side], 'dur': 5.9})
 # S5 光の正体：ゆらさんの焚き火
 if inr(YURA):
     A({'who': YURA, 't': 0, 'hide': True})
@@ -92,7 +93,11 @@ camera = [
     {'from': 3.0, 'to': 6.0, 'hour': 11, 'keys': [{'t': 3.0, 'look': [15, 40], 'dist': 760, 'az': 0.5, 'pol': 0.78, 'up': 0, 'frame': 'edge'}, {'t': 6.0, 'look': [15, 40], 'dist': 700, 'az': 0.62, 'pol': 0.8, 'up': 0, 'frame': 'edge'}]},
     {'from': 6.0, 'to': 9.6, 'hour': 16.5, 'keys': [{'t': 6.0, 'look': {'rel': 'g:edge'}, 'dist': 90, 'az': 0.3, 'pol': 1.0, 'up': 0}, {'t': 9.6, 'look': {'rel': 'g:edge'}, 'dist': 80, 'az': 0.35, 'pol': 1.0, 'up': 0}]},
     {'from': 9.6, 'to': 14.6, 'hour': 18.2, 'keys': [{'t': 9.6, 'look': {'rel': SAORI if inr(SAORI) else 'g:edge'}, 'dist': 15, 'az': 0.3, 'pol': 1.3, 'up': 2.2}, {'t': 12.4, 'look': {'rel': SAORI if inr(SAORI) else 'g:edge'}, 'dist': 16, 'az': 0.3, 'pol': 1.3, 'up': 2.2}, {'t': 14.6, 'look': {'rel': 'g:edge'}, 'dist': 26, 'az': 0.25, 'pol': 1.28, 'up': 2}]},
-    {'from': 14.6, 'to': 20.6, 'hour': 20.5, 'keys': [{'t': 14.6, 'look': P(0.2) , 'dist': 18, 'az': -0.5, 'pol': 1.25, 'up': 2.4, 'frame': 'road'}, {'t': 20.6, 'look': P(0.62), 'dist': 18, 'az': -0.45, 'pol': 1.25, 'up': 2.4, 'frame': 'road'}]},
+    # 引きで、列の後ろ上空から森の奥へついていく（少し回り込みながら高度を下げる）
+    {'from': 14.6, 'to': 20.6, 'hour': 20.5, 'keys': [
+        {'t': 14.6, 'look': P(0.16), 'dist': 46, 'az': 0.35, 'pol': 0.82, 'up': 2, 'frame': 'trackcam'},
+        {'t': 17.6, 'look': P(0.42), 'dist': 30, 'az': 0.12, 'pol': 0.95, 'up': 2, 'frame': 'trackcam'},
+        {'t': 20.6, 'look': P(0.74), 'dist': 20, 'az': -0.08, 'pol': 1.08, 'up': 2.2, 'frame': 'trackcam'}]},
     {'from': 20.6, 'to': 26.0, 'hour': 20.8, 'keys': [{'t': 20.6, 'look': YURA_AT, 'dist': 16, 'az': -0.2, 'pol': 1.28, 'up': 2.2, 'frame': 'road'}, {'t': 26.0, 'look': [YURA_AT[0] + 2, YURA_AT[1]], 'dist': 14, 'az': -0.15, 'pol': 1.28, 'up': 2.2, 'frame': 'road'}]},
     {'from': 26.0, 'to': 31.5, 'hour': 8.0, 'keys': [{'t': 26.0, 'look': [-134, -37], 'dist': 34, 'az': 0, 'pol': 0.85, 'up': 1.0, 'frame': 'ruins'}, {'t': 31.5, 'look': [-134, -37], 'dist': 28, 'az': 0.2, 'pol': 0.9, 'up': 1.0, 'frame': 'ruins'}]},
     {'from': 31.5, 'to': 34.3, 'hour': 20.5, 'keys': [{'t': 31.5, 'look': [-70, -21], 'dist': 11, 'az': 0.3, 'pol': 1.3, 'up': 2.2, 'frame': 'edge'}, {'t': 34.3, 'look': [-70, -21], 'dist': 10, 'az': 0.3, 'pol': 1.3, 'up': 2.2, 'frame': 'edge'}]},
@@ -130,7 +135,7 @@ overlay = {
         {'text': f'フォローした{n_arrive}人が、流れ着いた' if n_arrive else '新しい仲間が、流れ着いた', 'from': 0.4, 'to': 3.0, 'y': 1290, 'size': 66},
         {'text': 'あなたも、次の動画で流れ着きます', 'from': 3.1, 'to': 4.6, 'y': 1400, 'size': 50, 'color': [255, 214, 74]},
         {'text': 'ゆらさん、発見', 'from': 24.6, 'to': 26.0, 'y': 1290, 'size': 84},
-        {'text': 'この島には、前にも誰かいた…？', 'from': 29.6, 'to': 31.5, 'y': 360, 'size': 52, 'color': [255, 214, 74]},
+        {'text': 'この島には、前にも誰かいた…？', 'from': 28.4, 'to': 31.5, 'y': 360, 'size': 52, 'color': [255, 214, 74]},
         {'text': 'みんなの声', 'from': 34.3, 'to': 37.5, 'y': 220, 'size': 1},
         {'text': '次の質問', 'from': 37.6, 'to': 44.5, 'y': 330, 'size': 64, 'color': [255, 214, 74]},
         {'text': '森の奥の、昔の住人の跡。', 'from': 37.7, 'to': 44.5, 'y': 450, 'size': 60},
@@ -145,7 +150,7 @@ overlay = {
     ],
     'action': [{'text': '火を焚く', 'from': 9.8, 'to': 14.6}, {'text': '松明を持って、森の奥へ', 'from': 14.8, 'to': 20.6},
                {'text': '奥の光へ', 'from': 20.7, 'to': 22.2}, {'text': '戦闘係', 'from': 31.6, 'to': 34.3}],
-    'result': [{'text': '獣は、火をこわがる', 'from': 12.8, 'to': 14.6}, {'text': 'ゆらさんの、焚き火だった！', 'from': 22.3, 'to': 24.5},
+    'result': [{'text': '獣は、火をこわがる', 'from': 12.8, 'to': 14.6}, {'text': '獣じゃない。ゆらさんの焚き火だった！', 'from': 22.3, 'to': 24.5},
                {'text': '昔だれかが暮らしていた跡', 'from': 28.0, 'to': 31.5}, {'text': '…ひとりだけ、気合十分。', 'from': 33.0, 'to': 34.3}],
     'wall': {'from': 34.3, 'to': 37.5, 'title': 'みんなの声', 'step': 0.08, 'items': [{'name': name_of(c), 'text': c['text'], 'vote': None} for c in cm]},
     'smallTagsMax': 5,
@@ -161,8 +166,8 @@ narr = [
     {'at': 15.0, 'until': 18.0, 'text': '松明を持って、森の奥へ。'},
     {'at': 18.3, 'until': 20.6, 'text': '奥に見えた光は…'},
     {'at': 22.3, 'until': 24.8, 'text': 'ゆらさんの焚き火だった！'},
-    {'at': 26.2, 'until': 29.5, 'text': 'ゆらさんが見つけたのは、昔だれかが暮らした跡。'},
-    {'at': 29.7, 'until': 31.5, 'text': '前にも、誰かいた…？'},
+    {'at': 26.2, 'until': 28.9, 'text': 'ゆらさんは、昔の小道をたどって森の奥へ。'},
+    {'at': 29.0, 'until': 31.5, 'text': '暗くなって、焚き火で夜を越していた。'},
     {'at': 37.7, 'until': 44.4, 'text': '次の質問。昔の住人の跡、どうする？エー、ビー、シー、ディーでコメントしてね。'},
     {'at': 44.7, 'until': DUR, 'text': 'あなたの島民のいまは、プロフィールのリンクから。'},
 ]
@@ -176,6 +181,71 @@ story = {
     'audio': {'narration': narr, 'bgm': {'volume': 0.18}, 'speed': 1.15},
     'cover': {'at': 23.0, 'day': f'{DAY}日目', 'lines': ['火を持って、森の奥へ', 'そこにいたのは…']},
 }
+TIME_KEYS = {'t', 'from', 'to', 'at', 't0', 't1', 't2', 'winnerAt', 'until', 'chop', 'show', 'hide'}
+def shift(o, at, by):
+    def mv(v, end=False):
+        return round(v + by, 3) if (v > at + 1e-6 if end else v >= at - 1e-6) else v
+    if isinstance(o, dict):
+        for k, v in o.items():
+            if k in TIME_KEYS and isinstance(v, (int, float)) and not isinstance(v, bool): o[k] = mv(v, end=k in ('to', 't2', 'until', 'hide'))
+            elif k in ('tagAll', 'bannerOff') and isinstance(v, list): o[k] = [[mv(iv[0]), mv(iv[1], True), *iv[2:]] for iv in v]
+            elif isinstance(v, (dict, list)): shift(v, at, by)
+    elif isinstance(o, list):
+        for x in o:
+            if isinstance(x, (dict, list)): shift(x, at, by)
+INS, LEN = 31.5, 13.0
+for part in ('acts', 'props', 'camera', 'overlay', 'audio'): shift(story[part], INS, LEN)
+story['duration'] = DUR + LEN
+story['camera'][-1]['keys'][-1]['t'] = story['duration']; story['camera'][-1]['to'] = story['duration']
+for im in story['overlay']['images']:
+    if im['to'] == DUR: im['to'] = story['duration']
+for c in story['overlay']['captions']:
+    if c['to'] == DUR: c['to'] = story['duration']
+for n in story['audio']['narration']:
+    if n.get('until') == DUR: n['until'] = story['duration']
+story['overlay']['bannerOff'][-1][1] = story['duration']
+B0 = INS
+HUT = [-60.0, -15.0]
+T1, T2 = [-68.5, -11.0], [-66.0, -21.5]
+carp = crowd[18:24] or crowd[:6]
+for i in carp: story['override'][i] = {'job': '大工'}
+story['groups'].append({'name': 'build', 'type': 'line', 'spot': [-60, -6], 'face': [0.98, 0.2], 'gap': 2.4, 'members': carp})
+spots_chop = [[T1[0] + 2.2, T1[1] + 0.6], [T1[0] - 1.6, T1[1] + 1.8], [T2[0] + 2.2, T2[1] - 0.4], [T2[0] - 1.4, T2[1] - 1.8]]
+spots_hut = [[HUT[0] + 4.6, HUT[1] + 0.4], [HUT[0] - 4.6, HUT[1] - 0.4], [HUT[0] + 0.6, HUT[1] + 4.6], [HUT[0] - 0.6, HUT[1] - 4.6], [HUT[0] + 3.6, HUT[1] + 3.6], [HUT[0] - 3.6, HUT[1] + 3.6]]
+acts2 = []
+for k, i in enumerate(carp):
+    tgt = T1 if k % 2 == 0 else T2
+    acts2.append({'who': i, 't': B0, 'at': spots_chop[k % 4] if k < 4 else [HUT[0] + 6, HUT[1] + 2 + k], 'anim': 'work' if k < 4 else 'idle', 'face': {'at': tgt}, 'hide': False, 'torch': False})
+    acts2.append({'who': i, 't': B0 + 2.2 + (1.2 if tgt is T2 else 0), 'anim': 'cheer'})
+    acts2.append({'who': i, 't': B0 + 4.4, 'to': spots_hut[k % 6], 'dur': 1.4})
+    acts2.append({'who': i, 't': B0 + 5.9, 'anim': 'work', 'face': {'at': HUT}})
+    acts2.append({'who': i, 't': B0 + 11.0, 'anim': 'cheer', 'face': 'front'})
+story['acts'] += acts2
+story['props3d'] = [
+    {'type': 'tree', 'at': T1, 'rot': 200, 'chop': B0, 't0': B0 + 1.4, 't1': B0 + 2.2, 't2': B0 + 4.6, 'hide': B0 + 13.0, 'size': 1.25},
+    {'type': 'tree', 'at': T2, 'rot': 160, 'chop': B0 + 0.8, 't0': B0 + 2.6, 't1': B0 + 3.4, 't2': B0 + 4.6, 'hide': B0 + 13.0, 'size': 1.25},
+    {'type': 'logs', 'at': [HUT[0] + 7, HUT[1] - 4], 'rot': 20, 'count': 4, 't0': B0 + 4.4, 't1': B0 + 5.4, 'show': B0, 'hide': B0 + 7.5},
+    {'type': 'build', 'kind': 'hut', 'at': HUT, 'rot': 20, 't0': B0 + 5.8, 't1': B0 + 10.8, 'show': B0, 'hide': B0 + 13.0},
+]
+story['camera'].append({'from': B0, 'to': B0 + 4.6, 'hour': 7.8, 'keys': [
+    {'t': B0, 'look': [-66, -16], 'dist': 26, 'az': 0.45, 'pol': 1.2, 'up': 2.5, 'frame': 'edge'},
+    {'t': B0 + 4.6, 'look': [-65, -16], 'dist': 22, 'az': 0.55, 'pol': 1.18, 'up': 2.5, 'frame': 'edge'}]})
+story['camera'].append({'from': B0 + 4.6, 'to': B0 + 13.0, 'hour': 8.5, 'keys': [
+    {'t': B0 + 4.6, 'look': HUT, 'dist': 28, 'az': 0.3, 'pol': 1.12, 'up': 2.5, 'frame': 'edge'},
+    {'t': B0 + 10.8, 'look': HUT, 'dist': 22, 'az': 0.75, 'pol': 1.1, 'up': 3, 'frame': 'edge'},
+    {'t': B0 + 13.0, 'look': HUT, 'dist': 30, 'az': 0.95, 'pol': 1.05, 'up': 3, 'frame': 'edge'}]})
+story['camera'].sort(key=lambda c: c['from'])
+O = story['overlay']
+O['action'] += [{'text': '木を切り倒す', 'from': B0 + 0.2, 'to': B0 + 4.4}, {'text': '小屋を建てる', 'from': B0 + 4.6, 'to': B0 + 10.8}]
+O['result'] += [{'text': '倒れたー！', 'from': B0 + 2.2, 'to': B0 + 4.4}, {'text': '小屋が、できた！', 'from': B0 + 10.9, 'to': B0 + 13.0}]
+O['captions'] += [{'text': '次の朝', 'from': B0, 'to': B0 + 1.4, 'y': 420, 'size': 64, 'color': [255, 214, 74]},
+                  {'text': 'ヘロルトさんの案「安心して寝れるように簡単な小屋を作る」', 'from': B0 + 4.7, 'to': B0 + 10.8, 'y': 360, 'size': 34}]
+story['audio']['narration'] += [
+    {'at': B0 + 0.1, 'until': B0 + 2.1, 'text': '次の朝。大工たちが、木を切る。'},
+    {'at': B0 + 4.7, 'until': B0 + 7.6, 'text': '切った木で、小屋を建てる。'},
+    {'at': B0 + 10.9, 'until': B0 + 13.0, 'text': '小屋が、できた！'},
+]
+story['cover']['lines'] = ['火を持って、森の奥へ', 'そして、小屋ができた']
 json.dump(story, open(os.path.join(HERE, 'story', 'ep4.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
 # ---- PWA の続き（きょうの行動）と、Firebase の state に入れる差分 ----
@@ -193,7 +263,7 @@ state = {
     'day': DAY,
     'forestRoad': story['forestRoad'],
     'districts_forest': {'id': 'forest', 'inRange': True, 'expandedDay': DAY, 'reason': '松明を持って、みんなで森へ入った（獣は火をこわがる）'},
-    'buildings_add': story['buildings'],
+    'buildings_add': story['buildings'] + [{'id': 'hut-1', 'type': 'hut', 'name': 'はじまりの小屋', 'x': -20, 'z': -5, 'rot': 20, 'builtDay': DAY, 'note': 'ヘロルトさんの案。切りひらいた森の木で建てた'}],
     'chronicle_add': {'day': DAY, 'title': '火を持って森の奥へ。ゆらさん発見', 'text': '夜になる前に火を焚き、松明を持って森へ。奥の光はゆらさんの焚き火だった。そばには、昔だれかが暮らしていた跡が。',
                       'vote': {'question': '行方不明者がいる島で、みんなは何をする？', 'adopted': top[0]['text'] if top else '', 'note': 'いいね最多のコメントを採用'}},
     'currentVote': {'id': 'vote-004-ruins', 'status': 'open', 'question': '森の奥の、昔の住人の跡。どうする？',

@@ -80,6 +80,12 @@ await page.goto(`http://127.0.0.1:${PORT}/index.html?debug&nosw&freeze&t=${BASE_
 await page.waitForFunction(() => window.__island, { timeout: 120000 });
 await page.evaluate((bt) => { window.requestAnimationFrame = () => 0; window.__BASE_T = bt; }, BASE_T);
 await page.evaluate(fs.readFileSync(path.join(HERE, 'lib/stage.js'), 'utf8'));
+// 建物の形（buildings.js）を、組み上がる小道具のために読み込んでおく
+await page.evaluate(async () => {
+  const m = await import('/js/buildings.js');
+  window.__BUILD_DEFS = {};
+  for (const [k, f] of Object.entries(m.BUILDING_TYPES)) window.__BUILD_DEFS[k] = f();
+});
 const env = await page.evaluate((s) => window.__ep3.setup(s), story);
 console.log(NAME, 'cast', env.n, 'chrome', await browser.version());
 
