@@ -358,10 +358,16 @@
       if (!o.isInstancedMesh || o.count < 1) return;
       const arr = o.instanceMatrix.array;
       const pos = new Float32Array(o.count * 3);
-      for (let i = 0; i < o.count; i++) { pos[i * 3] = arr[i * 16 + 12]; pos[i * 3 + 1] = arr[i * 16 + 13]; pos[i * 3 + 2] = arr[i * 16 + 14]; }
-      deco.push({ o, orig: new Float32Array(arr), pos, hidden: [] });
+      const ext = new Float32Array(o.count); // 箱の半径（いちばん長い辺の半分）。葉のような大きな箱も、ふちまで含めて判定する
+      for (let i = 0; i < o.count; i++) {
+        const b = i * 16;
+        pos[i * 3] = arr[b + 12]; pos[i * 3 + 1] = arr[b + 13]; pos[i * 3 + 2] = arr[b + 14];
+        const sx = Math.hypot(arr[b], arr[b + 1], arr[b + 2]), sy = Math.hypot(arr[b + 4], arr[b + 5], arr[b + 6]), sz = Math.hypot(arr[b + 8], arr[b + 9], arr[b + 10]);
+        ext[i] = 0.5 * Math.hypot(sx, sy, sz);
+      }
+      deco.push({ o, orig: new Float32Array(arr), pos, ext, hidden: [] });
     });
-    const CUT_R = story.cutaway?.radius ?? 3.4;
+    const CUT_R = story.cutaway?.radius ?? 1.6; // 線からの余白（箱の大きさは別に足す）
     const cutaway = (camPos, targets) => {
       if (story.cutaway === false) return;
       const segs = targets.map((q) => { const dx = q.x - camPos.x, dy = q.y - camPos.y, dz = q.z - camPos.z; const L = Math.hypot(dx, dy, dz) || 1; return { dx: dx / L, dy: dy / L, dz: dz / L, L }; });
@@ -370,14 +376,17 @@
         let dirty = false;
         for (const i of D.hidden) { arr.set(D.orig.subarray(i * 16, i * 16 + 16), i * 16); dirty = true; }
         D.hidden = [];
-        const P = D.pos, n = D.o.count;
+        const P = D.pos, E = D.ext, n = D.o.count;
         for (let i = 0; i < n; i++) {
           const px = P[i * 3] - camPos.x, py = P[i * 3 + 1] - camPos.y, pz = P[i * 3 + 2] - camPos.z;
+          const e = E[i];
           for (const g of segs) {
             const along = px * g.dx + py * g.dy + pz * g.dz;
-            if (along < 0.5 || along > g.L - 1.2) continue; // 人の後ろ（背景）は残す
+            // 箱の手前のふちが人より手前にあれば対象（中心が少し後ろでも、ふちが顔にかぶるため）。完全に人の後ろの箱は残す
+            if (along + e < 0.3 || along - e > g.L - 0.3) continue;
             const ox = px - g.dx * along, oy = py - g.dy * along, oz = pz - g.dz * along;
-            if (ox * ox + oy * oy + oz * oz < CUT_R * CUT_R) {
+            const r = CUT_R + e;
+            if (ox * ox + oy * oy + oz * oz < r * r) {
               for (let k = 0; k < 16; k++) arr[i * 16 + k] = 0;
               D.hidden.push(i); dirty = true; break;
             }
@@ -421,8 +430,8 @@
         if (q.y < -50 || !x.sprite.visible) continue;
         const k = x.scale || 1, hy = q.y + 3.0 * k;
         tmp.set(q.x, hy, q.z).project(cam);
-        if (tmp.z < 1 && Math.abs(tmp.x) < 1.05 && Math.abs(tmp.y) < 1.05 && cam.position.distanceTo(q) < 60) tg.push({ x: q.x, y: hy, z: q.z });
-        if (tg.length > 16) break;
+        if (tmp.z < 1 && Math.abs(tmp.x) < 1.05 && Math.abs(tmp.y) < 1.05 && cam.position.distanceTo(q) < 60) { tg.push({ x: q.x, y: hy, z: q.z }); tg.push({ x: q.x, y: q.y + 1.2 * k, z: q.z }); }
+        if (tg.length > 32) break;
       }
       S.cutaway(cam.position, tg);
     }
