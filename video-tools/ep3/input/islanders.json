@@ -1,5 +1,4 @@
 {
- "updatedAt": "2026-11-20",
  "islanders": [
   {
    "color": "#e2607e",
@@ -8,6 +7,12 @@
    "job": "大工",
    "joinedDay": 2,
    "name": "さか",
+   "relationships": [
+    {
+     "id": "b1_482000",
+     "type": "friend"
+    }
+   ],
    "since": "2026-11-17"
   },
   {
@@ -282,13 +287,14 @@
    "name": "中村徳貴",
    "since": "2026-11-18",
    "today": {
-    "anim": "work",
-    "day": 3,
+    "anim": "idle",
+    "day": 4,
     "dx": -0.98,
     "dz": -0.2,
-    "text": "森の入口で、木の実を集めている",
-    "x": -78.7,
-    "z": -20.7
+    "text": "森の奥の跡を、もう一度見に行く準備をしている",
+    "tool": "scope",
+    "x": -76.6,
+    "z": -30.7
    }
   },
   {
@@ -514,7 +520,17 @@
    "job": "探検家",
    "joinedDay": 2,
    "name": "わんきち",
-   "since": "2026-11-18"
+   "since": "2026-11-18",
+   "today": {
+    "anim": "idle",
+    "day": 4,
+    "dx": -0.98,
+    "dz": -0.2,
+    "text": "森の奥の跡を、もう一度見に行く準備をしている",
+    "tool": "scope",
+    "x": -76.0,
+    "z": -34.0
+   }
   },
   {
    "color": "#8a63d2",
@@ -917,10 +933,20 @@
    "joinedDay": 3,
    "missing": {
     "day": 3,
+    "found": true,
     "text": "森の奥へ探検に行ったまま、戻ってこない…"
    },
    "name": "ゆら",
-   "since": "2026-11-18"
+   "since": "2026-11-18",
+   "today": {
+    "anim": "talk",
+    "day": 4,
+    "dx": 0.0,
+    "dz": -1.0,
+    "text": "森の奥で見つけた「昔の住人の跡」のことを、みんなに話している",
+    "x": 0.0,
+    "z": 12.0
+   }
   },
   {
    "color": "#3f8fd6",
@@ -1032,13 +1058,13 @@
    "since": "2026-11-18",
    "today": {
     "anim": "idle",
-    "day": 3,
+    "day": 4,
     "dx": -0.98,
     "dz": -0.2,
-    "text": "森の入口で見張りをしている（物音には真っ先に逃げた）",
+    "text": "ゆらさん奪還作戦、成功。森の奥を見張っている",
     "tool": "scope",
-    "x": -74.6,
-    "z": -40.7
+    "x": -77.3,
+    "z": -27.3
    }
   },
   {
@@ -1120,6 +1146,12 @@
    "job": "漁師",
    "joinedDay": 3,
    "name": "Rino",
+   "relationships": [
+    {
+     "id": "sykyu_77",
+     "type": "friend"
+    }
+   ],
    "since": "2026-11-19",
    "today": {
     "anim": "work",
@@ -1169,13 +1201,12 @@
    "since": "2026-11-19",
    "today": {
     "anim": "work",
-    "day": 3,
-    "dx": -0.87,
-    "dz": 0.5,
-    "text": "入り江で釣りをしている",
-    "tool": "rod",
-    "x": -13.6,
-    "z": 179.8
+    "day": 4,
+    "dx": -0.98,
+    "dz": -0.2,
+    "text": "森の入口で、焚き火の番をしている",
+    "x": -78.0,
+    "z": -24.0
    }
   },
   {
@@ -1185,7 +1216,16 @@
    "job": "漁師",
    "joinedDay": 3,
    "name": "ao.",
-   "since": "2026-11-19"
+   "since": "2026-11-19",
+   "today": {
+    "anim": "cheer",
+    "day": 4,
+    "dx": -0.98,
+    "dz": -0.2,
+    "text": "戦闘係として、森の入口で気合十分に見張っている",
+    "x": -78.7,
+    "z": -20.7
+   }
   },
   {
    "color": "#58b04a",
@@ -1302,7 +1342,17 @@
    "job": "農家",
    "joinedDay": 3,
    "name": "Ryuji",
-   "since": "2026-11-19"
+   "since": "2026-11-19",
+   "today": {
+    "anim": "idle",
+    "day": 4,
+    "dx": -0.98,
+    "dz": -0.2,
+    "text": "森の奥の跡を、もう一度見に行く準備をしている",
+    "tool": "scope",
+    "x": -79.4,
+    "z": -17.3
+   }
   },
   {
    "color": "#58b04a",
@@ -1368,534 +1418,827 @@
    "since": "2026-11-19"
   },
   {
+   "color": "#e0862f",
+   "home": "beach",
    "id": "b1_482000",
+   "job": "料理人",
+   "joinedDay": 4,
    "name": "ぺせ",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "料理人",
-   "color": "#e0862f",
-   "relationships": []
+   "relationships": [
+    {
+     "id": "sakasaka_1482",
+     "type": "friend"
+    }
+   ],
+   "since": "2026-11-19"
   },
   {
+   "color": "#e0862f",
+   "home": "beach",
    "id": "ryu27_star",
+   "job": "農家",
+   "joinedDay": 4,
    "name": "Ryosei",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "農家",
-   "color": "#e0862f",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#3f8fd6",
+   "home": "beach",
    "id": "nebebe.17",
+   "job": "大工",
+   "joinedDay": 4,
    "name": "ねべ",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "大工",
-   "color": "#3f8fd6",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#58b04a",
+   "home": "beach",
    "id": "oga_kei039",
+   "job": "漁師",
+   "joinedDay": 4,
    "name": "おがけい",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "漁師",
-   "color": "#58b04a",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#3f8fd6",
+   "home": "beach",
    "id": "to_ki1126",
+   "job": "農家",
+   "joinedDay": 4,
    "name": "とうき",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "農家",
-   "color": "#3f8fd6",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#e2607e",
+   "home": "beach",
    "id": "jiazi1382",
+   "job": "農家",
+   "joinedDay": 4,
    "name": "k",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "農家",
-   "color": "#e2607e",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#3f8fd6",
+   "home": "beach",
    "id": "rii_0001147",
+   "job": "農家",
+   "joinedDay": 4,
    "name": "R.",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "農家",
-   "color": "#3f8fd6",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#2fa39a",
+   "home": "beach",
    "id": "ta1_gen1230",
+   "job": "農家",
+   "joinedDay": 4,
    "name": "taigen",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "農家",
-   "color": "#2fa39a",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#2fa39a",
+   "home": "beach",
    "id": "mitsunari_33",
+   "job": "料理人",
+   "joinedDay": 4,
    "name": "みつなり",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "料理人",
-   "color": "#2fa39a",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#2fa39a",
+   "home": "beach",
    "id": "rioooooo1229",
+   "job": "漁師",
+   "joinedDay": 4,
    "name": "りお",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "漁師",
-   "color": "#2fa39a",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#e2607e",
+   "home": "beach",
    "id": "seven__sist",
+   "job": "漁師",
+   "joinedDay": 4,
    "name": "スバル",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "漁師",
-   "color": "#e2607e",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#e0862f",
+   "home": "beach",
    "id": "mem_mem.0125",
+   "job": "農家",
+   "joinedDay": 4,
    "name": "めむmem🍤",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "農家",
-   "color": "#e0862f",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#58b04a",
+   "home": "beach",
    "id": "kouta.1520",
+   "job": "農家",
+   "joinedDay": 4,
    "name": "KOUTA",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "農家",
-   "color": "#58b04a",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#e2607e",
+   "home": "beach",
    "id": "morimoto1120",
+   "job": "漁師",
+   "joinedDay": 4,
    "name": "友",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "漁師",
-   "color": "#e2607e",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#e2607e",
+   "home": "beach",
    "id": "__melons",
+   "job": "探検家",
+   "joinedDay": 4,
    "name": "颯太",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "探検家",
-   "color": "#e2607e",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#e2607e",
+   "home": "beach",
    "id": "souta8337",
+   "job": "大工",
+   "joinedDay": 4,
    "name": "souta",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "大工",
-   "color": "#e2607e",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#3f8fd6",
+   "home": "beach",
    "id": "sakuraebiakito22",
+   "job": "漁師",
+   "joinedDay": 4,
    "name": "あきと",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "漁師",
-   "color": "#3f8fd6",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#58b04a",
+   "home": "beach",
    "id": "88eito1206",
+   "job": "大工",
+   "joinedDay": 4,
    "name": "英斗",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "大工",
-   "color": "#58b04a",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#3f8fd6",
+   "home": "beach",
    "id": "aira39983",
+   "job": "大工",
+   "joinedDay": 4,
    "name": "AIRA",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "大工",
-   "color": "#3f8fd6",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#2fa39a",
+   "home": "beach",
    "id": "ma_sho_maa",
+   "job": "農家",
+   "joinedDay": 4,
    "name": "まーしょーま",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "農家",
-   "color": "#2fa39a",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#e0862f",
+   "home": "beach",
    "id": "ruka_y_soc",
+   "job": "料理人",
+   "joinedDay": 4,
    "name": "ルカ",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "料理人",
-   "color": "#e0862f",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#3f8fd6",
+   "home": "beach",
    "id": "reindeer.5237571",
+   "job": "農家",
+   "joinedDay": 4,
    "name": "スー",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "農家",
-   "color": "#3f8fd6",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#3f8fd6",
+   "home": "beach",
    "id": "kotsupepan172",
+   "job": "大工",
+   "joinedDay": 4,
    "name": "晃平",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "大工",
-   "color": "#3f8fd6",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#58b04a",
+   "home": "beach",
    "id": "takumi431023",
+   "job": "探検家",
+   "joinedDay": 4,
    "name": "たくみ",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "探検家",
-   "color": "#58b04a",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#2fa39a",
+   "home": "beach",
    "id": "umu39060",
+   "job": "大工",
+   "joinedDay": 4,
    "name": "うむ",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "大工",
-   "color": "#2fa39a",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#8a63d2",
+   "home": "beach",
    "id": "shouhei9324",
+   "job": "漁師",
+   "joinedDay": 4,
    "name": "しょうへい",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "漁師",
-   "color": "#8a63d2",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#2fa39a",
+   "home": "beach",
    "id": "soukigod",
+   "job": "料理人",
+   "joinedDay": 4,
    "name": "souki",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "料理人",
-   "color": "#2fa39a",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#e2607e",
+   "home": "beach",
    "id": "735e67",
+   "job": "農家",
+   "joinedDay": 4,
    "name": "増田飛優",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "農家",
-   "color": "#e2607e",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#e2607e",
+   "home": "beach",
    "id": "r.e.n4851",
+   "job": "大工",
+   "joinedDay": 4,
    "name": "ren4851",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "大工",
-   "color": "#e2607e",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#2fa39a",
+   "home": "beach",
    "id": "taku_2349",
+   "job": "漁師",
+   "joinedDay": 4,
    "name": "たっくん",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "漁師",
-   "color": "#2fa39a",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#2fa39a",
+   "home": "beach",
    "id": "kazu.haru0924",
+   "job": "漁師",
+   "joinedDay": 4,
    "name": "Kazuharu",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "漁師",
-   "color": "#2fa39a",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#3f8fd6",
+   "home": "beach",
    "id": "pqew314kaiko",
+   "job": "探検家",
+   "joinedDay": 4,
    "name": "Kaiko/kosuke",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "探検家",
-   "color": "#3f8fd6",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#58b04a",
+   "home": "beach",
    "id": "rahul_sharma_114514",
+   "job": "大工",
+   "joinedDay": 4,
    "name": "Rahul Sharma",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "大工",
-   "color": "#58b04a",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
-   "id": "liban54175",
-   "name": "くり",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "探検家",
    "color": "#8a63d2",
-   "relationships": []
+   "home": "beach",
+   "id": "liban54175",
+   "job": "探検家",
+   "joinedDay": 4,
+   "name": "くり",
+   "since": "2026-11-19"
   },
   {
+   "color": "#e2607e",
+   "home": "beach",
    "id": "minami_515_takoyaki",
+   "job": "農家",
+   "joinedDay": 4,
    "name": "Minami",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "農家",
-   "color": "#e2607e",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#2fa39a",
+   "home": "beach",
    "id": "ohta_____m",
+   "job": "探検家",
+   "joinedDay": 4,
    "name": "まさおり",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "探検家",
-   "color": "#2fa39a",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#e0862f",
+   "home": "beach",
    "id": "yuki299765",
+   "job": "農家",
+   "joinedDay": 4,
    "name": "ゆうき",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "農家",
-   "color": "#e0862f",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#e0862f",
+   "home": "beach",
    "id": "re_i3basket",
+   "job": "探検家",
+   "joinedDay": 4,
    "name": "れい🏀",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "探検家",
-   "color": "#e0862f",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#e2607e",
+   "home": "beach",
    "id": "souma10.29",
+   "job": "探検家",
+   "joinedDay": 4,
    "name": "souma",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "探検家",
-   "color": "#e2607e",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#3f8fd6",
+   "home": "beach",
    "id": "kiyo.pyon",
+   "job": "大工",
+   "joinedDay": 4,
    "name": "府中 清虎",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "大工",
-   "color": "#3f8fd6",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#58b04a",
+   "home": "beach",
    "id": "natsukiiiiiii0620",
+   "job": "料理人",
+   "joinedDay": 4,
    "name": "夏樹",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "料理人",
-   "color": "#58b04a",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#e0862f",
+   "home": "beach",
    "id": "andu46492",
+   "job": "探検家",
+   "joinedDay": 4,
    "name": "Andu–",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "探検家",
-   "color": "#e0862f",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#e0862f",
+   "home": "beach",
    "id": "shikaku44444",
+   "job": "漁師",
+   "joinedDay": 4,
    "name": "四角",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "漁師",
-   "color": "#e0862f",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#58b04a",
+   "home": "beach",
    "id": "sanga.naganuma",
+   "job": "探検家",
+   "joinedDay": 4,
    "name": "太陽芽",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "探検家",
-   "color": "#58b04a",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#e0862f",
+   "home": "beach",
    "id": "karen_774060",
+   "job": "料理人",
+   "joinedDay": 4,
    "name": "華蓮",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "料理人",
-   "color": "#e0862f",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#58b04a",
+   "home": "beach",
    "id": "nir.yuk_03127",
+   "job": "農家",
+   "joinedDay": 4,
    "name": "りゅうのすけ",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "農家",
-   "color": "#58b04a",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#58b04a",
+   "home": "beach",
    "id": "mujintoudaitouryou",
-   "name": "無人島プロジェクト大統領",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
    "job": "農家",
-   "color": "#58b04a",
-   "relationships": []
+   "joinedDay": 4,
+   "name": "無人島プロジェクト大統領",
+   "since": "2026-11-19"
   },
   {
-   "id": "1145.14810senpai",
-   "name": "アウタルケイア",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "漁師",
    "color": "#3f8fd6",
-   "relationships": []
-  },
-  {
-   "id": "naga.5781",
-   "name": "naga",
-   "joinedDay": 4,
-   "since": "2026-11-19",
    "home": "beach",
+   "id": "1145.14810senpai",
    "job": "漁師",
+   "joinedDay": 4,
+   "name": "アウタルケイア",
+   "since": "2026-11-19"
+  },
+  {
    "color": "#2fa39a",
-   "relationships": []
+   "home": "beach",
+   "id": "naga.5781",
+   "job": "漁師",
+   "joinedDay": 4,
+   "name": "naga",
+   "since": "2026-11-19"
   },
   {
-   "id": "rin_rin2423",
-   "name": "りんとぅん",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "料理人",
    "color": "#e2607e",
-   "relationships": []
+   "home": "beach",
+   "id": "rin_rin2423",
+   "job": "料理人",
+   "joinedDay": 4,
+   "name": "りんとぅん",
+   "since": "2026-11-19"
   },
   {
+   "color": "#e0862f",
+   "home": "beach",
    "id": "ryu_no_nano",
+   "job": "探検家",
+   "joinedDay": 4,
    "name": "りゅうのナノ",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
-   "job": "探検家",
-   "color": "#e0862f",
-   "relationships": []
+   "since": "2026-11-19"
   },
   {
+   "color": "#e0862f",
+   "home": "beach",
    "id": "hyu_papa",
-   "name": "ひゅーぱぱ",
-   "joinedDay": 4,
-   "since": "2026-11-19",
-   "home": "beach",
    "job": "大工",
-   "color": "#e0862f",
-   "relationships": []
+   "joinedDay": 4,
+   "name": "ひゅーぱぱ",
+   "since": "2026-11-19"
   },
   {
-   "id": "k_u.1122",
-   "name": "りょうま",
-   "joinedDay": 4,
-   "since": "2026-11-20",
-   "home": "beach",
-   "job": "探検家",
    "color": "#e0862f",
-   "relationships": []
+   "home": "beach",
+   "id": "k_u.1122",
+   "job": "探検家",
+   "joinedDay": 4,
+   "name": "りょうま",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#3f8fd6",
+   "home": "beach",
+   "id": "remrpg",
+   "job": "大工",
+   "joinedDay": 5,
+   "name": "Rem ―撃つか、撃たないか。―",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#58b04a",
+   "home": "beach",
+   "id": "sykyu_77",
+   "job": "料理人",
+   "joinedDay": 5,
+   "name": "s𐔌՞ ܸ.ˬ.ܸ՞𐦯",
+   "relationships": [
+    {
+     "id": "rino._.15",
+     "type": "friend"
+    }
+   ],
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#58b04a",
+   "home": "beach",
+   "id": "juzagumi13",
+   "job": "漁師",
+   "joinedDay": 5,
+   "name": "juza.H",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#3f8fd6",
+   "home": "beach",
+   "id": "riinnnno0112",
+   "job": "探検家",
+   "joinedDay": 5,
+   "name": "りの",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#e0862f",
+   "home": "beach",
+   "id": "r.k_101110",
+   "job": "大工",
+   "joinedDay": 5,
+   "name": "カニ",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#3f8fd6",
+   "home": "beach",
+   "id": "ekundayowara",
+   "job": "探検家",
+   "joinedDay": 5,
+   "name": "えっちゃん",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#e0862f",
+   "home": "beach",
+   "id": "aosuke_0308",
+   "job": "大工",
+   "joinedDay": 5,
+   "name": "あおすけ",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#3f8fd6",
+   "home": "beach",
+   "id": "hinata64428",
+   "job": "大工",
+   "joinedDay": 5,
+   "name": "陽向",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#8a63d2",
+   "home": "beach",
+   "id": "_lto_lxq426",
+   "job": "漁師",
+   "joinedDay": 5,
+   "name": "絃叶",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#58b04a",
+   "home": "beach",
+   "id": "iseonaka",
+   "job": "大工",
+   "joinedDay": 5,
+   "name": "いえすなか",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#e2607e",
+   "home": "beach",
+   "id": "ryu5oo",
+   "job": "漁師",
+   "joinedDay": 5,
+   "name": "りゅうご",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#e0862f",
+   "home": "beach",
+   "id": "hirotodayo360",
+   "job": "探検家",
+   "joinedDay": 5,
+   "name": "HIROTO",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#e0862f",
+   "home": "beach",
+   "id": "sky__ssta",
+   "job": "料理人",
+   "joinedDay": 5,
+   "name": "ₛₕₒₜₐ",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#e0862f",
+   "home": "beach",
+   "id": "t.sora_o9",
+   "job": "料理人",
+   "joinedDay": 5,
+   "name": "Sora",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#e0862f",
+   "home": "beach",
+   "id": "ko10071996",
+   "job": "料理人",
+   "joinedDay": 5,
+   "name": "K",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#e0862f",
+   "home": "beach",
+   "id": "mqz_k1",
+   "job": "料理人",
+   "joinedDay": 5,
+   "name": "みずき",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#58b04a",
+   "home": "beach",
+   "id": "_.mzk_o9",
+   "job": "農家",
+   "joinedDay": 5,
+   "name": "瑞貴",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#e0862f",
+   "home": "beach",
+   "id": "a_kito_x_x",
+   "job": "漁師",
+   "joinedDay": 5,
+   "name": "😹",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#58b04a",
+   "home": "beach",
+   "id": "ryusei10_14",
+   "job": "大工",
+   "joinedDay": 5,
+   "name": "りゅうせい",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#e2607e",
+   "home": "beach",
+   "id": "ryusei._0426",
+   "job": "探検家",
+   "joinedDay": 5,
+   "name": "りゅうせい",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#3f8fd6",
+   "home": "beach",
+   "id": "zidian34",
+   "job": "大工",
+   "joinedDay": 5,
+   "name": "紫電",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#8a63d2",
+   "home": "beach",
+   "id": "ibukikamoyo",
+   "job": "漁師",
+   "joinedDay": 5,
+   "name": "ibuki",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#e0862f",
+   "home": "beach",
+   "id": "salmonkingts",
+   "job": "探検家",
+   "joinedDay": 5,
+   "name": "TerukiSonoda",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#e2607e",
+   "home": "beach",
+   "id": "aik.a357",
+   "job": "大工",
+   "joinedDay": 5,
+   "name": "aik.a",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#e2607e",
+   "home": "beach",
+   "id": "hi4o112.0919",
+   "job": "農家",
+   "joinedDay": 5,
+   "name": "小川",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#58b04a",
+   "home": "beach",
+   "id": "_.lnua",
+   "job": "探検家",
+   "joinedDay": 5,
+   "name": "るな",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#e0862f",
+   "home": "beach",
+   "id": "kya37674",
+   "job": "料理人",
+   "joinedDay": 5,
+   "name": "kya37",
+   "since": "2026-11-20"
+  },
+  {
+   "color": "#3f8fd6",
+   "home": "beach",
+   "id": "s_7rax",
+   "job": "農家",
+   "joinedDay": 5,
+   "name": "朱 虎",
+   "since": "2026-11-21"
+  },
+  {
+   "color": "#e2607e",
+   "home": "beach",
+   "id": "rixx1ku217",
+   "job": "探検家",
+   "joinedDay": 5,
+   "name": "陸斗",
+   "since": "2026-11-21"
+  },
+  {
+   "color": "#e2607e",
+   "home": "beach",
+   "id": "ikrsh_n0",
+   "job": "漁師",
+   "joinedDay": 5,
+   "name": "きしの",
+   "since": "2026-11-21"
+  },
+  {
+   "color": "#2fa39a",
+   "home": "beach",
+   "id": "denzirouu",
+   "job": "大工",
+   "joinedDay": 5,
+   "name": "denzi",
+   "since": "2026-11-21"
+  },
+  {
+   "color": "#e2607e",
+   "home": "beach",
+   "id": "t.sora0708",
+   "job": "農家",
+   "joinedDay": 5,
+   "name": "𝓢𝓞ℛ⃛𝓐",
+   "since": "2026-11-21"
+  },
+  {
+   "color": "#2fa39a",
+   "home": "beach",
+   "id": "popopo777._.777",
+   "job": "大工",
+   "joinedDay": 5,
+   "name": "怜治",
+   "since": "2026-11-21"
+  },
+  {
+   "color": "#8a63d2",
+   "home": "beach",
+   "id": "akari_y43k",
+   "job": "料理人",
+   "joinedDay": 5,
+   "name": "あかり",
+   "since": "2026-11-21"
+  },
+  {
+   "color": "#e2607e",
+   "home": "beach",
+   "id": "kodai_nrk",
+   "job": "大工",
+   "joinedDay": 5,
+   "name": "なるこうだい",
+   "since": "2026-11-21"
+  },
+  {
+   "color": "#58b04a",
+   "home": "beach",
+   "id": "tsubuanzu_shiyuu",
+   "job": "探検家",
+   "joinedDay": 5,
+   "name": "つぶ",
+   "since": "2026-11-21"
+  },
+  {
+   "color": "#e2607e",
+   "home": "beach",
+   "id": "ctm8362",
+   "job": "漁師",
+   "joinedDay": 5,
+   "name": "ctm83",
+   "since": "2026-11-21"
   }
- ]
+ ],
+ "updatedAt": "2026-11-21"
 }
