@@ -1,0 +1,54 @@
+{
+ "day": 5,
+ "roster": "../input/islanders.json",
+ "today": [
+  {
+   "id": "yuradayo0330",
+   "spot": "plaza",
+   "anim": "talk",
+   "text": "「行方がわからなかったゆらさんです！」と、みんなにあいさつしている"
+  },
+  {
+   "id": "ibu131313",
+   "spot": "cove",
+   "anim": "work",
+   "text": "漁労長として、石の銛で漁をしている",
+   "tool": "rod"
+  },
+  {
+   "id": "rino._.15",
+   "spot": "cove",
+   "anim": "work",
+   "text": "石の銛で漁をしながら、武器にできないか考えている",
+   "tool": "rod"
+  },
+  {
+   "id": "analogayane",
+   "spot": "forestEdge",
+   "anim": "work",
+   "text": "石の作業場で、チームごとの道具を作っている",
+   "tool": "hammer"
+  },
+  {
+   "id": "tsuki5747",
+   "spot": "plaza",
+   "anim": "work",
+   "text": "迷子が出ないように、島民の名簿を作っている"
+  },
+  {
+   "id": "bear.44190633",
+   "spot": "forestEdge",
+   "anim": "idle",
+   "text": "森の奥の、昔の住人の行方が気になっている",
+   "tool": "scope"
+  },
+  {
+   "id": "atsukidesu",
+   "spot": "forestEdge",
+   "anim": "idle",
+   "text": "斥候として、森の奥をのぞいている",
+   "tool": "scope"
+  }
+ ],
+ "missing": {}
+}

@@ -226,8 +226,78 @@ function ruins() {
   };
 }
 
-export const BUILDING_TYPES = { hut, field, pier, watchtower, still, ruins };
-export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台', still: '蒸留装置', ruins: '昔の住人の跡' };
+
+// 石の作業場：昔の住人の跡をまねて、石を割って道具を作る場所（5日目）
+function workshop() {
+  const b = [];
+  const STONE = '#8d8f97', STONE_D = '#6f717a', CHIP = '#b4b6bd';
+  b.push(box(0, 0.12, 0, 5.4, 0.24, 4.2, '#7a6248'));
+  // 日よけ（4本柱＋葉っぱの屋根）
+  for (const [x, z] of [[-2.3, -1.7], [2.3, -1.7], [-2.3, 1.7], [2.3, 1.7]]) b.push(box(x, 1.6, z, 0.34, 3.0, 0.34, WOOD));
+  b.push(box(0, 3.2, 0, 5.6, 0.3, 4.4, THATCH_B));
+  b.push(box(0, 3.5, 0, 4.2, 0.3, 3.0, THATCH_A));
+  // 作業台と、割る前の大きな石
+  b.push(box(-0.8, 0.75, -0.6, 2.4, 0.3, 1.2, WOOD_LIGHT));
+  for (const [x, z] of [[-1.8, -1.0], [0.2, -1.0], [-1.8, -0.2], [0.2, -0.2]]) b.push(box(x, 0.42, z, 0.24, 0.6, 0.24, WOOD_DARK));
+  b.push(box(1.6, 0.6, 0.6, 1.3, 1.0, 1.1, STONE));
+  b.push(box(1.4, 1.2, 0.5, 0.8, 0.4, 0.7, STONE_D));
+  b.push(box(-1.6, 0.4, 1.2, 0.9, 0.5, 0.8, STONE_D));
+  // 台の上の石器（石斧・石の銛・石のくわ）
+  b.push(box(-1.4, 0.98, -0.6, 0.8, 0.1, 0.14, WOOD));
+  b.push(box(-1.0, 1.0, -0.6, 0.3, 0.22, 0.26, STONE));
+  b.push(box(-0.3, 0.97, -0.4, 1.0, 0.08, 0.1, WOOD));
+  b.push(box(0.25, 0.98, -0.4, 0.26, 0.12, 0.12, CHIP));
+  b.push(box(-0.6, 0.97, -0.9, 0.12, 0.08, 0.7, WOOD));
+  b.push(box(-0.6, 0.99, -1.2, 0.4, 0.1, 0.16, STONE_D));
+  for (const [x, z] of [[0.9, 1.4], [1.2, 1.7], [2.3, 1.0], [0.6, 0.0]]) b.push(box(x, 0.3, z, 0.22, 0.1, 0.2, CHIP));
+  return {
+    label: '石の作業場',
+    boxes: b,
+    height: 3.8,
+    footprint: { x0: -2.7, x1: 2.7, z0: -2.1, z1: 2.1 },
+    spots: [
+      { x: -0.8, z: 2.6, fx: -0.8, fz: -0.6, jobs: ['大工', '探検家', '漁師', '農家', '料理人'], label: '石の作業場' },
+      { x: 2.4, z: 2.8, fx: 1.6, fz: 0.6, jobs: ['大工'], label: '石の作業場' },
+    ],
+  };
+}
+
+// 大きな木箱：海から流れ着いた。中身はまだ分からない（6日目の動画で開ける）
+function bigcrate() {
+  const b = [];
+  const PLANK = '#a8794a', PLANK_D = '#7d5634', BAND = '#5b5f68', ROPE = '#d8c08a', WEED = '#3f7d4e', SHELL = '#efe3cf';
+  const W = 6.4, H = 5.2, D = 5.2;
+  for (let k = 0; k < 4; k++) b.push(box(0, 0.65 + k * 1.3, 0, W, 1.22, D, k % 2 ? PLANK : PLANK_D));
+  // 角の補強と金具の帯
+  for (const sx of [-1, 1]) for (const sz of [-1, 1]) b.push(box(sx * (W / 2 - 0.15), H / 2, sz * (D / 2 - 0.15), 0.5, H + 0.1, 0.5, PLANK_D));
+  for (const y of [1.0, H - 1.0]) b.push(box(0, y, 0, W + 0.12, 0.28, D + 0.12, BAND));
+  b.push(box(0, H + 0.05, 0, W - 0.2, 0.14, D - 0.2, PLANK));
+  // ロープ（上で十字）
+  b.push(box(0, H + 0.2, 0, 0.26, 0.2, D + 0.3, ROPE));
+  b.push(box(0, H + 0.2, 0, W + 0.3, 0.2, 0.26, ROPE));
+  b.push(box(0, H / 2, D / 2 + 0.1, 0.26, H, 0.12, ROPE));
+  // 海藻と貝がら（長く海をただよっていた）
+  for (const [x, y, z, w, h] of [[-2.2, 0.4, D / 2 + 0.08, 1.4, 0.7], [1.8, 0.3, D / 2 + 0.08, 0.9, 0.5], [W / 2 + 0.08, 0.5, 1.2, 0.1, 0.9]]) b.push(box(x, y, z, w, h, 0.12, WEED));
+  for (const [x, y, z] of [[1.2, 1.6, D / 2 + 0.1], [-1.0, 2.4, D / 2 + 0.1], [2.4, 3.3, D / 2 + 0.1]]) b.push(box(x, y, z, 0.32, 0.26, 0.1, SHELL));
+  // 「？」の焼き印
+  b.push(box(-1.6, 3.4, D / 2 + 0.09, 0.7, 0.16, 0.06, '#3b2a1c'));
+  b.push(box(-1.3, 3.15, D / 2 + 0.09, 0.16, 0.4, 0.06, '#3b2a1c'));
+  b.push(box(-1.6, 2.85, D / 2 + 0.09, 0.16, 0.3, 0.06, '#3b2a1c'));
+  b.push(box(-1.6, 2.45, D / 2 + 0.09, 0.16, 0.16, 0.06, '#3b2a1c'));
+  return {
+    label: '大きな木箱',
+    boxes: b,
+    height: H + 0.4,
+    footprint: { x0: -W / 2 - 0.2, x1: W / 2 + 0.2, z0: -D / 2 - 0.2, z1: D / 2 + 0.2 },
+    spots: [
+      { x: 0, z: D / 2 + 1.8, fx: 0, fz: 0, jobs: ['探検家', '大工', '漁師', '農家', '料理人', '島民'], label: '大きな木箱' },
+      { x: W / 2 + 1.8, z: 0.8, fx: 0, fz: 0, jobs: ['探検家', '島民'], label: '大きな木箱' },
+    ],
+  };
+}
+
+export const BUILDING_TYPES = { hut, field, pier, watchtower, still, ruins, workshop, bigcrate };
+export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台', still: '蒸留装置', ruins: '昔の住人の跡', workshop: '石の作業場', bigcrate: '大きな木箱' };
 
 // 広場のたき火（建物データではなく、島に最初からある）
 export function campfireBoxes() {

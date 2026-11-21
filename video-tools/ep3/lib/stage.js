@@ -223,6 +223,15 @@
         '.ooOoo..',
         'kbkbkbk.',
       ], { y: '#ffd04a', o: '#ff8a1e', O: '#fff3b0', k: '#3a2a1c', b: '#7a4f2c' }),
+      heart: pixel([
+        '.kk.kk.',
+        'kRRkRRk',
+        'kRWRRRk',
+        'kRRRRRk',
+        '.kRRRk.',
+        '..kRk..',
+        '...k...',
+      ], { k: '#5a1424', R: '#ff5a7a', W: '#ffd0da' }),
       zzz: pixel([
         'kkkkk....',
         '...k.....',
@@ -240,7 +249,7 @@
     };
     const props = (story.props || []).map((pr) => {
       const art = ART[pr.type];
-      const sp2 = new SpriteC(new MatC({ map: art.tex, alphaTest: 0.5, transparent: false, depthTest: !['splash', 'question', 'zzz'].includes(pr.type), fog: !['question', 'flame'].includes(pr.type) }));
+      const sp2 = new SpriteC(new MatC({ map: art.tex, alphaTest: 0.5, transparent: false, depthTest: !['splash', 'question', 'zzz', 'heart'].includes(pr.type), fog: !['question', 'flame'].includes(pr.type) }));
       const hgt = pr.size || 1.4;
       sp2.scale.set((hgt * art.w) / art.h, hgt, 1);
       sp2.center.set(0.5, 0);
@@ -256,7 +265,7 @@
       const u = ease((t - pr.t0) / Math.max(0.01, pr.t1 - pr.t0));
       const arc = (pr.arc || 0) * 4 * u * (1 - u);
       const x = A.x + (B.x - A.x) * u, z = A.z + (B.z - A.z) * u, y = A.y + (B.y - A.y) * u + arc;
-      const wob = pr.type === 'fish' ? Math.sin(t * 30) * 0.08 : pr.type === 'zzz' ? ((t * 0.8 + (pr.phase || 0)) % 1) * 1.2 : 0;
+      const wob = pr.type === 'fish' ? Math.sin(t * 30) * 0.08 : pr.type === 'heart' ? Math.abs(Math.sin(t * 5 + (pr.phase || 0))) * 0.35 : pr.type === 'zzz' ? ((t * 0.8 + (pr.phase || 0)) % 1) * 1.2 : 0;
       if (pr.type === 'flame') P.sp.scale.set(P.sp.scale.x, (pr.size || 1.4) * (1 + 0.1 * Math.sin(t * 17)), 1);
       P.sp.position.set(x, y + wob, z);
       P.sp.visible = true;
@@ -317,6 +326,14 @@
           g.add(m);
           parts.push(m);
         }
+      } else if (pr.type === 'float') {
+        // 海から流れ着く物（建物の形をそのまま使う）。from（海）→ at（浜）へ t0〜t1 で寄ってくる
+        const def = (window.__BUILD_DEFS || {})[pr.kind || 'bigcrate'];
+        const inner = new GroupC();
+        for (const b of def.boxes) inner.add(boxMesh(b.p[0], b.p[1], b.p[2], b.s[0], b.s[1], b.s[2], b.c));
+        g.add(inner);
+        parts.push(inner);
+        const F = resolve(pr.from || pr.at, pr.t0 || 0); pr._f = [F.x, F.z]; pr._a = [P0.x, P0.z];
       } else if (pr.type === 'logs') {
         for (let k = 0; k < (pr.count || 3); k++) {
           const m = boxMesh(0, 0.35 + k * 0.62, (k % 2) * 0.3, 3.6, 0.6, 0.6, k % 2 ? '#8a5a34' : '#7a4f2c');
@@ -347,6 +364,14 @@
           const f = m.userData.full, pop = e < 1 ? 0.6 + 0.4 * e : 1;
           m.scale.set(f[0] * pop, f[1] * e, f[2] * pop);
         });
+      } else if (pr.type === 'float') {
+        const u = Math.max(0, Math.min(1, (t - pr.t0) / Math.max(0.01, pr.t1 - pr.t0)));
+        const e = 1 - (1 - u) * (1 - u);
+        const x = pr._f[0] + (pr._a[0] - pr._f[0]) * e, z = pr._f[1] + (pr._a[1] - pr._f[1]) * e;
+        const wet = 1 - u; // 海の上では沈み、揺れる。浜に着くと止まる
+        Q.g.position.set(x, yAt(x, z) - 0.1 - (pr.sink ?? 1.6) * wet + Math.sin(t * 2.2) * 0.35 * wet, z);
+        Q.parts[0].rotation.z = Math.sin(t * 1.7) * 0.08 * wet;
+        Q.parts[0].rotation.x = Math.sin(t * 1.3 + 1) * 0.06 * wet;
       } else if (pr.type === 'logs') {
         Q.parts.forEach((m, k) => { m.visible = t >= pr.t0 + k * ((pr.t1 - pr.t0) / Q.parts.length); });
       }

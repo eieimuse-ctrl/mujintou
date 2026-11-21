@@ -285,7 +285,18 @@ export function createSim({ terrain, nav, pathfinder, islanders, buildings, hub 
 
   // ---- いる場所（エポック） -----------------------------------------------------
   // 島民 i のスロット k は、エポック e の (k - k0) 番目。切り替えの時刻は島民ごとに off だけずれる。
+  // 仲良し：名簿で先の相手（buddy）と、だいたい同じ場所で過ごす（切り替えの時刻もそろえる）
+  const buddy = islanders.map((p, i) => {
+    let best = -1;
+    for (const r of p.relationships || []) {
+      if (r.type !== 'friend') continue;
+      const j = indexOfId.get(String(r.id));
+      if (j !== undefined && j < i && (best < 0 || j < best)) best = j;
+    }
+    return best;
+  });
   const epochOff = idHash.map((v) => v % EPOCH);
+  buddy.forEach((j, i) => { if (j >= 0) epochOff[i] = epochOff[j]; });
   const epochOf = (i, k) => Math.floor((k + epochOff[i]) / EPOCH);
   const firstSlot = (i, e) => e * EPOCH - epochOff[i];
 
@@ -293,6 +304,7 @@ export function createSim({ terrain, nav, pathfinder, islanders, buildings, hub 
   function zoneOf(i, e) {
     const person = islanders[i];
     const hsh = idHash[i];
+    if (buddy[i] >= 0 && hash01(e, hsh, 47) < 0.75) return zoneOf(buddy[i], e);
     const r = hash01(e, hsh, 40);
     const explorer = person.job === '探検家';
     if (r < (explorer ? 0.16 : 0.3)) return plazaSpot; // 集まり場のまわり
