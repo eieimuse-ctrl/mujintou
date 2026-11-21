@@ -170,7 +170,7 @@ async function buildIsland({ state, islanders, drifters = [] }) {
   const trailCells = sim.trails();
   for (const k of roadCells) trailCells.add(k);
   const world = createWorld({ canvas, terrain, deco, buildings: built.list, hub, trailCells, torches });
-  const actors = createActors({ scene: world.scene, islanders, sim, labelLayer, drifters, drifts, heightAt: (x, z) => terrain.heightAt(x, z), torchPosts: torches, torchEvery: 5 });
+  const actors = createActors({ scene: world.scene, islanders, sim, labelLayer, drifters, drifts, heightAt: (x, z) => terrain.heightAt(x, z), torchPosts: torches, torchEvery: 5, mysteries: built.list.filter((b) => b.type === 'bigcrate') });
 
   // 地区ラベル。拠点が決まったら、拠点のある地区は拠点の名前を拠点の位置に出す。
   const districtLabels = world.districtAnchors.map((a) => {
@@ -202,6 +202,14 @@ async function buildIsland({ state, islanders, drifters = [] }) {
 
   function handleTap(x, y) {
     const hit = actors.pick(x, y);
+    if (hit && hit.kind === 'building') {
+      selected = -1;
+      selectedDrifter = -1;
+      ui.showBuilding(hit.building);
+      orbit.focus({ x: hit.building.x, y: hit.building.y + 2, z: hit.building.z }, 58);
+      syncViewShift();
+      return;
+    }
     if (hit) {
       if (hit.kind === 'drifter') selectDrifter(hit.index, { fromList: false });
       else selectIslander(hit.index, { fromList: false });

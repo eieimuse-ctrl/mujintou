@@ -109,7 +109,7 @@ function pixelTexture(canvas) {
 }
 
 // drifters: 漂流者（data.js の正規化済み）、drifts: その場所と揺れ方（drift.js の layoutDrifters。drifters と同じ並び）
-export function createActors({ scene, islanders, sim, labelLayer, drifters = [], drifts = [], heightAt = null, torchPosts = [], torchEvery = 5 }) {
+export function createActors({ scene, islanders, sim, labelLayer, drifters = [], drifts = [], heightAt = null, torchPosts = [], torchEvery = 5, mysteries = [] }) {
   const bubbleTex = {};
   for (const icon of ['talk', 'heart', 'note', 'bolt']) bubbleTex[icon] = pixelTexture(bubbleCanvas(icon));
 
@@ -267,6 +267,18 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
     scene.add(flame, glow);
     missingMarks.push({ a, q, gy, m, flame, glow, fy });
   }
+
+  // ---- なぞの物（流れ着いた木箱など）：上に「？」を浮かべる。タップでその建物の詳細 ----
+  const mysteryMarks = mysteries.map((b) => {
+    const q = new THREE.Sprite(new THREE.SpriteMaterial({ map: qTex, alphaTest: 0.5, transparent: false, depthTest: false, fog: false }));
+    q.center.set(0.5, 0);
+    q.renderOrder = 6;
+    // 森の「？」と同じく、遠くからも分かるよう光のにじみを重ねる
+    const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTexture(), transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending, fog: false }));
+    glow.renderOrder = 4;
+    scene.add(q, glow);
+    return { b, q, glow, top: (b.y || 0) + (b.height || 5), screen: null };
+  });
 
 
   // ---- 火の番：森の道の見張り場所（torchPosts）ごとに、島民が1人、松明を手に持って立つ ----
@@ -485,6 +497,20 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       a.screen.top = a.screen.y - above * pxPerUnit * 0.56;
     }
 
+    for (const mk of mysteryMarks) {
+      v.set(mk.b.x, mk.top, mk.b.z);
+      const dist = camera.position.distanceTo(v);
+      const k = Math.max(1, (MIN_PX + 14) / ((SPRITE_H * pxPerUnitAt1) / Math.max(1, dist)));
+      mk.q.visible = !stagePose;
+      mk.q.position.set(mk.b.x, mk.top + 2.5 + 0.6 * k + Math.sin(t * 2.2) * 0.4 * k, mk.b.z);
+      mk.q.scale.set(3.2 * k * 0.86, 3.2 * k, 1);
+      mk.glow.visible = !stagePose;
+      mk.glow.position.set(mk.b.x, mk.top - 1.5, mk.b.z);
+      const gk = Math.max(20, dist * 0.14) * (1 + 0.06 * Math.sin(t * 3));
+      mk.glow.scale.set(gk, gk, 1);
+      v.set(mk.b.x, mk.top + 2.5 + 2.2 * k, mk.b.z).project(camera);
+      mk.screen = { visible: v.z > -1 && v.z < 1 && Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1, x: (v.x * 0.5 + 0.5) * viewport.w, y: (-v.y * 0.5 + 0.5) * viewport.h };
+    }
     for (const mk of missingMarks) {
       const dist = camera.position.distanceTo(mk.a.pos);
       v.set(mk.m.x, mk.gy + 11.5, mk.m.z).project(camera);
@@ -577,6 +603,9 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
     // 森の奥の「？」をタップ → 行方不明の人を開く（動画では名前を出さず、ここで明かす）
     for (const mk of missingMarks) {
       if (mk.screen && mk.screen.visible && Math.hypot(mk.screen.x - x, mk.screen.y - y) < 44) return { kind: 'islander', index: mk.a.index };
+    }
+    for (const mk of mysteryMarks) {
+      if (mk.screen && mk.screen.visible && Math.hypot(mk.screen.x - x, mk.screen.y - y) < 44) return { kind: 'building', building: mk.b };
     }
     return null;
   }
