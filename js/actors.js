@@ -110,6 +110,7 @@ function pixelTexture(canvas) {
 
 // drifters: 漂流者（data.js の正規化済み）、drifts: その場所と揺れ方（drift.js の layoutDrifters。drifters と同じ並び）
 export function createActors({ scene, islanders, sim, labelLayer, drifters = [], drifts = [], heightAt = null, torchPosts = [], torchEvery = 5, mysteries = [] }) {
+  let labelsOn = true; // 名札の表示（ボタンで消せる。消していても、選んだ人の名札は出す）
   const bubbleTex = {};
   for (const icon of ['talk', 'heart', 'note', 'bolt']) bubbleTex[icon] = pixelTexture(bubbleCanvas(icon));
 
@@ -539,7 +540,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       allowed = new Set(order.slice(0, MAX_LABELS));
     }
     for (const a of everyone) {
-      const show = a.screen.visible && a.look.show && (a.selected || !allowed || allowed.has(a));
+      const show = a.screen.visible && a.look.show && (a.selected || (labelsOn && (!allowed || allowed.has(a))));
       if (show !== a.labelShown) {
         a.label.style.display = show ? '' : 'none';
         a.labelShown = show;
@@ -626,6 +627,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
   }
 
   return {
+    setLabels: (on) => { labelsOn = !!on; },
     actors,
     castaways,
     update,

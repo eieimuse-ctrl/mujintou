@@ -36,7 +36,13 @@ const ui = createUI({
     ui.closeDetail(true);
     app?.orbit.overview();
   },
+  onLabels: (on) => {
+    labelsPref = on;
+    labelsActors?.setLabels(on);
+  },
 });
+let labelsPref = true; // 名札の表示（ui のボタンが決める）
+let labelsActors = null;
 
 let app = null; // 3D一式（生成に失敗しても一覧・年表・投票は使える）
 let selected = -1; // 選択中の島民
@@ -171,6 +177,8 @@ async function buildIsland({ state, islanders, drifters = [] }) {
   for (const k of roadCells) trailCells.add(k);
   const world = createWorld({ canvas, terrain, deco, buildings: built.list, hub, trailCells, torches });
   const actors = createActors({ scene: world.scene, islanders, sim, labelLayer, drifters, drifts, heightAt: (x, z) => terrain.heightAt(x, z), torchPosts: torches, torchEvery: 5, mysteries: built.list.filter((b) => b.type === 'bigcrate') });
+  actors.setLabels(labelsPref);
+  labelsActors = actors;
 
   // 地区ラベル。拠点が決まったら、拠点のある地区は拠点の名前を拠点の位置に出す。
   const districtLabels = world.districtAnchors.map((a) => {
