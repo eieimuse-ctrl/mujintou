@@ -1,0 +1,605 @@
+{
+ "title": "5日目ストーリー",
+ "roster": "../input/islanders.json",
+ "day": 5,
+ "fps": 24,
+ "duration": 12.0,
+ "hour": 17.4,
+ "baseTime": "2026-11-21T09:00:00+09:00",
+ "base": {
+  "name": "中央の広場",
+  "x": 0,
+  "z": 5,
+  "decidedDay": 2
+ },
+ "forestRoad": {
+  "points": [
+   [
+    -74,
+    -22
+   ],
+   [
+    -128,
+    -34
+   ]
+  ],
+  "need": 300,
+  "startDay": 4,
+  "label": "光の場所",
+  "open": true
+ },
+ "toolAge": "stone",
+ "buildings": [
+  {
+   "id": "ruins-1",
+   "type": "ruins",
+   "name": "昔の住人の跡",
+   "x": -44.7,
+   "z": -12.7,
+   "rot": 0,
+   "builtDay": 1
+  },
+  {
+   "id": "hut-1",
+   "type": "hut",
+   "name": "はじまりの小屋",
+   "x": -20,
+   "z": -5,
+   "rot": 20,
+   "builtDay": 4
+  }
+ ],
+ "cast": [
+  "shugo.77",
+  "_shaun81",
+  "sasa_mi42151315",
+  "marumegane4",
+  "tako1216yaki",
+  "_otekat_____",
+  "ichi.09",
+  "dosukoi.5845",
+  "yuridazo68",
+  "nanasi774_ou",
+  "paianiyan",
+  "kubotto0505"
+ ],
+ "groups": [
+  {
+   "name": "shore",
+   "type": "line",
+   "spot": [
+    229.0,
+    140.0
+   ],
+   "face": [
+    0.75,
+    0.66
+   ],
+   "gap": 2.4,
+   "members": [
+    "shugo.77",
+    "_shaun81",
+    "sasa_mi42151315",
+    "marumegane4",
+    "tako1216yaki",
+    "_otekat_____",
+    "ichi.09",
+    "dosukoi.5845",
+    "yuridazo68",
+    "nanasi774_ou",
+    "paianiyan",
+    "kubotto0505"
+   ]
+  },
+  {
+   "name": "edge",
+   "type": "line",
+   "spot": [
+    -78.0,
+    -24.0
+   ],
+   "face": [
+    0.98,
+    0.2
+   ],
+   "gap": 2.6,
+   "members": []
+  }
+ ],
+ "acts": [
+  {
+   "who": "*",
+   "t": 0,
+   "anim": "idle",
+   "face": "front"
+  },
+  {
+   "who": [
+    "shugo.77",
+    "_shaun81",
+    "sasa_mi42151315",
+    "marumegane4",
+    "tako1216yaki",
+    "_otekat_____",
+    "ichi.09",
+    "dosukoi.5845",
+    "yuridazo68",
+    "nanasi774_ou",
+    "paianiyan",
+    "kubotto0505"
+   ],
+   "t": 0,
+   "at": {
+    "slot": "shore"
+   },
+   "anim": "idle",
+   "face": {
+    "at": [
+     276.0,
+     180.0
+    ]
+   }
+  },
+  {
+   "who": [
+    "shugo.77",
+    "_shaun81",
+    "sasa_mi42151315",
+    "marumegane4",
+    "tako1216yaki",
+    "_otekat_____",
+    "ichi.09",
+    "dosukoi.5845",
+    "yuridazo68",
+    "nanasi774_ou",
+    "paianiyan",
+    "kubotto0505"
+   ],
+   "t": 3.4,
+   "anim": "shock"
+  },
+  {
+   "who": "shugo.77",
+   "t": 4.6,
+   "to": [
+    238.30268426221818,
+    142.5903713584642
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "shugo.77",
+   "t": 6.3,
+   "anim": "cheer",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "_shaun81",
+   "t": 4.72,
+   "to": [
+    236.51405220845106,
+    143.65806886091713
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 6.3,
+   "anim": "idle",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 4.84,
+   "to": [
+    233.81820359511593,
+    144.23802088681887
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 6.3,
+   "anim": "idle",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "marumegane4",
+   "t": 4.96,
+   "to": [
+    230.82442758366344,
+    144.19915238922687
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 6.3,
+   "anim": "cheer",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 4.6,
+   "to": [
+    228.20934795280493,
+    143.5502480432847
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 6.3,
+   "anim": "idle",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "_otekat_____",
+   "t": 4.72,
+   "to": [
+    226.56399925378744,
+    142.43796682043654
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "_otekat_____",
+   "t": 6.3,
+   "anim": "idle",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "ichi.09",
+   "t": 4.84,
+   "to": [
+    226.26024700018593,
+    141.11369557164056
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "ichi.09",
+   "t": 6.3,
+   "anim": "cheer",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "dosukoi.5845",
+   "t": 4.96,
+   "to": [
+    227.36674228574876,
+    139.87673304635953
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "dosukoi.5845",
+   "t": 6.3,
+   "anim": "idle",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "yuridazo68",
+   "t": 4.6,
+   "to": [
+    229.6334059400972,
+    139.00664533597043
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 6.3,
+   "anim": "idle",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "nanasi774_ou",
+   "t": 4.72,
+   "to": [
+    232.54794896064513,
+    138.70008109827594
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "nanasi774_ou",
+   "t": 6.3,
+   "anim": "cheer",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "paianiyan",
+   "t": 4.84,
+   "to": [
+    235.45165502919238,
+    139.02632696398356
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "paianiyan",
+   "t": 6.3,
+   "anim": "idle",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "kubotto0505",
+   "t": 4.96,
+   "to": [
+    237.68825708873402,
+    139.91164805459888
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "kubotto0505",
+   "t": 6.3,
+   "anim": "idle",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  }
+ ],
+ "props": [
+  {
+   "type": "question",
+   "from": [
+    238.0,
+    147.0
+   ],
+   "t0": 6.4,
+   "t1": 6.41,
+   "t2": 12.0,
+   "size": 4
+  }
+ ],
+ "props3d": [
+  {
+   "type": "float",
+   "kind": "bigcrate",
+   "from": [
+    276.0,
+    180.0
+   ],
+   "at": [
+    238.0,
+    147.0
+   ],
+   "rot": 35,
+   "t0": 0,
+   "t1": 5.0,
+   "show": 0,
+   "sink": 2.4
+  }
+ ],
+ "camera": [
+  {
+   "from": 0,
+   "to": 6.4,
+   "hour": 17.3,
+   "keys": [
+    {
+     "t": 0,
+     "look": [
+      252.0,
+      159.0
+     ],
+     "dist": 44,
+     "az": 3.3,
+     "pol": 1.12,
+     "up": 2.0,
+     "frame": "shore"
+    },
+    {
+     "t": 6.4,
+     "look": [
+      238.0,
+      147.0
+     ],
+     "dist": 32,
+     "az": 3.45,
+     "pol": 1.1,
+     "up": 3.0,
+     "frame": "shore"
+    }
+   ]
+  },
+  {
+   "from": 6.4,
+   "to": 12.0,
+   "hour": 17.5,
+   "keys": [
+    {
+     "t": 6.4,
+     "look": [
+      238.0,
+      147.0
+     ],
+     "dist": 30,
+     "az": 3.6,
+     "pol": 1.12,
+     "up": 3.0,
+     "frame": "shore"
+    },
+    {
+     "t": 12.0,
+     "look": [
+      238.0,
+      147.0
+     ],
+     "dist": 38,
+     "az": 4.1,
+     "pol": 1.04,
+     "up": 3.5,
+     "frame": "shore"
+    }
+   ]
+  }
+ ],
+ "overlay": {
+  "banner": "無人島プロジェクト　5日目",
+  "bannerOff": [
+   [
+    0,
+    12.0
+   ]
+  ],
+  "commenters": {},
+  "names": {},
+  "smallTagsMax": 0,
+  "captions": [
+   {
+    "text": "夕方の浜に…",
+    "from": 0.3,
+    "to": 3.3,
+    "y": 360,
+    "size": 64,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "大きな木箱が、流れ着いた！",
+    "from": 3.4,
+    "to": 6.3,
+    "y": 360,
+    "size": 64
+   },
+   {
+    "text": "中身はなんだろう？",
+    "from": 6.4,
+    "to": 12.0,
+    "y": 330,
+    "size": 72,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "予想は、最新の投稿にコメントで",
+    "from": 7.4,
+    "to": 12.0,
+    "y": 1300,
+    "size": 50
+   },
+   {
+    "text": "木箱は、いまも島の浜にあります",
+    "from": 8.6,
+    "to": 12.0,
+    "y": 1390,
+    "size": 50
+   }
+  ]
+ },
+ "audio": {
+  "narration": [
+   {
+    "at": 0.3,
+    "until": 3.3,
+    "text": "夕方の浜に…"
+   },
+   {
+    "at": 3.4,
+    "until": 6.3,
+    "text": "大きな木箱が、流れ着いた！"
+   },
+   {
+    "at": 6.4,
+    "until": 9.0,
+    "text": "中身は、なんだろう？"
+   },
+   {
+    "at": 9.1,
+    "until": 12.0,
+    "text": "予想は、投稿にコメントしてね。"
+   }
+  ],
+  "bgm": {
+   "volume": 0.18
+  },
+  "speed": 1.15
+ },
+ "cover": {
+  "at": 7.0,
+  "day": "5日目",
+  "lines": [
+   "大きな木箱が",
+   "流れ着いた"
+  ]
+ }
+}
