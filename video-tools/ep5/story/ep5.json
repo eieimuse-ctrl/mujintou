@@ -273,16 +273,44 @@
    "type": "line",
    "spot": [
     15,
-    26
+    36
    ],
    "face": [
     0,
     1
    ],
-   "gap": 1.7,
+   "members": []
+  },
+  {
+   "name": "pair0",
+   "type": "line",
+   "spot": [
+    12.0,
+    36
+   ],
+   "face": [
+    0,
+    1
+   ],
+   "gap": 1.8,
    "members": [
     "rino._.15",
-    "sykyu_77",
+    "sykyu_77"
+   ]
+  },
+  {
+   "name": "pair1",
+   "type": "line",
+   "spot": [
+    17.5,
+    36
+   ],
+   "face": [
+    0,
+    1
+   ],
+   "gap": 1.8,
+   "members": [
     "b1_482000",
     "sakasaka_1482"
    ]
@@ -509,13 +537,23 @@
   {
    "who": [
     "rino._.15",
-    "sykyu_77",
+    "sykyu_77"
+   ],
+   "t": 10.5,
+   "at": {
+    "slot": "pair0"
+   },
+   "anim": "idle",
+   "face": "front"
+  },
+  {
+   "who": [
     "b1_482000",
     "sakasaka_1482"
    ],
    "t": 10.5,
    "at": {
-    "slot": "pairs"
+    "slot": "pair1"
    },
    "anim": "idle",
    "face": "front"
@@ -1320,10 +1358,11 @@
    "keys": [
     {
      "t": 10.5,
-     "look": {
-      "rel": "g:pairs"
-     },
-     "dist": 19,
+     "look": [
+      14.0,
+      36
+     ],
+     "dist": 26,
      "az": 0.0,
      "pol": 1.25,
      "up": 2.0,
@@ -1331,11 +1370,12 @@
     },
     {
      "t": 13.5,
-     "look": {
-      "rel": "g:pairs"
-     },
-     "dist": 17,
-     "az": 0.05,
+     "look": [
+      14.0,
+      36
+     ],
+     "dist": 24,
+     "az": 0.03,
      "pol": 1.26,
      "up": 2.0,
      "frame": "pairs"
