@@ -80,7 +80,8 @@ groups = [
     {'name': 'cove', 'type': 'shore', 'spot': COVE, 'gap': 2.6, 'members': [x for x in [IBU, RINO] if inr(x)] + fishers[:2]},
     {'name': 'farm', 'type': 'line', 'spot': FARM, 'face': [0.6, 0.8], 'gap': 2.8, 'members': farmers},
     {'name': 'edge', 'type': 'line', 'spot': EDGE, 'face': [0.98, 0.2], 'gap': 2.6, 'members': [x for x in [TSUKI, DAN, NAKA] if inr(x)]},
-    {'name': 'pairs', 'type': 'line', 'spot': [15, 26], 'face': [0, 1], 'gap': 1.7, 'members': [x for pr in pairs for x in pr]},
+    {'name': 'pairs', 'type': 'line', 'spot': [15, 36], 'face': [0, 1], 'members': []},  # カメラの向きの基準
+    *[{'name': f'pair{k}', 'type': 'line', 'spot': [12.0 + k * 5.5, 36], 'face': [0, 1], 'gap': 1.8, 'members': list(pr)} for k, pr in enumerate(pairs)],
     {'name': 'yura', 'type': 'line', 'spot': YURA_AT, 'face': [0, 1], 'members': [x for x in [YURA] if inr(x)]},
     {'name': 'shore', 'type': 'line', 'spot': [LAND[0] - 9, LAND[1] - 7], 'face': [0.75, 0.66], 'gap': 2.4, 'members': crowd[:12]},
 ]
@@ -98,7 +99,7 @@ if inr(YURA):
     A({'who': YURA, 't': 6.5, 'at': YURA_AT, 'anim': 'cheer', 'face': 'front'})
     A({'who': YURA, 't': 7.6, 'anim': 'talk'})
 # S3 仲良し（10.5〜13.5）：ふたりずつ並んで歩く
-A({'who': [x for pr in pairs for x in pr], 't': 10.5, 'at': {'slot': 'pairs'}, 'anim': 'idle', 'face': 'front'})
+for k, pr in enumerate(pairs): A({'who': list(pr), 't': 10.5, 'at': {'slot': f'pair{k}'}, 'anim': 'idle', 'face': 'front'})
 A({'who': [x for pr in pairs for x in pr], 't': 12.2, 'anim': 'cheer', 'face': 'front'})
 # S5 石の作業場（17.5〜24）
 A({'who': G['ws']['members'], 't': 17.5, 'at': {'slot': 'ws'}, 'anim': 'work', 'face': {'at': WS}})
@@ -125,7 +126,7 @@ camera = [
     {'from': 0, 'to': 3.5, 'hour': 7.5, 'keys': [{'t': 0, 'look': {'rel': 'g:beach'}, 'dist': 24, 'az': 1.1, 'pol': 1.22, 'up': 1.5, 'frame': 'beach'}, {'t': 3.5, 'look': {'rel': 'g:beach'}, 'dist': 20, 'az': 1.2, 'pol': 1.24, 'up': 1.5, 'frame': 'beach'}]},
     {'from': 3.5, 'to': 6.5, 'hour': 11, 'keys': [{'t': 3.5, 'look': [15, 40], 'dist': 760, 'az': 0.5, 'pol': 0.78, 'up': 0, 'frame': 'edge'}, {'t': 6.5, 'look': [15, 40], 'dist': 700, 'az': 0.62, 'pol': 0.8, 'up': 0, 'frame': 'edge'}]},
     {'from': 6.5, 'to': 10.5, 'hour': 12, 'keys': [{'t': 6.5, 'look': YURA_AT, 'dist': 22, 'az': 0.2, 'pol': 1.18, 'up': 2.2, 'frame': 'edge'}, {'t': 10.5, 'look': YURA_AT, 'dist': 12, 'az': 0.28, 'pol': 1.28, 'up': 2.4, 'frame': 'edge'}]},
-    {'from': 10.5, 'to': 13.5, 'hour': 13, 'keys': [{'t': 10.5, 'look': {'rel': 'g:pairs'}, 'dist': 19, 'az': 0.0, 'pol': 1.25, 'up': 2.0, 'frame': 'pairs'}, {'t': 13.5, 'look': {'rel': 'g:pairs'}, 'dist': 17, 'az': 0.05, 'pol': 1.26, 'up': 2.0, 'frame': 'pairs'}]},
+    {'from': 10.5, 'to': 13.5, 'hour': 13, 'keys': [{'t': 10.5, 'look': [14.0, 36], 'dist': 26, 'az': 0.0, 'pol': 1.25, 'up': 2.0, 'frame': 'pairs'}, {'t': 13.5, 'look': [14.0, 36], 'dist': 24, 'az': 0.03, 'pol': 1.26, 'up': 2.0, 'frame': 'pairs'}]},
     {'from': 13.5, 'to': 17.5, 'hour': 14, 'keys': [{'t': 13.5, 'look': PLAZA, 'dist': 80, 'az': 0.5, 'pol': 0.95, 'up': 0, 'frame': 'edge'}, {'t': 17.5, 'look': PLAZA, 'dist': 70, 'az': 0.6, 'pol': 0.95, 'up': 0, 'frame': 'edge'}]},
     {'from': 17.5, 'to': 24.0, 'hour': 9.0, 'keys': [{'t': 17.5, 'look': WS, 'dist': 26, 'az': 0.1, 'pol': 1.1, 'up': 2.0, 'frame': 'ws'}, {'t': 24.0, 'look': WS, 'dist': 20, 'az': 0.45, 'pol': 1.12, 'up': 2.4, 'frame': 'ws'}]},
     {'from': 24.0, 'to': 27.5, 'hour': 10.0, 'keys': [{'t': 24.0, 'look': [TREE[0], TREE[1] + 2], 'dist': 20, 'az': 3.4, 'pol': 1.2, 'up': 2.5, 'frame': 'edge'}, {'t': 27.5, 'look': [TREE[0], TREE[1] + 2], 'dist': 17, 'az': 3.25, 'pol': 1.18, 'up': 2.5, 'frame': 'edge'}]},
