@@ -180,6 +180,7 @@ export function normalizeData(stateRaw, rosterRaw, driftRaw = null) {
 
   const state = {
     forestRoad,
+    toolAge: str(s.toolAge) === 'stone' ? 'stone' : '', // 道具の時代（'stone'＝石の道具。昔の住人の跡をまねて作った）
     sample: s.sample === true,
     islandName: str(s.islandName).trim() || DEFAULT_ISLAND_NAME,
     day,
@@ -221,6 +222,7 @@ export function normalizeData(stateRaw, rosterRaw, driftRaw = null) {
       days: day - joinedDay + 1, // 在住日数（漂着した日を1日目と数える）
       missing: normalizeMissing(p.missing, day),
       today: normalizeToday(p.today, day),
+      toolAge: state.toolAge,
     });
   }
   // 島にいない相手との関係は表示しない

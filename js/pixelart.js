@@ -144,6 +144,7 @@ const PANTS = ['#3a4466', '#5a4636', '#4b5a3c', '#3d3d48', '#7a3b3b', '#2f5f5f',
 const ACCENT = ['#e8504a', '#f0b43c', '#4fa3e0', '#57b86b', '#b07ad6', '#f2f2f2', '#2b2b38'];
 const WOODC = '#8f5f38';
 const METAL = '#b9bcc7';
+const STONE_TOOL = '#8a8c94'; // 石の道具（5日目から。state.toolAge = 'stone'）
 const HAIR_STYLES = 10;
 
 // 見た目は ID のハッシュから決まる（同じ人はいつも同じ姿）。帽子は仕事の帽子をかぶる人とかぶらない人がいる。
@@ -165,6 +166,7 @@ export function islanderLook(person) {
     accent: pick(ACCENT, h2 >>> 3),
     hairStyle: (hsh >>> 12) % HAIR_STYLES,
     hat: jobHat ? job.hat : pick(ownHats, h2 >>> 7),
+    metal: person.toolAge === 'stone' ? STONE_TOOL : METAL,
     tool: person.today?.tool || job.tool, // きょうの行動で道具を持つことがある（釣り竿など）
     glasses: (h2 >>> 11) % 5 === 0,
     beard: (h2 >>> 13) % 6 === 0,
@@ -396,14 +398,14 @@ function drawPose(px0, look, frame) {
         P(14, 6, WOODC); P(15, 5, WOODC); P(15, 4, WOODC); P(15, 3, WOODC); P(15, 2, '#f4efe2');
       } else if (tool === 'hammer') {
         R(14, 4, 14, 6, WOODC);
-        R(13, 2, 15, 3, METAL);
+        R(13, 2, 15, 3, look.metal);
       } else if (tool === 'hoe') {
         R(14, 3, 14, 6, WOODC);
-        R(14, 2, 15, 2, METAL);
-        P(15, 3, METAL);
+        R(14, 2, 15, 2, look.metal);
+        P(15, 3, look.metal);
       } else if (tool === 'ladle') {
         R(14, 5, 14, 6, WOODC);
-        R(13, 3, 15, 4, METAL);
+        R(13, 3, 15, 4, look.metal);
       }
     }
   } else if (frame === FRAMES.workB) {
@@ -416,13 +418,13 @@ function drawPose(px0, look, frame) {
       P(15, 11, WOODC); P(15, 10, WOODC); P(15, 9, WOODC); P(15, 8, '#f4efe2');
     } else if (tool === 'hammer') {
       R(15, 12, 15, 14, WOODC);
-      R(14, 15, 15, 16, METAL);
+      R(14, 15, 15, 16, look.metal);
     } else if (tool === 'hoe') {
       R(15, 12, 15, 16, WOODC);
-      R(13, 17, 15, 17, METAL);
+      R(13, 17, 15, 17, look.metal);
     } else if (tool === 'ladle') {
       R(15, 12, 15, 14, WOODC);
-      R(14, 15, 15, 16, METAL);
+      R(14, 15, 15, 16, look.metal);
     }
   } else if (frame === FRAMES.walkA) {
     backArm(4);

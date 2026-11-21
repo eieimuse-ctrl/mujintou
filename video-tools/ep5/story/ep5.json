@@ -1,0 +1,2122 @@
+{
+ "title": "5日目",
+ "roster": "../input/islanders.json",
+ "day": 5,
+ "fps": 24,
+ "duration": 57.0,
+ "hour": 10,
+ "baseTime": "2026-11-21T09:00:00+09:00",
+ "base": {
+  "name": "中央の広場",
+  "x": 0,
+  "z": 5,
+  "decidedDay": 2
+ },
+ "forestRoad": {
+  "points": [
+   [
+    -74,
+    -22
+   ],
+   [
+    -128,
+    -34
+   ]
+  ],
+  "need": 300,
+  "startDay": 4,
+  "label": "光の場所",
+  "open": true
+ },
+ "toolAge": "stone",
+ "buildings": [
+  {
+   "id": "ruins-1",
+   "type": "ruins",
+   "name": "昔の住人の跡",
+   "x": -44.7,
+   "z": -12.7,
+   "rot": 0,
+   "builtDay": 1
+  },
+  {
+   "id": "hut-1",
+   "type": "hut",
+   "name": "はじまりの小屋",
+   "x": -20,
+   "z": -5,
+   "rot": 20,
+   "builtDay": 4
+  }
+ ],
+ "cast": [
+  "rino._.15",
+  "ryuji_111",
+  "ibu131313",
+  "abc.man13",
+  "heroruto7",
+  "marumegane4",
+  "sakasaka_1482",
+  "nanasi774_ou",
+  "yukikun4126",
+  "yuradayo0330",
+  "bear.44190633",
+  "hyuga_0619",
+  "sena_pippiraa",
+  "atsukidesu",
+  "guernica.0712",
+  "tsuki5747",
+  "analogayane",
+  "nabemegane",
+  "ayu.mu__8890",
+  "fuse.daichi",
+  "1kichi_chan",
+  "kubotto0505",
+  "kazuzu4771",
+  "mitsunari_33",
+  "t.waka0113",
+  "sykyu_77",
+  "b1_482000",
+  "shugo.77",
+  "_shaun81",
+  "sasa_mi42151315",
+  "tako1216yaki",
+  "_otekat_____",
+  "ichi.09",
+  "dosukoi.5845",
+  "yuridazo68",
+  "paianiyan",
+  "hiropone_89",
+  "yu._.u225",
+  "tokitin2014",
+  "max_no_otousan",
+  "shimadaaaa03",
+  "yo79499",
+  "hkssss69",
+  "horiharu0220",
+  "hori_harusabu",
+  "nintendo_3ds.12",
+  "aosan116",
+  "akuserumeihong",
+  "musashi.617",
+  "s.sora1225",
+  "shinohara_kohei",
+  "kosei20130324",
+  "s_02y.ayta",
+  "hayato210165",
+  "remrpg",
+  "juzagumi13",
+  "riinnnno0112",
+  "r.k_101110",
+  "ekundayowara",
+  "aosuke_0308",
+  "hinata64428",
+  "_lto_lxq426",
+  "iseonaka",
+  "ryu5oo",
+  "hirotodayo360",
+  "sky__ssta",
+  "t.sora_o9",
+  "ko10071996",
+  "mqz_k1",
+  "_.mzk_o9",
+  "a_kito_x_x",
+  "ryusei10_14",
+  "ryusei._0426",
+  "zidian34",
+  "ibukikamoyo",
+  "salmonkingts"
+ ],
+ "groups": [
+  {
+   "name": "beach",
+   "type": "ring",
+   "spot": [
+    236,
+    124
+   ],
+   "radius": 3.2,
+   "gap": 2.6,
+   "members": [
+    "remrpg",
+    "juzagumi13",
+    "riinnnno0112",
+    "r.k_101110",
+    "ekundayowara",
+    "aosuke_0308",
+    "hinata64428",
+    "_lto_lxq426",
+    "iseonaka",
+    "ryu5oo",
+    "hirotodayo360",
+    "sky__ssta",
+    "t.sora_o9",
+    "ko10071996",
+    "mqz_k1",
+    "_.mzk_o9",
+    "a_kito_x_x",
+    "ryusei10_14",
+    "ryusei._0426",
+    "zidian34",
+    "ibukikamoyo",
+    "salmonkingts"
+   ]
+  },
+  {
+   "name": "plaza",
+   "type": "ring",
+   "spot": [
+    0,
+    15
+   ],
+   "radius": 7,
+   "gap": 2.8,
+   "members": [
+    "shugo.77",
+    "_shaun81",
+    "sasa_mi42151315",
+    "marumegane4",
+    "tako1216yaki",
+    "_otekat_____",
+    "ichi.09",
+    "dosukoi.5845",
+    "yuridazo68",
+    "nanasi774_ou",
+    "paianiyan",
+    "kubotto0505",
+    "hiropone_89",
+    "yu._.u225",
+    "tokitin2014",
+    "max_no_otousan",
+    "fuse.daichi",
+    "shimadaaaa03",
+    "yo79499",
+    "hkssss69"
+   ]
+  },
+  {
+   "name": "ws",
+   "type": "line",
+   "spot": [
+    -120.0,
+    -20.5
+   ],
+   "face": [
+    0.3,
+    -0.95
+   ],
+   "gap": 2.4,
+   "members": [
+    "analogayane",
+    "horiharu0220",
+    "hori_harusabu",
+    "nintendo_3ds.12",
+    "shugo.77",
+    "_shaun81",
+    "sasa_mi42151315"
+   ]
+  },
+  {
+   "name": "cove",
+   "type": "shore",
+   "spot": [
+    -8.5,
+    188.7
+   ],
+   "gap": 2.6,
+   "members": [
+    "ibu131313",
+    "rino._.15",
+    "musashi.617",
+    "s.sora1225"
+   ]
+  },
+  {
+   "name": "farm",
+   "type": "line",
+   "spot": [
+    -7.0,
+    99.0
+   ],
+   "face": [
+    0.6,
+    0.8
+   ],
+   "gap": 2.8,
+   "members": [
+    "kosei20130324",
+    "s_02y.ayta",
+    "hyuga_0619",
+    "hayato210165"
+   ]
+  },
+  {
+   "name": "edge",
+   "type": "line",
+   "spot": [
+    -78.0,
+    -24.0
+   ],
+   "face": [
+    0.98,
+    0.2
+   ],
+   "gap": 2.6,
+   "members": [
+    "tsuki5747",
+    "bear.44190633",
+    "atsukidesu"
+   ]
+  },
+  {
+   "name": "pairs",
+   "type": "line",
+   "spot": [
+    15,
+    26
+   ],
+   "face": [
+    0,
+    1
+   ],
+   "gap": 1.7,
+   "members": [
+    "rino._.15",
+    "sykyu_77",
+    "b1_482000",
+    "sakasaka_1482"
+   ]
+  },
+  {
+   "name": "yura",
+   "type": "line",
+   "spot": [
+    -8.4,
+    13.2
+   ],
+   "face": [
+    0,
+    1
+   ],
+   "members": [
+    "yuradayo0330"
+   ]
+  },
+  {
+   "name": "shore",
+   "type": "line",
+   "spot": [
+    229.0,
+    140.0
+   ],
+   "face": [
+    0.75,
+    0.66
+   ],
+   "gap": 2.4,
+   "members": [
+    "shugo.77",
+    "_shaun81",
+    "sasa_mi42151315",
+    "marumegane4",
+    "tako1216yaki",
+    "_otekat_____",
+    "ichi.09",
+    "dosukoi.5845",
+    "yuridazo68",
+    "nanasi774_ou",
+    "paianiyan",
+    "kubotto0505"
+   ]
+  }
+ ],
+ "acts": [
+  {
+   "who": "*",
+   "t": 0,
+   "anim": "idle",
+   "face": "front"
+  },
+  {
+   "who": [
+    "remrpg",
+    "juzagumi13",
+    "riinnnno0112",
+    "r.k_101110",
+    "ekundayowara",
+    "aosuke_0308",
+    "hinata64428",
+    "_lto_lxq426",
+    "iseonaka",
+    "ryu5oo",
+    "hirotodayo360",
+    "sky__ssta",
+    "t.sora_o9",
+    "ko10071996",
+    "mqz_k1",
+    "_.mzk_o9",
+    "a_kito_x_x",
+    "ryusei10_14",
+    "ryusei._0426",
+    "zidian34",
+    "ibukikamoyo",
+    "salmonkingts"
+   ],
+   "t": 0,
+   "at": {
+    "slot": "beach"
+   },
+   "anim": "sleep"
+  },
+  {
+   "who": [
+    "remrpg",
+    "juzagumi13",
+    "riinnnno0112",
+    "r.k_101110",
+    "ekundayowara",
+    "aosuke_0308",
+    "hinata64428",
+    "_lto_lxq426",
+    "iseonaka",
+    "ryu5oo",
+    "hirotodayo360",
+    "sky__ssta",
+    "t.sora_o9",
+    "ko10071996",
+    "mqz_k1",
+    "_.mzk_o9",
+    "a_kito_x_x",
+    "ryusei10_14",
+    "ryusei._0426",
+    "zidian34",
+    "ibukikamoyo",
+    "salmonkingts"
+   ],
+   "t": 1.4,
+   "anim": "sit",
+   "pick": 0.35,
+   "seed": 5
+  },
+  {
+   "who": [
+    "remrpg",
+    "juzagumi13",
+    "riinnnno0112",
+    "r.k_101110",
+    "ekundayowara",
+    "aosuke_0308",
+    "hinata64428",
+    "_lto_lxq426",
+    "iseonaka",
+    "ryu5oo",
+    "hirotodayo360",
+    "sky__ssta",
+    "t.sora_o9",
+    "ko10071996",
+    "mqz_k1",
+    "_.mzk_o9",
+    "a_kito_x_x",
+    "ryusei10_14",
+    "ryusei._0426",
+    "zidian34",
+    "ibukikamoyo",
+    "salmonkingts"
+   ],
+   "t": 2.3,
+   "anim": "cheer",
+   "pick": 0.2,
+   "seed": 9
+  },
+  {
+   "who": [
+    "shugo.77",
+    "_shaun81",
+    "sasa_mi42151315",
+    "marumegane4",
+    "tako1216yaki",
+    "_otekat_____",
+    "ichi.09",
+    "dosukoi.5845",
+    "yuridazo68",
+    "nanasi774_ou",
+    "paianiyan",
+    "kubotto0505",
+    "hiropone_89",
+    "yu._.u225",
+    "tokitin2014",
+    "max_no_otousan",
+    "fuse.daichi",
+    "shimadaaaa03",
+    "yo79499",
+    "hkssss69"
+   ],
+   "t": 6.5,
+   "at": {
+    "slot": "plaza"
+   },
+   "anim": "idle",
+   "face": {
+    "at": [
+     -8.4,
+     13.2
+    ]
+   }
+  },
+  {
+   "who": [
+    "shugo.77",
+    "_shaun81",
+    "sasa_mi42151315",
+    "marumegane4",
+    "tako1216yaki",
+    "_otekat_____",
+    "ichi.09",
+    "dosukoi.5845",
+    "yuridazo68",
+    "nanasi774_ou",
+    "paianiyan",
+    "kubotto0505",
+    "hiropone_89",
+    "yu._.u225",
+    "tokitin2014",
+    "max_no_otousan",
+    "fuse.daichi",
+    "shimadaaaa03",
+    "yo79499",
+    "hkssss69"
+   ],
+   "t": 8.4,
+   "anim": "cheer",
+   "pick": 0.6,
+   "seed": 3
+  },
+  {
+   "who": "yuradayo0330",
+   "t": 6.5,
+   "at": [
+    -8.4,
+    13.2
+   ],
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "yuradayo0330",
+   "t": 7.6,
+   "anim": "talk"
+  },
+  {
+   "who": [
+    "rino._.15",
+    "sykyu_77",
+    "b1_482000",
+    "sakasaka_1482"
+   ],
+   "t": 10.5,
+   "at": {
+    "slot": "pairs"
+   },
+   "anim": "idle",
+   "face": "front"
+  },
+  {
+   "who": [
+    "rino._.15",
+    "sykyu_77",
+    "b1_482000",
+    "sakasaka_1482"
+   ],
+   "t": 12.2,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": [
+    "analogayane",
+    "horiharu0220",
+    "hori_harusabu",
+    "nintendo_3ds.12",
+    "shugo.77",
+    "_shaun81",
+    "sasa_mi42151315"
+   ],
+   "t": 17.5,
+   "at": {
+    "slot": "ws"
+   },
+   "anim": "work",
+   "face": {
+    "at": [
+     -121.0,
+     -27.0
+    ]
+   }
+  },
+  {
+   "who": [
+    "analogayane",
+    "horiharu0220",
+    "hori_harusabu",
+    "nintendo_3ds.12",
+    "shugo.77",
+    "_shaun81",
+    "sasa_mi42151315"
+   ],
+   "t": 22.4,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": [
+    "horiharu0220",
+    "hori_harusabu",
+    "nintendo_3ds.12",
+    "aosan116",
+    "akuserumeihong"
+   ],
+   "t": 24.0,
+   "at": [
+    [
+     -68.7,
+     -28.2
+    ],
+    [
+     -73.0,
+     -27.4
+    ],
+    [
+     -66.5,
+     -26.0
+    ],
+    [
+     -75.0,
+     -25.6
+    ],
+    [
+     -70.6,
+     -24.4
+    ]
+   ],
+   "anim": "work",
+   "face": {
+    "at": [
+     -71.0,
+     -29.0
+    ]
+   }
+  },
+  {
+   "who": [
+    "horiharu0220",
+    "hori_harusabu",
+    "nintendo_3ds.12",
+    "aosan116",
+    "akuserumeihong"
+   ],
+   "t": 25.6,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": [
+    "ibu131313",
+    "rino._.15",
+    "musashi.617",
+    "s.sora1225"
+   ],
+   "t": 27.5,
+   "at": {
+    "slot": "cove"
+   },
+   "anim": "work"
+  },
+  {
+   "who": [
+    "ibu131313",
+    "rino._.15",
+    "musashi.617",
+    "s.sora1225"
+   ],
+   "t": 29.4,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": [
+    "kosei20130324",
+    "s_02y.ayta",
+    "hyuga_0619",
+    "hayato210165"
+   ],
+   "t": 31.0,
+   "at": {
+    "slot": "farm"
+   },
+   "anim": "work"
+  },
+  {
+   "who": [
+    "kosei20130324",
+    "s_02y.ayta",
+    "hyuga_0619",
+    "hayato210165"
+   ],
+   "t": 33.0,
+   "anim": "cheer",
+   "pick": 0.5,
+   "seed": 2
+  },
+  {
+   "who": [
+    "tsuki5747",
+    "bear.44190633",
+    "atsukidesu"
+   ],
+   "t": 34.0,
+   "at": {
+    "slot": "edge"
+   },
+   "anim": "idle",
+   "face": "back"
+  },
+  {
+   "who": "tsuki5747",
+   "t": 34.0,
+   "anim": "work",
+   "face": "front"
+  },
+  {
+   "who": [
+    "shugo.77",
+    "_shaun81",
+    "sasa_mi42151315",
+    "marumegane4",
+    "tako1216yaki",
+    "_otekat_____",
+    "ichi.09",
+    "dosukoi.5845",
+    "yuridazo68",
+    "nanasi774_ou",
+    "paianiyan",
+    "kubotto0505"
+   ],
+   "t": 38.0,
+   "at": {
+    "slot": "shore"
+   },
+   "anim": "idle",
+   "face": {
+    "at": [
+     276.0,
+     180.0
+    ]
+   }
+  },
+  {
+   "who": [
+    "shugo.77",
+    "_shaun81",
+    "sasa_mi42151315",
+    "marumegane4",
+    "tako1216yaki",
+    "_otekat_____",
+    "ichi.09",
+    "dosukoi.5845",
+    "yuridazo68",
+    "nanasi774_ou",
+    "paianiyan",
+    "kubotto0505"
+   ],
+   "t": 41.2,
+   "anim": "shock"
+  },
+  {
+   "who": "shugo.77",
+   "t": 42.6,
+   "to": [
+    238.30268426221818,
+    142.5903713584642
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "shugo.77",
+   "t": 44.4,
+   "anim": "cheer",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "_shaun81",
+   "t": 42.72,
+   "to": [
+    236.51405220845106,
+    143.65806886091713
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 44.4,
+   "anim": "idle",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 42.84,
+   "to": [
+    233.81820359511593,
+    144.23802088681887
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 44.4,
+   "anim": "idle",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "marumegane4",
+   "t": 42.96,
+   "to": [
+    230.82442758366344,
+    144.19915238922687
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 44.4,
+   "anim": "cheer",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 42.6,
+   "to": [
+    228.20934795280493,
+    143.5502480432847
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 44.4,
+   "anim": "idle",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "_otekat_____",
+   "t": 42.72,
+   "to": [
+    226.56399925378744,
+    142.43796682043654
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "_otekat_____",
+   "t": 44.4,
+   "anim": "idle",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "ichi.09",
+   "t": 42.84,
+   "to": [
+    226.26024700018593,
+    141.11369557164056
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "ichi.09",
+   "t": 44.4,
+   "anim": "cheer",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "dosukoi.5845",
+   "t": 42.96,
+   "to": [
+    227.36674228574876,
+    139.87673304635953
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "dosukoi.5845",
+   "t": 44.4,
+   "anim": "idle",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "yuridazo68",
+   "t": 42.6,
+   "to": [
+    229.6334059400972,
+    139.00664533597043
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 44.4,
+   "anim": "idle",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "nanasi774_ou",
+   "t": 42.72,
+   "to": [
+    232.54794896064513,
+    138.70008109827594
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "nanasi774_ou",
+   "t": 44.4,
+   "anim": "cheer",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "paianiyan",
+   "t": 42.84,
+   "to": [
+    235.45165502919238,
+    139.02632696398356
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "paianiyan",
+   "t": 44.4,
+   "anim": "idle",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": "kubotto0505",
+   "t": 42.96,
+   "to": [
+    237.68825708873402,
+    139.91164805459888
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "kubotto0505",
+   "t": 44.4,
+   "anim": "idle",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  }
+ ],
+ "props": [
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "remrpg",
+    "up": 1.6,
+    "t": 0.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.4,
+   "size": 0.9,
+   "phase": 0.0
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "juzagumi13",
+    "up": 1.6,
+    "t": 0.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.4,
+   "size": 0.9,
+   "phase": 0.3
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "riinnnno0112",
+    "up": 1.6,
+    "t": 0.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.4,
+   "size": 0.9,
+   "phase": 0.6
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "r.k_101110",
+    "up": 1.6,
+    "t": 0.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.4,
+   "size": 0.9,
+   "phase": 0.8999999999999999
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "ekundayowara",
+    "up": 1.6,
+    "t": 0.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.4,
+   "size": 0.9,
+   "phase": 1.2
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "aosuke_0308",
+    "up": 1.6,
+    "t": 0.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.4,
+   "size": 0.9,
+   "phase": 1.5
+  },
+  {
+   "type": "heart",
+   "from": {
+    "rel": "rino._.15",
+    "up": 3.4,
+    "t": 0.85
+   },
+   "to": {
+    "rel": "rino._.15",
+    "up": 3.4,
+    "t": 0.85
+   },
+   "t0": 10.6,
+   "t1": 13.0,
+   "t2": 13.4,
+   "size": 1.4,
+   "phase": 0
+  },
+  {
+   "type": "heart",
+   "from": {
+    "rel": "b1_482000",
+    "up": 3.4,
+    "t": 0.85
+   },
+   "to": {
+    "rel": "b1_482000",
+    "up": 3.4,
+    "t": 0.85
+   },
+   "t0": 10.6,
+   "t1": 13.0,
+   "t2": 13.4,
+   "size": 1.4,
+   "phase": 1
+  },
+  {
+   "type": "fish",
+   "from": {
+    "rel": "ibu131313",
+    "t": 28.6,
+    "n": -3.2,
+    "up": -0.4
+   },
+   "to": {
+    "rel": "ibu131313",
+    "t": 28.6,
+    "up": 3.2
+   },
+   "t0": 28.6,
+   "t1": 29.2,
+   "t2": 31.0,
+   "arc": 3.0,
+   "size": 0.9
+  },
+  {
+   "type": "splash",
+   "from": {
+    "rel": "ibu131313",
+    "t": 28.6,
+    "n": -3.2,
+    "up": -0.2
+   },
+   "t0": 28.5,
+   "t1": 28.51,
+   "t2": 29.0,
+   "size": 1.2
+  },
+  {
+   "type": "fish",
+   "from": {
+    "rel": "rino._.15",
+    "t": 28.6,
+    "n": -3.2,
+    "up": -0.4
+   },
+   "to": {
+    "rel": "rino._.15",
+    "t": 28.6,
+    "up": 3.2
+   },
+   "t0": 28.900000000000002,
+   "t1": 29.5,
+   "t2": 31.0,
+   "arc": 3.0,
+   "size": 0.9
+  },
+  {
+   "type": "splash",
+   "from": {
+    "rel": "rino._.15",
+    "t": 28.6,
+    "n": -3.2,
+    "up": -0.2
+   },
+   "t0": 28.8,
+   "t1": 28.810000000000002,
+   "t2": 29.3,
+   "size": 1.2
+  },
+  {
+   "type": "question",
+   "from": [
+    238.0,
+    147.0
+   ],
+   "t0": 44.4,
+   "t1": 44.41,
+   "t2": 54.0,
+   "size": 4
+  }
+ ],
+ "props3d": [
+  {
+   "type": "build",
+   "kind": "workshop",
+   "at": [
+    -121.0,
+    -27.0
+   ],
+   "rot": 10,
+   "t0": 18.2,
+   "t1": 22.2,
+   "show": 17.5,
+   "hide": 24.0
+  },
+  {
+   "type": "tree",
+   "at": [
+    -71.0,
+    -29.0
+   ],
+   "rot": 200,
+   "chop": 24.0,
+   "t0": 24.7,
+   "t1": 25.4,
+   "t2": 27.5,
+   "hide": 27.5,
+   "size": 1.25
+  },
+  {
+   "type": "float",
+   "kind": "bigcrate",
+   "from": [
+    276.0,
+    180.0
+   ],
+   "at": [
+    238.0,
+    147.0
+   ],
+   "rot": 35,
+   "t0": 38.0,
+   "t1": 44.0,
+   "show": 38.0,
+   "sink": 2.4
+  }
+ ],
+ "camera": [
+  {
+   "from": 0,
+   "to": 3.5,
+   "hour": 7.5,
+   "keys": [
+    {
+     "t": 0,
+     "look": {
+      "rel": "g:beach"
+     },
+     "dist": 24,
+     "az": 1.1,
+     "pol": 1.22,
+     "up": 1.5,
+     "frame": "beach"
+    },
+    {
+     "t": 3.5,
+     "look": {
+      "rel": "g:beach"
+     },
+     "dist": 20,
+     "az": 1.2,
+     "pol": 1.24,
+     "up": 1.5,
+     "frame": "beach"
+    }
+   ]
+  },
+  {
+   "from": 3.5,
+   "to": 6.5,
+   "hour": 11,
+   "keys": [
+    {
+     "t": 3.5,
+     "look": [
+      15,
+      40
+     ],
+     "dist": 760,
+     "az": 0.5,
+     "pol": 0.78,
+     "up": 0,
+     "frame": "edge"
+    },
+    {
+     "t": 6.5,
+     "look": [
+      15,
+      40
+     ],
+     "dist": 700,
+     "az": 0.62,
+     "pol": 0.8,
+     "up": 0,
+     "frame": "edge"
+    }
+   ]
+  },
+  {
+   "from": 6.5,
+   "to": 10.5,
+   "hour": 12,
+   "keys": [
+    {
+     "t": 6.5,
+     "look": [
+      -8.4,
+      13.2
+     ],
+     "dist": 22,
+     "az": 0.2,
+     "pol": 1.18,
+     "up": 2.2,
+     "frame": "edge"
+    },
+    {
+     "t": 10.5,
+     "look": [
+      -8.4,
+      13.2
+     ],
+     "dist": 12,
+     "az": 0.28,
+     "pol": 1.28,
+     "up": 2.4,
+     "frame": "edge"
+    }
+   ]
+  },
+  {
+   "from": 10.5,
+   "to": 13.5,
+   "hour": 13,
+   "keys": [
+    {
+     "t": 10.5,
+     "look": {
+      "rel": "g:pairs"
+     },
+     "dist": 19,
+     "az": 0.0,
+     "pol": 1.25,
+     "up": 2.0,
+     "frame": "pairs"
+    },
+    {
+     "t": 13.5,
+     "look": {
+      "rel": "g:pairs"
+     },
+     "dist": 17,
+     "az": 0.05,
+     "pol": 1.26,
+     "up": 2.0,
+     "frame": "pairs"
+    }
+   ]
+  },
+  {
+   "from": 13.5,
+   "to": 17.5,
+   "hour": 14,
+   "keys": [
+    {
+     "t": 13.5,
+     "look": [
+      0,
+      15
+     ],
+     "dist": 80,
+     "az": 0.5,
+     "pol": 0.95,
+     "up": 0,
+     "frame": "edge"
+    },
+    {
+     "t": 17.5,
+     "look": [
+      0,
+      15
+     ],
+     "dist": 70,
+     "az": 0.6,
+     "pol": 0.95,
+     "up": 0,
+     "frame": "edge"
+    }
+   ]
+  },
+  {
+   "from": 17.5,
+   "to": 24.0,
+   "hour": 9.0,
+   "keys": [
+    {
+     "t": 17.5,
+     "look": [
+      -121.0,
+      -27.0
+     ],
+     "dist": 26,
+     "az": 0.1,
+     "pol": 1.1,
+     "up": 2.0,
+     "frame": "ws"
+    },
+    {
+     "t": 24.0,
+     "look": [
+      -121.0,
+      -27.0
+     ],
+     "dist": 20,
+     "az": 0.45,
+     "pol": 1.12,
+     "up": 2.4,
+     "frame": "ws"
+    }
+   ]
+  },
+  {
+   "from": 24.0,
+   "to": 27.5,
+   "hour": 10.0,
+   "keys": [
+    {
+     "t": 24.0,
+     "look": [
+      -71.0,
+      -27.0
+     ],
+     "dist": 20,
+     "az": 3.4,
+     "pol": 1.2,
+     "up": 2.5,
+     "frame": "edge"
+    },
+    {
+     "t": 27.5,
+     "look": [
+      -71.0,
+      -27.0
+     ],
+     "dist": 17,
+     "az": 3.25,
+     "pol": 1.18,
+     "up": 2.5,
+     "frame": "edge"
+    }
+   ]
+  },
+  {
+   "from": 27.5,
+   "to": 31.0,
+   "hour": 11.0,
+   "keys": [
+    {
+     "t": 27.5,
+     "look": {
+      "rel": "g:cove"
+     },
+     "dist": 16,
+     "az": 2.6,
+     "pol": 1.25,
+     "up": 2.0,
+     "frame": "cove"
+    },
+    {
+     "t": 31.0,
+     "look": {
+      "rel": "g:cove"
+     },
+     "dist": 14,
+     "az": 2.7,
+     "pol": 1.25,
+     "up": 2.0,
+     "frame": "cove"
+    }
+   ]
+  },
+  {
+   "from": 31.0,
+   "to": 34.0,
+   "hour": 12.0,
+   "keys": [
+    {
+     "t": 31.0,
+     "look": {
+      "rel": "g:farm"
+     },
+     "dist": 20,
+     "az": 0.3,
+     "pol": 1.18,
+     "up": 2.0,
+     "frame": "farm"
+    },
+    {
+     "t": 34.0,
+     "look": {
+      "rel": "g:farm"
+     },
+     "dist": 18,
+     "az": 0.4,
+     "pol": 1.18,
+     "up": 2.0,
+     "frame": "farm"
+    }
+   ]
+  },
+  {
+   "from": 34.0,
+   "to": 38.0,
+   "hour": 15.5,
+   "keys": [
+    {
+     "t": 34.0,
+     "look": {
+      "rel": "g:edge"
+     },
+     "dist": 16,
+     "az": -0.3,
+     "pol": 1.25,
+     "up": 2.2,
+     "frame": "edge"
+    },
+    {
+     "t": 38.0,
+     "look": {
+      "rel": "g:edge"
+     },
+     "dist": 14,
+     "az": -0.2,
+     "pol": 1.25,
+     "up": 2.2,
+     "frame": "edge"
+    }
+   ]
+  },
+  {
+   "from": 38.0,
+   "to": 44.5,
+   "hour": 17.3,
+   "keys": [
+    {
+     "t": 38.0,
+     "look": [
+      250.0,
+      157.0
+     ],
+     "dist": 46,
+     "az": 3.3,
+     "pol": 1.12,
+     "up": 2.0,
+     "frame": "shore"
+    },
+    {
+     "t": 44.5,
+     "look": [
+      238.0,
+      147.0
+     ],
+     "dist": 34,
+     "az": 3.45,
+     "pol": 1.1,
+     "up": 3.0,
+     "frame": "shore"
+    }
+   ]
+  },
+  {
+   "from": 44.5,
+   "to": 54.0,
+   "hour": 17.6,
+   "keys": [
+    {
+     "t": 44.5,
+     "look": [
+      238.0,
+      147.0
+     ],
+     "dist": 30,
+     "az": 3.6,
+     "pol": 1.12,
+     "up": 3.0,
+     "frame": "shore"
+    },
+    {
+     "t": 54.0,
+     "look": [
+      238.0,
+      147.0
+     ],
+     "dist": 36,
+     "az": 4.0,
+     "pol": 1.05,
+     "up": 3.5,
+     "frame": "shore"
+    }
+   ]
+  },
+  {
+   "from": 54.0,
+   "to": 57.0,
+   "hour": 17.8,
+   "keys": [
+    {
+     "t": 54.0,
+     "look": [
+      15,
+      40
+     ],
+     "dist": 700,
+     "az": 0.8,
+     "pol": 0.85,
+     "up": 0,
+     "frame": "edge"
+    },
+    {
+     "t": 57.0,
+     "look": [
+      15,
+      40
+     ],
+     "dist": 760,
+     "az": 0.9,
+     "pol": 0.85,
+     "up": 0,
+     "frame": "edge"
+    }
+   ]
+  }
+ ],
+ "overlay": {
+  "banner": "コメントで動く無人島　5日目",
+  "bannerOff": [
+   [
+    0,
+    6.5
+   ],
+   [
+    44.5,
+    57.0
+   ]
+  ],
+  "commenters": {
+   "rino._.15": "B",
+   "ryuji_111": "A",
+   "ibu131313": "C",
+   "abc.man13": "B",
+   "heroruto7": "B",
+   "marumegane4": "B",
+   "sakasaka_1482": "-",
+   "nanasi774_ou": "B",
+   "yukikun4126": "B",
+   "yuradayo0330": "-",
+   "bear.44190633": "C",
+   "hyuga_0619": "B",
+   "sena_pippiraa": "B",
+   "atsukidesu": "C",
+   "guernica.0712": "A",
+   "tsuki5747": "A",
+   "analogayane": "B",
+   "nabemegane": "A",
+   "ayu.mu__8890": "A",
+   "fuse.daichi": "B",
+   "1kichi_chan": "-",
+   "kubotto0505": "A",
+   "kazuzu4771": "D",
+   "mitsunari_33": "B",
+   "t.waka0113": "B"
+  },
+  "names": {
+   "rino._.15": "Rino",
+   "ryuji_111": "Ryuji",
+   "ibu131313": "ibu13",
+   "abc.man13": "abc.m",
+   "heroruto7": "ヘロルト",
+   "marumegane4": "🐸ま🐸",
+   "sakasaka_1482": "さか",
+   "nanasi774_ou": "774(名無し)",
+   "yukikun4126": "ゆきくん♂",
+   "yuradayo0330": "ゆら",
+   "bear.44190633": "bear.44190633",
+   "hyuga_0619": "ひゅうが",
+   "sena_pippiraa": "せな",
+   "atsukidesu": "中村徳貴",
+   "guernica.0712": "ざーふ",
+   "tsuki5747": "つき",
+   "analogayane": "あやね",
+   "nabemegane": "とも",
+   "ayu.mu__8890": "あゆむ",
+   "fuse.daichi": "Daichi Fuse",
+   "1kichi_chan": "わんきち",
+   "kubotto0505": "kubotto",
+   "kazuzu4771": "竹田",
+   "mitsunari_33": "みつなり",
+   "t.waka0113": "waka .T"
+  },
+  "titles": [
+   {
+    "text": "5日目",
+    "from": 0.1,
+    "to": 3.5
+   }
+  ],
+  "tagAll": [
+   [
+    0.3,
+    3.5,
+    0.06
+   ]
+  ],
+  "stars": [
+   {
+    "who": "yuradayo0330",
+    "from": 6.8,
+    "to": 10.4,
+    "bubble": "行方がわからなかったゆらさんです！"
+   },
+   {
+    "who": "analogayane",
+    "from": 17.6,
+    "to": 21.6,
+    "bubble": "B道具大事\n無人島と言うにはかなり人数も増えてきたからしっかり拠点と生活を確保していこ。\n農機具も釣具も調理器具も大工道具も各チームで使うもの手に入れよう"
+   },
+   {
+    "who": "tsuki5747",
+    "from": 34.1,
+    "to": 36.0,
+    "bubble": "A\n拠点を作らないとまた迷子が出来てしまう 軽い名簿も作ろう！"
+   },
+   {
+    "who": "bear.44190633",
+    "from": 36.0,
+    "to": 38.0,
+    "bubble": "C！！\n俺昔の住人探してきます！\n誰か一緒いこ！"
+   }
+  ],
+  "tally": {
+   "from": 13.5,
+   "to": 17.5,
+   "title": "昨日の質問　昔の住人の跡、どうする？",
+   "grow": [
+    13.9,
+    15.4
+   ],
+   "winner": "B",
+   "winnerAt": 15.8,
+   "rows": [
+    {
+     "key": "A",
+     "label": "跡を直して、森の拠点に",
+     "count": 6
+    },
+    {
+     "key": "B",
+     "label": "石の道具をまねて作る",
+     "count": 12
+    },
+    {
+     "key": "C",
+     "label": "昔の住人の行方を探す",
+     "count": 3
+    },
+    {
+     "key": "D",
+     "label": "自由に提案",
+     "count": 1
+    }
+   ]
+  },
+  "images": [
+   {
+    "file": "profile.png",
+    "from": 3.5,
+    "to": 5.0,
+    "w": 900,
+    "y": 600,
+    "tap": [
+     0.24,
+     0.905
+    ],
+    "tapLabel": "フォローすると…"
+   },
+   {
+    "file": "profile.png",
+    "from": 5.0,
+    "to": 6.5,
+    "w": 900,
+    "y": 600,
+    "tap": [
+     0.37,
+     0.78
+    ],
+    "tapLabel": "島のいまは、ここ"
+   },
+   {
+    "file": "profile.png",
+    "from": 54.1,
+    "to": 57.0,
+    "w": 900,
+    "y": 520,
+    "tap": [
+     0.37,
+     0.78
+    ],
+    "tapLabel": "ここから"
+   }
+  ],
+  "captions": [
+   {
+    "text": "フォローした65人が、流れ着いた",
+    "from": 0.4,
+    "to": 3.5,
+    "y": 1290,
+    "size": 66
+   },
+   {
+    "text": "あなたも、次の動画で流れ着きます",
+    "from": 3.6,
+    "to": 5.0,
+    "y": 1400,
+    "size": 50,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "ゆらさん本人から、コメントが！",
+    "from": 6.6,
+    "to": 10.4,
+    "y": 330,
+    "size": 56,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "コメントで友達を@タグ付けすると",
+    "from": 10.6,
+    "to": 13.4,
+    "y": 330,
+    "size": 52
+   },
+   {
+    "text": "島で「仲良し」に",
+    "from": 10.6,
+    "to": 13.4,
+    "y": 420,
+    "size": 64,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "Rino×sykyu_77　ぺせ×さか",
+    "from": 11.0,
+    "to": 13.4,
+    "y": 1290,
+    "size": 46
+   },
+   {
+    "text": "漁労長 ibu13さん",
+    "from": 27.6,
+    "to": 31.0,
+    "y": 330,
+    "size": 52,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "その夕方",
+    "from": 38.0,
+    "to": 39.6,
+    "y": 420,
+    "size": 64,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "次の質問",
+    "from": 46.0,
+    "to": 54.0,
+    "y": 330,
+    "size": 64,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "流れ着いた大きな木箱。",
+    "from": 46.1,
+    "to": 54.0,
+    "y": 450,
+    "size": 60
+   },
+   {
+    "text": "中身はなんだろう？",
+    "from": 46.1,
+    "to": 54.0,
+    "y": 545,
+    "size": 60
+   },
+   {
+    "text": "A 種と苗",
+    "from": 47.0,
+    "to": 54.0,
+    "y": 760,
+    "size": 56
+   },
+   {
+    "text": "B 灯台",
+    "from": 47.6,
+    "to": 54.0,
+    "y": 860,
+    "size": 56
+   },
+   {
+    "text": "C もこもこのひつじ",
+    "from": 48.2,
+    "to": 54.0,
+    "y": 960,
+    "size": 56
+   },
+   {
+    "text": "D 自由に予想",
+    "from": 48.8,
+    "to": 54.0,
+    "y": 1060,
+    "size": 56
+   },
+   {
+    "text": "一番多い予想が、中身になります",
+    "from": 49.6,
+    "to": 54.0,
+    "y": 1300,
+    "size": 50,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "あなたの島民のいまは、",
+    "from": 54.2,
+    "to": 57.0,
+    "y": 1300,
+    "size": 54
+   },
+   {
+    "text": "プロフィールのリンクから",
+    "from": 54.2,
+    "to": 57.0,
+    "y": 1390,
+    "size": 54
+   }
+  ],
+  "action": [
+   {
+    "text": "昔の住人の石器をまねて、石を割る",
+    "from": 17.6,
+    "to": 22.3
+   },
+   {
+    "text": "大工：石斧",
+    "from": 24.1,
+    "to": 27.5
+   },
+   {
+    "text": "漁師：石の銛",
+    "from": 27.6,
+    "to": 31.0
+   },
+   {
+    "text": "農家：石のくわ",
+    "from": 31.1,
+    "to": 34.0
+   }
+  ],
+  "result": [
+   {
+    "text": "石の作業場が、できた！",
+    "from": 22.4,
+    "to": 24.0
+   },
+   {
+    "text": "木が、あっという間に！",
+    "from": 25.5,
+    "to": 27.5
+   },
+   {
+    "text": "魚が、2匹！",
+    "from": 29.3,
+    "to": 31.0
+   },
+   {
+    "text": "畑も、はかどる",
+    "from": 32.6,
+    "to": 34.0
+   },
+   {
+    "text": "迷子が出ないように、名簿づくり",
+    "from": 34.2,
+    "to": 36.0
+   },
+   {
+    "text": "森の奥が、気になる…",
+    "from": 36.1,
+    "to": 38.0
+   },
+   {
+    "text": "海から、大きな木箱！",
+    "from": 41.4,
+    "to": 44.4
+   }
+  ],
+  "smallTagsMax": 5
+ },
+ "override": {},
+ "audio": {
+  "narration": [
+   {
+    "at": 0.3,
+    "until": 3.5,
+    "text": "65人が、流れ着いた！"
+   },
+   {
+    "at": 3.6,
+    "until": 5.0,
+    "text": "フォローすると、あなたも。"
+   },
+   {
+    "at": 5.1,
+    "until": 6.5,
+    "text": "島は、リンクから。"
+   },
+   {
+    "at": 6.7,
+    "until": 10.4,
+    "text": "なんと、ゆらさん本人から、コメントが！"
+   },
+   {
+    "at": 10.6,
+    "until": 13.4,
+    "text": "タグ付けした二人は、島で仲良しに。"
+   },
+   {
+    "at": 13.6,
+    "until": 17.4,
+    "text": "昨日の質問。一番多かったのは、石の道具！"
+   },
+   {
+    "at": 17.7,
+    "until": 22.3,
+    "text": "昔の住人の石器をまねて、石を割る。"
+   },
+   {
+    "at": 22.4,
+    "until": 24.0,
+    "text": "作業場が、できた！"
+   },
+   {
+    "at": 24.1,
+    "until": 25.5,
+    "text": "石斧で、木を切る。"
+   },
+   {
+    "at": 25.6,
+    "until": 27.5,
+    "text": "あっという間！"
+   },
+   {
+    "at": 27.6,
+    "until": 31.0,
+    "text": "石の銛で、魚が二匹！"
+   },
+   {
+    "at": 31.1,
+    "until": 34.0,
+    "text": "石のくわで、畑もはかどる。"
+   },
+   {
+    "at": 34.1,
+    "until": 38.0,
+    "text": "迷子が出ないように、名簿づくり。森の奥も、気になる。"
+   },
+   {
+    "at": 38.1,
+    "until": 41.3,
+    "text": "その夕方。"
+   },
+   {
+    "at": 41.4,
+    "until": 45.8,
+    "text": "海から、大きな木箱が流れ着いた！"
+   },
+   {
+    "at": 46.1,
+    "until": 54.0,
+    "text": "中身はなんだろう？エー、種と苗。ビー、灯台。シー、もこもこのひつじ。ディー、自由に予想。"
+   },
+   {
+    "at": 54.2,
+    "until": 57.0,
+    "text": "あなたの島民のいまは、プロフィールのリンクから。"
+   }
+  ],
+  "bgm": {
+   "volume": 0.18
+  },
+  "speed": 1.15
+ },
+ "cover": {
+  "at": 45.0,
+  "day": "5日目",
+  "lines": [
+   "石の道具ができた",
+   "海から、大きな木箱が…"
+  ]
+ }
+}
