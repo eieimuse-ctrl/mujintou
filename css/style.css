@@ -443,6 +443,33 @@ body.has-drifters #vote-chip {
   box-shadow: 2px 2px 0 var(--ink);
 }
 
+/* 名札の表示／非表示（「全体」の左どなり）。消していても、タップした人の名札は出る */
+#labels-toggle {
+  position: absolute;
+  top: -50px;
+  right: 92px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 40px;
+  padding: 4px 9px 4px 6px;
+  font-size: 12px;
+  font-weight: 800;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+#labels-toggle[aria-pressed='false'] {
+  color: #8a8578;
+  background: #e6dfcd;
+}
+
+#labels-toggle[aria-pressed='false'] .labels-toggle-text {
+  text-decoration: line-through;
+}
+
+#labels-toggle:active,
 #recenter:active,
 #vote-chip:active {
   box-shadow: none;
@@ -1410,6 +1437,12 @@ body[data-sheet='open'] #sheet {
     top: auto;
     right: calc(100% + 14px);
     bottom: 14px;
+  }
+
+  #labels-toggle {
+    top: auto;
+    right: calc(100% + 14px);
+    bottom: 64px;
   }
 
   #toast {

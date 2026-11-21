@@ -57,7 +57,7 @@ const monthDay = (ymd) => {
   return m ? `${Number(m[1])}/${Number(m[2])}` : '';
 };
 
-export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onSheetChange, onRecenter, now = () => Date.now() }) {
+export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onSheetChange, onRecenter, onLabels, now = () => Date.now() }) {
   const body = document.body;
   const panel = $('panel');
   const sheet = $('sheet');
@@ -132,6 +132,22 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
   });
 
   $('recenter').addEventListener('click', () => onRecenter?.());
+  // 名札の表示／非表示（端末に覚えておく。保存できない環境でも動くように）
+  const LABELS_KEY = 'mujintou.labels';
+  let labelsOn = true;
+  try { labelsOn = localStorage.getItem(LABELS_KEY) !== 'off'; } catch { /* 保存できない環境 */ }
+  const labelsBtn = $('labels-toggle');
+  const applyLabels = () => {
+    labelsBtn.setAttribute('aria-pressed', String(labelsOn));
+    onLabels?.(labelsOn);
+  };
+  labelsBtn.addEventListener('click', () => {
+    labelsOn = !labelsOn;
+    try { localStorage.setItem(LABELS_KEY, labelsOn ? 'on' : 'off'); } catch { /* 保存できない環境 */ }
+    applyLabels();
+    toast(labelsOn ? '名札を表示します' : '名札を消しました（タップした人の名札は出ます）');
+  });
+  queueMicrotask(applyLabels);
   $('vote-chip').addEventListener('click', () => setView('vote'));
 
   // ---- ヘッダー --------------------------------------------------------------
@@ -427,7 +443,6 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
       el('dl', { class: 'facts' }, [
         el('div', {}, [el('dt', { text: '在住' }), el('dd', {}, [el('b', { text: String(p.days) }), el('span', { text: '日' })])]),
         el('div', {}, [el('dt', { text: '仕事' }), el('dd', { text: p.job })]),
-        el('div', {}, [el('dt', { text: '漂着' }), el('dd', { text: `${p.joinedDay}日目` })]),
         p.torchNo ? el('div', {}, [el('dt', { text: '火の番' }), el('dd', {}, [el('span', { text: '森の道の' }), el('b', { text: String(p.torchNo) }), el('span', { text: '本目' })])]) : null,
       ]),
       p.since ? el('p', { class: 'since', text: `在住の起点：${p.since.replaceAll('-', '/')}` }) : null,
