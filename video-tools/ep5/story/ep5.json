@@ -1720,7 +1720,9 @@
    "kubotto0505": "kubotto",
    "kazuzu4771": "竹田",
    "mitsunari_33": "みつなり",
-   "t.waka0113": "waka .T"
+   "t.waka0113": "waka .T",
+   "sykyu_77": "sykyu_77",
+   "b1_482000": "ぺせ"
   },
   "titles": [
    {
@@ -1760,6 +1762,28 @@
     "from": 36.0,
     "to": 38.0,
     "bubble": "C！！\n俺昔の住人探してきます！\n誰か一緒いこ！"
+   }
+  ],
+  "tagOnly": [
+   {
+    "from": 10.6,
+    "to": 13.4,
+    "who": [
+     "rino._.15",
+     "sykyu_77"
+    ],
+    "join": true,
+    "size": 38
+   },
+   {
+    "from": 10.6,
+    "to": 13.4,
+    "who": [
+     "b1_482000",
+     "sakasaka_1482"
+    ],
+    "join": true,
+    "size": 38
    }
   ],
   "tally": {
@@ -1883,13 +1907,6 @@
      214,
      74
     ]
-   },
-   {
-    "text": "Rino×sykyu_77　ぺせ×さか",
-    "from": 11.0,
-    "to": 13.4,
-    "y": 1290,
-    "size": 46
    },
    {
     "text": "漁労長 ibu13さん",

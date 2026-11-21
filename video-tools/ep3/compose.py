@@ -156,12 +156,13 @@ def bubble(img, d, X, y_tag, text):
     d.line([(tx - 16, by1 + 1), (tx - 2, y_tag - 4), (tx + 16, by1 + 1)], fill=INK, width=5)
     for i, l in enumerate(lines): draw_text(img, d, bx0 + 28, by0 + 16 + i * 60, l, size, INK)
 
-def small_tag(img, d, X, Y, name, vote):
-    tw = int(text_w(d, name, 26)) + 52
+def small_tag(img, d, X, Y, name, vote, fs=26):
+    k = fs / 26
+    tw = int(text_w(d, name, fs) + 52 * k)
     x0 = max(10, min(W - SAFE_RIGHT - tw, X - tw // 2))
-    d.rounded_rectangle([x0, Y - 56, x0 + tw, Y - 10], 12, fill=(255, 248, 230, 215))
-    d.ellipse([x0 + 12, Y - 42, x0 + 30, Y - 24], fill=VOTE.get(vote, (150, 150, 150)))
-    draw_text(img, d, x0 + 38, Y - 52, name, 26, INK)
+    d.rounded_rectangle([x0, Y - 56 * k, x0 + tw, Y - 10 * k], 12 * k, fill=(255, 248, 230, 215))
+    d.ellipse([x0 + 12 * k, Y - 42 * k, x0 + 30 * k, Y - 24 * k], fill=VOTE.get(vote, (150, 150, 150)))
+    draw_text(img, d, x0 + 38 * k, Y - 52 * k, name, fs, INK)
 
 def stroke_center(img, d, text, y, size, fill):
     w = text_w(d, text, size, True)
@@ -340,6 +341,21 @@ def compose_frame(i):
             if step and t < a + k * step: continue
             p = ppl[uid]
             small_tag(layer, d, p['hx'] * W, head_y(p), NAMES.get(uid, uid), O.get('commenters', {}).get(uid, '-'))
+    # 決めた人だけに名札（足もと。頭の上にハートなどがある場面用）：{"from","to","who":[id…],"below":true}
+    for ta in O.get('tagOnly', []):
+        if not (ta['from'] <= t <= ta['to']): continue
+        fs = ta.get('size', 26)
+        if ta.get('join'):  # ふたり組など：まとめて1枚（左から「A × B」）
+            ps = sorted([(ppl[u]['hx'], u) for u in ta['who'] if u in ppl])
+            if not ps: continue
+            Y = max(ppl[u]['fy'] for _, u in ps) * H + 66 * fs / 26
+            small_tag(layer, d, sum(x for x, _ in ps) / len(ps) * W, Y, ' × '.join(NAMES.get(u, u) for _, u in ps), ta.get('vote', '-'), fs)
+            continue
+        for uid in ta['who']:
+            p = ppl.get(uid)
+            if not p: continue
+            Y = p['fy'] * H + 66 * fs / 26 if ta.get('below') else head_y(p)
+            small_tag(layer, d, p['hx'] * W, Y, NAMES.get(uid, uid), O.get('commenters', {}).get(uid, '-'), fs)
     for s in stars:
         if s.get('xy'):  # いなくなった人：黒いシルエットと「？？？」（名前は動画では明かさない）
             X, Y = s['xy'][0] * W, s['xy'][1] * H
