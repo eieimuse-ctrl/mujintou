@@ -179,6 +179,32 @@ async function buildIsland({ state, islanders, drifters = [] }) {
   const nav = buildNav(terrain, { blocked: built.blocked, decks: built.decks, outOfRange, deco, origin: { x: hub.x, z: hub.z } });
   const pathfinder = createPathfinder(terrain, nav);
   const sim = createSim({ terrain, nav, pathfinder, islanders, buildings: built.list, hub, outOfRange });
+  // 獣の通り道：行動範囲の地区をめぐる輪（島民と同じ歩ける道を通る。時刻だけで位置が決まる）
+  let beastRoute = null;
+  if (state.beast) {
+    const marks = [];
+    state.districts.filter((d) => d.inRange).forEach((d) => {
+      const D = DISTRICTS[DISTRICT_INDEX[d.id]];
+      for (const [du, dv] of [[0, 0], [0.12, 0.08], [-0.1, -0.06]]) marks.push(nav.snap((D.u + du) * HALF, (D.v + dv) * HALF));
+    });
+    marks.push(nav.snap(state.beast.x, state.beast.z));
+    // 近い順につないで輪にする
+    const order = [marks.pop()];
+    while (marks.length) {
+      const p = order[order.length - 1];
+      let bi = 0;
+      marks.forEach((q, i) => { if (Math.hypot(q.x - p.x, q.z - p.z) < Math.hypot(marks[bi].x - p.x, marks[bi].z - p.z)) bi = i; });
+      order.push(marks.splice(bi, 1)[0]);
+    }
+    const pts = [];
+    for (let i = 0; i < order.length; i++) {
+      const seg = pathfinder.findPath(order[i], order[(i + 1) % order.length]);
+      for (const p of seg.pts) if (!pts.length || Math.hypot(p.x - pts[pts.length - 1].x, p.z - pts[pts.length - 1].z) > 0.01) pts.push({ x: p.x, z: p.z });
+    }
+    const cum = [0];
+    for (let i = 1; i < pts.length; i++) cum.push(cum[i - 1] + Math.hypot(pts[i].x - pts[i - 1].x, pts[i].z - pts[i - 1].z));
+    if (pts.length > 1) beastRoute = { pts, cum, len: cum[cum.length - 1] };
+  }
 
   // 漂流者は漂着地点の沖の海に（sim とは別。浅瀬の岩はよける）
   const drifts = layoutDrifters(drifters, terrain, { avoid: deco.filter((d) => d.kind === 'searock') });
@@ -186,7 +212,7 @@ async function buildIsland({ state, islanders, drifters = [] }) {
   const trailCells = sim.trails();
   for (const k of roadCells) trailCells.add(k);
   const world = createWorld({ canvas, terrain, deco, buildings: built.list, hub, trailCells, torches });
-  const actors = createActors({ scene: world.scene, islanders, sim, labelLayer, drifters, drifts, heightAt: (x, z) => terrain.heightAt(x, z), torchPosts: torches, torchEvery: 5, mysteries: built.list.filter((b) => b.type === 'bigcrate'), beast: state.beast });
+  const actors = createActors({ scene: world.scene, islanders, sim, labelLayer, drifters, drifts, heightAt: (x, z) => terrain.heightAt(x, z), torchPosts: torches, torchEvery: 5, mysteries: built.list.filter((b) => b.type === 'bigcrate'), beast: state.beast && { ...state.beast, route: beastRoute } });
   actors.setLabels(labelsPref);
   labelsActors = actors;
 

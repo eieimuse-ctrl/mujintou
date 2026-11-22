@@ -396,15 +396,16 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       const duty = !stagePose && !td && dutyNow(a.index, tMs);
       let s = (stagePose && stagePose(a.index, tMs)) || (td ? todayPose(a, td) : duty ? dutyPose(duty) : sim.stateAt(a.index, tMs));
       if (bz && s) {
-        // 獣に近い人は、獣の進む先へ逃げる（近いほど強く引っぱられる。人ごとに少し左右へずらす）
-        const d = Math.hypot(s.x - bz.x, s.z - bz.z);
+        // 獣に近づかれた人は、獣から離れる向きへ逃げる。離れたら、ふだんの暮らしに戻る（近いほど強く押しやられる）
+        const ex = s.x - bz.x, ez = s.z - bz.z, d = Math.hypot(ex, ez);
         if (d < FLEE_R) {
-          const L = Math.hypot(bz.dx, bz.dz) || 1, fx = bz.dx / L, fz = bz.dz / L;
-          const lat = ((a.seed % 7) - 3) * 1.9, ahead = 6 + (a.seed % 5) * 1.3;
-          const cx = bz.x + fx * ahead - fz * lat, cz = bz.z + fz * ahead + fx * lat;
-          const w = Math.min(1, (FLEE_R - d) / (FLEE_R * 0.45));
-          const x = s.x + (cx - s.x) * w, z = s.z + (cz - s.z) * w;
-          s = { ...s, x, z, y: groundAt(x, z), dx: fx, dz: fz, anim: w > 0.3 ? 'run' : 'shock', bubble: null };
+          const ux = d > 0.01 ? ex / d : 1, uz = d > 0.01 ? ez / d : 0;
+          const lat = ((a.seed % 7) - 3) * 0.12; // 人ごとに少し斜めへ
+          const fx = ux * Math.cos(lat) - uz * Math.sin(lat), fz = ux * Math.sin(lat) + uz * Math.cos(lat);
+          const w = Math.min(1, (FLEE_R - d) / (FLEE_R * 0.5));
+          const tx = bz.x + fx * (FLEE_R + 4), tz = bz.z + fz * (FLEE_R + 4);
+          const p = { x: s.x + (tx - s.x) * w, z: s.z + (tz - s.z) * w };
+          s = { ...s, x: p.x, z: p.z, y: groundAt(p.x, p.z), dx: fx, dz: fz, anim: w > 0.15 ? 'run' : 'shock', bubble: null };
         }
       }
       // 手に持つ松明（火の番のとき、または台本で torch: true のとき）
@@ -547,7 +548,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
         const dist = camera.position.distanceTo(v);
         // 引いたときは島民と同じく少し大きく描く（島民の約1.3倍の高さを保つ）
         const k = Math.max(1, (CROWD_PX * 1.3) / (4.1 * (pxPerUnitAt1 / Math.max(1, dist))));
-        const step = Math.floor(t * 8) % 2;
+        const step = bz.still ? 0 : Math.floor(t * 8) % 2;
         B.g.position.set(bz.x, y - 0.05 + step * 0.12 * k, bz.z);
         B.g.rotation.y = Math.atan2(-bz.dz, bz.dx); // 頭（+x）を進む向きへ
         B.g.scale.setScalar(k);
