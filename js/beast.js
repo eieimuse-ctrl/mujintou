@@ -69,6 +69,16 @@ export function beastCanvas() {
 // 獣の位置（時刻だけで決まる。どの端末でも同じ場所に見える）：中心のまわりを、ゆがんだ輪を描いてうろつく
 export function beastPose(b, tMs) {
   const t = tMs / 1000;
+  if (b.route) {
+    // 島をめぐる通り道を、一定の速さで歩く（ときどき立ち止まって、においをかぐ）
+    const R = b.route, speed = 5.5, cycle = 14, pause = 3;
+    const moved = (Math.floor(t / cycle) * (cycle - pause) + Math.min(cycle - pause, t % cycle)) * speed;
+    const d = ((moved % R.len) + R.len) % R.len;
+    let lo = 0, hi = R.cum.length - 1;
+    while (hi - lo > 1) { const m = (lo + hi) >> 1; if (R.cum[m] <= d) lo = m; else hi = m; }
+    const a = R.pts[lo], c = R.pts[hi], u = (d - R.cum[lo]) / Math.max(1e-6, R.cum[hi] - R.cum[lo]);
+    return { x: a.x + (c.x - a.x) * u, z: a.z + (c.z - a.z) * u, dx: c.x - a.x, dz: c.z - a.z, still: t % cycle >= cycle - pause };
+  }
   const a = t * 0.11 + Math.sin(t * 0.037) * 1.6;
   const r = b.r * (0.55 + 0.35 * Math.sin(t * 0.071 + 1.3));
   const x = b.x + Math.cos(a) * r;
