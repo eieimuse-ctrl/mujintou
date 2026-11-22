@@ -188,7 +188,7 @@ export function normalizeData(stateRaw, rosterRaw, driftRaw = null) {
   // 森の獣：{ day, x, z, r, text }（ワールド座標）。day 以降、gone: true まで畑のまわりをうろつく
   const bs = s.beast && typeof s.beast === 'object' ? s.beast : null;
   const beast = bs && int(bs.day, 1) <= day && bs.gone !== true && Number.isFinite(num(bs.x)) && Number.isFinite(num(bs.z))
-    ? { day: int(bs.day, 1), x: num(bs.x), z: num(bs.z), r: num(bs.r) > 0 ? num(bs.r) : 18, text: str(bs.text, '森を追われた獣が、畑のまわりで島民を追いかけまわしている。正体はまだ分からない…') }
+    ? { day: int(bs.day, 1), x: num(bs.x), z: num(bs.z), r: num(bs.r) > 0 ? num(bs.r) : 18, text: str(bs.text, '森を切りひらいて住処を追われたクマが、畑のまわりで島民を追いかけまわしている…') }
     : null;
 
   const state = {

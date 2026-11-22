@@ -10,7 +10,7 @@ import { MAX_LABELS } from './config.js';
 import { nameLabelLook } from './zoom.js';
 import { SEA_Y } from './terrain.js';
 import { driftPose } from './drift.js';
-import { beastCanvas, beastPose, BEAST_FRAMES } from './beast.js';
+import { beastPose, BEAST_BOXES } from './beast.js';
 
 const SPRITE_H = 3.9; // スプライト1コマの高さ（ワールド単位）
 const SPRITE_W = (SPRITE_H * FRAME_W) / FRAME_H;
@@ -275,16 +275,23 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
   const FLEE_R = 14; // これより近い島民は、獣の前を逃げる
   let beastObj = null;
   if (beast) {
-    const tex = pixelTexture(beastCanvas());
-    tex.repeat.set(1 / BEAST_FRAMES.length, 1);
-    const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, alphaTest: 0.5, transparent: false }));
-    sp.center.set(0.5, 0);
-    sp.renderOrder = 2;
+    // ボクセルのクマ：箱を組んだ立体。脚（leg）は歩くと上下する
+    const g = new THREE.Group();
+    const unit = new THREE.BoxGeometry(1, 1, 1);
+    const mats = new Map();
+    const legs = [];
+    for (const bx of BEAST_BOXES) {
+      if (!mats.has(bx.c)) mats.set(bx.c, new THREE.MeshLambertMaterial({ color: bx.c }));
+      const m = new THREE.Mesh(unit, mats.get(bx.c));
+      m.position.set(...bx.p);
+      m.scale.set(...bx.s);
+      if (bx.leg != null) legs.push({ m, y: bx.p[1], leg: bx.leg });
+      g.add(m);
+    }
     const sh = new THREE.Mesh(shadowGeo, shadowMat);
     sh.renderOrder = 1;
-    scene.add(sp, sh);
-    const u = (SPRITE_H / FRAME_H) * 1.6; // 島民と同じ1ドットの大きさ×1.35
-    beastObj = { b: beast, sp, sh, tex, w: BEAST_FRAMES[0][0].length * u, h: BEAST_FRAMES[0].length * u, now: null, screen: null, facing: 1 };
+    scene.add(g, sh);
+    beastObj = { b: beast, g, sh, legs, now: null, screen: null };
   }
 
   // ---- なぞの物（流れ着いた木箱など）：上に「？」を浮かべる。タップでその建物の詳細 ----
@@ -533,25 +540,22 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
 
     if (beastObj) {
       const B = beastObj;
-      B.sp.visible = B.sh.visible = !!bz;
+      B.g.visible = B.sh.visible = !!bz;
       if (bz) {
         const y = groundAt(bz.x, bz.z);
         v.set(bz.x, y, bz.z);
         const dist = camera.position.distanceTo(v);
-        const k = Math.max(1, CROWD_PX * 1.3 / (B.h * (pxPerUnitAt1 / Math.max(1, dist))));
-        const side = bz.dx * right.x + bz.dz * right.z;
-        if (Math.abs(side) > 0.01) B.facing = side > 0 ? 1 : -1;
-        const f = Math.floor(t * 9) % BEAST_FRAMES.length;
-        // 左右の向きは、テクスチャを左右反転して変える
-        const fw = 1 / BEAST_FRAMES.length;
-        B.tex.repeat.set(B.facing > 0 ? fw : -fw, 1);
-        B.tex.offset.set(B.facing > 0 ? f * fw : (f + 1) * fw, 0);
-        B.sp.position.set(bz.x, y + (f ? 0.15 : 0) * k, bz.z);
-        B.sp.scale.set(B.w * k, B.h * k, 1);
+        // 引いたときは島民と同じく少し大きく描く（島民の約1.3倍の高さを保つ）
+        const k = Math.max(1, (CROWD_PX * 1.3) / (4.1 * (pxPerUnitAt1 / Math.max(1, dist))));
+        const step = Math.floor(t * 8) % 2;
+        B.g.position.set(bz.x, y - 0.05 + step * 0.12 * k, bz.z);
+        B.g.rotation.y = Math.atan2(-bz.dz, bz.dx); // 頭（+x）を進む向きへ
+        B.g.scale.setScalar(k);
+        for (const L of B.legs) L.m.position.y = L.y + (L.leg === step ? 0.35 : 0);
         B.sh.position.set(bz.x, y + 0.07, bz.z);
-        B.sh.scale.setScalar(k * 1.6);
-        v.set(bz.x, y + B.h * k * 0.5, bz.z).project(camera);
-        B.screen = { visible: v.z > -1 && v.z < 1 && Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1, x: (v.x * 0.5 + 0.5) * viewport.w, y: (-v.y * 0.5 + 0.5) * viewport.h, r: Math.max(26, B.w * k * (pxPerUnitAt1 / Math.max(1, dist)) * 0.6) };
+        B.sh.scale.setScalar(k * 2.6);
+        v.set(bz.x, y + 2.2 * k, bz.z).project(camera);
+        B.screen = { visible: v.z > -1 && v.z < 1 && Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1, x: (v.x * 0.5 + 0.5) * viewport.w, y: (-v.y * 0.5 + 0.5) * viewport.h, r: Math.max(30, 2.6 * k * (pxPerUnitAt1 / Math.max(1, dist))) };
       }
     }
     for (const mk of mysteryMarks) {
