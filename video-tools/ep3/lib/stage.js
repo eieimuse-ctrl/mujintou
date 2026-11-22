@@ -257,6 +257,16 @@
         'kSSSSSk',
         '.kkkkk.',
       ], { k: '#6b5232', S: '#e3cf96', g: '#5fbf4a' }),
+      axe: pixel([
+        '.MMM.',
+        'MMMMw',
+        'MMM.w',
+        '....w',
+        '....w',
+        '....w',
+        '....w',
+        '....w',
+      ], { M: '#8a8c94', w: '#b98952' }),
       hoe: pixel([
         'MMMM.',
         'MMMM.',
@@ -302,7 +312,7 @@
         const t2 = art.tex.clone(); t2.repeat.set(-1, 1); t2.offset.set(1, 0); t2.wrapS = 1000; t2.needsUpdate = true;
         art = { ...art, tex: t2 };
       }
-      const sp2 = new SpriteC(new MatC({ map: art.tex, alphaTest: 0.5, transparent: false, depthTest: !['splash', 'question', 'zzz', 'heart', 'eyes', 'hoe', 'rod', 'saw'].includes(pr.type), fog: !['question', 'flame', 'eyes'].includes(pr.type) }));
+      const sp2 = new SpriteC(new MatC({ map: art.tex, alphaTest: 0.5, transparent: false, depthTest: !['splash', 'question', 'zzz', 'heart', 'eyes', 'hoe', 'rod', 'saw', 'axe'].includes(pr.type), fog: !['question', 'flame', 'eyes'].includes(pr.type) }));
       const hgt = pr.size || 1.4;
       sp2.scale.set((hgt * art.w) / art.h, hgt, 1);
       sp2.center.set(0.5, 0);
@@ -588,6 +598,13 @@
       const hd = proj(q2.x, q2.y + 3.9 * k, q2.z), ft = proj(q2.x, q2.y, q2.z);
       const on = hd[2] && ft[0] > -0.05 && ft[0] < 1.05 && hd[1] < 1.05 && ft[1] > -0.05;
       if (on) people[id] = { hx: hd[0], hy: hd[1], fx: ft[0], fy: ft[1], d: +cam.position.distanceTo(q2).toFixed(1) };
+    }
+    // 名前を付けた小道具（label）も、画面の位置を書き出す（合成で注釈を付ける。id は prop:<label>）
+    for (const P of S.props) {
+      if (!P.pr.label || !P.sp.visible) continue;
+      const q3 = P.sp.position, hh = P.sp.scale.y;
+      const hd = proj(q3.x, q3.y + hh, q3.z), ft = proj(q3.x, q3.y, q3.z);
+      if (hd[2] && ft[0] > -0.05 && ft[0] < 1.05 && ft[1] > -0.05 && hd[1] < 1.05) people['prop:' + P.pr.label] = { hx: hd[0], hy: hd[1], fx: ft[0], fy: ft[1], d: +cam.position.distanceTo(q3).toFixed(1), prop: true };
     }
     const src = a.world.renderer.domElement;
     if (!window.__cv) { window.__cv = document.createElement('canvas'); window.__cv.width = src.width; window.__cv.height = src.height; }

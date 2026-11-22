@@ -319,6 +319,8 @@ def compose_frame(i):
     if base.size != (W, H): base = base.resize((W, H), Image.LANCZOS)
     layer = Image.new('RGBA', (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(layer)
     ppl = track.get(i, {})
+    ppos = {k[5:]: v for k, v in ppl.items() if k.startswith('prop:')}  # 名前を付けた小道具の位置
+    ppl = {k: v for k, v in ppl.items() if not k.startswith('prop:')}
     if not any(a <= t <= b for a, b in O.get('bannerOff', [])): banner(layer, d, O['banner'])
     for c in O.get('chips', []):
         if c['from'] <= t <= c['to']: chip(layer, d, c['text'], t, c['from'], c['to'])
@@ -356,6 +358,11 @@ def compose_frame(i):
             if not p: continue
             Y = p['fy'] * H + 66 * fs / 26 if ta.get('below') else head_y(p)
             small_tag(layer, d, p['hx'] * W, Y, NAMES.get(uid, uid), O.get('commenters', {}).get(uid, '-'), fs)
+    # 小道具の注釈（種の袋に「小麦　ヘロルトさん」など）：{"label","text","from","to","size"}
+    for pt in O.get('propTags', []):
+        p = ppos.get(pt['label'])
+        if p and pt['from'] <= t <= pt['to']:
+            small_tag(layer, d, p['hx'] * W, p['hy'] * H - 6, pt['text'], pt.get('vote', '-'), pt.get('size', 34))
     for s in stars:
         if s.get('xy'):  # いなくなった人：黒いシルエットと「？？？」（名前は動画では明かさない）
             X, Y = s['xy'][0] * W, s['xy'][1] * H
