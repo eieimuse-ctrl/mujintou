@@ -181,7 +181,6 @@ export function normalizeData(stateRaw, rosterRaw, driftRaw = null) {
   }
 
   // 切りひらいた土地（ワールド座標の四角。ふちは少しぎざぎざ）：その中には木を生やさない
-  const num = (v) => Number(v);
   const clearings = (Array.isArray(s.clearings) ? s.clearings : [])
     .filter((c) => c && ['x0', 'x1', 'z0', 'z1'].every((k) => Number.isFinite(num(c[k]))) && int(c.day, 1) <= day)
     .map((c) => ({ x0: Math.min(num(c.x0), num(c.x1)), x1: Math.max(num(c.x0), num(c.x1)), z0: Math.min(num(c.z0), num(c.z1)), z1: Math.max(num(c.z0), num(c.z1)), day: int(c.day, 1) }));
