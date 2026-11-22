@@ -7,7 +7,7 @@
 
 流れ（2026-11-22 本人と確定）
   漂着 → リンク → 仲良し（ざーふさんの輪＋ペア）→ 集計（A 種と苗）→ 木箱が開いて種と苗 → 森を1/3切りひらく
-  → くわ・釣り竿・のこぎり → 巨大な畑に植える（PWA で2日かけて育つ）→ 夕方のたき火
+  → 斧・釣り竿・のこぎり → 巨大な畑に植える（PWA で2日かけて育つ）→ 夜のたき火（大勢）
   → 森からクマ！島民を追いかけまわす → 次の問い「クマが現れた！どうする？」
 """
 import json, os, re, math
@@ -74,15 +74,16 @@ by_job = lambda j, n, skip=(): [p['id'] for p in older if p.get('job') == j and 
 carp = by_job('大工', 6)
 farmers = by_job('農家', 6)
 crowd = [p['id'] for p in older if p['id'] not in set(carp) | set(farmers)][:18]
-campers = [x for x in [TSUKI, YURI] if inr(x)] + crowd[:6]
+mob = [p['id'] for p in older if p['id'] not in set(carp) | set(farmers) | set(crowd)][:30]
+campers = [x for x in [TSUKI, YURI] if inr(x)] + crowd[:8] + mob  # 夜のたき火を囲む大勢
 
 # ---- 場所（ワールド座標） ----
 LAND = [238.0, 147.0]                 # 木箱のある浜
 PLAZA = [15.0, 36.0]                  # 仲良しの場面
-FIELD = [-104.0, -2.0]                # 巨大な畑（26×18）
+FIELD = [-110.0, -51.0]               # 巨大な畑（26×18）。森の中の平らな所
 CLEAR = {'x0': -132, 'x1': -86, 'z0': -62, 'z1': 22}   # 森を切りひらく範囲（森の東の1/3）
-FIRE = [-100.0, 32.0]                 # 夕方のたき火（畑の南の平原）
-DEN = [-140.0, 15.0]                  # クマが出てくる森の暗がり
+FIRE = [-78.0, -50.0]                 # 夜のたき火（畑の東の平原。大勢が囲む）
+DEN = [-100.0, -74.0]                 # クマが出てくる森の暗がり（畑の北）
 RC, RR = FIRE, 8.0                    # 追いかけっこの輪
 
 groups = [
@@ -139,36 +140,57 @@ A({'who': G['farm']['members'], 't': 35.6, 'anim': 'cheer', 'face': 'front'})
 A({'who': campers, 't': 37.0, 'at': {'slot': 'fire'}, 'anim': 'sit', 'face': {'at': FIRE}})
 for x in [TSUKI, YURI]:
     if inr(x): A({'who': x, 't': 37.2, 'anim': 'talk'})
-# S9 クマ（40.5〜52）
+# S9 クマ（40.5〜52）：大勢のたき火にクマが飛びこみ、みんな散り散りに逃げる
+# たき火のまわりの並び（3重の輪）
+SEATS = {}
+for k, i in enumerate(campers):
+    ring_no = 0 if k < 8 else 1 if k < 22 else 2
+    n_in = [8, 14, 18][ring_no]; kk = k if ring_no == 0 else k - 8 if ring_no == 1 else k - 22
+    a = 2 * math.pi * kk / n_in + ring_no * 0.4
+    r = [3.6, 6.2, 8.8][ring_no]
+    SEATS[i] = [round(FIRE[0] + math.cos(a) * r, 2), round(FIRE[1] + math.sin(a) * r * 0.85, 2)]
+for i in campers: A({'who': i, 't': 37.0, 'at': SEATS[i], 'anim': 'sit', 'face': {'at': FIRE}})
+for x in [TSUKI, YURI]:
+    if inr(x): A({'who': x, 't': 37.2, 'anim': 'talk'})
 A({'who': campers, 't': 41.0, 'anim': 'idle', 'face': {'at': DEN}})
 A({'who': campers, 't': 42.6, 'anim': 'shock', 'face': {'at': DEN}})
-W = 1.15  # 追いかけっこの角速度
-def ring(th, r): return [round(RC[0] + math.cos(th) * r, 2), round(RC[1] + math.sin(th) * r * 0.8, 2)]
-TH0 = math.pi  # クマは西（森）側から
-for k, i in enumerate(campers):
-    off = 0.8 + k * 0.5; rr = RR + ((k % 3) - 1) * 1.5
-    A({'who': i, 't': 43.2 + k * 0.05, 'to': ring(TH0 - off, rr), 'dur': 0.5, 'run': True})
-    t = 43.7
-    while t < 52.0:
-        if 47.0 <= t < 48.4:  # クマが立ち上がる間は、少し離れて振り返る
-            A({'who': i, 't': round(t, 2), 'anim': 'shock', 'face': {'at': ring(TH0 - W * (47.0 - 43.4), RR)}}); t = 48.4; continue
-        th = TH0 - off - W * (t - 43.7)
-        A({'who': i, 't': round(t, 2), 'to': ring(th - W * 0.3, rr), 'dur': 0.3, 'run': True})
-        t += 0.3
-
-# クマの道すじ
+# クマの道すじ：森 → たき火の真ん中へ突っこむ → 逃げた人の多い方へ、向きを変えては突進（47.0〜48.3 は立ち上がって吠える）
+BWAY = [(42.4, DEN), (43.5, [FIRE[0] - 3, FIRE[1] - 2]), (44.6, [FIRE[0] + 10, FIRE[1] + 6]), (45.7, [FIRE[0] + 4, FIRE[1] + 15]),
+        (47.0, [FIRE[0] - 8, FIRE[1] + 9]), (48.3, [FIRE[0] - 8, FIRE[1] + 9]), (49.5, [FIRE[0] - 2, FIRE[1] - 10]), (50.8, [FIRE[0] + 12, FIRE[1] - 8]), (52.0, [FIRE[0] + 16, FIRE[1] + 4])]
 def bear_at(t):
-    if t < 42.4: return DEN
-    if t < 43.4:
-        u = (t - 42.4) / 1.0
-        e = ring(TH0, RR)
-        return [DEN[0] + (e[0] - DEN[0]) * u, DEN[1] + (e[1] - DEN[1]) * u]
-    tt = min(t, 47.0) - 43.4 + max(0, t - 48.3)  # 47.0〜48.3 は立ち止まる
-    return ring(TH0 - W * tt, RR)
+    if t <= BWAY[0][0]: return list(BWAY[0][1])
+    for (ta, pa), (tb, pb) in zip(BWAY, BWAY[1:]):
+        if t <= tb:
+            u = (t - ta) / (tb - ta); u = u * u * (3 - 2 * u)  # 突進は、出だしと止まりぎわをなめらかに
+            return [pa[0] + (pb[0] - pa[0]) * u, pa[1] + (pb[1] - pa[1]) * u]
+    return list(BWAY[-1][1])
 BPATH = []
 t = 40.0
 while t <= 52.0001:
     p = bear_at(t); BPATH.append([round(t, 2), round(p[0], 2), round(p[1], 2)]); t += 0.1
+# 逃げる人：クマとの距離で動く（近いと全力でクマから離れる。離れると止まって振り返る）。0.2秒ごとに計算
+pos = {i: list(SEATS[i]) for i in campers}
+running = {i: False for i in campers}
+FLEE, SPEED, DT = 13.0, 8.5, 0.2
+t = 42.8
+while t < 52.0:
+    bp = bear_at(t)
+    for k, i in enumerate(campers):
+        x, z = pos[i]; dx, dz = x - bp[0], z - bp[1]; d = math.hypot(dx, dz) or 0.01
+        if d < FLEE:
+            lat = ((k * 37) % 11 - 5) * 0.06  # 人ごとに少し斜めへ（散り散りに）
+            ux, uz = dx / d, dz / d
+            fx, fz = ux * math.cos(lat) - uz * math.sin(lat), ux * math.sin(lat) + uz * math.cos(lat)
+            sp = SPEED * (0.8 + 0.4 * ((k * 13) % 7) / 6) * (1.2 if d < 6 else 1.0)
+            nx, nz = x + fx * sp * DT, z + fz * sp * DT
+            nx = max(nx, FIELD[0] + 15)  # 畑の中へは逃げこまない
+            A({'who': i, 't': round(t, 2), 'to': [round(nx, 2), round(nz, 2)], 'dur': DT, 'run': True})
+            pos[i] = [nx, nz]; running[i] = True
+        elif running[i]:
+            A({'who': i, 't': round(t, 2), 'anim': 'shock', 'face': {'at': [round(bp[0], 1), round(bp[1], 1)]}})
+            running[i] = False
+    t = round(t + DT, 2)
+RC = FIRE
 
 # ---- カメラ（大げさに）：寄る・引く・回る・振り向く、を短く切りかえる ----
 def bear_heading(t):
@@ -196,19 +218,19 @@ camera = [
     # 森を切る：森の上をすべるように飛び、ぐるっと回って全体を見せる
     {'from': 20.0, 'to': 27.0, 'hour': 10, 'shake': [[21.0, 21.6, 0.5], [23.0, 23.6, 0.5], [24.8, 25.4, 0.6]], 'keys': [{'t': 20.0, 'look': [-112, 10], 'dist': 14, 'az': 0.3, 'pol': 1.3, 'up': 3, 'frame': 'south', 'fov': 44}, {'t': 22.0, 'look': [-112, -10], 'dist': 45, 'az': 0.0, 'pol': 0.95, 'up': 2, 'frame': 'south'}, {'t': 24.5, 'look': [-109, -20], 'dist': 95, 'az': -0.9, 'pol': 0.7, 'up': 0, 'frame': 'south'}, {'t': 27.0, 'look': [-109, -20], 'dist': 120, 'az': -1.6, 'pol': 0.55, 'up': 0, 'frame': 'south'}]},
     # 道具：真下から見上げる
-    {'from': 27.0, 'to': 31.0, 'hour': 11, 'shake': [[27.4, 27.8, 0.4], [27.9, 28.3, 0.4], [28.4, 28.8, 0.4]], 'keys': [{'t': 27.0, 'look': [-112, 12], 'dist': 26, 'az': 0.9, 'pol': 1.15, 'up': 4.0, 'frame': 'south', 'fov': 50}, {'t': 28.0, 'look': [-112, 12], 'dist': 18, 'az': 0.1, 'pol': 1.25, 'up': 5.0, 'frame': 'south', 'fov': 40}, {'t': 31.0, 'look': [-112, 12], 'dist': 16, 'az': -0.3, 'pol': 1.25, 'up': 5.0, 'frame': 'south', 'fov': 36}]},
+    {'from': 27.0, 'to': 31.0, 'hour': 11, 'shake': [[27.4, 27.8, 0.4], [27.9, 28.3, 0.4], [28.4, 28.8, 0.4]], 'keys': [{'t': 27.0, 'look': [-112, 12], 'dist': 26, 'az': 0.9, 'pol': 1.15, 'up': 4.0, 'frame': 'south', 'fov': 50}, {'t': 28.0, 'look': [-112, 12], 'dist': 22, 'az': 0.0, 'pol': 1.25, 'up': 4.5, 'frame': 'south', 'fov': 42}, {'t': 31.0, 'look': [-112, 12], 'dist': 20, 'az': 0.0, 'pol': 1.25, 'up': 4.5, 'frame': 'south', 'fov': 40}]},
     # 畑：畑のまわりを大きく一周しながら上がっていく
     {'from': 31.0, 'to': 37.0, 'hour': 13, 'keys': [{'t': 31.0, 'look': FIELD, 'dist': 26, 'az': -0.8, 'pol': 1.2, 'up': 1, 'frame': 'south'}, {'t': 34.0, 'look': FIELD, 'dist': 40, 'az': 0.8, 'pol': 0.95, 'up': 1, 'frame': 'south'}, {'t': 37.0, 'look': FIELD, 'dist': 58, 'az': 2.2, 'pol': 0.75, 'up': 0, 'frame': 'south'}]},
-    {'from': 37.0, 'to': 40.5, 'hour': 18.2, 'keys': [{'t': 37.0, 'look': FIRE, 'dist': 24, 'az': 0.5, 'pol': 1.05, 'up': 1.5, 'frame': 'south'}, {'t': 40.5, 'look': FIRE, 'dist': 17, 'az': 0.0, 'pol': 1.12, 'up': 1.5, 'frame': 'south'}]},
+    {'from': 37.0, 'to': 40.5, 'hour': 18.2, 'keys': [{'t': 37.0, 'look': FIRE, 'dist': 40, 'az': 0.9, 'pol': 0.9, 'up': 1, 'frame': 'south'}, {'t': 40.5, 'look': FIRE, 'dist': 26, 'az': 0.2, 'pol': 1.05, 'up': 1.5, 'frame': 'south'}]},
     # クマ：暗がりへじわじわ寄る → 飛び出す（大ゆれ）
-    {'from': 40.5, 'to': 42.4, 'hour': 19.3, 'keys': [{'t': 40.5, 'look': [DEN[0] + 6, DEN[1]], 'dist': 26, 'az': 1.45, 'pol': 1.3, 'up': 2.5, 'frame': 'south', 'fov': 40}, {'t': 42.4, 'look': [DEN[0] + 2, DEN[1]], 'dist': 12, 'az': 1.5, 'pol': 1.32, 'up': 2.5, 'frame': 'south', 'fov': 30}]},
-    {'from': 42.4, 'to': 43.6, 'hour': 19.3, 'shake': [[42.4, 43.6, 1.6]], 'keys': [{'t': 42.4, 'look': [DEN[0] + 4, DEN[1]], 'dist': 16, 'az': 1.6, 'pol': 1.3, 'up': 2.5, 'frame': 'south', 'fov': 50}, {'t': 43.6, 'look': ring(TH0, RR), 'dist': 20, 'az': 1.1, 'pol': 1.2, 'up': 2, 'frame': 'south', 'fov': 50}]},
-    # 後ろから低く追いかける
+    {'from': 40.5, 'to': 42.4, 'hour': 19.3, 'keys': [{'t': 40.5, 'look': [DEN[0], DEN[1] + 6], 'dist': 26, 'az': 0.1, 'pol': 1.3, 'up': 2.5, 'frame': 'south', 'fov': 40}, {'t': 42.4, 'look': [DEN[0], DEN[1] + 2], 'dist': 12, 'az': 0.0, 'pol': 1.32, 'up': 2.5, 'frame': 'south', 'fov': 30}]},
+    {'from': 42.4, 'to': 43.6, 'hour': 19.3, 'shake': [[42.4, 43.6, 1.6]], 'keys': [{'t': 42.4, 'look': [DEN[0], DEN[1] + 4], 'dist': 18, 'az': 0.2, 'pol': 1.25, 'up': 2.5, 'frame': 'south', 'fov': 50}, {'t': 43.6, 'look': bear_at(43.5), 'dist': 28, 'az': 0.6, 'pol': 1.1, 'up': 2, 'frame': 'south', 'fov': 50}]},
+    # 後ろから追いかける：逃げまどう大勢がクマの前に
     {'from': 43.6, 'to': 47.0, 'hour': 19.3, 'keys': unwrap([chase_key(43.6 + k * 0.4) for k in range(9)] + [chase_key(47.0)])},
-    # 立ち上がって吠える：顔にぐっと寄る
+    # 立ち上がって吠える：横からぐっと寄る
     {'from': 47.0, 'to': 48.4, 'hour': 19.3, 'shake': [[47.4, 48.4, 1.2]], 'keys': [{'t': 47.0, 'look': bear_at(47.0), 'dist': 26, 'az': bear_heading(46.9) + 2.2, 'pol': 1.2, 'up': 3.0, 'frame': 'south', 'fov': 44}, {'t': 47.6, 'look': bear_at(47.0), 'dist': 18, 'az': bear_heading(46.9) + 1.65, 'pol': 1.28, 'up': 4.0, 'frame': 'south', 'fov': 36}, {'t': 48.4, 'look': bear_at(47.0), 'dist': 16, 'az': bear_heading(46.9) + 1.55, 'pol': 1.3, 'up': 4.2, 'frame': 'south', 'fov': 32}]},
     # 一気に上空へ：畑のまわりをぐるぐる追いかけまわしている
-    {'from': 48.4, 'to': 52.0, 'hour': 19.0, 'keys': [{'t': 48.4, 'look': RC, 'dist': 18, 'az': 0.4, 'pol': 1.2, 'up': 2, 'frame': 'south', 'fov': 44}, {'t': 49.6, 'look': RC, 'dist': 42, 'az': 1.4, 'pol': 0.75, 'up': 0, 'frame': 'south', 'fov': 40}, {'t': 52.0, 'look': RC, 'dist': 52, 'az': 2.6, 'pol': 0.6, 'up': 0, 'frame': 'south', 'fov': 40}]},
+    {'from': 48.4, 'to': 52.0, 'hour': 19.0, 'keys': [{'t': 48.4, 'look': bear_at(48.4), 'dist': 22, 'az': 0.4, 'pol': 1.15, 'up': 2, 'frame': 'south', 'fov': 44}, {'t': 49.6, 'look': FIRE, 'dist': 55, 'az': 1.2, 'pol': 0.7, 'up': 0, 'frame': 'south', 'fov': 40}, {'t': 52.0, 'look': [FIRE[0] + 4, FIRE[1]], 'dist': 70, 'az': 2.2, 'pol': 0.55, 'up': 0, 'frame': 'south', 'fov': 40}]},
     {'from': 52.0, 'to': 58.0, 'hour': 19.0, 'keys': [{'t': 52.0, 'look': RC, 'dist': 30, 'az': 2.8, 'pol': 0.95, 'up': 1, 'frame': 'south'}, {'t': 58.0, 'look': RC, 'dist': 40, 'az': 3.6, 'pol': 0.9, 'up': 1, 'frame': 'south'}]},
 ]
 DUR = 61.0
@@ -229,9 +251,15 @@ for k in range(24):
     props.append({'type': 'sack' if k % 4 == 0 else 'sprout', 'from': {'xz': [LAND[0] + fdx * 2.4, LAND[1] + fdz * 2.4], 'up': 1.2 + (k % 3) * 0.8},
                   'to': [round(LAND[0] + fdx * r + pdx * side, 2), round(LAND[1] + fdz * r + pdz * side, 2)],
                   't0': 15.75 + k * 0.045, 't1': 16.35 + k * 0.045, 't2': 20.0, 'arc': 1.2 + (k % 4) * 0.5, 'size': 1.1 if k % 4 else 1.0})
+# 希望の作物：大きめの袋を4つ、手前に並ぶように落とす（合成で「小麦（ヘロルトさん）」などの注釈を付ける）
+for k, lab in enumerate(['wheat', 'soy', 'cotton', 'fruit']):
+    side = (k - 1.5) * 3.0
+    props.append({'type': 'sack', 'label': lab, 'from': {'xz': [LAND[0] + fdx * 2.4, LAND[1] + fdz * 2.4], 'up': 2.0},
+                  'to': [round(LAND[0] + fdx * 4.2 + pdx * side, 2), round(LAND[1] + fdz * 4.2 + pdz * side, 2)],
+                  't0': 15.9 + k * 0.12, 't1': 16.6 + k * 0.12, 't2': 20.0, 'arc': 2.5, 'size': 1.7})
 # 道具：真ん中に浮かぶ
-for k, (tp, dx, sz) in enumerate([('hoe', -4.2, 3.0), ('rod', 0, 2.8), ('saw', 4.2, 1.4)]):
-    props.append({'type': tp, 'from': {'xz': [-112 + dx, 12], 'up': 3}, 'to': {'xz': [-112 + dx, 12], 'up': 5.2}, 'arc': 2, 't0': 27.4 + k * 0.5, 't1': 28.2 + k * 0.5, 't2': 31.0, 'size': sz})
+for k, (tp, dx, sz) in enumerate([('axe', -2.6, 2.4), ('rod', -0.3, 2.4), ('saw', 2.0, 0.9)]):
+    props.append({'type': tp, 'from': {'xz': [-112 + dx, 12], 'up': 2.5}, 'to': {'xz': [-112 + dx, 12], 'up': 4.0}, 'arc': 1.5, 't0': 27.4 + k * 0.5, 't1': 28.2 + k * 0.5, 't2': 31.0, 'size': sz})
 props += [
     {'type': 'flame', 'from': FIRE, 't0': 37.0, 't1': 37.01, 't2': 52.0, 'size': 1.8},
     {'type': 'eyes', 'from': {'xz': DEN, 'up': 2.8}, 'to': {'xz': DEN, 'up': 2.8}, 't0': 40.6, 't1': 42.4, 't2': 42.4, 'size': 0.5},
@@ -252,6 +280,7 @@ def star(i, a, b, text=None):
 stars = [x for x in [star(hub, 6.2, 9.3, bit(hub)) if hub else None, star(TSUKI, 37.2, 38.9, 'みんなでキャンプファイヤーしながらご飯！'), star(YURI, 38.9, 40.5, '料理人だから、ご飯作りたーい！')] if x]
 wish = [(HERO, '小麦'), (MA, '大豆とさつまいも'), (DAICHI, '服の材料になる種'), (AYANE, '果物の苗')]
 wish = [(i, w) for i, w in wish if inr(i)]
+WISH_LABEL = ['wheat', 'soy', 'cotton', 'fruit']
 ROWS = [{'key': k, 'label': OPTS[k], 'count': tally[k]} for k in OPTS]
 overlay = {
     'banner': 'コメントで動く無人島　6日目',
@@ -262,6 +291,7 @@ overlay = {
     'tagAll': [[0.3, 3.0, 0.08]] if arrivals else [],
     'tagOnly': [{'from': 7.0, 'to': 9.3, 'who': hub_friends, 'below': True, 'size': 34}] + [{'from': 9.6, 'to': 11.4, 'who': list(e), 'join': True, 'size': 36} for e in pairs],
     'stars': stars,
+    'propTags': [{'label': WISH_LABEL[k], 'text': f'{w}（{name_of(i)}さん）', 'from': 16.7 + k * 0.35, 'to': 20.0, 'size': 36} for k, (i, w) in enumerate(wish)],
     'tally': {'from': 11.5, 'to': 14.5, 'title': '昨日の質問　木箱の中身は？', 'grow': [11.8, 13.0], 'winner': winner, 'winnerAt': 13.3, 'rows': ROWS},
     'images': [
         {'file': 'profile.png', 'from': 3.0, 'to': 4.5, 'w': 900, 'y': 600, 'tap': [0.24, 0.905], 'tapLabel': 'フォローすると…'},
@@ -276,14 +306,12 @@ overlay = {
         {'text': '仲良し同士は、島でいつも一緒に過ごすよ', 'from': 9.5, 'to': 11.4, 'y': 330, 'size': 46},
         {'text': '中身は…', 'from': 14.6, 'to': 15.6, 'y': 360, 'size': 70, 'color': [255, 214, 74]},
         {'text': '種と苗だった！', 'from': 15.7, 'to': 17.2, 'y': 360, 'size': 76, 'color': [255, 214, 74]},
-        *[{'text': f'{name_of(i)}さん：{w}', 'from': 17.2 + k * 0.7, 'to': 20.0, 'y': 1180 + k * 80, 'size': 44} for k, (i, w) in enumerate(wish)],
         {'text': '畑を作るために…', 'from': 20.1, 'to': 22.0, 'y': 360, 'size': 60},
         {'text': '森を、1/3切りひらく！', 'from': 22.0, 'to': 27.0, 'y': 360, 'size': 64, 'color': [255, 214, 74]},
         {'text': '切った木で、道具ができた！', 'from': 27.1, 'to': 31.0, 'y': 360, 'size': 58},
-        {'text': 'くわ　釣り竿　のこぎり', 'from': 27.8, 'to': 31.0, 'y': 1290, 'size': 54, 'color': [255, 214, 74]},
+        {'text': '斧　釣り竿　のこぎり', 'from': 27.8, 'to': 31.0, 'y': 1290, 'size': 54, 'color': [255, 214, 74]},
         *([{'text': 'Rinoさん「東京ドームくらいの巨大な畑を！」', 'from': 31.1, 'to': 35.4, 'y': 330, 'size': 40}] if inr(RINO) else []),
         {'text': '巨大な畑に、種と苗を植えた！', 'from': 35.5, 'to': 37.0, 'y': 360, 'size': 54, 'color': [255, 214, 74]},
-        {'text': 'PWAで、2日かけて育ちます', 'from': 35.5, 'to': 37.0, 'y': 1290, 'size': 46},
         {'text': 'その夜', 'from': 37.0, 'to': 38.4, 'y': 420, 'size': 64, 'color': [255, 214, 74]},
         {'text': '…森の奥で、何かが光った', 'from': 40.6, 'to': 42.4, 'y': 360, 'size': 54},
         {'text': 'クマだーーー！', 'from': 42.5, 'to': 44.6, 'y': 360, 'size': 84, 'color': [255, 120, 90]},
@@ -298,7 +326,7 @@ overlay = {
         {'text': 'クマはいまも、島を歩いています', 'from': 58.2, 'to': DUR, 'y': 1300, 'size': 54},
         {'text': 'プロフィールのリンクから', 'from': 58.2, 'to': DUR, 'y': 1390, 'size': 54},
     ],
-    'action': [{'text': '大工：木を切りひらく', 'from': 20.2, 'to': 26.8}, {'text': '農家：くわで耕して植える', 'from': 31.2, 'to': 35.4}],
+    'action': [{'text': '大工：木を切りひらく', 'from': 20.2, 'to': 26.8}, {'text': '農家：耕して植える', 'from': 31.2, 'to': 35.4}],
     'result': [{'text': '倒れたー！', 'from': 21.4, 'to': 22.0}],
     'smallTagsMax': 5,
 }
@@ -313,7 +341,7 @@ narr = [
     {'at': 15.7, 'until': 17.2, 'text': '種と苗！'},
     {'at': 20.1, 'until': 22.0, 'text': '畑を作るために。'},
     {'at': 22.1, 'until': 27.0, 'text': '森を、三分の一切りひらく！'},
-    {'at': 27.1, 'until': 31.0, 'text': '切った木で、くわと釣り竿と、のこぎり！'},
+    {'at': 27.1, 'until': 31.0, 'text': '切った木で、斧と釣り竿と、のこぎり！'},
     {'at': 31.1, 'until': 35.4, 'text': '東京ドームくらいの、巨大な畑！'},
     {'at': 35.5, 'until': 37.0, 'text': '種と苗を、植えた！'},
     {'at': 37.1, 'until': 40.5, 'text': 'その夜。みんなで、たき火を囲む。'},
@@ -361,7 +389,7 @@ state = {
     'buildings_remove': ['crate-1'],
     'buildings_add': [{'id': 'bigfield-1', 'type': 'bigfield', 'name': '巨大な畑', 'x': round(FIELD[0] / 3, 2), 'z': round(FIELD[1] / 3, 2), 'rot': 0, 'builtDay': DAY,
                        'note': '木箱の種と苗を植えた、みんなの巨大な畑。植えた日→次の日に芽が伸びて→2日後に実る（小麦・大豆・さつまいも・綿・果物）。'}],
-    'chronicle_add': {'day': DAY, 'title': '巨大な畑。そしてクマ', 'text': '木箱の中身は種と苗。森を1/3切りひらいて、くわ・釣り竿・のこぎりを作り、巨大な畑に植えた。その夜、住処を追われたクマが森から現れた。',
+    'chronicle_add': {'day': DAY, 'title': '巨大な畑。そしてクマ', 'text': '木箱の中身は種と苗。森を1/3切りひらいて、斧・釣り竿・のこぎりを作り、巨大な畑に植えた。その夜、住処を追われたクマが森から現れた。',
                       'vote': {'question': '流れ着いた大きな木箱。中身はなんだろう？', 'adopted': OPTS[winner], 'note': '　'.join(f'{k} {tally[k]}件' for k in OPTS)}},
     'currentVote': {'id': 'vote-006-bear', 'status': 'open', 'question': 'クマが現れた！どうする？',
                     'description': 'A・B・C・D でコメントしてね。コメントが一番多い案を採用します（Dが一番多いときは、Dの中でいいねが一番多い案）',
