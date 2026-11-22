@@ -101,7 +101,13 @@ groups = [
 G = {g['name']: g for g in groups}
 acts = [{'who': '*', 't': 0, 'anim': 'idle', 'face': 'front'}]
 A = acts.append
-# S0 漂着
+# S0 漂着：浜いっぱいに寝ている（多い日は最大110人まで描く。砂の上の場所は beach_spots.json）
+BEACH = json.load(open(os.path.join(HERE, 'beach_spots.json')))
+sleepers = arrivals[:len(BEACH)]
+for k, i in enumerate(sleepers[len(G['beach']['members']):]):
+    A({'who': i, 't': 0, 'at': BEACH[len(G['beach']['members']) + k], 'anim': 'sleep', 'face': 'front', 'hide': False})
+    A({'who': i, 't': 1.6 + (k % 9) * 0.1, 'anim': 'sit' if k % 3 == 0 else 'sleep'})
+    A({'who': i, 't': 3.0, 'hide': True})
 if arrivals:
     A({'who': G['beach']['members'], 't': 0, 'at': {'slot': 'beach'}, 'anim': 'sleep'})
     A({'who': G['beach']['members'], 't': 1.3, 'anim': 'sit', 'pick': 0.35, 'seed': 6})
@@ -207,7 +213,7 @@ def unwrap(keys):  # az が ±π をまたいでも、カメラがぐるっと�
     return keys
 camera = [
     # 漂着：真上から一気に降りてくる
-    {'from': 0, 'to': 3.0, 'hour': 7.5, 'keys': [{'t': 0, 'look': {'rel': 'g:beach'}, 'dist': 70, 'az': 0.4, 'pol': 0.35, 'up': 1.5, 'frame': 'beach'}, {'t': 1.4, 'look': {'rel': 'g:beach'}, 'dist': 26, 'az': 1.0, 'pol': 1.0, 'up': 1.5, 'frame': 'beach'}, {'t': 3.0, 'look': {'rel': 'g:beach'}, 'dist': 17, 'az': 1.35, 'pol': 1.25, 'up': 1.5, 'frame': 'beach'}]},
+    {'from': 0, 'to': 3.0, 'hour': 7.5, 'keys': [{'t': 0, 'look': {'rel': 'g:beach'}, 'dist': 70, 'az': 0.4, 'pol': 0.35, 'up': 1.5, 'frame': 'beach'}, {'t': 1.6, 'look': {'rel': 'g:beach'}, 'dist': 34, 'az': 1.0, 'pol': 0.9, 'up': 1.5, 'frame': 'beach'}, {'t': 3.0, 'look': {'rel': 'g:beach'}, 'dist': 24, 'az': 1.35, 'pol': 1.15, 'up': 1.5, 'frame': 'beach'}]},
     {'from': 3.0, 'to': 6.0, 'hour': 11, 'keys': [{'t': 3.0, 'look': [15, 40], 'dist': 900, 'az': 0.2, 'pol': 0.7, 'up': 0, 'frame': 'beach'}, {'t': 6.0, 'look': [15, 40], 'dist': 620, 'az': 0.9, 'pol': 0.85, 'up': 0, 'frame': 'beach'}]},
     # 仲良し：輪の真上から → ぐるっと回りこんで正面へ → ペアへ振る
     {'from': 6.0, 'to': 9.4, 'hour': 12, 'keys': [{'t': 6.0, 'look': PLAZA, 'dist': 22, 'az': -1.2, 'pol': 0.3, 'up': 1.5, 'frame': 'star', 'fov': 50}, {'t': 7.6, 'look': PLAZA, 'dist': 14, 'az': -0.4, 'pol': 1.0, 'up': 2.0, 'frame': 'star', 'fov': 42}, {'t': 9.4, 'look': PLAZA, 'dist': 11, 'az': 0.15, 'pol': 1.3, 'up': 2.2, 'frame': 'star', 'fov': 38}]},
@@ -362,7 +368,7 @@ story = {
     'baseTime': '2026-11-22T09:00:00+09:00', 'base': {'name': '中央の広場', 'x': 0, 'z': 5, 'decidedDay': 2},
     'forestRoad': {'points': [[-74, -22], [-128, -34]], 'need': 300, 'startDay': 4, 'label': '光の場所', 'open': True},
     'toolAge': 'stone', 'clearings': [{**CLEAR, 'day': DAY}], 'buildings': EXIST,
-    'cast': list(dict.fromkeys(list(commenters) + [x for e in edges for x in e] + crowd + carp + farmers + campers + arrivals[:22])),
+    'cast': list(dict.fromkeys(list(commenters) + [x for e in edges for x in e] + crowd + carp + farmers + campers + sleepers)),
     'groups': groups, 'acts': acts, 'props': props, 'props3d': props3d, 'camera': camera,
     'overlay': overlay, 'override': {},
     'cutaway': {'radius': 1.6},
