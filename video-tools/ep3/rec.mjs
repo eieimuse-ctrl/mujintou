@@ -86,6 +86,7 @@ await page.evaluate(async () => {
   const m = await import('/js/buildings.js');
   window.__BUILD_DEFS = {};
   for (const [k, f] of Object.entries(m.BUILDING_TYPES)) window.__BUILD_DEFS[k] = f();
+  window.__BUILD_DEFS.bigfield0 = m.BUILDING_TYPES.bigfield({ growth: 0 }); // 植えたばかりの畑
   const bm = await import('/js/beast.js'); // 森の獣の絵（PWA と同じ）
   window.__BEAST = { frames: bm.BEAST_FRAMES, pal: bm.BEAST_PAL, boxes: bm.BEAST_BOXES };
 });

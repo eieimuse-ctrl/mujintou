@@ -1,0 +1,41 @@
+{
+ "day": 6,
+ "roster": "../../../../../../tmp/ep6test/islanders.json",
+ "today": [
+  {
+   "id": "rino._.15",
+   "spot": "farm",
+   "anim": "work",
+   "text": "東京ドームくらいの巨大な畑で、苗の世話をしている",
+   "tool": "hoe"
+  },
+  {
+   "id": "heroruto7",
+   "spot": "farm",
+   "anim": "work",
+   "text": "巨大な畑に、小麦をまいている",
+   "tool": "hoe"
+  },
+  {
+   "id": "marumegane4",
+   "spot": "farm",
+   "anim": "work",
+   "text": "大豆とさつまいもの苗を植えている",
+   "tool": "hoe"
+  },
+  {
+   "id": "tsuki5747",
+   "spot": "plaza",
+   "anim": "talk",
+   "text": "クマから逃げて、みんなで夜のたき火を囲む相談をしている"
+  },
+  {
+   "id": "yuridazo68",
+   "spot": "plaza",
+   "anim": "work",
+   "text": "料理人として、みんなのご飯を作っている",
+   "tool": "ladle"
+  }
+ ],
+ "missing": {}
+}
