@@ -1,0 +1,6025 @@
+{
+ "title": "6日目",
+ "roster": "../../../../../../tmp/ep6test/islanders.json",
+ "day": 6,
+ "fps": 24,
+ "duration": 61.0,
+ "hour": 10,
+ "baseTime": "2026-11-22T09:00:00+09:00",
+ "base": {
+  "name": "中央の広場",
+  "x": 0,
+  "z": 5,
+  "decidedDay": 2
+ },
+ "forestRoad": {
+  "points": [
+   [
+    -74,
+    -22
+   ],
+   [
+    -128,
+    -34
+   ]
+  ],
+  "need": 300,
+  "startDay": 4,
+  "label": "光の場所",
+  "open": true
+ },
+ "toolAge": "stone",
+ "clearings": [
+  {
+   "x0": -132,
+   "x1": -86,
+   "z0": -62,
+   "z1": 22,
+   "day": 6
+  }
+ ],
+ "buildings": [
+  {
+   "id": "ruins-1",
+   "type": "ruins",
+   "name": "昔の住人の跡",
+   "x": -44.7,
+   "z": -12.7,
+   "rot": 0,
+   "builtDay": 1
+  },
+  {
+   "id": "hut-1",
+   "type": "hut",
+   "name": "はじまりの小屋",
+   "x": -20,
+   "z": -5,
+   "rot": 20,
+   "builtDay": 4
+  },
+  {
+   "id": "workshop-1",
+   "type": "workshop",
+   "name": "石の作業場",
+   "x": -40.3,
+   "z": -9.0,
+   "rot": 10,
+   "builtDay": 5
+  }
+ ],
+ "cast": [
+  "ichi.09",
+  "tsuki5747",
+  "nanasi774_ou",
+  "ryuji_111",
+  "mitsunari_33",
+  "morimoto1120",
+  "_lto_lxq426",
+  "yuradayo0330",
+  "guernica.0712",
+  "heroruto7",
+  "hyuga_0619",
+  "rino._.15",
+  "atsukidesu",
+  "abc.man13",
+  "tsubuanzu_shiyuu",
+  "masatk_no_m",
+  "yuridazo68",
+  "marumegane4",
+  "nabemegane",
+  "pocchanpochi",
+  "yukikun4126",
+  "zidian34",
+  "denzirouu",
+  "ayu.mu__8890",
+  "fuse.daichi",
+  "saori.siegert",
+  "onyankopunch",
+  "pqew314kaiko",
+  "karen_774060",
+  "shugo.77",
+  "analogayane",
+  "kota_chumuri",
+  "_shaun81",
+  "musashi.617",
+  "sasa_mi42151315",
+  "tako1216yaki",
+  "s.sora1225",
+  "_otekat_____",
+  "shinohara_kohei",
+  "paianiyan",
+  "kubotto0505",
+  "hiropone_89",
+  "yu._.u225",
+  "tokitin2014",
+  "max_no_otousan",
+  "sakasaka_1482",
+  "horiharu0220",
+  "hori_harusabu",
+  "nintendo_3ds.12",
+  "aosan116",
+  "akuserumeihong",
+  "kosei20130324",
+  "s_02y.ayta",
+  "hayato210165",
+  "bear.44190633",
+  "dosukoi.5845"
+ ],
+ "groups": [
+  {
+   "name": "beach",
+   "type": "ring",
+   "spot": [
+    236,
+    124
+   ],
+   "radius": 3.2,
+   "gap": 2.6,
+   "members": []
+  },
+  {
+   "name": "star",
+   "type": "line",
+   "spot": [
+    15.0,
+    36.0
+   ],
+   "face": [
+    0,
+    1
+   ],
+   "gap": 2.0,
+   "members": [
+    "guernica.0712",
+    "abc.man13",
+    "heroruto7",
+    "tsuki5747"
+   ]
+  },
+  {
+   "name": "pair0",
+   "type": "line",
+   "spot": [
+    1.0,
+    46.0
+   ],
+   "face": [
+    0,
+    1
+   ],
+   "gap": 1.8,
+   "members": [
+    "karen_774060",
+    "shugo.77"
+   ]
+  },
+  {
+   "name": "pair1",
+   "type": "line",
+   "spot": [
+    6.5,
+    46.0
+   ],
+   "face": [
+    0,
+    1
+   ],
+   "gap": 1.8,
+   "members": [
+    "pocchanpochi",
+    "yuridazo68"
+   ]
+  },
+  {
+   "name": "pairs",
+   "type": "line",
+   "spot": [
+    4.0,
+    46.0
+   ],
+   "face": [
+    0,
+    1
+   ],
+   "members": []
+  },
+  {
+   "name": "plaza",
+   "type": "ring",
+   "spot": [
+    0,
+    15
+   ],
+   "radius": 7,
+   "gap": 2.8,
+   "members": [
+    "_shaun81",
+    "musashi.617",
+    "sasa_mi42151315",
+    "marumegane4",
+    "tako1216yaki",
+    "s.sora1225",
+    "_otekat_____",
+    "ichi.09",
+    "shinohara_kohei",
+    "nanasi774_ou",
+    "paianiyan",
+    "atsukidesu",
+    "kubotto0505",
+    "hiropone_89",
+    "yu._.u225",
+    "tokitin2014",
+    "max_no_otousan",
+    "fuse.daichi"
+   ]
+  },
+  {
+   "name": "crate",
+   "type": "ring",
+   "spot": [
+    238.0,
+    147.0
+   ],
+   "radius": 7.5,
+   "gap": 2.4,
+   "members": [
+    "_shaun81",
+    "musashi.617",
+    "sasa_mi42151315",
+    "marumegane4",
+    "tako1216yaki",
+    "s.sora1225",
+    "_otekat_____",
+    "ichi.09",
+    "shinohara_kohei",
+    "nanasi774_ou",
+    "paianiyan",
+    "atsukidesu",
+    "marumegane4",
+    "fuse.daichi",
+    "analogayane",
+    "heroruto7"
+   ]
+  },
+  {
+   "name": "carp",
+   "type": "line",
+   "spot": [
+    -112,
+    12
+   ],
+   "face": [
+    0,
+    -1
+   ],
+   "gap": 3.0,
+   "members": [
+    "sakasaka_1482",
+    "horiharu0220",
+    "hori_harusabu",
+    "nintendo_3ds.12",
+    "aosan116",
+    "akuserumeihong"
+   ]
+  },
+  {
+   "name": "farm",
+   "type": "line",
+   "spot": [
+    -104.0,
+    9.5
+   ],
+   "face": [
+    0,
+    -1
+   ],
+   "gap": 3.2,
+   "members": [
+    "kosei20130324",
+    "s_02y.ayta",
+    "hyuga_0619",
+    "hayato210165",
+    "bear.44190633",
+    "dosukoi.5845",
+    "rino._.15"
+   ]
+  },
+  {
+   "name": "fire",
+   "type": "ring",
+   "spot": [
+    -104.0,
+    18.0
+   ],
+   "radius": 3.4,
+   "gap": 2.2,
+   "members": [
+    "tsuki5747",
+    "yuridazo68",
+    "_shaun81",
+    "musashi.617",
+    "sasa_mi42151315",
+    "marumegane4",
+    "tako1216yaki",
+    "s.sora1225"
+   ]
+  },
+  {
+   "name": "south",
+   "type": "line",
+   "spot": [
+    -104.0,
+    18.0
+   ],
+   "face": [
+    0,
+    1
+   ],
+   "members": []
+  }
+ ],
+ "acts": [
+  {
+   "who": "*",
+   "t": 0,
+   "anim": "idle",
+   "face": "front"
+  },
+  {
+   "who": "guernica.0712",
+   "t": 6.0,
+   "at": [
+    15.0,
+    36.0
+   ],
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "abc.man13",
+   "t": 6.0,
+   "at": [
+    17.851220877402778,
+    35.14723040083345
+   ],
+   "to": [
+    16.96021435321441,
+    35.601220900573
+   ],
+   "dur": 0.8,
+   "run": true
+  },
+  {
+   "who": "abc.man13",
+   "t": 7.0,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "heroruto7",
+   "t": 6.0,
+   "at": [
+    15.0,
+    33.4
+   ],
+   "to": [
+    15.0,
+    34.4
+   ],
+   "dur": 0.8,
+   "run": true
+  },
+  {
+   "who": "heroruto7",
+   "t": 7.15,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "tsuki5747",
+   "t": 6.0,
+   "at": [
+    12.148779122597222,
+    35.14723040083345
+   ],
+   "to": [
+    13.03978564678559,
+    35.601220900573
+   ],
+   "dur": 0.8,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 7.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": [
+    "karen_774060",
+    "shugo.77"
+   ],
+   "t": 9.4,
+   "at": {
+    "slot": "pair0"
+   },
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": [
+    "pocchanpochi",
+    "yuridazo68"
+   ],
+   "t": 9.4,
+   "at": {
+    "slot": "pair1"
+   },
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": [
+    "_shaun81",
+    "musashi.617",
+    "sasa_mi42151315",
+    "marumegane4",
+    "tako1216yaki",
+    "s.sora1225",
+    "_otekat_____",
+    "ichi.09",
+    "shinohara_kohei",
+    "nanasi774_ou",
+    "paianiyan",
+    "atsukidesu",
+    "kubotto0505",
+    "hiropone_89",
+    "yu._.u225",
+    "tokitin2014",
+    "max_no_otousan",
+    "fuse.daichi"
+   ],
+   "t": 11.5,
+   "at": {
+    "slot": "plaza"
+   },
+   "anim": "idle",
+   "face": {
+    "at": [
+     0,
+     15
+    ]
+   }
+  },
+  {
+   "who": [
+    "_shaun81",
+    "musashi.617",
+    "sasa_mi42151315",
+    "marumegane4",
+    "tako1216yaki",
+    "s.sora1225",
+    "_otekat_____",
+    "ichi.09",
+    "shinohara_kohei",
+    "nanasi774_ou",
+    "paianiyan",
+    "atsukidesu",
+    "marumegane4",
+    "fuse.daichi",
+    "analogayane",
+    "heroruto7"
+   ],
+   "t": 14.5,
+   "at": {
+    "slot": "crate"
+   },
+   "anim": "idle",
+   "face": {
+    "at": [
+     238.0,
+     147.0
+    ]
+   }
+  },
+  {
+   "who": [
+    "_shaun81",
+    "musashi.617",
+    "sasa_mi42151315",
+    "marumegane4",
+    "tako1216yaki",
+    "s.sora1225",
+    "_otekat_____",
+    "ichi.09",
+    "shinohara_kohei",
+    "nanasi774_ou",
+    "paianiyan",
+    "atsukidesu",
+    "marumegane4",
+    "fuse.daichi",
+    "analogayane",
+    "heroruto7"
+   ],
+   "t": 15.7,
+   "anim": "shock"
+  },
+  {
+   "who": [
+    "_shaun81",
+    "musashi.617",
+    "sasa_mi42151315",
+    "marumegane4",
+    "tako1216yaki",
+    "s.sora1225",
+    "_otekat_____",
+    "ichi.09",
+    "shinohara_kohei",
+    "nanasi774_ou",
+    "paianiyan",
+    "atsukidesu",
+    "marumegane4",
+    "fuse.daichi",
+    "analogayane",
+    "heroruto7"
+   ],
+   "t": 16.4,
+   "anim": "cheer",
+   "pick": 0.7,
+   "seed": 5
+  },
+  {
+   "who": [
+    "sakasaka_1482",
+    "horiharu0220",
+    "hori_harusabu",
+    "nintendo_3ds.12",
+    "aosan116",
+    "akuserumeihong"
+   ],
+   "t": 20.0,
+   "at": {
+    "slot": "carp"
+   },
+   "anim": "work",
+   "face": "back"
+  },
+  {
+   "who": [
+    "sakasaka_1482",
+    "horiharu0220",
+    "hori_harusabu",
+    "nintendo_3ds.12",
+    "aosan116",
+    "akuserumeihong"
+   ],
+   "t": 25.8,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": [
+    "sakasaka_1482",
+    "horiharu0220",
+    "hori_harusabu",
+    "nintendo_3ds.12",
+    "aosan116",
+    "akuserumeihong"
+   ],
+   "t": 27.0,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": [
+    "kosei20130324",
+    "s_02y.ayta",
+    "hyuga_0619",
+    "hayato210165",
+    "bear.44190633",
+    "dosukoi.5845",
+    "rino._.15"
+   ],
+   "t": 31.0,
+   "at": {
+    "slot": "farm"
+   },
+   "anim": "work",
+   "face": "back"
+  },
+  {
+   "who": [
+    "kosei20130324",
+    "s_02y.ayta",
+    "hyuga_0619",
+    "hayato210165",
+    "bear.44190633",
+    "dosukoi.5845",
+    "rino._.15"
+   ],
+   "t": 35.6,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": [
+    "tsuki5747",
+    "yuridazo68",
+    "_shaun81",
+    "musashi.617",
+    "sasa_mi42151315",
+    "marumegane4",
+    "tako1216yaki",
+    "s.sora1225"
+   ],
+   "t": 37.0,
+   "at": {
+    "slot": "fire"
+   },
+   "anim": "sit",
+   "face": {
+    "at": [
+     -104.0,
+     18.0
+    ]
+   }
+  },
+  {
+   "who": "tsuki5747",
+   "t": 37.2,
+   "anim": "talk"
+  },
+  {
+   "who": "yuridazo68",
+   "t": 37.2,
+   "anim": "talk"
+  },
+  {
+   "who": [
+    "tsuki5747",
+    "yuridazo68",
+    "_shaun81",
+    "musashi.617",
+    "sasa_mi42151315",
+    "marumegane4",
+    "tako1216yaki",
+    "s.sora1225"
+   ],
+   "t": 41.0,
+   "anim": "idle",
+   "face": {
+    "at": [
+     -140.0,
+     15.0
+    ]
+   }
+  },
+  {
+   "who": [
+    "tsuki5747",
+    "yuridazo68",
+    "_shaun81",
+    "musashi.617",
+    "sasa_mi42151315",
+    "marumegane4",
+    "tako1216yaki",
+    "s.sora1225"
+   ],
+   "t": 42.6,
+   "anim": "shock",
+   "face": {
+    "at": [
+     -140.0,
+     15.0
+    ]
+   }
+  },
+  {
+   "who": "tsuki5747",
+   "t": 43.2,
+   "to": [
+    -108.53,
+    21.73
+   ],
+   "dur": 0.5,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 43.7,
+   "to": [
+    -106.68,
+    22.74
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 44.0,
+   "to": [
+    -104.52,
+    23.18
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 44.3,
+   "to": [
+    -102.3,
+    23.02
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 44.6,
+   "to": [
+    -100.28,
+    22.26
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 44.9,
+   "to": [
+    -98.7,
+    21.01
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 45.2,
+   "to": [
+    -97.74,
+    19.39
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 45.5,
+   "to": [
+    -97.52,
+    17.62
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 45.8,
+   "to": [
+    -98.06,
+    15.89
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 46.1,
+   "to": [
+    -99.3,
+    14.4
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 46.4,
+   "to": [
+    -101.1,
+    13.35
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 46.7,
+   "to": [
+    -103.24,
+    12.84
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 47.0,
+   "to": [
+    -105.47,
+    12.93
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 47.3,
+   "anim": "shock",
+   "face": {
+    "at": [
+     -99.67,
+     12.62
+    ]
+   }
+  },
+  {
+   "who": "tsuki5747",
+   "t": 48.4,
+   "to": [
+    -110.27,
+    19.37
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 48.7,
+   "to": [
+    -109.32,
+    20.99
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 49.0,
+   "to": [
+    -107.74,
+    22.25
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 49.3,
+   "to": [
+    -105.73,
+    23.01
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 49.6,
+   "to": [
+    -103.51,
+    23.18
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 49.9,
+   "to": [
+    -101.34,
+    22.75
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 50.2,
+   "to": [
+    -99.49,
+    21.75
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 50.5,
+   "to": [
+    -98.18,
+    20.31
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 50.8,
+   "to": [
+    -97.54,
+    18.6
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 51.1,
+   "to": [
+    -97.67,
+    16.81
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 51.4,
+   "to": [
+    -98.55,
+    15.17
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 51.7,
+   "to": [
+    -100.06,
+    13.86
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 52.0,
+   "to": [
+    -102.04,
+    13.04
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 43.25,
+   "to": [
+    -106.14,
+    24.17
+   ],
+   "dur": 0.5,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 43.7,
+   "to": [
+    -103.41,
+    24.38
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 44.0,
+   "to": [
+    -100.74,
+    23.85
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 44.3,
+   "to": [
+    -98.46,
+    22.62
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 44.6,
+   "to": [
+    -96.84,
+    20.85
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 44.9,
+   "to": [
+    -96.05,
+    18.74
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 45.2,
+   "to": [
+    -96.21,
+    16.55
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 45.5,
+   "to": [
+    -97.28,
+    14.53
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 45.8,
+   "to": [
+    -99.14,
+    12.91
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 46.1,
+   "to": [
+    -101.58,
+    11.9
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 46.4,
+   "to": [
+    -104.3,
+    11.6
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 46.7,
+   "to": [
+    -106.99,
+    12.06
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 47.0,
+   "to": [
+    -109.32,
+    13.22
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 47.3,
+   "anim": "shock",
+   "face": {
+    "at": [
+     -99.67,
+     12.62
+    ]
+   }
+  },
+  {
+   "who": "yuridazo68",
+   "t": 48.4,
+   "to": [
+    -109.76,
+    22.44
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 48.7,
+   "to": [
+    -107.54,
+    23.74
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 49.0,
+   "to": [
+    -104.91,
+    24.36
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 49.3,
+   "to": [
+    -102.17,
+    24.23
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 49.6,
+   "to": [
+    -99.64,
+    23.37
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 49.9,
+   "to": [
+    -97.63,
+    21.87
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 50.2,
+   "to": [
+    -96.37,
+    19.92
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 50.5,
+   "to": [
+    -96.01,
+    17.74
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 50.8,
+   "to": [
+    -96.59,
+    15.6
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 51.1,
+   "to": [
+    -98.04,
+    13.73
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 51.4,
+   "to": [
+    -100.2,
+    12.37
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 51.7,
+   "to": [
+    -102.8,
+    11.67
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 52.0,
+   "to": [
+    -105.55,
+    11.72
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 43.300000000000004,
+   "to": [
+    -101.84,
+    25.4
+   ],
+   "dur": 0.5,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 43.7,
+   "to": [
+    -98.84,
+    24.38
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 44.0,
+   "to": [
+    -96.45,
+    22.61
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 44.3,
+   "to": [
+    -94.94,
+    20.29
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 44.6,
+   "to": [
+    -94.51,
+    17.71
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 44.9,
+   "to": [
+    -95.19,
+    15.16
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 45.2,
+   "to": [
+    -96.91,
+    12.94
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 45.5,
+   "to": [
+    -99.47,
+    11.32
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 45.8,
+   "to": [
+    -102.56,
+    10.49
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 46.1,
+   "to": [
+    -105.82,
+    10.54
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 46.4,
+   "to": [
+    -108.86,
+    11.47
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 46.7,
+   "to": [
+    -111.34,
+    13.17
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 47.0,
+   "to": [
+    -112.95,
+    15.44
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 47.3,
+   "anim": "shock",
+   "face": {
+    "at": [
+     -99.67,
+     12.62
+    ]
+   }
+  },
+  {
+   "who": "_shaun81",
+   "t": 48.4,
+   "to": [
+    -106.84,
+    25.25
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 48.7,
+   "to": [
+    -103.61,
+    25.59
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 49.0,
+   "to": [
+    -100.42,
+    25.04
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 49.3,
+   "to": [
+    -97.66,
+    23.66
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 49.6,
+   "to": [
+    -95.64,
+    21.61
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 49.9,
+   "to": [
+    -94.61,
+    19.13
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 50.2,
+   "to": [
+    -94.68,
+    16.53
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 50.5,
+   "to": [
+    -95.85,
+    14.09
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 50.8,
+   "to": [
+    -97.99,
+    12.12
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 51.1,
+   "to": [
+    -100.83,
+    10.84
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 51.4,
+   "to": [
+    -104.04,
+    10.4
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 51.7,
+   "to": [
+    -107.25,
+    10.86
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_shaun81",
+   "t": 52.0,
+   "to": [
+    -110.08,
+    12.16
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 43.35,
+   "to": [
+    -99.67,
+    21.88
+   ],
+   "dur": 0.5,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 43.7,
+   "to": [
+    -98.29,
+    20.48
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 44.0,
+   "to": [
+    -97.57,
+    18.79
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 44.3,
+   "to": [
+    -97.62,
+    17.0
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 44.6,
+   "to": [
+    -98.42,
+    15.33
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 44.9,
+   "to": [
+    -99.88,
+    13.98
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 45.2,
+   "to": [
+    -101.82,
+    13.1
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 45.5,
+   "to": [
+    -104.02,
+    12.8
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 45.8,
+   "to": [
+    -106.21,
+    13.11
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 46.1,
+   "to": [
+    -108.15,
+    14.0
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 46.4,
+   "to": [
+    -109.6,
+    15.36
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 46.7,
+   "to": [
+    -110.39,
+    17.03
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 47.0,
+   "to": [
+    -110.42,
+    18.81
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 47.3,
+   "anim": "shock",
+   "face": {
+    "at": [
+     -99.67,
+     12.62
+    ]
+   }
+  },
+  {
+   "who": "musashi.617",
+   "t": 48.4,
+   "to": [
+    -102.73,
+    23.1
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 48.7,
+   "to": [
+    -100.65,
+    22.46
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 49.0,
+   "to": [
+    -98.97,
+    21.29
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 49.3,
+   "to": [
+    -97.87,
+    19.73
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 49.6,
+   "to": [
+    -97.5,
+    17.97
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 49.9,
+   "to": [
+    -97.89,
+    16.22
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 50.2,
+   "to": [
+    -99.01,
+    14.67
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 50.5,
+   "to": [
+    -100.71,
+    13.51
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 50.8,
+   "to": [
+    -102.8,
+    12.89
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 51.1,
+   "to": [
+    -105.03,
+    12.87
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 51.4,
+   "to": [
+    -107.14,
+    13.45
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 51.7,
+   "to": [
+    -108.88,
+    14.57
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "musashi.617",
+   "t": 52.0,
+   "to": [
+    -110.05,
+    16.09
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 43.400000000000006,
+   "to": [
+    -96.46,
+    20.14
+   ],
+   "dur": 0.5,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 43.7,
+   "to": [
+    -96.0,
+    17.98
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 44.0,
+   "to": [
+    -96.48,
+    15.82
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 44.3,
+   "to": [
+    -97.85,
+    13.91
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 44.6,
+   "to": [
+    -99.94,
+    12.49
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 44.9,
+   "to": [
+    -102.51,
+    11.71
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 45.2,
+   "to": [
+    -105.26,
+    11.68
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 45.5,
+   "to": [
+    -107.85,
+    12.39
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 45.8,
+   "to": [
+    -110.0,
+    13.76
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 46.1,
+   "to": [
+    -111.43,
+    15.64
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 46.4,
+   "to": [
+    -112.0,
+    17.79
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 46.7,
+   "to": [
+    -111.61,
+    19.96
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 47.0,
+   "to": [
+    -110.34,
+    21.91
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 47.3,
+   "anim": "shock",
+   "face": {
+    "at": [
+     -99.67,
+     12.62
+    ]
+   }
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 48.4,
+   "to": [
+    -98.87,
+    22.91
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 48.7,
+   "to": [
+    -97.1,
+    21.23
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 49.0,
+   "to": [
+    -96.14,
+    19.18
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 49.3,
+   "to": [
+    -96.1,
+    16.98
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 49.6,
+   "to": [
+    -97.0,
+    14.9
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 49.9,
+   "to": [
+    -98.72,
+    13.19
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 50.2,
+   "to": [
+    -101.07,
+    12.05
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 50.5,
+   "to": [
+    -103.76,
+    11.6
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 50.8,
+   "to": [
+    -106.47,
+    11.91
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 51.1,
+   "to": [
+    -108.9,
+    12.94
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 51.4,
+   "to": [
+    -110.75,
+    14.57
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 51.7,
+   "to": [
+    -111.8,
+    16.59
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "sasa_mi42151315",
+   "t": 52.0,
+   "to": [
+    -111.94,
+    18.79
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 43.45,
+   "to": [
+    -94.62,
+    16.8
+   ],
+   "dur": 0.5,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 43.7,
+   "to": [
+    -95.68,
+    14.33
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 44.0,
+   "to": [
+    -97.72,
+    12.3
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 44.3,
+   "to": [
+    -100.5,
+    10.93
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 44.6,
+   "to": [
+    -103.69,
+    10.4
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 44.9,
+   "to": [
+    -106.92,
+    10.77
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 45.2,
+   "to": [
+    -109.81,
+    11.98
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 45.5,
+   "to": [
+    -112.01,
+    13.91
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 45.8,
+   "to": [
+    -113.26,
+    16.32
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 46.1,
+   "to": [
+    -113.43,
+    18.92
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 46.4,
+   "to": [
+    -112.48,
+    21.42
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 46.7,
+   "to": [
+    -110.54,
+    23.51
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 47.0,
+   "to": [
+    -107.82,
+    24.96
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 47.3,
+   "anim": "shock",
+   "face": {
+    "at": [
+     -99.67,
+     12.62
+    ]
+   }
+  },
+  {
+   "who": "marumegane4",
+   "t": 48.4,
+   "to": [
+    -95.16,
+    20.78
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 48.7,
+   "to": [
+    -94.5,
+    18.23
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 49.0,
+   "to": [
+    -94.97,
+    15.64
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 49.3,
+   "to": [
+    -96.5,
+    13.34
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 49.6,
+   "to": [
+    -98.91,
+    11.58
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 49.9,
+   "to": [
+    -101.92,
+    10.58
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 50.2,
+   "to": [
+    -105.18,
+    10.46
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 50.5,
+   "to": [
+    -108.3,
+    11.22
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 50.8,
+   "to": [
+    -110.91,
+    12.78
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 51.1,
+   "to": [
+    -112.71,
+    14.96
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 51.4,
+   "to": [
+    -113.48,
+    17.5
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 51.7,
+   "to": [
+    -113.13,
+    20.09
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "marumegane4",
+   "t": 52.0,
+   "to": [
+    -111.71,
+    22.44
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 43.5,
+   "to": [
+    -98.86,
+    14.82
+   ],
+   "dur": 0.5,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 43.7,
+   "to": [
+    -100.51,
+    13.61
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 44.0,
+   "to": [
+    -102.57,
+    12.93
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 44.3,
+   "to": [
+    -104.79,
+    12.84
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 44.6,
+   "to": [
+    -106.93,
+    13.36
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 44.9,
+   "to": [
+    -108.72,
+    14.42
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 45.2,
+   "to": [
+    -109.95,
+    15.91
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 45.5,
+   "to": [
+    -110.48,
+    17.65
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 45.8,
+   "to": [
+    -110.25,
+    19.42
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 46.1,
+   "to": [
+    -109.28,
+    21.03
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 46.4,
+   "to": [
+    -107.69,
+    22.28
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 46.7,
+   "to": [
+    -105.66,
+    23.03
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 47.0,
+   "to": [
+    -103.44,
+    23.18
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 47.3,
+   "anim": "shock",
+   "face": {
+    "at": [
+     -99.67,
+     12.62
+    ]
+   }
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 48.4,
+   "to": [
+    -97.55,
+    17.35
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 48.7,
+   "to": [
+    -98.21,
+    15.64
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 49.0,
+   "to": [
+    -99.54,
+    14.22
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 49.3,
+   "to": [
+    -101.41,
+    13.23
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 49.6,
+   "to": [
+    -103.57,
+    12.81
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 49.9,
+   "to": [
+    -105.79,
+    13.0
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 50.2,
+   "to": [
+    -107.8,
+    13.78
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 50.5,
+   "to": [
+    -109.36,
+    15.06
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 50.8,
+   "to": [
+    -110.29,
+    16.68
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 51.1,
+   "to": [
+    -110.47,
+    18.46
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 51.4,
+   "to": [
+    -109.9,
+    20.18
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 51.7,
+   "to": [
+    -108.63,
+    21.65
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "tako1216yaki",
+   "t": 52.0,
+   "to": [
+    -106.81,
+    22.69
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 43.550000000000004,
+   "to": [
+    -100.79,
+    12.14
+   ],
+   "dur": 0.5,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 43.7,
+   "to": [
+    -103.46,
+    11.61
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 44.0,
+   "to": [
+    -106.19,
+    11.85
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 44.3,
+   "to": [
+    -108.67,
+    12.8
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 44.6,
+   "to": [
+    -110.59,
+    14.37
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 44.9,
+   "to": [
+    -111.73,
+    16.37
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 45.2,
+   "to": [
+    -111.97,
+    18.55
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 45.5,
+   "to": [
+    -111.27,
+    20.68
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 45.8,
+   "to": [
+    -109.71,
+    22.49
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 46.1,
+   "to": [
+    -107.47,
+    23.77
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 46.4,
+   "to": [
+    -104.83,
+    24.37
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 46.7,
+   "to": [
+    -102.09,
+    24.22
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 47.0,
+   "to": [
+    -99.58,
+    23.33
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 47.3,
+   "anim": "shock",
+   "face": {
+    "at": [
+     -99.67,
+     12.62
+    ]
+   }
+  },
+  {
+   "who": "s.sora1225",
+   "t": 48.4,
+   "to": [
+    -97.51,
+    14.25
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 48.7,
+   "to": [
+    -99.48,
+    12.72
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 49.0,
+   "to": [
+    -101.98,
+    11.81
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 49.3,
+   "to": [
+    -104.71,
+    11.63
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 49.6,
+   "to": [
+    -107.37,
+    12.19
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 49.9,
+   "to": [
+    -109.62,
+    13.45
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 50.2,
+   "to": [
+    -111.22,
+    15.24
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 50.5,
+   "to": [
+    -111.96,
+    17.35
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 50.8,
+   "to": [
+    -111.76,
+    19.54
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 51.1,
+   "to": [
+    -110.65,
+    21.55
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 51.4,
+   "to": [
+    -108.76,
+    23.14
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 51.7,
+   "to": [
+    -106.3,
+    24.13
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "s.sora1225",
+   "t": 52.0,
+   "to": [
+    -103.58,
+    24.39
+   ],
+   "dur": 0.3,
+   "run": true
+  }
+ ],
+ "props": [
+  {
+   "type": "heart",
+   "from": {
+    "rel": "abc.man13",
+    "up": 3.4
+   },
+   "to": {
+    "rel": "abc.man13",
+    "up": 3.4
+   },
+   "t0": 7.2,
+   "t1": 9.3,
+   "t2": 9.3,
+   "size": 1.4,
+   "phase": 0
+  },
+  {
+   "type": "heart",
+   "from": {
+    "rel": "heroruto7",
+    "up": 3.4
+   },
+   "to": {
+    "rel": "heroruto7",
+    "up": 3.4
+   },
+   "t0": 7.4,
+   "t1": 9.3,
+   "t2": 9.3,
+   "size": 1.4,
+   "phase": 1
+  },
+  {
+   "type": "heart",
+   "from": {
+    "rel": "tsuki5747",
+    "up": 3.4
+   },
+   "to": {
+    "rel": "tsuki5747",
+    "up": 3.4
+   },
+   "t0": 7.6000000000000005,
+   "t1": 9.3,
+   "t2": 9.3,
+   "size": 1.4,
+   "phase": 2
+  },
+  {
+   "type": "heart",
+   "from": {
+    "rel": "karen_774060",
+    "up": 3.4,
+    "t": 0.9
+   },
+   "to": {
+    "rel": "karen_774060",
+    "up": 3.4,
+    "t": 0.9
+   },
+   "t0": 9.6,
+   "t1": 11.4,
+   "t2": 11.4,
+   "size": 1.4,
+   "phase": 0
+  },
+  {
+   "type": "heart",
+   "from": {
+    "rel": "pocchanpochi",
+    "up": 3.4,
+    "t": 0.9
+   },
+   "to": {
+    "rel": "pocchanpochi",
+    "up": 3.4,
+    "t": 0.9
+   },
+   "t0": 9.6,
+   "t1": 11.4,
+   "t2": 11.4,
+   "size": 1.4,
+   "phase": 1
+  },
+  {
+   "type": "sack",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 1.2
+   },
+   "to": [
+    233.42,
+    144.94
+   ],
+   "t0": 15.75,
+   "t1": 16.35,
+   "t2": 20.0,
+   "arc": 1.2,
+   "size": 1.0
+  },
+  {
+   "type": "sprout",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 2.0
+   },
+   "to": [
+    236.33,
+    139.79
+   ],
+   "t0": 15.795,
+   "t1": 16.395000000000003,
+   "t2": 20.0,
+   "arc": 1.7,
+   "size": 1.1
+  },
+  {
+   "type": "sprout",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 2.8
+   },
+   "to": [
+    233.7,
+    143.08
+   ],
+   "t0": 15.84,
+   "t1": 16.44,
+   "t2": 20.0,
+   "arc": 2.2,
+   "size": 1.1
+  },
+  {
+   "type": "sprout",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 1.2
+   },
+   "to": [
+    236.61,
+    137.93
+   ],
+   "t0": 15.885,
+   "t1": 16.485000000000003,
+   "t2": 20.0,
+   "arc": 2.7,
+   "size": 1.1
+  },
+  {
+   "type": "sack",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 2.0
+   },
+   "to": [
+    233.98,
+    141.23
+   ],
+   "t0": 15.93,
+   "t1": 16.53,
+   "t2": 20.0,
+   "arc": 1.2,
+   "size": 1.0
+  },
+  {
+   "type": "sprout",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 2.8
+   },
+   "to": [
+    238.96,
+    141.75
+   ],
+   "t0": 15.975,
+   "t1": 16.575000000000003,
+   "t2": 20.0,
+   "arc": 1.7,
+   "size": 1.1
+  },
+  {
+   "type": "sprout",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 1.2
+   },
+   "to": [
+    234.26,
+    139.37
+   ],
+   "t0": 16.02,
+   "t1": 16.62,
+   "t2": 20.0,
+   "arc": 2.2,
+   "size": 1.1
+  },
+  {
+   "type": "sprout",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 2.0
+   },
+   "to": [
+    239.25,
+    139.9
+   ],
+   "t0": 16.065,
+   "t1": 16.665000000000003,
+   "t2": 20.0,
+   "arc": 2.7,
+   "size": 1.1
+  },
+  {
+   "type": "sack",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 2.8
+   },
+   "to": [
+    236.61,
+    143.19
+   ],
+   "t0": 16.11,
+   "t1": 16.71,
+   "t2": 20.0,
+   "arc": 1.2,
+   "size": 1.0
+  },
+  {
+   "type": "sprout",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 1.2
+   },
+   "to": [
+    231.92,
+    140.81
+   ],
+   "t0": 16.155,
+   "t1": 16.755000000000003,
+   "t2": 20.0,
+   "arc": 1.7,
+   "size": 1.1
+  },
+  {
+   "type": "sprout",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 2.0
+   },
+   "to": [
+    236.9,
+    141.34
+   ],
+   "t0": 16.2,
+   "t1": 16.8,
+   "t2": 20.0,
+   "arc": 2.2,
+   "size": 1.1
+  },
+  {
+   "type": "sprout",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 2.8
+   },
+   "to": [
+    234.27,
+    144.63
+   ],
+   "t0": 16.245,
+   "t1": 16.845000000000002,
+   "t2": 20.0,
+   "arc": 2.7,
+   "size": 1.1
+  },
+  {
+   "type": "sack",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 1.2
+   },
+   "to": [
+    237.18,
+    139.48
+   ],
+   "t0": 16.29,
+   "t1": 16.89,
+   "t2": 20.0,
+   "arc": 1.2,
+   "size": 1.0
+  },
+  {
+   "type": "sprout",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 2.0
+   },
+   "to": [
+    234.55,
+    142.78
+   ],
+   "t0": 16.335,
+   "t1": 16.935000000000002,
+   "t2": 20.0,
+   "arc": 1.7,
+   "size": 1.1
+  },
+  {
+   "type": "sprout",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 2.8
+   },
+   "to": [
+    237.46,
+    137.62
+   ],
+   "t0": 16.38,
+   "t1": 16.98,
+   "t2": 20.0,
+   "arc": 2.2,
+   "size": 1.1
+  },
+  {
+   "type": "sprout",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 1.2
+   },
+   "to": [
+    234.83,
+    140.92
+   ],
+   "t0": 16.425,
+   "t1": 17.025000000000002,
+   "t2": 20.0,
+   "arc": 2.7,
+   "size": 1.1
+  },
+  {
+   "type": "sack",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 2.0
+   },
+   "to": [
+    239.81,
+    141.45
+   ],
+   "t0": 16.47,
+   "t1": 17.07,
+   "t2": 20.0,
+   "arc": 1.2,
+   "size": 1.0
+  },
+  {
+   "type": "sprout",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 2.8
+   },
+   "to": [
+    235.11,
+    139.06
+   ],
+   "t0": 16.515,
+   "t1": 17.115000000000002,
+   "t2": 20.0,
+   "arc": 1.7,
+   "size": 1.1
+  },
+  {
+   "type": "sprout",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 1.2
+   },
+   "to": [
+    232.48,
+    142.36
+   ],
+   "t0": 16.56,
+   "t1": 17.16,
+   "t2": 20.0,
+   "arc": 2.2,
+   "size": 1.1
+  },
+  {
+   "type": "sprout",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 2.0
+   },
+   "to": [
+    237.46,
+    142.89
+   ],
+   "t0": 16.605,
+   "t1": 17.205000000000002,
+   "t2": 20.0,
+   "arc": 2.7,
+   "size": 1.1
+  },
+  {
+   "type": "sack",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 2.8
+   },
+   "to": [
+    232.76,
+    140.5
+   ],
+   "t0": 16.65,
+   "t1": 17.25,
+   "t2": 20.0,
+   "arc": 1.2,
+   "size": 1.0
+  },
+  {
+   "type": "sprout",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 1.2
+   },
+   "to": [
+    237.74,
+    141.03
+   ],
+   "t0": 16.695,
+   "t1": 17.295,
+   "t2": 20.0,
+   "arc": 1.7,
+   "size": 1.1
+  },
+  {
+   "type": "sprout",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 2.0
+   },
+   "to": [
+    235.11,
+    144.33
+   ],
+   "t0": 16.74,
+   "t1": 17.34,
+   "t2": 20.0,
+   "arc": 2.2,
+   "size": 1.1
+  },
+  {
+   "type": "sprout",
+   "from": {
+    "xz": [
+     237.1791516560184,
+     144.7447377101138
+    ],
+    "up": 2.8
+   },
+   "to": [
+    238.02,
+    139.17
+   ],
+   "t0": 16.785,
+   "t1": 17.385,
+   "t2": 20.0,
+   "arc": 2.7,
+   "size": 1.1
+  },
+  {
+   "type": "hoe",
+   "from": {
+    "xz": [
+     -116.2,
+     12
+    ],
+    "up": 3
+   },
+   "to": {
+    "xz": [
+     -116.2,
+     12
+    ],
+    "up": 5.2
+   },
+   "arc": 2,
+   "t0": 27.4,
+   "t1": 28.2,
+   "t2": 31.0,
+   "size": 3.0
+  },
+  {
+   "type": "rod",
+   "from": {
+    "xz": [
+     -112,
+     12
+    ],
+    "up": 3
+   },
+   "to": {
+    "xz": [
+     -112,
+     12
+    ],
+    "up": 5.2
+   },
+   "arc": 2,
+   "t0": 27.9,
+   "t1": 28.7,
+   "t2": 31.0,
+   "size": 2.8
+  },
+  {
+   "type": "saw",
+   "from": {
+    "xz": [
+     -107.8,
+     12
+    ],
+    "up": 3
+   },
+   "to": {
+    "xz": [
+     -107.8,
+     12
+    ],
+    "up": 5.2
+   },
+   "arc": 2,
+   "t0": 28.4,
+   "t1": 29.2,
+   "t2": 31.0,
+   "size": 1.4
+  },
+  {
+   "type": "flame",
+   "from": [
+    -104.0,
+    18.0
+   ],
+   "t0": 37.0,
+   "t1": 37.01,
+   "t2": 52.0,
+   "size": 1.8
+  },
+  {
+   "type": "eyes",
+   "from": {
+    "xz": [
+     -140.0,
+     15.0
+    ],
+    "up": 2.8
+   },
+   "to": {
+    "xz": [
+     -140.0,
+     15.0
+    ],
+    "up": 2.8
+   },
+   "t0": 40.6,
+   "t1": 42.4,
+   "t2": 42.4,
+   "size": 0.5
+  }
+ ],
+ "props3d": [
+  {
+   "type": "crateopen",
+   "at": [
+    238.0,
+    147.0
+   ],
+   "rot": 20,
+   "t0": 15.6,
+   "show": 14.5,
+   "hide": 20.0
+  },
+  {
+   "type": "tree",
+   "at": [
+    -128.0,
+    -56.0
+   ],
+   "rot": 150,
+   "chop": 20.0,
+   "t0": 20.6,
+   "t1": 21.3,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -121.4,
+    -56.0
+   ],
+   "rot": 187,
+   "chop": 20.7,
+   "t0": 21.35,
+   "t1": 22.05,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -114.8,
+    -56.0
+   ],
+   "rot": 224,
+   "chop": 21.4,
+   "t0": 22.1,
+   "t1": 22.8,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -108.2,
+    -56.0
+   ],
+   "rot": 181,
+   "chop": 22.1,
+   "t0": 22.85,
+   "t1": 23.55,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -101.6,
+    -56.0
+   ],
+   "rot": 218,
+   "chop": 22.8,
+   "t0": 23.6,
+   "t1": 24.3,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -95.0,
+    -56.0
+   ],
+   "rot": 175,
+   "chop": 23.5,
+   "t0": 24.35,
+   "t1": 25.05,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -88.4,
+    -56.0
+   ],
+   "rot": 212,
+   "chop": 24.2,
+   "t0": 25.1,
+   "t1": 25.8,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -125.6,
+    -40.5
+   ],
+   "rot": 169,
+   "chop": 20.0,
+   "t0": 20.6,
+   "t1": 21.3,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -119.0,
+    -40.5
+   ],
+   "rot": 206,
+   "chop": 20.7,
+   "t0": 21.35,
+   "t1": 22.05,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -112.4,
+    -40.5
+   ],
+   "rot": 163,
+   "chop": 21.4,
+   "t0": 22.1,
+   "t1": 22.8,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -105.8,
+    -40.5
+   ],
+   "rot": 200,
+   "chop": 22.1,
+   "t0": 22.85,
+   "t1": 23.55,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -99.2,
+    -40.5
+   ],
+   "rot": 157,
+   "chop": 22.8,
+   "t0": 23.6,
+   "t1": 24.3,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -92.6,
+    -40.5
+   ],
+   "rot": 194,
+   "chop": 23.5,
+   "t0": 24.35,
+   "t1": 25.05,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -86.0,
+    -40.5
+   ],
+   "rot": 151,
+   "chop": 24.2,
+   "t0": 25.1,
+   "t1": 25.8,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -128.0,
+    -25.0
+   ],
+   "rot": 188,
+   "chop": 20.0,
+   "t0": 20.6,
+   "t1": 21.3,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -121.4,
+    -25.0
+   ],
+   "rot": 225,
+   "chop": 20.7,
+   "t0": 21.35,
+   "t1": 22.05,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -114.8,
+    -25.0
+   ],
+   "rot": 182,
+   "chop": 21.4,
+   "t0": 22.1,
+   "t1": 22.8,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -108.2,
+    -25.0
+   ],
+   "rot": 219,
+   "chop": 22.1,
+   "t0": 22.85,
+   "t1": 23.55,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -101.6,
+    -25.0
+   ],
+   "rot": 176,
+   "chop": 22.8,
+   "t0": 23.6,
+   "t1": 24.3,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -95.0,
+    -25.0
+   ],
+   "rot": 213,
+   "chop": 23.5,
+   "t0": 24.35,
+   "t1": 25.05,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -88.4,
+    -25.0
+   ],
+   "rot": 170,
+   "chop": 24.2,
+   "t0": 25.1,
+   "t1": 25.8,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -125.6,
+    -9.5
+   ],
+   "rot": 207,
+   "chop": 20.0,
+   "t0": 20.6,
+   "t1": 21.3,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -119.0,
+    -9.5
+   ],
+   "rot": 164,
+   "chop": 20.7,
+   "t0": 21.35,
+   "t1": 22.05,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -86.0,
+    -9.5
+   ],
+   "rot": 201,
+   "chop": 21.4,
+   "t0": 22.1,
+   "t1": 22.8,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -128.0,
+    6.0
+   ],
+   "rot": 158,
+   "chop": 22.1,
+   "t0": 22.85,
+   "t1": 23.55,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -121.4,
+    6.0
+   ],
+   "rot": 195,
+   "chop": 22.8,
+   "t0": 23.6,
+   "t1": 24.3,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "tree",
+   "at": [
+    -88.4,
+    6.0
+   ],
+   "rot": 152,
+   "chop": 23.5,
+   "t0": 24.35,
+   "t1": 25.05,
+   "t2": 27.0,
+   "hide": 27.0,
+   "size": 1.25
+  },
+  {
+   "type": "logs",
+   "at": [
+    -116,
+    16
+   ],
+   "rot": 20,
+   "count": 5,
+   "t0": 24.5,
+   "t1": 26.5,
+   "show": 20.0,
+   "hide": 31.0
+  },
+  {
+   "type": "build",
+   "kind": "bigfield0",
+   "at": [
+    -104.0,
+    -2.0
+   ],
+   "rot": 0,
+   "t0": 31.4,
+   "t1": 35.4,
+   "show": 31.0
+  },
+  {
+   "type": "tree",
+   "at": [
+    -137.0,
+    12.5
+   ],
+   "rot": 270,
+   "chop": 41.8,
+   "t0": 42.4,
+   "t1": 42.9,
+   "size": 1.3
+  },
+  {
+   "type": "beast",
+   "at": [
+    -140.0,
+    15.0
+   ],
+   "path": [
+    [
+     40.0,
+     -140.0,
+     15.0
+    ],
+    [
+     40.1,
+     -140.0,
+     15.0
+    ],
+    [
+     40.2,
+     -140.0,
+     15.0
+    ],
+    [
+     40.3,
+     -140.0,
+     15.0
+    ],
+    [
+     40.4,
+     -140.0,
+     15.0
+    ],
+    [
+     40.5,
+     -140.0,
+     15.0
+    ],
+    [
+     40.6,
+     -140.0,
+     15.0
+    ],
+    [
+     40.7,
+     -140.0,
+     15.0
+    ],
+    [
+     40.8,
+     -140.0,
+     15.0
+    ],
+    [
+     40.9,
+     -140.0,
+     15.0
+    ],
+    [
+     41.0,
+     -140.0,
+     15.0
+    ],
+    [
+     41.1,
+     -140.0,
+     15.0
+    ],
+    [
+     41.2,
+     -140.0,
+     15.0
+    ],
+    [
+     41.3,
+     -140.0,
+     15.0
+    ],
+    [
+     41.4,
+     -140.0,
+     15.0
+    ],
+    [
+     41.5,
+     -140.0,
+     15.0
+    ],
+    [
+     41.6,
+     -140.0,
+     15.0
+    ],
+    [
+     41.7,
+     -140.0,
+     15.0
+    ],
+    [
+     41.8,
+     -140.0,
+     15.0
+    ],
+    [
+     41.9,
+     -140.0,
+     15.0
+    ],
+    [
+     42.0,
+     -140.0,
+     15.0
+    ],
+    [
+     42.1,
+     -140.0,
+     15.0
+    ],
+    [
+     42.2,
+     -140.0,
+     15.0
+    ],
+    [
+     42.3,
+     -140.0,
+     15.0
+    ],
+    [
+     42.4,
+     -140.0,
+     15.0
+    ],
+    [
+     42.5,
+     -137.2,
+     15.3
+    ],
+    [
+     42.6,
+     -134.4,
+     15.6
+    ],
+    [
+     42.7,
+     -131.6,
+     15.9
+    ],
+    [
+     42.8,
+     -128.8,
+     16.2
+    ],
+    [
+     42.9,
+     -126.0,
+     16.5
+    ],
+    [
+     43.0,
+     -123.2,
+     16.8
+    ],
+    [
+     43.1,
+     -120.4,
+     17.1
+    ],
+    [
+     43.2,
+     -117.6,
+     17.4
+    ],
+    [
+     43.3,
+     -114.8,
+     17.7
+    ],
+    [
+     43.4,
+     -112.0,
+     18.0
+    ],
+    [
+     43.5,
+     -111.95,
+     18.73
+    ],
+    [
+     43.6,
+     -111.79,
+     19.46
+    ],
+    [
+     43.7,
+     -111.53,
+     20.16
+    ],
+    [
+     43.8,
+     -111.17,
+     20.84
+    ],
+    [
+     43.9,
+     -110.71,
+     21.48
+    ],
+    [
+     44.0,
+     -110.17,
+     22.07
+    ],
+    [
+     44.1,
+     -109.54,
+     22.61
+    ],
+    [
+     44.2,
+     -108.85,
+     23.09
+    ],
+    [
+     44.3,
+     -108.08,
+     23.5
+    ],
+    [
+     44.4,
+     -107.27,
+     23.84
+    ],
+    [
+     44.5,
+     -106.41,
+     24.1
+    ],
+    [
+     44.6,
+     -105.52,
+     24.28
+    ],
+    [
+     44.7,
+     -104.61,
+     24.38
+    ],
+    [
+     44.8,
+     -103.69,
+     24.4
+    ],
+    [
+     44.9,
+     -102.77,
+     24.32
+    ],
+    [
+     45.0,
+     -101.87,
+     24.17
+    ],
+    [
+     45.1,
+     -101.0,
+     23.93
+    ],
+    [
+     45.2,
+     -100.17,
+     23.62
+    ],
+    [
+     45.3,
+     -99.39,
+     23.23
+    ],
+    [
+     45.4,
+     -98.67,
+     22.77
+    ],
+    [
+     45.5,
+     -98.02,
+     22.25
+    ],
+    [
+     45.6,
+     -97.45,
+     21.67
+    ],
+    [
+     45.7,
+     -96.97,
+     21.05
+    ],
+    [
+     45.8,
+     -96.58,
+     20.38
+    ],
+    [
+     45.9,
+     -96.28,
+     19.69
+    ],
+    [
+     46.0,
+     -96.09,
+     18.97
+    ],
+    [
+     46.1,
+     -96.01,
+     18.23
+    ],
+    [
+     46.2,
+     -96.02,
+     17.5
+    ],
+    [
+     46.3,
+     -96.15,
+     16.77
+    ],
+    [
+     46.4,
+     -96.38,
+     16.06
+    ],
+    [
+     46.5,
+     -96.71,
+     15.37
+    ],
+    [
+     46.6,
+     -97.13,
+     14.72
+    ],
+    [
+     46.7,
+     -97.65,
+     14.11
+    ],
+    [
+     46.8,
+     -98.25,
+     13.55
+    ],
+    [
+     46.9,
+     -98.92,
+     13.05
+    ],
+    [
+     47.0,
+     -99.67,
+     12.62
+    ],
+    [
+     47.1,
+     -99.67,
+     12.62
+    ],
+    [
+     47.2,
+     -99.67,
+     12.62
+    ],
+    [
+     47.3,
+     -99.67,
+     12.62
+    ],
+    [
+     47.4,
+     -99.67,
+     12.62
+    ],
+    [
+     47.5,
+     -99.67,
+     12.62
+    ],
+    [
+     47.6,
+     -99.67,
+     12.62
+    ],
+    [
+     47.7,
+     -99.67,
+     12.62
+    ],
+    [
+     47.8,
+     -99.67,
+     12.62
+    ],
+    [
+     47.9,
+     -99.67,
+     12.62
+    ],
+    [
+     48.0,
+     -99.67,
+     12.62
+    ],
+    [
+     48.1,
+     -99.67,
+     12.62
+    ],
+    [
+     48.2,
+     -99.67,
+     12.62
+    ],
+    [
+     48.3,
+     -99.67,
+     12.62
+    ],
+    [
+     48.4,
+     -100.47,
+     12.26
+    ],
+    [
+     48.5,
+     -101.31,
+     11.97
+    ],
+    [
+     48.6,
+     -102.2,
+     11.76
+    ],
+    [
+     48.7,
+     -103.1,
+     11.64
+    ],
+    [
+     48.8,
+     -104.02,
+     11.6
+    ],
+    [
+     48.9,
+     -104.94,
+     11.64
+    ],
+    [
+     49.0,
+     -105.84,
+     11.77
+    ],
+    [
+     49.1,
+     -106.73,
+     11.98
+    ],
+    [
+     49.2,
+     -107.57,
+     12.27
+    ],
+    [
+     49.3,
+     -108.37,
+     12.64
+    ],
+    [
+     49.4,
+     -109.11,
+     13.07
+    ],
+    [
+     49.5,
+     -109.78,
+     13.58
+    ],
+    [
+     49.6,
+     -110.38,
+     14.14
+    ],
+    [
+     49.7,
+     -110.89,
+     14.75
+    ],
+    [
+     49.8,
+     -111.31,
+     15.4
+    ],
+    [
+     49.9,
+     -111.64,
+     16.09
+    ],
+    [
+     50.0,
+     -111.86,
+     16.8
+    ],
+    [
+     50.1,
+     -111.98,
+     17.53
+    ],
+    [
+     50.2,
+     -111.99,
+     18.27
+    ],
+    [
+     50.3,
+     -111.9,
+     19.0
+    ],
+    [
+     50.4,
+     -111.71,
+     19.72
+    ],
+    [
+     50.5,
+     -111.41,
+     20.41
+    ],
+    [
+     50.6,
+     -111.01,
+     21.08
+    ],
+    [
+     50.7,
+     -110.53,
+     21.7
+    ],
+    [
+     50.8,
+     -109.95,
+     22.28
+    ],
+    [
+     50.9,
+     -109.3,
+     22.79
+    ],
+    [
+     51.0,
+     -108.58,
+     23.25
+    ],
+    [
+     51.1,
+     -107.79,
+     23.63
+    ],
+    [
+     51.2,
+     -106.96,
+     23.95
+    ],
+    [
+     51.3,
+     -106.09,
+     24.18
+    ],
+    [
+     51.4,
+     -105.19,
+     24.33
+    ],
+    [
+     51.5,
+     -104.27,
+     24.4
+    ],
+    [
+     51.6,
+     -103.35,
+     24.38
+    ],
+    [
+     51.7,
+     -102.44,
+     24.28
+    ],
+    [
+     51.8,
+     -101.55,
+     24.09
+    ],
+    [
+     51.9,
+     -100.69,
+     23.83
+    ],
+    [
+     52.0,
+     -99.88,
+     23.49
+    ]
+   ],
+   "show": 42.3,
+   "t0": 40.0,
+   "t1": 52.0,
+   "rear": [
+    [
+     47.1,
+     48.3
+    ]
+   ]
+  }
+ ],
+ "camera": [
+  {
+   "from": 0,
+   "to": 3.0,
+   "hour": 7.5,
+   "keys": [
+    {
+     "t": 0,
+     "look": {
+      "rel": "g:beach"
+     },
+     "dist": 70,
+     "az": 0.4,
+     "pol": 0.35,
+     "up": 1.5,
+     "frame": "beach"
+    },
+    {
+     "t": 1.4,
+     "look": {
+      "rel": "g:beach"
+     },
+     "dist": 26,
+     "az": 1.0,
+     "pol": 1.0,
+     "up": 1.5,
+     "frame": "beach"
+    },
+    {
+     "t": 3.0,
+     "look": {
+      "rel": "g:beach"
+     },
+     "dist": 17,
+     "az": 1.35,
+     "pol": 1.25,
+     "up": 1.5,
+     "frame": "beach"
+    }
+   ]
+  },
+  {
+   "from": 3.0,
+   "to": 6.0,
+   "hour": 11,
+   "keys": [
+    {
+     "t": 3.0,
+     "look": [
+      15,
+      40
+     ],
+     "dist": 900,
+     "az": 0.2,
+     "pol": 0.7,
+     "up": 0,
+     "frame": "beach"
+    },
+    {
+     "t": 6.0,
+     "look": [
+      15,
+      40
+     ],
+     "dist": 620,
+     "az": 0.9,
+     "pol": 0.85,
+     "up": 0,
+     "frame": "beach"
+    }
+   ]
+  },
+  {
+   "from": 6.0,
+   "to": 9.4,
+   "hour": 12,
+   "keys": [
+    {
+     "t": 6.0,
+     "look": [
+      15.0,
+      36.0
+     ],
+     "dist": 22,
+     "az": -1.2,
+     "pol": 0.3,
+     "up": 1.5,
+     "frame": "star",
+     "fov": 50
+    },
+    {
+     "t": 7.6,
+     "look": [
+      15.0,
+      36.0
+     ],
+     "dist": 14,
+     "az": -0.4,
+     "pol": 1.0,
+     "up": 2.0,
+     "frame": "star",
+     "fov": 42
+    },
+    {
+     "t": 9.4,
+     "look": [
+      15.0,
+      36.0
+     ],
+     "dist": 11,
+     "az": 0.15,
+     "pol": 1.3,
+     "up": 2.2,
+     "frame": "star",
+     "fov": 38
+    }
+   ]
+  },
+  {
+   "from": 9.4,
+   "to": 11.5,
+   "hour": 12.5,
+   "keys": [
+    {
+     "t": 9.4,
+     "look": {
+      "rel": "g:pairs"
+     },
+     "dist": 28,
+     "az": 0.9,
+     "pol": 1.15,
+     "up": 2.0,
+     "frame": "pairs"
+    },
+    {
+     "t": 11.5,
+     "look": {
+      "rel": "g:pairs"
+     },
+     "dist": 21,
+     "az": 0.0,
+     "pol": 1.25,
+     "up": 2.0,
+     "frame": "pairs"
+    }
+   ]
+  },
+  {
+   "from": 11.5,
+   "to": 14.5,
+   "hour": 13,
+   "keys": [
+    {
+     "t": 11.5,
+     "look": [
+      0,
+      15
+     ],
+     "dist": 60,
+     "az": 0.0,
+     "pol": 0.8,
+     "up": 0,
+     "frame": "star"
+    },
+    {
+     "t": 14.5,
+     "look": [
+      0,
+      15
+     ],
+     "dist": 80,
+     "az": 1.0,
+     "pol": 0.95,
+     "up": 0,
+     "frame": "star"
+    }
+   ]
+  },
+  {
+   "from": 14.5,
+   "to": 20.0,
+   "hour": 9,
+   "shake": [
+    [
+     15.6,
+     16.3,
+     0.8
+    ]
+   ],
+   "keys": [
+    {
+     "t": 14.5,
+     "look": [
+      238.0,
+      147.0
+     ],
+     "dist": 60,
+     "az": 3.2,
+     "pol": 0.85,
+     "up": 2.0,
+     "frame": "south",
+     "fov": 46
+    },
+    {
+     "t": 15.5,
+     "look": [
+      238.0,
+      147.0
+     ],
+     "dist": 22,
+     "az": 3.5,
+     "pol": 1.12,
+     "up": 3.0,
+     "frame": "south",
+     "fov": 40
+    },
+    {
+     "t": 16.1,
+     "look": [
+      238.0,
+      147.0
+     ],
+     "dist": 21,
+     "az": 3.55,
+     "pol": 1.05,
+     "up": 4.0,
+     "frame": "south",
+     "fov": 34
+    },
+    {
+     "t": 20.0,
+     "look": [
+      238.0,
+      147.0
+     ],
+     "dist": 30,
+     "az": 4.3,
+     "pol": 1.0,
+     "up": 3.0,
+     "frame": "south",
+     "fov": 40
+    }
+   ]
+  },
+  {
+   "from": 20.0,
+   "to": 27.0,
+   "hour": 10,
+   "shake": [
+    [
+     21.0,
+     21.6,
+     0.5
+    ],
+    [
+     23.0,
+     23.6,
+     0.5
+    ],
+    [
+     24.8,
+     25.4,
+     0.6
+    ]
+   ],
+   "keys": [
+    {
+     "t": 20.0,
+     "look": [
+      -112,
+      10
+     ],
+     "dist": 14,
+     "az": 0.3,
+     "pol": 1.3,
+     "up": 3,
+     "frame": "south",
+     "fov": 44
+    },
+    {
+     "t": 22.0,
+     "look": [
+      -112,
+      -10
+     ],
+     "dist": 45,
+     "az": 0.0,
+     "pol": 0.95,
+     "up": 2,
+     "frame": "south"
+    },
+    {
+     "t": 24.5,
+     "look": [
+      -109,
+      -20
+     ],
+     "dist": 95,
+     "az": -0.9,
+     "pol": 0.7,
+     "up": 0,
+     "frame": "south"
+    },
+    {
+     "t": 27.0,
+     "look": [
+      -109,
+      -20
+     ],
+     "dist": 120,
+     "az": -1.6,
+     "pol": 0.55,
+     "up": 0,
+     "frame": "south"
+    }
+   ]
+  },
+  {
+   "from": 27.0,
+   "to": 31.0,
+   "hour": 11,
+   "shake": [
+    [
+     27.4,
+     27.8,
+     0.4
+    ],
+    [
+     27.9,
+     28.3,
+     0.4
+    ],
+    [
+     28.4,
+     28.8,
+     0.4
+    ]
+   ],
+   "keys": [
+    {
+     "t": 27.0,
+     "look": [
+      -112,
+      12
+     ],
+     "dist": 26,
+     "az": 0.9,
+     "pol": 1.15,
+     "up": 4.0,
+     "frame": "south",
+     "fov": 50
+    },
+    {
+     "t": 28.0,
+     "look": [
+      -112,
+      12
+     ],
+     "dist": 18,
+     "az": 0.1,
+     "pol": 1.25,
+     "up": 5.0,
+     "frame": "south",
+     "fov": 40
+    },
+    {
+     "t": 31.0,
+     "look": [
+      -112,
+      12
+     ],
+     "dist": 16,
+     "az": -0.3,
+     "pol": 1.25,
+     "up": 5.0,
+     "frame": "south",
+     "fov": 36
+    }
+   ]
+  },
+  {
+   "from": 31.0,
+   "to": 37.0,
+   "hour": 13,
+   "keys": [
+    {
+     "t": 31.0,
+     "look": [
+      -104.0,
+      -2.0
+     ],
+     "dist": 26,
+     "az": -0.8,
+     "pol": 1.2,
+     "up": 1,
+     "frame": "south"
+    },
+    {
+     "t": 34.0,
+     "look": [
+      -104.0,
+      -2.0
+     ],
+     "dist": 40,
+     "az": 0.8,
+     "pol": 0.95,
+     "up": 1,
+     "frame": "south"
+    },
+    {
+     "t": 37.0,
+     "look": [
+      -104.0,
+      -2.0
+     ],
+     "dist": 58,
+     "az": 2.2,
+     "pol": 0.75,
+     "up": 0,
+     "frame": "south"
+    }
+   ]
+  },
+  {
+   "from": 37.0,
+   "to": 40.5,
+   "hour": 18.2,
+   "keys": [
+    {
+     "t": 37.0,
+     "look": [
+      -104.0,
+      18.0
+     ],
+     "dist": 13,
+     "az": 0.3,
+     "pol": 1.22,
+     "up": 2,
+     "frame": "south"
+    },
+    {
+     "t": 40.5,
+     "look": [
+      -104.0,
+      18.0
+     ],
+     "dist": 10,
+     "az": 0.0,
+     "pol": 1.25,
+     "up": 2,
+     "frame": "south"
+    }
+   ]
+  },
+  {
+   "from": 40.5,
+   "to": 42.4,
+   "hour": 19.3,
+   "keys": [
+    {
+     "t": 40.5,
+     "look": [
+      -134.0,
+      15.0
+     ],
+     "dist": 26,
+     "az": 1.45,
+     "pol": 1.3,
+     "up": 2.5,
+     "frame": "south",
+     "fov": 40
+    },
+    {
+     "t": 42.4,
+     "look": [
+      -138.0,
+      15.0
+     ],
+     "dist": 12,
+     "az": 1.5,
+     "pol": 1.32,
+     "up": 2.5,
+     "frame": "south",
+     "fov": 30
+    }
+   ]
+  },
+  {
+   "from": 42.4,
+   "to": 43.6,
+   "hour": 19.3,
+   "shake": [
+    [
+     42.4,
+     43.6,
+     1.6
+    ]
+   ],
+   "keys": [
+    {
+     "t": 42.4,
+     "look": [
+      -136.0,
+      15.0
+     ],
+     "dist": 16,
+     "az": 1.6,
+     "pol": 1.3,
+     "up": 2.5,
+     "frame": "south",
+     "fov": 50
+    },
+    {
+     "t": 43.6,
+     "look": [
+      -112.0,
+      18.0
+     ],
+     "dist": 20,
+     "az": 1.1,
+     "pol": 1.2,
+     "up": 2,
+     "frame": "south",
+     "fov": 50
+    }
+   ]
+  },
+  {
+   "from": 43.6,
+   "to": 47.0,
+   "hour": 19.3,
+   "keys": [
+    {
+     "t": 43.6,
+     "look": [
+      -109.14,
+      25.94
+     ],
+     "dist": 22,
+     "az": 3.53,
+     "pol": 1.0,
+     "up": 2.0,
+     "fov": 46,
+     "frame": "south"
+    },
+    {
+     "t": 44.0,
+     "look": [
+      -104.74,
+      26.49
+     ],
+     "dist": 22,
+     "az": 4.029,
+     "pol": 1.0,
+     "up": 2.0,
+     "fov": 46,
+     "frame": "south"
+    },
+    {
+     "t": 44.4,
+     "look": [
+      -100.52,
+      25.71
+     ],
+     "dist": 22,
+     "az": 4.442,
+     "pol": 1.0,
+     "up": 2.0,
+     "fov": 46,
+     "frame": "south"
+    },
+    {
+     "t": 44.800000000000004,
+     "look": [
+      -96.73,
+      23.69
+     ],
+     "dist": 22,
+     "az": 4.814,
+     "pol": 1.0,
+     "up": 2.0,
+     "fov": 46,
+     "frame": "south"
+    },
+    {
+     "t": 45.2,
+     "look": [
+      -93.99,
+      20.34
+     ],
+     "dist": 22,
+     "az": 5.2,
+     "pol": 1.0,
+     "up": 2.0,
+     "fov": 46,
+     "frame": "south"
+    },
+    {
+     "t": 45.6,
+     "look": [
+      -93.34,
+      16.01
+     ],
+     "dist": 22,
+     "az": 5.655,
+     "pol": 1.0,
+     "up": 2.0,
+     "fov": 46,
+     "frame": "south"
+    },
+    {
+     "t": 46.0,
+     "look": [
+      -95.52,
+      11.99
+     ],
+     "dist": 22,
+     "az": 6.202,
+     "pol": 1.0,
+     "up": 2.0,
+     "fov": 46,
+     "frame": "south"
+    },
+    {
+     "t": 46.4,
+     "look": [
+      -99.61,
+      9.85
+     ],
+     "dist": 22,
+     "az": 6.762185307179586,
+     "pol": 1.0,
+     "up": 2.0,
+     "fov": 46,
+     "frame": "south"
+    },
+    {
+     "t": 46.800000000000004,
+     "look": [
+      -104.01,
+      9.57
+     ],
+     "dist": 22,
+     "az": 7.248185307179586,
+     "pol": 1.0,
+     "up": 2.0,
+     "fov": 46,
+     "frame": "south"
+    },
+    {
+     "t": 47.0,
+     "look": [
+      -99.67,
+      19.62
+     ],
+     "dist": 22,
+     "az": 9.425185307179586,
+     "pol": 1.0,
+     "up": 2.0,
+     "fov": 46,
+     "frame": "south"
+    }
+   ]
+  },
+  {
+   "from": 47.0,
+   "to": 48.4,
+   "hour": 19.3,
+   "shake": [
+    [
+     47.4,
+     48.4,
+     1.2
+    ]
+   ],
+   "keys": [
+    {
+     "t": 47.0,
+     "look": [
+      -99.67,
+      12.62
+     ],
+     "dist": 26,
+     "az": 0.10862283971344278,
+     "pol": 1.2,
+     "up": 3.0,
+     "frame": "south",
+     "fov": 44
+    },
+    {
+     "t": 47.6,
+     "look": [
+      -99.67,
+      12.62
+     ],
+     "dist": 18,
+     "az": -0.4413771602865575,
+     "pol": 1.28,
+     "up": 4.0,
+     "frame": "south",
+     "fov": 36
+    },
+    {
+     "t": 48.4,
+     "look": [
+      -99.67,
+      12.62
+     ],
+     "dist": 16,
+     "az": -0.5413771602865574,
+     "pol": 1.3,
+     "up": 4.2,
+     "frame": "south",
+     "fov": 32
+    }
+   ]
+  },
+  {
+   "from": 48.4,
+   "to": 52.0,
+   "hour": 19.0,
+   "keys": [
+    {
+     "t": 48.4,
+     "look": [
+      -104.0,
+      18.0
+     ],
+     "dist": 18,
+     "az": 0.4,
+     "pol": 1.2,
+     "up": 2,
+     "frame": "south",
+     "fov": 44
+    },
+    {
+     "t": 49.6,
+     "look": [
+      -104.0,
+      18.0
+     ],
+     "dist": 42,
+     "az": 1.4,
+     "pol": 0.75,
+     "up": 0,
+     "frame": "south",
+     "fov": 40
+    },
+    {
+     "t": 52.0,
+     "look": [
+      -104.0,
+      18.0
+     ],
+     "dist": 52,
+     "az": 2.6,
+     "pol": 0.6,
+     "up": 0,
+     "frame": "south",
+     "fov": 40
+    }
+   ]
+  },
+  {
+   "from": 52.0,
+   "to": 58.0,
+   "hour": 19.0,
+   "keys": [
+    {
+     "t": 52.0,
+     "look": [
+      -104.0,
+      18.0
+     ],
+     "dist": 30,
+     "az": 2.8,
+     "pol": 0.95,
+     "up": 1,
+     "frame": "south"
+    },
+    {
+     "t": 58.0,
+     "look": [
+      -104.0,
+      18.0
+     ],
+     "dist": 40,
+     "az": 3.6,
+     "pol": 0.9,
+     "up": 1,
+     "frame": "south"
+    }
+   ]
+  },
+  {
+   "from": 58.0,
+   "to": 61.0,
+   "hour": 18.5,
+   "keys": [
+    {
+     "t": 58.0,
+     "look": [
+      15,
+      40
+     ],
+     "dist": 700,
+     "az": 0.8,
+     "pol": 0.85,
+     "up": 0,
+     "frame": "beach"
+    },
+    {
+     "t": 61.0,
+     "look": [
+      15,
+      40
+     ],
+     "dist": 780,
+     "az": 1.0,
+     "pol": 0.85,
+     "up": 0,
+     "frame": "beach"
+    }
+   ]
+  }
+ ],
+ "overlay": {
+  "banner": "コメントで動く無人島　6日目",
+  "bannerOff": [
+   [
+    0,
+    6.0
+   ],
+   [
+    52.0,
+    61.0
+   ]
+  ],
+  "commenters": {
+   "ichi.09": "C",
+   "tsuki5747": "A",
+   "nanasi774_ou": "D",
+   "ryuji_111": "A",
+   "mitsunari_33": "A",
+   "morimoto1120": "C",
+   "_lto_lxq426": "A",
+   "yuradayo0330": "A",
+   "guernica.0712": "-",
+   "heroruto7": "A",
+   "hyuga_0619": "A",
+   "rino._.15": "A",
+   "atsukidesu": "A",
+   "abc.man13": "-",
+   "tsubuanzu_shiyuu": "A",
+   "masatk_no_m": "A",
+   "yuridazo68": "A",
+   "marumegane4": "A",
+   "nabemegane": "A",
+   "pocchanpochi": "-",
+   "yukikun4126": "A",
+   "zidian34": "A",
+   "denzirouu": "-",
+   "ayu.mu__8890": "A",
+   "fuse.daichi": "A",
+   "saori.siegert": "C",
+   "onyankopunch": "A",
+   "pqew314kaiko": "A",
+   "karen_774060": "A",
+   "shugo.77": "A",
+   "analogayane": "A",
+   "kota_chumuri": "A"
+  },
+  "names": {
+   "ichi.09": "Taichi Minami",
+   "tsuki5747": "つき",
+   "nanasi774_ou": "774(名無し)",
+   "ryuji_111": "Ryuji",
+   "mitsunari_33": "みつなり",
+   "morimoto1120": "友",
+   "_lto_lxq426": "絃叶",
+   "yuradayo0330": "ゆら",
+   "guernica.0712": "ざーふ",
+   "heroruto7": "ヘロルト",
+   "leop_ard5722": "にゃーーﾝ❣️",
+   "oushi0328": "oushi.",
+   "1225rin.2013": "😎Rin😎",
+   "hyuga_0619": "ひゅうが",
+   "oyad.ai1015": "男性",
+   "rino._.15": "Rino",
+   "zt_rn917": "る",
+   "atsukidesu": "中村徳貴",
+   "ganota.0079": "大木健太",
+   "abc.man13": "abc.m",
+   "airu0728000": "あやか",
+   "tsubuanzu_shiyuu": "つぶ",
+   "masatk_no_m": "まさたけM",
+   "fukukintaro": "りか",
+   "yuridazo68": "神崎ゆり",
+   "marumegane4": "🐸ま🐸",
+   "nabemegane": "とも",
+   "pocchanpochi": "ぽち",
+   "aeons0aha": "星神︎★アッハ",
+   "yukikun4126": "ゆきくん♂",
+   "zidian34": "紫電",
+   "denzirouu": "denzi",
+   "ayu.mu__8890": "あゆむ",
+   "sousukenonaka": "Sousuke.2280",
+   "fuse.daichi": "Daichi Fuse",
+   "saori.siegert": "🇺🇸Saori Siegert | Mindset & Trader",
+   "onyankopunch": "Kaori-Miya-Matsutaka",
+   "pqew314kaiko": "Kaiko/kosuke",
+   "dadadada8806": "Gagaca.456",
+   "karen_774060": "華蓮",
+   "shugo.77": "柊伍",
+   "da_kyou10": "だー教（公式）",
+   "analogayane": "あやね",
+   "ha.ku27": "ha.ku",
+   "kota_chumuri": "コタつむり",
+   "m.sinya23": "新也"
+  },
+  "titles": [
+   {
+    "text": "6日目",
+    "from": 0.1,
+    "to": 3.0
+   }
+  ],
+  "tagAll": [],
+  "tagOnly": [
+   {
+    "from": 7.0,
+    "to": 9.3,
+    "who": [
+     "abc.man13",
+     "heroruto7",
+     "tsuki5747"
+    ],
+    "below": true,
+    "size": 34
+   },
+   {
+    "from": 9.6,
+    "to": 11.4,
+    "who": [
+     "karen_774060",
+     "shugo.77"
+    ],
+    "join": true,
+    "size": 36
+   },
+   {
+    "from": 9.6,
+    "to": 11.4,
+    "who": [
+     "pocchanpochi",
+     "yuridazo68"
+    ],
+    "join": true,
+    "size": 36
+   }
+  ],
+  "stars": [
+   {
+    "who": "guernica.0712",
+    "from": 6.2,
+    "to": 9.3,
+    "bubble": "誰か仲良くなろう"
+   },
+   {
+    "who": "tsuki5747",
+    "from": 37.2,
+    "to": 38.9,
+    "bubble": "みんなでキャンプファイヤーしながらご飯！"
+   },
+   {
+    "who": "yuridazo68",
+    "from": 38.9,
+    "to": 40.5,
+    "bubble": "料理人だから、ご飯作りたーい！"
+   }
+  ],
+  "tally": {
+   "from": 11.5,
+   "to": 14.5,
+   "title": "昨日の質問　木箱の中身は？",
+   "grow": [
+    11.8,
+    13.0
+   ],
+   "winner": "A",
+   "winnerAt": 13.3,
+   "rows": [
+    {
+     "key": "A",
+     "label": "種と苗",
+     "count": 29
+    },
+    {
+     "key": "B",
+     "label": "灯台",
+     "count": 0
+    },
+    {
+     "key": "C",
+     "label": "もこもこのひつじ",
+     "count": 4
+    },
+    {
+     "key": "D",
+     "label": "自由に予想",
+     "count": 2
+    }
+   ]
+  },
+  "images": [
+   {
+    "file": "profile.png",
+    "from": 3.0,
+    "to": 4.5,
+    "w": 900,
+    "y": 600,
+    "tap": [
+     0.24,
+     0.905
+    ],
+    "tapLabel": "フォローすると…"
+   },
+   {
+    "file": "profile.png",
+    "from": 4.5,
+    "to": 6.0,
+    "w": 900,
+    "y": 600,
+    "tap": [
+     0.37,
+     0.78
+    ],
+    "tapLabel": "島のいまは、ここ"
+   },
+   {
+    "file": "profile.png",
+    "from": 58.1,
+    "to": 61.0,
+    "w": 900,
+    "y": 520,
+    "tap": [
+     0.37,
+     0.78
+    ],
+    "tapLabel": "ここから"
+   }
+  ],
+  "captions": [
+   {
+    "text": "6日目の朝",
+    "from": 0.4,
+    "to": 3.0,
+    "y": 1290,
+    "size": 66
+   },
+   {
+    "text": "あなたも、次の動画で流れ着きます",
+    "from": 3.1,
+    "to": 4.5,
+    "y": 1400,
+    "size": 50,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "「誰か仲良くなろう」♥0",
+    "from": 6.2,
+    "to": 9.3,
+    "y": 330,
+    "size": 50,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "ざーふさん、3人と仲良しに！",
+    "from": 7.3,
+    "to": 9.3,
+    "y": 420,
+    "size": 56
+   },
+   {
+    "text": "仲良し同士は、島でいつも一緒に過ごすよ",
+    "from": 9.5,
+    "to": 11.4,
+    "y": 330,
+    "size": 46
+   },
+   {
+    "text": "中身は…",
+    "from": 14.6,
+    "to": 15.6,
+    "y": 360,
+    "size": 70,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "種と苗だった！",
+    "from": 15.7,
+    "to": 17.2,
+    "y": 360,
+    "size": 76,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "ヘロルトさん：小麦",
+    "from": 17.2,
+    "to": 20.0,
+    "y": 1180,
+    "size": 44
+   },
+   {
+    "text": "🐸ま🐸さん：大豆とさつまいも",
+    "from": 17.9,
+    "to": 20.0,
+    "y": 1260,
+    "size": 44
+   },
+   {
+    "text": "Daichi Fuseさん：服の材料になる種",
+    "from": 18.599999999999998,
+    "to": 20.0,
+    "y": 1340,
+    "size": 44
+   },
+   {
+    "text": "あやねさん：果物の苗",
+    "from": 19.299999999999997,
+    "to": 20.0,
+    "y": 1420,
+    "size": 44
+   },
+   {
+    "text": "畑を作るために…",
+    "from": 20.1,
+    "to": 22.0,
+    "y": 360,
+    "size": 60
+   },
+   {
+    "text": "森を、1/3切りひらく！",
+    "from": 22.0,
+    "to": 27.0,
+    "y": 360,
+    "size": 64,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "切った木で、道具ができた！",
+    "from": 27.1,
+    "to": 31.0,
+    "y": 360,
+    "size": 58
+   },
+   {
+    "text": "くわ　釣り竿　のこぎり",
+    "from": 27.8,
+    "to": 31.0,
+    "y": 1290,
+    "size": 54,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "Rinoさん「東京ドームくらいの巨大な畑を！」",
+    "from": 31.1,
+    "to": 35.4,
+    "y": 330,
+    "size": 40
+   },
+   {
+    "text": "巨大な畑に、種と苗を植えた！",
+    "from": 35.5,
+    "to": 37.0,
+    "y": 360,
+    "size": 54,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "PWAで、2日かけて育ちます",
+    "from": 35.5,
+    "to": 37.0,
+    "y": 1290,
+    "size": 46
+   },
+   {
+    "text": "その夜",
+    "from": 37.0,
+    "to": 38.4,
+    "y": 420,
+    "size": 64,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "…森の奥で、何かが光った",
+    "from": 40.6,
+    "to": 42.4,
+    "y": 360,
+    "size": 54
+   },
+   {
+    "text": "クマだーーー！",
+    "from": 42.5,
+    "to": 44.6,
+    "y": 360,
+    "size": 84,
+    "color": [
+     255,
+     120,
+     90
+    ]
+   },
+   {
+    "text": "森を切ったから、住処を追われた…！",
+    "from": 48.5,
+    "to": 52.0,
+    "y": 330,
+    "size": 48
+   },
+   {
+    "text": "次の質問",
+    "from": 52.1,
+    "to": 58.0,
+    "y": 330,
+    "size": 64,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "クマが現れた！どうする？",
+    "from": 52.2,
+    "to": 58.0,
+    "y": 450,
+    "size": 62
+   },
+   {
+    "text": "A 松明の火で追い払う",
+    "from": 52.9,
+    "to": 58.0,
+    "y": 700,
+    "size": 52
+   },
+   {
+    "text": "B 柵と落とし穴で畑を守る",
+    "from": 53.4,
+    "to": 58.0,
+    "y": 800,
+    "size": 52
+   },
+   {
+    "text": "C 食べ物を分けて、仲良くなる",
+    "from": 53.9,
+    "to": 58.0,
+    "y": 900,
+    "size": 52
+   },
+   {
+    "text": "D 自由に提案",
+    "from": 54.4,
+    "to": 58.0,
+    "y": 1000,
+    "size": 52
+   },
+   {
+    "text": "A・B・C・Dでコメントしてね",
+    "from": 55.0,
+    "to": 58.0,
+    "y": 1300,
+    "size": 50,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "クマはいまも、島を歩いています",
+    "from": 58.2,
+    "to": 61.0,
+    "y": 1300,
+    "size": 54
+   },
+   {
+    "text": "プロフィールのリンクから",
+    "from": 58.2,
+    "to": 61.0,
+    "y": 1390,
+    "size": 54
+   }
+  ],
+  "action": [
+   {
+    "text": "大工：木を切りひらく",
+    "from": 20.2,
+    "to": 26.8
+   },
+   {
+    "text": "農家：くわで耕して植える",
+    "from": 31.2,
+    "to": 35.4
+   }
+  ],
+  "result": [
+   {
+    "text": "倒れたー！",
+    "from": 21.4,
+    "to": 22.0
+   }
+  ],
+  "smallTagsMax": 5
+ },
+ "override": {},
+ "cutaway": {
+  "radius": 1.6
+ },
+ "audio": {
+  "narration": [
+   {
+    "at": 0.3,
+    "until": 3.0,
+    "text": "6日目。"
+   },
+   {
+    "at": 3.1,
+    "until": 4.5,
+    "text": "フォローすると、あなたも。"
+   },
+   {
+    "at": 4.6,
+    "until": 6.0,
+    "text": "島は、リンクから。"
+   },
+   {
+    "at": 6.2,
+    "until": 9.3,
+    "text": "ざーふさん、3人と仲良しに！"
+   },
+   {
+    "at": 9.5,
+    "until": 11.4,
+    "text": "仲良し同士は、いつも一緒。"
+   },
+   {
+    "at": 11.6,
+    "until": 14.4,
+    "text": "木箱の中身、一番多い予想は…"
+   },
+   {
+    "at": 14.6,
+    "until": 15.6,
+    "text": "開けてみると…"
+   },
+   {
+    "at": 15.7,
+    "until": 17.2,
+    "text": "種と苗！"
+   },
+   {
+    "at": 20.1,
+    "until": 22.0,
+    "text": "畑を作るために。"
+   },
+   {
+    "at": 22.1,
+    "until": 27.0,
+    "text": "森を、三分の一切りひらく！"
+   },
+   {
+    "at": 27.1,
+    "until": 31.0,
+    "text": "切った木で、くわと釣り竿と、のこぎり！"
+   },
+   {
+    "at": 31.1,
+    "until": 35.4,
+    "text": "東京ドームくらいの、巨大な畑！"
+   },
+   {
+    "at": 35.5,
+    "until": 37.0,
+    "text": "種と苗を、植えた！"
+   },
+   {
+    "at": 37.1,
+    "until": 40.5,
+    "text": "その夜。みんなで、たき火を囲む。"
+   },
+   {
+    "at": 40.6,
+    "until": 42.4,
+    "text": "…森の奥で、何かが光った。"
+   },
+   {
+    "at": 42.5,
+    "until": 44.6,
+    "text": "クマだー！"
+   },
+   {
+    "at": 44.7,
+    "until": 48.4,
+    "text": "みんな、逃げてー！"
+   },
+   {
+    "at": 48.5,
+    "until": 52.0,
+    "text": "森を切ったから、住処を追われたんだ。"
+   },
+   {
+    "at": 52.2,
+    "until": 58.0,
+    "text": "クマが現れた！どうする？エー、ビー、シー、ディーでコメントしてね。"
+   },
+   {
+    "at": 58.2,
+    "until": 61.0,
+    "text": "クマはいまも、島を歩いています。"
+   }
+  ],
+  "bgm": {
+   "volume": 0.18
+  },
+  "speed": 1.15
+ },
+ "cover": {
+  "at": 44.0,
+  "day": "6日目",
+  "lines": [
+   "畑を作ったら…",
+   "クマが出た！"
+  ]
+ }
+}

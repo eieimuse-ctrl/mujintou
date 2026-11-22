@@ -93,6 +93,7 @@
     const resolve = (r, t) => {
       if (!r) return null;
       if (Array.isArray(r)) return { x: r[0], z: r[1], y: yAt(r[0], r[1]) };
+      if (Array.isArray(r.xz)) return { x: r.xz[0], z: r.xz[1], y: yAt(r.xz[0], r.xz[1]) + (r.up || 0) }; // 地面からの高さつきの位置
       let base, g;
       if (typeof r.rel === 'string' && r.rel.startsWith('g:')) { g = G.get(r.rel.slice(2)) || firstG; base = g.at(0); }
       else if (slot.has(r.rel) && t != null && keys.has(r.rel)) { const s2 = stateOf(r.rel, t); g = s2.g || firstG; base = s2; }
@@ -232,6 +233,53 @@
         '..kRk..',
         '...k...',
       ], { k: '#5a1424', R: '#ff5a7a', W: '#ffd0da' }),
+      eyes: pixel([
+        'YY....YY',
+        'YY....YY',
+      ], { Y: '#ffe14a' }),
+      sprout: pixel([
+        '.g...g.',
+        'ggg.ggg',
+        '.gg.gg.',
+        '...g...',
+        '...g...',
+        '.bbbbb.',
+        '.bBBBb.',
+        '.bbbbb.',
+      ], { g: '#5fbf4a', b: '#8a5a34', B: '#6a4427' }),
+      sack: pixel([
+        '..kkk..',
+        '.kSSSk.',
+        '.kkSkk.',
+        'kSSSSSk',
+        'kSSgSSk',
+        'kSgggSk',
+        'kSSSSSk',
+        '.kkkkk.',
+      ], { k: '#6b5232', S: '#e3cf96', g: '#5fbf4a' }),
+      hoe: pixel([
+        'MMMM.',
+        'MMMM.',
+        '...w.',
+        '...w.',
+        '...w.',
+        '...w.',
+        '...w.',
+        '...w.',
+      ], { M: '#8a8c94', w: '#b98952' }),
+      rod: pixel([
+        '.....w',
+        '....w.',
+        '...w.s',
+        '..w..s',
+        '.w...s',
+        'w....F',
+      ], { w: '#b98952', s: '#f4efe2', F: '#e8504a' }),
+      saw: pixel([
+        'wwMMMMMMM',
+        'wwMMMMMMM',
+        '..MvMvMvM',
+      ], { w: '#8f5f38', M: '#b9bcc7', v: '#8a8c94' }),
       zzz: pixel([
         'kkkkk....',
         '...k.....',
@@ -254,7 +302,7 @@
         const t2 = art.tex.clone(); t2.repeat.set(-1, 1); t2.offset.set(1, 0); t2.wrapS = 1000; t2.needsUpdate = true;
         art = { ...art, tex: t2 };
       }
-      const sp2 = new SpriteC(new MatC({ map: art.tex, alphaTest: 0.5, transparent: false, depthTest: !['splash', 'question', 'zzz', 'heart'].includes(pr.type), fog: !['question', 'flame'].includes(pr.type) }));
+      const sp2 = new SpriteC(new MatC({ map: art.tex, alphaTest: 0.5, transparent: false, depthTest: !['splash', 'question', 'zzz', 'heart', 'eyes', 'hoe', 'rod', 'saw'].includes(pr.type), fog: !['question', 'flame', 'eyes'].includes(pr.type) }));
       const hgt = pr.size || 1.4;
       sp2.scale.set((hgt * art.w) / art.h, hgt, 1);
       sp2.center.set(0.5, 0);
@@ -279,7 +327,7 @@
 
     // ---- カメラ：ショットごとにキー（look は相対位置）。az は「海側から見る」を0にした角度 ----
     const shots = story.camera.map((sh) => ({
-      from: sh.from, to: sh.to, hour: sh.hour ?? story.hour ?? 10,
+      from: sh.from, to: sh.to, hour: sh.hour ?? story.hour ?? 10, shake: sh.shake || null,
       keys: sh.keys.map((k) => {
         const L = resolve(k.look, k.t);
         const g = k.frame ? G.get(k.frame) : L.g || firstG;
@@ -292,6 +340,12 @@
       const ts = sh.keys.map((k) => k.t), o = { hour: sh.hour };
       for (const f of ['tx', 'ty', 'tz', 'dist', 'az', 'pol', 'fov']) o[f] = pchip(ts, sh.keys.map((k) => k[f]), t);
       o.dist = Math.exp(o.dist);
+      // 手ぶれ：shake: [[開始, 終わり, 強さ], …]（クマが飛び出す・木が倒れるなど）。強さはだんだん弱まる
+      for (const [a, b, amp] of sh.shake || []) {
+        if (t < a || t > b) continue;
+        const e = amp * (1 - (t - a) / Math.max(0.01, b - a)) * Math.min(1, o.dist / 20);
+        o.tx += e * Math.sin(t * 41); o.ty += e * 0.6 * Math.sin(t * 53 + 1); o.tz += e * Math.cos(t * 47);
+      }
       return o;
     };
 
@@ -342,6 +396,29 @@
         inner.scale.setScalar(pr.size || 1);
         g.add(inner);
         parts.push(inner);
+      } else if (pr.type === 'crateopen') {
+        // 木箱が開く：手前（-z）の板が下のふちを軸にパタリと倒れ、中の種と苗が見える
+        const Wc = 6.4, Hc = 5.2, Dc = 5.2, PL = '#a8794a', PD = '#7d5634', BA = '#5b5f68', RO = '#d8c08a';
+        const body = new GroupC(), panel = new GroupC(), stuff = new GroupC();
+        const wall = (x, y, z, w, h, d) => { for (let k = 0; k < 4; k++) body.add(boxMesh(x, (k + 0.5) * (h / 4), z, w, h / 4 - 0.04, d, k % 2 ? PL : PD)); };
+        body.add(boxMesh(0, 0.15, 0, Wc, 0.3, Dc, PD)); // 底
+        wall(0, 0, Dc / 2 - 0.2, Wc, Hc, 0.4); // 奥
+        wall(-Wc / 2 + 0.2, 0, 0, 0.4, Hc, Dc); wall(Wc / 2 - 0.2, 0, 0, 0.4, Hc, Dc); // 左右
+        body.add(boxMesh(0, Hc + 0.1, 0.4, Wc, 0.3, Dc - 0.8, PL), boxMesh(0, Hc + 0.3, 0.4, 0.26, 0.2, Dc - 0.6, RO)); // ふた
+        for (const y of [1.0, Hc - 1.0]) body.add(boxMesh(0, y, Dc / 2, Wc + 0.1, 0.28, 0.12, BA));
+        // 手前の板：下のふち（z=-Dc/2, y=0）を軸に回す
+        for (let k = 0; k < 4; k++) panel.add(boxMesh(0, (k + 0.5) * (Hc / 4), 0, Wc - 0.8, Hc / 4 - 0.04, 0.4, k % 2 ? PL : PD));
+        for (const y of [1.0, Hc - 1.0]) panel.add(boxMesh(0, y, -0.25, Wc - 0.7, 0.28, 0.12, BA));
+        panel.add(boxMesh(0, Hc / 2, -0.26, 0.26, Hc, 0.1, RO));
+        panel.position.set(0, 0, -Dc / 2 + 0.2);
+        // 中身：苗の山と、種の袋
+        const SG = ['#5fbf4a', '#86cc4e', '#3f8f3a'], SK = '#e3cf96';
+        for (let k = 0; k < 26; k++) {
+          const x = -2.4 + (k % 6) * 0.95, z = -1.6 + Math.floor(k / 6) * 0.8, h = 0.6 + ((k * 7) % 5) * 0.35;
+          stuff.add(boxMesh(x, 0.3 + h / 2, z, 0.7, h, 0.6, k % 4 === 0 ? SK : SG[k % 3]));
+        }
+        g.add(body, panel, stuff);
+        parts.push(body, panel, stuff);
       } else if (pr.type === 'float') {
         // 海から流れ着く物（建物の形をそのまま使う）。from（海）→ at（浜）へ t0〜t1 で寄ってくる
         const def = (window.__BUILD_DEFS || {})[pr.kind || 'bigcrate'];
@@ -357,7 +434,7 @@
         }
       }
       scene.add(g);
-      solids.push({ pr, g, parts });
+      solids.push({ pr, g, parts, y0: g.position.y });
     }
     const solidAt = (Q, t) => {
       const pr = Q.pr;
@@ -391,6 +468,19 @@
         Q.g.position.set(x, yAt(x, z) - 0.05 + step * 0.12, z);
         if (xb !== xa || zb !== za) Q.g.rotation.y = Math.atan2(-(zb - za), xb - xa);
         Q.parts[0].children.forEach((m) => { if (m.userData.leg != null) m.position.y = m.userData.y + (m.userData.leg === step ? 0.35 : 0); });
+        // 立ち上がる（吠える）：rear: [[開始, 終わり], …]。後ろ脚を軸に前を起こす
+        let up = 0;
+        for (const [a, b] of pr.rear || []) if (t >= a && t <= b) up = Math.max(up, Math.sin(Math.PI * Math.min(1, (t - a) / Math.max(0.01, b - a))));
+        Q.parts[0].rotation.z = up * 0.95;
+        Q.parts[0].position.x = -up * 1.2;
+      } else if (pr.type === 'crateopen') {
+        // パタリ：ためてから一気に倒れ、地面で少し跳ねる
+        const panel = Q.parts[1], u = Math.max(0, t - pr.t0);
+        let a = 0;
+        if (t >= pr.t0 - 0.5 && t < pr.t0) a = 0.05 * Math.sin((t - pr.t0) * 40); // ガタガタ
+        else if (u > 0) { const f = Math.min(1, u / 0.45); a = (Math.PI / 2) * f * f; if (u > 0.45) a = Math.PI / 2 - 0.12 * Math.abs(Math.sin((u - 0.45) * 14)) * Math.max(0, 1 - (u - 0.45) * 2.5); }
+        panel.rotation.x = -a;
+        Q.g.position.y = Q.y0 + (t >= pr.t0 - 0.5 && t < pr.t0 ? 0.08 * Math.abs(Math.sin(t * 33)) : 0);
       } else if (pr.type === 'float') {
         const u = Math.max(0, Math.min(1, (t - pr.t0) / Math.max(0.01, pr.t1 - pr.t0)));
         const e = 1 - (1 - u) * (1 - u);
