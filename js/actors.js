@@ -14,6 +14,7 @@ import { driftPose } from './drift.js';
 const SPRITE_H = 3.9; // スプライト1コマの高さ（ワールド単位）
 const SPRITE_W = (SPRITE_H * FRAME_W) / FRAME_H;
 const MIN_PX = 30; // 引いて見ても、これより小さくはしない（画面上の高さ）
+const CROWD_PX = 13; // 選んでいない人は、引いたときこの高さ（px）まで小さくなる（全体表示で島民が島を覆わないように）
 const WATERLINE = 0.4; // 漂流者のスプライトは、下からこの割合が水面の下
 const DRIFT_VISIBLE = 1 - WATERLINE;
 
@@ -424,7 +425,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       const dist = camera.position.distanceTo(a.pos);
       const pxPerUnit = pxPerUnitAt1 / Math.max(1, dist);
       const minPx = a.index === selected ? MIN_PX + 8 : MIN_PX;
-      const k = Math.max(1, minPx / (SPRITE_H * pxPerUnit));
+      const k = Math.max(1, (a.index === selected ? minPx : CROWD_PX) / (SPRITE_H * pxPerUnit));
       a.scale = k;
 
       a.sprite.position.set(s.x, a.y + hop * k, s.z);
@@ -479,7 +480,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       const pxPerUnit = pxPerUnitAt1 / Math.max(1, dist);
       const minPx = a.selected ? MIN_PX + 8 : MIN_PX;
       // 引いたときの大きさは島民とほぼ同じ（下が水に沈むぶん、少しだけ大きめ）
-      const k = Math.max(1, minPx / (SPRITE_H * 0.8 * pxPerUnit));
+      const k = Math.max(1, (a.selected ? minPx : CROWD_PX * 1.1) / (SPRITE_H * 0.8 * pxPerUnit));
       a.scale = k;
       // 波の上下は、引いて大きく描いているときも見えるように大きさに合わせる（島民の跳ねと同じ扱い）
       const waterline = SEA_Y + (s.y - SEA_Y) * k;

@@ -4,6 +4,7 @@
 import { DEFAULT_ISLAND_NAME, DATA_URLS, DEMO_DATA_URLS, RTDB_BASE, BARRIERS, DEFAULT_BARRIER } from './config.js';
 import { DISTRICTS, DISTRICT_INDEX, DISTRICT_ALIASES, MAP_VERSION, HALF, V1_HALF } from './terrain.js';
 import { drifterColor } from './drift.js';
+import { hashStr } from './rng.js';
 
 async function fetchJson(url, { timeoutMs = 0 } = {}) {
   if (!timeoutMs) {
@@ -192,6 +193,9 @@ export function normalizeData(stateRaw, rosterRaw, driftRaw = null) {
     currentVote,
   };
 
+  const homeSpread = districts.filter((d) => d.inRange).map((d) => d.id);
+  if (!homeSpread.length) homeSpread.push('beach');
+
   // 名簿
   const list = Array.isArray(rosterRaw) ? rosterRaw : Array.isArray(rosterRaw?.islanders) ? rosterRaw.islanders : [];
   const seen = new Set();
@@ -212,7 +216,8 @@ export function normalizeData(stateRaw, rosterRaw, driftRaw = null) {
       displayName: anonymous ? '匿名の島民' : name,
       joinedDay,
       since: str(p.since),
-      home: districtId(str(p.home, 'beach')), // 起点の地区（散歩でよく行く）。省略時は漂着した砂浜
+      // 起点の地区（散歩でよく行く）。省略時：漂着した日は砂浜、次の日からは行動範囲の地区に散らす（砂浜に固まらないように）
+      home: p.home ? districtId(str(p.home)) : joinedDay >= day ? 'beach' : homeSpread[hashStr(id) % homeSpread.length],
       job: str(p.job, '島民'),
       color: str(p.color, '#4a90d9'),
       relationships: (Array.isArray(p.relationships) ? p.relationships : [])
