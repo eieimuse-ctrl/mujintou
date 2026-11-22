@@ -10,6 +10,7 @@ import { MAX_LABELS } from './config.js';
 import { nameLabelLook } from './zoom.js';
 import { SEA_Y } from './terrain.js';
 import { driftPose } from './drift.js';
+import { beastCanvas, beastPose, BEAST_FRAMES } from './beast.js';
 
 const SPRITE_H = 3.9; // スプライト1コマの高さ（ワールド単位）
 const SPRITE_W = (SPRITE_H * FRAME_W) / FRAME_H;
@@ -110,7 +111,7 @@ function pixelTexture(canvas) {
 }
 
 // drifters: 漂流者（data.js の正規化済み）、drifts: その場所と揺れ方（drift.js の layoutDrifters。drifters と同じ並び）
-export function createActors({ scene, islanders, sim, labelLayer, drifters = [], drifts = [], heightAt = null, torchPosts = [], torchEvery = 5, mysteries = [] }) {
+export function createActors({ scene, islanders, sim, labelLayer, drifters = [], drifts = [], heightAt = null, torchPosts = [], torchEvery = 5, mysteries = [], beast = null }) {
   let labelsOn = true; // 名札の表示（ボタンで消せる。消していても、選んだ人の名札は出す）
   const bubbleTex = {};
   for (const icon of ['talk', 'heart', 'note', 'bolt']) bubbleTex[icon] = pixelTexture(bubbleCanvas(icon));
@@ -270,6 +271,22 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
     missingMarks.push({ a, q, gy, m, flame, glow, fy });
   }
 
+  // ---- 森の獣（state.beast）：畑のまわりをうろつき、近くの島民を追いかけまわす ----
+  const FLEE_R = 14; // これより近い島民は、獣の前を逃げる
+  let beastObj = null;
+  if (beast) {
+    const tex = pixelTexture(beastCanvas());
+    tex.repeat.set(1 / BEAST_FRAMES.length, 1);
+    const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, alphaTest: 0.5, transparent: false }));
+    sp.center.set(0.5, 0);
+    sp.renderOrder = 2;
+    const sh = new THREE.Mesh(shadowGeo, shadowMat);
+    sh.renderOrder = 1;
+    scene.add(sp, sh);
+    const u = (SPRITE_H / FRAME_H) * 1.6; // 島民と同じ1ドットの大きさ×1.35
+    beastObj = { b: beast, sp, sh, tex, w: BEAST_FRAMES[0][0].length * u, h: BEAST_FRAMES[0].length * u, now: null, screen: null, facing: 1 };
+  }
+
   // ---- なぞの物（流れ着いた木箱など）：上に「？」を浮かべる。タップでその建物の詳細 ----
   const mysteryMarks = mysteries.map((b) => {
     const q = new THREE.Sprite(new THREE.SpriteMaterial({ map: qTex, alphaTest: 0.5, transparent: false, depthTest: false, fog: false }));
@@ -354,6 +371,9 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
     // 動画の録画用：globalThis.__stagePose(i, tMs) があれば、その演技（台本）で動かす。null を返した人はふだんの暮らし。
     const stagePose = typeof globalThis.__stagePose === 'function' ? globalThis.__stagePose : null;
     const stageDrift = typeof globalThis.__stageDrift === 'function' ? globalThis.__stageDrift : null;
+    // 獣の位置（台本で録画中は出さない。動画では小道具として描く）
+    const bz = beastObj && !stagePose ? beastPose(beastObj.b, tMs) : null;
+    if (beastObj) beastObj.now = bz;
     for (const a of actors) {
       if (a.person.missing && !stagePose) {
         // 姿は消して、選んだときのカメラは森の奥の「？」へ
@@ -367,7 +387,19 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       a.sprite.visible = a.shadow.visible = true;
       const td = !stagePose && a.person.today;
       const duty = !stagePose && !td && dutyNow(a.index, tMs);
-      const s = (stagePose && stagePose(a.index, tMs)) || (td ? todayPose(a, td) : duty ? dutyPose(duty) : sim.stateAt(a.index, tMs));
+      let s = (stagePose && stagePose(a.index, tMs)) || (td ? todayPose(a, td) : duty ? dutyPose(duty) : sim.stateAt(a.index, tMs));
+      if (bz && s) {
+        // 獣に近い人は、獣の進む先へ逃げる（近いほど強く引っぱられる。人ごとに少し左右へずらす）
+        const d = Math.hypot(s.x - bz.x, s.z - bz.z);
+        if (d < FLEE_R) {
+          const L = Math.hypot(bz.dx, bz.dz) || 1, fx = bz.dx / L, fz = bz.dz / L;
+          const lat = ((a.seed % 7) - 3) * 1.9, ahead = 6 + (a.seed % 5) * 1.3;
+          const cx = bz.x + fx * ahead - fz * lat, cz = bz.z + fz * ahead + fx * lat;
+          const w = Math.min(1, (FLEE_R - d) / (FLEE_R * 0.45));
+          const x = s.x + (cx - s.x) * w, z = s.z + (cz - s.z) * w;
+          s = { ...s, x, z, y: groundAt(x, z), dx: fx, dz: fz, anim: w > 0.3 ? 'run' : 'shock', bubble: null };
+        }
+      }
       // 手に持つ松明（火の番のとき、または台本で torch: true のとき）
       const holdTorch = !!duty || !!(s && s.torch);
       let ts = torchSprites.get(a.index);
@@ -499,6 +531,29 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       a.screen.top = a.screen.y - above * pxPerUnit * 0.56;
     }
 
+    if (beastObj) {
+      const B = beastObj;
+      B.sp.visible = B.sh.visible = !!bz;
+      if (bz) {
+        const y = groundAt(bz.x, bz.z);
+        v.set(bz.x, y, bz.z);
+        const dist = camera.position.distanceTo(v);
+        const k = Math.max(1, CROWD_PX * 1.3 / (B.h * (pxPerUnitAt1 / Math.max(1, dist))));
+        const side = bz.dx * right.x + bz.dz * right.z;
+        if (Math.abs(side) > 0.01) B.facing = side > 0 ? 1 : -1;
+        const f = Math.floor(t * 9) % BEAST_FRAMES.length;
+        // 左右の向きは、テクスチャを左右反転して変える
+        const fw = 1 / BEAST_FRAMES.length;
+        B.tex.repeat.set(B.facing > 0 ? fw : -fw, 1);
+        B.tex.offset.set(B.facing > 0 ? f * fw : (f + 1) * fw, 0);
+        B.sp.position.set(bz.x, y + (f ? 0.15 : 0) * k, bz.z);
+        B.sp.scale.set(B.w * k, B.h * k, 1);
+        B.sh.position.set(bz.x, y + 0.07, bz.z);
+        B.sh.scale.setScalar(k * 1.6);
+        v.set(bz.x, y + B.h * k * 0.5, bz.z).project(camera);
+        B.screen = { visible: v.z > -1 && v.z < 1 && Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1, x: (v.x * 0.5 + 0.5) * viewport.w, y: (-v.y * 0.5 + 0.5) * viewport.h, r: Math.max(26, B.w * k * (pxPerUnitAt1 / Math.max(1, dist)) * 0.6) };
+      }
+    }
     for (const mk of mysteryMarks) {
       v.set(mk.b.x, mk.top, mk.b.z);
       const dist = camera.position.distanceTo(v);
@@ -606,6 +661,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
     for (const mk of missingMarks) {
       if (mk.screen && mk.screen.visible && Math.hypot(mk.screen.x - x, mk.screen.y - y) < 44) return { kind: 'islander', index: mk.a.index };
     }
+    if (beastObj?.now && beastObj.screen?.visible && Math.hypot(beastObj.screen.x - x, beastObj.screen.y - y) < beastObj.screen.r) return { kind: 'beast', beast: beastObj.b };
     for (const mk of mysteryMarks) {
       if (mk.screen && mk.screen.visible && Math.hypot(mk.screen.x - x, mk.screen.y - y) < 44) return { kind: 'building', building: mk.b };
     }
@@ -635,6 +691,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
     pick,
     pickAt,
     positionOf: (i) => actors[i]?.pos,
+    beastPosition: () => beastObj?.now,
     dutyOf: (i, tMs) => dutyNow(i, tMs),
     atlasOf: (i) => actors[i]?.atlas,
     drifterPositionOf: (j) => castaways[j]?.pos,

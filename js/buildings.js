@@ -295,8 +295,62 @@ function bigcrate() {
   };
 }
 
-export const BUILDING_TYPES = { hut, field, pier, watchtower, still, ruins, workshop, bigcrate };
-export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台', still: '蒸留装置', ruins: '昔の住人の跡', workshop: '石の作業場', bigcrate: '大きな木箱' };
+// 大きな畑（6日目）：木箱の種と苗を植えた。growth 0=植えたばかり・1=芽が伸びた・2=実った（data.js が日数から決める）
+//   列ごとに作物がちがう：小麦・大豆・さつまいも・綿・果物の苗
+function bigfield(src = {}) {
+  const g = Math.max(0, Math.min(2, Number(src.growth ?? 2)));
+  const W = 26, D = 18;
+  const b = [];
+  b.push(box(0, 0.15, 0, W, 0.3, D, SOIL));
+  const crops = [
+    { leaf: '#86cc4e', ripe: '#e8c24a', tall: 1.4 }, // 小麦
+    { leaf: '#5fb04a', ripe: '#c9b46a', tall: 0.8 }, // 大豆
+    { leaf: '#4f9e3e', ripe: '#b0486a', tall: 0.5 }, // さつまいも
+    { leaf: '#7cbf5a', ripe: '#f4efe2', tall: 1.0 }, // 綿
+    { leaf: '#3f8f3a', ripe: '#e8504a', tall: 2.2 }, // 果物の苗
+  ];
+  const rows = 8;
+  for (let r = 0; r < rows; r++) {
+    const z = -D / 2 + 1.6 + r * ((D - 3.2) / (rows - 1));
+    b.push(box(0, 0.4, z, W - 2.4, 0.22, 0.9, SOIL_LIGHT));
+    const c = crops[r % crops.length];
+    for (let n = 0; n < 11; n++) {
+      const x = -W / 2 + 2.2 + n * ((W - 4.4) / 10);
+      if (g === 0) {
+        b.push(box(x, 0.6, z, 0.3, 0.22, 0.3, LEAF_B)); // 植えたばかりの芽
+        continue;
+      }
+      const h = c.tall * (g === 1 ? 0.5 : 1) * (0.85 + ((n * 7 + r * 3) % 4) * 0.08);
+      b.push(box(x, 0.5 + h / 2, z, 0.6, h, 0.6, c.leaf));
+      if (g === 2 && (n + r) % 2 === 0) b.push(box(x + 0.18, 0.5 + h * 0.8, z + 0.2, 0.34, 0.34, 0.34, c.ripe));
+    }
+  }
+  // 柵
+  for (let x = -W / 2; x <= W / 2 + 0.01; x += W / 6) for (const z of [-D / 2, D / 2]) b.push(box(x, 0.6, z, 0.3, 1.2, 0.3, WOOD_LIGHT));
+  for (let z = -D / 2 + D / 4; z < D / 2; z += D / 4) for (const x of [-W / 2, W / 2]) b.push(box(x, 0.6, z, 0.3, 1.2, 0.3, WOOD_LIGHT));
+  for (const z of [-D / 2]) b.push(box(0, 0.85, z, W, 0.18, 0.18, WOOD_LIGHT));
+  for (const x of [-W / 2, W / 2]) b.push(box(x, 0.85, 0, 0.18, 0.18, D, WOOD_LIGHT));
+  // かかし
+  b.push(box(W / 2 - 2, 1.3, -D / 2 + 1.5, 0.22, 2.4, 0.22, WOOD));
+  b.push(box(W / 2 - 2, 1.9, -D / 2 + 1.5, 1.8, 0.22, 0.22, WOOD));
+  b.push(box(W / 2 - 2, 2.75, -D / 2 + 1.5, 0.75, 0.6, 0.6, WALL));
+  b.push(box(W / 2 - 2, 3.15, -D / 2 + 1.5, 1.3, 0.2, 1.1, THATCH_A));
+  return {
+    label: '大きな畑',
+    boxes: b,
+    height: 3.4,
+    footprint: { x0: -W / 2 - 0.2, x1: W / 2 + 0.2, z0: -D / 2 - 0.2, z1: D / 2 + 0.2 },
+    spots: [
+      { x: -6, z: D / 2 + 1.6, fx: -6, fz: 0, jobs: ['農家'], label: '大きな畑' },
+      { x: 2, z: D / 2 + 1.6, fx: 2, fz: 0, jobs: ['農家'], label: '大きな畑' },
+      { x: 9, z: D / 2 + 1.6, fx: 9, fz: 0, jobs: ['農家', '料理人'], label: '大きな畑' },
+      { x: -W / 2 - 1.6, z: 0, fx: 0, fz: 0, jobs: ['農家'], label: '大きな畑' },
+    ],
+  };
+}
+
+export const BUILDING_TYPES = { hut, field, pier, watchtower, still, ruins, workshop, bigcrate, bigfield };
+export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台', still: '蒸留装置', ruins: '昔の住人の跡', workshop: '石の作業場', bigcrate: '大きな木箱', bigfield: '大きな畑' };
 
 // 広場のたき火（建物データではなく、島に最初からある）
 export function campfireBoxes() {
@@ -336,7 +390,7 @@ export function resolveBuildings(defs, terrain) {
 
   (defs || []).forEach((src, n) => {
     const make = BUILDING_TYPES[src.type] || signpost;
-    const def = make();
+    const def = make(src);
     let x = Number(src.x) || 0;
     let z = Number(src.z) || 0;
     const rot = Number(src.rot) || 0;

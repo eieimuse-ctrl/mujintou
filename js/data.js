@@ -127,6 +127,8 @@ export function normalizeData(stateRaw, rosterRaw, driftRaw = null) {
       rot: Number(b.rot) || 0,
       builtDay: Number.isFinite(Number(b.builtDay)) ? int(b.builtDay) : null,
       note: str(b.note),
+      // 育つ建物（畑）：建った日から何日たったか（0〜2。2で実る）
+      growth: Number.isFinite(Number(b.builtDay)) ? Math.max(0, Math.min(2, day - int(b.builtDay))) : 2,
     }))
     .filter((b) => b.builtDay === null || b.builtDay <= day);
 
@@ -178,7 +180,20 @@ export function normalizeData(stateRaw, rosterRaw, driftRaw = null) {
     forestRoad = { points: pts.length >= 2 ? pts : [[-74, -22], [-128, -34]], need: Math.max(1, int(r.need, 300)), width: Number(r.width) > 0 ? Number(r.width) : 3.2, startDay: int(r.startDay, 1), count: 0, label: str(r.label, '光の場所'), open: r.open === true };
   }
 
+  // 切りひらいた土地（ワールド座標の四角。ふちは少しぎざぎざ）：その中には木を生やさない
+  const num = (v) => Number(v);
+  const clearings = (Array.isArray(s.clearings) ? s.clearings : [])
+    .filter((c) => c && ['x0', 'x1', 'z0', 'z1'].every((k) => Number.isFinite(num(c[k]))) && int(c.day, 1) <= day)
+    .map((c) => ({ x0: Math.min(num(c.x0), num(c.x1)), x1: Math.max(num(c.x0), num(c.x1)), z0: Math.min(num(c.z0), num(c.z1)), z1: Math.max(num(c.z0), num(c.z1)), day: int(c.day, 1) }));
+  // 森の獣：{ day, x, z, r, text }（ワールド座標）。day 以降、gone: true まで畑のまわりをうろつく
+  const bs = s.beast && typeof s.beast === 'object' ? s.beast : null;
+  const beast = bs && int(bs.day, 1) <= day && bs.gone !== true && Number.isFinite(num(bs.x)) && Number.isFinite(num(bs.z))
+    ? { day: int(bs.day, 1), x: num(bs.x), z: num(bs.z), r: num(bs.r) > 0 ? num(bs.r) : 18, text: str(bs.text, '森を追われた獣が、畑のまわりで島民を追いかけまわしている。正体はまだ分からない…') }
+    : null;
+
   const state = {
+    clearings,
+    beast,
     forestRoad,
     toolAge: str(s.toolAge) === 'stone' ? 'stone' : '', // 道具の時代（'stone'＝石の道具。昔の住人の跡をまねて作った）
     sample: s.sample === true,

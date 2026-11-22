@@ -157,6 +157,16 @@ async function buildIsland({ state, islanders, drifters = [] }) {
   if (hub.isBase) built.blocked.add(terrain.idx(hubCell.i, hubCell.j)); // たき火のマス
   const { cells: roadCells, torches } = forestRoadCells(state.forestRoad, terrain);
   for (const k of roadCells) built.reserved.add(k);
+  // 切りひらいた土地（森を切った場所）：木を生やさない。ふちは少しぎざぎざにする
+  for (const c of state.clearings || []) {
+    const a = terrain.cellOf(c.x0 - 6, c.z0 - 6), b = terrain.cellOf(c.x1 + 6, c.z1 + 6);
+    for (let j = a.j; j <= b.j; j++) for (let i = a.i; i <= b.i; i++) {
+      if (!terrain.inGrid(i, j)) continue;
+      const p = terrain.cellCenter(i, j);
+      const m = 4 * Math.sin(p.z * 0.21 + p.x * 0.05) + 2.5 * Math.sin(p.x * 0.37); // ふちのゆらぎ
+      if (p.x > c.x0 - m && p.x < c.x1 + m && p.z > c.z0 - m && p.z < c.z1 + m) built.reserved.add(terrain.idx(i, j));
+    }
+  }
   const deco = generateDeco(terrain, (i, j) => built.reserved.has(terrain.idx(i, j)));
   // 島民の行動範囲の外（森・高原などの自然の障壁の向こう）。集まり場のある地区は必ず範囲に入れる。
   const hubDistrict = terrain.district[terrain.idx(hubCell.i, hubCell.j)];
@@ -176,7 +186,7 @@ async function buildIsland({ state, islanders, drifters = [] }) {
   const trailCells = sim.trails();
   for (const k of roadCells) trailCells.add(k);
   const world = createWorld({ canvas, terrain, deco, buildings: built.list, hub, trailCells, torches });
-  const actors = createActors({ scene: world.scene, islanders, sim, labelLayer, drifters, drifts, heightAt: (x, z) => terrain.heightAt(x, z), torchPosts: torches, torchEvery: 5, mysteries: built.list.filter((b) => b.type === 'bigcrate') });
+  const actors = createActors({ scene: world.scene, islanders, sim, labelLayer, drifters, drifts, heightAt: (x, z) => terrain.heightAt(x, z), torchPosts: torches, torchEvery: 5, mysteries: built.list.filter((b) => b.type === 'bigcrate'), beast: state.beast });
   actors.setLabels(labelsPref);
   labelsActors = actors;
 
@@ -210,6 +220,10 @@ async function buildIsland({ state, islanders, drifters = [] }) {
 
   function handleTap(x, y) {
     const hit = actors.pick(x, y);
+    if (hit && hit.kind === 'beast') {
+      ui.toast(hit.beast.text, 4200);
+      return;
+    }
     if (hit && hit.kind === 'building') {
       selected = -1;
       selectedDrifter = -1;

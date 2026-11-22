@@ -85,6 +85,8 @@ await page.evaluate(async () => {
   const m = await import('/js/buildings.js');
   window.__BUILD_DEFS = {};
   for (const [k, f] of Object.entries(m.BUILDING_TYPES)) window.__BUILD_DEFS[k] = f();
+  const bm = await import('/js/beast.js'); // 森の獣の絵（PWA と同じ）
+  window.__BEAST = { frames: bm.BEAST_FRAMES, pal: bm.BEAST_PAL };
 });
 const env = await page.evaluate((s) => window.__ep3.setup(s), story);
 console.log(NAME, 'cast', env.n, 'chrome', await browser.version());
