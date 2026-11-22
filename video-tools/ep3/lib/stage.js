@@ -331,6 +331,17 @@
           g.add(m);
           parts.push(m);
         }
+      } else if (pr.type === 'beast') {
+        // ボクセルのクマ（PWA と同じ形）。path: [[t, x, z], …] を走る
+        const inner = new GroupC();
+        for (const b of window.__BEAST.boxes) {
+          const m = boxMesh(b.p[0], b.p[1], b.p[2], b.s[0], b.s[1], b.s[2], b.c);
+          if (b.leg != null) m.userData.leg = b.leg, m.userData.y = b.p[1];
+          inner.add(m);
+        }
+        inner.scale.setScalar(pr.size || 1);
+        g.add(inner);
+        parts.push(inner);
       } else if (pr.type === 'float') {
         // 海から流れ着く物（建物の形をそのまま使う）。from（海）→ at（浜）へ t0〜t1 で寄ってくる
         const def = (window.__BUILD_DEFS || {})[pr.kind || 'bigcrate'];
@@ -369,6 +380,17 @@
           const f = m.userData.full, pop = e < 1 ? 0.6 + 0.4 * e : 1;
           m.scale.set(f[0] * pop, f[1] * e, f[2] * pop);
         });
+      } else if (pr.type === 'beast') {
+        const P = pr.path, n = P.length;
+        let k = 0; while (k < n - 2 && t > P[k + 1][0]) k++;
+        const [ta, xa, za] = P[k], [tb, xb, zb] = P[Math.min(k + 1, n - 1)];
+        const u = Math.max(0, Math.min(1, (t - ta) / Math.max(0.01, tb - ta)));
+        const x = xa + (xb - xa) * u, z = za + (zb - za) * u;
+        const moving = u > 0 && u < 1 && (xb !== xa || zb !== za);
+        const step = moving ? Math.floor(t * 8) % 2 : 0;
+        Q.g.position.set(x, yAt(x, z) - 0.05 + step * 0.12, z);
+        if (xb !== xa || zb !== za) Q.g.rotation.y = Math.atan2(-(zb - za), xb - xa);
+        Q.parts[0].children.forEach((m) => { if (m.userData.leg != null) m.position.y = m.userData.y + (m.userData.leg === step ? 0.35 : 0); });
       } else if (pr.type === 'float') {
         const u = Math.max(0, Math.min(1, (t - pr.t0) / Math.max(0.01, pr.t1 - pr.t0)));
         const e = 1 - (1 - u) * (1 - u);
