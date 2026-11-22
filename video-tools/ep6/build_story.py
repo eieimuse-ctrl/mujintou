@@ -81,7 +81,7 @@ LAND = [238.0, 147.0]                 # 木箱のある浜
 PLAZA = [15.0, 36.0]                  # 仲良しの場面
 FIELD = [-104.0, -2.0]                # 巨大な畑（26×18）
 CLEAR = {'x0': -132, 'x1': -86, 'z0': -62, 'z1': 22}   # 森を切りひらく範囲（森の東の1/3）
-FIRE = [-104.0, 18.0]                 # 夕方のたき火（畑の南）
+FIRE = [-100.0, 32.0]                 # 夕方のたき火（畑の南の平原）
 DEN = [-140.0, 15.0]                  # クマが出てくる森の暗がり
 RC, RR = FIRE, 8.0                    # 追いかけっこの輪
 
@@ -199,7 +199,7 @@ camera = [
     {'from': 27.0, 'to': 31.0, 'hour': 11, 'shake': [[27.4, 27.8, 0.4], [27.9, 28.3, 0.4], [28.4, 28.8, 0.4]], 'keys': [{'t': 27.0, 'look': [-112, 12], 'dist': 26, 'az': 0.9, 'pol': 1.15, 'up': 4.0, 'frame': 'south', 'fov': 50}, {'t': 28.0, 'look': [-112, 12], 'dist': 18, 'az': 0.1, 'pol': 1.25, 'up': 5.0, 'frame': 'south', 'fov': 40}, {'t': 31.0, 'look': [-112, 12], 'dist': 16, 'az': -0.3, 'pol': 1.25, 'up': 5.0, 'frame': 'south', 'fov': 36}]},
     # 畑：畑のまわりを大きく一周しながら上がっていく
     {'from': 31.0, 'to': 37.0, 'hour': 13, 'keys': [{'t': 31.0, 'look': FIELD, 'dist': 26, 'az': -0.8, 'pol': 1.2, 'up': 1, 'frame': 'south'}, {'t': 34.0, 'look': FIELD, 'dist': 40, 'az': 0.8, 'pol': 0.95, 'up': 1, 'frame': 'south'}, {'t': 37.0, 'look': FIELD, 'dist': 58, 'az': 2.2, 'pol': 0.75, 'up': 0, 'frame': 'south'}]},
-    {'from': 37.0, 'to': 40.5, 'hour': 18.2, 'keys': [{'t': 37.0, 'look': FIRE, 'dist': 13, 'az': 0.3, 'pol': 1.22, 'up': 2, 'frame': 'south'}, {'t': 40.5, 'look': FIRE, 'dist': 10, 'az': 0.0, 'pol': 1.25, 'up': 2, 'frame': 'south'}]},
+    {'from': 37.0, 'to': 40.5, 'hour': 18.2, 'keys': [{'t': 37.0, 'look': FIRE, 'dist': 24, 'az': 0.5, 'pol': 1.05, 'up': 1.5, 'frame': 'south'}, {'t': 40.5, 'look': FIRE, 'dist': 17, 'az': 0.0, 'pol': 1.12, 'up': 1.5, 'frame': 'south'}]},
     # クマ：暗がりへじわじわ寄る → 飛び出す（大ゆれ）
     {'from': 40.5, 'to': 42.4, 'hour': 19.3, 'keys': [{'t': 40.5, 'look': [DEN[0] + 6, DEN[1]], 'dist': 26, 'az': 1.45, 'pol': 1.3, 'up': 2.5, 'frame': 'south', 'fov': 40}, {'t': 42.4, 'look': [DEN[0] + 2, DEN[1]], 'dist': 12, 'az': 1.5, 'pol': 1.32, 'up': 2.5, 'frame': 'south', 'fov': 30}]},
     {'from': 42.4, 'to': 43.6, 'hour': 19.3, 'shake': [[42.4, 43.6, 1.6]], 'keys': [{'t': 42.4, 'look': [DEN[0] + 4, DEN[1]], 'dist': 16, 'az': 1.6, 'pol': 1.3, 'up': 2.5, 'frame': 'south', 'fov': 50}, {'t': 43.6, 'look': ring(TH0, RR), 'dist': 20, 'az': 1.1, 'pol': 1.2, 'up': 2, 'frame': 'south', 'fov': 50}]},
