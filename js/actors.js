@@ -508,7 +508,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       mk.q.scale.set(3.2 * k * 0.86, 3.2 * k, 1);
       mk.glow.visible = !stagePose;
       mk.glow.position.set(mk.b.x, mk.top - 1.5, mk.b.z);
-      const gk = Math.max(20, dist * 0.14) * (1 + 0.06 * Math.sin(t * 3));
+      const gk = Math.min(34, Math.max(20, dist * 0.14)) * (1 + 0.06 * Math.sin(t * 3)); // 引いても大きくしすぎない
       mk.glow.scale.set(gk, gk, 1);
       v.set(mk.b.x, mk.top + 2.5 + 2.2 * k, mk.b.z).project(camera);
       mk.screen = { visible: v.z > -1 && v.z < 1 && Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1, x: (v.x * 0.5 + 0.5) * viewport.w, y: (-v.y * 0.5 + 0.5) * viewport.h };
