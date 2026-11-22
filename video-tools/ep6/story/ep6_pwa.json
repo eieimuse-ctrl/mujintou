@@ -1,6 +1,6 @@
 {
  "day": 6,
- "roster": "../../../../../../tmp/ep6test/islanders.json",
+ "roster": "../input/islanders.json",
  "today": [
   {
    "id": "rino._.15",

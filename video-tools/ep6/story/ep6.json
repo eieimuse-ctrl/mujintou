@@ -1,6 +1,6 @@
 {
  "title": "6日目",
- "roster": "../../../../../../tmp/ep6test/islanders.json",
+ "roster": "../input/islanders.json",
  "day": 6,
  "fps": 24,
  "duration": 61.0,
@@ -68,6 +68,11 @@
   }
  ],
  "cast": [
+  "pqew314kaiko",
+  "dadadada8806",
+  "karen_774060",
+  "shugo.77",
+  "da_kyou10",
   "ichi.09",
   "tsuki5747",
   "nanasi774_ou",
@@ -78,52 +83,78 @@
   "yuradayo0330",
   "guernica.0712",
   "heroruto7",
+  "leop_ard5722",
+  "oushi0328",
   "hyuga_0619",
+  "oyad.ai1015",
   "rino._.15",
+  "zt_rn917",
   "atsukidesu",
+  "ganota.0079",
   "abc.man13",
+  "airu0728000",
   "tsubuanzu_shiyuu",
   "masatk_no_m",
+  "fukukintaro",
   "yuridazo68",
   "marumegane4",
   "nabemegane",
   "pocchanpochi",
+  "aeons0aha",
   "yukikun4126",
   "zidian34",
   "denzirouu",
   "ayu.mu__8890",
+  "sousukenonaka",
   "fuse.daichi",
   "saori.siegert",
   "onyankopunch",
-  "pqew314kaiko",
-  "karen_774060",
-  "shugo.77",
   "analogayane",
+  "ha.ku27",
   "kota_chumuri",
-  "_shaun81",
-  "musashi.617",
-  "sasa_mi42151315",
-  "tako1216yaki",
-  "s.sora1225",
+  "1kichi_chan",
+  "29tomo83",
   "_otekat_____",
-  "shinohara_kohei",
-  "paianiyan",
-  "kubotto0505",
+  "_shaun81",
+  "bea_utiful183",
   "hiropone_89",
-  "yu._.u225",
-  "tokitin2014",
-  "max_no_otousan",
-  "sakasaka_1482",
-  "horiharu0220",
-  "hori_harusabu",
-  "nintendo_3ds.12",
-  "aosan116",
-  "akuserumeihong",
+  "hkssss69",
+  "kohe051",
   "kosei20130324",
-  "s_02y.ayta",
-  "hayato210165",
+  "kubotto0505",
+  "kurimasa222",
+  "mi_erimo",
+  "musashi.617",
+  "akuserumeihong",
+  "aosan116",
+  "hori_harusabu",
+  "horiharu0220",
+  "kame___1020",
+  "max_no_otousan",
   "bear.44190633",
-  "dosukoi.5845"
+  "daichi.yamazaki3",
+  "dosukoi.5845",
+  "hafuki82",
+  "hayato210165",
+  "10siuuuuuuuuu",
+  "1330o.yram",
+  "2ayuna29",
+  "62_yuzu.1118",
+  "777ippei777",
+  "_62654598",
+  "_qn1x0",
+  "_taiga64",
+  "a.sho0221",
+  "a_pc29",
+  "akrfjmt417",
+  "aoi.0321p",
+  "aoi_banana.223",
+  "asahi9352",
+  "ayaka.9708",
+  "ayaneco8",
+  "brad_tsu",
+  "cheetah.7058910",
+  "chiiitotto"
  ],
  "groups": [
   {
@@ -135,7 +166,30 @@
    ],
    "radius": 3.2,
    "gap": 2.6,
-   "members": []
+   "members": [
+    "10siuuuuuuuuu",
+    "1330o.yram",
+    "2ayuna29",
+    "62_yuzu.1118",
+    "777ippei777",
+    "_62654598",
+    "_qn1x0",
+    "_taiga64",
+    "a.sho0221",
+    "a_pc29",
+    "aeons0aha",
+    "airu0728000",
+    "akrfjmt417",
+    "aoi.0321p",
+    "aoi_banana.223",
+    "asahi9352",
+    "ayaka.9708",
+    "ayaneco8",
+    "brad_tsu",
+    "cheetah.7058910",
+    "chiiitotto",
+    "da_kyou10"
+   ]
   },
   {
    "name": "star",
@@ -213,24 +267,24 @@
    "radius": 7,
    "gap": 2.8,
    "members": [
-    "_shaun81",
-    "musashi.617",
-    "sasa_mi42151315",
-    "marumegane4",
-    "tako1216yaki",
-    "s.sora1225",
+    "1kichi_chan",
+    "29tomo83",
     "_otekat_____",
-    "ichi.09",
-    "shinohara_kohei",
-    "nanasi774_ou",
-    "paianiyan",
+    "_shaun81",
     "atsukidesu",
-    "kubotto0505",
+    "bea_utiful183",
     "hiropone_89",
-    "yu._.u225",
-    "tokitin2014",
-    "max_no_otousan",
-    "fuse.daichi"
+    "hkssss69",
+    "hyuga_0619",
+    "ichi.09",
+    "kohe051",
+    "kosei20130324",
+    "kubotto0505",
+    "kurimasa222",
+    "marumegane4",
+    "mi_erimo",
+    "musashi.617",
+    "nanasi774_ou"
    ]
   },
   {
@@ -243,18 +297,18 @@
    "radius": 7.5,
    "gap": 2.4,
    "members": [
-    "_shaun81",
-    "musashi.617",
-    "sasa_mi42151315",
-    "marumegane4",
-    "tako1216yaki",
-    "s.sora1225",
+    "1kichi_chan",
+    "29tomo83",
     "_otekat_____",
-    "ichi.09",
-    "shinohara_kohei",
-    "nanasi774_ou",
-    "paianiyan",
+    "_shaun81",
     "atsukidesu",
+    "bea_utiful183",
+    "hiropone_89",
+    "hkssss69",
+    "hyuga_0619",
+    "ichi.09",
+    "kohe051",
+    "kosei20130324",
     "marumegane4",
     "fuse.daichi",
     "analogayane",
@@ -274,12 +328,12 @@
    ],
    "gap": 3.0,
    "members": [
-    "sakasaka_1482",
-    "horiharu0220",
-    "hori_harusabu",
-    "nintendo_3ds.12",
+    "akuserumeihong",
     "aosan116",
-    "akuserumeihong"
+    "hori_harusabu",
+    "horiharu0220",
+    "kame___1020",
+    "max_no_otousan"
    ]
   },
   {
@@ -295,12 +349,12 @@
    ],
    "gap": 3.2,
    "members": [
-    "kosei20130324",
-    "s_02y.ayta",
-    "hyuga_0619",
-    "hayato210165",
     "bear.44190633",
+    "daichi.yamazaki3",
     "dosukoi.5845",
+    "fuse.daichi",
+    "hafuki82",
+    "hayato210165",
     "rino._.15"
    ]
   },
@@ -308,28 +362,28 @@
    "name": "fire",
    "type": "ring",
    "spot": [
-    -104.0,
-    18.0
+    -100.0,
+    32.0
    ],
    "radius": 3.4,
    "gap": 2.2,
    "members": [
     "tsuki5747",
     "yuridazo68",
+    "1kichi_chan",
+    "29tomo83",
+    "_otekat_____",
     "_shaun81",
-    "musashi.617",
-    "sasa_mi42151315",
-    "marumegane4",
-    "tako1216yaki",
-    "s.sora1225"
+    "atsukidesu",
+    "bea_utiful183"
    ]
   },
   {
    "name": "south",
    "type": "line",
    "spot": [
-    -104.0,
-    18.0
+    -100.0,
+    32.0
    ],
    "face": [
     0,
@@ -344,6 +398,97 @@
    "t": 0,
    "anim": "idle",
    "face": "front"
+  },
+  {
+   "who": [
+    "10siuuuuuuuuu",
+    "1330o.yram",
+    "2ayuna29",
+    "62_yuzu.1118",
+    "777ippei777",
+    "_62654598",
+    "_qn1x0",
+    "_taiga64",
+    "a.sho0221",
+    "a_pc29",
+    "aeons0aha",
+    "airu0728000",
+    "akrfjmt417",
+    "aoi.0321p",
+    "aoi_banana.223",
+    "asahi9352",
+    "ayaka.9708",
+    "ayaneco8",
+    "brad_tsu",
+    "cheetah.7058910",
+    "chiiitotto",
+    "da_kyou10"
+   ],
+   "t": 0,
+   "at": {
+    "slot": "beach"
+   },
+   "anim": "sleep"
+  },
+  {
+   "who": [
+    "10siuuuuuuuuu",
+    "1330o.yram",
+    "2ayuna29",
+    "62_yuzu.1118",
+    "777ippei777",
+    "_62654598",
+    "_qn1x0",
+    "_taiga64",
+    "a.sho0221",
+    "a_pc29",
+    "aeons0aha",
+    "airu0728000",
+    "akrfjmt417",
+    "aoi.0321p",
+    "aoi_banana.223",
+    "asahi9352",
+    "ayaka.9708",
+    "ayaneco8",
+    "brad_tsu",
+    "cheetah.7058910",
+    "chiiitotto",
+    "da_kyou10"
+   ],
+   "t": 1.3,
+   "anim": "sit",
+   "pick": 0.35,
+   "seed": 6
+  },
+  {
+   "who": [
+    "10siuuuuuuuuu",
+    "1330o.yram",
+    "2ayuna29",
+    "62_yuzu.1118",
+    "777ippei777",
+    "_62654598",
+    "_qn1x0",
+    "_taiga64",
+    "a.sho0221",
+    "a_pc29",
+    "aeons0aha",
+    "airu0728000",
+    "akrfjmt417",
+    "aoi.0321p",
+    "aoi_banana.223",
+    "asahi9352",
+    "ayaka.9708",
+    "ayaneco8",
+    "brad_tsu",
+    "cheetah.7058910",
+    "chiiitotto",
+    "da_kyou10"
+   ],
+   "t": 2.2,
+   "anim": "cheer",
+   "pick": 0.25,
+   "seed": 2
   },
   {
    "who": "guernica.0712",
@@ -441,24 +586,24 @@
   },
   {
    "who": [
-    "_shaun81",
-    "musashi.617",
-    "sasa_mi42151315",
-    "marumegane4",
-    "tako1216yaki",
-    "s.sora1225",
+    "1kichi_chan",
+    "29tomo83",
     "_otekat_____",
-    "ichi.09",
-    "shinohara_kohei",
-    "nanasi774_ou",
-    "paianiyan",
+    "_shaun81",
     "atsukidesu",
-    "kubotto0505",
+    "bea_utiful183",
     "hiropone_89",
-    "yu._.u225",
-    "tokitin2014",
-    "max_no_otousan",
-    "fuse.daichi"
+    "hkssss69",
+    "hyuga_0619",
+    "ichi.09",
+    "kohe051",
+    "kosei20130324",
+    "kubotto0505",
+    "kurimasa222",
+    "marumegane4",
+    "mi_erimo",
+    "musashi.617",
+    "nanasi774_ou"
    ],
    "t": 11.5,
    "at": {
@@ -474,18 +619,18 @@
   },
   {
    "who": [
-    "_shaun81",
-    "musashi.617",
-    "sasa_mi42151315",
-    "marumegane4",
-    "tako1216yaki",
-    "s.sora1225",
+    "1kichi_chan",
+    "29tomo83",
     "_otekat_____",
-    "ichi.09",
-    "shinohara_kohei",
-    "nanasi774_ou",
-    "paianiyan",
+    "_shaun81",
     "atsukidesu",
+    "bea_utiful183",
+    "hiropone_89",
+    "hkssss69",
+    "hyuga_0619",
+    "ichi.09",
+    "kohe051",
+    "kosei20130324",
     "marumegane4",
     "fuse.daichi",
     "analogayane",
@@ -505,18 +650,18 @@
   },
   {
    "who": [
-    "_shaun81",
-    "musashi.617",
-    "sasa_mi42151315",
-    "marumegane4",
-    "tako1216yaki",
-    "s.sora1225",
+    "1kichi_chan",
+    "29tomo83",
     "_otekat_____",
-    "ichi.09",
-    "shinohara_kohei",
-    "nanasi774_ou",
-    "paianiyan",
+    "_shaun81",
     "atsukidesu",
+    "bea_utiful183",
+    "hiropone_89",
+    "hkssss69",
+    "hyuga_0619",
+    "ichi.09",
+    "kohe051",
+    "kosei20130324",
     "marumegane4",
     "fuse.daichi",
     "analogayane",
@@ -527,18 +672,18 @@
   },
   {
    "who": [
-    "_shaun81",
-    "musashi.617",
-    "sasa_mi42151315",
-    "marumegane4",
-    "tako1216yaki",
-    "s.sora1225",
+    "1kichi_chan",
+    "29tomo83",
     "_otekat_____",
-    "ichi.09",
-    "shinohara_kohei",
-    "nanasi774_ou",
-    "paianiyan",
+    "_shaun81",
     "atsukidesu",
+    "bea_utiful183",
+    "hiropone_89",
+    "hkssss69",
+    "hyuga_0619",
+    "ichi.09",
+    "kohe051",
+    "kosei20130324",
     "marumegane4",
     "fuse.daichi",
     "analogayane",
@@ -551,12 +696,12 @@
   },
   {
    "who": [
-    "sakasaka_1482",
-    "horiharu0220",
-    "hori_harusabu",
-    "nintendo_3ds.12",
+    "akuserumeihong",
     "aosan116",
-    "akuserumeihong"
+    "hori_harusabu",
+    "horiharu0220",
+    "kame___1020",
+    "max_no_otousan"
    ],
    "t": 20.0,
    "at": {
@@ -567,12 +712,12 @@
   },
   {
    "who": [
-    "sakasaka_1482",
-    "horiharu0220",
-    "hori_harusabu",
-    "nintendo_3ds.12",
+    "akuserumeihong",
     "aosan116",
-    "akuserumeihong"
+    "hori_harusabu",
+    "horiharu0220",
+    "kame___1020",
+    "max_no_otousan"
    ],
    "t": 25.8,
    "anim": "cheer",
@@ -580,12 +725,12 @@
   },
   {
    "who": [
-    "sakasaka_1482",
-    "horiharu0220",
-    "hori_harusabu",
-    "nintendo_3ds.12",
+    "akuserumeihong",
     "aosan116",
-    "akuserumeihong"
+    "hori_harusabu",
+    "horiharu0220",
+    "kame___1020",
+    "max_no_otousan"
    ],
    "t": 27.0,
    "anim": "cheer",
@@ -593,12 +738,12 @@
   },
   {
    "who": [
-    "kosei20130324",
-    "s_02y.ayta",
-    "hyuga_0619",
-    "hayato210165",
     "bear.44190633",
+    "daichi.yamazaki3",
     "dosukoi.5845",
+    "fuse.daichi",
+    "hafuki82",
+    "hayato210165",
     "rino._.15"
    ],
    "t": 31.0,
@@ -610,12 +755,12 @@
   },
   {
    "who": [
-    "kosei20130324",
-    "s_02y.ayta",
-    "hyuga_0619",
-    "hayato210165",
     "bear.44190633",
+    "daichi.yamazaki3",
     "dosukoi.5845",
+    "fuse.daichi",
+    "hafuki82",
+    "hayato210165",
     "rino._.15"
    ],
    "t": 35.6,
@@ -626,12 +771,12 @@
    "who": [
     "tsuki5747",
     "yuridazo68",
+    "1kichi_chan",
+    "29tomo83",
+    "_otekat_____",
     "_shaun81",
-    "musashi.617",
-    "sasa_mi42151315",
-    "marumegane4",
-    "tako1216yaki",
-    "s.sora1225"
+    "atsukidesu",
+    "bea_utiful183"
    ],
    "t": 37.0,
    "at": {
@@ -640,8 +785,8 @@
    "anim": "sit",
    "face": {
     "at": [
-     -104.0,
-     18.0
+     -100.0,
+     32.0
     ]
    }
   },
@@ -659,12 +804,12 @@
    "who": [
     "tsuki5747",
     "yuridazo68",
+    "1kichi_chan",
+    "29tomo83",
+    "_otekat_____",
     "_shaun81",
-    "musashi.617",
-    "sasa_mi42151315",
-    "marumegane4",
-    "tako1216yaki",
-    "s.sora1225"
+    "atsukidesu",
+    "bea_utiful183"
    ],
    "t": 41.0,
    "anim": "idle",
@@ -679,12 +824,12 @@
    "who": [
     "tsuki5747",
     "yuridazo68",
+    "1kichi_chan",
+    "29tomo83",
+    "_otekat_____",
     "_shaun81",
-    "musashi.617",
-    "sasa_mi42151315",
-    "marumegane4",
-    "tako1216yaki",
-    "s.sora1225"
+    "atsukidesu",
+    "bea_utiful183"
    ],
    "t": 42.6,
    "anim": "shock",
@@ -699,8 +844,8 @@
    "who": "tsuki5747",
    "t": 43.2,
    "to": [
-    -108.53,
-    21.73
+    -104.53,
+    35.73
    ],
    "dur": 0.5,
    "run": true
@@ -709,8 +854,8 @@
    "who": "tsuki5747",
    "t": 43.7,
    "to": [
-    -106.68,
-    22.74
+    -102.68,
+    36.74
    ],
    "dur": 0.3,
    "run": true
@@ -719,8 +864,8 @@
    "who": "tsuki5747",
    "t": 44.0,
    "to": [
-    -104.52,
-    23.18
+    -100.52,
+    37.18
    ],
    "dur": 0.3,
    "run": true
@@ -729,8 +874,8 @@
    "who": "tsuki5747",
    "t": 44.3,
    "to": [
-    -102.3,
-    23.02
+    -98.3,
+    37.02
    ],
    "dur": 0.3,
    "run": true
@@ -739,8 +884,8 @@
    "who": "tsuki5747",
    "t": 44.6,
    "to": [
-    -100.28,
-    22.26
+    -96.28,
+    36.26
    ],
    "dur": 0.3,
    "run": true
@@ -749,8 +894,8 @@
    "who": "tsuki5747",
    "t": 44.9,
    "to": [
-    -98.7,
-    21.01
+    -94.7,
+    35.01
    ],
    "dur": 0.3,
    "run": true
@@ -759,8 +904,8 @@
    "who": "tsuki5747",
    "t": 45.2,
    "to": [
-    -97.74,
-    19.39
+    -93.74,
+    33.39
    ],
    "dur": 0.3,
    "run": true
@@ -769,8 +914,8 @@
    "who": "tsuki5747",
    "t": 45.5,
    "to": [
-    -97.52,
-    17.62
+    -93.52,
+    31.62
    ],
    "dur": 0.3,
    "run": true
@@ -779,8 +924,8 @@
    "who": "tsuki5747",
    "t": 45.8,
    "to": [
-    -98.06,
-    15.89
+    -94.06,
+    29.89
    ],
    "dur": 0.3,
    "run": true
@@ -789,8 +934,8 @@
    "who": "tsuki5747",
    "t": 46.1,
    "to": [
-    -99.3,
-    14.4
+    -95.3,
+    28.4
    ],
    "dur": 0.3,
    "run": true
@@ -799,8 +944,8 @@
    "who": "tsuki5747",
    "t": 46.4,
    "to": [
-    -101.1,
-    13.35
+    -97.1,
+    27.35
    ],
    "dur": 0.3,
    "run": true
@@ -809,8 +954,8 @@
    "who": "tsuki5747",
    "t": 46.7,
    "to": [
-    -103.24,
-    12.84
+    -99.24,
+    26.84
    ],
    "dur": 0.3,
    "run": true
@@ -819,8 +964,8 @@
    "who": "tsuki5747",
    "t": 47.0,
    "to": [
-    -105.47,
-    12.93
+    -101.47,
+    26.93
    ],
    "dur": 0.3,
    "run": true
@@ -831,8 +976,8 @@
    "anim": "shock",
    "face": {
     "at": [
-     -99.67,
-     12.62
+     -95.67,
+     26.62
     ]
    }
   },
@@ -840,8 +985,8 @@
    "who": "tsuki5747",
    "t": 48.4,
    "to": [
-    -110.27,
-    19.37
+    -106.27,
+    33.37
    ],
    "dur": 0.3,
    "run": true
@@ -850,8 +995,8 @@
    "who": "tsuki5747",
    "t": 48.7,
    "to": [
-    -109.32,
-    20.99
+    -105.32,
+    34.99
    ],
    "dur": 0.3,
    "run": true
@@ -860,8 +1005,8 @@
    "who": "tsuki5747",
    "t": 49.0,
    "to": [
-    -107.74,
-    22.25
+    -103.74,
+    36.25
    ],
    "dur": 0.3,
    "run": true
@@ -870,8 +1015,8 @@
    "who": "tsuki5747",
    "t": 49.3,
    "to": [
-    -105.73,
-    23.01
+    -101.73,
+    37.01
    ],
    "dur": 0.3,
    "run": true
@@ -880,8 +1025,8 @@
    "who": "tsuki5747",
    "t": 49.6,
    "to": [
-    -103.51,
-    23.18
+    -99.51,
+    37.18
    ],
    "dur": 0.3,
    "run": true
@@ -890,8 +1035,8 @@
    "who": "tsuki5747",
    "t": 49.9,
    "to": [
-    -101.34,
-    22.75
+    -97.34,
+    36.75
    ],
    "dur": 0.3,
    "run": true
@@ -900,8 +1045,8 @@
    "who": "tsuki5747",
    "t": 50.2,
    "to": [
-    -99.49,
-    21.75
+    -95.49,
+    35.75
    ],
    "dur": 0.3,
    "run": true
@@ -910,8 +1055,8 @@
    "who": "tsuki5747",
    "t": 50.5,
    "to": [
-    -98.18,
-    20.31
+    -94.18,
+    34.31
    ],
    "dur": 0.3,
    "run": true
@@ -920,8 +1065,8 @@
    "who": "tsuki5747",
    "t": 50.8,
    "to": [
-    -97.54,
-    18.6
+    -93.54,
+    32.6
    ],
    "dur": 0.3,
    "run": true
@@ -930,8 +1075,8 @@
    "who": "tsuki5747",
    "t": 51.1,
    "to": [
-    -97.67,
-    16.81
+    -93.67,
+    30.81
    ],
    "dur": 0.3,
    "run": true
@@ -940,8 +1085,8 @@
    "who": "tsuki5747",
    "t": 51.4,
    "to": [
-    -98.55,
-    15.17
+    -94.55,
+    29.17
    ],
    "dur": 0.3,
    "run": true
@@ -950,8 +1095,8 @@
    "who": "tsuki5747",
    "t": 51.7,
    "to": [
-    -100.06,
-    13.86
+    -96.06,
+    27.86
    ],
    "dur": 0.3,
    "run": true
@@ -960,8 +1105,8 @@
    "who": "tsuki5747",
    "t": 52.0,
    "to": [
-    -102.04,
-    13.04
+    -98.04,
+    27.04
    ],
    "dur": 0.3,
    "run": true
@@ -970,8 +1115,8 @@
    "who": "yuridazo68",
    "t": 43.25,
    "to": [
-    -106.14,
-    24.17
+    -102.14,
+    38.17
    ],
    "dur": 0.5,
    "run": true
@@ -980,8 +1125,8 @@
    "who": "yuridazo68",
    "t": 43.7,
    "to": [
-    -103.41,
-    24.38
+    -99.41,
+    38.38
    ],
    "dur": 0.3,
    "run": true
@@ -990,8 +1135,8 @@
    "who": "yuridazo68",
    "t": 44.0,
    "to": [
-    -100.74,
-    23.85
+    -96.74,
+    37.85
    ],
    "dur": 0.3,
    "run": true
@@ -1000,8 +1145,8 @@
    "who": "yuridazo68",
    "t": 44.3,
    "to": [
-    -98.46,
-    22.62
+    -94.46,
+    36.62
    ],
    "dur": 0.3,
    "run": true
@@ -1010,8 +1155,8 @@
    "who": "yuridazo68",
    "t": 44.6,
    "to": [
-    -96.84,
-    20.85
+    -92.84,
+    34.85
    ],
    "dur": 0.3,
    "run": true
@@ -1020,8 +1165,8 @@
    "who": "yuridazo68",
    "t": 44.9,
    "to": [
-    -96.05,
-    18.74
+    -92.05,
+    32.74
    ],
    "dur": 0.3,
    "run": true
@@ -1030,8 +1175,8 @@
    "who": "yuridazo68",
    "t": 45.2,
    "to": [
-    -96.21,
-    16.55
+    -92.21,
+    30.55
    ],
    "dur": 0.3,
    "run": true
@@ -1040,8 +1185,8 @@
    "who": "yuridazo68",
    "t": 45.5,
    "to": [
-    -97.28,
-    14.53
+    -93.28,
+    28.53
    ],
    "dur": 0.3,
    "run": true
@@ -1050,8 +1195,8 @@
    "who": "yuridazo68",
    "t": 45.8,
    "to": [
-    -99.14,
-    12.91
+    -95.14,
+    26.91
    ],
    "dur": 0.3,
    "run": true
@@ -1060,8 +1205,8 @@
    "who": "yuridazo68",
    "t": 46.1,
    "to": [
-    -101.58,
-    11.9
+    -97.58,
+    25.9
    ],
    "dur": 0.3,
    "run": true
@@ -1070,8 +1215,8 @@
    "who": "yuridazo68",
    "t": 46.4,
    "to": [
-    -104.3,
-    11.6
+    -100.3,
+    25.6
    ],
    "dur": 0.3,
    "run": true
@@ -1080,8 +1225,8 @@
    "who": "yuridazo68",
    "t": 46.7,
    "to": [
-    -106.99,
-    12.06
+    -102.99,
+    26.06
    ],
    "dur": 0.3,
    "run": true
@@ -1090,8 +1235,8 @@
    "who": "yuridazo68",
    "t": 47.0,
    "to": [
-    -109.32,
-    13.22
+    -105.32,
+    27.22
    ],
    "dur": 0.3,
    "run": true
@@ -1102,8 +1247,8 @@
    "anim": "shock",
    "face": {
     "at": [
-     -99.67,
-     12.62
+     -95.67,
+     26.62
     ]
    }
   },
@@ -1111,8 +1256,8 @@
    "who": "yuridazo68",
    "t": 48.4,
    "to": [
-    -109.76,
-    22.44
+    -105.76,
+    36.44
    ],
    "dur": 0.3,
    "run": true
@@ -1121,8 +1266,8 @@
    "who": "yuridazo68",
    "t": 48.7,
    "to": [
-    -107.54,
-    23.74
+    -103.54,
+    37.74
    ],
    "dur": 0.3,
    "run": true
@@ -1131,8 +1276,8 @@
    "who": "yuridazo68",
    "t": 49.0,
    "to": [
-    -104.91,
-    24.36
+    -100.91,
+    38.36
    ],
    "dur": 0.3,
    "run": true
@@ -1141,1730 +1286,1802 @@
    "who": "yuridazo68",
    "t": 49.3,
    "to": [
-    -102.17,
-    24.23
+    -98.17,
+    38.23
    ],
    "dur": 0.3,
    "run": true
   },
   {
    "who": "yuridazo68",
-   "t": 49.6,
-   "to": [
-    -99.64,
-    23.37
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "yuridazo68",
-   "t": 49.9,
-   "to": [
-    -97.63,
-    21.87
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "yuridazo68",
-   "t": 50.2,
-   "to": [
-    -96.37,
-    19.92
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "yuridazo68",
-   "t": 50.5,
-   "to": [
-    -96.01,
-    17.74
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "yuridazo68",
-   "t": 50.8,
-   "to": [
-    -96.59,
-    15.6
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "yuridazo68",
-   "t": 51.1,
-   "to": [
-    -98.04,
-    13.73
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "yuridazo68",
-   "t": 51.4,
-   "to": [
-    -100.2,
-    12.37
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "yuridazo68",
-   "t": 51.7,
-   "to": [
-    -102.8,
-    11.67
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "yuridazo68",
-   "t": 52.0,
-   "to": [
-    -105.55,
-    11.72
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "_shaun81",
-   "t": 43.300000000000004,
-   "to": [
-    -101.84,
-    25.4
-   ],
-   "dur": 0.5,
-   "run": true
-  },
-  {
-   "who": "_shaun81",
-   "t": 43.7,
-   "to": [
-    -98.84,
-    24.38
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "_shaun81",
-   "t": 44.0,
-   "to": [
-    -96.45,
-    22.61
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "_shaun81",
-   "t": 44.3,
-   "to": [
-    -94.94,
-    20.29
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "_shaun81",
-   "t": 44.6,
-   "to": [
-    -94.51,
-    17.71
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "_shaun81",
-   "t": 44.9,
-   "to": [
-    -95.19,
-    15.16
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "_shaun81",
-   "t": 45.2,
-   "to": [
-    -96.91,
-    12.94
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "_shaun81",
-   "t": 45.5,
-   "to": [
-    -99.47,
-    11.32
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "_shaun81",
-   "t": 45.8,
-   "to": [
-    -102.56,
-    10.49
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "_shaun81",
-   "t": 46.1,
-   "to": [
-    -105.82,
-    10.54
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "_shaun81",
-   "t": 46.4,
-   "to": [
-    -108.86,
-    11.47
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "_shaun81",
-   "t": 46.7,
-   "to": [
-    -111.34,
-    13.17
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "_shaun81",
-   "t": 47.0,
-   "to": [
-    -112.95,
-    15.44
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "_shaun81",
-   "t": 47.3,
-   "anim": "shock",
-   "face": {
-    "at": [
-     -99.67,
-     12.62
-    ]
-   }
-  },
-  {
-   "who": "_shaun81",
-   "t": 48.4,
-   "to": [
-    -106.84,
-    25.25
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "_shaun81",
-   "t": 48.7,
-   "to": [
-    -103.61,
-    25.59
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "_shaun81",
-   "t": 49.0,
-   "to": [
-    -100.42,
-    25.04
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "_shaun81",
-   "t": 49.3,
-   "to": [
-    -97.66,
-    23.66
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "_shaun81",
    "t": 49.6,
    "to": [
     -95.64,
-    21.61
+    37.37
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "_shaun81",
+   "who": "yuridazo68",
    "t": 49.9,
    "to": [
-    -94.61,
-    19.13
+    -93.63,
+    35.87
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "_shaun81",
+   "who": "yuridazo68",
    "t": 50.2,
    "to": [
-    -94.68,
-    16.53
+    -92.37,
+    33.92
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "_shaun81",
+   "who": "yuridazo68",
    "t": 50.5,
    "to": [
-    -95.85,
-    14.09
+    -92.01,
+    31.74
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "_shaun81",
+   "who": "yuridazo68",
    "t": 50.8,
    "to": [
-    -97.99,
-    12.12
+    -92.59,
+    29.6
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "_shaun81",
+   "who": "yuridazo68",
    "t": 51.1,
    "to": [
-    -100.83,
-    10.84
+    -94.04,
+    27.73
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "_shaun81",
+   "who": "yuridazo68",
    "t": 51.4,
    "to": [
-    -104.04,
-    10.4
+    -96.2,
+    26.37
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "_shaun81",
+   "who": "yuridazo68",
    "t": 51.7,
    "to": [
-    -107.25,
-    10.86
+    -98.8,
+    25.67
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "_shaun81",
+   "who": "yuridazo68",
    "t": 52.0,
    "to": [
-    -110.08,
-    12.16
+    -101.55,
+    25.72
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
-   "t": 43.35,
+   "who": "1kichi_chan",
+   "t": 43.300000000000004,
    "to": [
-    -99.67,
-    21.88
+    -97.84,
+    39.4
    ],
    "dur": 0.5,
    "run": true
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 43.7,
    "to": [
-    -98.29,
-    20.48
+    -94.84,
+    38.38
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 44.0,
    "to": [
-    -97.57,
-    18.79
+    -92.45,
+    36.61
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 44.3,
    "to": [
-    -97.62,
-    17.0
+    -90.94,
+    34.29
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 44.6,
    "to": [
-    -98.42,
-    15.33
+    -90.51,
+    31.71
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 44.9,
    "to": [
-    -99.88,
-    13.98
+    -91.19,
+    29.16
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 45.2,
+   "to": [
+    -92.91,
+    26.94
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "1kichi_chan",
+   "t": 45.5,
+   "to": [
+    -95.47,
+    25.32
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "1kichi_chan",
+   "t": 45.8,
+   "to": [
+    -98.56,
+    24.49
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "1kichi_chan",
+   "t": 46.1,
    "to": [
     -101.82,
-    13.1
+    24.54
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
-   "t": 45.5,
-   "to": [
-    -104.02,
-    12.8
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "musashi.617",
-   "t": 45.8,
-   "to": [
-    -106.21,
-    13.11
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "musashi.617",
-   "t": 46.1,
-   "to": [
-    -108.15,
-    14.0
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 46.4,
    "to": [
-    -109.6,
-    15.36
+    -104.86,
+    25.47
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 46.7,
    "to": [
-    -110.39,
-    17.03
+    -107.34,
+    27.17
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 47.0,
    "to": [
-    -110.42,
-    18.81
+    -108.95,
+    29.44
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 47.3,
    "anim": "shock",
    "face": {
     "at": [
-     -99.67,
-     12.62
+     -95.67,
+     26.62
     ]
    }
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 48.4,
    "to": [
-    -102.73,
-    23.1
+    -102.84,
+    39.25
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 48.7,
    "to": [
-    -100.65,
-    22.46
+    -99.61,
+    39.59
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 49.0,
    "to": [
-    -98.97,
-    21.29
+    -96.42,
+    39.04
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 49.3,
    "to": [
-    -97.87,
-    19.73
+    -93.66,
+    37.66
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 49.6,
    "to": [
-    -97.5,
-    17.97
+    -91.64,
+    35.61
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 49.9,
    "to": [
-    -97.89,
-    16.22
+    -90.61,
+    33.13
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 50.2,
    "to": [
-    -99.01,
-    14.67
+    -90.68,
+    30.53
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 50.5,
    "to": [
-    -100.71,
-    13.51
+    -91.85,
+    28.09
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 50.8,
    "to": [
-    -102.8,
-    12.89
+    -93.99,
+    26.12
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 51.1,
    "to": [
-    -105.03,
-    12.87
+    -96.83,
+    24.84
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 51.4,
    "to": [
-    -107.14,
-    13.45
+    -100.04,
+    24.4
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 51.7,
    "to": [
-    -108.88,
-    14.57
+    -103.25,
+    24.86
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "musashi.617",
+   "who": "1kichi_chan",
    "t": 52.0,
    "to": [
-    -110.05,
-    16.09
+    -106.08,
+    26.16
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "sasa_mi42151315",
-   "t": 43.400000000000006,
+   "who": "29tomo83",
+   "t": 43.35,
    "to": [
-    -96.46,
-    20.14
+    -95.67,
+    35.88
    ],
    "dur": 0.5,
    "run": true
   },
   {
-   "who": "sasa_mi42151315",
+   "who": "29tomo83",
    "t": 43.7,
    "to": [
-    -96.0,
-    17.98
+    -94.29,
+    34.48
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "sasa_mi42151315",
+   "who": "29tomo83",
    "t": 44.0,
    "to": [
-    -96.48,
-    15.82
+    -93.57,
+    32.79
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "sasa_mi42151315",
+   "who": "29tomo83",
    "t": 44.3,
    "to": [
-    -97.85,
-    13.91
+    -93.62,
+    31.0
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "sasa_mi42151315",
+   "who": "29tomo83",
    "t": 44.6,
    "to": [
-    -99.94,
-    12.49
+    -94.42,
+    29.33
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "sasa_mi42151315",
+   "who": "29tomo83",
    "t": 44.9,
    "to": [
-    -102.51,
-    11.71
+    -95.88,
+    27.98
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "sasa_mi42151315",
+   "who": "29tomo83",
    "t": 45.2,
    "to": [
-    -105.26,
-    11.68
+    -97.82,
+    27.1
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "sasa_mi42151315",
+   "who": "29tomo83",
    "t": 45.5,
    "to": [
-    -107.85,
-    12.39
+    -100.02,
+    26.8
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "sasa_mi42151315",
+   "who": "29tomo83",
    "t": 45.8,
    "to": [
-    -110.0,
-    13.76
+    -102.21,
+    27.11
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "sasa_mi42151315",
+   "who": "29tomo83",
    "t": 46.1,
    "to": [
-    -111.43,
-    15.64
+    -104.15,
+    28.0
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "sasa_mi42151315",
+   "who": "29tomo83",
    "t": 46.4,
    "to": [
-    -112.0,
-    17.79
+    -105.6,
+    29.36
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "sasa_mi42151315",
+   "who": "29tomo83",
    "t": 46.7,
    "to": [
-    -111.61,
-    19.96
+    -106.39,
+    31.03
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "sasa_mi42151315",
+   "who": "29tomo83",
    "t": 47.0,
    "to": [
-    -110.34,
-    21.91
+    -106.42,
+    32.81
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "sasa_mi42151315",
+   "who": "29tomo83",
    "t": 47.3,
    "anim": "shock",
    "face": {
     "at": [
-     -99.67,
-     12.62
+     -95.67,
+     26.62
     ]
    }
   },
   {
-   "who": "sasa_mi42151315",
+   "who": "29tomo83",
    "t": 48.4,
    "to": [
-    -98.87,
-    22.91
+    -98.73,
+    37.1
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "sasa_mi42151315",
+   "who": "29tomo83",
    "t": 48.7,
    "to": [
-    -97.1,
-    21.23
+    -96.65,
+    36.46
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "sasa_mi42151315",
-   "t": 49.0,
-   "to": [
-    -96.14,
-    19.18
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "sasa_mi42151315",
-   "t": 49.3,
-   "to": [
-    -96.1,
-    16.98
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "sasa_mi42151315",
-   "t": 49.6,
-   "to": [
-    -97.0,
-    14.9
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "sasa_mi42151315",
-   "t": 49.9,
-   "to": [
-    -98.72,
-    13.19
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "sasa_mi42151315",
-   "t": 50.2,
-   "to": [
-    -101.07,
-    12.05
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "sasa_mi42151315",
-   "t": 50.5,
-   "to": [
-    -103.76,
-    11.6
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "sasa_mi42151315",
-   "t": 50.8,
-   "to": [
-    -106.47,
-    11.91
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "sasa_mi42151315",
-   "t": 51.1,
-   "to": [
-    -108.9,
-    12.94
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "sasa_mi42151315",
-   "t": 51.4,
-   "to": [
-    -110.75,
-    14.57
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "sasa_mi42151315",
-   "t": 51.7,
-   "to": [
-    -111.8,
-    16.59
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "sasa_mi42151315",
-   "t": 52.0,
-   "to": [
-    -111.94,
-    18.79
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "marumegane4",
-   "t": 43.45,
-   "to": [
-    -94.62,
-    16.8
-   ],
-   "dur": 0.5,
-   "run": true
-  },
-  {
-   "who": "marumegane4",
-   "t": 43.7,
-   "to": [
-    -95.68,
-    14.33
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "marumegane4",
-   "t": 44.0,
-   "to": [
-    -97.72,
-    12.3
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "marumegane4",
-   "t": 44.3,
-   "to": [
-    -100.5,
-    10.93
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "marumegane4",
-   "t": 44.6,
-   "to": [
-    -103.69,
-    10.4
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "marumegane4",
-   "t": 44.9,
-   "to": [
-    -106.92,
-    10.77
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "marumegane4",
-   "t": 45.2,
-   "to": [
-    -109.81,
-    11.98
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "marumegane4",
-   "t": 45.5,
-   "to": [
-    -112.01,
-    13.91
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "marumegane4",
-   "t": 45.8,
-   "to": [
-    -113.26,
-    16.32
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "marumegane4",
-   "t": 46.1,
-   "to": [
-    -113.43,
-    18.92
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "marumegane4",
-   "t": 46.4,
-   "to": [
-    -112.48,
-    21.42
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "marumegane4",
-   "t": 46.7,
-   "to": [
-    -110.54,
-    23.51
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "marumegane4",
-   "t": 47.0,
-   "to": [
-    -107.82,
-    24.96
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "marumegane4",
-   "t": 47.3,
-   "anim": "shock",
-   "face": {
-    "at": [
-     -99.67,
-     12.62
-    ]
-   }
-  },
-  {
-   "who": "marumegane4",
-   "t": 48.4,
-   "to": [
-    -95.16,
-    20.78
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "marumegane4",
-   "t": 48.7,
-   "to": [
-    -94.5,
-    18.23
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "marumegane4",
+   "who": "29tomo83",
    "t": 49.0,
    "to": [
     -94.97,
-    15.64
+    35.29
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "marumegane4",
+   "who": "29tomo83",
    "t": 49.3,
    "to": [
-    -96.5,
-    13.34
+    -93.87,
+    33.73
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "marumegane4",
+   "who": "29tomo83",
    "t": 49.6,
    "to": [
-    -98.91,
-    11.58
+    -93.5,
+    31.97
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "marumegane4",
+   "who": "29tomo83",
    "t": 49.9,
    "to": [
-    -101.92,
-    10.58
+    -93.89,
+    30.22
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "marumegane4",
+   "who": "29tomo83",
    "t": 50.2,
    "to": [
-    -105.18,
-    10.46
+    -95.01,
+    28.67
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "marumegane4",
+   "who": "29tomo83",
    "t": 50.5,
    "to": [
-    -108.3,
-    11.22
+    -96.71,
+    27.51
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "marumegane4",
+   "who": "29tomo83",
    "t": 50.8,
    "to": [
-    -110.91,
-    12.78
+    -98.8,
+    26.89
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "marumegane4",
+   "who": "29tomo83",
    "t": 51.1,
    "to": [
-    -112.71,
-    14.96
+    -101.03,
+    26.87
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "marumegane4",
+   "who": "29tomo83",
    "t": 51.4,
    "to": [
-    -113.48,
-    17.5
+    -103.14,
+    27.45
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "marumegane4",
+   "who": "29tomo83",
    "t": 51.7,
    "to": [
-    -113.13,
-    20.09
+    -104.88,
+    28.57
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "marumegane4",
+   "who": "29tomo83",
    "t": 52.0,
    "to": [
-    -111.71,
-    22.44
+    -106.05,
+    30.09
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "tako1216yaki",
-   "t": 43.5,
+   "who": "_otekat_____",
+   "t": 43.400000000000006,
    "to": [
-    -98.86,
-    14.82
+    -92.46,
+    34.14
    ],
    "dur": 0.5,
    "run": true
   },
   {
-   "who": "tako1216yaki",
+   "who": "_otekat_____",
    "t": 43.7,
    "to": [
-    -100.51,
-    13.61
+    -92.0,
+    31.98
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "tako1216yaki",
+   "who": "_otekat_____",
    "t": 44.0,
    "to": [
-    -102.57,
-    12.93
+    -92.48,
+    29.82
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "tako1216yaki",
+   "who": "_otekat_____",
    "t": 44.3,
    "to": [
-    -104.79,
-    12.84
+    -93.85,
+    27.91
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "tako1216yaki",
+   "who": "_otekat_____",
    "t": 44.6,
    "to": [
-    -106.93,
-    13.36
+    -95.94,
+    26.49
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "tako1216yaki",
+   "who": "_otekat_____",
    "t": 44.9,
    "to": [
-    -108.72,
-    14.42
+    -98.51,
+    25.71
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "tako1216yaki",
+   "who": "_otekat_____",
    "t": 45.2,
    "to": [
-    -109.95,
-    15.91
+    -101.26,
+    25.68
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "tako1216yaki",
+   "who": "_otekat_____",
    "t": 45.5,
    "to": [
-    -110.48,
-    17.65
+    -103.85,
+    26.39
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "tako1216yaki",
+   "who": "_otekat_____",
    "t": 45.8,
    "to": [
-    -110.25,
-    19.42
+    -106.0,
+    27.76
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "tako1216yaki",
+   "who": "_otekat_____",
    "t": 46.1,
    "to": [
-    -109.28,
-    21.03
+    -107.43,
+    29.64
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "tako1216yaki",
+   "who": "_otekat_____",
    "t": 46.4,
    "to": [
-    -107.69,
-    22.28
+    -108.0,
+    31.79
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "tako1216yaki",
+   "who": "_otekat_____",
    "t": 46.7,
    "to": [
-    -105.66,
-    23.03
+    -107.61,
+    33.96
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "tako1216yaki",
+   "who": "_otekat_____",
    "t": 47.0,
    "to": [
-    -103.44,
-    23.18
+    -106.34,
+    35.91
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "tako1216yaki",
+   "who": "_otekat_____",
    "t": 47.3,
    "anim": "shock",
    "face": {
     "at": [
-     -99.67,
-     12.62
+     -95.67,
+     26.62
     ]
    }
   },
   {
-   "who": "tako1216yaki",
+   "who": "_otekat_____",
    "t": 48.4,
    "to": [
-    -97.55,
-    17.35
+    -94.87,
+    36.91
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "tako1216yaki",
+   "who": "_otekat_____",
    "t": 48.7,
    "to": [
-    -98.21,
-    15.64
+    -93.1,
+    35.23
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "tako1216yaki",
+   "who": "_otekat_____",
    "t": 49.0,
    "to": [
-    -99.54,
-    14.22
+    -92.14,
+    33.18
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "tako1216yaki",
+   "who": "_otekat_____",
    "t": 49.3,
    "to": [
-    -101.41,
-    13.23
+    -92.1,
+    30.98
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "tako1216yaki",
+   "who": "_otekat_____",
    "t": 49.6,
    "to": [
-    -103.57,
-    12.81
+    -93.0,
+    28.9
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "tako1216yaki",
+   "who": "_otekat_____",
    "t": 49.9,
    "to": [
-    -105.79,
-    13.0
+    -94.72,
+    27.19
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "tako1216yaki",
+   "who": "_otekat_____",
    "t": 50.2,
+   "to": [
+    -97.07,
+    26.05
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_otekat_____",
+   "t": 50.5,
+   "to": [
+    -99.76,
+    25.6
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_otekat_____",
+   "t": 50.8,
+   "to": [
+    -102.47,
+    25.91
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_otekat_____",
+   "t": 51.1,
+   "to": [
+    -104.9,
+    26.94
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_otekat_____",
+   "t": 51.4,
+   "to": [
+    -106.75,
+    28.57
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "_otekat_____",
+   "t": 51.7,
    "to": [
     -107.8,
-    13.78
+    30.59
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "tako1216yaki",
-   "t": 50.5,
-   "to": [
-    -109.36,
-    15.06
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "tako1216yaki",
-   "t": 50.8,
-   "to": [
-    -110.29,
-    16.68
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "tako1216yaki",
-   "t": 51.1,
-   "to": [
-    -110.47,
-    18.46
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "tako1216yaki",
-   "t": 51.4,
-   "to": [
-    -109.9,
-    20.18
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "tako1216yaki",
-   "t": 51.7,
-   "to": [
-    -108.63,
-    21.65
-   ],
-   "dur": 0.3,
-   "run": true
-  },
-  {
-   "who": "tako1216yaki",
+   "who": "_otekat_____",
    "t": 52.0,
    "to": [
-    -106.81,
-    22.69
+    -107.94,
+    32.79
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
-   "t": 43.550000000000004,
+   "who": "_shaun81",
+   "t": 43.45,
    "to": [
-    -100.79,
-    12.14
+    -90.62,
+    30.8
    ],
    "dur": 0.5,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 43.7,
    "to": [
-    -103.46,
-    11.61
+    -91.68,
+    28.33
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 44.0,
    "to": [
-    -106.19,
-    11.85
+    -93.72,
+    26.3
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 44.3,
    "to": [
-    -108.67,
-    12.8
+    -96.5,
+    24.93
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 44.6,
    "to": [
-    -110.59,
-    14.37
+    -99.69,
+    24.4
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 44.9,
    "to": [
-    -111.73,
-    16.37
+    -102.92,
+    24.77
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 45.2,
    "to": [
-    -111.97,
-    18.55
+    -105.81,
+    25.98
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 45.5,
    "to": [
-    -111.27,
-    20.68
+    -108.01,
+    27.91
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 45.8,
    "to": [
-    -109.71,
-    22.49
+    -109.26,
+    30.32
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 46.1,
    "to": [
-    -107.47,
-    23.77
+    -109.43,
+    32.92
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 46.4,
    "to": [
-    -104.83,
-    24.37
+    -108.48,
+    35.42
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 46.7,
    "to": [
-    -102.09,
-    24.22
+    -106.54,
+    37.51
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 47.0,
    "to": [
-    -99.58,
-    23.33
+    -103.82,
+    38.96
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 47.3,
    "anim": "shock",
    "face": {
     "at": [
-     -99.67,
-     12.62
+     -95.67,
+     26.62
     ]
    }
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 48.4,
    "to": [
-    -97.51,
-    14.25
+    -91.16,
+    34.78
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 48.7,
    "to": [
-    -99.48,
-    12.72
+    -90.5,
+    32.23
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 49.0,
    "to": [
-    -101.98,
-    11.81
+    -90.97,
+    29.64
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 49.3,
    "to": [
-    -104.71,
-    11.63
+    -92.5,
+    27.34
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 49.6,
    "to": [
-    -107.37,
-    12.19
+    -94.91,
+    25.58
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 49.9,
    "to": [
-    -109.62,
-    13.45
+    -97.92,
+    24.58
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 50.2,
    "to": [
-    -111.22,
-    15.24
+    -101.18,
+    24.46
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 50.5,
    "to": [
-    -111.96,
-    17.35
+    -104.3,
+    25.22
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 50.8,
    "to": [
-    -111.76,
-    19.54
+    -106.91,
+    26.78
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 51.1,
    "to": [
-    -110.65,
-    21.55
+    -108.71,
+    28.96
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 51.4,
    "to": [
-    -108.76,
-    23.14
+    -109.48,
+    31.5
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 51.7,
    "to": [
-    -106.3,
-    24.13
+    -109.13,
+    34.09
    ],
    "dur": 0.3,
    "run": true
   },
   {
-   "who": "s.sora1225",
+   "who": "_shaun81",
    "t": 52.0,
    "to": [
-    -103.58,
-    24.39
+    -107.71,
+    36.44
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 43.5,
+   "to": [
+    -94.86,
+    28.82
+   ],
+   "dur": 0.5,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 43.7,
+   "to": [
+    -96.51,
+    27.61
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 44.0,
+   "to": [
+    -98.57,
+    26.93
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 44.3,
+   "to": [
+    -100.79,
+    26.84
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 44.6,
+   "to": [
+    -102.93,
+    27.36
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 44.9,
+   "to": [
+    -104.72,
+    28.42
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 45.2,
+   "to": [
+    -105.95,
+    29.91
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 45.5,
+   "to": [
+    -106.48,
+    31.65
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 45.8,
+   "to": [
+    -106.25,
+    33.42
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 46.1,
+   "to": [
+    -105.28,
+    35.03
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 46.4,
+   "to": [
+    -103.69,
+    36.28
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 46.7,
+   "to": [
+    -101.66,
+    37.03
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 47.0,
+   "to": [
+    -99.44,
+    37.18
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 47.3,
+   "anim": "shock",
+   "face": {
+    "at": [
+     -95.67,
+     26.62
+    ]
+   }
+  },
+  {
+   "who": "atsukidesu",
+   "t": 48.4,
+   "to": [
+    -93.55,
+    31.35
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 48.7,
+   "to": [
+    -94.21,
+    29.64
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 49.0,
+   "to": [
+    -95.54,
+    28.22
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 49.3,
+   "to": [
+    -97.41,
+    27.23
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 49.6,
+   "to": [
+    -99.57,
+    26.81
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 49.9,
+   "to": [
+    -101.79,
+    27.0
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 50.2,
+   "to": [
+    -103.8,
+    27.78
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 50.5,
+   "to": [
+    -105.36,
+    29.06
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 50.8,
+   "to": [
+    -106.29,
+    30.68
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 51.1,
+   "to": [
+    -106.47,
+    32.46
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 51.4,
+   "to": [
+    -105.9,
+    34.18
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 51.7,
+   "to": [
+    -104.63,
+    35.65
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "atsukidesu",
+   "t": 52.0,
+   "to": [
+    -102.81,
+    36.69
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 43.550000000000004,
+   "to": [
+    -96.79,
+    26.14
+   ],
+   "dur": 0.5,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 43.7,
+   "to": [
+    -99.46,
+    25.61
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 44.0,
+   "to": [
+    -102.19,
+    25.85
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 44.3,
+   "to": [
+    -104.67,
+    26.8
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 44.6,
+   "to": [
+    -106.59,
+    28.37
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 44.9,
+   "to": [
+    -107.73,
+    30.37
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 45.2,
+   "to": [
+    -107.97,
+    32.55
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 45.5,
+   "to": [
+    -107.27,
+    34.68
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 45.8,
+   "to": [
+    -105.71,
+    36.49
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 46.1,
+   "to": [
+    -103.47,
+    37.77
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 46.4,
+   "to": [
+    -100.83,
+    38.37
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 46.7,
+   "to": [
+    -98.09,
+    38.22
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 47.0,
+   "to": [
+    -95.58,
+    37.33
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 47.3,
+   "anim": "shock",
+   "face": {
+    "at": [
+     -95.67,
+     26.62
+    ]
+   }
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 48.4,
+   "to": [
+    -93.51,
+    28.25
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 48.7,
+   "to": [
+    -95.48,
+    26.72
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 49.0,
+   "to": [
+    -97.98,
+    25.81
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 49.3,
+   "to": [
+    -100.71,
+    25.63
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 49.6,
+   "to": [
+    -103.37,
+    26.19
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 49.9,
+   "to": [
+    -105.62,
+    27.45
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 50.2,
+   "to": [
+    -107.22,
+    29.24
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 50.5,
+   "to": [
+    -107.96,
+    31.35
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 50.8,
+   "to": [
+    -107.76,
+    33.54
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 51.1,
+   "to": [
+    -106.65,
+    35.55
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 51.4,
+   "to": [
+    -104.76,
+    37.14
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 51.7,
+   "to": [
+    -102.3,
+    38.13
+   ],
+   "dur": 0.3,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 52.0,
+   "to": [
+    -99.58,
+    38.39
    ],
    "dur": 0.3,
    "run": true
   }
  ],
  "props": [
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "10siuuuuuuuuu",
+    "up": 1.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.2,
+   "size": 0.9,
+   "phase": 0.0
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "1330o.yram",
+    "up": 1.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.2,
+   "size": 0.9,
+   "phase": 0.3
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "2ayuna29",
+    "up": 1.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.2,
+   "size": 0.9,
+   "phase": 0.6
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "62_yuzu.1118",
+    "up": 1.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.2,
+   "size": 0.9,
+   "phase": 0.8999999999999999
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "777ippei777",
+    "up": 1.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.2,
+   "size": 0.9,
+   "phase": 1.2
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "_62654598",
+    "up": 1.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.2,
+   "size": 0.9,
+   "phase": 1.5
+  },
   {
    "type": "heart",
    "from": {
@@ -3474,8 +3691,8 @@
   {
    "type": "flame",
    "from": [
-    -104.0,
-    18.0
+    -100.0,
+    32.0
    ],
    "t0": 37.0,
    "t1": 37.01,
@@ -4065,483 +4282,483 @@
     ],
     [
      42.5,
-     -137.2,
-     15.3
+     -136.8,
+     16.7
     ],
     [
      42.6,
-     -134.4,
-     15.6
+     -133.6,
+     18.4
     ],
     [
      42.7,
-     -131.6,
-     15.9
+     -130.4,
+     20.1
     ],
     [
      42.8,
-     -128.8,
-     16.2
+     -127.2,
+     21.8
     ],
     [
      42.9,
-     -126.0,
-     16.5
-    ],
-    [
-     43.0,
-     -123.2,
-     16.8
-    ],
-    [
-     43.1,
-     -120.4,
-     17.1
-    ],
-    [
-     43.2,
-     -117.6,
-     17.4
-    ],
-    [
-     43.3,
-     -114.8,
-     17.7
-    ],
-    [
-     43.4,
-     -112.0,
-     18.0
-    ],
-    [
-     43.5,
-     -111.95,
-     18.73
-    ],
-    [
-     43.6,
-     -111.79,
-     19.46
-    ],
-    [
-     43.7,
-     -111.53,
-     20.16
-    ],
-    [
-     43.8,
-     -111.17,
-     20.84
-    ],
-    [
-     43.9,
-     -110.71,
-     21.48
-    ],
-    [
-     44.0,
-     -110.17,
-     22.07
-    ],
-    [
-     44.1,
-     -109.54,
-     22.61
-    ],
-    [
-     44.2,
-     -108.85,
-     23.09
-    ],
-    [
-     44.3,
-     -108.08,
+     -124.0,
      23.5
     ],
     [
+     43.0,
+     -120.8,
+     25.2
+    ],
+    [
+     43.1,
+     -117.6,
+     26.9
+    ],
+    [
+     43.2,
+     -114.4,
+     28.6
+    ],
+    [
+     43.3,
+     -111.2,
+     30.3
+    ],
+    [
+     43.4,
+     -108.0,
+     32.0
+    ],
+    [
+     43.5,
+     -107.95,
+     32.73
+    ],
+    [
+     43.6,
+     -107.79,
+     33.46
+    ],
+    [
+     43.7,
+     -107.53,
+     34.16
+    ],
+    [
+     43.8,
+     -107.17,
+     34.84
+    ],
+    [
+     43.9,
+     -106.71,
+     35.48
+    ],
+    [
+     44.0,
+     -106.17,
+     36.07
+    ],
+    [
+     44.1,
+     -105.54,
+     36.61
+    ],
+    [
+     44.2,
+     -104.85,
+     37.09
+    ],
+    [
+     44.3,
+     -104.08,
+     37.5
+    ],
+    [
      44.4,
-     -107.27,
-     23.84
+     -103.27,
+     37.84
     ],
     [
      44.5,
-     -106.41,
-     24.1
+     -102.41,
+     38.1
     ],
     [
      44.6,
-     -105.52,
-     24.28
+     -101.52,
+     38.28
     ],
     [
      44.7,
-     -104.61,
-     24.38
+     -100.61,
+     38.38
     ],
     [
      44.8,
-     -103.69,
-     24.4
+     -99.69,
+     38.4
     ],
     [
      44.9,
-     -102.77,
-     24.32
+     -98.77,
+     38.32
     ],
     [
      45.0,
-     -101.87,
-     24.17
+     -97.87,
+     38.17
     ],
     [
      45.1,
-     -101.0,
-     23.93
+     -97.0,
+     37.93
     ],
     [
      45.2,
-     -100.17,
-     23.62
+     -96.17,
+     37.62
     ],
     [
      45.3,
-     -99.39,
-     23.23
+     -95.39,
+     37.23
     ],
     [
      45.4,
-     -98.67,
-     22.77
+     -94.67,
+     36.77
     ],
     [
      45.5,
-     -98.02,
-     22.25
+     -94.02,
+     36.25
     ],
     [
      45.6,
-     -97.45,
-     21.67
+     -93.45,
+     35.67
     ],
     [
      45.7,
-     -96.97,
-     21.05
+     -92.97,
+     35.05
     ],
     [
      45.8,
-     -96.58,
-     20.38
+     -92.58,
+     34.38
     ],
     [
      45.9,
-     -96.28,
-     19.69
+     -92.28,
+     33.69
     ],
     [
      46.0,
-     -96.09,
-     18.97
+     -92.09,
+     32.97
     ],
     [
      46.1,
-     -96.01,
-     18.23
+     -92.01,
+     32.23
     ],
     [
      46.2,
-     -96.02,
-     17.5
+     -92.02,
+     31.5
     ],
     [
      46.3,
-     -96.15,
-     16.77
+     -92.15,
+     30.77
     ],
     [
      46.4,
-     -96.38,
-     16.06
+     -92.38,
+     30.06
     ],
     [
      46.5,
-     -96.71,
-     15.37
+     -92.71,
+     29.37
     ],
     [
      46.6,
-     -97.13,
-     14.72
+     -93.13,
+     28.72
     ],
     [
      46.7,
-     -97.65,
-     14.11
+     -93.65,
+     28.11
     ],
     [
      46.8,
-     -98.25,
-     13.55
+     -94.25,
+     27.55
     ],
     [
      46.9,
-     -98.92,
-     13.05
+     -94.92,
+     27.05
     ],
     [
      47.0,
-     -99.67,
-     12.62
+     -95.67,
+     26.62
     ],
     [
      47.1,
-     -99.67,
-     12.62
+     -95.67,
+     26.62
     ],
     [
      47.2,
-     -99.67,
-     12.62
+     -95.67,
+     26.62
     ],
     [
      47.3,
-     -99.67,
-     12.62
+     -95.67,
+     26.62
     ],
     [
      47.4,
-     -99.67,
-     12.62
+     -95.67,
+     26.62
     ],
     [
      47.5,
-     -99.67,
-     12.62
+     -95.67,
+     26.62
     ],
     [
      47.6,
-     -99.67,
-     12.62
+     -95.67,
+     26.62
     ],
     [
      47.7,
-     -99.67,
-     12.62
+     -95.67,
+     26.62
     ],
     [
      47.8,
-     -99.67,
-     12.62
+     -95.67,
+     26.62
     ],
     [
      47.9,
-     -99.67,
-     12.62
+     -95.67,
+     26.62
     ],
     [
      48.0,
-     -99.67,
-     12.62
+     -95.67,
+     26.62
     ],
     [
      48.1,
-     -99.67,
-     12.62
+     -95.67,
+     26.62
     ],
     [
      48.2,
-     -99.67,
-     12.62
+     -95.67,
+     26.62
     ],
     [
      48.3,
-     -99.67,
-     12.62
+     -95.67,
+     26.62
     ],
     [
      48.4,
-     -100.47,
-     12.26
+     -96.47,
+     26.26
     ],
     [
      48.5,
-     -101.31,
-     11.97
+     -97.31,
+     25.97
     ],
     [
      48.6,
-     -102.2,
-     11.76
+     -98.2,
+     25.76
     ],
     [
      48.7,
-     -103.1,
-     11.64
+     -99.1,
+     25.64
     ],
     [
      48.8,
-     -104.02,
-     11.6
+     -100.02,
+     25.6
     ],
     [
      48.9,
-     -104.94,
-     11.64
+     -100.94,
+     25.64
     ],
     [
      49.0,
-     -105.84,
-     11.77
+     -101.84,
+     25.77
     ],
     [
      49.1,
-     -106.73,
-     11.98
+     -102.73,
+     25.98
     ],
     [
      49.2,
-     -107.57,
-     12.27
+     -103.57,
+     26.27
     ],
     [
      49.3,
-     -108.37,
-     12.64
+     -104.37,
+     26.64
     ],
     [
      49.4,
-     -109.11,
-     13.07
+     -105.11,
+     27.07
     ],
     [
      49.5,
-     -109.78,
-     13.58
+     -105.78,
+     27.58
     ],
     [
      49.6,
-     -110.38,
-     14.14
+     -106.38,
+     28.14
     ],
     [
      49.7,
-     -110.89,
-     14.75
+     -106.89,
+     28.75
     ],
     [
      49.8,
-     -111.31,
-     15.4
+     -107.31,
+     29.4
     ],
     [
      49.9,
-     -111.64,
-     16.09
+     -107.64,
+     30.09
     ],
     [
      50.0,
-     -111.86,
-     16.8
+     -107.86,
+     30.8
     ],
     [
      50.1,
-     -111.98,
-     17.53
+     -107.98,
+     31.53
     ],
     [
      50.2,
-     -111.99,
-     18.27
+     -107.99,
+     32.27
     ],
     [
      50.3,
-     -111.9,
-     19.0
+     -107.9,
+     33.0
     ],
     [
      50.4,
-     -111.71,
-     19.72
+     -107.71,
+     33.72
     ],
     [
      50.5,
-     -111.41,
-     20.41
+     -107.41,
+     34.41
     ],
     [
      50.6,
-     -111.01,
-     21.08
+     -107.01,
+     35.08
     ],
     [
      50.7,
-     -110.53,
-     21.7
+     -106.53,
+     35.7
     ],
     [
      50.8,
-     -109.95,
-     22.28
+     -105.95,
+     36.28
     ],
     [
      50.9,
-     -109.3,
-     22.79
+     -105.3,
+     36.79
     ],
     [
      51.0,
-     -108.58,
-     23.25
+     -104.58,
+     37.25
     ],
     [
      51.1,
-     -107.79,
-     23.63
+     -103.79,
+     37.63
     ],
     [
      51.2,
-     -106.96,
-     23.95
+     -102.96,
+     37.95
     ],
     [
      51.3,
-     -106.09,
-     24.18
+     -102.09,
+     38.18
     ],
     [
      51.4,
-     -105.19,
-     24.33
+     -101.19,
+     38.33
     ],
     [
      51.5,
-     -104.27,
-     24.4
+     -100.27,
+     38.4
     ],
     [
      51.6,
-     -103.35,
-     24.38
+     -99.35,
+     38.38
     ],
     [
      51.7,
-     -102.44,
-     24.28
+     -98.44,
+     38.28
     ],
     [
      51.8,
-     -101.55,
-     24.09
+     -97.55,
+     38.09
     ],
     [
      51.9,
-     -100.69,
-     23.83
+     -96.69,
+     37.83
     ],
     [
      52.0,
-     -99.88,
-     23.49
+     -95.88,
+     37.49
     ]
    ],
    "show": 42.3,
@@ -4986,25 +5203,25 @@
     {
      "t": 37.0,
      "look": [
-      -104.0,
-      18.0
+      -100.0,
+      32.0
      ],
-     "dist": 13,
-     "az": 0.3,
-     "pol": 1.22,
-     "up": 2,
+     "dist": 24,
+     "az": 0.5,
+     "pol": 1.05,
+     "up": 1.5,
      "frame": "south"
     },
     {
      "t": 40.5,
      "look": [
-      -104.0,
-      18.0
+      -100.0,
+      32.0
      ],
-     "dist": 10,
+     "dist": 17,
      "az": 0.0,
-     "pol": 1.25,
-     "up": 2,
+     "pol": 1.12,
+     "up": 1.5,
      "frame": "south"
     }
    ]
@@ -5070,8 +5287,8 @@
     {
      "t": 43.6,
      "look": [
-      -112.0,
-      18.0
+      -108.0,
+      32.0
      ],
      "dist": 20,
      "az": 1.1,
@@ -5090,8 +5307,8 @@
     {
      "t": 43.6,
      "look": [
-      -109.14,
-      25.94
+      -105.14,
+      39.94
      ],
      "dist": 22,
      "az": 3.53,
@@ -5103,8 +5320,8 @@
     {
      "t": 44.0,
      "look": [
-      -104.74,
-      26.49
+      -100.74,
+      40.49
      ],
      "dist": 22,
      "az": 4.029,
@@ -5116,8 +5333,8 @@
     {
      "t": 44.4,
      "look": [
-      -100.52,
-      25.71
+      -96.52,
+      39.71
      ],
      "dist": 22,
      "az": 4.442,
@@ -5129,8 +5346,8 @@
     {
      "t": 44.800000000000004,
      "look": [
-      -96.73,
-      23.69
+      -92.73,
+      37.69
      ],
      "dist": 22,
      "az": 4.814,
@@ -5142,8 +5359,8 @@
     {
      "t": 45.2,
      "look": [
-      -93.99,
-      20.34
+      -89.99,
+      34.34
      ],
      "dist": 22,
      "az": 5.2,
@@ -5155,8 +5372,8 @@
     {
      "t": 45.6,
      "look": [
-      -93.34,
-      16.01
+      -89.34,
+      30.01
      ],
      "dist": 22,
      "az": 5.655,
@@ -5168,8 +5385,8 @@
     {
      "t": 46.0,
      "look": [
-      -95.52,
-      11.99
+      -91.52,
+      25.99
      ],
      "dist": 22,
      "az": 6.202,
@@ -5181,8 +5398,8 @@
     {
      "t": 46.4,
      "look": [
-      -99.61,
-      9.85
+      -95.61,
+      23.85
      ],
      "dist": 22,
      "az": 6.762185307179586,
@@ -5194,8 +5411,8 @@
     {
      "t": 46.800000000000004,
      "look": [
-      -104.01,
-      9.57
+      -100.01,
+      23.57
      ],
      "dist": 22,
      "az": 7.248185307179586,
@@ -5207,8 +5424,8 @@
     {
      "t": 47.0,
      "look": [
-      -99.67,
-      19.62
+      -95.67,
+      33.62
      ],
      "dist": 22,
      "az": 9.425185307179586,
@@ -5234,11 +5451,11 @@
     {
      "t": 47.0,
      "look": [
-      -99.67,
-      12.62
+      -95.67,
+      26.62
      ],
      "dist": 26,
-     "az": 0.10862283971344278,
+     "az": 0.10862283971344455,
      "pol": 1.2,
      "up": 3.0,
      "frame": "south",
@@ -5247,11 +5464,11 @@
     {
      "t": 47.6,
      "look": [
-      -99.67,
-      12.62
+      -95.67,
+      26.62
      ],
      "dist": 18,
-     "az": -0.4413771602865575,
+     "az": -0.4413771602865557,
      "pol": 1.28,
      "up": 4.0,
      "frame": "south",
@@ -5260,11 +5477,11 @@
     {
      "t": 48.4,
      "look": [
-      -99.67,
-      12.62
+      -95.67,
+      26.62
      ],
      "dist": 16,
-     "az": -0.5413771602865574,
+     "az": -0.5413771602865556,
      "pol": 1.3,
      "up": 4.2,
      "frame": "south",
@@ -5280,8 +5497,8 @@
     {
      "t": 48.4,
      "look": [
-      -104.0,
-      18.0
+      -100.0,
+      32.0
      ],
      "dist": 18,
      "az": 0.4,
@@ -5293,8 +5510,8 @@
     {
      "t": 49.6,
      "look": [
-      -104.0,
-      18.0
+      -100.0,
+      32.0
      ],
      "dist": 42,
      "az": 1.4,
@@ -5306,8 +5523,8 @@
     {
      "t": 52.0,
      "look": [
-      -104.0,
-      18.0
+      -100.0,
+      32.0
      ],
      "dist": 52,
      "az": 2.6,
@@ -5326,8 +5543,8 @@
     {
      "t": 52.0,
      "look": [
-      -104.0,
-      18.0
+      -100.0,
+      32.0
      ],
      "dist": 30,
      "az": 2.8,
@@ -5338,8 +5555,8 @@
     {
      "t": 58.0,
      "look": [
-      -104.0,
-      18.0
+      -100.0,
+      32.0
      ],
      "dist": 40,
      "az": 3.6,
@@ -5394,6 +5611,11 @@
    ]
   ],
   "commenters": {
+   "pqew314kaiko": "A",
+   "dadadada8806": "A",
+   "karen_774060": "A",
+   "shugo.77": "A",
+   "da_kyou10": "A",
    "ichi.09": "C",
    "tsuki5747": "A",
    "nanasi774_ou": "D",
@@ -5404,30 +5626,42 @@
    "yuradayo0330": "A",
    "guernica.0712": "-",
    "heroruto7": "A",
+   "leop_ard5722": "-",
+   "oushi0328": "A",
    "hyuga_0619": "A",
+   "oyad.ai1015": "-",
    "rino._.15": "A",
+   "zt_rn917": "A",
    "atsukidesu": "A",
+   "ganota.0079": "D",
    "abc.man13": "-",
+   "airu0728000": "-",
    "tsubuanzu_shiyuu": "A",
    "masatk_no_m": "A",
+   "fukukintaro": "C",
    "yuridazo68": "A",
    "marumegane4": "A",
    "nabemegane": "A",
    "pocchanpochi": "-",
+   "aeons0aha": "-",
    "yukikun4126": "A",
    "zidian34": "A",
    "denzirouu": "-",
    "ayu.mu__8890": "A",
+   "sousukenonaka": "-",
    "fuse.daichi": "A",
    "saori.siegert": "C",
    "onyankopunch": "A",
-   "pqew314kaiko": "A",
-   "karen_774060": "A",
-   "shugo.77": "A",
    "analogayane": "A",
+   "ha.ku27": "-",
    "kota_chumuri": "A"
   },
   "names": {
+   "pqew314kaiko": "Kaiko/kosuke",
+   "dadadada8806": "Gagaca.456",
+   "karen_774060": "華蓮",
+   "shugo.77": "柊伍",
+   "da_kyou10": "だー教（公式）",
    "ichi.09": "Taichi Minami",
    "tsuki5747": "つき",
    "nanasi774_ou": "774(名無し)",
@@ -5465,11 +5699,6 @@
    "fuse.daichi": "Daichi Fuse",
    "saori.siegert": "🇺🇸Saori Siegert | Mindset & Trader",
    "onyankopunch": "Kaori-Miya-Matsutaka",
-   "pqew314kaiko": "Kaiko/kosuke",
-   "dadadada8806": "Gagaca.456",
-   "karen_774060": "華蓮",
-   "shugo.77": "柊伍",
-   "da_kyou10": "だー教（公式）",
    "analogayane": "あやね",
    "ha.ku27": "ha.ku",
    "kota_chumuri": "コタつむり",
@@ -5482,7 +5711,13 @@
     "to": 3.0
    }
   ],
-  "tagAll": [],
+  "tagAll": [
+   [
+    0.3,
+    3.0,
+    0.08
+   ]
+  ],
   "tagOnly": [
    {
     "from": 7.0,
@@ -5609,7 +5844,7 @@
   ],
   "captions": [
    {
-    "text": "6日目の朝",
+    "text": "フォローした158人が、流れ着いた",
     "from": 0.4,
     "to": 3.0,
     "y": 1290,
@@ -5911,7 +6146,7 @@
    {
     "at": 0.3,
     "until": 3.0,
-    "text": "6日目。"
+    "text": "158人が、流れ着いた！"
    },
    {
     "at": 3.1,
