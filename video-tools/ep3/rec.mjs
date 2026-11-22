@@ -41,7 +41,7 @@ const castPeople = castIds.map((id) => byId.get(id)).filter(Boolean).map((p) => 
 const missing = castIds.filter((id) => !byId.has(id));
 if (missing.length) console.log('名簿に無いので出さない:', missing.join(', '));
 const state = JSON.parse(fs.readFileSync(path.join(REPO, 'data/state.json'), 'utf8'));
-Object.assign(state, { day: story.day || 3, sample: false, base: story.base ?? { name: '中央の広場', x: 0, z: 5, decidedDay: 2 }, currentVote: null, buildings: story.buildings || [], forestRoad: story.forestRoad || null, toolAge: story.toolAge || '' });
+Object.assign(state, { day: story.day || 3, sample: false, base: story.base ?? { name: '中央の広場', x: 0, z: 5, decidedDay: 2 }, currentVote: null, buildings: story.buildings || [], forestRoad: story.forestRoad || null, toolAge: story.toolAge || '', clearings: story.clearings || [] });
 const DATA = {
   state,
   islanders: { updatedAt: '2026-11-19', islanders: castPeople },
@@ -68,6 +68,7 @@ const browser = await puppeteer.launch({
 const page = await browser.newPage();
 await page.setViewport({ width: W, height: H, deviceScaleFactor: DSF });
 page.on('pageerror', (e) => console.log('pageerror:', String(e).slice(0, 300)));
+if (process.env.CONSOLE) page.on('console', (m) => console.log('console:', m.type(), m.text().slice(0, 300)));
 await page.setRequestInterception(true);
 page.on('request', (req) => {
   const u = req.url();
