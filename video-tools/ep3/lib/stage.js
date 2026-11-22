@@ -247,8 +247,13 @@
         '.wwwwwwwww.',
       ], { w: '#ffffff' }),
     };
+    if (window.__BEAST) ART.beast = pixel(window.__BEAST.frames[0], window.__BEAST.pal);
     const props = (story.props || []).map((pr) => {
-      const art = ART[pr.type];
+      let art = ART[pr.type];
+      if (pr.flip) { // 左右反転（獣が左へ走るときなど）
+        const t2 = art.tex.clone(); t2.repeat.set(-1, 1); t2.offset.set(1, 0); t2.wrapS = 1000; t2.needsUpdate = true;
+        art = { ...art, tex: t2 };
+      }
       const sp2 = new SpriteC(new MatC({ map: art.tex, alphaTest: 0.5, transparent: false, depthTest: !['splash', 'question', 'zzz', 'heart'].includes(pr.type), fog: !['question', 'flame'].includes(pr.type) }));
       const hgt = pr.size || 1.4;
       sp2.scale.set((hgt * art.w) / art.h, hgt, 1);
@@ -265,7 +270,7 @@
       const u = ease((t - pr.t0) / Math.max(0.01, pr.t1 - pr.t0));
       const arc = (pr.arc || 0) * 4 * u * (1 - u);
       const x = A.x + (B.x - A.x) * u, z = A.z + (B.z - A.z) * u, y = A.y + (B.y - A.y) * u + arc;
-      const wob = pr.type === 'fish' ? Math.sin(t * 30) * 0.08 : pr.type === 'heart' ? Math.abs(Math.sin(t * 5 + (pr.phase || 0))) * 0.35 : pr.type === 'zzz' ? ((t * 0.8 + (pr.phase || 0)) % 1) * 1.2 : 0;
+      const wob = pr.type === 'fish' ? Math.sin(t * 30) * 0.08 : pr.type === 'beast' ? (Math.floor(t * 9) % 2) * 0.25 : pr.type === 'heart' ? Math.abs(Math.sin(t * 5 + (pr.phase || 0))) * 0.35 : pr.type === 'zzz' ? ((t * 0.8 + (pr.phase || 0)) % 1) * 1.2 : 0;
       if (pr.type === 'flame') P.sp.scale.set(P.sp.scale.x, (pr.size || 1.4) * (1 + 0.1 * Math.sin(t * 17)), 1);
       P.sp.position.set(x, y + wob, z);
       P.sp.visible = true;
