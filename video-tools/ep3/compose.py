@@ -192,6 +192,26 @@ def title_badge(img, d, text, t, a, b):
     d.rounded_rectangle([x0, y0, x0 + w, y0 + h], 40, fill=(244, 196, 64), outline=INK, width=8)
     draw_text(img, d, W / 2 - (w - 110) / 2, y0 + h / 2 - fs * 0.72, text, fs, INK, black=True)
 
+def likebar(img, d, L, t):
+    """島のいいね合計のバー（PWA と同じ）。{"from","to","total","max","goals":[{"at","label"}],"y","from0"}。数字は from0 から伸びる"""
+    a = L['from']; u = min(1, max(0, (t - a - 0.2) / 1.0)); u = 1 - (1 - u) ** 3
+    total = round(L.get('from0', 0) + (L['total'] - L.get('from0', 0)) * u); mx = L.get('max', 1000)
+    y0 = L.get('y', 560); x0, x1 = 90, W - 90
+    pop = min(1, (t - a) / 0.25); sc = 0.85 + 0.15 * (1 - (1 - pop) ** 3)
+    d.rounded_rectangle([60, y0 - 120, W - 60, y0 + 215], 30, fill=(255, 248, 230, 240), outline=INK, width=6)
+    draw_text(img, d, 100, y0 - 100, '島のいいね合計（全投稿）', 38, INK)
+    d.text((W - 100, y0 - 78), f'{total} / {mx}', font=font(int(48 * sc), True), fill=(214, 60, 90), anchor='rm')
+    d.rectangle([x0, y0, x1, y0 + 56], fill=(234, 223, 200), outline=INK, width=6)
+    fw = int((x1 - x0 - 12) * min(1, total / mx))
+    if fw > 0: d.rectangle([x0 + 6, y0 + 6, x0 + 6 + fw, y0 + 50], fill=(226, 69, 106))
+    for g in L.get('goals', []):
+        gx = x0 + (x1 - x0) * g['at'] / mx
+        done = total >= g['at']
+        if g['at'] < mx: d.rectangle([gx - 3, y0 - 8, gx + 3, y0 + 64], fill=(47, 143, 74) if done else INK)
+    for k, g in enumerate(L.get('goals', [])):
+        done = total >= g['at']
+        draw_text(img, d, 110, y0 + 74 + k * 38, ('✓ ' if done else '・') + f"{g['at']}：{g['label']}", 30, (47, 143, 74) if done else (70, 60, 90))
+
 def tally(img, d, T, t):
     """集計バー：件数が伸びて、最多に「採用」"""
     rows = T['rows']; mx = max(r['count'] for r in rows) or 1
@@ -377,6 +397,8 @@ def compose_frame(i):
     for c in O.get('titles', []):
         if c['from'] <= t <= c['to']: title_badge(layer, d, c['text'], t, c['from'], c['to'])
     if O.get('tally') and O['tally']['from'] <= t <= O['tally']['to']: tally(layer, d, O['tally'], t)
+    for L in O.get('likebars', []):
+        if L['from'] <= t <= L['to']: likebar(layer, d, L, t)
     if O.get('wall') and O['wall']['from'] <= t <= O['wall']['to']: wall(layer, d, O['wall'], t)
     if O.get('ranking') and O['ranking']['from'] <= t <= O['ranking']['to']: ranking(layer, d, O['ranking'], t)
     for P in O.get('images', []):

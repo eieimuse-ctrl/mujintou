@@ -161,7 +161,31 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
     driftChip.hidden = !drifters.length;
     driftChip.textContent = `漂流中 ${drifters.length}人`;
     body.classList.toggle('has-drifters', drifters.length > 0);
+    renderLikes();
   }
+
+  // 島のいいね合計（全投稿）。節目（goals）に目盛り。タップで、次のごほうびまでの数
+  function renderLikes() {
+    const L = state.likes;
+    const bar = $('like-bar');
+    bar.hidden = !L;
+    if (!L) return;
+    bar.querySelector('.like-fill').style.width = `${Math.min(100, (L.total / L.max) * 100)}%`;
+    bar.querySelector('.like-num').textContent = `${L.total} / ${L.max}`;
+    bar.querySelector('.like-ticks').replaceChildren(...L.goals.filter((g) => g.at < L.max).map((g) => {
+      const t = el('span', { class: `like-tick${L.total >= g.at ? ' is-done' : ''}` });
+      t.style.left = `calc(${(g.at / L.max) * 100}% - 1px)`;
+      return t;
+    }));
+  }
+  $('like-bar').addEventListener('click', () => {
+    const L = state.likes;
+    if (!L) return;
+    const next = L.goals.find((g) => L.total < g.at);
+    const done = L.goals.filter((g) => L.total >= g.at).map((g) => g.label);
+    toast(next ? `島のいいね合計 ${L.total}。あと${next.at - L.total}で「${next.label}」！（全投稿のいいねの合計）` : `島のいいね合計 ${L.total}。ごほうびは全部達成！`, 5000);
+    if (done.length && next) setTimeout(() => toast(`達成：${done.join('、')}`, 3500), 5100);
+  });
 
   // ---- 島民：検索とランキング（上に「漂流中」の人） ----------------------------------
   const searchInput = $('search');

@@ -355,6 +355,32 @@ body.has-drifters #vote-chip {
   background: var(--accent-dark);
 }
 
+/* 島のいいね合計（全投稿）：節目でごほうび。投票チップの下 */
+#like-bar {
+  position: absolute;
+  top: calc(var(--safe-top) + 94px);
+  left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: min(300px, calc(100% - 20px));
+  min-height: 30px;
+  padding: 3px 8px 3px 6px;
+  font-size: 11px;
+  font-weight: 800;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+#like-bar:active { box-shadow: none; transform: translate(2px, 2px); }
+.like-heart { color: #e2456a; font-size: 14px; line-height: 1; }
+.like-track { position: relative; flex: 1; height: 12px; background: #eadfc8; border: 2px solid var(--ink); }
+.like-fill { position: absolute; inset: 0 auto 0 0; width: 0; background: linear-gradient(90deg, #ff7a96, #e2456a); }
+.like-ticks { position: absolute; inset: 0; }
+.like-tick { position: absolute; top: -2px; bottom: -2px; width: 2px; background: var(--ink); }
+.like-tick.is-done { background: #2f8f4a; }
+.like-num { white-space: nowrap; font-variant-numeric: tabular-nums; }
+
 #vote-chip-text {
   overflow: hidden;
   white-space: nowrap;
