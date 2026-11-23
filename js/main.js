@@ -359,7 +359,11 @@ async function buildIsland({ state, islanders, drifters = [] }) {
       const lost = islanders[selected]?.missing;
       const td = islanders[selected]?.today;
       const duty = actors.dutyOf(selected, t);
-      ui.setNow(lost ? { label: '行方不明', text: lost.text, next: '', missing: true } : td ? { label: 'きょうの行動', text: td.text, next: '次の動画まで続けています' } : duty ? { label: '火の番', text: `森の道の${duty.from}〜${duty.to}本目で、松明を持って見張っている`, next: '1時間ごとに交代' } : sim.status(selected, t));
+      const sh = actors.showNow();
+      const onStage = !lost && sh && sh.members.includes(selected) && sh.start <= t && t < sh.end ? sh : null;
+      const stName = built.list.find((b) => b.type === 'stage')?.name || 'ステージ';
+      const hmS = (ms) => { const d = new Date(ms + 9 * 3600000); return `${String(d.getUTCHours()).padStart(2, '0')}:${String(d.getUTCMinutes()).padStart(2, '0')}`; };
+      ui.setNow(onStage ? { label: 'ステージ', text: onStage.lead === selected ? `${stName}で${onStage.label}を披露している` : `${stName}で、${islanders[onStage.lead].displayName}さんと一緒に${onStage.label}に出ている`, next: `${hmS(onStage.end)}まで（15分ごとに交代）` } : lost ? { label: '行方不明', text: lost.text, next: '', missing: true } : td ? { label: 'きょうの行動', text: td.text, next: '次の動画まで続けています' } : duty ? { label: '火の番', text: `森の道の${duty.from}〜${duty.to}本目で、松明を持って見張っている`, next: '1時間ごとに交代' } : sim.status(selected, t));
     }
 
     world.render();

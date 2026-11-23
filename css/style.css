@@ -1527,3 +1527,6 @@ body[data-mode='stage'] #drift-chip { visibility: hidden; }
 .sv-list { list-style: none; margin: 0; padding: 0; }
 .sv-list li { display: flex; gap: 10px; padding: 6px 2px; border-bottom: 1px dashed #d8ccb2; font-size: 13px; }
 .sv-list li b { min-width: 3.2em; font-variant-numeric: tabular-nums; }
+/* ステージの出演予定（検索結果・島民の詳細） */
+.who-stage { display: block; margin-top: 2px; font-size: 12px; font-weight: 700; color: var(--accent-dark); }
+.stage-next { margin: 6px 0 0; padding: 6px 10px; border-radius: 10px; background: #fff1c9; font-weight: 700; font-size: 14px; }

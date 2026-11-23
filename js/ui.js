@@ -1,7 +1,7 @@
 // 画面のDOM部分：ヘッダー、タブ、島民検索・ランキング（と漂流中の人）、年表、投票カード、詳細パネル。
 // データ由来の文字列はすべて textContent で入れる（HTMLとして解釈させない）。
 
-import { showAt, showLabel } from './show.js';
+import { showAt, showLabel, upcomingMap, nextShowOf, setShowRequests } from './show.js';
 import { INSTAGRAM_URL, INSTAGRAM_HANDLE, RELATION_TYPES, DEFAULT_RELATION } from './config.js';
 import { iconCanvas, islanderPortrait, hydrateIcons } from './pixelart.js';
 import { rankIslanders } from './data.js';
@@ -231,6 +231,24 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
     return rows;
   }
 
+  // ステージの出演予定（24時間以内）。ステージが建っているときだけ
+  const hasStage = () => (state?.buildings || []).some((b) => b.type === 'stage');
+  function hmDay(ms) {
+    const d = new Date(ms + 9 * 3600000), n = new Date(now() + 9 * 3600000);
+    const hm = `${String(d.getUTCHours()).padStart(2, '0')}:${String(d.getUTCMinutes()).padStart(2, '0')}`;
+    return d.getUTCDate() === n.getUTCDate() ? hm : `あした ${hm}`;
+  }
+  function stageNote(s) {
+    if (!s) return '';
+    return s.start <= now() ? `いまステージに出演中（${s.label}）` : `ステージ出演 ${hmDay(s.start)}〜（${s.label}）`;
+  }
+  let upCache = { slot: null, map: null };
+  function upcoming() {
+    const t = now(), slot = Math.floor(t / 900000);
+    if (upCache.slot !== slot || upCache.n !== islanders.length) upCache = { slot, n: islanders.length, map: upcomingMap(islanders, state.day, t, 24) };
+    return upCache.map;
+  }
+
   function renderList() {
     const q = query();
     const drifting = renderDrifters(q);
@@ -255,6 +273,7 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
       );
       return;
     }
+    const up = q && hasStage() ? upcoming() : null; // 名前で探したとき：24時間以内の出演予定
     for (const e of rows) {
       const p = e.p;
       const rank = el('span', { class: `rank rank-${Math.min(e.rank, 4)}` }, [e.rank <= 3 ? iconCanvas('crown', e.rank === 2 ? { C: '#c3c8d4', L: '#ffffff' } : e.rank === 3 ? { C: '#d08a4e', L: '#f3c9a0' } : undefined) : null, el('span', { text: `${e.rank}位` })]);
@@ -267,6 +286,7 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
           el('span', { class: 'who' }, [
             el('span', { class: 'who-name' }, [el('span', { text: p.displayName }), p.sample ? el('span', { class: 'tag tag-sample', text: 'サンプル' }) : null]),
             el('span', { class: 'who-sub', text: p.anonymous ? p.job : `@${p.id}・${p.job}` }),
+            up && up.has(e.index) ? el('span', { class: 'who-stage', text: `🎤 ${stageNote(up.get(e.index))}` }) : null,
           ]),
           el('span', { class: 'days' }, [el('b', { text: String(p.days) }), el('span', { text: '日' })]),
         ],
@@ -471,6 +491,7 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
         p.torchNo ? el('div', {}, [el('dt', { text: '火の番' }), el('dd', {}, [el('span', { text: '森の道の' }), el('b', { text: String(p.torchNo) }), el('span', { text: '本目' })])]) : null,
       ]),
       p.since ? el('p', { class: 'since', text: `在住の起点：${p.since.replaceAll('-', '/')}` }) : null,
+      hasStage() && nextShowOf(islanders, state.day, index, now(), 24) ? el('p', { class: 'stage-next', text: `🎤 ${stageNote(nextShowOf(islanders, state.day, index, now(), 24))}` }) : null,
       el('h4', { class: 'section-title', text: '関係' }),
       rels.length
         ? el(
@@ -553,7 +574,7 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
       if (!s) break;
       rows.push(el('li', { class: k === 0 ? 'is-now' : '' }, [el('b', { text: k === 0 ? 'いま' : hm(s.start) }), el('span', { text: showLabel(islanders, s) })]));
     }
-    return el('div', { class: 'timetable' }, [el('h4', { class: 'section-title', text: 'ステージの時間割（30分ごと）' }), el('ul', {}, rows)]);
+    return el('div', { class: 'timetable' }, [el('h4', { class: 'section-title', text: 'ステージの時間割（15分ごと）' }), el('ul', {}, rows)]);
   }
 
   // ---- 鑑賞モード：ステージをタップ → 客席から舞台を見る。いまの出し物と時間割 ----
@@ -658,6 +679,7 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
 
   function renderData(data, opts = {}) {
     state = data.state;
+    setShowRequests(state.stageRequests);
     islanders = data.islanders;
     drifters = data.drifters || [];
     ranked = rankIslanders(islanders);

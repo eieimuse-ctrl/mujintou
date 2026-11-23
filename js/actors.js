@@ -365,7 +365,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
     return todayState;
   }
 
-  // ステージの出し物：いまの出演者を舞台の上に（30分ごとに代わる。show.js）
+  // ステージの出し物：いまの出演者を舞台の上に（15分ごとに代わる。show.js）
   const stageB = stages.find((b) => b.stageSpots) || null;
   let showCache = null;
   const stagePos = {};
