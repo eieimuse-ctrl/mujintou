@@ -1,5 +1,6 @@
 // 起動処理：データ読み込み → 島の生成 → 描画ループ。
 
+import { createSound } from './sound.js';
 import { loadData } from './data.js';
 import { createUI } from './ui.js';
 import { generateTerrain, generateDeco, buildNav, DISTRICT_INDEX, DISTRICTS, HALF, TERRAIN_SEED } from './terrain.js';
@@ -26,6 +27,7 @@ const clock = (() => {
   return { now: () => (frozen ? start + offset : Date.now() + offset) };
 })();
 
+const sound = createSound();
 const ui = createUI({
   now: clock.now,
   onSelectIslander: (index, opts) => selectIslander(index, opts),
@@ -35,6 +37,13 @@ const ui = createUI({
   onRecenter: () => {
     ui.closeDetail(true);
     app?.orbit.overview();
+  },
+  onSound: (on, fromTap) => {
+    if (!on) return sound.disable();
+    if (fromTap) return sound.enable();
+    // 前回「音あり」だった：最初に画面を押したときに鳴らし始める
+    const start = () => { if (ui && document.getElementById('sound-toggle').getAttribute('aria-pressed') === 'true') sound.enable(); };
+    window.addEventListener('pointerdown', start, { once: true, capture: true });
   },
   onLabels: (on) => {
     labelsPref = on;
@@ -212,6 +221,7 @@ async function buildIsland({ state, islanders, drifters = [] }) {
   const trailCells = sim.trails();
   for (const k of roadCells) trailCells.add(k);
   const world = createWorld({ canvas, terrain, deco, buildings: built.list, hub, trailCells, torches });
+  const stageB = built.list.find((b) => b.type === 'stage') || null;
   const actors = createActors({ scene: world.scene, islanders, sim, labelLayer, drifters, drifts, heightAt: (x, z) => terrain.heightAt(x, z), torchPosts: torches, torchEvery: 5, mysteries: built.list.filter((b) => b.type === 'bigcrate'), beast: state.beast && { ...state.beast, route: beastRoute }, stages: built.list.filter((b) => b.type === 'stage'), day: state.day });
   actors.setLabels(labelsPref);
   labelsActors = actors;
@@ -341,6 +351,10 @@ async function buildIsland({ state, islanders, drifters = [] }) {
     orbit.update(dt);
     world.update(t);
     actors.update(t, dt, world.camera, viewport, selected, orbit.state.dist, selectedDrifter);
+    if (stageB) {
+      const tg = orbit.state.target;
+      sound.update({ night: world.night(), show: actors.showNow(), stageDist: Math.hypot(tg.x - stageB.x, tg.z - stageB.z) + Math.max(0, orbit.state.dist - 60) * 0.5, viewing: ui.inStageView() });
+    } else sound.update({ night: world.night() });
 
     // 地区名は引いたときだけ、島民名は寄ったときだけ（段階は zoom.js）
     const far = showDistrictLabels(orbit.state.dist, viewport.h);

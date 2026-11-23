@@ -502,6 +502,7 @@ body.has-drifters #vote-chip {
 }
 
 #labels-toggle:active,
+#sound-toggle:active,
 #recenter:active,
 #vote-chip:active {
   box-shadow: none;
@@ -1477,6 +1478,12 @@ body[data-sheet='open'] #sheet {
     bottom: 64px;
   }
 
+  #sound-toggle {
+    top: auto;
+    right: calc(100% + 14px);
+    bottom: 114px;
+  }
+
   #toast {
     bottom: 20px;
   }
@@ -1530,3 +1537,21 @@ body[data-mode='stage'] #drift-chip { visibility: hidden; }
 /* ステージの出演予定（検索結果・島民の詳細） */
 .who-stage { display: block; margin-top: 2px; font-size: 12px; font-weight: 700; color: var(--accent-dark); }
 .stage-next { margin: 6px 0 0; padding: 6px 10px; border-radius: 10px; background: #fff1c9; font-weight: 700; font-size: 14px; }
+
+/* 音（「名札」の左どなり）。押すまで鳴らない */
+#sound-toggle {
+  position: absolute;
+  top: -50px;
+  right: 174px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 40px;
+  padding: 4px 9px 4px 7px;
+  font-size: 12px;
+  font-weight: 800;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+#sound-toggle[aria-pressed='true'] { background: #ffe9a8; }

@@ -58,7 +58,7 @@ const monthDay = (ymd) => {
   return m ? `${Number(m[1])}/${Number(m[2])}` : '';
 };
 
-export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onSheetChange, onRecenter, onLabels, now = () => Date.now() }) {
+export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onSheetChange, onRecenter, onLabels, onSound, now = () => Date.now() }) {
   const body = document.body;
   const panel = $('panel');
   const sheet = $('sheet');
@@ -149,6 +149,23 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
     toast(labelsOn ? '名札を表示します' : '名札を消しました（タップした人の名札は出ます）');
   });
   queueMicrotask(applyLabels);
+  // 音（端末に覚えておく。ブラウザの決まりで、最初の1回は画面を押してから鳴る）
+  const SOUND_KEY = 'mujintou.sound';
+  let soundOn = false;
+  try { soundOn = localStorage.getItem(SOUND_KEY) === 'on'; } catch { /* 保存できない環境 */ }
+  const soundBtn = $('sound-toggle');
+  const applySound = (fromTap) => {
+    soundBtn.setAttribute('aria-pressed', String(soundOn));
+    soundBtn.querySelector('.sound-icon').textContent = soundOn ? '🔊' : '🔇';
+    onSound?.(soundOn, fromTap);
+  };
+  soundBtn.addEventListener('click', () => {
+    soundOn = !soundOn;
+    try { localStorage.setItem(SOUND_KEY, soundOn ? 'on' : 'off'); } catch { /* 保存できない環境 */ }
+    applySound(true);
+    toast(soundOn ? '音を出します（ステージに近づくと出し物の音）' : '音を消しました');
+  });
+  queueMicrotask(() => applySound(false));
   $('vote-chip').addEventListener('click', () => setView('vote'));
 
   // ---- ヘッダー --------------------------------------------------------------
