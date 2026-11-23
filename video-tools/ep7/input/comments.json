@@ -9,12 +9,12 @@
    "C": "食べ物を分けて、仲良くなる",
    "D": "自由に提案"
   },
-  "likesTotal": 438
+  "likesTotal": 445
  },
- "fetchedAt": "2026-11-23T12:16:24+09:00",
- "totalComments": 68,
+ "fetchedAt": "2026-11-23T13:11:41+09:00",
+ "totalComments": 71,
  "fetchedComments": 45,
- "followers": 668,
+ "followers": 685,
  "tally": {
   "A": 0,
   "B": 3,
@@ -42,7 +42,7 @@
    "userId": "guernica.0712",
    "name": "ざーふ",
    "text": "俺らで熊を手懐けよう🐻金太郎みたいに",
-   "likes": 20,
+   "likes": 21,
    "at": "2026-11-22T18:46:56+09:00",
    "replyTo": null,
    "source": "api",
@@ -343,7 +343,7 @@
    "userId": null,
    "name": "無人島プロジェクト",
    "text": "Dの人は、クマへの対処を自由に提案してね。一番いいねが多い提案が採用されます。(⚠️ユニークな戦い方は出来るだけ採用します)\n\n友達を @タグ付け すると、島でその人と「仲良し」になります。まだ島にいない友達も、フォローすれば仲良し同士で島に流れ着くよ",
-   "likes": 2,
+   "likes": 3,
    "at": "2026-11-22T20:01:18+09:00",
    "replyTo": null,
    "source": "api",
