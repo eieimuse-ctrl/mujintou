@@ -128,7 +128,8 @@ export function normalizeData(stateRaw, rosterRaw, driftRaw = null) {
       builtDay: Number.isFinite(Number(b.builtDay)) ? int(b.builtDay) : null,
       note: str(b.note),
       // 育つ建物（畑）：建った日から何日たったか（0〜2。2で実る）
-      growth: Number.isFinite(Number(b.builtDay)) ? Math.max(0, Math.min(2, day - int(b.builtDay))) : 2,
+      //   ripeDay：いいねの節目などで早く実る日（その日から実る）
+      growth: Number.isFinite(Number(b.ripeDay)) && int(b.ripeDay) <= day ? 2 : Number.isFinite(Number(b.builtDay)) ? Math.max(0, Math.min(2, day - int(b.builtDay))) : 2,
     }))
     .filter((b) => b.builtDay === null || b.builtDay <= day);
 
@@ -190,7 +191,19 @@ export function normalizeData(stateRaw, rosterRaw, driftRaw = null) {
     ? { day: int(bs.day, 1), x: num(bs.x), z: num(bs.z), r: num(bs.r) > 0 ? num(bs.r) : 18, text: str(bs.text, '森を切りひらいて住処を追われたクマが、畑のまわりで島民を追いかけまわしている…') }
     : null;
 
+  // 島のいいね合計（全投稿）と節目のごほうび：{ total, max, goals: [{ at, label }] }。Muse が毎日 total を入れる
+  const lk = s.likes && typeof s.likes === 'object' ? s.likes : null;
+  const likes = lk && Number.isFinite(num(lk.total))
+    ? {
+        total: Math.max(0, Math.round(num(lk.total))),
+        max: Number.isFinite(num(lk.max)) && num(lk.max) > 0 ? num(lk.max) : 1000,
+        goals: (Array.isArray(lk.goals) && lk.goals.length ? lk.goals : [{ at: 600, label: '畑が一晩で実る' }, { at: 750, label: '灯台が建つ' }, { at: 1000, label: 'もこもこのひつじが流れ着く' }])
+          .filter((g) => g && Number.isFinite(num(g.at))).map((g) => ({ at: num(g.at), label: str(g.label, 'ごほうび') })).sort((a, b) => a.at - b.at),
+      }
+    : null;
+
   const state = {
+    likes,
     clearings,
     beast,
     forestRoad,
