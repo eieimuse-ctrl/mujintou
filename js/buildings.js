@@ -349,8 +349,33 @@ function bigfield(src = {}) {
   };
 }
 
-export const BUILDING_TYPES = { hut, field, pier, watchtower, still, ruins, workshop, bigcrate, bigfield };
-export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台', still: '蒸留装置', ruins: '昔の住人の跡', workshop: '石の作業場', bigcrate: '大きな木箱', bigfield: '大きな畑' };
+// クマの家（7日目）：丸太を組んだ大きな小屋。入口が広く、中に干し草
+function bearhouse() {
+  const b = [];
+  const W = 8, D = 6.5, H = 4.2, LOG = '#7a4f2c', LOG2 = '#8f5f38', HAY = '#e3c86a';
+  b.push(box(0, 0.15, 0, W, 0.3, D, '#6b5232'));
+  for (let k = 0; k < 5; k++) {
+    const y = 0.5 + k * 0.8, c = k % 2 ? LOG : LOG2;
+    b.push(box(0, y, -D / 2 + 0.35, W, 0.7, 0.7, c)); // 奥
+    b.push(box(-W / 2 + 0.35, y, 0, 0.7, 0.7, D, c), box(W / 2 - 0.35, y, 0, 0.7, 0.7, D, c)); // 左右
+    if (k >= 3) b.push(box(0, y, D / 2 - 0.35, W, 0.7, 0.7, c)); // 入口の上（下は開いている）
+    else for (const s of [-1, 1]) b.push(box(s * (W / 2 - 1.1), y, D / 2 - 0.35, 1.5, 0.7, 0.7, c));
+  }
+  b.push(box(0, H + 0.4, 0, W + 1, 0.5, D + 1, THATCH_B), box(0, H + 0.9, 0, W - 1, 0.5, D - 1, THATCH_A), box(0, H + 1.3, 0, W - 3.5, 0.4, D - 3, THATCH_B));
+  b.push(box(0, 0.45, -0.6, W - 2, 0.3, D - 2.6, HAY));
+  // 入口の上の看板（クマの顔）
+  b.push(box(0, H - 0.2, D / 2 + 0.05, 1.6, 1.0, 0.12, WOOD_LIGHT), box(-0.5, H + 0.25, D / 2 + 0.07, 0.35, 0.35, 0.1, '#2e2622'), box(0.5, H + 0.25, D / 2 + 0.07, 0.35, 0.35, 0.1, '#2e2622'), box(0, H - 0.25, D / 2 + 0.08, 0.7, 0.45, 0.1, '#2e2622'));
+  return {
+    label: 'クマの家',
+    boxes: b,
+    height: H + 1.6,
+    footprint: { x0: -W / 2 - 0.3, x1: W / 2 + 0.3, z0: -D / 2 - 0.3, z1: D / 2 + 0.3 },
+    spots: [{ x: 2.5, z: D / 2 + 2.2, fx: 0, fz: 0, jobs: ['料理人', '探検家'], label: 'クマの家' }],
+  };
+}
+
+export const BUILDING_TYPES = { hut, field, pier, watchtower, still, ruins, workshop, bigcrate, bigfield, bearhouse };
+export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台', still: '蒸留装置', ruins: '昔の住人の跡', workshop: '石の作業場', bigcrate: '大きな木箱', bigfield: '大きな畑', bearhouse: 'クマの家' };
 
 // 広場のたき火（建物データではなく、島に最初からある）
 export function campfireBoxes() {

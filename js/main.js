@@ -181,7 +181,7 @@ async function buildIsland({ state, islanders, drifters = [] }) {
   const sim = createSim({ terrain, nav, pathfinder, islanders, buildings: built.list, hub, outOfRange });
   // 獣の通り道：行動範囲の地区をめぐる輪（島民と同じ歩ける道を通る。時刻だけで位置が決まる）
   let beastRoute = null;
-  if (state.beast) {
+  if (state.beast && !state.beast.friendly) { // 仲良くなったクマは、家のまわりでのんびり（通り道は作らない）
     const marks = [];
     state.districts.filter((d) => d.inRange).forEach((d) => {
       const D = DISTRICTS[DISTRICT_INDEX[d.id]];
