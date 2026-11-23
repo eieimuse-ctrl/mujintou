@@ -164,6 +164,18 @@ def small_tag(img, d, X, Y, name, vote, fs=26):
     d.ellipse([x0 + 12 * k, Y - 42 * k, x0 + 30 * k, Y - 24 * k], fill=VOTE.get(vote, (150, 150, 150)))
     draw_text(img, d, x0 + 38 * k, Y - 52 * k, name, fs, INK)
 
+def faint_tag(img, X, Y, name, fs=24, alpha=0.62):
+    """控えめな名札（半透明）。人の多い場面で、だれがいるか分かる程度に"""
+    L = Image.new('RGBA', img.size, (0, 0, 0, 0)); dl = ImageDraw.Draw(L)
+    name = re.split(r'[｜|/／]', name)[0].strip() or name  # 「名前｜肩書き」は名前だけ
+    if len(name) > 10: name = name[:9] + '…'
+    tw = int(text_w(dl, name, fs)) + 20
+    x0 = max(10, min(W - SAFE_RIGHT - tw, X - tw // 2))
+    dl.rounded_rectangle([x0, Y, x0 + tw, Y + fs + 12], 10, fill=(255, 248, 230, 200))
+    draw_text(L, dl, x0 + 10, Y + 1, name, fs, INK)
+    a = L.split()[3].point(lambda v: int(v * alpha)); L.putalpha(a)
+    img.alpha_composite(L)
+
 def stroke_center(img, d, text, y, size, fill):
     w = text_w(d, text, size, True)
     draw_text(img, d, W / 2 - w / 2, y - size * 0.7, text, size, fill, black=True, stroke=9)
@@ -403,6 +415,26 @@ def compose_frame(i):
     if O.get('ranking') and O['ranking']['from'] <= t <= O['ranking']['to']: ranking(layer, d, O['ranking'], t)
     for P in O.get('images', []):
         if P['from'] <= t <= P['to']: picture(layer, P, t)
+    # 入れ替わる控えめな名札：{"from","to","n":4,"step":2.0,"size":24,"alpha":0.62}
+    #   画面に映る人のうち、手前から順に n 人ずつ、step 秒ごとに入れ替え。字幕の帯（いま出ている captions）とは重ねない
+    for tc in O.get('tagCycle', []):
+        if not (tc['from'] <= t <= tc['to']): continue
+        bands = [(c.get('y', 1290) - c.get('size', 80) * 0.9, c.get('y', 1290) + c.get('size', 80) * 0.9) for c in O.get('captions', []) if c['from'] <= t <= c['to']]
+        fs = tc.get('size', 24)
+        cand = []
+        for uid, p in sorted(ppl.items(), key=lambda kv: kv[1]['d']):
+            if uid in star_ids: continue
+            Y = p['fy'] * H + 8
+            if Y > SAFE_BOTTOM or Y < 180 or any(a - 10 < Y < b + 10 or a - 10 < Y + fs + 12 < b + 10 for a, b in bands): continue
+            cand.append((uid, p, Y))
+        if not cand: continue
+        n = tc.get('n', 4); slot = int((t - tc['from']) / tc.get('step', 2.0))
+        pick = [cand[(slot * n + j) % len(cand)] for j in range(min(n, len(cand)))]
+        used = []
+        for uid, p, Y in pick:
+            X = p['fx'] * W
+            if any(abs(X - ux) < 150 and abs(Y - uy) < fs + 14 for ux, uy in used): continue
+            used.append((X, Y)); faint_tag(layer, X, Y, NAMES.get(uid, uid), fs, tc.get('alpha', 0.62))
     for c in O.get('captions', []):
         if c['from'] <= t <= c['to']: caption(layer, d, c['text'], c.get('y', 1290), c.get('size', 80), tuple(c.get('color', (255, 255, 255))))
     for a in O.get('action', []):
