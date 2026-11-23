@@ -244,12 +244,35 @@ async function buildIsland({ state, islanders, drifters = [] }) {
     onTap: (x, y) => handleTap(x, y),
   });
 
+  // 鑑賞モード：客席の正面から舞台を見る（自動で回らない）。出演者の名札を出す
+  function enterStage(b) {
+    selected = -1;
+    selectedDrifter = -1;
+    if (ui.selectedIndex() >= 0 || document.getElementById('panel').dataset.view === 'detail') ui.closeDetail(true);
+    const r = ((b.rot || 0) * Math.PI) / 180;
+    orbit.setAutoOrbit(false);
+    orbit.setViewShift(0);
+    orbit.view({ x: b.x + Math.sin(r) * 1.5, y: b.y + 3, z: b.z + Math.cos(r) * 1.5 }, { dist: 34, az: r, pol: 0.88 });
+    ui.enterStageView(b, {
+      onShow: (s) => actors.setFeatured(s.members),
+      onExit: () => {
+        actors.setFeatured(null);
+        orbit.setAutoOrbit(true);
+        orbit.focus({ x: b.x, y: b.y + 2, z: b.z }, 58);
+        syncViewShift();
+      },
+    });
+  }
+
   function handleTap(x, y) {
     const hit = actors.pick(x, y);
     if (hit && hit.kind === 'beast') {
       ui.toast(hit.beast.text, 4200);
       return;
     }
+    if (ui.inStageView()) return; // 鑑賞中は × でもどる
+    const tb = hit && hit.kind === 'building' ? hit.building : null;
+    if (tb && tb.type === 'stage') return enterStage(tb);
     if (hit && hit.kind === 'building') {
       selected = -1;
       selectedDrifter = -1;
@@ -267,6 +290,7 @@ async function buildIsland({ state, islanders, drifters = [] }) {
     const ny = -(y / viewport.h) * 2 + 1;
     const p = world.pick(nx, ny);
     if (!p) return;
+    if (p.type === 'building' && p.building.type === 'stage') return enterStage(p.building);
     if (p.type === 'building') {
       selected = -1;
       selectedDrifter = -1;
@@ -343,7 +367,7 @@ async function buildIsland({ state, islanders, drifters = [] }) {
   }
   requestAnimationFrame(frame);
 
-  const api = { world, actors, orbit, sim, terrain, nav, clock, hub, drifts };
+  const api = { world, actors, orbit, sim, terrain, nav, clock, hub, drifts, enterStage };
   if (DEBUG) window.__island = api;
   return api;
 }

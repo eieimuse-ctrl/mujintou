@@ -556,6 +556,67 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
     return el('div', { class: 'timetable' }, [el('h4', { class: 'section-title', text: 'ステージの時間割（30分ごと）' }), el('ul', {}, rows)]);
   }
 
+  // ---- 鑑賞モード：ステージをタップ → 客席から舞台を見る。いまの出し物と時間割 ----
+  let stageView = null;
+  function hmOf(ms) { const d = new Date(ms + 9 * 3600000); return `${String(d.getUTCHours()).padStart(2, '0')}:${String(d.getUTCMinutes()).padStart(2, '0')}`; }
+  function enterStageView(b, { onExit, onShow } = {}) {
+    exitStageView(true);
+    const root = el('div', { id: 'stage-view', role: 'dialog', 'aria-label': `${b.name}を鑑賞中` });
+    const close = el('button', { class: 'sv-close', type: 'button', 'aria-label': '鑑賞をやめる', text: '×', on: { click: () => exitStageView() } });
+    const top = el('div', { class: 'sv-top' }, [el('span', { class: 'sv-badge', text: '鑑賞中' }), el('span', { class: 'sv-name', text: b.name }), close]);
+    const now_ = el('div', { class: 'sv-now' });
+    const list = el('ul', { class: 'sv-list' });
+    list.hidden = true;
+    const toggle = el('button', { class: 'sv-toggle', type: 'button', 'aria-expanded': 'false', text: '時間割をひらく' });
+    toggle.addEventListener('click', () => {
+      const open = list.hidden;
+      list.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.textContent = open ? '時間割をとじる' : '時間割をひらく';
+    });
+    const card = el('div', { class: 'sv-card' }, [now_, toggle, list]);
+    root.append(top, card);
+    document.getElementById('stage').append(root);
+    document.body.dataset.mode = 'stage';
+    let slot = null;
+    const tick = () => {
+      const t = now();
+      const s = showAt(islanders, state.day, t);
+      if (!s) return;
+      const left = Math.max(0, Math.ceil((s.end - t) / 60000));
+      if (s.slot !== slot) {
+        slot = s.slot;
+        const names = s.members.map((i) => islanders[i]?.displayName).filter(Boolean);
+        fill(now_, [
+          el('p', { class: 'sv-when' }, [el('b', { text: 'いま' }), el('span', { text: `${hmOf(s.start)}〜${hmOf(s.end)}` }), el('span', { class: 'sv-left' })]),
+          el('h3', { class: 'sv-title', text: showLabel(islanders, s) }),
+          names.length > 1 ? el('p', { class: 'sv-members', text: `出演：${names.map((n) => `${n}さん`).join('・')}` }) : null,
+        ]);
+        const rows = [];
+        for (let k = 1; k < 8; k++) {
+          const n = showAt(islanders, state.day, t, k);
+          if (n) rows.push(el('li', {}, [el('b', { text: hmOf(n.start) }), el('span', { text: showLabel(islanders, n) })]));
+        }
+        fill(list, rows);
+        onShow?.(s);
+      }
+      const l = now_.querySelector('.sv-left');
+      if (l) l.textContent = `あと${left}分`;
+    };
+    tick();
+    const timer = setInterval(tick, 1000);
+    stageView = { root, timer, onExit };
+  }
+  function exitStageView(silent = false) {
+    if (!stageView) return;
+    const v = stageView;
+    stageView = null;
+    clearInterval(v.timer);
+    v.root.remove();
+    delete document.body.dataset.mode;
+    if (!silent) v.onExit?.();
+  }
+
   function closeDetail(forceClose = false) {
     selected = -1;
     selectedDrifter = -1;
@@ -620,6 +681,9 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
     showIslander,
     showDrifter,
     showBuilding,
+    enterStageView,
+    exitStageView,
+    inStageView: () => !!stageView,
     closeDetail,
     setView,
     toast,

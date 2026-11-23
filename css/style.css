@@ -1494,3 +1494,36 @@ body[data-sheet='open'] #sheet {
     transition: none !important;
   }
 }
+
+/* 鑑賞モード（ステージをタップ）：ほかの UI を隠して、上に「鑑賞中」、下にいまの出し物と時間割 */
+body[data-mode='stage'] #hud,
+body[data-mode='stage'] #panel,
+body[data-mode='stage'] #like-bar,
+body[data-mode='stage'] #vote-chip,
+body[data-mode='stage'] #drift-chip { visibility: hidden; }
+#stage-view { position: absolute; inset: 0; pointer-events: none; z-index: 30; }
+#stage-view .sv-top {
+  position: absolute; top: calc(10px + var(--safe-top)); left: 12px; right: 12px;
+  display: flex; align-items: center; gap: 8px; pointer-events: auto;
+}
+.sv-badge { background: var(--accent); color: #fff; font-weight: 800; font-size: 13px; padding: 4px 10px; border-radius: 999px; }
+.sv-name { flex: 1; color: #fff; font-weight: 800; font-size: 17px; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6); }
+.sv-close {
+  width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--ink); background: var(--card);
+  color: var(--ink); font-size: 24px; font-weight: 800; line-height: 1; cursor: pointer;
+}
+#stage-view .sv-card {
+  position: absolute; left: 12px; right: 12px; bottom: calc(12px + var(--safe-bottom));
+  max-height: 46vh; overflow: auto; pointer-events: auto;
+  background: rgba(255, 249, 230, 0.94); border: 2px solid var(--ink); border-radius: 16px; padding: 12px 14px;
+  color: var(--ink); box-shadow: 0 4px 0 rgba(35, 29, 54, 0.35);
+}
+.sv-when { display: flex; gap: 8px; align-items: center; margin: 0; font-size: 13px; font-variant-numeric: tabular-nums; }
+.sv-when b { background: var(--accent); color: #fff; padding: 1px 8px; border-radius: 999px; }
+.sv-left { margin-left: auto; color: var(--ink-soft); }
+.sv-title { margin: 6px 0 2px; font-size: 18px; }
+.sv-members { margin: 0 0 8px; font-size: 13px; color: var(--ink-soft); }
+.sv-toggle { min-height: 44px; width: 100%; border: 0; border-top: 1px dashed #d8ccb2; background: none; color: var(--accent-dark); font-weight: 700; font-size: 14px; cursor: pointer; }
+.sv-list { list-style: none; margin: 0; padding: 0; }
+.sv-list li { display: flex; gap: 10px; padding: 6px 2px; border-bottom: 1px dashed #d8ccb2; font-size: 13px; }
+.sv-list li b { min-width: 3.2em; font-variant-numeric: tabular-nums; }
