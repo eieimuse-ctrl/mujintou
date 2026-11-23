@@ -125,9 +125,9 @@
         const at = k.at && k.at.slot ? gslot.get(k.at.slot)?.get(id) : null;
         const to = k.to && k.to.slot ? gslot.get(k.to.slot)?.get(id) : null;
         if (at) { st.pos = at; st.g = at.g; st.move = null; }
-        else if (k.at) { const q = resolve(k.at, k.t); st.pos = q; st.g = q.g || groupOf(k.at); st.move = null; }
-        if (to) { st.move = { from: moving(st, k.t), to, t0: k.t, t1: k.t + (k.dur || 1) }; st.g = to.g; st.moveAnim = k.run ? 'run' : 'walk'; }
-        else if (k.to) { const q = resolve(k.to, k.t); st.move = { from: k.from ? resolve(k.from, k.t) : moving(st, k.t), to: q, t0: k.t, t1: k.t + (k.dur || 1) }; st.g = q.g || groupOf(k.to); st.moveAnim = k.run ? 'run' : 'walk'; }
+        else if (k.at) { const q = resolve(k.at, k.t); st.pos = q; st.lift = k.at.up || 0; st.g = q.g || groupOf(k.at); st.move = null; }
+        if (to) { st.move = { from: moving(st, k.t), to, t0: k.t, t1: k.t + (k.dur || 1) }; st.g = to.g; st.lift = 0; st.moveAnim = k.run ? 'run' : 'walk'; }
+        else if (k.to) { const q = resolve(k.to, k.t); st.move = { from: k.from ? resolve(k.from, k.t) : moving(st, k.t), to: q, t0: k.t, t1: k.t + (k.dur || 1) }; st.g = q.g || groupOf(k.to); st.lift = 0; st.moveAnim = k.run ? 'run' : 'walk'; }
         if (k.anim) { st.anim = k.anim; st.frame = null; }
         if (k.frame !== undefined) st.frame = k.frame;
         if (k.hide !== undefined) st.hide = k.hide;
@@ -149,7 +149,7 @@
       else if (st.face && st.face.at) { const q = resolve(st.face.at, t); dx = q.x - p.x; dz = q.z - p.z; }
       else if (st.face === 'left') { dx = -g.Tg.x; dz = -g.Tg.z; }
       else if (st.face === 'right') { dx = g.Tg.x; dz = g.Tg.z; }
-      return { x: p.x, z: p.z, g, dx, dz, anim: walking ? st.moveAnim : st.anim, frame: walking ? null : st.frame, hide: st.hide, torch: st.torch, ride: st.ride };
+      return { x: p.x, z: p.z, g, dx, dz, anim: walking ? st.moveAnim : st.anim, frame: walking ? null : st.frame, hide: st.hide, torch: st.torch, ride: st.ride, lift: walking ? 0 : st.lift || 0 };
     };
     const posAt = (id, t) => { const s = stateOf(id, t); return { x: s.x, z: s.z }; };
     function moving(st, t) {
@@ -567,7 +567,7 @@
         const t = window.__filmT || 0, b = beastAt(t), step = Math.floor(t * 8) % 2 && (b.dx || b.dz) ? 0.12 : 0;
         return { x: b.x, y: yAt(b.x, b.z) + 3.75 + step, z: b.z, dx: b.dx || s.dx, dz: b.dz || s.dz, anim: s.anim, frame: s.frame, bubble: null, line: '', torch: false };
       }
-      return { x: s.x, y: yAt(s.x, s.z), z: s.z, dx: s.dx, dz: s.dz, anim: s.anim, frame: s.frame, bubble: null, line: '', torch: s.torch };
+      return { x: s.x, y: yAt(s.x, s.z) + (s.lift || 0), z: s.z, dx: s.dx, dz: s.dz, anim: s.anim, frame: s.frame, bubble: null, line: '', torch: s.torch };
     };
     return { cast, missing: castAll.filter((id) => !idx.has(id)), n: cast.length, groups: [...G.keys()] };
   }
