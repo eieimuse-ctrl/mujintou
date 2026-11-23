@@ -11,7 +11,7 @@
 
 環境変数：FONT（本文）、FONT_BLACK（太字）、EMOJI_FONT、BGM（mp3）、VOICEVOX（既定 http://127.0.0.1:50021）
 """
-import json, os, sys, hashlib, subprocess, urllib.request, urllib.parse, wave, unicodedata
+import json, os, re, sys, hashlib, subprocess, urllib.request, urllib.parse, wave, unicodedata
 from PIL import Image, ImageDraw, ImageFont
 
 HERE = os.path.dirname(os.path.abspath(__file__))
