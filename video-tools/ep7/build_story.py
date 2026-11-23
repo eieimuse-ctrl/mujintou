@@ -54,7 +54,10 @@ pairs = sorted(edges)[:2]
 ZAF, YURI, RINO, KUBO, IBU, TSUKI, ABC = 'guernica.0712', 'yuridazo68', 'rino._.15', 'kubotto0505', 'ibu131313', 'tsuki5747', 'abc.man13'
 arrivals = [p['id'] for p in R['islanders'] if int(p.get('joinedDay', 0)) == DAY]
 n_arrive = len(arrivals)
-special = {x for e in pairs for x in e} | {ZAF, YURI, RINO, KUBO, IBU, TSUKI, ABC}
+ZAF = 'guernica.0712'
+ZF = sorted({r['id'] for r in (ROSTER.get(ZAF, {}).get('relationships') or []) if r.get('type') == 'friend' and inr(r.get('id'))})  # ざーふさんの仲良し全員
+pairs = [e for e in pairs if ZAF not in e]
+special = {x for e in pairs for x in e} | {ZAF, YURI, RINO, KUBO, IBU, TSUKI, ABC} | set(ZF)
 older = [p for p in R['islanders'] if int(p.get('joinedDay', 0)) < DAY and p['id'] not in special]
 cooks = [x for x in [YURI, TSUKI, ABC] if inr(x)] + [p['id'] for p in older if p.get('job') == '料理人'][:3]
 watchers = [p['id'] for p in older if p['id'] not in cooks][:34]
@@ -71,7 +74,7 @@ HIGH = [-60.0, -100.0]         # クマが歩いていく先（高原へ続く�
 
 groups = [
     {'name': 'beach', 'type': 'ring', 'spot': LAND, 'radius': 3.2, 'gap': 2.6, 'members': arrivals[:22]},
-    {'name': 'zaf', 'type': 'line', 'spot': [15, 36], 'face': [0, 1], 'gap': 2.0, 'members': [x for x in [ZAF, YURI] if inr(x)]},
+    {'name': 'zaf', 'type': 'line', 'spot': [15, 36], 'face': [0, 1], 'gap': 2.0, 'members': [x for x in [ZAF] if inr(x)] + ZF},
     *[{'name': f'pair{k}', 'type': 'line', 'spot': [5 + k * 6, 46], 'face': [0, 1], 'gap': 1.8, 'members': list(e)} for k, e in enumerate(pairs)],
     {'name': 'pairs', 'type': 'line', 'spot': [8, 46], 'face': [0, 1], 'members': []},
     {'name': 'plaza', 'type': 'ring', 'spot': [0, 15], 'radius': 7, 'gap': 2.8, 'members': crowd},
@@ -96,7 +99,11 @@ A({'who': G['beach']['members'], 't': 2.3, 'anim': 'cheer', 'pick': 0.25, 'seed'
 # S2 前回のクマ（5.5〜9）：たき火のあとで立ち上がる
 A({'who': watchers[:12], 't': 5.5, 'at': {'slot': 'watch'}, 'anim': 'shock', 'face': {'at': DEN}})
 # S5 ざーふさん＋仲良し（15〜19）
-A({'who': G['zaf']['members'], 't': 15.0, 'at': {'slot': 'zaf'}, 'anim': 'cheer', 'face': 'front'})
+if inr(ZAF): A({'who': ZAF, 't': 15.0, 'at': [15, 36], 'anim': 'cheer', 'face': 'front'})
+for k, f in enumerate(ZF):
+    a = math.pi * (0.1 + 0.8 * k / max(1, len(ZF) - 1))
+    A({'who': f, 't': 15.0, 'at': [15 + 3.4 * math.cos(a), 36 - 3.4 * math.sin(a) + 0.6], 'to': [15 + 2.4 * math.cos(a), 36 - 2.4 * math.sin(a) + 0.6], 'dur': 0.7, 'run': True})
+    A({'who': f, 't': 15.8 + k * 0.12, 'anim': 'cheer', 'face': 'front'})
 for k, e in enumerate(pairs): A({'who': list(e), 't': 17.2, 'at': {'slot': f'pair{k}'}, 'anim': 'cheer', 'face': 'front'})
 A({'who': crowd, 't': 12.0, 'at': {'slot': 'plaza'}, 'anim': 'idle', 'face': {'at': [0, 15]}})
 # S6 ごちそう（19〜34）
@@ -111,6 +118,15 @@ if inr(ZAF):
     A({'who': ZAF, 't': 19.0, 'at': [WATCH[0] - 6, WATCH[1] - 6], 'anim': 'idle', 'face': {'at': FOOD}})
     A({'who': ZAF, 't': 28.6, 'to': [FOOD[0] + 4.2, FOOD[1] + 3.2], 'dur': 1.8})
     A({'who': ZAF, 't': 30.6, 'anim': 'cheer', 'face': {'at': FOOD}})
+    # 金太郎みたいに、クマの背中に乗る（31.4〜34.6）
+    A({'who': ZAF, 't': 31.4, 'ride': True, 'anim': 'sit'})
+    A({'who': ZAF, 't': 32.4, 'anim': 'cheer'})
+    A({'who': ZAF, 't': 34.6, 'ride': False, 'at': [HOUSE[0] + 4, HOUSE[1] + 5], 'anim': 'cheer', 'face': 'front'})
+# 仲良したちがクマのまわりを走ってついていく
+for k, f in enumerate(ZF):
+    A({'who': f, 't': 31.4, 'at': [WATCH[0] - 3 + k * 1.8, WATCH[1] - 7], 'anim': 'cheer', 'face': {'at': FOOD}, 'hide': False})
+    A({'who': f, 't': 32.0 + k * 0.1, 'to': [WATCH[0] - 1 + k * 1.6, WATCH[1] - 1.5 + (k % 2)], 'dur': 2.2, 'run': True})
+    A({'who': f, 't': 34.4, 'anim': 'cheer', 'face': {'at': [WATCH[0] - 2, WATCH[1] - 5]}})
 # S7 クマの家（34〜40）
 A({'who': G['build']['members'], 't': 34.0, 'at': {'slot': 'build'}, 'anim': 'work', 'face': {'at': HOUSE}})
 A({'who': G['build']['members'], 't': 38.4, 'anim': 'cheer', 'face': 'front'})
@@ -121,7 +137,7 @@ if inr(ZAF): A({'who': ZAF, 't': 40.0, 'at': [HOUSE[0] + 4, HOUSE[1] - 6], 'anim
 # クマの道すじ
 BWAY = [(0, DEN), (5.4, [WATCH[0] - 6, WATCH[1] - 10]), (9.0, [WATCH[0] - 6, WATCH[1] - 10]),
         (22.8, DEN), (24.0, DEN), (26.6, [FOOD[0] - 1.5, FOOD[1] - 2.5]), (28.6, [FOOD[0] - 1.5, FOOD[1] - 2.5]),
-        (30.2, [FOOD[0] + 1.6, FOOD[1] + 0.6]), (34.0, [FOOD[0] + 1.6, FOOD[1] + 0.6]),
+        (30.2, [FOOD[0] + 1.6, FOOD[1] + 0.6]), (31.6, [FOOD[0] + 1.6, FOOD[1] + 0.6]), (34.4, [WATCH[0] - 2, WATCH[1] - 5]),
         (35.0, [HOUSE[0] - 4, HOUSE[1] - 3]), (40.0, [HOUSE[0] - 4, HOUSE[1] - 3]),
         (41.6, [HOUSE[0] + 2, HOUSE[1] - 12]), (42.6, [HOUSE[0] + 2, HOUSE[1] - 12]), (44.2, [HOUSE[0] + 8, HOUSE[1] - 22]), (47.0, [HOUSE[0] + 8, HOUSE[1] - 22])]
 def bear_at(t):
@@ -147,13 +163,15 @@ camera = [
     {'from': 5.5, 'to': 9.0, 'hour': 19.3, 'shake': [[6.4, 7.6, 1.0]], 'keys': [{'t': 5.5, 'look': bear_at(5.5), 'dist': 22, 'az': 0.2, 'pol': 1.2, 'up': 3, 'frame': 'south', 'fov': 44}, {'t': 9.0, 'look': bear_at(9.0), 'dist': 13, 'az': 0.0, 'pol': 1.32, 'up': 4, 'frame': 'south', 'fov': 32}]},
     {'from': 9.0, 'to': 12.0, 'hour': 12, 'keys': [{'t': 9.0, 'look': FIELD, 'dist': 60, 'az': 0.3, 'pol': 0.8, 'up': 0, 'frame': 'south'}, {'t': 12.0, 'look': FIELD, 'dist': 48, 'az': 0.8, 'pol': 0.85, 'up': 0, 'frame': 'south'}]},
     {'from': 12.0, 'to': 15.0, 'hour': 13, 'keys': [{'t': 12.0, 'look': [0, 15], 'dist': 60, 'az': 0.0, 'pol': 0.8, 'up': 0, 'frame': 'zaf'}, {'t': 15.0, 'look': [0, 15], 'dist': 80, 'az': 1.0, 'pol': 0.95, 'up': 0, 'frame': 'zaf'}]},
-    {'from': 15.0, 'to': 17.2, 'hour': 13.5, 'keys': [{'t': 15.0, 'look': {'rel': 'g:zaf'}, 'dist': 20, 'az': -0.9, 'pol': 0.7, 'up': 1.5, 'frame': 'zaf', 'fov': 48}, {'t': 17.2, 'look': {'rel': 'g:zaf'}, 'dist': 11, 'az': 0.0, 'pol': 1.28, 'up': 2.2, 'frame': 'zaf', 'fov': 38}]},
+    {'from': 15.0, 'to': 17.2, 'hour': 13.5, 'keys': [{'t': 15.0, 'look': [15, 35.5], 'dist': 22, 'az': -1.3, 'pol': 0.45, 'up': 1.5, 'frame': 'zaf', 'fov': 50}, {'t': 16.2, 'look': [15, 35.5], 'dist': 15, 'az': -0.4, 'pol': 1.0, 'up': 2.0, 'frame': 'zaf', 'fov': 44}, {'t': 17.2, 'look': [15, 35.5], 'dist': 12, 'az': 0.3, 'pol': 1.28, 'up': 2.2, 'frame': 'zaf', 'fov': 40}]},
     {'from': 17.2, 'to': 19.0, 'hour': 13.5, 'keys': [{'t': 17.2, 'look': {'rel': 'g:pairs'}, 'dist': 26, 'az': 0.8, 'pol': 1.15, 'up': 2, 'frame': 'pairs'}, {'t': 19.0, 'look': {'rel': 'g:pairs'}, 'dist': 20, 'az': 0.0, 'pol': 1.25, 'up': 2, 'frame': 'pairs'}]},
     # ごちそう：置く → みんなで見守る（後ろ姿ごしに森）
-    {'from': 19.0, 'to': 23.4, 'hour': 17.0, 'keys': [{'t': 19.0, 'look': FOOD, 'dist': 16, 'az': 0.6, 'pol': 1.2, 'up': 2, 'frame': 'south', 'fov': 42}, {'t': 23.4, 'look': FOOD, 'dist': 24, 'az': 0.1, 'pol': 1.15, 'up': 2, 'frame': 'south', 'fov': 42}]},
+    {'from': 19.0, 'to': 23.4, 'hour': 17.0, 'keys': [{'t': 19.0, 'look': FOOD, 'dist': 9, 'az': 1.6, 'pol': 1.35, 'up': 1.5, 'frame': 'south', 'fov': 46}, {'t': 21.0, 'look': FOOD, 'dist': 16, 'az': 0.8, 'pol': 1.0, 'up': 2, 'frame': 'south', 'fov': 42}, {'t': 23.4, 'look': [FOOD[0] + 4, FOOD[1] + 6], 'dist': 34, 'az': -0.2, 'pol': 0.8, 'up': 2, 'frame': 'south', 'fov': 42}]},
     {'from': 23.4, 'to': 28.6, 'hour': 17.3, 'keys': [{'t': 23.4, 'look': [FOOD[0], FOOD[1] - 4], 'dist': 30, 'az': 0.25, 'pol': 1.28, 'up': 2.5, 'frame': 'south', 'fov': 40}, {'t': 26.6, 'look': FOOD, 'dist': 18, 'az': 0.1, 'pol': 1.3, 'up': 2.5, 'frame': 'south', 'fov': 34}, {'t': 28.6, 'look': FOOD, 'dist': 11, 'az': 0.5, 'pol': 1.25, 'up': 3, 'frame': 'south', 'fov': 30}]},
-    {'from': 28.6, 'to': 34.0, 'hour': 17.5, 'keys': [{'t': 28.6, 'look': [FOOD[0] + 2, FOOD[1] + 1.5], 'dist': 16, 'az': 1.2, 'pol': 1.2, 'up': 2.5, 'frame': 'south', 'fov': 40}, {'t': 31.0, 'look': [FOOD[0] + 2, FOOD[1] + 1.5], 'dist': 9, 'az': 0.7, 'pol': 1.3, 'up': 2.5, 'frame': 'south', 'fov': 32}, {'t': 34.0, 'look': [FOOD[0] + 2, FOOD[1] + 1.5], 'dist': 26, 'az': 0.0, 'pol': 0.9, 'up': 1, 'frame': 'south', 'fov': 40}]},
-    {'from': 34.0, 'to': 40.0, 'hour': 11, 'keys': [{'t': 34.0, 'look': HOUSE, 'dist': 26, 'az': -0.6, 'pol': 1.1, 'up': 2, 'frame': 'south'}, {'t': 38.4, 'look': HOUSE, 'dist': 18, 'az': 0.4, 'pol': 1.15, 'up': 2.5, 'frame': 'south'}, {'t': 40.0, 'look': HOUSE, 'dist': 22, 'az': 0.8, 'pol': 1.1, 'up': 2.5, 'frame': 'south'}]},
+    {'from': 28.6, 'to': 31.4, 'hour': 17.5, 'keys': [{'t': 28.6, 'look': [FOOD[0] + 2, FOOD[1] + 1.5], 'dist': 16, 'az': 1.4, 'pol': 1.2, 'up': 2.5, 'frame': 'south', 'fov': 40}, {'t': 30.0, 'look': [FOOD[0] + 2, FOOD[1] + 1.5], 'dist': 10, 'az': 0.6, 'pol': 1.3, 'up': 2.5, 'frame': 'south', 'fov': 34}, {'t': 31.4, 'look': [FOOD[0] + 2, FOOD[1] + 1.5], 'dist': 12, 'az': -0.2, 'pol': 1.25, 'up': 3.5, 'frame': 'south', 'fov': 36}]},
+    # 金太郎：クマの横を一緒に走るように、ぐるっと回りこむ
+    {'from': 31.4, 'to': 34.6, 'hour': 17.6, 'keys': [{'t': 31.4, 'look': bear_at(31.4), 'dist': 13, 'az': -0.6, 'pol': 1.2, 'up': 4.5, 'frame': 'south', 'fov': 40}, {'t': 32.8, 'look': bear_at(32.8), 'dist': 11, 'az': 0.6, 'pol': 1.3, 'up': 4.5, 'frame': 'south', 'fov': 38}, {'t': 34.6, 'look': bear_at(34.4), 'dist': 20, 'az': 1.6, 'pol': 1.05, 'up': 3.5, 'frame': 'south', 'fov': 42}]},
+    {'from': 34.6, 'to': 40.0, 'hour': 11, 'keys': [{'t': 34.6, 'look': HOUSE, 'dist': 26, 'az': -0.6, 'pol': 1.1, 'up': 2, 'frame': 'south'}, {'t': 38.4, 'look': HOUSE, 'dist': 18, 'az': 0.4, 'pol': 1.15, 'up': 2.5, 'frame': 'south'}, {'t': 40.0, 'look': HOUSE, 'dist': 22, 'az': 0.8, 'pol': 1.1, 'up': 2.5, 'frame': 'south'}]},
     # 夜：クマが森の奥へ歩いては振り返る
     {'from': 40.0, 'to': 47.0, 'hour': 20.3, 'keys': [{'t': 40.0, 'look': bear_at(40.0), 'dist': 16, 'az': 0.3, 'pol': 1.3, 'up': 2.5, 'frame': 'south', 'fov': 40}, {'t': 42.6, 'look': bear_at(42.6), 'dist': 14, 'az': 0.0, 'pol': 1.3, 'up': 2.5, 'frame': 'south', 'fov': 36}, {'t': 47.0, 'look': bear_at(47.0), 'dist': 46, 'az': -0.3, 'pol': 0.8, 'up': 1, 'frame': 'south', 'fov': 40}]},
     {'from': 47.0, 'to': 57.0, 'hour': 20.0, 'keys': [{'t': 47.0, 'look': [HOUSE[0], HOUSE[1] - 20], 'dist': 60, 'az': -0.4, 'pol': 0.8, 'up': 0, 'frame': 'south'}, {'t': 57.0, 'look': [HOUSE[0], HOUSE[1] - 20], 'dist': 80, 'az': 0.4, 'pol': 0.75, 'up': 0, 'frame': 'south'}]},
@@ -161,15 +179,15 @@ camera = [
 ]
 
 props = [{'type': 'zzz', 'from': {'rel': i, 'up': 1.6}, 't0': 0, 't1': 0.01, 't2': 2.2, 'size': 0.9, 'phase': k * 0.3} for k, i in enumerate(G['beach']['members'][:6])]
-if inr(ZAF) and inr(YURI):
-    props.append({'type': 'heart', 'from': {'rel': ZAF, 'up': 3.4, 't': 1.0}, 'to': {'rel': ZAF, 'up': 3.4, 't': 1.0}, 't0': 15.6, 't1': 17.1, 't2': 17.1, 'size': 1.4})
+for k, f in enumerate(ZF):
+    props.append({'type': 'heart', 'from': {'rel': f, 'up': 3.4}, 'to': {'rel': f, 'up': 3.4}, 't0': 15.9 + k * 0.15, 't1': 17.1, 't2': 17.1, 'size': 1.3, 'phase': k})
 for k, e in enumerate(pairs):
     props.append({'type': 'heart', 'from': {'rel': e[0], 'up': 3.4, 't': 0.9}, 'to': {'rel': e[0], 'up': 3.4, 't': 0.9}, 't0': 17.4, 't1': 19.0, 't2': 19.0, 'size': 1.4, 'phase': k})
 # ごちそう（魚と木の実）
 for k in range(7):
     a = k * 0.9
     props.append({'type': 'fish' if k % 2 else 'fruit', 'from': {'xz': [FOOD[0] + 4.5, FOOD[1] + 5], 'up': 2}, 'to': [round(FOOD[0] + math.cos(a) * 1.2, 2), round(FOOD[1] + math.sin(a) * 0.9, 2)], 't0': 19.6 + k * 0.25, 't1': 20.4 + k * 0.25, 't2': 29.0, 'arc': 2.5, 'size': 0.9})
-props.append({'type': 'heart', 'from': {'xz': [FOOD[0] + 2.2, FOOD[1] + 1.2], 'up': 5.5}, 'to': {'xz': [FOOD[0] + 2.2, FOOD[1] + 1.2], 'up': 7.0}, 't0': 30.8, 't1': 33.8, 't2': 34.0, 'size': 2.2})
+props.append({'type': 'heart', 'from': {'xz': [FOOD[0] + 2.2, FOOD[1] + 1.2], 'up': 5.5}, 'to': {'xz': [FOOD[0] + 2.2, FOOD[1] + 1.2], 'up': 7.0}, 't0': 30.6, 't1': 31.4, 't2': 31.4, 'size': 2.2})
 props.append({'type': 'question', 'from': {'xz': bear_at(44.2), 'up': 0}, 't0': 44.4, 't1': 44.41, 't2': 47.0, 'size': 3})
 
 props3d = [
@@ -179,7 +197,7 @@ props3d = [
 
 def star(i, a, b, text):
     return {'who': i, 'from': a, 'to': b, 'bubble': text} if inr(i) else None
-stars = [x for x in [star(ZAF, 15.2, 17.1, '俺らで熊を手懐けよう🐻金太郎みたいに'), star(RINO, 34.6, 37.2, 'クマ専用エリアを作ったらいいかも！'), star(ZAF, 30.6, 33.8, 'よしよし…')] if x]
+stars = [x for x in [star(ZAF, 15.2, 17.1, '俺らで熊を手懐けよう🐻金太郎みたいに'), star(RINO, 34.8, 37.2, 'クマ専用エリアを作ったらいいかも！')] if x]
 ROWS = [{'key': k, 'label': OPTS[k], 'count': tally[k]} for k in OPTS]
 LB = {'total': LIKES, 'max': 1000, 'goals': GOALS}
 overlay = {
@@ -189,7 +207,7 @@ overlay = {
     'names': {**{i: name_of(i) for i in people}, **{x: name_of(x) for e in pairs for x in e}},
     'titles': [{'text': '7日目', 'from': 0.1, 'to': 3.0}],
     'tagAll': [[0.3, 3.0, 0.08]],
-    'tagOnly': [{'from': 17.4, 'to': 19.0, 'who': list(e), 'join': True, 'size': 36} for e in pairs],
+    'tagOnly': [{'from': 15.8, 'to': 17.1, 'who': ZF, 'below': True, 'size': 32}] + [{'from': 17.4, 'to': 19.0, 'who': list(e), 'join': True, 'size': 36} for e in pairs],
     'stars': stars,
     'tally': {'from': 12.0, 'to': 15.0, 'title': '昨日の質問　クマをどうする？', 'grow': [12.3, 13.5], 'winner': winner, 'winnerAt': 13.8, 'rows': ROWS},
     'likebars': [{**LB, 'from': 9.0, 'to': 12.0, 'from0': max(0, LIKES - 120), 'y': 640}, {**LB, 'from': 57.1, 'to': DUR, 'from0': LIKES, 'y': 380}],
@@ -207,7 +225,9 @@ overlay = {
         {'text': '食べ物を分けて、仲良くなる作戦', 'from': 19.1, 'to': 23.2, 'y': 360, 'size': 54, 'color': [255, 214, 74]},
         {'text': 'みんな、息をひそめて…', 'from': 23.4, 'to': 26.4, 'y': 360, 'size': 58},
         {'text': '食べた！', 'from': 28.6, 'to': 30.4, 'y': 360, 'size': 84, 'color': [255, 214, 74]},
-        {'text': 'クマと、仲良くなった！', 'from': 30.6, 'to': 34.0, 'y': 360, 'size': 66, 'color': [255, 214, 74]},
+        {'text': 'クマと、仲良くなった！', 'from': 30.6, 'to': 31.4, 'y': 360, 'size': 66, 'color': [255, 214, 74]},
+        {'text': '金太郎みたいに、背中に乗った！', 'from': 31.5, 'to': 34.5, 'y': 360, 'size': 58, 'color': [255, 214, 74]},
+        *([{'text': f'ざーふさん、仲良しが{len(ZF)}人に！', 'from': 15.6, 'to': 17.1, 'y': 420, 'size': 54}] if ZF else []),
         {'text': 'クマの家が、できた！', 'from': 38.4, 'to': 40.0, 'y': 360, 'size': 62, 'color': [255, 214, 74]},
         *([{'text': 'kubottoさん「住処を奪ったこちらにも非がある」', 'from': 36.0, 'to': 38.3, 'y': 1290, 'size': 38}] if inr(KUBO) else []),
         {'text': 'その夜、クマが森の奥へ…', 'from': 40.1, 'to': 42.6, 'y': 360, 'size': 56},
@@ -235,7 +255,8 @@ narr = [
     {'at': 19.1, 'until': 23.2, 'text': '魚と木の実の、ごちそうを置いて。'},
     {'at': 23.4, 'until': 26.4, 'text': 'みんなで、そっと見守る…'},
     {'at': 28.6, 'until': 30.4, 'text': '食べた！'},
-    {'at': 30.6, 'until': 34.0, 'text': 'クマと、仲良くなった！'},
+    {'at': 30.6, 'until': 31.4, 'text': '仲良くなった！'},
+    {'at': 31.5, 'until': 34.5, 'text': '金太郎みたいに、背中に乗った！'},
     {'at': 34.1, 'until': 38.3, 'text': 'クマの家も、作ったよ。'},
     {'at': 40.1, 'until': 42.6, 'text': 'その夜、クマが森の奥へ。'},
     {'at': 42.7, 'until': 47.0, 'text': 'ついて来い、って言ってる？'},

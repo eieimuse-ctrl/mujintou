@@ -132,6 +132,7 @@
         if (k.frame !== undefined) st.frame = k.frame;
         if (k.hide !== undefined) st.hide = k.hide;
         if (k.torch !== undefined) st.torch = k.torch;
+        if (k.ride !== undefined) st.ride = k.ride; // クマの背中に乗る（true のあいだ、位置はクマの上）
         if (k.face) st.face = k.face;
       }
       let p = st.pos, walking = false;
@@ -148,7 +149,7 @@
       else if (st.face && st.face.at) { const q = resolve(st.face.at, t); dx = q.x - p.x; dz = q.z - p.z; }
       else if (st.face === 'left') { dx = -g.Tg.x; dz = -g.Tg.z; }
       else if (st.face === 'right') { dx = g.Tg.x; dz = g.Tg.z; }
-      return { x: p.x, z: p.z, g, dx, dz, anim: walking ? st.moveAnim : st.anim, frame: walking ? null : st.frame, hide: st.hide, torch: st.torch };
+      return { x: p.x, z: p.z, g, dx, dz, anim: walking ? st.moveAnim : st.anim, frame: walking ? null : st.frame, hide: st.hide, torch: st.torch, ride: st.ride };
     };
     const posAt = (id, t) => { const s = stateOf(id, t); return { x: s.x, z: s.z }; };
     function moving(st, t) {
@@ -549,11 +550,23 @@
     };
 
     S = { cast, idx, stateOf, props, propAt, camAt, story, solids, solidAt, cutaway };
+    // クマ（props3d の beast）の位置と向き：道すじ path を時刻で補間
+    const beastPr = (story.props3d || []).find((p) => p.type === 'beast');
+    const beastAt = (t) => {
+      const P = beastPr.path; let k = 0; while (k < P.length - 2 && t > P[k + 1][0]) k++;
+      const [ta, xa, za] = P[k], [tb, xb, zb] = P[Math.min(k + 1, P.length - 1)];
+      const u = Math.max(0, Math.min(1, (t - ta) / Math.max(0.01, tb - ta)));
+      return { x: xa + (xb - xa) * u, z: za + (zb - za) * u, dx: xb - xa, dz: zb - za };
+    };
     globalThis.__stagePose = (i) => {
       const id = people[i].id;
       if (!keys.has(id)) return { x: 0, y: -80, z: 0, dx: 0, dz: 1, anim: 'idle' };
       const s = stateOf(id, window.__filmT || 0);
       if (s.hide) return { x: s.x, y: -80, z: s.z, dx: 0, dz: 1, anim: 'idle' };
+      if (s.ride && beastPr) {
+        const t = window.__filmT || 0, b = beastAt(t), step = Math.floor(t * 8) % 2 && (b.dx || b.dz) ? 0.12 : 0;
+        return { x: b.x, y: yAt(b.x, b.z) + 3.75 + step, z: b.z, dx: b.dx || s.dx, dz: b.dz || s.dz, anim: s.anim, frame: s.frame, bubble: null, line: '', torch: false };
+      }
       return { x: s.x, y: yAt(s.x, s.z), z: s.z, dx: s.dx, dz: s.dz, anim: s.anim, frame: s.frame, bubble: null, line: '', torch: s.torch };
     };
     return { cast, missing: castAll.filter((id) => !idx.has(id)), n: cast.length, groups: [...G.keys()] };
