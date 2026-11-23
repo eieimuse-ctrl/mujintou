@@ -1,0 +1,6715 @@
+{
+ "title": "7日目",
+ "roster": "../input/islanders.json",
+ "day": 7,
+ "fps": 24,
+ "duration": 60.0,
+ "hour": 10,
+ "baseTime": "2026-11-23T09:00:00+09:00",
+ "base": {
+  "name": "中央の広場",
+  "x": 0,
+  "z": 5,
+  "decidedDay": 2
+ },
+ "forestRoad": {
+  "points": [
+   [
+    -74,
+    -22
+   ],
+   [
+    -128,
+    -34
+   ]
+  ],
+  "need": 300,
+  "startDay": 4,
+  "label": "光の場所",
+  "open": true
+ },
+ "toolAge": "stone",
+ "clearings": [
+  {
+   "x0": -132,
+   "x1": -86,
+   "z0": -62,
+   "z1": 22,
+   "day": 6
+  }
+ ],
+ "buildings": [
+  {
+   "id": "ruins-1",
+   "type": "ruins",
+   "name": "昔の住人の跡",
+   "x": -44.7,
+   "z": -12.7,
+   "rot": 0,
+   "builtDay": 1
+  },
+  {
+   "id": "hut-1",
+   "type": "hut",
+   "name": "はじまりの小屋",
+   "x": -20,
+   "z": -5,
+   "rot": 20,
+   "builtDay": 4
+  },
+  {
+   "id": "workshop-1",
+   "type": "workshop",
+   "name": "石の作業場",
+   "x": -40.3,
+   "z": -9.0,
+   "rot": 10,
+   "builtDay": 5
+  },
+  {
+   "id": "bigfield-1",
+   "type": "bigfield",
+   "name": "巨大な畑",
+   "x": -36.67,
+   "z": -17.0,
+   "rot": 0,
+   "builtDay": 6
+  }
+ ],
+ "cast": [
+  "marunn111",
+  "guernica.0712",
+  "airu0728000",
+  "kubotto0505",
+  "leop_ard5722",
+  "nagatani2012",
+  "abc.man13",
+  "mera_keigo",
+  "mem_mem.0125",
+  "rino._.15",
+  "ryuji_111",
+  "kazuzu4771",
+  "mitsunari_33",
+  "tsuki5747",
+  "ichi.09",
+  "onyankopunch",
+  "aeons0aha",
+  "kota_0.126",
+  "wpmtgm7392",
+  "ayu.mu__8890",
+  "akari_y43k",
+  "aiueo._.0909",
+  "kamesyan_09",
+  "i2srn_97",
+  "ibu131313",
+  "marumegane4",
+  "mihaka166",
+  "ta22_213ku",
+  "tarak_o002",
+  "yuradayo0330",
+  "u_soda_a",
+  "sp7313983",
+  "yuridazo68",
+  "sayaka94233",
+  "akrfjmt417",
+  "tpmpmmpp",
+  "nanasi774_ou",
+  "an_r_0323",
+  "1kichi_chan",
+  "_shaun81",
+  "akuserumeihong",
+  "aosan116",
+  "atsukidesu",
+  "bear.44190633",
+  "daichi.yamazaki3",
+  "dosukoi.5845",
+  "fuse.daichi",
+  "hafuki82",
+  "hayato210165",
+  "hiropone_89",
+  "hkssss69",
+  "hori_harusabu",
+  "horiharu0220",
+  "hyuga_0619",
+  "kame___1020",
+  "kohe051",
+  "kosei20130324",
+  "kurimasa222",
+  "max_no_otousan",
+  "mi_erimo",
+  "musashi.617",
+  "nintendo_3ds.12",
+  "oka_tomohiko",
+  "paianiyan",
+  "r19tooo",
+  "s.sora1225",
+  "s_02y.ayta",
+  "sakasaka_1482",
+  "sasa_mi42151315",
+  "29tomo83",
+  "_otekat_____",
+  "bea_utiful183",
+  "singlepapatsu.i",
+  "yamato_family327",
+  "_3yu.96_",
+  "aki752294613",
+  "xinxiao2468",
+  "hisa1344k",
+  "tomoki___1118",
+  "hayasiappol",
+  "yun___0517",
+  "12rina3",
+  "mole083",
+  "himanano.2303",
+  "iino8228",
+  "kenkjkjkj",
+  "qwqwpopo108",
+  "shin120903",
+  "superstar.5005",
+  "kari__________n",
+  "mana_20140219",
+  "shin.0907.zo",
+  "haru_paint214",
+  "taberuna2000",
+  "color8_1680",
+  "kikoshizuku",
+  "1205.ai",
+  "aratata90",
+  "iwayui0622",
+  "sana022037",
+  "yushi310310",
+  "ry0t0_nk",
+  "67akito",
+  "kuku0702s",
+  "hiiiii041",
+  "c.lz4_",
+  "s.asano_darts",
+  "qmli.p",
+  "noamaru_ringo",
+  "smilemikan1029",
+  "makoto04759",
+  "bboy_d_sho",
+  "rento_5959",
+  "chibizu358",
+  "gt513_2",
+  "ultra.y14",
+  "wakap_1213",
+  "sooousiuuu",
+  "rl1x_y",
+  "harutooo1202",
+  "honggu636",
+  "nagi_t_o",
+  "ura_02.1",
+  "ri.to701",
+  "shtatsu0202",
+  "fukusheyuuma083113",
+  "_shibata1129",
+  "riri_9859",
+  "_qfl8a",
+  "yyyyyyyyu382",
+  "ne_12qc",
+  "ryu63003",
+  "momoka_k331",
+  "neo_b_ball",
+  "panda.1119559",
+  "zeru4380",
+  "mkah0806",
+  "homota_123",
+  "katupbusi",
+  "m_q1e.5",
+  "ai.ueo565",
+  "nit.__.ngs",
+  "hokura_masao",
+  "aaaaaaaaino.0904",
+  "raion1191",
+  "kotaro.2013",
+  "haru0816.2112",
+  "rukun55555188888888",
+  "oonimotunow",
+  "yukamaru0410",
+  "pup.o5",
+  "nakoumeki0324",
+  "wow_yama_inthe_mt.fu2",
+  "himotoro.t",
+  "tomato._.1230",
+  "yurayura0916",
+  "ken_ta10.28",
+  "takeshi.1oo2",
+  "chun0327",
+  "ti65328",
+  "31kazu0515",
+  "tai_ry53",
+  "yuriko82975",
+  "shanzhongzhengying14",
+  "non20130402",
+  "syuu0_628",
+  "sachika.nanairo",
+  "futa.haru1201",
+  "s84ta",
+  "iori.17.07",
+  "hamduck.gwa98",
+  "hinataro0509",
+  "zukki.hello",
+  "kou4_21",
+  "thiago.moreira0743",
+  "chihiro.hkcy",
+  "masakidesumasu"
+ ],
+ "groups": [
+  {
+   "name": "beach",
+   "type": "ring",
+   "spot": [
+    236.0,
+    124.0
+   ],
+   "radius": 3.2,
+   "gap": 2.6,
+   "members": [
+    "xinxiao2468",
+    "hisa1344k",
+    "tomoki___1118",
+    "hayasiappol",
+    "yun___0517",
+    "12rina3",
+    "mole083",
+    "himanano.2303",
+    "marunn111",
+    "iino8228",
+    "kenkjkjkj",
+    "qwqwpopo108",
+    "shin120903",
+    "superstar.5005",
+    "kari__________n",
+    "mana_20140219",
+    "shin.0907.zo",
+    "haru_paint214",
+    "taberuna2000",
+    "color8_1680",
+    "kikoshizuku",
+    "1205.ai"
+   ]
+  },
+  {
+   "name": "zaf",
+   "type": "line",
+   "spot": [
+    15,
+    36
+   ],
+   "face": [
+    0,
+    1
+   ],
+   "gap": 2.0,
+   "members": [
+    "guernica.0712",
+    "yuridazo68"
+   ]
+  },
+  {
+   "name": "pair0",
+   "type": "line",
+   "spot": [
+    5,
+    46
+   ],
+   "face": [
+    0,
+    1
+   ],
+   "gap": 1.8,
+   "members": [
+    "aiueo._.0909",
+    "an_r_0323"
+   ]
+  },
+  {
+   "name": "pair1",
+   "type": "line",
+   "spot": [
+    11,
+    46
+   ],
+   "face": [
+    0,
+    1
+   ],
+   "gap": 1.8,
+   "members": [
+    "guernica.0712",
+    "yuridazo68"
+   ]
+  },
+  {
+   "name": "pairs",
+   "type": "line",
+   "spot": [
+    8,
+    46
+   ],
+   "face": [
+    0,
+    1
+   ],
+   "members": []
+  },
+  {
+   "name": "plaza",
+   "type": "ring",
+   "spot": [
+    0,
+    15
+   ],
+   "radius": 7,
+   "gap": 2.8,
+   "members": [
+    "1kichi_chan",
+    "_shaun81",
+    "akuserumeihong",
+    "aosan116",
+    "atsukidesu",
+    "bear.44190633",
+    "daichi.yamazaki3",
+    "dosukoi.5845",
+    "fuse.daichi",
+    "hafuki82",
+    "hayato210165",
+    "hiropone_89",
+    "hkssss69",
+    "hori_harusabu",
+    "horiharu0220",
+    "hyuga_0619",
+    "ichi.09",
+    "kame___1020"
+   ]
+  },
+  {
+   "name": "watch",
+   "type": "ring",
+   "spot": [
+    -74.0,
+    -46.0
+   ],
+   "radius": 6,
+   "gap": 2.0,
+   "members": [
+    "1kichi_chan",
+    "_shaun81",
+    "akuserumeihong",
+    "aosan116",
+    "atsukidesu",
+    "bear.44190633",
+    "daichi.yamazaki3",
+    "dosukoi.5845",
+    "fuse.daichi",
+    "hafuki82",
+    "hayato210165",
+    "hiropone_89",
+    "hkssss69",
+    "hori_harusabu",
+    "horiharu0220",
+    "hyuga_0619",
+    "ichi.09",
+    "kame___1020",
+    "kohe051",
+    "kosei20130324",
+    "kurimasa222",
+    "marumegane4",
+    "max_no_otousan",
+    "mi_erimo",
+    "musashi.617",
+    "nanasi774_ou",
+    "nintendo_3ds.12",
+    "oka_tomohiko",
+    "paianiyan",
+    "r19tooo",
+    "s.sora1225",
+    "s_02y.ayta",
+    "sakasaka_1482",
+    "sasa_mi42151315"
+   ]
+  },
+  {
+   "name": "cooks",
+   "type": "line",
+   "spot": [
+    -81.0,
+    -54.0
+   ],
+   "face": [
+    -0.6,
+    -0.8
+   ],
+   "gap": 2.0,
+   "members": [
+    "yuridazo68",
+    "tsuki5747",
+    "abc.man13",
+    "29tomo83",
+    "_otekat_____",
+    "bea_utiful183"
+   ]
+  },
+  {
+   "name": "build",
+   "type": "line",
+   "spot": [
+    -88.0,
+    -29.0
+   ],
+   "face": [
+    0,
+    -1
+   ],
+   "gap": 2.6,
+   "members": [
+    "singlepapatsu.i",
+    "tarak_o002",
+    "yamato_family327",
+    "_3yu.96_",
+    "aki752294613",
+    "rino._.15"
+   ]
+  },
+  {
+   "name": "south",
+   "type": "line",
+   "spot": [
+    -74.0,
+    -46.0
+   ],
+   "face": [
+    0,
+    1
+   ],
+   "members": []
+  }
+ ],
+ "acts": [
+  {
+   "who": "*",
+   "t": 0,
+   "anim": "idle",
+   "face": "front"
+  },
+  {
+   "who": "aratata90",
+   "t": 0,
+   "at": [
+    242.4,
+    135
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "aratata90",
+   "t": 1.6,
+   "anim": "sit"
+  },
+  {
+   "who": "aratata90",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "iwayui0622",
+   "t": 0,
+   "at": [
+    235.9,
+    136.8
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "iwayui0622",
+   "t": 1.7000000000000002,
+   "anim": "sleep"
+  },
+  {
+   "who": "iwayui0622",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "sana022037",
+   "t": 0,
+   "at": [
+    224.4,
+    129.6
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "sana022037",
+   "t": 1.8,
+   "anim": "sleep"
+  },
+  {
+   "who": "sana022037",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "yushi310310",
+   "t": 0,
+   "at": [
+    247.7,
+    118.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "yushi310310",
+   "t": 1.9000000000000001,
+   "anim": "sit"
+  },
+  {
+   "who": "yushi310310",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "ry0t0_nk",
+   "t": 0,
+   "at": [
+    242,
+    111.9
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "ry0t0_nk",
+   "t": 2.0,
+   "anim": "sleep"
+  },
+  {
+   "who": "ry0t0_nk",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "67akito",
+   "t": 0,
+   "at": [
+    232.1,
+    110.9
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "67akito",
+   "t": 2.1,
+   "anim": "sleep"
+  },
+  {
+   "who": "67akito",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "kuku0702s",
+   "t": 0,
+   "at": [
+    246.7,
+    115.2
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "kuku0702s",
+   "t": 2.2,
+   "anim": "sit"
+  },
+  {
+   "who": "kuku0702s",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "hiiiii041",
+   "t": 0,
+   "at": [
+    225.1,
+    115.4
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "hiiiii041",
+   "t": 2.3000000000000003,
+   "anim": "sleep"
+  },
+  {
+   "who": "hiiiii041",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "c.lz4_",
+   "t": 0,
+   "at": [
+    250.1,
+    123.7
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "c.lz4_",
+   "t": 2.4000000000000004,
+   "anim": "sleep"
+  },
+  {
+   "who": "c.lz4_",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "s.asano_darts",
+   "t": 0,
+   "at": [
+    237.1,
+    109.9
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "s.asano_darts",
+   "t": 1.6,
+   "anim": "sit"
+  },
+  {
+   "who": "s.asano_darts",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "qmli.p",
+   "t": 0,
+   "at": [
+    221.8,
+    125.5
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "qmli.p",
+   "t": 1.7000000000000002,
+   "anim": "sleep"
+  },
+  {
+   "who": "qmli.p",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "noamaru_ringo",
+   "t": 0,
+   "at": [
+    241.3,
+    138.3
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "noamaru_ringo",
+   "t": 1.8,
+   "anim": "sleep"
+  },
+  {
+   "who": "noamaru_ringo",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "smilemikan1029",
+   "t": 0,
+   "at": [
+    245.4,
+    136.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "smilemikan1029",
+   "t": 1.9000000000000001,
+   "anim": "sit"
+  },
+  {
+   "who": "smilemikan1029",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "makoto04759",
+   "t": 0,
+   "at": [
+    250.6,
+    129.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "makoto04759",
+   "t": 2.0,
+   "anim": "sleep"
+  },
+  {
+   "who": "makoto04759",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "bboy_d_sho",
+   "t": 0,
+   "at": [
+    251.2,
+    120.2
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "bboy_d_sho",
+   "t": 2.1,
+   "anim": "sleep"
+  },
+  {
+   "who": "bboy_d_sho",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "rento_5959",
+   "t": 0,
+   "at": [
+    234.4,
+    108.4
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "rento_5959",
+   "t": 2.2,
+   "anim": "sit"
+  },
+  {
+   "who": "rento_5959",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "chibizu358",
+   "t": 0,
+   "at": [
+    221.3,
+    130.4
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "chibizu358",
+   "t": 2.3000000000000003,
+   "anim": "sleep"
+  },
+  {
+   "who": "chibizu358",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "gt513_2",
+   "t": 0,
+   "at": [
+    245,
+    110.7
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "gt513_2",
+   "t": 2.4000000000000004,
+   "anim": "sleep"
+  },
+  {
+   "who": "gt513_2",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "kota_0.126",
+   "t": 0,
+   "at": [
+    220.1,
+    127.7
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "kota_0.126",
+   "t": 1.6,
+   "anim": "sit"
+  },
+  {
+   "who": "kota_0.126",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "wpmtgm7392",
+   "t": 0,
+   "at": [
+    223.9,
+    135.2
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "wpmtgm7392",
+   "t": 1.7000000000000002,
+   "anim": "sleep"
+  },
+  {
+   "who": "wpmtgm7392",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "ultra.y14",
+   "t": 0,
+   "at": [
+    230.3,
+    108
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "ultra.y14",
+   "t": 1.8,
+   "anim": "sleep"
+  },
+  {
+   "who": "ultra.y14",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "wakap_1213",
+   "t": 0,
+   "at": [
+    237.8,
+    141.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "wakap_1213",
+   "t": 1.9000000000000001,
+   "anim": "sit"
+  },
+  {
+   "who": "wakap_1213",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "sooousiuuu",
+   "t": 0,
+   "at": [
+    220.8,
+    115.7
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "sooousiuuu",
+   "t": 2.0,
+   "anim": "sleep"
+  },
+  {
+   "who": "sooousiuuu",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "rl1x_y",
+   "t": 0,
+   "at": [
+    226.9,
+    138.8
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "rl1x_y",
+   "t": 2.1,
+   "anim": "sleep"
+  },
+  {
+   "who": "rl1x_y",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "harutooo1202",
+   "t": 0,
+   "at": [
+    237.8,
+    106.6
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "harutooo1202",
+   "t": 2.2,
+   "anim": "sit"
+  },
+  {
+   "who": "harutooo1202",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "honggu636",
+   "t": 0,
+   "at": [
+    250,
+    112.5
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "honggu636",
+   "t": 2.3000000000000003,
+   "anim": "sleep"
+  },
+  {
+   "who": "honggu636",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "nagi_t_o",
+   "t": 0,
+   "at": [
+    223.8,
+    110.2
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "nagi_t_o",
+   "t": 2.4000000000000004,
+   "anim": "sleep"
+  },
+  {
+   "who": "nagi_t_o",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "aiueo._.0909",
+   "t": 0,
+   "at": [
+    220.6,
+    134.5
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "aiueo._.0909",
+   "t": 1.6,
+   "anim": "sit"
+  },
+  {
+   "who": "aiueo._.0909",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "an_r_0323",
+   "t": 0,
+   "at": [
+    253.6,
+    117.7
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "an_r_0323",
+   "t": 1.7000000000000002,
+   "anim": "sleep"
+  },
+  {
+   "who": "an_r_0323",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "ura_02.1",
+   "t": 0,
+   "at": [
+    227.7,
+    107.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "ura_02.1",
+   "t": 1.8,
+   "anim": "sleep"
+  },
+  {
+   "who": "ura_02.1",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "ri.to701",
+   "t": 0,
+   "at": [
+    255.5,
+    123.3
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "ri.to701",
+   "t": 1.9000000000000001,
+   "anim": "sit"
+  },
+  {
+   "who": "ri.to701",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "shtatsu0202",
+   "t": 0,
+   "at": [
+    252.9,
+    113.9
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "shtatsu0202",
+   "t": 2.0,
+   "anim": "sleep"
+  },
+  {
+   "who": "shtatsu0202",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "fukusheyuuma083113",
+   "t": 0,
+   "at": [
+    233.2,
+    104.5
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "fukusheyuuma083113",
+   "t": 2.1,
+   "anim": "sleep"
+  },
+  {
+   "who": "fukusheyuuma083113",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "_shibata1129",
+   "t": 0,
+   "at": [
+    216.5,
+    120
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "_shibata1129",
+   "t": 2.2,
+   "anim": "sit"
+  },
+  {
+   "who": "_shibata1129",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "riri_9859",
+   "t": 0,
+   "at": [
+    236.7,
+    104.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "riri_9859",
+   "t": 2.3000000000000003,
+   "anim": "sleep"
+  },
+  {
+   "who": "riri_9859",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "mihaka166",
+   "t": 0,
+   "at": [
+    229.3,
+    142.9
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "mihaka166",
+   "t": 2.4000000000000004,
+   "anim": "sleep"
+  },
+  {
+   "who": "mihaka166",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "_qfl8a",
+   "t": 0,
+   "at": [
+    224.7,
+    107.4
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "_qfl8a",
+   "t": 1.6,
+   "anim": "sit"
+  },
+  {
+   "who": "_qfl8a",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "yyyyyyyyu382",
+   "t": 0,
+   "at": [
+    225.2,
+    141.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "yyyyyyyyu382",
+   "t": 1.7000000000000002,
+   "anim": "sleep"
+  },
+  {
+   "who": "yyyyyyyyu382",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "ne_12qc",
+   "t": 0,
+   "at": [
+    241.8,
+    143.6
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "ne_12qc",
+   "t": 1.8,
+   "anim": "sleep"
+  },
+  {
+   "who": "ne_12qc",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "ryu63003",
+   "t": 0,
+   "at": [
+    216.6,
+    131.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "ryu63003",
+   "t": 1.9000000000000001,
+   "anim": "sit"
+  },
+  {
+   "who": "ryu63003",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "momoka_k331",
+   "t": 0,
+   "at": [
+    244.7,
+    104.8
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "momoka_k331",
+   "t": 2.0,
+   "anim": "sleep"
+  },
+  {
+   "who": "momoka_k331",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "neo_b_ball",
+   "t": 0,
+   "at": [
+    216.1,
+    116.8
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "neo_b_ball",
+   "t": 2.1,
+   "anim": "sleep"
+  },
+  {
+   "who": "neo_b_ball",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "panda.1119559",
+   "t": 0,
+   "at": [
+    221.9,
+    107.9
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "panda.1119559",
+   "t": 2.2,
+   "anim": "sit"
+  },
+  {
+   "who": "panda.1119559",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "zeru4380",
+   "t": 0,
+   "at": [
+    253,
+    110.8
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "zeru4380",
+   "t": 2.3000000000000003,
+   "anim": "sleep"
+  },
+  {
+   "who": "zeru4380",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "mkah0806",
+   "t": 0,
+   "at": [
+    232.6,
+    145.5
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "mkah0806",
+   "t": 2.4000000000000004,
+   "anim": "sleep"
+  },
+  {
+   "who": "mkah0806",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "ta22_213ku",
+   "t": 0,
+   "at": [
+    226.4,
+    104.3
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "ta22_213ku",
+   "t": 1.6,
+   "anim": "sit"
+  },
+  {
+   "who": "ta22_213ku",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "homota_123",
+   "t": 0,
+   "at": [
+    256.7,
+    116.3
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "homota_123",
+   "t": 1.7000000000000002,
+   "anim": "sleep"
+  },
+  {
+   "who": "homota_123",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "sp7313983",
+   "t": 0,
+   "at": [
+    242.4,
+    102.8
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "sp7313983",
+   "t": 1.8,
+   "anim": "sleep"
+  },
+  {
+   "who": "sp7313983",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "katupbusi",
+   "t": 0,
+   "at": [
+    221.9,
+    141.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "katupbusi",
+   "t": 1.9000000000000001,
+   "anim": "sit"
+  },
+  {
+   "who": "katupbusi",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "m_q1e.5",
+   "t": 0,
+   "at": [
+    213.6,
+    124.3
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "m_q1e.5",
+   "t": 2.0,
+   "anim": "sleep"
+  },
+  {
+   "who": "m_q1e.5",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "ai.ueo565",
+   "t": 0,
+   "at": [
+    251.6,
+    107.7
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "ai.ueo565",
+   "t": 2.1,
+   "anim": "sleep"
+  },
+  {
+   "who": "ai.ueo565",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "nit.__.ngs",
+   "t": 0,
+   "at": [
+    213.7,
+    129.5
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "nit.__.ngs",
+   "t": 2.2,
+   "anim": "sit"
+  },
+  {
+   "who": "nit.__.ngs",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "hokura_masao",
+   "t": 0,
+   "at": [
+    236.3,
+    147
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "hokura_masao",
+   "t": 2.3000000000000003,
+   "anim": "sleep"
+  },
+  {
+   "who": "hokura_masao",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "aaaaaaaaino.0904",
+   "t": 0,
+   "at": [
+    228.3,
+    102.3
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "aaaaaaaaino.0904",
+   "t": 2.4000000000000004,
+   "anim": "sleep"
+  },
+  {
+   "who": "aaaaaaaaino.0904",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "raion1191",
+   "t": 0,
+   "at": [
+    236.9,
+    100.6
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "raion1191",
+   "t": 1.6,
+   "anim": "sit"
+  },
+  {
+   "who": "raion1191",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "kotaro.2013",
+   "t": 0,
+   "at": [
+    240.5,
+    100.8
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "kotaro.2013",
+   "t": 1.7000000000000002,
+   "anim": "sleep"
+  },
+  {
+   "who": "kotaro.2013",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "u_soda_a",
+   "t": 0,
+   "at": [
+    219.3,
+    106.9
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "u_soda_a",
+   "t": 1.8,
+   "anim": "sleep"
+  },
+  {
+   "who": "u_soda_a",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "haru0816.2112",
+   "t": 0,
+   "at": [
+    218.2,
+    140.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "haru0816.2112",
+   "t": 1.9000000000000001,
+   "anim": "sit"
+  },
+  {
+   "who": "haru0816.2112",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "rukun55555188888888",
+   "t": 0,
+   "at": [
+    223.6,
+    144.6
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "rukun55555188888888",
+   "t": 2.0,
+   "anim": "sleep"
+  },
+  {
+   "who": "rukun55555188888888",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "oonimotunow",
+   "t": 0,
+   "at": [
+    256.9,
+    112.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "oonimotunow",
+   "t": 2.1,
+   "anim": "sleep"
+  },
+  {
+   "who": "oonimotunow",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "yukamaru0410",
+   "t": 0,
+   "at": [
+    223.8,
+    102.9
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "yukamaru0410",
+   "t": 2.2,
+   "anim": "sit"
+  },
+  {
+   "who": "yukamaru0410",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "pup.o5",
+   "t": 0,
+   "at": [
+    213.3,
+    115.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "pup.o5",
+   "t": 2.3000000000000003,
+   "anim": "sleep"
+  },
+  {
+   "who": "pup.o5",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "nakoumeki0324",
+   "t": 0,
+   "at": [
+    259.7,
+    116.7
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "nakoumeki0324",
+   "t": 2.4000000000000004,
+   "anim": "sleep"
+  },
+  {
+   "who": "nakoumeki0324",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "wow_yama_inthe_mt.fu2",
+   "t": 0,
+   "at": [
+    211.1,
+    123.3
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "wow_yama_inthe_mt.fu2",
+   "t": 1.6,
+   "anim": "sit"
+  },
+  {
+   "who": "wow_yama_inthe_mt.fu2",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "himotoro.t",
+   "t": 0,
+   "at": [
+    253.8,
+    106.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "himotoro.t",
+   "t": 1.7000000000000002,
+   "anim": "sleep"
+  },
+  {
+   "who": "himotoro.t",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "tomato._.1230",
+   "t": 0,
+   "at": [
+    232.3,
+    98.9
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "tomato._.1230",
+   "t": 1.8,
+   "anim": "sleep"
+  },
+  {
+   "who": "tomato._.1230",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "yurayura0916",
+   "t": 0,
+   "at": [
+    243.8,
+    99.7
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "yurayura0916",
+   "t": 1.9000000000000001,
+   "anim": "sit"
+  },
+  {
+   "who": "yurayura0916",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "ken_ta10.28",
+   "t": 0,
+   "at": [
+    213.5,
+    111.5
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "ken_ta10.28",
+   "t": 2.0,
+   "anim": "sleep"
+  },
+  {
+   "who": "ken_ta10.28",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "takeshi.1oo2",
+   "t": 0,
+   "at": [
+    226,
+    100
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "takeshi.1oo2",
+   "t": 2.1,
+   "anim": "sleep"
+  },
+  {
+   "who": "takeshi.1oo2",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "chun0327",
+   "t": 0,
+   "at": [
+    225.8,
+    148.2
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "chun0327",
+   "t": 2.2,
+   "anim": "sit"
+  },
+  {
+   "who": "chun0327",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "ti65328",
+   "t": 0,
+   "at": [
+    220.5,
+    145.2
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "ti65328",
+   "t": 2.3000000000000003,
+   "anim": "sleep"
+  },
+  {
+   "who": "ti65328",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "31kazu0515",
+   "t": 0,
+   "at": [
+    239.9,
+    98
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "31kazu0515",
+   "t": 2.4000000000000004,
+   "anim": "sleep"
+  },
+  {
+   "who": "31kazu0515",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "tai_ry53",
+   "t": 0,
+   "at": [
+    259.8,
+    112.6
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "tai_ry53",
+   "t": 1.6,
+   "anim": "sit"
+  },
+  {
+   "who": "tai_ry53",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "yuriko82975",
+   "t": 0,
+   "at": [
+    248.7,
+    100.8
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "yuriko82975",
+   "t": 1.7000000000000002,
+   "anim": "sleep"
+  },
+  {
+   "who": "yuriko82975",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "shanzhongzhengying14",
+   "t": 0,
+   "at": [
+    262.1,
+    118.4
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "shanzhongzhengying14",
+   "t": 1.8,
+   "anim": "sleep"
+  },
+  {
+   "who": "shanzhongzhengying14",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "non20130402",
+   "t": 0,
+   "at": [
+    221.2,
+    101.7
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "non20130402",
+   "t": 1.9000000000000001,
+   "anim": "sit"
+  },
+  {
+   "who": "non20130402",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "syuu0_628",
+   "t": 0,
+   "at": [
+    209.6,
+    128.9
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "syuu0_628",
+   "t": 2.0,
+   "anim": "sleep"
+  },
+  {
+   "who": "syuu0_628",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "sachika.nanairo",
+   "t": 0,
+   "at": [
+    216.1,
+    142.2
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "sachika.nanairo",
+   "t": 2.1,
+   "anim": "sleep"
+  },
+  {
+   "who": "sachika.nanairo",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "futa.haru1201",
+   "t": 0,
+   "at": [
+    246.5,
+    99.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "futa.haru1201",
+   "t": 2.2,
+   "anim": "sit"
+  },
+  {
+   "who": "futa.haru1201",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "s84ta",
+   "t": 0,
+   "at": [
+    257.2,
+    107.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "s84ta",
+   "t": 2.3000000000000003,
+   "anim": "sleep"
+  },
+  {
+   "who": "s84ta",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "iori.17.07",
+   "t": 0,
+   "at": [
+    217.2,
+    104.3
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "iori.17.07",
+   "t": 2.4000000000000004,
+   "anim": "sleep"
+  },
+  {
+   "who": "iori.17.07",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "hamduck.gwa98",
+   "t": 0,
+   "at": [
+    210.4,
+    133.7
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "hamduck.gwa98",
+   "t": 1.6,
+   "anim": "sit"
+  },
+  {
+   "who": "hamduck.gwa98",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "hinataro0509",
+   "t": 0,
+   "at": [
+    262.1,
+    114.8
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "hinataro0509",
+   "t": 1.7000000000000002,
+   "anim": "sleep"
+  },
+  {
+   "who": "hinataro0509",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "zukki.hello",
+   "t": 0,
+   "at": [
+    212.6,
+    138.8
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "zukki.hello",
+   "t": 1.8,
+   "anim": "sleep"
+  },
+  {
+   "who": "zukki.hello",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "kou4_21",
+   "t": 0,
+   "at": [
+    252.8,
+    101.8
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "kou4_21",
+   "t": 1.9000000000000001,
+   "anim": "sit"
+  },
+  {
+   "who": "kou4_21",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "thiago.moreira0743",
+   "t": 0,
+   "at": [
+    208.1,
+    124.2
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "thiago.moreira0743",
+   "t": 2.0,
+   "anim": "sleep"
+  },
+  {
+   "who": "thiago.moreira0743",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "chihiro.hkcy",
+   "t": 0,
+   "at": [
+    213,
+    107.9
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "chihiro.hkcy",
+   "t": 2.1,
+   "anim": "sleep"
+  },
+  {
+   "who": "chihiro.hkcy",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": "masakidesumasu",
+   "t": 0,
+   "at": [
+    264.6,
+    116.9
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "masakidesumasu",
+   "t": 2.2,
+   "anim": "sit"
+  },
+  {
+   "who": "masakidesumasu",
+   "t": 3.0,
+   "hide": true
+  },
+  {
+   "who": [
+    "xinxiao2468",
+    "hisa1344k",
+    "tomoki___1118",
+    "hayasiappol",
+    "yun___0517",
+    "12rina3",
+    "mole083",
+    "himanano.2303",
+    "marunn111",
+    "iino8228",
+    "kenkjkjkj",
+    "qwqwpopo108",
+    "shin120903",
+    "superstar.5005",
+    "kari__________n",
+    "mana_20140219",
+    "shin.0907.zo",
+    "haru_paint214",
+    "taberuna2000",
+    "color8_1680",
+    "kikoshizuku",
+    "1205.ai"
+   ],
+   "t": 0,
+   "at": {
+    "slot": "beach"
+   },
+   "anim": "sleep"
+  },
+  {
+   "who": [
+    "xinxiao2468",
+    "hisa1344k",
+    "tomoki___1118",
+    "hayasiappol",
+    "yun___0517",
+    "12rina3",
+    "mole083",
+    "himanano.2303",
+    "marunn111",
+    "iino8228",
+    "kenkjkjkj",
+    "qwqwpopo108",
+    "shin120903",
+    "superstar.5005",
+    "kari__________n",
+    "mana_20140219",
+    "shin.0907.zo",
+    "haru_paint214",
+    "taberuna2000",
+    "color8_1680",
+    "kikoshizuku",
+    "1205.ai"
+   ],
+   "t": 1.4,
+   "anim": "sit",
+   "pick": 0.35,
+   "seed": 6
+  },
+  {
+   "who": [
+    "xinxiao2468",
+    "hisa1344k",
+    "tomoki___1118",
+    "hayasiappol",
+    "yun___0517",
+    "12rina3",
+    "mole083",
+    "himanano.2303",
+    "marunn111",
+    "iino8228",
+    "kenkjkjkj",
+    "qwqwpopo108",
+    "shin120903",
+    "superstar.5005",
+    "kari__________n",
+    "mana_20140219",
+    "shin.0907.zo",
+    "haru_paint214",
+    "taberuna2000",
+    "color8_1680",
+    "kikoshizuku",
+    "1205.ai"
+   ],
+   "t": 2.3,
+   "anim": "cheer",
+   "pick": 0.25,
+   "seed": 2
+  },
+  {
+   "who": [
+    "1kichi_chan",
+    "_shaun81",
+    "akuserumeihong",
+    "aosan116",
+    "atsukidesu",
+    "bear.44190633",
+    "daichi.yamazaki3",
+    "dosukoi.5845",
+    "fuse.daichi",
+    "hafuki82",
+    "hayato210165",
+    "hiropone_89"
+   ],
+   "t": 5.5,
+   "at": {
+    "slot": "watch"
+   },
+   "anim": "shock",
+   "face": {
+    "at": [
+     -100.0,
+     -74.0
+    ]
+   }
+  },
+  {
+   "who": [
+    "guernica.0712",
+    "yuridazo68"
+   ],
+   "t": 15.0,
+   "at": {
+    "slot": "zaf"
+   },
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": [
+    "aiueo._.0909",
+    "an_r_0323"
+   ],
+   "t": 17.2,
+   "at": {
+    "slot": "pair0"
+   },
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": [
+    "guernica.0712",
+    "yuridazo68"
+   ],
+   "t": 17.2,
+   "at": {
+    "slot": "pair1"
+   },
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": [
+    "1kichi_chan",
+    "_shaun81",
+    "akuserumeihong",
+    "aosan116",
+    "atsukidesu",
+    "bear.44190633",
+    "daichi.yamazaki3",
+    "dosukoi.5845",
+    "fuse.daichi",
+    "hafuki82",
+    "hayato210165",
+    "hiropone_89",
+    "hkssss69",
+    "hori_harusabu",
+    "horiharu0220",
+    "hyuga_0619",
+    "ichi.09",
+    "kame___1020"
+   ],
+   "t": 12.0,
+   "at": {
+    "slot": "plaza"
+   },
+   "anim": "idle",
+   "face": {
+    "at": [
+     0,
+     15
+    ]
+   }
+  },
+  {
+   "who": [
+    "yuridazo68",
+    "tsuki5747",
+    "abc.man13",
+    "29tomo83",
+    "_otekat_____",
+    "bea_utiful183"
+   ],
+   "t": 19.0,
+   "at": {
+    "slot": "cooks"
+   },
+   "anim": "work",
+   "face": {
+    "at": [
+     -86.0,
+     -60.0
+    ]
+   }
+  },
+  {
+   "who": "yuridazo68",
+   "t": 21.6,
+   "to": [
+    -78.0,
+    -53.5
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 23.2,
+   "anim": "idle",
+   "face": {
+    "at": [
+     -86.0,
+     -60.0
+    ]
+   }
+  },
+  {
+   "who": "tsuki5747",
+   "t": 21.700000000000003,
+   "to": [
+    -76.4,
+    -53.5
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "tsuki5747",
+   "t": 23.2,
+   "anim": "idle",
+   "face": {
+    "at": [
+     -86.0,
+     -60.0
+    ]
+   }
+  },
+  {
+   "who": "abc.man13",
+   "t": 21.8,
+   "to": [
+    -74.8,
+    -53.5
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "abc.man13",
+   "t": 23.2,
+   "anim": "idle",
+   "face": {
+    "at": [
+     -86.0,
+     -60.0
+    ]
+   }
+  },
+  {
+   "who": "29tomo83",
+   "t": 21.900000000000002,
+   "to": [
+    -73.2,
+    -53.5
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "29tomo83",
+   "t": 23.2,
+   "anim": "idle",
+   "face": {
+    "at": [
+     -86.0,
+     -60.0
+    ]
+   }
+  },
+  {
+   "who": "_otekat_____",
+   "t": 22.0,
+   "to": [
+    -71.6,
+    -53.5
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "_otekat_____",
+   "t": 23.2,
+   "anim": "idle",
+   "face": {
+    "at": [
+     -86.0,
+     -60.0
+    ]
+   }
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 22.1,
+   "to": [
+    -70.0,
+    -53.5
+   ],
+   "dur": 1.4,
+   "run": true
+  },
+  {
+   "who": "bea_utiful183",
+   "t": 23.2,
+   "anim": "idle",
+   "face": {
+    "at": [
+     -86.0,
+     -60.0
+    ]
+   }
+  },
+  {
+   "who": [
+    "1kichi_chan",
+    "_shaun81",
+    "akuserumeihong",
+    "aosan116",
+    "atsukidesu",
+    "bear.44190633",
+    "daichi.yamazaki3",
+    "dosukoi.5845",
+    "fuse.daichi",
+    "hafuki82",
+    "hayato210165",
+    "hiropone_89",
+    "hkssss69",
+    "hori_harusabu",
+    "horiharu0220",
+    "hyuga_0619",
+    "ichi.09",
+    "kame___1020",
+    "kohe051",
+    "kosei20130324",
+    "kurimasa222",
+    "marumegane4",
+    "max_no_otousan",
+    "mi_erimo",
+    "musashi.617",
+    "nanasi774_ou",
+    "nintendo_3ds.12",
+    "oka_tomohiko",
+    "paianiyan",
+    "r19tooo",
+    "s.sora1225",
+    "s_02y.ayta",
+    "sakasaka_1482",
+    "sasa_mi42151315"
+   ],
+   "t": 19.0,
+   "at": {
+    "slot": "watch"
+   },
+   "anim": "idle",
+   "face": {
+    "at": [
+     -86.0,
+     -60.0
+    ]
+   }
+  },
+  {
+   "who": [
+    "1kichi_chan",
+    "_shaun81",
+    "akuserumeihong",
+    "aosan116",
+    "atsukidesu",
+    "bear.44190633",
+    "daichi.yamazaki3",
+    "dosukoi.5845",
+    "fuse.daichi",
+    "hafuki82",
+    "hayato210165",
+    "hiropone_89",
+    "hkssss69",
+    "hori_harusabu",
+    "horiharu0220",
+    "hyuga_0619",
+    "ichi.09",
+    "kame___1020",
+    "kohe051",
+    "kosei20130324",
+    "kurimasa222",
+    "marumegane4",
+    "max_no_otousan",
+    "mi_erimo",
+    "musashi.617",
+    "nanasi774_ou",
+    "nintendo_3ds.12",
+    "oka_tomohiko",
+    "paianiyan",
+    "r19tooo",
+    "s.sora1225",
+    "s_02y.ayta",
+    "sakasaka_1482",
+    "sasa_mi42151315",
+    "yuridazo68",
+    "tsuki5747",
+    "abc.man13",
+    "29tomo83",
+    "_otekat_____",
+    "bea_utiful183"
+   ],
+   "t": 24.2,
+   "anim": "shock",
+   "face": {
+    "at": [
+     -86.0,
+     -60.0
+    ]
+   },
+   "pick": 0.5,
+   "seed": 3
+  },
+  {
+   "who": [
+    "1kichi_chan",
+    "_shaun81",
+    "akuserumeihong",
+    "aosan116",
+    "atsukidesu",
+    "bear.44190633",
+    "daichi.yamazaki3",
+    "dosukoi.5845",
+    "fuse.daichi",
+    "hafuki82",
+    "hayato210165",
+    "hiropone_89",
+    "hkssss69",
+    "hori_harusabu",
+    "horiharu0220",
+    "hyuga_0619",
+    "ichi.09",
+    "kame___1020",
+    "kohe051",
+    "kosei20130324",
+    "kurimasa222",
+    "marumegane4",
+    "max_no_otousan",
+    "mi_erimo",
+    "musashi.617",
+    "nanasi774_ou",
+    "nintendo_3ds.12",
+    "oka_tomohiko",
+    "paianiyan",
+    "r19tooo",
+    "s.sora1225",
+    "s_02y.ayta",
+    "sakasaka_1482",
+    "sasa_mi42151315",
+    "yuridazo68",
+    "tsuki5747",
+    "abc.man13",
+    "29tomo83",
+    "_otekat_____",
+    "bea_utiful183"
+   ],
+   "t": 28.4,
+   "anim": "cheer",
+   "pick": 0.6,
+   "seed": 7
+  },
+  {
+   "who": "guernica.0712",
+   "t": 19.0,
+   "at": [
+    -80.0,
+    -52.0
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     -86.0,
+     -60.0
+    ]
+   }
+  },
+  {
+   "who": "guernica.0712",
+   "t": 28.6,
+   "to": [
+    -81.8,
+    -56.8
+   ],
+   "dur": 1.8
+  },
+  {
+   "who": "guernica.0712",
+   "t": 30.6,
+   "anim": "cheer",
+   "face": {
+    "at": [
+     -86.0,
+     -60.0
+    ]
+   }
+  },
+  {
+   "who": [
+    "singlepapatsu.i",
+    "tarak_o002",
+    "yamato_family327",
+    "_3yu.96_",
+    "aki752294613",
+    "rino._.15"
+   ],
+   "t": 34.0,
+   "at": {
+    "slot": "build"
+   },
+   "anim": "work",
+   "face": {
+    "at": [
+     -88.0,
+     -36.0
+    ]
+   }
+  },
+  {
+   "who": [
+    "singlepapatsu.i",
+    "tarak_o002",
+    "yamato_family327",
+    "_3yu.96_",
+    "aki752294613",
+    "rino._.15"
+   ],
+   "t": 38.4,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": [
+    "1kichi_chan",
+    "_shaun81",
+    "akuserumeihong",
+    "aosan116",
+    "atsukidesu",
+    "bear.44190633",
+    "daichi.yamazaki3",
+    "dosukoi.5845",
+    "fuse.daichi",
+    "hafuki82",
+    "hayato210165",
+    "hiropone_89",
+    "hkssss69",
+    "hori_harusabu",
+    "horiharu0220",
+    "hyuga_0619"
+   ],
+   "t": 40.0,
+   "at": {
+    "slot": "watch"
+   },
+   "anim": "idle",
+   "face": {
+    "at": [
+     -60.0,
+     -100.0
+    ]
+   }
+  },
+  {
+   "who": "guernica.0712",
+   "t": 40.0,
+   "at": [
+    -84.0,
+    -42.0
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     -60.0,
+     -100.0
+    ]
+   }
+  }
+ ],
+ "props": [
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "xinxiao2468",
+    "up": 1.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.2,
+   "size": 0.9,
+   "phase": 0.0
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "hisa1344k",
+    "up": 1.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.2,
+   "size": 0.9,
+   "phase": 0.3
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "tomoki___1118",
+    "up": 1.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.2,
+   "size": 0.9,
+   "phase": 0.6
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "hayasiappol",
+    "up": 1.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.2,
+   "size": 0.9,
+   "phase": 0.8999999999999999
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "yun___0517",
+    "up": 1.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.2,
+   "size": 0.9,
+   "phase": 1.2
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "12rina3",
+    "up": 1.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.2,
+   "size": 0.9,
+   "phase": 1.5
+  },
+  {
+   "type": "heart",
+   "from": {
+    "rel": "guernica.0712",
+    "up": 3.4,
+    "t": 1.0
+   },
+   "to": {
+    "rel": "guernica.0712",
+    "up": 3.4,
+    "t": 1.0
+   },
+   "t0": 15.6,
+   "t1": 17.1,
+   "t2": 17.1,
+   "size": 1.4
+  },
+  {
+   "type": "heart",
+   "from": {
+    "rel": "aiueo._.0909",
+    "up": 3.4,
+    "t": 0.9
+   },
+   "to": {
+    "rel": "aiueo._.0909",
+    "up": 3.4,
+    "t": 0.9
+   },
+   "t0": 17.4,
+   "t1": 19.0,
+   "t2": 19.0,
+   "size": 1.4,
+   "phase": 0
+  },
+  {
+   "type": "heart",
+   "from": {
+    "rel": "guernica.0712",
+    "up": 3.4,
+    "t": 0.9
+   },
+   "to": {
+    "rel": "guernica.0712",
+    "up": 3.4,
+    "t": 0.9
+   },
+   "t0": 17.4,
+   "t1": 19.0,
+   "t2": 19.0,
+   "size": 1.4,
+   "phase": 1
+  },
+  {
+   "type": "fruit",
+   "from": {
+    "xz": [
+     -81.5,
+     -55.0
+    ],
+    "up": 2
+   },
+   "to": [
+    -84.8,
+    -60.0
+   ],
+   "t0": 19.6,
+   "t1": 20.4,
+   "t2": 29.0,
+   "arc": 2.5,
+   "size": 0.9
+  },
+  {
+   "type": "fish",
+   "from": {
+    "xz": [
+     -81.5,
+     -55.0
+    ],
+    "up": 2
+   },
+   "to": [
+    -85.25,
+    -59.3
+   ],
+   "t0": 19.85,
+   "t1": 20.65,
+   "t2": 29.0,
+   "arc": 2.5,
+   "size": 0.9
+  },
+  {
+   "type": "fruit",
+   "from": {
+    "xz": [
+     -81.5,
+     -55.0
+    ],
+    "up": 2
+   },
+   "to": [
+    -86.27,
+    -59.12
+   ],
+   "t0": 20.1,
+   "t1": 20.9,
+   "t2": 29.0,
+   "arc": 2.5,
+   "size": 0.9
+  },
+  {
+   "type": "fish",
+   "from": {
+    "xz": [
+     -81.5,
+     -55.0
+    ],
+    "up": 2
+   },
+   "to": [
+    -87.08,
+    -59.62
+   ],
+   "t0": 20.35,
+   "t1": 21.15,
+   "t2": 29.0,
+   "arc": 2.5,
+   "size": 0.9
+  },
+  {
+   "type": "fruit",
+   "from": {
+    "xz": [
+     -81.5,
+     -55.0
+    ],
+    "up": 2
+   },
+   "to": [
+    -87.08,
+    -60.4
+   ],
+   "t0": 20.6,
+   "t1": 21.4,
+   "t2": 29.0,
+   "arc": 2.5,
+   "size": 0.9
+  },
+  {
+   "type": "fish",
+   "from": {
+    "xz": [
+     -81.5,
+     -55.0
+    ],
+    "up": 2
+   },
+   "to": [
+    -86.25,
+    -60.88
+   ],
+   "t0": 20.85,
+   "t1": 21.65,
+   "t2": 29.0,
+   "arc": 2.5,
+   "size": 0.9
+  },
+  {
+   "type": "fruit",
+   "from": {
+    "xz": [
+     -81.5,
+     -55.0
+    ],
+    "up": 2
+   },
+   "to": [
+    -85.24,
+    -60.7
+   ],
+   "t0": 21.1,
+   "t1": 21.9,
+   "t2": 29.0,
+   "arc": 2.5,
+   "size": 0.9
+  },
+  {
+   "type": "heart",
+   "from": {
+    "xz": [
+     -83.8,
+     -58.8
+    ],
+    "up": 5.5
+   },
+   "to": {
+    "xz": [
+     -83.8,
+     -58.8
+    ],
+    "up": 7.0
+   },
+   "t0": 30.8,
+   "t1": 33.8,
+   "t2": 34.0,
+   "size": 2.2
+  },
+  {
+   "type": "question",
+   "from": {
+    "xz": [
+     -80.0,
+     -58.0
+    ],
+    "up": 0
+   },
+   "t0": 44.4,
+   "t1": 44.41,
+   "t2": 47.0,
+   "size": 3
+  }
+ ],
+ "props3d": [
+  {
+   "type": "beast",
+   "at": [
+    -100.0,
+    -74.0
+   ],
+   "path": [
+    [
+     0.0,
+     -100.0,
+     -74.0
+    ],
+    [
+     0.1,
+     -99.98,
+     -73.98
+    ],
+    [
+     0.2,
+     -99.92,
+     -73.93
+    ],
+    [
+     0.3,
+     -99.82,
+     -73.84
+    ],
+    [
+     0.4,
+     -99.69,
+     -73.72
+    ],
+    [
+     0.5,
+     -99.52,
+     -73.57
+    ],
+    [
+     0.6,
+     -99.31,
+     -73.38
+    ],
+    [
+     0.7,
+     -99.08,
+     -73.17
+    ],
+    [
+     0.8,
+     -98.81,
+     -72.93
+    ],
+    [
+     0.9,
+     -98.52,
+     -72.67
+    ],
+    [
+     1.0,
+     -98.2,
+     -72.38
+    ],
+    [
+     1.1,
+     -97.85,
+     -72.06
+    ],
+    [
+     1.2,
+     -97.48,
+     -71.73
+    ],
+    [
+     1.3,
+     -97.08,
+     -71.37
+    ],
+    [
+     1.4,
+     -96.66,
+     -71.0
+    ],
+    [
+     1.5,
+     -96.23,
+     -70.6
+    ],
+    [
+     1.6,
+     -95.77,
+     -70.2
+    ],
+    [
+     1.7,
+     -95.3,
+     -69.77
+    ],
+    [
+     1.8,
+     -94.81,
+     -69.33
+    ],
+    [
+     1.9,
+     -94.31,
+     -68.88
+    ],
+    [
+     2.0,
+     -93.8,
+     -68.42
+    ],
+    [
+     2.1,
+     -93.28,
+     -67.95
+    ],
+    [
+     2.2,
+     -92.75,
+     -67.47
+    ],
+    [
+     2.3,
+     -92.21,
+     -66.99
+    ],
+    [
+     2.4,
+     -91.66,
+     -66.49
+    ],
+    [
+     2.5,
+     -91.11,
+     -66.0
+    ],
+    [
+     2.6,
+     -90.56,
+     -65.5
+    ],
+    [
+     2.7,
+     -90.0,
+     -65.0
+    ],
+    [
+     2.8,
+     -89.44,
+     -64.5
+    ],
+    [
+     2.9,
+     -88.89,
+     -64.0
+    ],
+    [
+     3.0,
+     -88.34,
+     -63.51
+    ],
+    [
+     3.1,
+     -87.79,
+     -63.01
+    ],
+    [
+     3.2,
+     -87.25,
+     -62.53
+    ],
+    [
+     3.3,
+     -86.72,
+     -62.05
+    ],
+    [
+     3.4,
+     -86.2,
+     -61.58
+    ],
+    [
+     3.5,
+     -85.69,
+     -61.12
+    ],
+    [
+     3.6,
+     -85.19,
+     -60.67
+    ],
+    [
+     3.7,
+     -84.7,
+     -60.23
+    ],
+    [
+     3.8,
+     -84.23,
+     -59.8
+    ],
+    [
+     3.9,
+     -83.77,
+     -59.4
+    ],
+    [
+     4.0,
+     -83.34,
+     -59.0
+    ],
+    [
+     4.1,
+     -82.92,
+     -58.63
+    ],
+    [
+     4.2,
+     -82.52,
+     -58.27
+    ],
+    [
+     4.3,
+     -82.15,
+     -57.94
+    ],
+    [
+     4.4,
+     -81.8,
+     -57.62
+    ],
+    [
+     4.5,
+     -81.48,
+     -57.33
+    ],
+    [
+     4.6,
+     -81.19,
+     -57.07
+    ],
+    [
+     4.7,
+     -80.92,
+     -56.83
+    ],
+    [
+     4.8,
+     -80.69,
+     -56.62
+    ],
+    [
+     4.9,
+     -80.48,
+     -56.43
+    ],
+    [
+     5.0,
+     -80.31,
+     -56.28
+    ],
+    [
+     5.1,
+     -80.18,
+     -56.16
+    ],
+    [
+     5.2,
+     -80.08,
+     -56.07
+    ],
+    [
+     5.3,
+     -80.02,
+     -56.02
+    ],
+    [
+     5.4,
+     -80.0,
+     -56.0
+    ],
+    [
+     5.5,
+     -80.0,
+     -56.0
+    ],
+    [
+     5.6,
+     -80.0,
+     -56.0
+    ],
+    [
+     5.7,
+     -80.0,
+     -56.0
+    ],
+    [
+     5.8,
+     -80.0,
+     -56.0
+    ],
+    [
+     5.9,
+     -80.0,
+     -56.0
+    ],
+    [
+     6.0,
+     -80.0,
+     -56.0
+    ],
+    [
+     6.1,
+     -80.0,
+     -56.0
+    ],
+    [
+     6.2,
+     -80.0,
+     -56.0
+    ],
+    [
+     6.3,
+     -80.0,
+     -56.0
+    ],
+    [
+     6.4,
+     -80.0,
+     -56.0
+    ],
+    [
+     6.5,
+     -80.0,
+     -56.0
+    ],
+    [
+     6.6,
+     -80.0,
+     -56.0
+    ],
+    [
+     6.7,
+     -80.0,
+     -56.0
+    ],
+    [
+     6.8,
+     -80.0,
+     -56.0
+    ],
+    [
+     6.9,
+     -80.0,
+     -56.0
+    ],
+    [
+     7.0,
+     -80.0,
+     -56.0
+    ],
+    [
+     7.1,
+     -80.0,
+     -56.0
+    ],
+    [
+     7.2,
+     -80.0,
+     -56.0
+    ],
+    [
+     7.3,
+     -80.0,
+     -56.0
+    ],
+    [
+     7.4,
+     -80.0,
+     -56.0
+    ],
+    [
+     7.5,
+     -80.0,
+     -56.0
+    ],
+    [
+     7.6,
+     -80.0,
+     -56.0
+    ],
+    [
+     7.7,
+     -80.0,
+     -56.0
+    ],
+    [
+     7.8,
+     -80.0,
+     -56.0
+    ],
+    [
+     7.9,
+     -80.0,
+     -56.0
+    ],
+    [
+     8.0,
+     -80.0,
+     -56.0
+    ],
+    [
+     8.1,
+     -80.0,
+     -56.0
+    ],
+    [
+     8.2,
+     -80.0,
+     -56.0
+    ],
+    [
+     8.3,
+     -80.0,
+     -56.0
+    ],
+    [
+     8.4,
+     -80.0,
+     -56.0
+    ],
+    [
+     8.5,
+     -80.0,
+     -56.0
+    ],
+    [
+     8.6,
+     -80.0,
+     -56.0
+    ],
+    [
+     8.7,
+     -80.0,
+     -56.0
+    ],
+    [
+     8.8,
+     -80.0,
+     -56.0
+    ],
+    [
+     8.9,
+     -80.0,
+     -56.0
+    ],
+    [
+     9.0,
+     -80.0,
+     -56.0
+    ],
+    [
+     9.1,
+     -80.0,
+     -56.0
+    ],
+    [
+     9.2,
+     -80.01,
+     -56.01
+    ],
+    [
+     9.3,
+     -80.03,
+     -56.03
+    ],
+    [
+     9.4,
+     -80.05,
+     -56.04
+    ],
+    [
+     9.5,
+     -80.08,
+     -56.07
+    ],
+    [
+     9.6,
+     -80.11,
+     -56.1
+    ],
+    [
+     9.7,
+     -80.15,
+     -56.13
+    ],
+    [
+     9.8,
+     -80.19,
+     -56.17
+    ],
+    [
+     9.9,
+     -80.24,
+     -56.22
+    ],
+    [
+     10.0,
+     -80.3,
+     -56.27
+    ],
+    [
+     10.1,
+     -80.36,
+     -56.32
+    ],
+    [
+     10.2,
+     -80.43,
+     -56.38
+    ],
+    [
+     10.3,
+     -80.5,
+     -56.45
+    ],
+    [
+     10.4,
+     -80.58,
+     -56.52
+    ],
+    [
+     10.5,
+     -80.66,
+     -56.59
+    ],
+    [
+     10.6,
+     -80.74,
+     -56.67
+    ],
+    [
+     10.7,
+     -80.84,
+     -56.75
+    ],
+    [
+     10.8,
+     -80.93,
+     -56.84
+    ],
+    [
+     10.9,
+     -81.03,
+     -56.93
+    ],
+    [
+     11.0,
+     -81.14,
+     -57.02
+    ],
+    [
+     11.1,
+     -81.25,
+     -57.12
+    ],
+    [
+     11.2,
+     -81.36,
+     -57.23
+    ],
+    [
+     11.3,
+     -81.48,
+     -57.33
+    ],
+    [
+     11.4,
+     -81.6,
+     -57.44
+    ],
+    [
+     11.5,
+     -81.73,
+     -57.56
+    ],
+    [
+     11.6,
+     -81.86,
+     -57.68
+    ],
+    [
+     11.7,
+     -82.0,
+     -57.8
+    ],
+    [
+     11.8,
+     -82.14,
+     -57.92
+    ],
+    [
+     11.9,
+     -82.28,
+     -58.05
+    ],
+    [
+     12.0,
+     -82.42,
+     -58.18
+    ],
+    [
+     12.1,
+     -82.57,
+     -58.32
+    ],
+    [
+     12.2,
+     -82.73,
+     -58.45
+    ],
+    [
+     12.3,
+     -82.88,
+     -58.6
+    ],
+    [
+     12.4,
+     -83.04,
+     -58.74
+    ],
+    [
+     12.5,
+     -83.21,
+     -58.89
+    ],
+    [
+     12.6,
+     -83.37,
+     -59.04
+    ],
+    [
+     12.7,
+     -83.54,
+     -59.19
+    ],
+    [
+     12.8,
+     -83.71,
+     -59.34
+    ],
+    [
+     12.9,
+     -83.89,
+     -59.5
+    ],
+    [
+     13.0,
+     -84.07,
+     -59.66
+    ],
+    [
+     13.1,
+     -84.25,
+     -59.82
+    ],
+    [
+     13.2,
+     -84.43,
+     -59.99
+    ],
+    [
+     13.3,
+     -84.62,
+     -60.15
+    ],
+    [
+     13.4,
+     -84.8,
+     -60.32
+    ],
+    [
+     13.5,
+     -84.99,
+     -60.49
+    ],
+    [
+     13.6,
+     -85.19,
+     -60.67
+    ],
+    [
+     13.7,
+     -85.38,
+     -60.84
+    ],
+    [
+     13.8,
+     -85.58,
+     -61.02
+    ],
+    [
+     13.9,
+     -85.77,
+     -61.2
+    ],
+    [
+     14.0,
+     -85.97,
+     -61.38
+    ],
+    [
+     14.1,
+     -86.18,
+     -61.56
+    ],
+    [
+     14.2,
+     -86.38,
+     -61.74
+    ],
+    [
+     14.3,
+     -86.58,
+     -61.93
+    ],
+    [
+     14.4,
+     -86.79,
+     -62.11
+    ],
+    [
+     14.5,
+     -87.0,
+     -62.3
+    ],
+    [
+     14.6,
+     -87.21,
+     -62.49
+    ],
+    [
+     14.7,
+     -87.42,
+     -62.68
+    ],
+    [
+     14.8,
+     -87.63,
+     -62.87
+    ],
+    [
+     14.9,
+     -87.84,
+     -63.06
+    ],
+    [
+     15.0,
+     -88.05,
+     -63.25
+    ],
+    [
+     15.1,
+     -88.27,
+     -63.44
+    ],
+    [
+     15.2,
+     -88.48,
+     -63.64
+    ],
+    [
+     15.3,
+     -88.7,
+     -63.83
+    ],
+    [
+     15.4,
+     -88.91,
+     -64.02
+    ],
+    [
+     15.5,
+     -89.13,
+     -64.22
+    ],
+    [
+     15.6,
+     -89.35,
+     -64.41
+    ],
+    [
+     15.7,
+     -89.57,
+     -64.61
+    ],
+    [
+     15.8,
+     -89.78,
+     -64.8
+    ],
+    [
+     15.9,
+     -90.0,
+     -65.0
+    ],
+    [
+     16.0,
+     -90.22,
+     -65.2
+    ],
+    [
+     16.1,
+     -90.43,
+     -65.39
+    ],
+    [
+     16.2,
+     -90.65,
+     -65.59
+    ],
+    [
+     16.3,
+     -90.87,
+     -65.78
+    ],
+    [
+     16.4,
+     -91.09,
+     -65.98
+    ],
+    [
+     16.5,
+     -91.3,
+     -66.17
+    ],
+    [
+     16.6,
+     -91.52,
+     -66.36
+    ],
+    [
+     16.7,
+     -91.73,
+     -66.56
+    ],
+    [
+     16.8,
+     -91.95,
+     -66.75
+    ],
+    [
+     16.9,
+     -92.16,
+     -66.94
+    ],
+    [
+     17.0,
+     -92.37,
+     -67.13
+    ],
+    [
+     17.1,
+     -92.58,
+     -67.32
+    ],
+    [
+     17.2,
+     -92.79,
+     -67.51
+    ],
+    [
+     17.3,
+     -93.0,
+     -67.7
+    ],
+    [
+     17.4,
+     -93.21,
+     -67.89
+    ],
+    [
+     17.5,
+     -93.42,
+     -68.07
+    ],
+    [
+     17.6,
+     -93.62,
+     -68.26
+    ],
+    [
+     17.7,
+     -93.82,
+     -68.44
+    ],
+    [
+     17.8,
+     -94.03,
+     -68.62
+    ],
+    [
+     17.9,
+     -94.23,
+     -68.8
+    ],
+    [
+     18.0,
+     -94.42,
+     -68.98
+    ],
+    [
+     18.1,
+     -94.62,
+     -69.16
+    ],
+    [
+     18.2,
+     -94.81,
+     -69.33
+    ],
+    [
+     18.3,
+     -95.01,
+     -69.51
+    ],
+    [
+     18.4,
+     -95.2,
+     -69.68
+    ],
+    [
+     18.5,
+     -95.38,
+     -69.85
+    ],
+    [
+     18.6,
+     -95.57,
+     -70.01
+    ],
+    [
+     18.7,
+     -95.75,
+     -70.18
+    ],
+    [
+     18.8,
+     -95.93,
+     -70.34
+    ],
+    [
+     18.9,
+     -96.11,
+     -70.5
+    ],
+    [
+     19.0,
+     -96.29,
+     -70.66
+    ],
+    [
+     19.1,
+     -96.46,
+     -70.81
+    ],
+    [
+     19.2,
+     -96.63,
+     -70.96
+    ],
+    [
+     19.3,
+     -96.79,
+     -71.11
+    ],
+    [
+     19.4,
+     -96.96,
+     -71.26
+    ],
+    [
+     19.5,
+     -97.12,
+     -71.4
+    ],
+    [
+     19.6,
+     -97.27,
+     -71.55
+    ],
+    [
+     19.7,
+     -97.43,
+     -71.68
+    ],
+    [
+     19.8,
+     -97.58,
+     -71.82
+    ],
+    [
+     19.9,
+     -97.72,
+     -71.95
+    ],
+    [
+     20.0,
+     -97.86,
+     -72.08
+    ],
+    [
+     20.1,
+     -98.0,
+     -72.2
+    ],
+    [
+     20.2,
+     -98.14,
+     -72.32
+    ],
+    [
+     20.3,
+     -98.27,
+     -72.44
+    ],
+    [
+     20.4,
+     -98.4,
+     -72.56
+    ],
+    [
+     20.5,
+     -98.52,
+     -72.67
+    ],
+    [
+     20.6,
+     -98.64,
+     -72.77
+    ],
+    [
+     20.7,
+     -98.75,
+     -72.88
+    ],
+    [
+     20.8,
+     -98.86,
+     -72.98
+    ],
+    [
+     20.9,
+     -98.97,
+     -73.07
+    ],
+    [
+     21.0,
+     -99.07,
+     -73.16
+    ],
+    [
+     21.1,
+     -99.16,
+     -73.25
+    ],
+    [
+     21.2,
+     -99.26,
+     -73.33
+    ],
+    [
+     21.3,
+     -99.34,
+     -73.41
+    ],
+    [
+     21.4,
+     -99.42,
+     -73.48
+    ],
+    [
+     21.5,
+     -99.5,
+     -73.55
+    ],
+    [
+     21.6,
+     -99.57,
+     -73.62
+    ],
+    [
+     21.7,
+     -99.64,
+     -73.68
+    ],
+    [
+     21.8,
+     -99.7,
+     -73.73
+    ],
+    [
+     21.9,
+     -99.76,
+     -73.78
+    ],
+    [
+     22.0,
+     -99.81,
+     -73.83
+    ],
+    [
+     22.1,
+     -99.85,
+     -73.87
+    ],
+    [
+     22.2,
+     -99.89,
+     -73.9
+    ],
+    [
+     22.3,
+     -99.92,
+     -73.93
+    ],
+    [
+     22.4,
+     -99.95,
+     -73.96
+    ],
+    [
+     22.5,
+     -99.97,
+     -73.97
+    ],
+    [
+     22.6,
+     -99.99,
+     -73.99
+    ],
+    [
+     22.7,
+     -100.0,
+     -74.0
+    ],
+    [
+     22.8,
+     -100.0,
+     -74.0
+    ],
+    [
+     22.9,
+     -100.0,
+     -74.0
+    ],
+    [
+     23.0,
+     -100.0,
+     -74.0
+    ],
+    [
+     23.1,
+     -100.0,
+     -74.0
+    ],
+    [
+     23.2,
+     -100.0,
+     -74.0
+    ],
+    [
+     23.3,
+     -100.0,
+     -74.0
+    ],
+    [
+     23.4,
+     -100.0,
+     -74.0
+    ],
+    [
+     23.5,
+     -100.0,
+     -74.0
+    ],
+    [
+     23.6,
+     -100.0,
+     -74.0
+    ],
+    [
+     23.7,
+     -100.0,
+     -74.0
+    ],
+    [
+     23.8,
+     -100.0,
+     -74.0
+    ],
+    [
+     23.9,
+     -100.0,
+     -74.0
+    ],
+    [
+     24.0,
+     -100.0,
+     -74.0
+    ],
+    [
+     24.1,
+     -99.95,
+     -73.95
+    ],
+    [
+     24.2,
+     -99.79,
+     -73.81
+    ],
+    [
+     24.3,
+     -99.54,
+     -73.58
+    ],
+    [
+     24.4,
+     -99.2,
+     -73.27
+    ],
+    [
+     24.5,
+     -98.79,
+     -72.89
+    ],
+    [
+     24.6,
+     -98.31,
+     -72.45
+    ],
+    [
+     24.7,
+     -97.77,
+     -71.95
+    ],
+    [
+     24.8,
+     -97.18,
+     -71.4
+    ],
+    [
+     24.9,
+     -96.54,
+     -70.82
+    ],
+    [
+     25.0,
+     -95.88,
+     -70.21
+    ],
+    [
+     25.1,
+     -95.18,
+     -69.57
+    ],
+    [
+     25.2,
+     -94.47,
+     -68.91
+    ],
+    [
+     25.3,
+     -93.75,
+     -68.25
+    ],
+    [
+     25.4,
+     -93.03,
+     -67.59
+    ],
+    [
+     25.5,
+     -92.32,
+     -66.93
+    ],
+    [
+     25.6,
+     -91.62,
+     -66.29
+    ],
+    [
+     25.7,
+     -90.96,
+     -65.68
+    ],
+    [
+     25.8,
+     -90.32,
+     -65.1
+    ],
+    [
+     25.9,
+     -89.73,
+     -64.55
+    ],
+    [
+     26.0,
+     -89.19,
+     -64.05
+    ],
+    [
+     26.1,
+     -88.71,
+     -63.61
+    ],
+    [
+     26.2,
+     -88.3,
+     -63.23
+    ],
+    [
+     26.3,
+     -87.96,
+     -62.92
+    ],
+    [
+     26.4,
+     -87.71,
+     -62.69
+    ],
+    [
+     26.5,
+     -87.55,
+     -62.55
+    ],
+    [
+     26.6,
+     -87.5,
+     -62.5
+    ],
+    [
+     26.7,
+     -87.5,
+     -62.5
+    ],
+    [
+     26.8,
+     -87.5,
+     -62.5
+    ],
+    [
+     26.9,
+     -87.5,
+     -62.5
+    ],
+    [
+     27.0,
+     -87.5,
+     -62.5
+    ],
+    [
+     27.1,
+     -87.5,
+     -62.5
+    ],
+    [
+     27.2,
+     -87.5,
+     -62.5
+    ],
+    [
+     27.3,
+     -87.5,
+     -62.5
+    ],
+    [
+     27.4,
+     -87.5,
+     -62.5
+    ],
+    [
+     27.5,
+     -87.5,
+     -62.5
+    ],
+    [
+     27.6,
+     -87.5,
+     -62.5
+    ],
+    [
+     27.7,
+     -87.5,
+     -62.5
+    ],
+    [
+     27.8,
+     -87.5,
+     -62.5
+    ],
+    [
+     27.9,
+     -87.5,
+     -62.5
+    ],
+    [
+     28.0,
+     -87.5,
+     -62.5
+    ],
+    [
+     28.1,
+     -87.5,
+     -62.5
+    ],
+    [
+     28.2,
+     -87.5,
+     -62.5
+    ],
+    [
+     28.3,
+     -87.5,
+     -62.5
+    ],
+    [
+     28.4,
+     -87.5,
+     -62.5
+    ],
+    [
+     28.5,
+     -87.5,
+     -62.5
+    ],
+    [
+     28.6,
+     -87.5,
+     -62.5
+    ],
+    [
+     28.7,
+     -87.47,
+     -62.47
+    ],
+    [
+     28.8,
+     -87.37,
+     -62.37
+    ],
+    [
+     28.9,
+     -87.21,
+     -62.21
+    ],
+    [
+     29.0,
+     -87.02,
+     -62.02
+    ],
+    [
+     29.1,
+     -86.78,
+     -61.78
+    ],
+    [
+     29.2,
+     -86.52,
+     -61.52
+    ],
+    [
+     29.3,
+     -86.24,
+     -61.24
+    ],
+    [
+     29.4,
+     -85.95,
+     -60.95
+    ],
+    [
+     29.5,
+     -85.66,
+     -60.66
+    ],
+    [
+     29.6,
+     -85.38,
+     -60.38
+    ],
+    [
+     29.7,
+     -85.12,
+     -60.12
+    ],
+    [
+     29.8,
+     -84.88,
+     -59.88
+    ],
+    [
+     29.9,
+     -84.69,
+     -59.69
+    ],
+    [
+     30.0,
+     -84.53,
+     -59.53
+    ],
+    [
+     30.1,
+     -84.43,
+     -59.43
+    ],
+    [
+     30.2,
+     -84.4,
+     -59.4
+    ],
+    [
+     30.3,
+     -84.4,
+     -59.4
+    ],
+    [
+     30.4,
+     -84.4,
+     -59.4
+    ],
+    [
+     30.5,
+     -84.4,
+     -59.4
+    ],
+    [
+     30.6,
+     -84.4,
+     -59.4
+    ],
+    [
+     30.7,
+     -84.4,
+     -59.4
+    ],
+    [
+     30.8,
+     -84.4,
+     -59.4
+    ],
+    [
+     30.9,
+     -84.4,
+     -59.4
+    ],
+    [
+     31.0,
+     -84.4,
+     -59.4
+    ],
+    [
+     31.1,
+     -84.4,
+     -59.4
+    ],
+    [
+     31.2,
+     -84.4,
+     -59.4
+    ],
+    [
+     31.3,
+     -84.4,
+     -59.4
+    ],
+    [
+     31.4,
+     -84.4,
+     -59.4
+    ],
+    [
+     31.5,
+     -84.4,
+     -59.4
+    ],
+    [
+     31.6,
+     -84.4,
+     -59.4
+    ],
+    [
+     31.7,
+     -84.4,
+     -59.4
+    ],
+    [
+     31.8,
+     -84.4,
+     -59.4
+    ],
+    [
+     31.9,
+     -84.4,
+     -59.4
+    ],
+    [
+     32.0,
+     -84.4,
+     -59.4
+    ],
+    [
+     32.1,
+     -84.4,
+     -59.4
+    ],
+    [
+     32.2,
+     -84.4,
+     -59.4
+    ],
+    [
+     32.3,
+     -84.4,
+     -59.4
+    ],
+    [
+     32.4,
+     -84.4,
+     -59.4
+    ],
+    [
+     32.5,
+     -84.4,
+     -59.4
+    ],
+    [
+     32.6,
+     -84.4,
+     -59.4
+    ],
+    [
+     32.7,
+     -84.4,
+     -59.4
+    ],
+    [
+     32.8,
+     -84.4,
+     -59.4
+    ],
+    [
+     32.9,
+     -84.4,
+     -59.4
+    ],
+    [
+     33.0,
+     -84.4,
+     -59.4
+    ],
+    [
+     33.1,
+     -84.4,
+     -59.4
+    ],
+    [
+     33.2,
+     -84.4,
+     -59.4
+    ],
+    [
+     33.3,
+     -84.4,
+     -59.4
+    ],
+    [
+     33.4,
+     -84.4,
+     -59.4
+    ],
+    [
+     33.5,
+     -84.4,
+     -59.4
+    ],
+    [
+     33.6,
+     -84.4,
+     -59.4
+    ],
+    [
+     33.7,
+     -84.4,
+     -59.4
+    ],
+    [
+     33.8,
+     -84.4,
+     -59.4
+    ],
+    [
+     33.9,
+     -84.4,
+     -59.4
+    ],
+    [
+     34.0,
+     -84.4,
+     -59.4
+    ],
+    [
+     34.1,
+     -84.61,
+     -58.83
+    ],
+    [
+     34.2,
+     -85.19,
+     -57.28
+    ],
+    [
+     34.3,
+     -86.04,
+     -54.99
+    ],
+    [
+     34.4,
+     -87.08,
+     -52.22
+    ],
+    [
+     34.5,
+     -88.2,
+     -49.2
+    ],
+    [
+     34.6,
+     -89.32,
+     -46.18
+    ],
+    [
+     34.7,
+     -90.36,
+     -43.41
+    ],
+    [
+     34.8,
+     -91.21,
+     -41.12
+    ],
+    [
+     34.9,
+     -91.79,
+     -39.57
+    ],
+    [
+     35.0,
+     -92.0,
+     -39.0
+    ],
+    [
+     35.1,
+     -92.0,
+     -39.0
+    ],
+    [
+     35.2,
+     -92.0,
+     -39.0
+    ],
+    [
+     35.3,
+     -92.0,
+     -39.0
+    ],
+    [
+     35.4,
+     -92.0,
+     -39.0
+    ],
+    [
+     35.5,
+     -92.0,
+     -39.0
+    ],
+    [
+     35.6,
+     -92.0,
+     -39.0
+    ],
+    [
+     35.7,
+     -92.0,
+     -39.0
+    ],
+    [
+     35.8,
+     -92.0,
+     -39.0
+    ],
+    [
+     35.9,
+     -92.0,
+     -39.0
+    ],
+    [
+     36.0,
+     -92.0,
+     -39.0
+    ],
+    [
+     36.1,
+     -92.0,
+     -39.0
+    ],
+    [
+     36.2,
+     -92.0,
+     -39.0
+    ],
+    [
+     36.3,
+     -92.0,
+     -39.0
+    ],
+    [
+     36.4,
+     -92.0,
+     -39.0
+    ],
+    [
+     36.5,
+     -92.0,
+     -39.0
+    ],
+    [
+     36.6,
+     -92.0,
+     -39.0
+    ],
+    [
+     36.7,
+     -92.0,
+     -39.0
+    ],
+    [
+     36.8,
+     -92.0,
+     -39.0
+    ],
+    [
+     36.9,
+     -92.0,
+     -39.0
+    ],
+    [
+     37.0,
+     -92.0,
+     -39.0
+    ],
+    [
+     37.1,
+     -92.0,
+     -39.0
+    ],
+    [
+     37.2,
+     -92.0,
+     -39.0
+    ],
+    [
+     37.3,
+     -92.0,
+     -39.0
+    ],
+    [
+     37.4,
+     -92.0,
+     -39.0
+    ],
+    [
+     37.5,
+     -92.0,
+     -39.0
+    ],
+    [
+     37.6,
+     -92.0,
+     -39.0
+    ],
+    [
+     37.7,
+     -92.0,
+     -39.0
+    ],
+    [
+     37.8,
+     -92.0,
+     -39.0
+    ],
+    [
+     37.9,
+     -92.0,
+     -39.0
+    ],
+    [
+     38.0,
+     -92.0,
+     -39.0
+    ],
+    [
+     38.1,
+     -92.0,
+     -39.0
+    ],
+    [
+     38.2,
+     -92.0,
+     -39.0
+    ],
+    [
+     38.3,
+     -92.0,
+     -39.0
+    ],
+    [
+     38.4,
+     -92.0,
+     -39.0
+    ],
+    [
+     38.5,
+     -92.0,
+     -39.0
+    ],
+    [
+     38.6,
+     -92.0,
+     -39.0
+    ],
+    [
+     38.7,
+     -92.0,
+     -39.0
+    ],
+    [
+     38.8,
+     -92.0,
+     -39.0
+    ],
+    [
+     38.9,
+     -92.0,
+     -39.0
+    ],
+    [
+     39.0,
+     -92.0,
+     -39.0
+    ],
+    [
+     39.1,
+     -92.0,
+     -39.0
+    ],
+    [
+     39.2,
+     -92.0,
+     -39.0
+    ],
+    [
+     39.3,
+     -92.0,
+     -39.0
+    ],
+    [
+     39.4,
+     -92.0,
+     -39.0
+    ],
+    [
+     39.5,
+     -92.0,
+     -39.0
+    ],
+    [
+     39.6,
+     -92.0,
+     -39.0
+    ],
+    [
+     39.7,
+     -92.0,
+     -39.0
+    ],
+    [
+     39.8,
+     -92.0,
+     -39.0
+    ],
+    [
+     39.9,
+     -92.0,
+     -39.0
+    ],
+    [
+     40.0,
+     -92.0,
+     -39.0
+    ],
+    [
+     40.1,
+     -91.93,
+     -39.1
+    ],
+    [
+     40.2,
+     -91.74,
+     -39.39
+    ],
+    [
+     40.3,
+     -91.45,
+     -39.83
+    ],
+    [
+     40.4,
+     -91.06,
+     -40.41
+    ],
+    [
+     40.5,
+     -90.61,
+     -41.09
+    ],
+    [
+     40.6,
+     -90.1,
+     -41.85
+    ],
+    [
+     40.7,
+     -89.56,
+     -42.66
+    ],
+    [
+     40.8,
+     -89.0,
+     -43.5
+    ],
+    [
+     40.9,
+     -88.44,
+     -44.34
+    ],
+    [
+     41.0,
+     -87.9,
+     -45.15
+    ],
+    [
+     41.1,
+     -87.39,
+     -45.91
+    ],
+    [
+     41.2,
+     -86.94,
+     -46.59
+    ],
+    [
+     41.3,
+     -86.55,
+     -47.17
+    ],
+    [
+     41.4,
+     -86.26,
+     -47.61
+    ],
+    [
+     41.5,
+     -86.07,
+     -47.9
+    ],
+    [
+     41.6,
+     -86.0,
+     -48.0
+    ],
+    [
+     41.7,
+     -86.0,
+     -48.0
+    ],
+    [
+     41.8,
+     -86.0,
+     -48.0
+    ],
+    [
+     41.9,
+     -86.0,
+     -48.0
+    ],
+    [
+     42.0,
+     -86.0,
+     -48.0
+    ],
+    [
+     42.1,
+     -86.0,
+     -48.0
+    ],
+    [
+     42.2,
+     -86.0,
+     -48.0
+    ],
+    [
+     42.3,
+     -86.0,
+     -48.0
+    ],
+    [
+     42.4,
+     -86.0,
+     -48.0
+    ],
+    [
+     42.5,
+     -86.0,
+     -48.0
+    ],
+    [
+     42.6,
+     -86.0,
+     -48.0
+    ],
+    [
+     42.7,
+     -85.93,
+     -48.11
+    ],
+    [
+     42.8,
+     -85.74,
+     -48.43
+    ],
+    [
+     42.9,
+     -85.45,
+     -48.92
+    ],
+    [
+     43.0,
+     -85.06,
+     -49.56
+    ],
+    [
+     43.1,
+     -84.61,
+     -50.32
+    ],
+    [
+     43.2,
+     -84.1,
+     -51.16
+    ],
+    [
+     43.3,
+     -83.56,
+     -52.07
+    ],
+    [
+     43.4,
+     -83.0,
+     -53.0
+    ],
+    [
+     43.5,
+     -82.44,
+     -53.93
+    ],
+    [
+     43.6,
+     -81.9,
+     -54.84
+    ],
+    [
+     43.7,
+     -81.39,
+     -55.68
+    ],
+    [
+     43.8,
+     -80.94,
+     -56.44
+    ],
+    [
+     43.9,
+     -80.55,
+     -57.08
+    ],
+    [
+     44.0,
+     -80.26,
+     -57.57
+    ],
+    [
+     44.1,
+     -80.07,
+     -57.89
+    ],
+    [
+     44.2,
+     -80.0,
+     -58.0
+    ],
+    [
+     44.3,
+     -80.0,
+     -58.0
+    ],
+    [
+     44.4,
+     -80.0,
+     -58.0
+    ],
+    [
+     44.5,
+     -80.0,
+     -58.0
+    ],
+    [
+     44.6,
+     -80.0,
+     -58.0
+    ],
+    [
+     44.7,
+     -80.0,
+     -58.0
+    ],
+    [
+     44.8,
+     -80.0,
+     -58.0
+    ],
+    [
+     44.9,
+     -80.0,
+     -58.0
+    ],
+    [
+     45.0,
+     -80.0,
+     -58.0
+    ],
+    [
+     45.1,
+     -80.0,
+     -58.0
+    ],
+    [
+     45.2,
+     -80.0,
+     -58.0
+    ],
+    [
+     45.3,
+     -80.0,
+     -58.0
+    ],
+    [
+     45.4,
+     -80.0,
+     -58.0
+    ],
+    [
+     45.5,
+     -80.0,
+     -58.0
+    ],
+    [
+     45.6,
+     -80.0,
+     -58.0
+    ],
+    [
+     45.7,
+     -80.0,
+     -58.0
+    ],
+    [
+     45.8,
+     -80.0,
+     -58.0
+    ],
+    [
+     45.9,
+     -80.0,
+     -58.0
+    ],
+    [
+     46.0,
+     -80.0,
+     -58.0
+    ],
+    [
+     46.1,
+     -80.0,
+     -58.0
+    ],
+    [
+     46.2,
+     -80.0,
+     -58.0
+    ],
+    [
+     46.3,
+     -80.0,
+     -58.0
+    ],
+    [
+     46.4,
+     -80.0,
+     -58.0
+    ],
+    [
+     46.5,
+     -80.0,
+     -58.0
+    ],
+    [
+     46.6,
+     -80.0,
+     -58.0
+    ],
+    [
+     46.7,
+     -80.0,
+     -58.0
+    ],
+    [
+     46.8,
+     -80.0,
+     -58.0
+    ],
+    [
+     46.9,
+     -80.0,
+     -58.0
+    ],
+    [
+     47.0,
+     -80.0,
+     -58.0
+    ]
+   ],
+   "show": 5.4,
+   "hide": 47.0,
+   "t0": 0,
+   "t1": 47.0,
+   "rear": [
+    [
+     6.2,
+     7.8
+    ]
+   ]
+  },
+  {
+   "type": "build",
+   "kind": "bearhouse",
+   "at": [
+    -88.0,
+    -36.0
+   ],
+   "rot": 0,
+   "t0": 34.4,
+   "t1": 38.2,
+   "show": 34.0
+  }
+ ],
+ "camera": [
+  {
+   "from": 0,
+   "to": 3.0,
+   "hour": 7.5,
+   "keys": [
+    {
+     "t": 0,
+     "look": {
+      "rel": "g:beach"
+     },
+     "dist": 70,
+     "az": 0.4,
+     "pol": 0.35,
+     "up": 1.5,
+     "frame": "beach"
+    },
+    {
+     "t": 1.6,
+     "look": {
+      "rel": "g:beach"
+     },
+     "dist": 34,
+     "az": 1.0,
+     "pol": 0.9,
+     "up": 1.5,
+     "frame": "beach"
+    },
+    {
+     "t": 3.0,
+     "look": {
+      "rel": "g:beach"
+     },
+     "dist": 24,
+     "az": 1.35,
+     "pol": 1.15,
+     "up": 1.5,
+     "frame": "beach"
+    }
+   ]
+  },
+  {
+   "from": 3.0,
+   "to": 5.5,
+   "hour": 11,
+   "keys": [
+    {
+     "t": 3.0,
+     "look": [
+      15,
+      40
+     ],
+     "dist": 900,
+     "az": 0.2,
+     "pol": 0.7,
+     "up": 0,
+     "frame": "beach"
+    },
+    {
+     "t": 5.5,
+     "look": [
+      15,
+      40
+     ],
+     "dist": 640,
+     "az": 0.9,
+     "pol": 0.85,
+     "up": 0,
+     "frame": "beach"
+    }
+   ]
+  },
+  {
+   "from": 5.5,
+   "to": 9.0,
+   "hour": 19.3,
+   "shake": [
+    [
+     6.4,
+     7.6,
+     1.0
+    ]
+   ],
+   "keys": [
+    {
+     "t": 5.5,
+     "look": [
+      -80.0,
+      -56.0
+     ],
+     "dist": 22,
+     "az": 0.2,
+     "pol": 1.2,
+     "up": 3,
+     "frame": "south",
+     "fov": 44
+    },
+    {
+     "t": 9.0,
+     "look": [
+      -80.0,
+      -56.0
+     ],
+     "dist": 13,
+     "az": 0.0,
+     "pol": 1.32,
+     "up": 4,
+     "frame": "south",
+     "fov": 32
+    }
+   ]
+  },
+  {
+   "from": 9.0,
+   "to": 12.0,
+   "hour": 12,
+   "keys": [
+    {
+     "t": 9.0,
+     "look": [
+      -110.0,
+      -51.0
+     ],
+     "dist": 60,
+     "az": 0.3,
+     "pol": 0.8,
+     "up": 0,
+     "frame": "south"
+    },
+    {
+     "t": 12.0,
+     "look": [
+      -110.0,
+      -51.0
+     ],
+     "dist": 48,
+     "az": 0.8,
+     "pol": 0.85,
+     "up": 0,
+     "frame": "south"
+    }
+   ]
+  },
+  {
+   "from": 12.0,
+   "to": 15.0,
+   "hour": 13,
+   "keys": [
+    {
+     "t": 12.0,
+     "look": [
+      0,
+      15
+     ],
+     "dist": 60,
+     "az": 0.0,
+     "pol": 0.8,
+     "up": 0,
+     "frame": "zaf"
+    },
+    {
+     "t": 15.0,
+     "look": [
+      0,
+      15
+     ],
+     "dist": 80,
+     "az": 1.0,
+     "pol": 0.95,
+     "up": 0,
+     "frame": "zaf"
+    }
+   ]
+  },
+  {
+   "from": 15.0,
+   "to": 17.2,
+   "hour": 13.5,
+   "keys": [
+    {
+     "t": 15.0,
+     "look": {
+      "rel": "g:zaf"
+     },
+     "dist": 20,
+     "az": -0.9,
+     "pol": 0.7,
+     "up": 1.5,
+     "frame": "zaf",
+     "fov": 48
+    },
+    {
+     "t": 17.2,
+     "look": {
+      "rel": "g:zaf"
+     },
+     "dist": 11,
+     "az": 0.0,
+     "pol": 1.28,
+     "up": 2.2,
+     "frame": "zaf",
+     "fov": 38
+    }
+   ]
+  },
+  {
+   "from": 17.2,
+   "to": 19.0,
+   "hour": 13.5,
+   "keys": [
+    {
+     "t": 17.2,
+     "look": {
+      "rel": "g:pairs"
+     },
+     "dist": 26,
+     "az": 0.8,
+     "pol": 1.15,
+     "up": 2,
+     "frame": "pairs"
+    },
+    {
+     "t": 19.0,
+     "look": {
+      "rel": "g:pairs"
+     },
+     "dist": 20,
+     "az": 0.0,
+     "pol": 1.25,
+     "up": 2,
+     "frame": "pairs"
+    }
+   ]
+  },
+  {
+   "from": 19.0,
+   "to": 23.4,
+   "hour": 17.0,
+   "keys": [
+    {
+     "t": 19.0,
+     "look": [
+      -86.0,
+      -60.0
+     ],
+     "dist": 16,
+     "az": 0.6,
+     "pol": 1.2,
+     "up": 2,
+     "frame": "south",
+     "fov": 42
+    },
+    {
+     "t": 23.4,
+     "look": [
+      -86.0,
+      -60.0
+     ],
+     "dist": 24,
+     "az": 0.1,
+     "pol": 1.15,
+     "up": 2,
+     "frame": "south",
+     "fov": 42
+    }
+   ]
+  },
+  {
+   "from": 23.4,
+   "to": 28.6,
+   "hour": 17.3,
+   "keys": [
+    {
+     "t": 23.4,
+     "look": [
+      -86.0,
+      -64.0
+     ],
+     "dist": 30,
+     "az": 0.25,
+     "pol": 1.28,
+     "up": 2.5,
+     "frame": "south",
+     "fov": 40
+    },
+    {
+     "t": 26.6,
+     "look": [
+      -86.0,
+      -60.0
+     ],
+     "dist": 18,
+     "az": 0.1,
+     "pol": 1.3,
+     "up": 2.5,
+     "frame": "south",
+     "fov": 34
+    },
+    {
+     "t": 28.6,
+     "look": [
+      -86.0,
+      -60.0
+     ],
+     "dist": 11,
+     "az": 0.5,
+     "pol": 1.25,
+     "up": 3,
+     "frame": "south",
+     "fov": 30
+    }
+   ]
+  },
+  {
+   "from": 28.6,
+   "to": 34.0,
+   "hour": 17.5,
+   "keys": [
+    {
+     "t": 28.6,
+     "look": [
+      -84.0,
+      -58.5
+     ],
+     "dist": 16,
+     "az": 1.2,
+     "pol": 1.2,
+     "up": 2.5,
+     "frame": "south",
+     "fov": 40
+    },
+    {
+     "t": 31.0,
+     "look": [
+      -84.0,
+      -58.5
+     ],
+     "dist": 9,
+     "az": 0.7,
+     "pol": 1.3,
+     "up": 2.5,
+     "frame": "south",
+     "fov": 32
+    },
+    {
+     "t": 34.0,
+     "look": [
+      -84.0,
+      -58.5
+     ],
+     "dist": 26,
+     "az": 0.0,
+     "pol": 0.9,
+     "up": 1,
+     "frame": "south",
+     "fov": 40
+    }
+   ]
+  },
+  {
+   "from": 34.0,
+   "to": 40.0,
+   "hour": 11,
+   "keys": [
+    {
+     "t": 34.0,
+     "look": [
+      -88.0,
+      -36.0
+     ],
+     "dist": 26,
+     "az": -0.6,
+     "pol": 1.1,
+     "up": 2,
+     "frame": "south"
+    },
+    {
+     "t": 38.4,
+     "look": [
+      -88.0,
+      -36.0
+     ],
+     "dist": 18,
+     "az": 0.4,
+     "pol": 1.15,
+     "up": 2.5,
+     "frame": "south"
+    },
+    {
+     "t": 40.0,
+     "look": [
+      -88.0,
+      -36.0
+     ],
+     "dist": 22,
+     "az": 0.8,
+     "pol": 1.1,
+     "up": 2.5,
+     "frame": "south"
+    }
+   ]
+  },
+  {
+   "from": 40.0,
+   "to": 47.0,
+   "hour": 20.3,
+   "keys": [
+    {
+     "t": 40.0,
+     "look": [
+      -92.0,
+      -39.0
+     ],
+     "dist": 16,
+     "az": 0.3,
+     "pol": 1.3,
+     "up": 2.5,
+     "frame": "south",
+     "fov": 40
+    },
+    {
+     "t": 42.6,
+     "look": [
+      -86.0,
+      -48.0
+     ],
+     "dist": 14,
+     "az": 0.0,
+     "pol": 1.3,
+     "up": 2.5,
+     "frame": "south",
+     "fov": 36
+    },
+    {
+     "t": 47.0,
+     "look": [
+      -80.0,
+      -58.0
+     ],
+     "dist": 46,
+     "az": -0.3,
+     "pol": 0.8,
+     "up": 1,
+     "frame": "south",
+     "fov": 40
+    }
+   ]
+  },
+  {
+   "from": 47.0,
+   "to": 57.0,
+   "hour": 20.0,
+   "keys": [
+    {
+     "t": 47.0,
+     "look": [
+      -88.0,
+      -56.0
+     ],
+     "dist": 60,
+     "az": -0.4,
+     "pol": 0.8,
+     "up": 0,
+     "frame": "south"
+    },
+    {
+     "t": 57.0,
+     "look": [
+      -88.0,
+      -56.0
+     ],
+     "dist": 80,
+     "az": 0.4,
+     "pol": 0.75,
+     "up": 0,
+     "frame": "south"
+    }
+   ]
+  },
+  {
+   "from": 57.0,
+   "to": 60.0,
+   "hour": 18.5,
+   "keys": [
+    {
+     "t": 57.0,
+     "look": [
+      15,
+      40
+     ],
+     "dist": 700,
+     "az": 0.8,
+     "pol": 0.85,
+     "up": 0,
+     "frame": "beach"
+    },
+    {
+     "t": 60.0,
+     "look": [
+      15,
+      40
+     ],
+     "dist": 780,
+     "az": 1.0,
+     "pol": 0.85,
+     "up": 0,
+     "frame": "beach"
+    }
+   ]
+  }
+ ],
+ "overlay": {
+  "banner": "コメントで動く無人島　7日目",
+  "bannerOff": [
+   [
+    0,
+    5.5
+   ],
+   [
+    9.0,
+    12.0
+   ],
+   [
+    47.0,
+    60.0
+   ]
+  ],
+  "commenters": {
+   "marunn111": "B",
+   "guernica.0712": "-",
+   "airu0728000": "C",
+   "kubotto0505": "C",
+   "leop_ard5722": "-",
+   "nagatani2012": "C",
+   "abc.man13": "C",
+   "mera_keigo": "-",
+   "mem_mem.0125": "C",
+   "rino._.15": "C",
+   "ryuji_111": "C",
+   "kazuzu4771": "D",
+   "mitsunari_33": "B",
+   "tsuki5747": "C",
+   "ichi.09": "C",
+   "onyankopunch": "C",
+   "aeons0aha": "-",
+   "kota_0.126": "C",
+   "wpmtgm7392": "-",
+   "ayu.mu__8890": "D",
+   "akari_y43k": "C",
+   "aiueo._.0909": "C",
+   "kamesyan_09": "C",
+   "i2srn_97": "C",
+   "ibu131313": "D",
+   "marumegane4": "C",
+   "mihaka166": "C",
+   "ta22_213ku": "-",
+   "tarak_o002": "C",
+   "yuradayo0330": "C",
+   "u_soda_a": "C",
+   "sp7313983": "C",
+   "yuridazo68": "-",
+   "sayaka94233": "C",
+   "akrfjmt417": "-",
+   "tpmpmmpp": "-",
+   "nanasi774_ou": "B"
+  },
+  "names": {
+   "marunn111": "まるん",
+   "guernica.0712": "ざーふ",
+   "airu0728000": "あやか",
+   "kubotto0505": "kubotto",
+   "leop_ard5722": "にゃーーﾝ❣️",
+   "nagatani2012": "悠",
+   "abc.man13": "abc.m",
+   "mera_keigo": "🌴米良啓吾🐒",
+   "mem_mem.0125": "めむmem🍤",
+   "rino._.15": "Rino",
+   "ryuji_111": "Ryuji",
+   "kazuzu4771": "竹田",
+   "mitsunari_33": "みつなり",
+   "tsuki5747": "つき",
+   "ichi.09": "Taichi Minami",
+   "onyankopunch": "Kaori-Miya-Matsutaka",
+   "aeons0aha": "星神︎★アッハ",
+   "kota_0.126": "kotarou0126",
+   "wpmtgm7392": "motimotitamago",
+   "ayu.mu__8890": "あゆむ",
+   "akari_y43k": "あかり",
+   "aiueo._.0909": "あん",
+   "kamesyan_09": "かめしゃん",
+   "i2srn_97": "せな",
+   "ibu131313": "ibu13",
+   "marumegane4": "🐸ま🐸",
+   "mihaka166": "みはか",
+   "ta22_213ku": "拓未",
+   "tarak_o002": "しま",
+   "yuradayo0330": "ゆら",
+   "u_soda_a": "うきお",
+   "sp7313983": "Shampoo",
+   "yuridazo68": "神崎ゆり",
+   "sayaka94233": "Sayaka",
+   "akrfjmt417": "AK24",
+   "tpmpmmpp": "サブ",
+   "nanasi774_ou": "774(名無し)",
+   "an_r_0323": "あん"
+  },
+  "titles": [
+   {
+    "text": "7日目",
+    "from": 0.1,
+    "to": 3.0
+   }
+  ],
+  "tagAll": [
+   [
+    0.3,
+    3.0,
+    0.08
+   ]
+  ],
+  "tagOnly": [
+   {
+    "from": 17.4,
+    "to": 19.0,
+    "who": [
+     "aiueo._.0909",
+     "an_r_0323"
+    ],
+    "join": true,
+    "size": 36
+   },
+   {
+    "from": 17.4,
+    "to": 19.0,
+    "who": [
+     "guernica.0712",
+     "yuridazo68"
+    ],
+    "join": true,
+    "size": 36
+   }
+  ],
+  "stars": [
+   {
+    "who": "guernica.0712",
+    "from": 15.2,
+    "to": 17.1,
+    "bubble": "俺らで熊を手懐けよう🐻金太郎みたいに"
+   },
+   {
+    "who": "rino._.15",
+    "from": 34.6,
+    "to": 37.2,
+    "bubble": "クマ専用エリアを作ったらいいかも！"
+   },
+   {
+    "who": "guernica.0712",
+    "from": 30.6,
+    "to": 33.8,
+    "bubble": "よしよし…"
+   }
+  ],
+  "tally": {
+   "from": 12.0,
+   "to": 15.0,
+   "title": "昨日の質問　クマをどうする？",
+   "grow": [
+    12.3,
+    13.5
+   ],
+   "winner": "C",
+   "winnerAt": 13.8,
+   "rows": [
+    {
+     "key": "A",
+     "label": "松明の火で追い払う",
+     "count": 0
+    },
+    {
+     "key": "B",
+     "label": "柵と落とし穴で畑を守る",
+     "count": 3
+    },
+    {
+     "key": "C",
+     "label": "食べ物を分けて、仲良くなる",
+     "count": 22
+    },
+    {
+     "key": "D",
+     "label": "自由に提案",
+     "count": 3
+    }
+   ]
+  },
+  "likebars": [
+   {
+    "total": 445,
+    "max": 1000,
+    "goals": [
+     {
+      "at": 600,
+      "label": "畑が一晩で実る"
+     },
+     {
+      "at": 750,
+      "label": "灯台が建つ"
+     },
+     {
+      "at": 1000,
+      "label": "もこもこのひつじが流れ着く"
+     }
+    ],
+    "from": 9.0,
+    "to": 12.0,
+    "from0": 325,
+    "y": 640
+   },
+   {
+    "total": 445,
+    "max": 1000,
+    "goals": [
+     {
+      "at": 600,
+      "label": "畑が一晩で実る"
+     },
+     {
+      "at": 750,
+      "label": "灯台が建つ"
+     },
+     {
+      "at": 1000,
+      "label": "もこもこのひつじが流れ着く"
+     }
+    ],
+    "from": 57.1,
+    "to": 60.0,
+    "from0": 445,
+    "y": 380
+   }
+  ],
+  "images": [
+   {
+    "file": "profile.png",
+    "from": 3.0,
+    "to": 4.3,
+    "w": 900,
+    "y": 600,
+    "tap": [
+     0.24,
+     0.905
+    ],
+    "tapLabel": "フォロー＆いいねで…"
+   },
+   {
+    "file": "profile.png",
+    "from": 4.3,
+    "to": 5.5,
+    "w": 900,
+    "y": 600,
+    "tap": [
+     0.37,
+     0.78
+    ],
+    "tapLabel": "島のいまは、ここ"
+   },
+   {
+    "file": "profile.png",
+    "from": 57.1,
+    "to": 60.0,
+    "w": 900,
+    "y": 980,
+    "tap": [
+     0.37,
+     0.78
+    ],
+    "tapLabel": "ここから"
+   }
+  ],
+  "captions": [
+   {
+    "text": "フォローした274人が、流れ着いた",
+    "from": 0.4,
+    "to": 3.0,
+    "y": 1290,
+    "size": 66
+   },
+   {
+    "text": "あなたも、次の動画で流れ着きます",
+    "from": 3.1,
+    "to": 4.3,
+    "y": 1400,
+    "size": 50,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "前回、クマが現れた…！",
+    "from": 5.6,
+    "to": 9.0,
+    "y": 360,
+    "size": 60,
+    "color": [
+     255,
+     120,
+     90
+    ]
+   },
+   {
+    "text": "あと155で、畑が一晩で実る！",
+    "from": 9.6,
+    "to": 12.0,
+    "y": 1000,
+    "size": 58,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "いいねは全部の投稿で数えます",
+    "from": 10.2,
+    "to": 12.0,
+    "y": 1090,
+    "size": 40
+   },
+   {
+    "text": "食べ物を分けて、仲良くなる作戦",
+    "from": 19.1,
+    "to": 23.2,
+    "y": 360,
+    "size": 54,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "みんな、息をひそめて…",
+    "from": 23.4,
+    "to": 26.4,
+    "y": 360,
+    "size": 58
+   },
+   {
+    "text": "食べた！",
+    "from": 28.6,
+    "to": 30.4,
+    "y": 360,
+    "size": 84,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "クマと、仲良くなった！",
+    "from": 30.6,
+    "to": 34.0,
+    "y": 360,
+    "size": 66,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "クマの家が、できた！",
+    "from": 38.4,
+    "to": 40.0,
+    "y": 360,
+    "size": 62,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "kubottoさん「住処を奪ったこちらにも非がある」",
+    "from": 36.0,
+    "to": 38.3,
+    "y": 1290,
+    "size": 38
+   },
+   {
+    "text": "その夜、クマが森の奥へ…",
+    "from": 40.1,
+    "to": 42.6,
+    "y": 360,
+    "size": 56
+   },
+   {
+    "text": "「ついて来い」って、言ってる？",
+    "from": 42.7,
+    "to": 47.0,
+    "y": 360,
+    "size": 56,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "次の質問",
+    "from": 47.1,
+    "to": 57.0,
+    "y": 330,
+    "size": 64,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "クマと仲良くなった。",
+    "from": 47.2,
+    "to": 57.0,
+    "y": 450,
+    "size": 60
+   },
+   {
+    "text": "次は島のどこを調べる？",
+    "from": 47.2,
+    "to": 57.0,
+    "y": 545,
+    "size": 60
+   },
+   {
+    "text": "A 高原（クマが道を知っている）",
+    "from": 48.0,
+    "to": 57.0,
+    "y": 760,
+    "size": 48
+   },
+   {
+    "text": "B 昔の住人の跡を、もっと掘る",
+    "from": 48.6,
+    "to": 57.0,
+    "y": 860,
+    "size": 48
+   },
+   {
+    "text": "C 浜の先の岬（木箱が来た方角）",
+    "from": 49.2,
+    "to": 57.0,
+    "y": 960,
+    "size": 48
+   },
+   {
+    "text": "D 自由に提案",
+    "from": 49.8,
+    "to": 57.0,
+    "y": 1060,
+    "size": 48
+   },
+   {
+    "text": "A・B・C・Dでコメントしてね",
+    "from": 50.6,
+    "to": 57.0,
+    "y": 1300,
+    "size": 50,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "いいねは全部の投稿で数えます",
+    "from": 57.2,
+    "to": 60.0,
+    "y": 720,
+    "size": 42
+   }
+  ],
+  "smallTagsMax": 5
+ },
+ "override": {},
+ "cutaway": {
+  "radius": 1.6
+ },
+ "audio": {
+  "narration": [
+   {
+    "at": 0.3,
+    "until": 3.0,
+    "text": "274人が、流れ着いた！"
+   },
+   {
+    "at": 3.1,
+    "until": 4.3,
+    "text": "フォローといいねで、あなたも。"
+   },
+   {
+    "at": 4.4,
+    "until": 5.5,
+    "text": "島は、リンクから。"
+   },
+   {
+    "at": 5.6,
+    "until": 9.0,
+    "text": "前回、クマが現れた！"
+   },
+   {
+    "at": 9.1,
+    "until": 12.0,
+    "text": "島のいいね、あと155で、畑が一晩で実る！"
+   },
+   {
+    "at": 12.1,
+    "until": 15.0,
+    "text": "昨日の一番人気は、食べ物を分けて、仲良くなる！"
+   },
+   {
+    "at": 15.1,
+    "until": 19.0,
+    "text": "俺らで熊を手懐けよう！"
+   },
+   {
+    "at": 19.1,
+    "until": 23.2,
+    "text": "魚と木の実の、ごちそうを置いて。"
+   },
+   {
+    "at": 23.4,
+    "until": 26.4,
+    "text": "みんなで、そっと見守る…"
+   },
+   {
+    "at": 28.6,
+    "until": 30.4,
+    "text": "食べた！"
+   },
+   {
+    "at": 30.6,
+    "until": 34.0,
+    "text": "クマと、仲良くなった！"
+   },
+   {
+    "at": 34.1,
+    "until": 38.3,
+    "text": "クマの家も、作ったよ。"
+   },
+   {
+    "at": 40.1,
+    "until": 42.6,
+    "text": "その夜、クマが森の奥へ。"
+   },
+   {
+    "at": 42.7,
+    "until": 47.0,
+    "text": "ついて来い、って言ってる？"
+   },
+   {
+    "at": 47.2,
+    "until": 57.0,
+    "text": "次は島のどこを調べる？エー、ビー、シー、ディーでコメントしてね。"
+   },
+   {
+    "at": 57.2,
+    "until": 60.0,
+    "text": "いいねで、島が変わるよ。"
+   }
+  ],
+  "bgm": {
+   "volume": 0.18
+  },
+  "speed": 1.15
+ },
+ "cover": {
+  "at": 31.5,
+  "day": "7日目",
+  "lines": [
+   "クマと、",
+   "仲良くなった！"
+  ]
+ }
+}

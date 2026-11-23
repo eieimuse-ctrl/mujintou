@@ -1,0 +1,34 @@
+{
+ "day": 7,
+ "roster": "../input/islanders.json",
+ "today": [
+  {
+   "id": "guernica.0712",
+   "spot": "forestEdge",
+   "anim": "cheer",
+   "text": "クマと仲良くなった。クマの家のそばで、一緒に過ごしている"
+  },
+  {
+   "id": "yuridazo68",
+   "spot": "forestEdge",
+   "anim": "work",
+   "text": "クマのために、魚と木の実のごちそうを作っている",
+   "tool": "ladle"
+  },
+  {
+   "id": "rino._.15",
+   "spot": "cove",
+   "anim": "work",
+   "text": "副漁労長として、ibu13さんと漁をしている",
+   "tool": "rod"
+  },
+  {
+   "id": "ibu131313",
+   "spot": "cove",
+   "anim": "work",
+   "text": "漁労長として、Rinoさんと漁をしている",
+   "tool": "rod"
+  }
+ ],
+ "missing": {}
+}

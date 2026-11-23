@@ -395,7 +395,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       const td = !stagePose && a.person.today;
       const duty = !stagePose && !td && dutyNow(a.index, tMs);
       let s = (stagePose && stagePose(a.index, tMs)) || (td ? todayPose(a, td) : duty ? dutyPose(duty) : sim.stateAt(a.index, tMs));
-      if (bz && s) {
+      if (bz && s && !beastObj.b.friendly) {
         // 獣に近づかれた人は、獣から離れる向きへ逃げる。離れたら、ふだんの暮らしに戻る（近いほど強く押しやられる）
         const ex = s.x - bz.x, ez = s.z - bz.z, d = Math.hypot(ex, ez);
         if (d < FLEE_R) {
