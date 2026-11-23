@@ -420,6 +420,22 @@ export function createWorld({ canvas, terrain, deco, buildings, hub = null, trai
     fire = { y: fireY, xz: fireXZ, flames, light: fireLight };
   }
 
+  // ---- 建物のかがり火（ステージなど）：小さめの炎と、控えめな夜の光 ----------------------
+  const bfires = [];
+  for (const bd of buildings || []) for (const fp of bd.fires || []) {
+    const fl = [{ c: '#ff7a1f', s: 0.7, y: 0.3 }, { c: '#ffb52e', s: 0.48, y: 0.65 }, { c: '#fff08a', s: 0.26, y: 0.95 }].map((f, n) => {
+      const m = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshBasicMaterial({ color: f.c, fog: false }));
+      m.userData = { ...f, n };
+      m.position.set(fp.x, fp.y + f.y, fp.z);
+      scene.add(m);
+      return m;
+    });
+    const lt = new THREE.PointLight('#ff9a3c', 0, 22, 1.8); // 明るすぎないように：近くだけ、弱め
+    lt.position.set(fp.x, fp.y + 1.6, fp.z);
+    scene.add(lt);
+    bfires.push({ fp, fl, lt, seed: bfires.length * 3 + 1 });
+  }
+
   // ---- 雲（島の外側をゆっくり流れる） -------------------------------------------
   const cloudMat = new THREE.MeshBasicMaterial({ color: '#ffffff', transparent: true, opacity: 0.92 });
   const clouds = [];
@@ -488,6 +504,16 @@ export function createWorld({ canvas, terrain, deco, buildings, hub = null, trai
         f.position.x = fire.xz.x + (hash01(tick, n, 6) - 0.5) * 0.18 * n;
       }
       fire.light.intensity = nightLevel * (55 + hash01(Math.floor(t * 7), 9) * 20);
+    }
+    for (const B of bfires) {
+      for (const f of B.fl) {
+        const { s, y, n } = f.userData;
+        const tick = Math.floor(t * 8 + n * 1.3 + B.seed);
+        const k = 0.8 + hash01(tick, n + B.seed, 3) * 0.45;
+        f.scale.set(s * k, s * (0.9 + hash01(tick, n + B.seed, 4) * 0.7), s * k);
+        f.position.y = B.fp.y + y + (hash01(tick, n, 5) - 0.5) * 0.1;
+      }
+      B.lt.intensity = nightLevel * (14 + hash01(Math.floor(t * 8), B.seed, 9) * 6);
     }
     for (const c of clouds) {
       const u = c.userData;

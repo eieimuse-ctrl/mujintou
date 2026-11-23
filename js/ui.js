@@ -1,6 +1,7 @@
 // 画面のDOM部分：ヘッダー、タブ、島民検索・ランキング（と漂流中の人）、年表、投票カード、詳細パネル。
 // データ由来の文字列はすべて textContent で入れる（HTMLとして解釈させない）。
 
+import { showAt, showLabel } from './show.js';
 import { INSTAGRAM_URL, INSTAGRAM_HANDLE, RELATION_TYPES, DEFAULT_RELATION } from './config.js';
 import { iconCanvas, islanderPortrait, hydrateIcons } from './pixelart.js';
 import { rankIslanders } from './data.js';
@@ -537,8 +538,22 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
       ]),
       el('dl', { class: 'facts' }, [el('div', {}, [el('dt', { text: b.type === 'bigcrate' ? '流れ着いた' : '完成' }), el('dd', { text: b.builtDay ? `${b.builtDay}日目` : '—' })]), el('div', {}, [el('dt', { text: '種類' }), el('dd', { text: b.typeLabel })])]),
       b.note ? el('p', { text: b.note }) : null,
+      b.type === 'stage' ? stageTimetable() : null,
     ]);
     setView('detail');
+  }
+
+  // ステージの時間割：いまの出し物と、このあと
+  function stageTimetable() {
+    const t = now();
+    const hm = (ms) => { const d = new Date(ms + 9 * 3600000); return `${String(d.getUTCHours()).padStart(2, '0')}:${String(d.getUTCMinutes()).padStart(2, '0')}`; };
+    const rows = [];
+    for (let k = 0; k < 8; k++) {
+      const s = showAt(islanders, state.day, t, k);
+      if (!s) break;
+      rows.push(el('li', { class: k === 0 ? 'is-now' : '' }, [el('b', { text: k === 0 ? 'いま' : hm(s.start) }), el('span', { text: showLabel(islanders, s) })]));
+    }
+    return el('div', { class: 'timetable' }, [el('h4', { class: 'section-title', text: 'ステージの時間割（30分ごと）' }), el('ul', {}, rows)]);
   }
 
   function closeDetail(forceClose = false) {
