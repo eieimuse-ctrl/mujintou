@@ -1,0 +1,901 @@
+{
+ "title": "ステージの場所ストーリー",
+ "roster": "../input/islanders.json",
+ "day": 7,
+ "fps": 24,
+ "duration": 10.0,
+ "hour": 18,
+ "baseTime": "2026-11-23T09:00:00+09:00",
+ "base": {
+  "name": "中央の広場",
+  "x": 0,
+  "z": 5,
+  "decidedDay": 2
+ },
+ "forestRoad": {
+  "points": [
+   [
+    -74,
+    -22
+   ],
+   [
+    -128,
+    -34
+   ]
+  ],
+  "need": 300,
+  "startDay": 4,
+  "label": "光の場所",
+  "open": true
+ },
+ "toolAge": "stone",
+ "clearings": [
+  {
+   "x0": -132,
+   "x1": -86,
+   "z0": -62,
+   "z1": 22,
+   "day": 6
+  }
+ ],
+ "buildings": [
+  {
+   "id": "ruins-1",
+   "type": "ruins",
+   "name": "昔の住人の跡",
+   "x": -44.7,
+   "z": -12.7,
+   "rot": 0,
+   "builtDay": 1
+  },
+  {
+   "id": "hut-1",
+   "type": "hut",
+   "name": "はじまりの小屋",
+   "x": -20,
+   "z": -5,
+   "rot": 20,
+   "builtDay": 4
+  },
+  {
+   "id": "workshop-1",
+   "type": "workshop",
+   "name": "石の作業場",
+   "x": -40.3,
+   "z": -9.0,
+   "rot": 10,
+   "builtDay": 5
+  },
+  {
+   "id": "bigfield-1",
+   "type": "bigfield",
+   "name": "巨大な畑",
+   "x": -36.67,
+   "z": -17.0,
+   "rot": 0,
+   "builtDay": 6
+  },
+  {
+   "id": "bearhouse-1",
+   "type": "bearhouse",
+   "name": "クマの家",
+   "x": -29.333333333333332,
+   "z": -12.0,
+   "rot": 0,
+   "builtDay": 7
+  },
+  {
+   "id": "stage-A",
+   "type": "stage",
+   "name": "ステージ",
+   "x": 71.67,
+   "z": 35.0,
+   "rot": 0,
+   "builtDay": 7
+  },
+  {
+   "id": "stage-B",
+   "type": "stage",
+   "name": "ステージ",
+   "x": 7.33,
+   "z": 11.33,
+   "rot": 0,
+   "builtDay": 7
+  },
+  {
+   "id": "stage-C",
+   "type": "stage",
+   "name": "ステージ",
+   "x": 6.67,
+   "z": 55.0,
+   "rot": 0,
+   "builtDay": 7
+  },
+  {
+   "id": "stage-D",
+   "type": "stage",
+   "name": "ステージ",
+   "x": -33.33,
+   "z": 0.0,
+   "rot": 0,
+   "builtDay": 7
+  }
+ ],
+ "cast": [
+  "sakasaka_1482",
+  "marunn111",
+  "guernica.0712",
+  "airu0728000",
+  "kubotto0505",
+  "leop_ard5722",
+  "nagatani2012",
+  "abc.man13",
+  "mera_keigo",
+  "mem_mem.0125",
+  "rino._.15",
+  "ryuji_111",
+  "kazuzu4771",
+  "mitsunari_33",
+  "tsuki5747",
+  "ichi.09",
+  "onyankopunch",
+  "aeons0aha",
+  "kota_0.126",
+  "wpmtgm7392",
+  "ayu.mu__8890",
+  "akari_y43k",
+  "aiueo._.0909",
+  "kamesyan_09",
+  "i2srn_97",
+  "ibu131313",
+  "marumegane4",
+  "mihaka166",
+  "ta22_213ku",
+  "tarak_o002",
+  "yuradayo0330",
+  "u_soda_a",
+  "sp7313983",
+  "yuridazo68",
+  "sayaka94233",
+  "akrfjmt417",
+  "tpmpmmpp",
+  "nanasi774_ou",
+  "an_r_0323",
+  "1kichi_chan",
+  "_shaun81",
+  "akuserumeihong",
+  "aosan116",
+  "atsukidesu",
+  "bear.44190633",
+  "daichi.yamazaki3",
+  "dosukoi.5845",
+  "fuse.daichi",
+  "hafuki82",
+  "hayato210165",
+  "hiropone_89",
+  "hkssss69",
+  "hori_harusabu",
+  "horiharu0220"
+ ],
+ "groups": [
+  {
+   "name": "base",
+   "type": "ring",
+   "spot": [
+    -65.0,
+    -11.0
+   ],
+   "radius": 3.0,
+   "gap": 2.6,
+   "members": [
+    "marunn111",
+    "guernica.0712",
+    "airu0728000",
+    "kubotto0505",
+    "leop_ard5722"
+   ]
+  },
+  {
+   "name": "audA",
+   "type": "line",
+   "spot": [
+    215.0,
+    114.5
+   ],
+   "face": [
+    0,
+    -1
+   ],
+   "gap": 1.9,
+   "rows": 2,
+   "members": [
+    "nagatani2012",
+    "abc.man13",
+    "mera_keigo",
+    "mem_mem.0125",
+    "rino._.15",
+    "ryuji_111",
+    "kazuzu4771",
+    "mitsunari_33",
+    "tsuki5747"
+   ]
+  },
+  {
+   "name": "audB",
+   "type": "line",
+   "spot": [
+    22.0,
+    43.5
+   ],
+   "face": [
+    0,
+    -1
+   ],
+   "gap": 1.9,
+   "rows": 2,
+   "members": [
+    "kota_0.126",
+    "wpmtgm7392",
+    "ayu.mu__8890",
+    "akari_y43k",
+    "aiueo._.0909",
+    "kamesyan_09",
+    "i2srn_97",
+    "ibu131313",
+    "marumegane4"
+   ]
+  },
+  {
+   "name": "audC",
+   "type": "line",
+   "spot": [
+    20.0,
+    174.5
+   ],
+   "face": [
+    0,
+    -1
+   ],
+   "gap": 1.9,
+   "rows": 2,
+   "members": [
+    "yuradayo0330",
+    "u_soda_a",
+    "sp7313983",
+    "yuridazo68",
+    "sayaka94233",
+    "akrfjmt417",
+    "tpmpmmpp",
+    "nanasi774_ou",
+    "an_r_0323"
+   ]
+  },
+  {
+   "name": "audD",
+   "type": "line",
+   "spot": [
+    -100.0,
+    9.5
+   ],
+   "face": [
+    0,
+    -1
+   ],
+   "gap": 1.9,
+   "rows": 2,
+   "members": [
+    "aosan116",
+    "atsukidesu",
+    "bear.44190633",
+    "daichi.yamazaki3",
+    "dosukoi.5845",
+    "fuse.daichi",
+    "hafuki82",
+    "hayato210165",
+    "hiropone_89"
+   ]
+  }
+ ],
+ "acts": [
+  {
+   "who": "*",
+   "t": 0,
+   "anim": "idle",
+   "face": "front"
+  },
+  {
+   "who": "sakasaka_1482",
+   "t": 0,
+   "at": [
+    -58.0,
+    -7.0
+   ],
+   "anim": "idle",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": [
+    "marunn111",
+    "guernica.0712",
+    "airu0728000",
+    "kubotto0505",
+    "leop_ard5722"
+   ],
+   "t": 0,
+   "at": {
+    "slot": "base"
+   },
+   "anim": "idle"
+  },
+  {
+   "who": "sakasaka_1482",
+   "t": 1.2,
+   "anim": "talk"
+  },
+  {
+   "who": [
+    "nagatani2012",
+    "abc.man13",
+    "mera_keigo",
+    "mem_mem.0125",
+    "rino._.15",
+    "ryuji_111",
+    "kazuzu4771",
+    "mitsunari_33",
+    "tsuki5747"
+   ],
+   "t": 0,
+   "at": {
+    "slot": "audA"
+   },
+   "anim": "cheer",
+   "face": {
+    "at": [
+     215.0,
+     105.0
+    ]
+   }
+  },
+  {
+   "who": "ichi.09",
+   "t": 0,
+   "at": {
+    "xz": [
+     215.0,
+     105.4
+    ],
+    "up": 1.1
+   },
+   "anim": "talk",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "onyankopunch",
+   "t": 0,
+   "at": {
+    "xz": [
+     212.8,
+     105.0
+    ],
+    "up": 1.1
+   },
+   "anim": "cheer",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "aeons0aha",
+   "t": 0,
+   "at": {
+    "xz": [
+     217.2,
+     105.0
+    ],
+    "up": 1.1
+   },
+   "anim": "cheer",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": [
+    "kota_0.126",
+    "wpmtgm7392",
+    "ayu.mu__8890",
+    "akari_y43k",
+    "aiueo._.0909",
+    "kamesyan_09",
+    "i2srn_97",
+    "ibu131313",
+    "marumegane4"
+   ],
+   "t": 0,
+   "at": {
+    "slot": "audB"
+   },
+   "anim": "cheer",
+   "face": {
+    "at": [
+     22.0,
+     34.0
+    ]
+   }
+  },
+  {
+   "who": "mihaka166",
+   "t": 0,
+   "at": {
+    "xz": [
+     22.0,
+     34.4
+    ],
+    "up": 1.1
+   },
+   "anim": "talk",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "ta22_213ku",
+   "t": 0,
+   "at": {
+    "xz": [
+     19.8,
+     34.0
+    ],
+    "up": 1.1
+   },
+   "anim": "cheer",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "tarak_o002",
+   "t": 0,
+   "at": {
+    "xz": [
+     24.2,
+     34.0
+    ],
+    "up": 1.1
+   },
+   "anim": "cheer",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": [
+    "yuradayo0330",
+    "u_soda_a",
+    "sp7313983",
+    "yuridazo68",
+    "sayaka94233",
+    "akrfjmt417",
+    "tpmpmmpp",
+    "nanasi774_ou",
+    "an_r_0323"
+   ],
+   "t": 0,
+   "at": {
+    "slot": "audC"
+   },
+   "anim": "cheer",
+   "face": {
+    "at": [
+     20.0,
+     165.0
+    ]
+   }
+  },
+  {
+   "who": "1kichi_chan",
+   "t": 0,
+   "at": {
+    "xz": [
+     20.0,
+     165.4
+    ],
+    "up": 1.1
+   },
+   "anim": "talk",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "_shaun81",
+   "t": 0,
+   "at": {
+    "xz": [
+     17.8,
+     165.0
+    ],
+    "up": 1.1
+   },
+   "anim": "cheer",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "akuserumeihong",
+   "t": 0,
+   "at": {
+    "xz": [
+     22.2,
+     165.0
+    ],
+    "up": 1.1
+   },
+   "anim": "cheer",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": [
+    "aosan116",
+    "atsukidesu",
+    "bear.44190633",
+    "daichi.yamazaki3",
+    "dosukoi.5845",
+    "fuse.daichi",
+    "hafuki82",
+    "hayato210165",
+    "hiropone_89"
+   ],
+   "t": 0,
+   "at": {
+    "slot": "audD"
+   },
+   "anim": "cheer",
+   "face": {
+    "at": [
+     -100.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "who": "hkssss69",
+   "t": 0,
+   "at": {
+    "xz": [
+     -100.0,
+     0.4
+    ],
+    "up": 1.1
+   },
+   "anim": "talk",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "hori_harusabu",
+   "t": 0,
+   "at": {
+    "xz": [
+     -102.2,
+     0.0
+    ],
+    "up": 1.1
+   },
+   "anim": "cheer",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "horiharu0220",
+   "t": 0,
+   "at": {
+    "xz": [
+     -97.8,
+     0.0
+    ],
+    "up": 1.1
+   },
+   "anim": "cheer",
+   "face": "front",
+   "hide": false
+  }
+ ],
+ "props": [],
+ "props3d": [],
+ "camera": [
+  {
+   "from": 0,
+   "to": 2.8,
+   "hour": 17.6,
+   "keys": [
+    {
+     "t": 0,
+     "look": [
+      -58.0,
+      -7.0
+     ],
+     "dist": 30,
+     "az": -0.5,
+     "pol": 1.15,
+     "up": 1.8,
+     "frame": "base"
+    },
+    {
+     "t": 2.8,
+     "look": [
+      -58.0,
+      -7.0
+     ],
+     "dist": 16,
+     "az": -0.2,
+     "pol": 1.28,
+     "up": 1.6,
+     "frame": "base"
+    }
+   ]
+  },
+  {
+   "from": 2.8,
+   "to": 4.6,
+   "hour": 18.7,
+   "keys": [
+    {
+     "t": 2.8,
+     "look": [
+      215.0,
+      106.0
+     ],
+     "dist": 34,
+     "az": 2.69,
+     "pol": 1.1,
+     "up": 2.5,
+     "frame": "audA"
+    },
+    {
+     "t": 4.6,
+     "look": [
+      215.0,
+      106.0
+     ],
+     "dist": 26,
+     "az": 3.49,
+     "pol": 1.18,
+     "up": 2.5,
+     "frame": "audA"
+    }
+   ]
+  },
+  {
+   "from": 4.6,
+   "to": 6.4,
+   "hour": 18.7,
+   "keys": [
+    {
+     "t": 4.6,
+     "look": [
+      22.0,
+      35.0
+     ],
+     "dist": 34,
+     "az": 2.69,
+     "pol": 1.1,
+     "up": 2.5,
+     "frame": "audB"
+    },
+    {
+     "t": 6.4,
+     "look": [
+      22.0,
+      35.0
+     ],
+     "dist": 26,
+     "az": 3.49,
+     "pol": 1.18,
+     "up": 2.5,
+     "frame": "audB"
+    }
+   ]
+  },
+  {
+   "from": 6.4,
+   "to": 8.2,
+   "hour": 18.7,
+   "keys": [
+    {
+     "t": 6.4,
+     "look": [
+      20.0,
+      166.0
+     ],
+     "dist": 34,
+     "az": 2.69,
+     "pol": 1.1,
+     "up": 2.5,
+     "frame": "audC"
+    },
+    {
+     "t": 8.2,
+     "look": [
+      20.0,
+      166.0
+     ],
+     "dist": 26,
+     "az": 3.49,
+     "pol": 1.18,
+     "up": 2.5,
+     "frame": "audC"
+    }
+   ]
+  },
+  {
+   "from": 8.2,
+   "to": 10.0,
+   "hour": 18.7,
+   "keys": [
+    {
+     "t": 8.2,
+     "look": [
+      -100.0,
+      1.0
+     ],
+     "dist": 34,
+     "az": 2.69,
+     "pol": 1.1,
+     "up": 2.5,
+     "frame": "audD"
+    },
+    {
+     "t": 10.0,
+     "look": [
+      -100.0,
+      1.0
+     ],
+     "dist": 26,
+     "az": 3.49,
+     "pol": 1.18,
+     "up": 2.5,
+     "frame": "audD"
+    }
+   ]
+  }
+ ],
+ "overlay": {
+  "banner": "",
+  "bannerOff": [
+   [
+    0,
+    10.0
+   ]
+  ],
+  "commenters": {},
+  "names": {
+   "marunn111": "まるん",
+   "guernica.0712": "ざーふ",
+   "airu0728000": "あやか",
+   "kubotto0505": "kubotto",
+   "leop_ard5722": "にゃーーﾝ❣️",
+   "nagatani2012": "悠",
+   "abc.man13": "abc.m",
+   "mera_keigo": "🌴米良啓吾🐒",
+   "mem_mem.0125": "めむmem🍤",
+   "rino._.15": "Rino",
+   "ryuji_111": "Ryuji",
+   "kazuzu4771": "竹田",
+   "mitsunari_33": "みつなり",
+   "tsuki5747": "つき",
+   "ichi.09": "Taichi Minami",
+   "onyankopunch": "Kaori-Miya-Matsutaka",
+   "aeons0aha": "星神︎★アッハ",
+   "kota_0.126": "kotarou0126",
+   "wpmtgm7392": "motimotitamago",
+   "ayu.mu__8890": "あゆむ",
+   "akari_y43k": "あかり",
+   "aiueo._.0909": "あん",
+   "kamesyan_09": "かめしゃん",
+   "i2srn_97": "せな",
+   "ibu131313": "ibu13",
+   "marumegane4": "🐸ま🐸",
+   "mihaka166": "みはか",
+   "ta22_213ku": "拓未",
+   "tarak_o002": "しま",
+   "yuradayo0330": "ゆら",
+   "u_soda_a": "うきお",
+   "sp7313983": "Shampoo",
+   "yuridazo68": "神崎ゆり",
+   "sayaka94233": "Sayaka",
+   "akrfjmt417": "AK24",
+   "tpmpmmpp": "サブ",
+   "nanasi774_ou": "774(名無し)",
+   "an_r_0323": "あん"
+  },
+  "smallTagsMax": 0,
+  "tagCycle": [],
+  "stars": [
+   {
+    "who": "sakasaka_1482",
+    "from": 0.9,
+    "to": 2.8,
+    "bubble": "娯楽が欲しい…"
+   }
+  ],
+  "captions": [
+   {
+    "text": "拠点で、さかさんが…",
+    "from": 0.2,
+    "to": 2.8,
+    "y": 330,
+    "size": 60,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "A　砂浜",
+    "from": 2.8499999999999996,
+    "to": 4.6,
+    "y": 1360,
+    "size": 84,
+    "color": [
+     255,
+     255,
+     255
+    ]
+   },
+   {
+    "text": "B　中央の広場のそば",
+    "from": 4.6499999999999995,
+    "to": 6.4,
+    "y": 1360,
+    "size": 84,
+    "color": [
+     255,
+     255,
+     255
+    ]
+   },
+   {
+    "text": "C　入り江",
+    "from": 6.45,
+    "to": 8.2,
+    "y": 1360,
+    "size": 84,
+    "color": [
+     255,
+     255,
+     255
+    ]
+   },
+   {
+    "text": "D　切りひらいた森",
+    "from": 8.25,
+    "to": 10.0,
+    "y": 1360,
+    "size": 84,
+    "color": [
+     255,
+     255,
+     255
+    ]
+   },
+   {
+    "text": "ステージ、どこに建てる？",
+    "from": 2.8,
+    "to": 10.0,
+    "y": 300,
+    "size": 70,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   }
+  ]
+ },
+ "audio": {
+  "narration": [],
+  "bgm": {
+   "volume": 0.22
+  },
+  "speed": 1.15
+ }
+}
