@@ -1,9 +1,10 @@
 // 起動処理：データ読み込み → 島の生成 → 描画ループ。
 
 import { createSound } from './sound.js';
+import { reveal } from './secrets.js';
 import { loadData } from './data.js';
 import { createUI } from './ui.js';
-import { generateTerrain, generateDeco, buildNav, DISTRICT_INDEX, DISTRICTS, HALF, TERRAIN_SEED } from './terrain.js';
+import { generateTerrain, generateDeco, buildNav, DISTRICT_INDEX, DISTRICTS, HALF, POND, TERRAIN_SEED } from './terrain.js';
 import { resolveBuildings } from './buildings.js';
 import { createPathfinder } from './pathfind.js';
 import { createSim, resolveHub } from './sim.js';
@@ -275,15 +276,49 @@ async function buildIsland({ state, islanders, drifters = [] }) {
     });
   }
 
+  // ---- 島の謎（昔の住人の手記）：その物をタップした人にだけ。ヒントは出さない ----
+  const ISLET = { x: 0.9 * HALF, z: -0.18 * HALF }; // 東の沖の小島
+  const PEAK = (() => {
+    const hi = DISTRICTS.findIndex((d) => d.id === 'highland');
+    let best = null;
+    for (let k = 0; k < terrain.h.length; k++) if (terrain.district[k] === hi && (!best || terrain.h[k] > best.h)) best = { k, h: terrain.h[k] };
+    if (!best) return null;
+    const i = best.k % terrain.N, j = Math.floor(best.k / terrain.N);
+    return terrain.cellCenter(i, j);
+  })();
+  const jstHour = () => new Date(clock.now() + 9 * 3600000).getUTCHours();
+  let ruinTaps = { n: 0, t: 0 };
+  function secretAt(p) {
+    if (!p) return -1;
+    const near = (q, r) => q && Math.hypot(p.x - q.x, p.z - q.z) < r;
+    if (near(ISLET, 24)) return 0;
+    const hr = jstHour();
+    if (near(POND, 26) && (hr >= 20 || hr < 4)) return 1;
+    if (near(PEAK, 12)) return 3;
+    return -1;
+  }
+  function ruinTap() {
+    const t = performance.now();
+    ruinTaps = t - ruinTaps.t < 4000 ? { n: ruinTaps.n + 1, t } : { n: 1, t };
+    if (ruinTaps.n >= 3) { ruinTaps = { n: 0, t: 0 }; return true; }
+    return false;
+  }
+  function showSecret(n) {
+    ui.showNote(reveal(n));
+  }
+
   function handleTap(x, y) {
     const hit = actors.pick(x, y);
     if (hit && hit.kind === 'beast') {
+      const sh = actors.showNow();
+      if (sh && sh.act === 'sing' && sh.start <= clock.now() && clock.now() < sh.end) return showSecret(4);
       ui.toast(hit.beast.text, 4200);
       return;
     }
     if (ui.inStageView()) return; // 鑑賞中は × でもどる
     const tb = hit && hit.kind === 'building' ? hit.building : null;
     if (tb && tb.type === 'stage') return enterStage(tb);
+    if (tb && tb.type === 'ruins' && ruinTap()) return showSecret(2);
     if (hit && hit.kind === 'building') {
       selected = -1;
       selectedDrifter = -1;
@@ -302,6 +337,7 @@ async function buildIsland({ state, islanders, drifters = [] }) {
     const p = world.pick(nx, ny);
     if (!p) return;
     if (p.type === 'building' && p.building.type === 'stage') return enterStage(p.building);
+    if (p.type === 'building' && p.building.type === 'ruins' && ruinTap()) return showSecret(2);
     if (p.type === 'building') {
       selected = -1;
       selectedDrifter = -1;
@@ -310,6 +346,8 @@ async function buildIsland({ state, islanders, drifters = [] }) {
       syncViewShift();
       return;
     }
+    const sn = secretAt(p.point);
+    if (sn >= 0) return showSecret(sn);
     if (ui.selectedIndex() >= 0 || document.getElementById('panel').dataset.view === 'detail') ui.closeDetail();
     if (p.point.y > 0.6) orbit.focus({ x: p.point.x, y: Math.max(1, p.point.y), z: p.point.z }, Math.min(orbit.goal.dist, 90));
     if (DEBUG) {

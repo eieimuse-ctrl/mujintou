@@ -1558,3 +1558,18 @@ body[data-mode='stage'] #drift-chip { visibility: hidden; }
   box-shadow: 2px 2px 0 var(--ink);
 }
 #sound-toggle[aria-pressed='true'] { background: #ffe9a8; }
+
+/* 島の謎：昔の住人の手記（古い紙） */
+#note-card { position: absolute; inset: 0; z-index: 40; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(20, 16, 30, 0.55); }
+.note-paper {
+  width: min(360px, 100%); max-height: 80vh; overflow: auto; padding: 18px 18px 12px;
+  background: #efe0bb; color: #3b2d1c; border: 3px solid #6b4a2b; box-shadow: 4px 4px 0 #3b2d1c;
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+}
+.note-kicker { margin: 0 0 8px; font-size: 12px; font-weight: 800; color: #8a5a2b; font-family: inherit; }
+.note-text { margin: 0 0 12px; font-size: 17px; line-height: 1.8; }
+.note-word { display: flex; align-items: baseline; gap: 10px; margin: 0 0 10px; font-size: 13px; }
+.note-word b { font-size: 20px; letter-spacing: 0.1em; }
+.note-final { margin-top: 6px; padding-top: 10px; border-top: 1px dashed #8a5a2b; }
+.note-ask { margin: 4px 0 6px; font-size: 12px; color: #6b4a2b; }
+.note-close { width: 100%; min-height: 44px; border: 2px solid #6b4a2b; background: #fff6dc; color: #3b2d1c; font-weight: 800; font-size: 15px; cursor: pointer; }

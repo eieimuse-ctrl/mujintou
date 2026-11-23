@@ -655,6 +655,24 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
     if (!silent) v.onExit?.();
   }
 
+  // ---- 島の謎：見つけた手記のページ ----
+  function showNote(r) {
+    document.getElementById('note-card')?.remove();
+    const close = () => card.remove();
+    const card = el('div', { id: 'note-card', role: 'dialog', 'aria-label': '昔の住人の手記' }, [
+      el('div', { class: 'note-paper' }, [
+        el('p', { class: 'note-kicker', text: `昔の住人の手記　${r.found} / ${r.total}${r.isNew ? '　見つけた！' : ''}` }),
+        el('p', { class: 'note-text', text: r.page.t }),
+        el('p', { class: 'note-word' }, [el('span', { text: '合言葉' }), el('b', { text: r.page.w })]),
+        r.final ? el('div', { class: 'note-final' }, [el('p', { class: 'note-kicker', text: '5枚そろった' }), el('p', { class: 'note-text', text: r.final.t }), el('p', { class: 'note-word' }, [el('span', { text: '最後の合言葉' }), el('b', { text: r.final.w })])]) : null,
+        el('p', { class: 'note-ask', text: '見つけたら、合言葉をコメントで報告してね（場所はないしょ）' }),
+        el('button', { class: 'note-close', type: 'button', text: 'とじる', on: { click: close } }),
+      ]),
+    ]);
+    card.addEventListener('click', (e) => { if (e.target === card) close(); });
+    document.getElementById('stage').append(card);
+  }
+
   function closeDetail(forceClose = false) {
     selected = -1;
     selectedDrifter = -1;
@@ -721,6 +739,7 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
     showDrifter,
     showBuilding,
     enterStageView,
+    showNote,
     exitStageView,
     inStageView: () => !!stageView,
     closeDetail,
