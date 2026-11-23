@@ -113,6 +113,7 @@ function pixelTexture(canvas) {
 
 // drifters: 漂流者（data.js の正規化済み）、drifts: その場所と揺れ方（drift.js の layoutDrifters。drifters と同じ並び）
 export function createActors({ scene, islanders, sim, labelLayer, drifters = [], drifts = [], heightAt = null, torchPosts = [], torchEvery = 5, mysteries = [], beast = null, stages = [], day = 1 }) {
+  let featured = null; // 鑑賞モード：舞台の出演者は名札を必ず出す
   let labelsOn = true; // 名札の表示（ボタンで消せる。消していても、選んだ人の名札は出す）
   const bubbleTex = {};
   for (const icon of ['talk', 'heart', 'note', 'bolt']) bubbleTex[icon] = pixelTexture(bubbleCanvas(icon));
@@ -227,6 +228,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
     };
   });
   const everyone = [...actors, ...castaways];
+  const islSet = new Set(actors);
 
   // ---- 行方不明（data.js の missing）：森の奥に浮かぶ「？」と、そこへ続く足跡 ----
   const groundAt = (x, z) => Math.max(0.45, (heightAt && heightAt(x, z)) || 0);
@@ -502,8 +504,9 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       }
 
       // セリフ（'line'）は DOM の吹き出しで、名前ラベルの上に出す。それ以外はアイコンのスプライト。
-      const iconBubble = s.bubble && s.bubble !== 'line';
-      a.line = s.bubble === 'line' ? s.line : '';
+      const quiet = featured && featured.size && !featured.has(a.index); // 鑑賞中は客席の吹き出しを消す
+      const iconBubble = s.bubble && s.bubble !== 'line' && !quiet;
+      a.line = s.bubble === 'line' && !quiet ? s.line : '';
       if (iconBubble) {
         a.bubble.visible = true;
         a.bubble.material.map = bubbleTex[s.bubble] || bubbleTex.talk;
@@ -623,7 +626,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       allowed = new Set(order.slice(0, MAX_LABELS));
     }
     for (const a of everyone) {
-      const show = a.screen.visible && a.look.show && (a.selected || (labelsOn && (!allowed || allowed.has(a))));
+      const show = a.screen.visible && a.look.show && (a.selected || (featured && featured.has(a.index) && islSet.has(a)) || (labelsOn && (!featured || !featured.size) && (!allowed || allowed.has(a))));
       if (show !== a.labelShown) {
         a.label.style.display = show ? '' : 'none';
         a.labelShown = show;
@@ -712,6 +715,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
 
   return {
     setLabels: (on) => { labelsOn = !!on; },
+    setFeatured: (list) => { featured = list ? new Set(list) : null; },
     actors,
     castaways,
     update,

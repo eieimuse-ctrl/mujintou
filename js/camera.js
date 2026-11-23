@@ -212,6 +212,16 @@ export function createOrbit({ camera, dom, onTap, islandRadius = 100 }) {
     setAutoOrbit: (on) => {
       autoOrbit = on;
     },
+    // 決めた向き・距離で見る（鑑賞モード）。az は近い回り方で
+    view: (point, { dist, az, pol }) => {
+      follow = null;
+      goal.target.set(point.x, point.y ?? 4, point.z);
+      goal.dist = clamp(dist, limits.minDist, limits.maxDist);
+      const d = Math.atan2(Math.sin(az - state.az), Math.cos(az - state.az));
+      goal.az = state.az + d;
+      goal.pol = clamp(pol, limits.minPol, limits.maxPol);
+      touch();
+    },
     setAngles: (az, pol) => {
       goal.az = az;
       if (pol !== undefined) goal.pol = clamp(pol, limits.minPol, limits.maxPol);
