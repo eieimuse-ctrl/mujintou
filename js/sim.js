@@ -39,6 +39,7 @@ export const STATUS_LABELS = {
   look: '見まわり',
   wander: '散歩',
   rest: 'ひと休み',
+  watch: '見物中',
 };
 
 const EDGE_R = 3; // 範囲外の地区までこのマス数以内なら「縁」
@@ -116,6 +117,22 @@ export function createSim({ terrain, nav, pathfinder, islanders, buildings, hub 
       const p = nav.snap(s.x, s.z);
       buildingSpots.push({ ...s, x: p.x, z: p.z, kind: 'building', key: `${b.id}:${m}` });
     });
+  }
+
+  // ステージの客席：ここでの「仕事」は見物（出し物に合わせた文。show は setShow で渡す）
+  const audiencePlaces = new Set(buildingSpots.filter((s) => s.audience).map((s) => s.label));
+  let showNow = () => null;
+  const WATCH = {
+    sing: ['の客席で、歌に聴きいっている', 'で、歌に合わせて手拍子している', 'の最前列で、いっしょに口ずさんでいる', 'で、サビに大きな拍手を送っている'],
+    dance: ['で、ダンスに合わせて体をゆらしている', 'の最前列で、手拍子でもり上げている', 'の客席で、ステップをまねしている', 'で、決めポーズに歓声をあげている'],
+    cook: ['の客席で、料理ショーを見ている', 'で、いいにおいにお腹を鳴らしている', 'の最前列で、味見の順番を待っている', 'で、包丁さばきに見とれている'],
+    talk: ['の客席で、トークに笑っている', 'で、話に大きくうなずいている', 'の客席で、となりの人と笑いあっている', 'で、オチに拍手している'],
+    any: ['の客席で、出し物を見ている', 'の後ろのほうで、のんびり見物している', 'で、次の出番を楽しみに待っている', 'の客席で、となりの人ともり上がっている'],
+  };
+  function watchText(i, tMs, place) {
+    const sh = showNow(tMs);
+    const list = sh ? (sh.request ? [`の客席で、${sh.label}を見ている`, `で、${sh.label}に拍手を送っている`, ...WATCH.any.slice(0, 2)] : WATCH[sh.act] || WATCH.any) : WATCH.any;
+    return place + list[hashMix(idHash[i], Math.floor(tMs / 300000)) % list.length];
   }
 
   // 池のほとり（平原の北の水場）
@@ -657,7 +674,10 @@ export function createSim({ terrain, nav, pathfinder, islanders, buildings, hub 
       edge: entry.edge,
     };
 
-    if (entry.kind === 'work') {
+    if (entry.kind === 'work' && audiencePlaces.has(entry.place)) {
+      // 客席：ときどき手拍子・歓声（道具は持たない）
+      st.anim = hashMix(idHash[i], Math.floor(tMs / 3000)) % 3 === 0 ? 'cheer' : 'idle';
+    } else if (entry.kind === 'work') {
       st.anim = 'work';
     } else if (entry.kind === 'gather') {
       st.anim = 'cheer';
@@ -717,12 +737,15 @@ export function createSim({ terrain, nav, pathfinder, islanders, buildings, hub 
         key = 'walk';
         if (s.kind === 'chat') text = `${partner}に会いに${s.place}へ向かっている`;
         else if (s.kind === 'gather') text = `${hub.label}の集まりへ向かっている`;
-        else text = `${s.place}へ歩いている`;
+        else text = audiencePlaces.has(s.place) ? `出し物を見に、${s.place}へ向かっている` : `${s.place}へ歩いている`;
       }
     } else {
       switch (s.kind) {
         case 'work':
-          text = `${s.place}で${job.work}`;
+          if (audiencePlaces.has(s.place)) {
+            key = 'watch';
+            text = watchText(i, tMs, s.place);
+          } else text = `${s.place}で${job.work}`;
           break;
         case 'gather':
           text = `${hub.label}でみんなと集まっている`;
@@ -758,7 +781,7 @@ export function createSim({ terrain, nav, pathfinder, islanders, buildings, hub 
       const partner = en.partner >= 0 ? islanders[en.partner].displayName || islanders[en.partner].name : '';
       switch (en.kind) {
         case 'work':
-          return `${en.place}で${job.task || 'しごと'}`;
+          return audiencePlaces.has(en.place) ? `${en.place}へ出し物を見に` : `${en.place}で${job.task || 'しごと'}`;
         case 'gather':
           return `${hub.label}の集まりへ`;
         case 'chat':
@@ -801,5 +824,5 @@ export function createSim({ terrain, nav, pathfinder, islanders, buildings, hub 
     return cells;
   }
 
-  return { SLOT_MS, EPOCH, hub, spots, plazaSpot, fireSpot, edgeSpots, edgeAt, plan, stateAt, status, describe, trails, indexOfId, zoneOf, epochOf, transit };
+  return { setShow: (fn) => { showNow = fn || (() => null); }, SLOT_MS, EPOCH, hub, spots, plazaSpot, fireSpot, edgeSpots, edgeAt, plan, stateAt, status, describe, trails, indexOfId, zoneOf, epochOf, transit };
 }

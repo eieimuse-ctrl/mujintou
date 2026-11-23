@@ -223,6 +223,7 @@ async function buildIsland({ state, islanders, drifters = [] }) {
   const world = createWorld({ canvas, terrain, deco, buildings: built.list, hub, trailCells, torches });
   const stageB = built.list.find((b) => b.type === 'stage') || null;
   const actors = createActors({ scene: world.scene, islanders, sim, labelLayer, drifters, drifts, heightAt: (x, z) => terrain.heightAt(x, z), torchPosts: torches, torchEvery: 5, mysteries: built.list.filter((b) => b.type === 'bigcrate'), beast: state.beast && { ...state.beast, route: beastRoute }, stages: built.list.filter((b) => b.type === 'stage'), day: state.day });
+  sim.setShow(() => actors.showNow());
   actors.setLabels(labelsPref);
   labelsActors = actors;
 

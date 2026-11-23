@@ -396,7 +396,7 @@ function stage() {
     stageTop: TOP,
     stageSpots: [[0, 0.4], [-1.6, 0.2], [1.6, 0.2], [-3.0, -0.2], [3.0, -0.2], [0, -1.4]], // 舞台の上の立ち位置（ローカル）
     spots: [
-      { x: 0, z: D / 2 + 7, fx: 0, fz: 0, jobs: ['料理人', '大工', '漁師', '農家', '探検家', '島民'], label: 'ステージの客席', spread: 5 },
+      { x: 0, z: D / 2 + 7, fx: 0, fz: 0, jobs: ['料理人', '大工', '漁師', '農家', '探検家', '島民'], label: 'ステージの客席', spread: 5, audience: true },
     ],
   };
 }
@@ -507,7 +507,7 @@ export function resolveBuildings(defs, terrain) {
     const spots = def.spots.map((s) => {
       const p = toWorld(s.x, s.z);
       const f = toWorld(s.fx, s.fz);
-      return { x: p.x, z: p.z, fx: f.x, fz: f.z, jobs: s.jobs, label: src.name || s.label, spread: s.spread ?? 0.9, building: src.id || `b${n}` };
+      return { x: p.x, z: p.z, fx: f.x, fz: f.z, jobs: s.jobs, label: src.name || s.label, spread: s.spread ?? 0.9, building: src.id || `b${n}`, audience: !!s.audience };
     });
 
     list.push({
