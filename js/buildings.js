@@ -374,8 +374,35 @@ function bearhouse() {
   };
 }
 
-export const BUILDING_TYPES = { hut, field, pier, watchtower, still, ruins, workshop, bigcrate, bigfield, bearhouse };
-export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台', still: '蒸留装置', ruins: '昔の住人の跡', workshop: '石の作業場', bigcrate: '大きな木箱', bigfield: '大きな畑', bearhouse: 'クマの家' };
+// ステージ（8日目〜）：木の野外ステージ。手前の左右に火の台（かがり火）。舞台の上で30分ごとに出し物（show.js）
+function stage() {
+  const b = [];
+  const W = 9, D = 6, TOP = 1.05;
+  b.push(box(0, 0.5, 0, W, 1, D, WOOD));
+  for (let x = -4; x <= 4; x += 1) b.push(box(x, 1.02, 0, 0.9, 0.06, D, x % 2 ? WOOD_LIGHT : WOOD));
+  b.push(box(0, 3.4, -2.8, W, 4.8, 0.4, WOOD_LIGHT), box(0, 5.9, -2.8, 9.6, 0.4, 0.6, WOOD_DARK));
+  for (const x of [-4.4, 4.4]) b.push(box(x, 3, -2.8, 0.5, 6, 0.5, WOOD_DARK));
+  b.push(box(0, 5.3, -2.55, 6, 0.9, 0.1, RED), box(0, 5.3, -2.5, 4.6, 0.3, 0.1, '#f0c040'));
+  for (const x of [-1.2, 0, 1.2]) b.push(box(x, 0.25, 3.4, 0.9, 0.5, 0.9, WOOD_LIGHT));
+  b.push(box(0, 0.25, 3.9, 2.8, 0.5, 0.6, WOOD));
+  // かがり火の台（石の台に鉄のかご）
+  for (const x of [-4.9, 4.9]) b.push(box(x, 0.6, 3.2, 1.0, 1.2, 1.0, '#8d8f97'), box(x, 1.45, 3.2, 1.2, 0.5, 1.2, '#4b4f58'));
+  return {
+    label: 'ステージ',
+    boxes: b,
+    height: 6.2,
+    footprint: { x0: -W / 2 - 0.9, x1: W / 2 + 0.9, z0: -D / 2 - 0.2, z1: D / 2 + 1.4 },
+    fires: [{ x: -4.9, y: 1.75, z: 3.2 }, { x: 4.9, y: 1.75, z: 3.2 }],
+    stageTop: TOP,
+    stageSpots: [[0, 0.4], [-1.6, 0.2], [1.6, 0.2], [-3.0, -0.2], [3.0, -0.2], [0, -1.4]], // 舞台の上の立ち位置（ローカル）
+    spots: [
+      { x: 0, z: D / 2 + 7, fx: 0, fz: 0, jobs: ['料理人', '大工', '漁師', '農家', '探検家', '島民'], label: 'ステージの客席', spread: 5 },
+    ],
+  };
+}
+
+export const BUILDING_TYPES = { hut, field, pier, watchtower, still, ruins, workshop, bigcrate, bigfield, bearhouse, stage };
+export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台', still: '蒸留装置', ruins: '昔の住人の跡', workshop: '石の作業場', bigcrate: '大きな木箱', bigfield: '大きな畑', bearhouse: 'クマの家', stage: 'ステージ' };
 
 // 広場のたき火（建物データではなく、島に最初からある）
 export function campfireBoxes() {
@@ -499,6 +526,8 @@ export function resolveBuildings(defs, terrain) {
       foundation: !def.absoluteY, // 斜面でも浮かないよう、土台を下へ伸ばす
       footprintLocal: def.footprint || null,
       spots,
+      fires: (def.fires || []).map((f) => ({ ...toWorld(f.x, f.z), y: baseY + f.y })),
+      stageSpots: def.stageSpots ? def.stageSpots.map(([lx, lz]) => ({ ...toWorld(lx, lz), y: baseY + def.stageTop, f: toWorld(lx, lz + 6) })) : null,
     });
   });
 

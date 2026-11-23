@@ -11,6 +11,7 @@ import { nameLabelLook } from './zoom.js';
 import { SEA_Y } from './terrain.js';
 import { driftPose } from './drift.js';
 import { beastPose, BEAST_BOXES } from './beast.js';
+import { showAt } from './show.js';
 
 const SPRITE_H = 3.9; // スプライト1コマの高さ（ワールド単位）
 const SPRITE_W = (SPRITE_H * FRAME_W) / FRAME_H;
@@ -111,7 +112,7 @@ function pixelTexture(canvas) {
 }
 
 // drifters: 漂流者（data.js の正規化済み）、drifts: その場所と揺れ方（drift.js の layoutDrifters。drifters と同じ並び）
-export function createActors({ scene, islanders, sim, labelLayer, drifters = [], drifts = [], heightAt = null, torchPosts = [], torchEvery = 5, mysteries = [], beast = null }) {
+export function createActors({ scene, islanders, sim, labelLayer, drifters = [], drifts = [], heightAt = null, torchPosts = [], torchEvery = 5, mysteries = [], beast = null, stages = [], day = 1 }) {
   let labelsOn = true; // 名札の表示（ボタンで消せる。消していても、選んだ人の名札は出す）
   const bubbleTex = {};
   for (const icon of ['talk', 'heart', 'note', 'bolt']) bubbleTex[icon] = pixelTexture(bubbleCanvas(icon));
@@ -362,6 +363,25 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
     return todayState;
   }
 
+  // ステージの出し物：いまの出演者を舞台の上に（30分ごとに代わる。show.js）
+  const stageB = stages.find((b) => b.stageSpots) || null;
+  let showCache = null;
+  const stagePos = {};
+  function showPose(a, k, tMs) {
+    const sp = stageB.stageSpots[k % stageB.stageSpots.length];
+    const act = showCache.act;
+    const t = tMs / 1000;
+    stagePos.x = sp.x; stagePos.z = sp.z; stagePos.y = sp.y;
+    // 体のゆれ：ダンスは左右へ少し動く
+    if (act === 'dance') { stagePos.x += Math.sin(t * 3 + k) * 0.5; }
+    stagePos.dx = sp.f.x - sp.x; stagePos.dz = sp.f.z - sp.z;
+    stagePos.anim = act === 'dance' ? 'cheer' : act === 'cook' ? 'work' : 'talk';
+    stagePos.frame = null;
+    stagePos.bubble = act === 'sing' ? 'note' : act === 'talk' ? 'talk' : null;
+    stagePos.line = '';
+    return stagePos;
+  }
+
   const right = new THREE.Vector3();
   const v = new THREE.Vector3();
   const order = [];
@@ -378,6 +398,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
     // 動画の録画用：globalThis.__stagePose(i, tMs) があれば、その演技（台本）で動かす。null を返した人はふだんの暮らし。
     const stagePose = typeof globalThis.__stagePose === 'function' ? globalThis.__stagePose : null;
     const stageDrift = typeof globalThis.__stageDrift === 'function' ? globalThis.__stageDrift : null;
+    if (stageB && !stagePose && (!showCache || tMs >= showCache.end || tMs < showCache.start)) showCache = showAt(islanders, day, tMs);
     // 獣の位置（台本で録画中は出さない。動画では小道具として描く）
     const bz = beastObj && !stagePose ? beastPose(beastObj.b, tMs) : null;
     if (beastObj) beastObj.now = bz;
@@ -392,9 +413,10 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
         continue;
       }
       a.sprite.visible = a.shadow.visible = true;
-      const td = !stagePose && a.person.today;
+      const onStage = !stagePose && stageB && showCache ? showCache.members.indexOf(a.index) : -1;
+      const td = !stagePose && onStage < 0 && a.person.today;
       const duty = !stagePose && !td && dutyNow(a.index, tMs);
-      let s = (stagePose && stagePose(a.index, tMs)) || (td ? todayPose(a, td) : duty ? dutyPose(duty) : sim.stateAt(a.index, tMs));
+      let s = (stagePose && stagePose(a.index, tMs)) || (onStage >= 0 ? showPose(a, onStage, tMs) : td ? todayPose(a, td) : duty ? dutyPose(duty) : sim.stateAt(a.index, tMs));
       if (bz && s && !beastObj.b.friendly) {
         // 獣に近づかれた人は、獣から離れる向きへ逃げる。離れたら、ふだんの暮らしに戻る（近いほど強く押しやられる）
         const ex = s.x - bz.x, ez = s.z - bz.z, d = Math.hypot(ex, ez);
@@ -697,6 +719,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
     pickAt,
     positionOf: (i) => actors[i]?.pos,
     beastPosition: () => beastObj?.now,
+    showNow: () => showCache,
     dutyOf: (i, tMs) => dutyNow(i, tMs),
     atlasOf: (i) => actors[i]?.atlas,
     drifterPositionOf: (j) => castaways[j]?.pos,

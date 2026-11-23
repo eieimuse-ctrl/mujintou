@@ -355,6 +355,12 @@ body.has-drifters #vote-chip {
   background: var(--accent-dark);
 }
 
+/* ステージの時間割 */
+.timetable ul { list-style: none; margin: 6px 0 0; padding: 0; }
+.timetable li { display: flex; gap: 10px; padding: 6px 4px; border-bottom: 1px dashed #d8ccb2; font-size: 13px; }
+.timetable li b { min-width: 3.2em; font-variant-numeric: tabular-nums; }
+.timetable li.is-now { background: #fff1c9; font-weight: 700; }
+
 /* 島のいいね合計（全投稿）：節目でごほうび。投票チップの下 */
 #like-bar {
   position: absolute;
