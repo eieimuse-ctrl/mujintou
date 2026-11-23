@@ -417,14 +417,23 @@ def compose_frame(i):
         if P['from'] <= t <= P['to']: picture(layer, P, t)
     # 入れ替わる控えめな名札：{"from","to","n":4,"step":2.0,"size":24,"alpha":0.62}
     #   画面に映る人のうち、手前から順に n 人ずつ、step 秒ごとに入れ替え。字幕の帯（いま出ている captions）とは重ねない
-    for tc in O.get('tagCycle', []):
+    #   台本に tagCycle が無いときは、動画の全体で出す（全員の名札・決めた人の名札・パネルが出ている間は休む）。止めるときは "tagCycle": []
+    cycles = O['tagCycle'] if 'tagCycle' in O else [{'from': 0, 'to': S['duration'], 'n': 5, 'step': 2.0, 'auto': True}]
+    busy = any(a <= t <= b for a, b, *_ in O.get('tagAll', [])) or any(x['from'] <= t <= x['to'] for x in O.get('tagOnly', []))
+    panels = ([(O['tally']['from'], O['tally']['to'])] if O.get('tally') else []) + ([(O['ranking']['from'], O['ranking']['to'])] if O.get('ranking') else []) \
+        + ([(O['wall']['from'], O['wall']['to'])] if O.get('wall') else []) + [(L['from'], L['to']) for L in O.get('likebars', [])] + [(P['from'], P['to']) for P in O.get('images', [])]
+    for tc in cycles:
         if not (tc['from'] <= t <= tc['to']): continue
+        if tc.get('auto') and (busy or any(a <= t <= b for a, b in panels)): continue
         bands = [(c.get('y', 1290) - c.get('size', 80) * 0.9, c.get('y', 1290) + c.get('size', 80) * 0.9) for c in O.get('captions', []) if c['from'] <= t <= c['to']]
+        bands += [(1290 - 92 * 0.9, 1290 + 92 * 0.9) for a in O.get('action', []) + O.get('result', []) if a['from'] <= t <= a['to']]
         fs = tc.get('size', 24)
         cand = []
         for uid, p in sorted(ppl.items(), key=lambda kv: kv[1]['d']):
-            if uid in star_ids: continue
+            if uid in star_ids or uid in hidden: continue
+            if len(ppl) <= O.get('smallTagsMax', 4) and uid in O.get('commenters', {}): continue  # 濃い名札が出ている人
             Y = p['fy'] * H + 8
+            if Y > SAFE_BOTTOM: Y = head_y(p) - fs - 22  # 足もとが画面の下に切れているときは、頭の上に
             if Y > SAFE_BOTTOM or Y < 180 or any(a - 10 < Y < b + 10 or a - 10 < Y + fs + 12 < b + 10 for a, b in bands): continue
             cand.append((uid, p, Y))
         if not cand: continue
