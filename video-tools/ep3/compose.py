@@ -419,6 +419,10 @@ def voice(text, speaker=8):
     tag = f'{speaker}:{text}' if SPEED == 1.0 else f'{speaker}:{SPEED}:{text}'
     f = os.path.join(BUILD, 'voice', hashlib.md5(tag.encode()).hexdigest()[:12] + '.wav')
     if os.path.exists(f): return f
+    # 声だけ別の所（Muse）で作ってリポジトリに置いたもの：video-tools/voices/<名前>/<同じファイル名>
+    shared = os.path.join(HERE, '..', 'voices', NAME, os.path.basename(f))
+    if os.path.exists(shared):
+        import shutil; shutil.copy(shared, f); return f
     try:
         q = urllib.request.urlopen(urllib.request.Request(f'{VV}/audio_query?speaker={speaker}&text={urllib.parse.quote(text)}', method='POST'), timeout=20).read()
         if SPEED != 1.0:
@@ -451,7 +455,7 @@ def build_audio():
         inputs += ['-i', f]; ms = int(n['at'] * 1000)
         speed = f'atempo={tempo:.3f},' if tempo > 1.0 else ''
         filters.append(f'[{src()}:a]{speed}adelay={ms}|{ms},volume=1.0[n{k}]'); k += 1
-    bgm = os.environ.get('BGM', os.path.expanduser('~/workspace/mujintou/video/assets/bgm.mp3'))
+    bgm = os.environ.get('BGM') or next((p for p in [os.path.join(HERE, '..', 'assets', 'bgm.mp3'), os.path.expanduser('~/workspace/mujintou/video/assets/bgm.mp3')] if os.path.exists(p)), os.path.expanduser('~/workspace/mujintou/video/assets/bgm.mp3'))
     bg = S.get('audio', {}).get('bgm')
     if bg and os.path.exists(bgm):
         inputs += ['-i', bgm]; dur = S['duration']
@@ -510,7 +514,7 @@ if __name__ == '__main__':
     env = json.load(open(os.path.join(BUILD, 'env.json'))) if os.path.exists(os.path.join(BUILD, 'env.json')) else {}
     try: vv = urllib.request.urlopen(f'{VV}/version', timeout=3).read().decode().strip('"')
     except Exception: vv = None
-    bgm_path = os.environ.get('BGM', os.path.expanduser('~/workspace/mujintou/video/assets/bgm.mp3'))
+    bgm_path = os.environ.get('BGM') or next((p for p in [os.path.join(HERE, '..', 'assets', 'bgm.mp3'), os.path.expanduser('~/workspace/mujintou/video/assets/bgm.mp3')] if os.path.exists(p)), os.path.expanduser('~/workspace/mujintou/video/assets/bgm.mp3'))
     man = {
         'story': os.path.relpath(story_path, os.path.join(HERE, '..', '..')), 'story_sha': sha(story_path),
         'roster_sha': sha(os.path.join(os.path.dirname(story_path), S['roster'])),
