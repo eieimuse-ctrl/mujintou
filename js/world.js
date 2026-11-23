@@ -554,5 +554,5 @@ export function createWorld({ canvas, terrain, deco, buildings, hub = null, trai
     return { id: d.id, name: d.name, index: n, pos: new THREE.Vector3(x, Math.max(1, terrain.heightAt(x, z)) + (d.id === 'plain' ? 9 : 12), z) };
   });
 
-  return { renderer, scene, camera, terrainMesh, buildingMeshes, districtAnchors, update, resize, pick, setTimeOfDay, render };
+  return { renderer, scene, camera, terrainMesh, buildingMeshes, districtAnchors, update, resize, pick, setTimeOfDay, render, night: () => nightLevel };
 }
