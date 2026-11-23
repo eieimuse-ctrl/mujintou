@@ -432,7 +432,9 @@ body.has-drifters #vote-chip {
 
 #toast {
   position: absolute;
-  bottom: calc(var(--tabs-h) + var(--safe-bottom) + 14px);
+  /* 下のボタン（音・名札・全体）やシートと重ならないよう、上の帯（投票・いいね）のすぐ下に出す */
+  top: calc(var(--safe-top) + 140px);
+  bottom: auto;
   left: 50%;
   max-width: calc(100% - 24px);
   padding: 7px 12px;
@@ -1485,6 +1487,7 @@ body[data-sheet='open'] #sheet {
   }
 
   #toast {
+    top: auto;
     bottom: 20px;
   }
 
