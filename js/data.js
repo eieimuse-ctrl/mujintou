@@ -207,6 +207,7 @@ export function normalizeData(stateRaw, rosterRaw, driftRaw = null) {
     clearings,
     beast,
     forestRoad,
+    stageRequests: Array.isArray(s.stageRequests) ? s.stageRequests.filter((r) => r && typeof r === 'object') : [], // コメントで募集したステージの出し物（show.js）
     toolAge: str(s.toolAge) === 'stone' ? 'stone' : '', // 道具の時代（'stone'＝石の道具。昔の住人の跡をまねて作った）
     sample: s.sample === true,
     islandName: str(s.islandName).trim() || DEFAULT_ISLAND_NAME,
