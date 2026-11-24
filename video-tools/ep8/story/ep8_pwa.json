@@ -1,0 +1,19 @@
+{
+ "day": 8,
+ "roster": "../input/islanders.json",
+ "today": [
+  {
+   "id": "guernica.0712",
+   "spot": "forestEdge",
+   "anim": "cheer",
+   "text": "クマの背中に乗って高原へ。クマの家族に会えて、うれしそう"
+  },
+  {
+   "id": "sakasaka_1482",
+   "spot": "plaza",
+   "anim": "cheer",
+   "text": "自分の「娯楽が欲しい」から生まれたステージを、満足そうに眺めている"
+  }
+ ],
+ "missing": {}
+}
