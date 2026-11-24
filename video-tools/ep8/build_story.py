@@ -68,6 +68,8 @@ SEAT = [STAGE[0], STAGE[1] + 8.5]    # 客席
 FIRES = [[STAGE[0] - 4.9, STAGE[1] + 3.2], [STAGE[0] + 4.9, STAGE[1] + 3.2]]
 HWAY = [[2.0, -4.0], [40.0, -70.0], [65.0, -120.0], [76.0, -134.0]]  # 高原へ
 FAM = [84.0, -146.0]                  # クマの家族
+KIDS = [[FAM[0] - 3.2, FAM[1] + 1.0], [FAM[0] + 2.6, FAM[1] + 1.8]]
+MID = [(HWAY[-1][0] + FAM[0]) / 2, (HWAY[-1][1] + FAM[1]) / 2 + 3]
 
 BEACH = json.load(open(os.path.join(HERE, '..', 'ep7', 'beach_spots.json')))
 spots = [list(b) for b in BEACH]
@@ -142,7 +144,7 @@ for k, i in enumerate(followers):
     p0 = HWAY[0]
     A({'who': i, 't': T6, 'at': [p0[0] + side, p0[1] + 4 + (k // 5) * 1.8], 'anim': 'cheer', 'face': {'at': HWAY[1]}, 'hide': False})
     end = lerp_path(HWAY, 0.93)
-    A({'who': i, 't': RUN[0] + lag, 'to': [end[0] + side, end[1] + 5 + (k // 5) * 1.6], 'dur': RUN[1] - RUN[0], 'run': True})
+    A({'who': i, 't': RUN[0] + lag, 'to': [MID[0] + side * 1.3 + (k // 5 % 2) * 0.8, MID[1] + 7 + (k // 5) * 1.5], 'dur': RUN[1] - RUN[0], 'run': True})
     A({'who': i, 't': RUN[1] + lag + 0.2, 'anim': 'shock', 'face': {'at': FAM}})
     A({'who': i, 't': T7 + 1.2, 'anim': 'cheer', 'pick': 0.7, 'seed': k})
     A({'who': i, 't': T7 + 3.4, 'hide': True})
@@ -152,7 +154,6 @@ BPATH = []
 t = 0.0
 while t <= T7 + 3.5:
     p = bear_at(t); BPATH.append([round(t, 2), round(p[0], 2), round(p[1], 2)]); t = round(t + 0.1, 2)
-KIDS = [[FAM[0] - 3.2, FAM[1] + 1.0], [FAM[0] + 2.6, FAM[1] + 1.8]]
 
 # カメラ（激しく：寄り引き・回りこみ・手ぶれ・画角を大きく動かす）
 DUR = 58.0
@@ -177,7 +178,7 @@ camera = [
         W(bear_at(T6 + 5.0), 18, 2.9, 1.15, 3.5, T6 + 5.0, 46), W(bear_at(T6 + 7.6), 20, 0.4, 1.05, 4, T6 + 7.6, 48),
         W(bear_at(T7), 30, 0.2, 1.0, 3, T7, 44)]},
     # クマの家族：子グマに寄って、ふわっと引く
-    {'from': T7, 'to': T7 + 4.0, 'hour': 16.2, 'keys': [W(KIDS[0], 9, 0.6, 1.3, 1.5, T7, 34), W(FAM, 16, 0.0, 1.2, 2, T7 + 1.6, 40), W([FAM[0] - 4, FAM[1] + 8], 46, -0.4, 0.95, 2, T7 + 4.0, 46)]},
+    {'from': T7, 'to': T7 + 4.0, 'hour': 16.2, 'keys': [W(KIDS[0], 10, 0.6, 1.25, 1.5, T7, 36), W(MID, 26, 0.25, 1.0, 2, T7 + 1.6, 42), W(MID, 44, -0.3, 0.9, 2, T7 + 4.0, 46)]},
     # 謎：夜の島をゆっくり（一瞬止まる）
     {'from': T7 + 4.0, 'to': 46.6, 'hour': 22.5, 'keys': [W([20, -20], 640, 2.0, 0.7, 0, T7 + 4.0, 40), W([20, -20], 560, 2.6, 0.75, 0, 46.6, 40)]},
     # 次の問い：島の上をぐるっと
