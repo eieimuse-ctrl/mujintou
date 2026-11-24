@@ -402,7 +402,13 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
     const stageDrift = typeof globalThis.__stageDrift === 'function' ? globalThis.__stageDrift : null;
     if (stageB && !stagePose && (!showCache || tMs >= showCache.end || tMs < showCache.start)) showCache = showAt(islanders, day, tMs);
     // 獣の位置（台本で録画中は出さない。動画では小道具として描く）
-    const bz = beastObj && !stagePose ? beastPose(beastObj.b, tMs) : null;
+    let bz = beastObj && !stagePose ? beastPose(beastObj.b, tMs) : null;
+    // 歌の時間は、仲良しのクマが客席の横で聴いている（歌が好き。島の謎の5枚目）
+    if (bz && beastObj.b.friendly && stageB && showCache && showCache.act === 'sing' && !showCache.request) {
+      const r = ((stageB.rot || 0) * Math.PI) / 180, fx = Math.sin(r), fz = Math.cos(r);
+      const x = stageB.x + fx * 7 + fz * 3.2, z = stageB.z + fz * 7 - fx * 3.2;
+      bz = { x, z, dx: stageB.x - x, dz: stageB.z - z, still: true, listening: true };
+    }
     if (beastObj) beastObj.now = bz;
     for (const a of actors) {
       if (a.person.missing && !stagePose) {
@@ -676,6 +682,8 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
 
   // タップ位置（ステージ内のCSSピクセル）にいちばん近い人。戻り値：{ kind: 'islander' | 'drifter', index } か null
   function pick(x, y) {
+    // 客席の横で歌を聴いているクマは、まわりの島民より先に選べる
+    if (beastObj?.now?.listening && beastObj.screen?.visible && Math.hypot(beastObj.screen.x - x, beastObj.screen.y - y) < beastObj.screen.r) return { kind: 'beast', beast: beastObj.b };
     let best = null;
     let bestD = Infinity;
     for (const a of everyone) {

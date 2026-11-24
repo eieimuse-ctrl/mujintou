@@ -310,8 +310,7 @@ async function buildIsland({ state, islanders, drifters = [] }) {
   function handleTap(x, y) {
     const hit = actors.pick(x, y);
     if (hit && hit.kind === 'beast') {
-      const sh = actors.showNow();
-      if (sh && sh.act === 'sing' && sh.start <= clock.now() && clock.now() < sh.end) return showSecret(4);
+      if (ui.inStageView() && actors.beastPosition()?.listening) return showSecret(4); // 鑑賞中、歌を聴いているクマ
       ui.toast(hit.beast.text, 4200);
       return;
     }
