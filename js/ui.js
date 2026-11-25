@@ -574,9 +574,10 @@ export function createUI({ onSelectIslander, onSelectDrifter, onCloseDetail, onS
         el('span', { class: 'portrait-wrap portrait-big portrait-building' }, iconCanvas('home')),
         el('div', { class: 'profile-main' }, [el('h3', { text: b.name }), el('p', { class: 'profile-id', text: b.typeLabel })]),
       ]),
-      el('dl', { class: 'facts' }, [el('div', {}, [el('dt', { text: b.type === 'bigcrate' ? '流れ着いた' : '完成' }), el('dd', { text: b.builtDay ? `${b.builtDay}日目` : '—' })]), el('div', {}, [el('dt', { text: '種類' }), el('dd', { text: b.typeLabel })])]),
+      el('dl', { class: 'facts' }, [el('div', {}, [el('dt', { text: b.type === 'bigcrate' ? '流れ着いた' : b.type === 'cave' ? '見つけた' : '完成' }), el('dd', { text: b.builtDay ? `${b.builtDay}日目` : '—' })]), el('div', {}, [el('dt', { text: '種類' }), el('dd', { text: b.typeLabel })])]),
       b.note ? el('p', { text: b.note }) : null,
       b.type === 'stage' ? stageTimetable() : null,
+      b.type === 'cave' ? el('p', { class: 'muted', text: '入口は暗く、奥は見えない。まだ中には入れない。' }) : null,
     ]);
     setView('detail');
   }
