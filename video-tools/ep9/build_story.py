@@ -60,6 +60,7 @@ BC = [236.0, 124.0]                   # 漂着の浜
 FAM = [84.0, -146.0]                  # 高原のクマの家族
 KIDS = [[FAM[0] - 3.2, FAM[1] + 1.0], [FAM[0] + 2.6, FAM[1] + 1.8]]
 MOM = [76.0, -138.0]
+CAVE = [92.0, -156.0]                 # 洞窟（クマの家族の奥。正面は +z）
 
 BEACH = json.load(open(os.path.join(HERE, '..', 'ep7', 'beach_spots.json')))
 spots = [list(b) for b in BEACH]
@@ -106,15 +107,16 @@ for k, i in enumerate(PAIR):
     A({'who': i, 't': T5, 'hide': True})
 
 # S5 自然パーク（27.0〜32.6）：高原のクマの家族を、少し離れて見守る
-T6 = 32.6
+TC, T6 = 32.6, 36.0                   # TC〜T6：洞窟を見つける
 A({'who': watchers, 't': 0, 'at': {'slot': 'watch'}, 'anim': 'idle', 'face': {'at': FAM}})
 A({'who': watchers, 't': T5 + 2.0, 'anim': 'cheer', 'pick': 0.5, 'seed': 3})
+A({'who': watchers, 't': TC + 0.6, 'anim': 'shock', 'face': {'at': CAVE}})
 if inr(SAKU):
     A({'who': SAKU, 't': T5, 'at': [MOM[0] + 3, MOM[1] + 8], 'anim': 'cheer', 'face': {'at': FAM}, 'hide': False})
     A({'who': SAKU, 't': T6, 'hide': True})
 
 # S7 謎（37.8〜42.0）：ゆりさん
-T7, T8 = 37.8, 42.0
+T7, T8 = 41.2, 45.4
 if inr(YURI):
     A({'who': YURI, 't': T7, 'at': [-2.0, 12.0], 'anim': 'cheer', 'face': 'front', 'hide': False})
     A({'who': YURI, 't': T8, 'hide': True})
@@ -122,7 +124,7 @@ if inr(YURI):
 # クマ：ステージの上でショー（立ち上がる）→ 高原ではいつもの場所
 BPATH = [[0, STAGE[0] + 3.0, STAGE[1] + 2.4], [T4 + 1.6, STAGE[0] + 3.0, STAGE[1] + 2.4], [T4 + 2.6, STAGE[0] + 0.6, STAGE[1] + 1.2], [T4 + 5.2, STAGE[0] + 0.6, STAGE[1] + 1.2], [T4 + 6.4, STAGE[0] + 3.4, STAGE[1] + 0.4], [T5, STAGE[0] + 3.4, STAGE[1] + 0.4]]
 
-DUR = 56.0
+DUR = 59.4
 W = lambda look, dist, az, pol, up, t, fov=42: {'t': t, 'look': look, 'dist': dist, 'az': az, 'pol': pol, 'up': up, 'frame': 'south', 'fov': fov}
 camera = [
     # 漂着：海の上から浜へ突っこむ
@@ -134,14 +136,14 @@ camera = [
     # ショー：客席から舞台へ突っこみ、クマが立つ瞬間に寄る
     {'from': T4, 'to': T5, 'hour': 18.8, 'shake': [[T4 + 3.0, T4 + 3.8, 1.0]], 'keys': [W([STAGE[0], STAGE[1] + 8], 38, -0.6, 0.85, 2.5, T4, 50), W([STAGE[0], STAGE[1] + 1.5], 24, 0.15, 0.98, 3.5, T4 + 2.6, 44), W([STAGE[0] + 1, STAGE[1] + 1], 19, -0.2, 1.05, 4.0, T4 + 4.0, 40), W([STAGE[0], STAGE[1] + 3], 18, 0.5, 1.0, 3.5, T4 + 6.6, 40), W([STAGE[0] + 6, STAGE[1] + 8], 26, 0.9, 0.95, 2.5, T5, 46)]},
     # 自然パーク：高原を上から → クマの家族へ降りる
-    {'from': T5, 'to': T6, 'hour': 15.5, 'keys': [W([FAM[0] - 10, FAM[1] + 10], 200, -0.4, 0.5, 0, T5, 46), W([MOM[0] + 2, MOM[1]], 30, 0.3, 1.0, 2, T5 + 3.0, 42), W([MOM[0] + 2, MOM[1] + 2], 22, 0.8, 1.1, 2, T6, 40)]},
+    {'from': T5, 'to': T6, 'hour': 15.5, 'keys': [W([FAM[0] - 10, FAM[1] + 10], 200, -0.4, 0.5, 0, T5, 46), W([MOM[0] + 2, MOM[1]], 30, 0.3, 1.0, 2, T5 + 3.0, 42), W([MOM[0] + 2, MOM[1] + 2], 22, 0.8, 1.1, 2, TC, 40), W([CAVE[0] - 2, CAVE[1] + 8], 30, 0.5, 1.05, 3, TC + 1.4, 44), W([CAVE[0], CAVE[1] + 4], 18, 0.05, 1.18, 3, T6, 38)]},
     # 出し物の予約：夜のステージをゆっくり
     {'from': T6, 'to': T7, 'hour': 20.0, 'keys': [W(STAGE, 40, -0.8, 0.9, 2, T6, 44), W(STAGE, 30, 0.6, 1.0, 2.5, T7, 44)]},
     # 謎：ゆりさんにぐっと寄る
     {'from': T7, 'to': T8, 'hour': 21.5, 'keys': [W([-2, 12], 30, -1.0, 0.9, 1.6, T7, 46), W([-2, 12], 11, 0.0, 1.28, 1.6, T7 + 2.2, 34), W([-2, 12], 16, 0.6, 1.2, 1.6, T8, 38)]},
     # 次の問い
-    {'from': T8, 'to': 52.4, 'hour': 9.5, 'keys': [W([15, 20], 300, -1.6, 0.6, 0, T8, 46), W([15, 20], 520, -0.2, 0.8, 0, 47.0, 44), W([15, 20], 700, 1.0, 0.85, 0, 52.4, 42)]},
-    {'from': 52.4, 'to': DUR, 'hour': 18.5, 'keys': [W([15, 40], 700, 0.8, 0.85, 0, 52.4), W([15, 40], 780, 1.0, 0.85, 0, DUR)]},
+    {'from': T8, 'to': 55.8, 'hour': 9.5, 'keys': [W([15, 20], 300, -1.6, 0.6, 0, T8, 46), W([15, 20], 520, -0.2, 0.8, 0, 50.4, 44), W([15, 20], 700, 1.0, 0.85, 0, 55.8, 42)]},
+    {'from': 55.8, 'to': DUR, 'hour': 18.5, 'keys': [W([15, 40], 700, 0.8, 0.85, 0, 55.8), W([15, 40], 780, 1.0, 0.85, 0, DUR)]},
 ]
 
 props = [{'type': 'zzz', 'from': {'rel': i, 'up': 1.6}, 't0': 0, 't1': 0.01, 't2': 2.0, 'size': 0.9, 'phase': k * 0.3} for k, i in enumerate(arrivals[1:30:4])]
@@ -162,8 +164,8 @@ def star(i, a, b, text):
     return {'who': i, 'from': a, 'to': b, 'bubble': text} if inr(i) else None
 stars = [x for x in [
     star(ZAF, T4 + 0.4, T4 + 2.8, 'クマとショー、やってみた！'),
-    star(SAKU, T5 + 3.0, T6, 'この島の自然を、守りたい！'),
-    star(YURI, T7 + 1.2, T8, '合言葉　ふね'),
+    star(SAKU, T5 + 3.0, TC, 'この島の自然を、守りたい！'),
+    star(YURI, T7 + 2.0, T8, '合言葉　ふね'),
 ] if x]
 TOPROWS = [{'name': name_of(c['userId']), 'text': re.sub(r'\s+', ' ', c.get('text') or ''), 'likes': c.get('likeCount') or 0} for c in TOP]
 LB = {'total': LIKES, 'max': 1000, 'goals': GOALS}
@@ -195,17 +197,21 @@ overlay = {
         {'text': 'クマが、立った！', 'from': T4 + 3.0, 'to': T4 + 6.2, 'y': 330, 'size': 80, 'color': [255, 214, 74]},
         *([{'text': 'Rinoさんと仲良しが、@で誘いあった', 'from': T4 + 6.4, 'to': T5, 'y': 330, 'size': 46}] if len(PAIR) == 2 else []),
         {'text': 'さくさくぱんださんの「自然パーク」', 'from': T5 + 0.1, 'to': T5 + 3.0, 'y': 340, 'size': 50, 'color': [255, 214, 74]},
-        {'text': 'まずは、高原のクマの家族を見守るところから', 'from': T5 + 3.0, 'to': T6, 'y': 340, 'size': 44},
+        {'text': 'まずは、高原のクマの家族を見守るところから', 'from': T5 + 3.0, 'to': TC, 'y': 340, 'size': 44},
+        {'text': 'クマの家族の奥に…', 'from': TC + 0.1, 'to': TC + 1.5, 'y': 340, 'size': 60},
+        {'text': '洞窟！？', 'from': TC + 1.5, 'to': T6, 'y': 340, 'size': 90, 'color': [255, 214, 74]},
+        {'text': 'るねさんの「島で洞窟を見つけました」は、本当だった', 'from': TC + 1.7, 'to': T6, 'y': 1300, 'size': 40},
         {'text': '今夜から、順番にステージへ', 'from': T6 + 1.6, 'to': T7, 'y': 1560, 'size': 46, 'color': [255, 214, 74]},
-        {'text': '手記を見つけた人が、現れた…', 'from': T7 + 0.1, 'to': T8, 'y': 360, 'size': 56, 'color': [255, 214, 74]},
-        {'text': '次の質問', 'from': T8 + 0.1, 'to': 52.4, 'y': 300, 'size': 64, 'color': [255, 214, 74]},
-        {'text': f'島民{n_all}人。次に作るのは？', 'from': T8 + 0.2, 'to': 52.4, 'y': 430, 'size': 62},
-        {'text': f'A {OPTS["A"]}', 'from': T8 + 1.0, 'to': 52.4, 'y': 640, 'size': 46},
-        {'text': f'B {OPTS["B"]}', 'from': T8 + 1.6, 'to': 52.4, 'y': 740, 'size': 46},
-        {'text': f'C {OPTS["C"]}', 'from': T8 + 2.2, 'to': 52.4, 'y': 840, 'size': 46},
-        {'text': f'D {OPTS["D"]}', 'from': T8 + 2.8, 'to': 52.4, 'y': 940, 'size': 46},
-        {'text': 'A・B・C・Dでコメントしてね', 'from': T8 + 3.6, 'to': 52.4, 'y': 1180, 'size': 50, 'color': [255, 214, 74]},
-        {'text': 'いいと思ったコメントには♥を', 'from': T8 + 4.6, 'to': 52.4, 'y': 1280, 'size': 44},
+        {'text': '昔の住人の手記が、島のどこかにあるらしい', 'from': T7 + 0.1, 'to': T7 + 2.0, 'y': 360, 'size': 46},
+        {'text': '手記を見つけた人が、現れた…', 'from': T7 + 2.0, 'to': T8, 'y': 360, 'size': 56, 'color': [255, 214, 74]},
+        {'text': '次の質問', 'from': T8 + 0.1, 'to': 55.8, 'y': 300, 'size': 64, 'color': [255, 214, 74]},
+        {'text': f'島民{n_all}人。次に作るのは？', 'from': T8 + 0.2, 'to': 55.8, 'y': 430, 'size': 62},
+        {'text': f'A {OPTS["A"]}', 'from': T8 + 1.0, 'to': 55.8, 'y': 640, 'size': 46},
+        {'text': f'B {OPTS["B"]}', 'from': T8 + 1.6, 'to': 55.8, 'y': 740, 'size': 46},
+        {'text': f'C {OPTS["C"]}', 'from': T8 + 2.2, 'to': 55.8, 'y': 840, 'size': 46},
+        {'text': f'D {OPTS["D"]}', 'from': T8 + 2.8, 'to': 55.8, 'y': 940, 'size': 46},
+        {'text': 'A・B・C・Dでコメントしてね', 'from': T8 + 3.6, 'to': 55.8, 'y': 1180, 'size': 50, 'color': [255, 214, 74]},
+        {'text': 'いいと思ったコメントには♥を', 'from': T8 + 4.6, 'to': 55.8, 'y': 1280, 'size': 44},
         {'text': 'いいねは全部の投稿で数えます', 'from': 52.6, 'to': DUR, 'y': 720, 'size': 42},
     ],
     'smallTagsMax': 5,
@@ -221,10 +227,11 @@ narr = [
     {'at': T4 + 0.1, 'until': T4 + 2.9, 'text': 'ざーふさんと、クマのショー！'},
     {'at': T4 + 3.0, 'until': T4 + 6.2, 'text': 'クマが、立った！'},
     {'at': T4 + 6.4, 'until': T5, 'text': 'アットで誘いあって、仲良しに。'},
-    {'at': T5 + 0.1, 'until': T6, 'text': '自然パークづくり、まずはクマの家族を見守るところから。'},
+    {'at': T5 + 0.1, 'until': TC, 'text': '自然パークづくり、まずはクマの家族を見守るところから。'},
+    {'at': TC + 0.1, 'until': T6, 'text': 'その奥に、洞窟！？'},
     {'at': T6 + 0.1, 'until': T7, 'text': 'ステージの出し物にも、予約が入った！今夜から、順番に登場！'},
-    {'at': T7 + 0.1, 'until': T8, 'text': '手記を見つけた人が、現れた…'},
-    {'at': T8 + 0.2, 'until': 52.4, 'text': '次に作るのは？エー、ビー、シー、ディーでコメントしてね。いいと思ったコメントには、いいねを。'},
+    {'at': T7 + 0.1, 'until': T8, 'text': '昔の住人の手記が、島のどこかにあるらしい。見つけた人が、現れた…'},
+    {'at': T8 + 0.2, 'until': 55.8, 'text': '次に作るのは？エー、ビー、シー、ディーでコメントしてね。いいと思ったコメントには、いいねを。'},
     {'at': 52.6, 'until': DUR, 'text': 'いいねで、島が変わるよ。'},
 ]
 EXIST = [
@@ -234,6 +241,7 @@ EXIST = [
     {'id': 'bigfield-1', 'type': 'bigfield', 'name': '巨大な畑', 'x': -36.67, 'z': -17.0, 'rot': 0, 'builtDay': 6},
     {'id': 'bearhouse-1', 'type': 'bearhouse', 'name': 'クマの家', 'x': -29.33, 'z': -12.0, 'rot': 0, 'builtDay': 7},
     {'id': 'stage-1', 'type': 'stage', 'name': 'みんなのステージ', 'x': 7.33, 'z': 11.33, 'rot': 0, 'builtDay': 8},
+    {'id': 'cave-1', 'type': 'cave', 'name': '洞窟', 'x': round(CAVE[0] / 3, 2), 'z': round(CAVE[1] / 3, 2), 'rot': 0, 'builtDay': 9},
 ]
 story = {
     'title': '9日目', 'roster': ROSTER_REL, 'day': DAY, 'fps': 24, 'duration': DUR, 'hour': 10,
@@ -259,10 +267,12 @@ state = {
     'day': DAY,
     'likes': {'total': LIKES},
     'buildings_add': [{'id': 'lighthouse-1', 'type': 'lighthouse', 'name': '灯台', 'x': round(LIGHT[0] / 3, 2), 'z': round(LIGHT[1] / 3, 2), 'rot': 0, 'builtDay': DAY,
-                       'note': '島のいいねが750を超えて建った灯台。漂着の浜の先に立ち、夜は灯がともる。'}],
+                       'note': '島のいいねが750を超えて建った灯台。漂着の浜の先に立ち、夜は灯がともる。'},
+                      {'id': 'cave-1', 'type': 'cave', 'name': '洞窟', 'x': round(CAVE[0] / 3, 2), 'z': round(CAVE[1] / 3, 2), 'rot': 0, 'builtDay': DAY,
+                       'note': '自然パークの観察中に見つけた洞窟。高原の奥、クマの家族のすみかの先にある。るねさんの「島で洞窟を見つけました」は本当だった。'}],
     'stageRequests_add': [{'id': i, 'text': t, 'kind': k, 'after': '2026-11-25T18:30:00+09:00'} for i, t, k in REQ],
     'chronicle_add': {'day': DAY, 'title': '灯台が建ち、クマがステージへ',
-                      'text': f'{n_arrive}人が流れ着き、島民は{n_all}人に。島のいいねが750を超えて灯台が建った。ざーふさんとクマのショーで、クマがステージに立った。さくさくぱんださんの「自然パーク」づくりが始まった。',
+                      'text': f'{n_arrive}人が流れ着き、島民は{n_all}人に。島のいいねが750を超えて灯台が建った。ざーふさんとクマのショーで、クマがステージに立った。さくさくぱんださんの「自然パーク」づくりが始まり、観察中に高原の奥で洞窟を見つけた。',
                       'vote': {'question': 'この島で、何をする？', 'adopted': 'ざーふさん「クマとショー」・さくさくぱんださん「自然パーク」（いいね順）', 'note': '自由コメント'}},
     'currentVote': {'id': 'vote-009-build', 'status': 'open', 'question': f'島民{n_all}人。次に作るのは？',
                     'description': 'A・B・C・D でコメントしてね。コメントが一番多い案を採用します（Dはいいねが多い案から）',

@@ -404,6 +404,31 @@ function lighthouse() {
   };
 }
 
+// 洞窟（9日目に見つかった）：高原の奥、クマの家族のすみかの先。岩山に暗い入口（正面は +z）。まだ中には入れない
+function cave() {
+  const b = [];
+  const R1 = '#8d8f97', R2 = '#767880', R3 = '#a3a5ac', DARK = '#15131c';
+  // 岩山：段々に積んだ岩（でこぼこに）
+  const rocks = [
+    [0, 1.4, -1.0, 11, 2.8, 8, R2], [-3.2, 3.6, -1.6, 4.6, 2.2, 6, R1], [3.0, 3.4, -1.4, 5.0, 2.0, 6.4, R1],
+    [0, 4.6, -2.0, 6.4, 2.4, 5.4, R2], [-1.2, 6.4, -2.4, 4.2, 1.8, 4.0, R1], [1.8, 6.0, -2.2, 3.0, 1.6, 3.6, R3],
+    [0.4, 7.7, -2.6, 2.6, 1.2, 2.6, R2], [-4.8, 1.0, 2.2, 2.0, 2.0, 2.2, R3], [4.6, 0.8, 2.4, 2.4, 1.6, 2.0, R1],
+  ];
+  for (const [x, y, z, w, h, d, c] of rocks) b.push(box(x, y, z, w, h, d, c));
+  // 入口：暗い穴と、まわりの縁石
+  b.push(box(0, 1.8, 3.02, 3.4, 3.6, 0.1, DARK), box(0, 1.8, 2.6, 3.0, 3.2, 0.9, DARK));
+  b.push(box(-2.0, 1.9, 3.05, 0.7, 3.8, 0.5, R3), box(2.0, 1.9, 3.05, 0.7, 3.8, 0.5, R3), box(0, 3.95, 3.05, 4.7, 0.6, 0.5, R3));
+  // 入口の前に転がる石
+  b.push(box(-1.2, 0.3, 4.4, 0.8, 0.6, 0.7, R1), box(1.5, 0.25, 4.9, 0.6, 0.5, 0.6, R2));
+  return {
+    label: '洞窟',
+    boxes: b,
+    height: 8.4,
+    footprint: { x0: -5.8, x1: 5.8, z0: -5.0, z1: 4.0 },
+    spots: [{ x: 0, z: 8.5, fx: 0, fz: 0, jobs: ['探検家'], label: '洞窟の入口', spread: 1.2 }],
+  };
+}
+
 // ステージ（8日目〜）：木の野外ステージ。手前の左右に火の台（かがり火）。舞台の上で15分ごとに出し物（show.js）
 function stage() {
   const b = [];
@@ -431,8 +456,8 @@ function stage() {
   };
 }
 
-export const BUILDING_TYPES = { hut, field, pier, watchtower, still, ruins, workshop, bigcrate, bigfield, bearhouse, stage, lighthouse };
-export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台', still: '蒸留装置', ruins: '昔の住人の跡', workshop: '石の作業場', bigcrate: '大きな木箱', bigfield: '大きな畑', bearhouse: 'クマの家', stage: 'ステージ', lighthouse: '灯台' };
+export const BUILDING_TYPES = { hut, field, pier, watchtower, still, ruins, workshop, bigcrate, bigfield, bearhouse, stage, lighthouse, cave };
+export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台', still: '蒸留装置', ruins: '昔の住人の跡', workshop: '石の作業場', bigcrate: '大きな木箱', bigfield: '大きな畑', bearhouse: 'クマの家', stage: 'ステージ', lighthouse: '灯台', cave: '洞窟' };
 
 // 広場のたき火（建物データではなく、島に最初からある）
 export function campfireBoxes() {
