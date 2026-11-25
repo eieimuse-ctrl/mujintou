@@ -476,7 +476,7 @@
         const x = xa + (xb - xa) * u, z = za + (zb - za) * u;
         const moving = u > 0 && u < 1 && (xb !== xa || zb !== za);
         const step = moving ? Math.floor(t * 8) % 2 : 0;
-        Q.g.position.set(x, yAt(x, z) - 0.05 + step * 0.12, z);
+        Q.g.position.set(x, yAt(x, z) - 0.05 + step * 0.12 + (pr.lift || 0), z); // lift：舞台の上など、地面より高い所に立つ
         if (xb !== xa || zb !== za) Q.g.rotation.y = Math.atan2(-(zb - za), xb - xa);
         Q.parts[0].children.forEach((m) => { if (m.userData.leg != null) m.position.y = m.userData.y + (m.userData.leg === step ? 0.35 : 0); });
         // 立ち上がる（吠える）：rear: [[開始, 終わり], …]。後ろ脚を軸に前を起こす
