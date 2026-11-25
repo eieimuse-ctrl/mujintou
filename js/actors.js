@@ -21,6 +21,29 @@ const WATERLINE = 0.4; // 漂流者のスプライトは、下からこの割合
 const DRIFT_VISIBLE = 1 - WATERLINE;
 
 // 手に持つ松明（ドット絵：棒と火）
+// ギター（弾き語り・ギター演奏の出し物で、舞台の人が抱える）。ななめに持つ
+function guitarCanvas() {
+  const rows = [
+    '........kk',
+    '.......kbk',
+    '......kbk.',
+    '..oo.kbk..',
+    '.oOOokk...',
+    'oOOkOo....',
+    'oOkOOo....',
+    'oOOOOo....',
+    '.oOOo.....',
+    '..oo......',
+  ];
+  const pal = { o: '#7a3f1c', O: '#d9893a', k: '#2a1d14', b: '#b98952' };
+  const c = document.createElement('canvas');
+  c.width = rows[0].length;
+  c.height = rows.length;
+  const g = c.getContext('2d');
+  rows.forEach((r, y) => [...r].forEach((ch, x) => { if (pal[ch]) { g.fillStyle = pal[ch]; g.fillRect(x, y, 1, 1); } }));
+  return c;
+}
+
 function torchCanvas() {
   const rows = [
     '..y..',
@@ -314,6 +337,8 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
   // 見張り場所 p は火の番の番号 p*torchEvery+1 〜 (p+1)*torchEvery の人たちが受け持ち、1時間ごとに交代する
   const torchTex = pixelTexture(torchCanvas());
   const torchSprites = new Map();
+  const guitarTex = pixelTexture(guitarCanvas());
+  const guitarSprites = new Map();
   const HOUR = 3600000;
   function dutyOf(i, tMs) {
     const p = actors[i]?.person;
@@ -381,6 +406,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
     stagePos.frame = null;
     stagePos.bubble = act === 'sing' ? 'note' : act === 'talk' ? 'talk' : null;
     stagePos.line = '';
+    stagePos.guitar = act === 'sing' && /ギター|弾き語り/.test(showCache.label || '') && k === 0; // 主役がギターを抱える
     return stagePos;
   }
 
@@ -449,6 +475,16 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
         torchSprites.set(a.index, ts);
       }
       if (ts) ts.visible = holdTorch;
+      const holdGuitar = !!(s && s.guitar);
+      let gs = guitarSprites.get(a.index);
+      if (holdGuitar && !gs) {
+        gs = new THREE.Sprite(new THREE.SpriteMaterial({ map: guitarTex, alphaTest: 0.5, transparent: false, fog: false }));
+        gs.center.set(0.5, 0.5);
+        gs.renderOrder = 3;
+        scene.add(gs);
+        guitarSprites.set(a.index, gs);
+      }
+      if (gs) gs.visible = holdGuitar;
 
       // 高さは段差でカクッとしないよう、少しなめらかに追いかける
       if (a.y === null || Math.abs(a.y - s.y) > 3) a.y = s.y;
@@ -502,6 +538,12 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       a.sprite.scale.set(SPRITE_W * k, SPRITE_H * k, 1);
       a.shadow.position.set(s.x, a.y + 0.07, s.z);
       a.shadow.scale.setScalar(k);
+      if (gs && gs.visible) {
+        // 胸の前に抱える。向きに合わせて左右反転、かき鳴らす小さなゆれ
+        const side = a.facing > 0 ? 1 : -1;
+        gs.position.set(s.x + right.x * side * 0.1 * k, a.y + 1.0 * k + Math.abs(Math.sin(t * 9)) * 0.04 * k, s.z + right.z * side * 0.1 * k);
+        gs.scale.set(1.7 * k * side, 1.7 * k, 1);
+      }
       if (ts && ts.visible) {
         const side = a.facing > 0 ? 1 : -1;
         ts.position.set(s.x + right.x * side * 0.62 * k, a.y + 1.15 * k, s.z + right.z * side * 0.62 * k);

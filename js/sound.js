@@ -4,19 +4,20 @@
 const FILES = {
   day: './audio/bgm_day.mp3', night: './audio/bgm_night.mp3',
   sing: './audio/stage_sing.mp3', dance: './audio/stage_dance.mp3', cook: './audio/stage_cook.mp3', talk: './audio/stage_talk.mp3',
+  guitar: './audio/stage_guitar.mp3', // ギターの弾き語り・演奏（無いときは歌の音）
   applause: './audio/applause.mp3',
 };
 const BGM_VOL = 0.38, STAGE_VOL = 0.75, NEAR = 40, FAR = 260; // ステージの音：NEAR まで最大、FAR で聞こえない
 
 export function createSound() {
   let ctx = null, master = null, on = false;
-  const buf = {}, loading = {};
+  const buf = {}, loading = {}, failed = {};
   const loops = {}; // name → { src, gain }
   let stageAct = null, stageSlot = null;
 
   function load(name) {
     if (buf[name] || loading[name]) return loading[name];
-    loading[name] = fetch(FILES[name]).then((r) => r.arrayBuffer()).then((a) => ctx.decodeAudioData(a)).then((b) => { buf[name] = b; return b; }).catch(() => null);
+    loading[name] = fetch(FILES[name]).then((r) => r.arrayBuffer()).then((a) => ctx.decodeAudioData(a)).then((b) => { buf[name] = b; return b; }).catch(() => { failed[name] = true; return null; });
     return loading[name];
   }
   // ループの音：最初は無音で鳴らしておき、音量だけ上げ下げする
@@ -80,8 +81,9 @@ export function createSound() {
     const duck = 1 - 0.75 * Math.min(1, stageV / STAGE_VOL); // ステージが聞こえるほど、島のBGMは下げる
     setVol('day', BGM_VOL * (1 - night) * duck);
     setVol('night', BGM_VOL * night * duck);
-    const act = show ? show.act : null;
-    for (const a of ['sing', 'dance', 'cook', 'talk']) if (a === act || loops[a]) setVol(a, a === act ? stageV : 0);
+    let act = show ? show.act : null;
+    if (act === 'sing' && /ギター|弾き語り/.test(show.label || '')) { if (!loading.guitar) load('guitar'); if (!failed.guitar) act = 'guitar'; }
+    for (const a of ['sing', 'dance', 'cook', 'talk', 'guitar']) if (a === act || loops[a]) setVol(a, a === act ? stageV : 0);
     if (show && stageSlot !== null && show.slot !== stageSlot && stageV > 0.05) oneShot('applause', 0.9 * near);
     stageSlot = show ? show.slot : null;
     stageAct = act;
