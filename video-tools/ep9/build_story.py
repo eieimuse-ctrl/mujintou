@@ -39,7 +39,7 @@ for c in top:
 TOP = TOP[:3]
 
 ZAF, SAKU, TSUKI, RINO, SYK, YURI, RUNE = 'guernica.0712', 'sakusaku_ss0420', 'tsuki5747', 'rino._.15', 'sykyu_77', 'yuridazo68', 'nn1k2n'
-# ステージの出し物の予約（コメントから。PWA では state.stageRequests、明日の夜から順に）
+# ステージの出し物の予約（コメントから。PWA では state.stageRequests、今夜の投稿から順に）
 REQ = [(TSUKI, 'ギターの弾き語り', 'sing'), ('jinsta129', 'ドームライブ', 'sing'), ('endst520', '歌って踊る', 'dance'), ('moose.85881582', 'ファッションショー', 'dance'),
        ('hokura_masao', 'ギター演奏', 'sing'), ('0112riku', '弾き語り', 'sing'), ('squirrel.39516326', 'イラストの展示', 'talk'), ('ry0t0_nk', '料理ショー', 'cook')]
 REQ = [r for r in REQ if inr(r[0])]
@@ -196,7 +196,7 @@ overlay = {
         *([{'text': 'Rinoさんと仲良しが、@で誘いあった', 'from': T4 + 6.4, 'to': T5, 'y': 330, 'size': 46}] if len(PAIR) == 2 else []),
         {'text': 'さくさくぱんださんの「自然パーク」', 'from': T5 + 0.1, 'to': T5 + 3.0, 'y': 340, 'size': 50, 'color': [255, 214, 74]},
         {'text': 'まずは、高原のクマの家族を見守るところから', 'from': T5 + 3.0, 'to': T6, 'y': 340, 'size': 44},
-        {'text': '明日の夜から、順番にステージへ', 'from': T6 + 1.6, 'to': T7, 'y': 1560, 'size': 46, 'color': [255, 214, 74]},
+        {'text': '今夜から、順番にステージへ', 'from': T6 + 1.6, 'to': T7, 'y': 1560, 'size': 46, 'color': [255, 214, 74]},
         {'text': '手記を見つけた人が、現れた…', 'from': T7 + 0.1, 'to': T8, 'y': 360, 'size': 56, 'color': [255, 214, 74]},
         {'text': '次の質問', 'from': T8 + 0.1, 'to': 52.4, 'y': 300, 'size': 64, 'color': [255, 214, 74]},
         {'text': f'島民{n_all}人。次に作るのは？', 'from': T8 + 0.2, 'to': 52.4, 'y': 430, 'size': 62},
@@ -222,7 +222,7 @@ narr = [
     {'at': T4 + 3.0, 'until': T4 + 6.2, 'text': 'クマが、立った！'},
     {'at': T4 + 6.4, 'until': T5, 'text': 'アットで誘いあって、仲良しに。'},
     {'at': T5 + 0.1, 'until': T6, 'text': '自然パークづくり、まずはクマの家族を見守るところから。'},
-    {'at': T6 + 0.1, 'until': T7, 'text': 'ステージの出し物にも、予約が入った！'},
+    {'at': T6 + 0.1, 'until': T7, 'text': 'ステージの出し物にも、予約が入った！今夜から、順番に登場！'},
     {'at': T7 + 0.1, 'until': T8, 'text': '手記を見つけた人が、現れた…'},
     {'at': T8 + 0.2, 'until': 52.4, 'text': '次に作るのは？エー、ビー、シー、ディーでコメントしてね。いいと思ったコメントには、いいねを。'},
     {'at': 52.6, 'until': DUR, 'text': 'いいねで、島が変わるよ。'},
@@ -260,7 +260,7 @@ state = {
     'likes': {'total': LIKES},
     'buildings_add': [{'id': 'lighthouse-1', 'type': 'lighthouse', 'name': '灯台', 'x': round(LIGHT[0] / 3, 2), 'z': round(LIGHT[1] / 3, 2), 'rot': 0, 'builtDay': DAY,
                        'note': '島のいいねが750を超えて建った灯台。漂着の浜の先に立ち、夜は灯がともる。'}],
-    'stageRequests_add': [{'id': i, 'text': t, 'kind': k, 'after': '2026-11-26T18:30:00+09:00'} for i, t, k in REQ],
+    'stageRequests_add': [{'id': i, 'text': t, 'kind': k, 'after': '2026-11-25T18:30:00+09:00'} for i, t, k in REQ],
     'chronicle_add': {'day': DAY, 'title': '灯台が建ち、クマがステージへ',
                       'text': f'{n_arrive}人が流れ着き、島民は{n_all}人に。島のいいねが750を超えて灯台が建った。ざーふさんとクマのショーで、クマがステージに立った。さくさくぱんださんの「自然パーク」づくりが始まった。',
                       'vote': {'question': 'この島で、何をする？', 'adopted': 'ざーふさん「クマとショー」・さくさくぱんださん「自然パーク」（いいね順）', 'note': '自由コメント'}},
