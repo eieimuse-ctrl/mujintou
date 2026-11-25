@@ -374,6 +374,36 @@ function bearhouse() {
   };
 }
 
+// 灯台（9日目〜、島のいいね750で建った）：浜の先に立つ、白と赤のしま模様の塔。夜は上の灯がともる
+function lighthouse() {
+  const b = [];
+  const STONE = '#9a9ca3', STONE_D = '#7b7d85';
+  b.push(box(0, 0.6, 0, 6.2, 1.2, 6.2, STONE_D), box(0, 1.5, 0, 5.2, 0.6, 5.2, STONE));
+  // 塔：下ほど太い。白と赤を交互に
+  const H = 14, N = 7;
+  for (let k = 0; k < N; k++) {
+    const w = 3.8 - k * 0.22, y = 1.8 + (k + 0.5) * (H / N);
+    b.push(box(0, y, 0, w, H / N + 0.02, w, k % 2 ? RED : WHITE));
+  }
+  b.push(box(0, 2.6, 2.0, 1.1, 1.6, 0.2, WOOD_DARK)); // 戸口
+  for (const y of [7, 11]) b.push(box(0, y, 1.6, 0.6, 0.8, 0.2, GLASS)); // 窓
+  // 回廊と手すり
+  const top = 1.8 + H;
+  b.push(box(0, top + 0.15, 0, 4.4, 0.3, 4.4, '#4b4f58'));
+  for (const s of [-1, 1]) b.push(box(0, top + 0.7, s * 2.1, 4.4, 0.12, 0.12, '#4b4f58'), box(s * 2.1, top + 0.7, 0, 0.12, 0.12, 4.4, '#4b4f58'));
+  // 灯室（ガラス）と屋根
+  b.push(box(0, top + 1.3, 0, 2.4, 2.0, 2.4, GLASS));
+  b.push(box(0, top + 2.5, 0, 2.9, 0.4, 2.9, RED), box(0, top + 2.95, 0, 1.9, 0.5, 1.9, RED), box(0, top + 3.4, 0, 0.6, 0.5, 0.6, '#4b4f58'));
+  return {
+    label: '灯台',
+    boxes: b,
+    height: top + 3.8,
+    footprint: { x0: -3.3, x1: 3.3, z0: -3.3, z1: 3.3 },
+    fires: [{ x: 0, y: top + 1.0, z: 0 }], // 夜にともる灯
+    spots: [{ x: 0, z: 5.5, fx: 0, fz: 0, jobs: ['漁師', '探検家'], label: '灯台の下', spread: 1.5 }],
+  };
+}
+
 // ステージ（8日目〜）：木の野外ステージ。手前の左右に火の台（かがり火）。舞台の上で15分ごとに出し物（show.js）
 function stage() {
   const b = [];
@@ -401,8 +431,8 @@ function stage() {
   };
 }
 
-export const BUILDING_TYPES = { hut, field, pier, watchtower, still, ruins, workshop, bigcrate, bigfield, bearhouse, stage };
-export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台', still: '蒸留装置', ruins: '昔の住人の跡', workshop: '石の作業場', bigcrate: '大きな木箱', bigfield: '大きな畑', bearhouse: 'クマの家', stage: 'ステージ' };
+export const BUILDING_TYPES = { hut, field, pier, watchtower, still, ruins, workshop, bigcrate, bigfield, bearhouse, stage, lighthouse };
+export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台', still: '蒸留装置', ruins: '昔の住人の跡', workshop: '石の作業場', bigcrate: '大きな木箱', bigfield: '大きな畑', bearhouse: 'クマの家', stage: 'ステージ', lighthouse: '灯台' };
 
 // 広場のたき火（建物データではなく、島に最初からある）
 export function campfireBoxes() {

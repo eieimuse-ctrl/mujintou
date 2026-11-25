@@ -1,0 +1,5233 @@
+{
+ "title": "9日目",
+ "roster": "../input/islanders.json",
+ "day": 9,
+ "fps": 24,
+ "duration": 56.0,
+ "hour": 10,
+ "baseTime": "2026-11-25T09:00:00+09:00",
+ "base": {
+  "name": "中央の広場",
+  "x": 0,
+  "z": 5,
+  "decidedDay": 2
+ },
+ "forestRoad": {
+  "points": [
+   [
+    -74,
+    -22
+   ],
+   [
+    -128,
+    -34
+   ]
+  ],
+  "need": 300,
+  "startDay": 4,
+  "label": "光の場所",
+  "open": true
+ },
+ "toolAge": "stone",
+ "clearings": [
+  {
+   "x0": -132,
+   "x1": -86,
+   "z0": -62,
+   "z1": 22,
+   "day": 6
+  }
+ ],
+ "buildings": [
+  {
+   "id": "ruins-1",
+   "type": "ruins",
+   "name": "昔の住人の跡",
+   "x": -44.7,
+   "z": -12.7,
+   "rot": 0,
+   "builtDay": 1
+  },
+  {
+   "id": "hut-1",
+   "type": "hut",
+   "name": "はじまりの小屋",
+   "x": -20,
+   "z": -5,
+   "rot": 20,
+   "builtDay": 4
+  },
+  {
+   "id": "workshop-1",
+   "type": "workshop",
+   "name": "石の作業場",
+   "x": -40.3,
+   "z": -9.0,
+   "rot": 10,
+   "builtDay": 5
+  },
+  {
+   "id": "bigfield-1",
+   "type": "bigfield",
+   "name": "巨大な畑",
+   "x": -36.67,
+   "z": -17.0,
+   "rot": 0,
+   "builtDay": 6
+  },
+  {
+   "id": "bearhouse-1",
+   "type": "bearhouse",
+   "name": "クマの家",
+   "x": -29.33,
+   "z": -12.0,
+   "rot": 0,
+   "builtDay": 7
+  },
+  {
+   "id": "stage-1",
+   "type": "stage",
+   "name": "みんなのステージ",
+   "x": 7.33,
+   "z": 11.33,
+   "rot": 0,
+   "builtDay": 8
+  }
+ ],
+ "cast": [
+  "meirigachitodei",
+  "hrh_.10",
+  "aitosadesu",
+  "amitan_ka",
+  "ako55056",
+  "asai.rento",
+  "04yuta07",
+  "and_25252525",
+  "se__lita",
+  "familey8guy",
+  "ru_na746",
+  "aotodayo0214",
+  "endst520",
+  "renta_yakyu",
+  "urgi115",
+  "aobanakagamma",
+  "harumakigohan3",
+  "c2__k0",
+  "sho8_06",
+  "cyakoshi9",
+  "k_aio09212026",
+  "naixumeizuobo",
+  "makoto63297",
+  "arata2012_1222",
+  "manami.t20101015",
+  "ara08_123",
+  "sakugawa.6",
+  "rkun_13",
+  "yakiudon072621",
+  "108toma",
+  "kituneya.kyuubi",
+  "raymon35473",
+  "enfp.k0.t_r0.1_",
+  "aoto_st_x",
+  "ikeyama.shinntaro",
+  "qixi45340",
+  "aya_on1115",
+  "y5u_i13_",
+  "osadi532",
+  "arata__swimming",
+  "ryoke25",
+  "gatp_15618",
+  "zx_xz.04",
+  "mizo0802",
+  "tstar348a",
+  "11.03230",
+  "naot.331",
+  "mgvt17",
+  "rituk.i222",
+  "tt_.hb",
+  "m9qlx_w",
+  "jingshoukoulunye",
+  "nokonokodayo0503",
+  "8.ruto3",
+  "metabopannba8",
+  "ha_ru037",
+  "7k1ra_mry5",
+  "aoshi.1017",
+  "6_u.michiru",
+  "ayuki.43",
+  "soya81563",
+  "nemusugiru7.11",
+  "zyaryuunoou_vega",
+  "parupundakesenspu",
+  "fuuma_0723",
+  "sakai82042",
+  "a.kaito_mint",
+  "ryuma_68_onigiri",
+  "sh0tar0o222",
+  "midehamu",
+  "k4oru13",
+  "koora444444",
+  "yuu_05290",
+  "nob291116",
+  "nanasinorise0618",
+  "_.kn01x",
+  "wolf.ryu.127",
+  "camel.146320",
+  "aina10_baseball",
+  "mmmr1008",
+  "raimu08220",
+  "kaito_110911",
+  "nagatakou0903",
+  "aoto.0820",
+  "yasuma_s14",
+  "kakazuki_8",
+  "kuma.sub56",
+  "11zuka_2525",
+  "sylv_eon700",
+  "maamoto.754",
+  "kii._.714",
+  "kenshin.3636",
+  "ray_mths",
+  "_dusy.or.ka",
+  "simokawa171718kabiki",
+  "hvqtx",
+  "armadillo.2561475",
+  "audi_chzjkcharles",
+  "miiiiiiii_____m5",
+  "sajuyu19",
+  "yv1nq_0151",
+  "1kichi_chan",
+  "29tomo83",
+  "_otekat_____",
+  "_shaun81",
+  "akuserumeihong",
+  "aosan116",
+  "atsukidesu",
+  "bea_utiful183",
+  "bear.44190633",
+  "daichi.yamazaki3",
+  "dosukoi.5845",
+  "fuse.daichi",
+  "hafuki82",
+  "hayato210165",
+  "hiropone_89",
+  "hkssss69",
+  "hori_harusabu",
+  "horiharu0220",
+  "hyuga_0619",
+  "ichi.09",
+  "kame___1020",
+  "kohe051",
+  "kosei20130324",
+  "kubotto0505",
+  "kurimasa222",
+  "marumegane4",
+  "max_no_otousan",
+  "mi_erimo",
+  "musashi.617",
+  "nanasi774_ou",
+  "nintendo_3ds.12",
+  "oka_tomohiko",
+  "paianiyan",
+  "r19tooo",
+  "s.sora1225",
+  "s_02y.ayta",
+  "sakasaka_1482",
+  "sasa_mi42151315",
+  "shimadaaaa03",
+  "shinohara_kohei",
+  "shugo.77",
+  "singlepapatsu.i",
+  "srso.ren",
+  "taishi.uramoto23",
+  "tako1216yaki",
+  "tarak_o002",
+  "tokitin2014",
+  "yamato_family327",
+  "yo79499",
+  "yu._.u225",
+  "yuzunasama8737",
+  "00_x8z_",
+  "4.he1t0_833",
+  "_3yu.96_",
+  "aiueo61127",
+  "aki752294613",
+  "analogayane",
+  "ao.030499",
+  "artman_atsu",
+  "ashizun",
+  "ayu.mu__8890",
+  "chibekoab",
+  "haijina",
+  "hayaton863",
+  "hi.de.studios",
+  "hoshito.19",
+  "ibu131313",
+  "ibuk1.09",
+  "iwa._pikmin",
+  "jeff_siegert",
+  "k1n.y37",
+  "kazuzu4771",
+  "kbokn0219",
+  "kota_chumuri",
+  "kousuke_0232",
+  "leejazzdrums",
+  "masatk_no_m",
+  "mawl4566",
+  "maxmash1456",
+  "megane.kazuking",
+  "mikke.maron",
+  "momo0129moka0129",
+  "momosann.0420.sabu",
+  "nabemegane",
+  "noix5u",
+  "onoka0703",
+  "onyankopunch",
+  "pocchanpochi",
+  "qlry25x",
+  "r4im_s00",
+  "reito_0512h",
+  "reka8181510",
+  "riku_u17",
+  "ryuji_111",
+  "s0uta05.7",
+  "saori.siegert",
+  "savans880",
+  "seiseisakurai",
+  "sena_pippiraa",
+  "shun0505",
+  "shunta.dayo",
+  "syunto.0502",
+  "t.waka0113",
+  "takada_1gram",
+  "taku.0621t",
+  "tivi_tatsuya",
+  "tkd3874",
+  "tkrn_sht",
+  "ttt.thx",
+  "untorigami",
+  "rino._.15",
+  "sykyu_77",
+  "guernica.0712",
+  "sakusaku_ss0420",
+  "yuridazo68"
+ ],
+ "groups": [
+  {
+   "name": "south",
+   "type": "line",
+   "spot": [
+    0,
+    0
+   ],
+   "face": [
+    0,
+    1
+   ],
+   "members": []
+  },
+  {
+   "name": "seat",
+   "type": "line",
+   "spot": [
+    22.0,
+    44.0
+   ],
+   "face": [
+    0,
+    -1
+   ],
+   "gap": 1.7,
+   "rows": 4,
+   "members": [
+    "1kichi_chan",
+    "29tomo83",
+    "_otekat_____",
+    "_shaun81",
+    "akuserumeihong",
+    "aosan116",
+    "atsukidesu",
+    "bea_utiful183",
+    "bear.44190633",
+    "daichi.yamazaki3",
+    "dosukoi.5845",
+    "fuse.daichi",
+    "hafuki82",
+    "hayato210165",
+    "hiropone_89",
+    "hkssss69",
+    "hori_harusabu",
+    "horiharu0220",
+    "hyuga_0619",
+    "ichi.09",
+    "kame___1020",
+    "kohe051",
+    "kosei20130324",
+    "kubotto0505",
+    "kurimasa222",
+    "marumegane4",
+    "max_no_otousan",
+    "mi_erimo",
+    "musashi.617",
+    "nanasi774_ou",
+    "nintendo_3ds.12",
+    "oka_tomohiko",
+    "paianiyan",
+    "r19tooo",
+    "s.sora1225",
+    "s_02y.ayta",
+    "sakasaka_1482",
+    "sasa_mi42151315",
+    "shimadaaaa03",
+    "shinohara_kohei",
+    "shugo.77",
+    "singlepapatsu.i",
+    "srso.ren",
+    "taishi.uramoto23"
+   ]
+  },
+  {
+   "name": "watch",
+   "type": "line",
+   "spot": [
+    74.0,
+    -126.0
+   ],
+   "face": [
+    0,
+    -1
+   ],
+   "gap": 1.8,
+   "rows": 3,
+   "members": [
+    "tako1216yaki",
+    "tarak_o002",
+    "tokitin2014",
+    "yamato_family327",
+    "yo79499",
+    "yu._.u225",
+    "yuzunasama8737",
+    "00_x8z_",
+    "4.he1t0_833",
+    "_3yu.96_",
+    "aiueo61127",
+    "aki752294613",
+    "analogayane",
+    "ao.030499",
+    "artman_atsu",
+    "ashizun",
+    "ayu.mu__8890",
+    "chibekoab",
+    "haijina",
+    "hayaton863",
+    "hi.de.studios",
+    "hoshito.19",
+    "ibu131313",
+    "ibuk1.09",
+    "iwa._pikmin",
+    "jeff_siegert"
+   ]
+  },
+  {
+   "name": "lbeach",
+   "type": "ring",
+   "spot": [
+    242.0,
+    104.0
+   ],
+   "radius": 6,
+   "gap": 2.2,
+   "members": [
+    "k1n.y37",
+    "kazuzu4771",
+    "kbokn0219",
+    "kota_chumuri",
+    "kousuke_0232",
+    "leejazzdrums",
+    "masatk_no_m",
+    "mawl4566",
+    "maxmash1456",
+    "megane.kazuking",
+    "mikke.maron",
+    "momo0129moka0129",
+    "momosann.0420.sabu",
+    "nabemegane",
+    "noix5u",
+    "onoka0703",
+    "onyankopunch",
+    "pocchanpochi",
+    "qlry25x",
+    "r4im_s00",
+    "reito_0512h",
+    "reka8181510",
+    "riku_u17",
+    "ryuji_111",
+    "s0uta05.7",
+    "saori.siegert",
+    "savans880",
+    "seiseisakurai",
+    "sena_pippiraa",
+    "shun0505",
+    "shunta.dayo",
+    "syunto.0502",
+    "t.waka0113",
+    "takada_1gram",
+    "taku.0621t",
+    "tivi_tatsuya",
+    "tkd3874",
+    "tkrn_sht",
+    "ttt.thx",
+    "untorigami"
+   ]
+  }
+ ],
+ "acts": [
+  {
+   "who": "*",
+   "t": 0,
+   "anim": "idle",
+   "face": "front"
+  },
+  {
+   "who": "meirigachitodei",
+   "t": 0,
+   "at": [
+    234.2,
+    103.15614423995342
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     201.2,
+     101.7
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "meirigachitodei",
+   "t": 0.3,
+   "to": [
+    221.2,
+    101.7
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "meirigachitodei",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "meirigachitodei",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "hrh_.10",
+   "t": 0,
+   "at": [
+    209.6,
+    128.9
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "hrh_.10",
+   "t": 1.1900000000000002,
+   "anim": "sleep"
+  },
+  {
+   "who": "hrh_.10",
+   "t": 2.27,
+   "anim": "cheer"
+  },
+  {
+   "who": "hrh_.10",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "aitosadesu",
+   "t": 0,
+   "at": [
+    213.3,
+    115.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "aitosadesu",
+   "t": 1.28,
+   "anim": "sleep"
+  },
+  {
+   "who": "aitosadesu",
+   "t": 2.3400000000000003,
+   "anim": "idle"
+  },
+  {
+   "who": "aitosadesu",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "amitan_ka",
+   "t": 0,
+   "at": [
+    259.8,
+    112.6
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "amitan_ka",
+   "t": 1.37,
+   "anim": "sit"
+  },
+  {
+   "who": "amitan_ka",
+   "t": 2.41,
+   "anim": "cheer"
+  },
+  {
+   "who": "amitan_ka",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "ako55056",
+   "t": 0,
+   "at": [
+    236.8,
+    103.23655930654908
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     203.8,
+     102.9
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "ako55056",
+   "t": 0.94,
+   "to": [
+    223.8,
+    102.9
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "ako55056",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "ako55056",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "asai.rento",
+   "t": 0,
+   "at": [
+    216.5,
+    120
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "asai.rento",
+   "t": 1.55,
+   "anim": "sleep"
+  },
+  {
+   "who": "asai.rento",
+   "t": 2.5500000000000003,
+   "anim": "cheer"
+  },
+  {
+   "who": "asai.rento",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "04yuta07",
+   "t": 0,
+   "at": [
+    253,
+    110.8
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "04yuta07",
+   "t": 1.6400000000000001,
+   "anim": "sit"
+  },
+  {
+   "who": "04yuta07",
+   "t": 2.62,
+   "anim": "idle"
+  },
+  {
+   "who": "04yuta07",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "and_25252525",
+   "t": 0,
+   "at": [
+    211.1,
+    123.3
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "and_25252525",
+   "t": 1.73,
+   "anim": "sleep"
+  },
+  {
+   "who": "and_25252525",
+   "t": 2.6900000000000004,
+   "anim": "cheer"
+  },
+  {
+   "who": "and_25252525",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "se__lita",
+   "t": 0,
+   "at": [
+    240.7,
+    106.9052000167975
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     207.7,
+     107.1
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "se__lita",
+   "t": 0.45999999999999996,
+   "to": [
+    227.7,
+    107.1
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "se__lita",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "se__lita",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "familey8guy",
+   "t": 0,
+   "at": [
+    244.7,
+    104.8
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "familey8guy",
+   "t": 1.9100000000000001,
+   "anim": "sit"
+  },
+  {
+   "who": "familey8guy",
+   "t": 2.83,
+   "anim": "cheer"
+  },
+  {
+   "who": "familey8guy",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "ru_na746",
+   "t": 0,
+   "at": [
+    225.1,
+    115.4
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "ru_na746",
+   "t": 2.0,
+   "anim": "sleep"
+  },
+  {
+   "who": "ru_na746",
+   "t": 2.9000000000000004,
+   "anim": "idle"
+  },
+  {
+   "who": "ru_na746",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "aotodayo0214",
+   "t": 0,
+   "at": [
+    220.8,
+    115.7
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "aotodayo0214",
+   "t": 1.1,
+   "anim": "sleep"
+  },
+  {
+   "who": "aotodayo0214",
+   "t": 2.97,
+   "anim": "cheer"
+  },
+  {
+   "who": "aotodayo0214",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "endst520",
+   "t": 0,
+   "at": [
+    239.4,
+    103.90868120785868
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     206.4,
+     104.3
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "endst520",
+   "t": 1.1,
+   "to": [
+    226.4,
+    104.3
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "endst520",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "endst520",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "renta_yakyu",
+   "t": 0,
+   "at": [
+    240.8,
+    130.2
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "renta_yakyu",
+   "t": 1.28,
+   "anim": "sleep"
+  },
+  {
+   "who": "renta_yakyu",
+   "t": 2.2,
+   "anim": "cheer"
+  },
+  {
+   "who": "renta_yakyu",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "urgi115",
+   "t": 0,
+   "at": [
+    251.6,
+    107.7
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "urgi115",
+   "t": 1.37,
+   "anim": "sleep"
+  },
+  {
+   "who": "urgi115",
+   "t": 2.27,
+   "anim": "idle"
+  },
+  {
+   "who": "urgi115",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "aobanakagamma",
+   "t": 0,
+   "at": [
+    216.1,
+    142.2
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "aobanakagamma",
+   "t": 1.46,
+   "anim": "sit"
+  },
+  {
+   "who": "aobanakagamma",
+   "t": 2.3400000000000003,
+   "anim": "cheer"
+  },
+  {
+   "who": "aobanakagamma",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "harumakigohan3",
+   "t": 0,
+   "at": [
+    275.1,
+    116.74428664287636
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     242.10000000000002,
+     114.8
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "harumakigohan3",
+   "t": 0.62,
+   "to": [
+    262.1,
+    114.8
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "harumakigohan3",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "harumakigohan3",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "c2__k0",
+   "t": 0,
+   "at": [
+    212.6,
+    138.8
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "c2__k0",
+   "t": 1.6400000000000001,
+   "anim": "sleep"
+  },
+  {
+   "who": "c2__k0",
+   "t": 2.4800000000000004,
+   "anim": "cheer"
+  },
+  {
+   "who": "c2__k0",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "sho8_06",
+   "t": 0,
+   "at": [
+    223.9,
+    135.2
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "sho8_06",
+   "t": 1.73,
+   "anim": "sit"
+  },
+  {
+   "who": "sho8_06",
+   "t": 2.5500000000000003,
+   "anim": "idle"
+  },
+  {
+   "who": "sho8_06",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "cyakoshi9",
+   "t": 0,
+   "at": [
+    236.3,
+    147
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "cyakoshi9",
+   "t": 1.82,
+   "anim": "sleep"
+  },
+  {
+   "who": "cyakoshi9",
+   "t": 2.62,
+   "anim": "cheer"
+  },
+  {
+   "who": "cyakoshi9",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "k_aio09212026",
+   "t": 0,
+   "at": [
+    258,
+    110.99774370031653
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     225,
+     110.7
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "k_aio09212026",
+   "t": 1.26,
+   "to": [
+    245,
+    110.7
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "k_aio09212026",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "k_aio09212026",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "naixumeizuobo",
+   "t": 0,
+   "at": [
+    246.8,
+    126.3
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "naixumeizuobo",
+   "t": 2.0,
+   "anim": "sit"
+  },
+  {
+   "who": "naixumeizuobo",
+   "t": 2.7600000000000002,
+   "anim": "cheer"
+  },
+  {
+   "who": "naixumeizuobo",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "makoto63297",
+   "t": 0,
+   "at": [
+    213.7,
+    129.5
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "makoto63297",
+   "t": 1.1,
+   "anim": "sleep"
+  },
+  {
+   "who": "makoto63297",
+   "t": 2.83,
+   "anim": "idle"
+  },
+  {
+   "who": "makoto63297",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "arata2012_1222",
+   "t": 0,
+   "at": [
+    256.7,
+    116.3
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "arata2012_1222",
+   "t": 1.1900000000000002,
+   "anim": "sleep"
+  },
+  {
+   "who": "arata2012_1222",
+   "t": 2.9000000000000004,
+   "anim": "cheer"
+  },
+  {
+   "who": "arata2012_1222",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "manami.t20101015",
+   "t": 0,
+   "at": [
+    241.3,
+    114.4734664612694
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     208.3,
+     116.4
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "manami.t20101015",
+   "t": 0.78,
+   "to": [
+    228.3,
+    116.4
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "manami.t20101015",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "manami.t20101015",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "ara08_123",
+   "t": 0,
+   "at": [
+    242.4,
+    135
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "ara08_123",
+   "t": 1.37,
+   "anim": "sleep"
+  },
+  {
+   "who": "ara08_123",
+   "t": 3.04,
+   "anim": "cheer"
+  },
+  {
+   "who": "ara08_123",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "sakugawa.6",
+   "t": 0,
+   "at": [
+    232.5,
+    126.4
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "sakugawa.6",
+   "t": 1.46,
+   "anim": "sleep"
+  },
+  {
+   "who": "sakugawa.6",
+   "t": 2.2,
+   "anim": "idle"
+  },
+  {
+   "who": "sakugawa.6",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "rkun_13",
+   "t": 0,
+   "at": [
+    241.8,
+    143.6
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "rkun_13",
+   "t": 1.55,
+   "anim": "sit"
+  },
+  {
+   "who": "rkun_13",
+   "t": 2.27,
+   "anim": "cheer"
+  },
+  {
+   "who": "rkun_13",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "yakiudon072621",
+   "t": 0,
+   "at": [
+    245.3,
+    100.09747941517075
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     212.3,
+     98.9
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "yakiudon072621",
+   "t": 0.3,
+   "to": [
+    232.3,
+    98.9
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "yakiudon072621",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "yakiudon072621",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "108toma",
+   "t": 0,
+   "at": [
+    259.7,
+    116.7
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "108toma",
+   "t": 1.73,
+   "anim": "sleep"
+  },
+  {
+   "who": "108toma",
+   "t": 2.41,
+   "anim": "cheer"
+  },
+  {
+   "who": "108toma",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "kituneya.kyuubi",
+   "t": 0,
+   "at": [
+    241.3,
+    138.3
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "kituneya.kyuubi",
+   "t": 1.82,
+   "anim": "sit"
+  },
+  {
+   "who": "kituneya.kyuubi",
+   "t": 2.4800000000000004,
+   "anim": "idle"
+  },
+  {
+   "who": "kituneya.kyuubi",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "raymon35473",
+   "t": 0,
+   "at": [
+    237.7,
+    128.4
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "raymon35473",
+   "t": 1.9100000000000001,
+   "anim": "sleep"
+  },
+  {
+   "who": "raymon35473",
+   "t": 2.5500000000000003,
+   "anim": "cheer"
+  },
+  {
+   "who": "raymon35473",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "enfp.k0.t_r0.1_",
+   "t": 0,
+   "at": [
+    261.7,
+    100.11484860183641
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     228.7,
+     100.8
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "enfp.k0.t_r0.1_",
+   "t": 0.94,
+   "to": [
+    248.7,
+    100.8
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "enfp.k0.t_r0.1_",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "enfp.k0.t_r0.1_",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "aoto_st_x",
+   "t": 0,
+   "at": [
+    226.9,
+    138.8
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "aoto_st_x",
+   "t": 1.1,
+   "anim": "sit"
+  },
+  {
+   "who": "aoto_st_x",
+   "t": 2.6900000000000004,
+   "anim": "cheer"
+  },
+  {
+   "who": "aoto_st_x",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "ikeyama.shinntaro",
+   "t": 0,
+   "at": [
+    220.1,
+    127.7
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "ikeyama.shinntaro",
+   "t": 1.1900000000000002,
+   "anim": "sleep"
+  },
+  {
+   "who": "ikeyama.shinntaro",
+   "t": 2.7600000000000002,
+   "anim": "idle"
+  },
+  {
+   "who": "ikeyama.shinntaro",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "qixi45340",
+   "t": 0,
+   "at": [
+    224.7,
+    107.4
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "qixi45340",
+   "t": 1.28,
+   "anim": "sleep"
+  },
+  {
+   "who": "qixi45340",
+   "t": 2.83,
+   "anim": "cheer"
+  },
+  {
+   "who": "qixi45340",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "aya_on1115",
+   "t": 0,
+   "at": [
+    264.2,
+    119.93428997730338
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     231.2,
+     120.2
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "aya_on1115",
+   "t": 0.45999999999999996,
+   "to": [
+    251.2,
+    120.2
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "aya_on1115",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "aya_on1115",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "y5u_i13_",
+   "t": 0,
+   "at": [
+    262.1,
+    118.4
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "y5u_i13_",
+   "t": 1.46,
+   "anim": "sleep"
+  },
+  {
+   "who": "y5u_i13_",
+   "t": 2.97,
+   "anim": "cheer"
+  },
+  {
+   "who": "y5u_i13_",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "osadi532",
+   "t": 0,
+   "at": [
+    221.8,
+    125.5
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "osadi532",
+   "t": 1.55,
+   "anim": "sleep"
+  },
+  {
+   "who": "osadi532",
+   "t": 3.04,
+   "anim": "idle"
+  },
+  {
+   "who": "osadi532",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "arata__swimming",
+   "t": 0,
+   "at": [
+    236.7,
+    104.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "arata__swimming",
+   "t": 1.6400000000000001,
+   "anim": "sit"
+  },
+  {
+   "who": "arata__swimming",
+   "t": 2.2,
+   "anim": "cheer"
+  },
+  {
+   "who": "arata__swimming",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "ryoke25",
+   "t": 0,
+   "at": [
+    226.6,
+    123.15370881026107
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     193.6,
+     124.3
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "ryoke25",
+   "t": 1.1,
+   "to": [
+    213.6,
+    124.3
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "ryoke25",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "ryoke25",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "gatp_15618",
+   "t": 0,
+   "at": [
+    216.6,
+    131.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "gatp_15618",
+   "t": 1.82,
+   "anim": "sleep"
+  },
+  {
+   "who": "gatp_15618",
+   "t": 2.3400000000000003,
+   "anim": "cheer"
+  },
+  {
+   "who": "gatp_15618",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "zx_xz.04",
+   "t": 0,
+   "at": [
+    232.6,
+    145.5
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "zx_xz.04",
+   "t": 1.9100000000000001,
+   "anim": "sit"
+  },
+  {
+   "who": "zx_xz.04",
+   "t": 2.41,
+   "anim": "idle"
+  },
+  {
+   "who": "zx_xz.04",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "mizo0802",
+   "t": 0,
+   "at": [
+    242.4,
+    102.8
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "mizo0802",
+   "t": 2.0,
+   "anim": "sleep"
+  },
+  {
+   "who": "mizo0802",
+   "t": 2.4800000000000004,
+   "anim": "cheer"
+  },
+  {
+   "who": "mizo0802",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "tstar348a",
+   "t": 0,
+   "at": [
+    223.4,
+    133.47605787723174
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     190.4,
+     133.7
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "tstar348a",
+   "t": 0.62,
+   "to": [
+    210.4,
+    133.7
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "tstar348a",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "tstar348a",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "11.03230",
+   "t": 0,
+   "at": [
+    237.8,
+    106.6
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "11.03230",
+   "t": 1.1900000000000002,
+   "anim": "sit"
+  },
+  {
+   "who": "11.03230",
+   "t": 2.62,
+   "anim": "cheer"
+  },
+  {
+   "who": "11.03230",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "naot.331",
+   "t": 0,
+   "at": [
+    238.9,
+    115.7
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "naot.331",
+   "t": 1.28,
+   "anim": "sleep"
+  },
+  {
+   "who": "naot.331",
+   "t": 2.6900000000000004,
+   "anim": "idle"
+  },
+  {
+   "who": "naot.331",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "mgvt17",
+   "t": 0,
+   "at": [
+    236.9,
+    100.6
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "mgvt17",
+   "t": 1.37,
+   "anim": "sleep"
+  },
+  {
+   "who": "mgvt17",
+   "t": 2.7600000000000002,
+   "anim": "cheer"
+  },
+  {
+   "who": "mgvt17",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "rituk.i222",
+   "t": 0,
+   "at": [
+    238.8,
+    147.4988382522672
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     205.8,
+     148.2
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "rituk.i222",
+   "t": 1.26,
+   "to": [
+    225.8,
+    148.2
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "rituk.i222",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "rituk.i222",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "tt_.hb",
+   "t": 0,
+   "at": [
+    216.1,
+    116.8
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "tt_.hb",
+   "t": 1.55,
+   "anim": "sleep"
+  },
+  {
+   "who": "tt_.hb",
+   "t": 2.9000000000000004,
+   "anim": "cheer"
+  },
+  {
+   "who": "tt_.hb",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "m9qlx_w",
+   "t": 0,
+   "at": [
+    256.9,
+    112.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "m9qlx_w",
+   "t": 1.6400000000000001,
+   "anim": "sleep"
+  },
+  {
+   "who": "m9qlx_w",
+   "t": 2.97,
+   "anim": "idle"
+  },
+  {
+   "who": "m9qlx_w",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "jingshoukoulunye",
+   "t": 0,
+   "at": [
+    221.3,
+    130.4
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "jingshoukoulunye",
+   "t": 1.73,
+   "anim": "sit"
+  },
+  {
+   "who": "jingshoukoulunye",
+   "t": 3.04,
+   "anim": "cheer"
+  },
+  {
+   "who": "jingshoukoulunye",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "nokonokodayo0503",
+   "t": 0,
+   "at": [
+    246.8,
+    116.45526625237326
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     213.8,
+     118.1
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "nokonokodayo0503",
+   "t": 0.78,
+   "to": [
+    233.8,
+    118.1
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "nokonokodayo0503",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "nokonokodayo0503",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "8.ruto3",
+   "t": 0,
+   "at": [
+    208.1,
+    124.2
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "8.ruto3",
+   "t": 1.9100000000000001,
+   "anim": "sleep"
+  },
+  {
+   "who": "8.ruto3",
+   "t": 2.27,
+   "anim": "cheer"
+  },
+  {
+   "who": "8.ruto3",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "metabopannba8",
+   "t": 0,
+   "at": [
+    232.1,
+    110.9
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "metabopannba8",
+   "t": 2.0,
+   "anim": "sit"
+  },
+  {
+   "who": "metabopannba8",
+   "t": 2.3400000000000003,
+   "anim": "idle"
+  },
+  {
+   "who": "metabopannba8",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "ha_ru037",
+   "t": 0,
+   "at": [
+    236.1,
+    114.3
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "ha_ru037",
+   "t": 1.1,
+   "anim": "sleep"
+  },
+  {
+   "who": "ha_ru037",
+   "t": 2.41,
+   "anim": "cheer"
+  },
+  {
+   "who": "ha_ru037",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "7k1ra_mry5",
+   "t": 0,
+   "at": [
+    246.3,
+    122.11804066553374
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     213.3,
+     121.6
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "7k1ra_mry5",
+   "t": 0.3,
+   "to": [
+    233.3,
+    121.6
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "7k1ra_mry5",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "7k1ra_mry5",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "aoshi.1017",
+   "t": 0,
+   "at": [
+    218.2,
+    140.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "aoshi.1017",
+   "t": 1.28,
+   "anim": "sit"
+  },
+  {
+   "who": "aoshi.1017",
+   "t": 2.5500000000000003,
+   "anim": "cheer"
+  },
+  {
+   "who": "aoshi.1017",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "6_u.michiru",
+   "t": 0,
+   "at": [
+    237.1,
+    109.9
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "6_u.michiru",
+   "t": 1.37,
+   "anim": "sleep"
+  },
+  {
+   "who": "6_u.michiru",
+   "t": 2.62,
+   "anim": "idle"
+  },
+  {
+   "who": "6_u.michiru",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "ayuki.43",
+   "t": 0,
+   "at": [
+    243.8,
+    99.7
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "ayuki.43",
+   "t": 1.46,
+   "anim": "sleep"
+  },
+  {
+   "who": "ayuki.43",
+   "t": 2.6900000000000004,
+   "anim": "cheer"
+  },
+  {
+   "who": "ayuki.43",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "soya81563",
+   "t": 0,
+   "at": [
+    237.4,
+    128.01227774374198
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     204.4,
+     129.6
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "soya81563",
+   "t": 0.94,
+   "to": [
+    224.4,
+    129.6
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "soya81563",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "soya81563",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "nemusugiru7.11",
+   "t": 0,
+   "at": [
+    239.9,
+    98
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "nemusugiru7.11",
+   "t": 1.6400000000000001,
+   "anim": "sleep"
+  },
+  {
+   "who": "nemusugiru7.11",
+   "t": 2.83,
+   "anim": "cheer"
+  },
+  {
+   "who": "nemusugiru7.11",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "zyaryuunoou_vega",
+   "t": 0,
+   "at": [
+    236,
+    119.6
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "zyaryuunoou_vega",
+   "t": 1.73,
+   "anim": "sleep"
+  },
+  {
+   "who": "zyaryuunoou_vega",
+   "t": 2.9000000000000004,
+   "anim": "idle"
+  },
+  {
+   "who": "zyaryuunoou_vega",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "parupundakesenspu",
+   "t": 0,
+   "at": [
+    255.5,
+    123.3
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "parupundakesenspu",
+   "t": 1.82,
+   "anim": "sit"
+  },
+  {
+   "who": "parupundakesenspu",
+   "t": 2.97,
+   "anim": "cheer"
+  },
+  {
+   "who": "parupundakesenspu",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "fuuma_0723",
+   "t": 0,
+   "at": [
+    230.2,
+    105.43639509842288
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     197.2,
+     104.3
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "fuuma_0723",
+   "t": 0.45999999999999996,
+   "to": [
+    217.2,
+    104.3
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "fuuma_0723",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "fuuma_0723",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "sakai82042",
+   "t": 0,
+   "at": [
+    247.7,
+    118.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "sakai82042",
+   "t": 2.0,
+   "anim": "sleep"
+  },
+  {
+   "who": "sakai82042",
+   "t": 2.2,
+   "anim": "cheer"
+  },
+  {
+   "who": "sakai82042",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "a.kaito_mint",
+   "t": 0,
+   "at": [
+    220.5,
+    145.2
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "a.kaito_mint",
+   "t": 1.1,
+   "anim": "sit"
+  },
+  {
+   "who": "a.kaito_mint",
+   "t": 2.27,
+   "anim": "idle"
+  },
+  {
+   "who": "a.kaito_mint",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "ryuma_68_onigiri",
+   "t": 0,
+   "at": [
+    257.2,
+    107.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "ryuma_68_onigiri",
+   "t": 1.1900000000000002,
+   "anim": "sleep"
+  },
+  {
+   "who": "ryuma_68_onigiri",
+   "t": 2.3400000000000003,
+   "anim": "cheer"
+  },
+  {
+   "who": "ryuma_68_onigiri",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "sh0tar0o222",
+   "t": 0,
+   "at": [
+    263.6,
+    127.20156435911005
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     230.6,
+     129.1
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "sh0tar0o222",
+   "t": 1.1,
+   "to": [
+    250.6,
+    129.1
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "sh0tar0o222",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "sh0tar0o222",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "midehamu",
+   "t": 0,
+   "at": [
+    253.6,
+    117.7
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "midehamu",
+   "t": 1.37,
+   "anim": "sit"
+  },
+  {
+   "who": "midehamu",
+   "t": 2.4800000000000004,
+   "anim": "cheer"
+  },
+  {
+   "who": "midehamu",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "k4oru13",
+   "t": 0,
+   "at": [
+    223.6,
+    144.6
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "k4oru13",
+   "t": 1.46,
+   "anim": "sleep"
+  },
+  {
+   "who": "k4oru13",
+   "t": 2.5500000000000003,
+   "anim": "idle"
+  },
+  {
+   "who": "k4oru13",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "koora444444",
+   "t": 0,
+   "at": [
+    252.8,
+    101.8
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "koora444444",
+   "t": 1.55,
+   "anim": "sleep"
+  },
+  {
+   "who": "koora444444",
+   "t": 2.62,
+   "anim": "cheer"
+  },
+  {
+   "who": "koora444444",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "yuu_05290",
+   "t": 0,
+   "at": [
+    257.2,
+    124.8228853333126
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     224.2,
+     123.7
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "yuu_05290",
+   "t": 0.62,
+   "to": [
+    244.2,
+    123.7
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "yuu_05290",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "yuu_05290",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "nob291116",
+   "t": 0,
+   "at": [
+    252.9,
+    113.9
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "nob291116",
+   "t": 1.73,
+   "anim": "sleep"
+  },
+  {
+   "who": "nob291116",
+   "t": 2.7600000000000002,
+   "anim": "cheer"
+  },
+  {
+   "who": "nob291116",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "nanasinorise0618",
+   "t": 0,
+   "at": [
+    246.7,
+    115.2
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "nanasinorise0618",
+   "t": 1.82,
+   "anim": "sleep"
+  },
+  {
+   "who": "nanasinorise0618",
+   "t": 2.83,
+   "anim": "idle"
+  },
+  {
+   "who": "nanasinorise0618",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "_.kn01x",
+   "t": 0,
+   "at": [
+    242,
+    111.9
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "_.kn01x",
+   "t": 1.9100000000000001,
+   "anim": "sit"
+  },
+  {
+   "who": "_.kn01x",
+   "t": 2.9000000000000004,
+   "anim": "cheer"
+  },
+  {
+   "who": "_.kn01x",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "wolf.ryu.127",
+   "t": 0,
+   "at": [
+    247.4,
+    109.6301992901754
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     214.4,
+     108.4
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "wolf.ryu.127",
+   "t": 1.26,
+   "to": [
+    234.4,
+    108.4
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "wolf.ryu.127",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "wolf.ryu.127",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "camel.146320",
+   "t": 0,
+   "at": [
+    228.2,
+    128.2
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "camel.146320",
+   "t": 1.1,
+   "anim": "sleep"
+  },
+  {
+   "who": "camel.146320",
+   "t": 3.04,
+   "anim": "cheer"
+  },
+  {
+   "who": "camel.146320",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "aina10_baseball",
+   "t": 0,
+   "at": [
+    220.6,
+    134.5
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "aina10_baseball",
+   "t": 1.1900000000000002,
+   "anim": "sit"
+  },
+  {
+   "who": "aina10_baseball",
+   "t": 2.2,
+   "anim": "idle"
+  },
+  {
+   "who": "aina10_baseball",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "mmmr1008",
+   "t": 0,
+   "at": [
+    241.9,
+    120.6
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "mmmr1008",
+   "t": 1.28,
+   "anim": "sleep"
+  },
+  {
+   "who": "mmmr1008",
+   "t": 2.27,
+   "anim": "cheer"
+  },
+  {
+   "who": "mmmr1008",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "raimu08220",
+   "t": 0,
+   "at": [
+    241.3,
+    102.28932240444657
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     208.3,
+     102.3
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "raimu08220",
+   "t": 0.78,
+   "to": [
+    228.3,
+    102.3
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "raimu08220",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "raimu08220",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "kaito_110911",
+   "t": 0,
+   "at": [
+    246.5,
+    99.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "kaito_110911",
+   "t": 1.46,
+   "anim": "sit"
+  },
+  {
+   "who": "kaito_110911",
+   "t": 2.41,
+   "anim": "cheer"
+  },
+  {
+   "who": "kaito_110911",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "nagatakou0903",
+   "t": 0,
+   "at": [
+    243.3,
+    117.6
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "nagatakou0903",
+   "t": 1.55,
+   "anim": "sleep"
+  },
+  {
+   "who": "nagatakou0903",
+   "t": 2.4800000000000004,
+   "anim": "idle"
+  },
+  {
+   "who": "nagatakou0903",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "aoto.0820",
+   "t": 0,
+   "at": [
+    244.6,
+    128.3
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "aoto.0820",
+   "t": 1.6400000000000001,
+   "anim": "sleep"
+  },
+  {
+   "who": "aoto.0820",
+   "t": 2.5500000000000003,
+   "anim": "cheer"
+  },
+  {
+   "who": "aoto.0820",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "yasuma_s14",
+   "t": 0,
+   "at": [
+    254.9,
+    126.73779164486477
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     221.9,
+     125.9
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "yasuma_s14",
+   "t": 0.3,
+   "to": [
+    241.9,
+    125.9
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "yasuma_s14",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "yasuma_s14",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "kakazuki_8",
+   "t": 0,
+   "at": [
+    250.1,
+    123.7
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "kakazuki_8",
+   "t": 1.82,
+   "anim": "sleep"
+  },
+  {
+   "who": "kakazuki_8",
+   "t": 2.6900000000000004,
+   "anim": "cheer"
+  },
+  {
+   "who": "kakazuki_8",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "kuma.sub56",
+   "t": 0,
+   "at": [
+    226,
+    100
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "kuma.sub56",
+   "t": 1.9100000000000001,
+   "anim": "sleep"
+  },
+  {
+   "who": "kuma.sub56",
+   "t": 2.7600000000000002,
+   "anim": "idle"
+  },
+  {
+   "who": "kuma.sub56",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "11zuka_2525",
+   "t": 0,
+   "at": [
+    223.8,
+    123
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "11zuka_2525",
+   "t": 2.0,
+   "anim": "sit"
+  },
+  {
+   "who": "11zuka_2525",
+   "t": 2.83,
+   "anim": "cheer"
+  },
+  {
+   "who": "11zuka_2525",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "sylv_eon700",
+   "t": 0,
+   "at": [
+    246.2,
+    103.49304335016092
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     213.2,
+     104.5
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "sylv_eon700",
+   "t": 0.94,
+   "to": [
+    233.2,
+    104.5
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "sylv_eon700",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "sylv_eon700",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "maamoto.754",
+   "t": 0,
+   "at": [
+    229.3,
+    142.9
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "maamoto.754",
+   "t": 1.1900000000000002,
+   "anim": "sleep"
+  },
+  {
+   "who": "maamoto.754",
+   "t": 2.97,
+   "anim": "cheer"
+  },
+  {
+   "who": "maamoto.754",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "kii._.714",
+   "t": 0,
+   "at": [
+    232.6,
+    136
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "kii._.714",
+   "t": 1.28,
+   "anim": "sit"
+  },
+  {
+   "who": "kii._.714",
+   "t": 3.04,
+   "anim": "idle"
+  },
+  {
+   "who": "kii._.714",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "kenshin.3636",
+   "t": 0,
+   "at": [
+    223.8,
+    110.2
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "kenshin.3636",
+   "t": 1.37,
+   "anim": "sleep"
+  },
+  {
+   "who": "kenshin.3636",
+   "t": 2.2,
+   "anim": "cheer"
+  },
+  {
+   "who": "kenshin.3636",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "ray_mths",
+   "t": 0,
+   "at": [
+    243.6,
+    125.05046702224851
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     210.6,
+     124.1
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "ray_mths",
+   "t": 0.45999999999999996,
+   "to": [
+    230.6,
+    124.1
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "ray_mths",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "ray_mths",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "_dusy.or.ka",
+   "t": 0,
+   "at": [
+    213.5,
+    111.5
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "_dusy.or.ka",
+   "t": 1.55,
+   "anim": "sit"
+  },
+  {
+   "who": "_dusy.or.ka",
+   "t": 2.3400000000000003,
+   "anim": "cheer"
+  },
+  {
+   "who": "_dusy.or.ka",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "simokawa171718kabiki",
+   "t": 0,
+   "at": [
+    213,
+    107.9
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "simokawa171718kabiki",
+   "t": 1.6400000000000001,
+   "anim": "sleep"
+  },
+  {
+   "who": "simokawa171718kabiki",
+   "t": 2.41,
+   "anim": "idle"
+  },
+  {
+   "who": "simokawa171718kabiki",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "hvqtx",
+   "t": 0,
+   "at": [
+    221.9,
+    141.1
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "hvqtx",
+   "t": 1.73,
+   "anim": "sleep"
+  },
+  {
+   "who": "hvqtx",
+   "t": 2.4800000000000004,
+   "anim": "cheer"
+  },
+  {
+   "who": "hvqtx",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "armadillo.2561475",
+   "t": 0,
+   "at": [
+    243.3,
+    107.70002808117428
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     210.3,
+     108
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "armadillo.2561475",
+   "t": 1.1,
+   "to": [
+    230.3,
+    108
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "armadillo.2561475",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "armadillo.2561475",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "audi_chzjkcharles",
+   "t": 0,
+   "at": [
+    230.7,
+    129.9
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "audi_chzjkcharles",
+   "t": 1.9100000000000001,
+   "anim": "sleep"
+  },
+  {
+   "who": "audi_chzjkcharles",
+   "t": 2.62,
+   "anim": "cheer"
+  },
+  {
+   "who": "audi_chzjkcharles",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "miiiiiiii_____m5",
+   "t": 0,
+   "at": [
+    240.5,
+    100.8
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "miiiiiiii_____m5",
+   "t": 2.0,
+   "anim": "sleep"
+  },
+  {
+   "who": "miiiiiiii_____m5",
+   "t": 2.6900000000000004,
+   "anim": "idle"
+  },
+  {
+   "who": "miiiiiiii_____m5",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "sajuyu19",
+   "t": 0,
+   "at": [
+    264.6,
+    116.9
+   ],
+   "anim": "sleep",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "sajuyu19",
+   "t": 1.1,
+   "anim": "sit"
+  },
+  {
+   "who": "sajuyu19",
+   "t": 2.7600000000000002,
+   "anim": "cheer"
+  },
+  {
+   "who": "sajuyu19",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": "yv1nq_0151",
+   "t": 0,
+   "at": [
+    234.9,
+    106.82381328629778
+   ],
+   "anim": "idle",
+   "face": {
+    "at": [
+     201.9,
+     107.9
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "yv1nq_0151",
+   "t": 0.62,
+   "to": [
+    221.9,
+    107.9
+   ],
+   "dur": 1.5,
+   "run": true
+  },
+  {
+   "who": "yv1nq_0151",
+   "t": 2.3,
+   "anim": "cheer",
+   "face": "front"
+  },
+  {
+   "who": "yv1nq_0151",
+   "t": 4.4,
+   "hide": true
+  },
+  {
+   "who": [
+    "k1n.y37",
+    "kazuzu4771",
+    "kbokn0219",
+    "kota_chumuri",
+    "kousuke_0232",
+    "leejazzdrums",
+    "masatk_no_m",
+    "mawl4566",
+    "maxmash1456",
+    "megane.kazuking",
+    "mikke.maron",
+    "momo0129moka0129",
+    "momosann.0420.sabu",
+    "nabemegane",
+    "noix5u",
+    "onoka0703",
+    "onyankopunch",
+    "pocchanpochi",
+    "qlry25x",
+    "r4im_s00",
+    "reito_0512h",
+    "reka8181510",
+    "riku_u17",
+    "ryuji_111",
+    "s0uta05.7",
+    "saori.siegert",
+    "savans880",
+    "seiseisakurai",
+    "sena_pippiraa",
+    "shun0505",
+    "shunta.dayo",
+    "syunto.0502",
+    "t.waka0113",
+    "takada_1gram",
+    "taku.0621t",
+    "tivi_tatsuya",
+    "tkd3874",
+    "tkrn_sht",
+    "ttt.thx",
+    "untorigami"
+   ],
+   "t": 0,
+   "at": {
+    "slot": "lbeach"
+   },
+   "anim": "idle",
+   "face": {
+    "at": [
+     256.0,
+     90.0
+    ]
+   }
+  },
+  {
+   "who": [
+    "k1n.y37",
+    "kazuzu4771",
+    "kbokn0219",
+    "kota_chumuri",
+    "kousuke_0232",
+    "leejazzdrums",
+    "masatk_no_m",
+    "mawl4566",
+    "maxmash1456",
+    "megane.kazuking",
+    "mikke.maron",
+    "momo0129moka0129",
+    "momosann.0420.sabu",
+    "nabemegane",
+    "noix5u",
+    "onoka0703",
+    "onyankopunch",
+    "pocchanpochi",
+    "qlry25x",
+    "r4im_s00",
+    "reito_0512h",
+    "reka8181510",
+    "riku_u17",
+    "ryuji_111",
+    "s0uta05.7",
+    "saori.siegert",
+    "savans880",
+    "seiseisakurai",
+    "sena_pippiraa",
+    "shun0505",
+    "shunta.dayo",
+    "syunto.0502",
+    "t.waka0113",
+    "takada_1gram",
+    "taku.0621t",
+    "tivi_tatsuya",
+    "tkd3874",
+    "tkrn_sht",
+    "ttt.thx",
+    "untorigami"
+   ],
+   "t": 10.6,
+   "anim": "cheer",
+   "pick": 0.7,
+   "seed": 2
+  },
+  {
+   "who": [
+    "1kichi_chan",
+    "29tomo83",
+    "_otekat_____",
+    "_shaun81",
+    "akuserumeihong",
+    "aosan116",
+    "atsukidesu",
+    "bea_utiful183",
+    "bear.44190633",
+    "daichi.yamazaki3",
+    "dosukoi.5845",
+    "fuse.daichi",
+    "hafuki82",
+    "hayato210165",
+    "hiropone_89",
+    "hkssss69",
+    "hori_harusabu",
+    "horiharu0220",
+    "hyuga_0619",
+    "ichi.09",
+    "kame___1020",
+    "kohe051",
+    "kosei20130324",
+    "kubotto0505",
+    "kurimasa222",
+    "marumegane4",
+    "max_no_otousan",
+    "mi_erimo",
+    "musashi.617",
+    "nanasi774_ou",
+    "nintendo_3ds.12",
+    "oka_tomohiko",
+    "paianiyan",
+    "r19tooo",
+    "s.sora1225",
+    "s_02y.ayta",
+    "sakasaka_1482",
+    "sasa_mi42151315",
+    "shimadaaaa03",
+    "shinohara_kohei",
+    "shugo.77",
+    "singlepapatsu.i",
+    "srso.ren",
+    "taishi.uramoto23"
+   ],
+   "t": 17.4,
+   "anim": "idle",
+   "face": {
+    "at": [
+     22.0,
+     34.0
+    ]
+   }
+  },
+  {
+   "who": [
+    "1kichi_chan",
+    "29tomo83",
+    "_otekat_____",
+    "_shaun81",
+    "akuserumeihong",
+    "aosan116",
+    "atsukidesu",
+    "bea_utiful183",
+    "bear.44190633",
+    "daichi.yamazaki3",
+    "dosukoi.5845",
+    "fuse.daichi",
+    "hafuki82",
+    "hayato210165",
+    "hiropone_89",
+    "hkssss69",
+    "hori_harusabu",
+    "horiharu0220",
+    "hyuga_0619",
+    "ichi.09",
+    "kame___1020",
+    "kohe051",
+    "kosei20130324",
+    "kubotto0505",
+    "kurimasa222",
+    "marumegane4",
+    "max_no_otousan",
+    "mi_erimo",
+    "musashi.617",
+    "nanasi774_ou",
+    "nintendo_3ds.12",
+    "oka_tomohiko",
+    "paianiyan",
+    "r19tooo",
+    "s.sora1225",
+    "s_02y.ayta",
+    "sakasaka_1482",
+    "sasa_mi42151315",
+    "shimadaaaa03",
+    "shinohara_kohei",
+    "shugo.77",
+    "singlepapatsu.i",
+    "srso.ren",
+    "taishi.uramoto23"
+   ],
+   "t": 20.4,
+   "anim": "shock",
+   "pick": 0.4,
+   "seed": 5
+  },
+  {
+   "who": [
+    "1kichi_chan",
+    "29tomo83",
+    "_otekat_____",
+    "_shaun81",
+    "akuserumeihong",
+    "aosan116",
+    "atsukidesu",
+    "bea_utiful183",
+    "bear.44190633",
+    "daichi.yamazaki3",
+    "dosukoi.5845",
+    "fuse.daichi",
+    "hafuki82",
+    "hayato210165",
+    "hiropone_89",
+    "hkssss69",
+    "hori_harusabu",
+    "horiharu0220",
+    "hyuga_0619",
+    "ichi.09",
+    "kame___1020",
+    "kohe051",
+    "kosei20130324",
+    "kubotto0505",
+    "kurimasa222",
+    "marumegane4",
+    "max_no_otousan",
+    "mi_erimo",
+    "musashi.617",
+    "nanasi774_ou",
+    "nintendo_3ds.12",
+    "oka_tomohiko",
+    "paianiyan",
+    "r19tooo",
+    "s.sora1225",
+    "s_02y.ayta",
+    "sakasaka_1482",
+    "sasa_mi42151315",
+    "shimadaaaa03",
+    "shinohara_kohei",
+    "shugo.77",
+    "singlepapatsu.i",
+    "srso.ren",
+    "taishi.uramoto23"
+   ],
+   "t": 22.0,
+   "anim": "cheer",
+   "pick": 0.8,
+   "seed": 6
+  },
+  {
+   "who": "guernica.0712",
+   "t": 17.4,
+   "at": {
+    "xz": [
+     19.4,
+     34.8
+    ],
+    "up": 1.1
+   },
+   "anim": "talk",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "guernica.0712",
+   "t": 20.2,
+   "anim": "cheer"
+  },
+  {
+   "who": "guernica.0712",
+   "t": 27.0,
+   "hide": true
+  },
+  {
+   "who": "rino._.15",
+   "t": 17.4,
+   "at": [
+    28.5,
+    41.3
+   ],
+   "anim": "cheer",
+   "face": {
+    "at": [
+     22.0,
+     34.0
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "rino._.15",
+   "t": 27.0,
+   "hide": true
+  },
+  {
+   "who": "sykyu_77",
+   "t": 17.4,
+   "at": [
+    30.3,
+    41.3
+   ],
+   "anim": "cheer",
+   "face": {
+    "at": [
+     22.0,
+     34.0
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "sykyu_77",
+   "t": 27.0,
+   "hide": true
+  },
+  {
+   "who": [
+    "tako1216yaki",
+    "tarak_o002",
+    "tokitin2014",
+    "yamato_family327",
+    "yo79499",
+    "yu._.u225",
+    "yuzunasama8737",
+    "00_x8z_",
+    "4.he1t0_833",
+    "_3yu.96_",
+    "aiueo61127",
+    "aki752294613",
+    "analogayane",
+    "ao.030499",
+    "artman_atsu",
+    "ashizun",
+    "ayu.mu__8890",
+    "chibekoab",
+    "haijina",
+    "hayaton863",
+    "hi.de.studios",
+    "hoshito.19",
+    "ibu131313",
+    "ibuk1.09",
+    "iwa._pikmin",
+    "jeff_siegert"
+   ],
+   "t": 0,
+   "at": {
+    "slot": "watch"
+   },
+   "anim": "idle",
+   "face": {
+    "at": [
+     84.0,
+     -146.0
+    ]
+   }
+  },
+  {
+   "who": [
+    "tako1216yaki",
+    "tarak_o002",
+    "tokitin2014",
+    "yamato_family327",
+    "yo79499",
+    "yu._.u225",
+    "yuzunasama8737",
+    "00_x8z_",
+    "4.he1t0_833",
+    "_3yu.96_",
+    "aiueo61127",
+    "aki752294613",
+    "analogayane",
+    "ao.030499",
+    "artman_atsu",
+    "ashizun",
+    "ayu.mu__8890",
+    "chibekoab",
+    "haijina",
+    "hayaton863",
+    "hi.de.studios",
+    "hoshito.19",
+    "ibu131313",
+    "ibuk1.09",
+    "iwa._pikmin",
+    "jeff_siegert"
+   ],
+   "t": 29.0,
+   "anim": "cheer",
+   "pick": 0.5,
+   "seed": 3
+  },
+  {
+   "who": "sakusaku_ss0420",
+   "t": 27.0,
+   "at": [
+    79.0,
+    -130.0
+   ],
+   "anim": "cheer",
+   "face": {
+    "at": [
+     84.0,
+     -146.0
+    ]
+   },
+   "hide": false
+  },
+  {
+   "who": "sakusaku_ss0420",
+   "t": 32.6,
+   "hide": true
+  },
+  {
+   "who": "yuridazo68",
+   "t": 37.8,
+   "at": [
+    -2.0,
+    12.0
+   ],
+   "anim": "cheer",
+   "face": "front",
+   "hide": false
+  },
+  {
+   "who": "yuridazo68",
+   "t": 42.0,
+   "hide": true
+  }
+ ],
+ "props": [
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "hrh_.10",
+    "up": 1.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.0,
+   "size": 0.9,
+   "phase": 0.0
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "asai.rento",
+    "up": 1.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.0,
+   "size": 0.9,
+   "phase": 0.3
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "familey8guy",
+    "up": 1.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.0,
+   "size": 0.9,
+   "phase": 0.6
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "renta_yakyu",
+    "up": 1.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.0,
+   "size": 0.9,
+   "phase": 0.8999999999999999
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "c2__k0",
+    "up": 1.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.0,
+   "size": 0.9,
+   "phase": 1.2
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "naixumeizuobo",
+    "up": 1.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.0,
+   "size": 0.9,
+   "phase": 1.5
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "ara08_123",
+    "up": 1.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.0,
+   "size": 0.9,
+   "phase": 1.7999999999999998
+  },
+  {
+   "type": "zzz",
+   "from": {
+    "rel": "108toma",
+    "up": 1.6
+   },
+   "t0": 0,
+   "t1": 0.01,
+   "t2": 2.0,
+   "size": 0.9,
+   "phase": 2.1
+  },
+  {
+   "type": "flame",
+   "from": {
+    "xz": [
+     256.0,
+     90.0
+    ],
+    "up": 17.1
+   },
+   "t0": 10.4,
+   "t1": 10.41,
+   "t2": 13.0,
+   "size": 2.6
+  },
+  {
+   "type": "heart",
+   "from": {
+    "xz": [
+     29.4,
+     41.3
+    ],
+    "up": 3.6
+   },
+   "to": {
+    "xz": [
+     29.4,
+     41.3
+    ],
+    "up": 4.4
+   },
+   "t0": 23.799999999999997,
+   "t1": 27.0,
+   "t2": 27.0,
+   "size": 1.5
+  },
+  {
+   "type": "heart",
+   "from": {
+    "xz": [
+     80.8,
+     -145.0
+    ],
+    "up": 3.2
+   },
+   "to": {
+    "xz": [
+     80.8,
+     -145.0
+    ],
+    "up": 4.2
+   },
+   "t0": 30.0,
+   "t1": 32.6,
+   "t2": 32.6,
+   "size": 1.4,
+   "phase": 0
+  },
+  {
+   "type": "heart",
+   "from": {
+    "xz": [
+     86.6,
+     -144.2
+    ],
+    "up": 3.2
+   },
+   "to": {
+    "xz": [
+     86.6,
+     -144.2
+    ],
+    "up": 4.2
+   },
+   "t0": 30.3,
+   "t1": 32.6,
+   "t2": 32.6,
+   "size": 1.4,
+   "phase": 1
+  }
+ ],
+ "props3d": [
+  {
+   "type": "build",
+   "kind": "lighthouse",
+   "at": [
+    256.0,
+    90.0
+   ],
+   "rot": 0,
+   "t0": 6.6,
+   "t1": 10.2,
+   "show": 6.4
+  },
+  {
+   "type": "beast",
+   "at": [
+    25.0,
+    36.4
+   ],
+   "path": [
+    [
+     0,
+     25.0,
+     36.4
+    ],
+    [
+     19.0,
+     25.0,
+     36.4
+    ],
+    [
+     20.0,
+     22.6,
+     35.2
+    ],
+    [
+     22.599999999999998,
+     22.6,
+     35.2
+    ],
+    [
+     23.799999999999997,
+     25.4,
+     34.4
+    ],
+    [
+     27.0,
+     25.4,
+     34.4
+    ]
+   ],
+   "lift": 1.05,
+   "show": 17.4,
+   "hide": 27.0,
+   "t0": 0,
+   "t1": 27.0,
+   "rear": [
+    [
+     20.4,
+     21.799999999999997
+    ],
+    [
+     24.4,
+     25.599999999999998
+    ]
+   ]
+  },
+  {
+   "type": "beast",
+   "at": [
+    76.0,
+    -138.0
+   ],
+   "path": [
+    [
+     0,
+     76.0,
+     -138.0
+    ],
+    [
+     60,
+     76.0,
+     -138.0
+    ]
+   ],
+   "show": 27.0,
+   "hide": 32.6,
+   "t0": 0,
+   "t1": 60
+  },
+  {
+   "type": "beast",
+   "at": [
+    80.8,
+    -145.0
+   ],
+   "path": [
+    [
+     0,
+     80.8,
+     -145.0
+    ],
+    [
+     60,
+     80.8,
+     -145.0
+    ]
+   ],
+   "size": 0.55,
+   "show": 27.0,
+   "hide": 32.6,
+   "t0": 0,
+   "t1": 60
+  },
+  {
+   "type": "beast",
+   "at": [
+    86.6,
+    -144.2
+   ],
+   "path": [
+    [
+     0,
+     86.6,
+     -144.2
+    ],
+    [
+     60,
+     86.6,
+     -144.2
+    ]
+   ],
+   "size": 0.55,
+   "show": 27.0,
+   "hide": 32.6,
+   "t0": 0,
+   "t1": 60
+  }
+ ],
+ "camera": [
+  {
+   "from": 0,
+   "to": 4.4,
+   "hour": 7.4,
+   "shake": [
+    [
+     1.4,
+     2.2,
+     1.4
+    ]
+   ],
+   "keys": [
+    {
+     "t": 0,
+     "look": [
+      266.0,
+      124.0
+     ],
+     "dist": 160,
+     "az": 1.6,
+     "pol": 0.45,
+     "up": 0,
+     "frame": "south",
+     "fov": 50
+    },
+    {
+     "t": 1.6,
+     "look": [
+      236.0,
+      124.0
+     ],
+     "dist": 46,
+     "az": 1.2,
+     "pol": 0.95,
+     "up": 1,
+     "frame": "south",
+     "fov": 46
+    },
+    {
+     "t": 3.0,
+     "look": [
+      230.0,
+      128.0
+     ],
+     "dist": 20,
+     "az": 0.4,
+     "pol": 1.22,
+     "up": 2,
+     "frame": "south",
+     "fov": 40
+    },
+    {
+     "t": 4.4,
+     "look": [
+      226.0,
+      116.0
+     ],
+     "dist": 38,
+     "az": -0.8,
+     "pol": 1.0,
+     "up": 2,
+     "frame": "south",
+     "fov": 46
+    }
+   ]
+  },
+  {
+   "from": 4.4,
+   "to": 6.4,
+   "hour": 11,
+   "keys": [
+    {
+     "t": 4.4,
+     "look": [
+      15,
+      40
+     ],
+     "dist": 950,
+     "az": 0.0,
+     "pol": 0.6,
+     "up": 0,
+     "frame": "south",
+     "fov": 42
+    },
+    {
+     "t": 6.4,
+     "look": [
+      15,
+      40
+     ],
+     "dist": 620,
+     "az": 1.0,
+     "pol": 0.9,
+     "up": 0,
+     "frame": "south",
+     "fov": 42
+    }
+   ]
+  },
+  {
+   "from": 6.4,
+   "to": 13.0,
+   "hour": 18.2,
+   "shake": [
+    [
+     8.6,
+     9.2,
+     0.6
+    ]
+   ],
+   "keys": [
+    {
+     "t": 6.4,
+     "look": [
+      256.0,
+      90.0
+     ],
+     "dist": 22,
+     "az": 2.2,
+     "pol": 1.25,
+     "up": 2,
+     "frame": "south",
+     "fov": 50
+    },
+    {
+     "t": 8.4,
+     "look": [
+      256.0,
+      90.0
+     ],
+     "dist": 26,
+     "az": 3.4,
+     "pol": 1.2,
+     "up": 8,
+     "frame": "south",
+     "fov": 48
+    },
+    {
+     "t": 10.4,
+     "look": [
+      256.0,
+      90.0
+     ],
+     "dist": 30,
+     "az": 4.6,
+     "pol": 1.15,
+     "up": 15,
+     "frame": "south",
+     "fov": 44
+    },
+    {
+     "t": 12.0,
+     "look": [
+      256.0,
+      90.0
+     ],
+     "dist": 40,
+     "az": 5.4,
+     "pol": 1.1,
+     "up": 16,
+     "frame": "south",
+     "fov": 44
+    },
+    {
+     "t": 13.0,
+     "look": [
+      256.0,
+      90.0
+     ],
+     "dist": 70,
+     "az": 5.9,
+     "pol": 1.0,
+     "up": 10,
+     "frame": "south",
+     "fov": 46
+    }
+   ]
+  },
+  {
+   "from": 13.0,
+   "to": 17.4,
+   "hour": 13,
+   "keys": [
+    {
+     "t": 13.0,
+     "look": [
+      22.0,
+      34.0
+     ],
+     "dist": 70,
+     "az": -0.6,
+     "pol": 0.8,
+     "up": 0,
+     "frame": "south",
+     "fov": 44
+    },
+    {
+     "t": 17.4,
+     "look": [
+      22.0,
+      34.0
+     ],
+     "dist": 50,
+     "az": 0.4,
+     "pol": 0.9,
+     "up": 0,
+     "frame": "south",
+     "fov": 44
+    }
+   ]
+  },
+  {
+   "from": 17.4,
+   "to": 27.0,
+   "hour": 18.8,
+   "shake": [
+    [
+     20.4,
+     21.2,
+     1.0
+    ]
+   ],
+   "keys": [
+    {
+     "t": 17.4,
+     "look": [
+      22.0,
+      42.0
+     ],
+     "dist": 38,
+     "az": -0.6,
+     "pol": 0.85,
+     "up": 2.5,
+     "frame": "south",
+     "fov": 50
+    },
+    {
+     "t": 20.0,
+     "look": [
+      22.0,
+      35.5
+     ],
+     "dist": 24,
+     "az": 0.15,
+     "pol": 0.98,
+     "up": 3.5,
+     "frame": "south",
+     "fov": 44
+    },
+    {
+     "t": 21.4,
+     "look": [
+      23.0,
+      35.0
+     ],
+     "dist": 19,
+     "az": -0.2,
+     "pol": 1.05,
+     "up": 4.0,
+     "frame": "south",
+     "fov": 40
+    },
+    {
+     "t": 24.0,
+     "look": [
+      22.0,
+      37.0
+     ],
+     "dist": 18,
+     "az": 0.5,
+     "pol": 1.0,
+     "up": 3.5,
+     "frame": "south",
+     "fov": 40
+    },
+    {
+     "t": 27.0,
+     "look": [
+      28.0,
+      42.0
+     ],
+     "dist": 26,
+     "az": 0.9,
+     "pol": 0.95,
+     "up": 2.5,
+     "frame": "south",
+     "fov": 46
+    }
+   ]
+  },
+  {
+   "from": 27.0,
+   "to": 32.6,
+   "hour": 15.5,
+   "keys": [
+    {
+     "t": 27.0,
+     "look": [
+      74.0,
+      -136.0
+     ],
+     "dist": 200,
+     "az": -0.4,
+     "pol": 0.5,
+     "up": 0,
+     "frame": "south",
+     "fov": 46
+    },
+    {
+     "t": 30.0,
+     "look": [
+      78.0,
+      -138.0
+     ],
+     "dist": 30,
+     "az": 0.3,
+     "pol": 1.0,
+     "up": 2,
+     "frame": "south",
+     "fov": 42
+    },
+    {
+     "t": 32.6,
+     "look": [
+      78.0,
+      -136.0
+     ],
+     "dist": 22,
+     "az": 0.8,
+     "pol": 1.1,
+     "up": 2,
+     "frame": "south",
+     "fov": 40
+    }
+   ]
+  },
+  {
+   "from": 32.6,
+   "to": 37.8,
+   "hour": 20.0,
+   "keys": [
+    {
+     "t": 32.6,
+     "look": [
+      22.0,
+      34.0
+     ],
+     "dist": 40,
+     "az": -0.8,
+     "pol": 0.9,
+     "up": 2,
+     "frame": "south",
+     "fov": 44
+    },
+    {
+     "t": 37.8,
+     "look": [
+      22.0,
+      34.0
+     ],
+     "dist": 30,
+     "az": 0.6,
+     "pol": 1.0,
+     "up": 2.5,
+     "frame": "south",
+     "fov": 44
+    }
+   ]
+  },
+  {
+   "from": 37.8,
+   "to": 42.0,
+   "hour": 21.5,
+   "keys": [
+    {
+     "t": 37.8,
+     "look": [
+      -2,
+      12
+     ],
+     "dist": 30,
+     "az": -1.0,
+     "pol": 0.9,
+     "up": 1.6,
+     "frame": "south",
+     "fov": 46
+    },
+    {
+     "t": 40.0,
+     "look": [
+      -2,
+      12
+     ],
+     "dist": 11,
+     "az": 0.0,
+     "pol": 1.28,
+     "up": 1.6,
+     "frame": "south",
+     "fov": 34
+    },
+    {
+     "t": 42.0,
+     "look": [
+      -2,
+      12
+     ],
+     "dist": 16,
+     "az": 0.6,
+     "pol": 1.2,
+     "up": 1.6,
+     "frame": "south",
+     "fov": 38
+    }
+   ]
+  },
+  {
+   "from": 42.0,
+   "to": 52.4,
+   "hour": 9.5,
+   "keys": [
+    {
+     "t": 42.0,
+     "look": [
+      15,
+      20
+     ],
+     "dist": 300,
+     "az": -1.6,
+     "pol": 0.6,
+     "up": 0,
+     "frame": "south",
+     "fov": 46
+    },
+    {
+     "t": 47.0,
+     "look": [
+      15,
+      20
+     ],
+     "dist": 520,
+     "az": -0.2,
+     "pol": 0.8,
+     "up": 0,
+     "frame": "south",
+     "fov": 44
+    },
+    {
+     "t": 52.4,
+     "look": [
+      15,
+      20
+     ],
+     "dist": 700,
+     "az": 1.0,
+     "pol": 0.85,
+     "up": 0,
+     "frame": "south",
+     "fov": 42
+    }
+   ]
+  },
+  {
+   "from": 52.4,
+   "to": 56.0,
+   "hour": 18.5,
+   "keys": [
+    {
+     "t": 52.4,
+     "look": [
+      15,
+      40
+     ],
+     "dist": 700,
+     "az": 0.8,
+     "pol": 0.85,
+     "up": 0,
+     "frame": "south",
+     "fov": 42
+    },
+    {
+     "t": 56.0,
+     "look": [
+      15,
+      40
+     ],
+     "dist": 780,
+     "az": 1.0,
+     "pol": 0.85,
+     "up": 0,
+     "frame": "south",
+     "fov": 42
+    }
+   ]
+  }
+ ],
+ "overlay": {
+  "banner": "コメントで動く無人島　9日目",
+  "bannerOff": [
+   [
+    0,
+    6.4
+   ],
+   [
+    13.0,
+    17.4
+   ],
+   [
+    42.0,
+    56.0
+   ]
+  ],
+  "commenters": {
+   "akrfjmt417": "-",
+   "tsuki5747": "-",
+   "moose.85881582": "-",
+   "sakusaku_ss0420": "-",
+   "heroruto7": "-",
+   "jinsta129": "-",
+   "endst520": "-",
+   "squirrel.39516326": "-",
+   "hukusimasan_vo_ba": "-",
+   "_3yu.96_": "-",
+   "e.bi_1001": "-",
+   "onoka0703": "-",
+   "guernica.0712": "-",
+   "hokura_masao": "-",
+   "tsubuanzu_shiyuu": "-",
+   "hyuga_0619": "-",
+   "yukito.1002": "-",
+   "ibu131313": "-",
+   "harumakigohan3": "-",
+   "sho8_06": "-",
+   "ryuji_111": "-",
+   "yuridazo68": "-",
+   "ry0t0_nk": "-",
+   "0112riku": "-",
+   "c2__k0": "-",
+   "tabuntakeru": "-",
+   "kota_chumuri": "-",
+   "abc.man13": "-",
+   "es7tpk": "-",
+   "rino._.15": "-",
+   "nn1k2n": "-",
+   "analogayane": "-",
+   "sajuyu19": "-"
+  },
+  "names": {
+   "akrfjmt417": "AK24",
+   "tsuki5747": "つき",
+   "moose.85881582": "サクサク",
+   "sakusaku_ss0420": "さくさくぱんだ",
+   "heroruto7": "ヘロルト",
+   "jinsta129": "じん",
+   "endst520": "さくら",
+   "squirrel.39516326": "miku",
+   "hukusimasan_vo_ba": "ふくしまさん",
+   "_3yu.96_": "みゆ",
+   "e.bi_1001": "えび",
+   "onoka0703": "おのかい",
+   "guernica.0712": "ざーふ",
+   "hokura_masao": "隼斗",
+   "tsubuanzu_shiyuu": "つぶ",
+   "hyuga_0619": "ひゅうが",
+   "yukito.1002": "ゆきと",
+   "ibu131313": "ibu13",
+   "harumakigohan3": "はるまき Urijah",
+   "sho8_06": "sho",
+   "ryuji_111": "Ryuji",
+   "yuridazo68": "神崎ゆり",
+   "ry0t0_nk": "ryoto",
+   "0112riku": "riku",
+   "c2__k0": "ちさこ",
+   "tabuntakeru": "tabun",
+   "kota_chumuri": "コタつむり",
+   "abc.man13": "abc.m",
+   "es7tpk": "寒天パーティー",
+   "rino._.15": "Rino",
+   "nn1k2n": "るね",
+   "analogayane": "あやね",
+   "sajuyu19": "さら",
+   "sykyu_77": "sykyu_77"
+  },
+  "titles": [
+   {
+    "text": "9日目",
+    "from": 0.1,
+    "to": 2.6
+   }
+  ],
+  "tagAll": [
+   [
+    2.4,
+    4.4,
+    0.03
+   ]
+  ],
+  "tagOnly": [
+   {
+    "from": 23.799999999999997,
+    "to": 27.0,
+    "who": [
+     "rino._.15",
+     "sykyu_77"
+    ],
+    "join": true,
+    "size": 36
+   }
+  ],
+  "stars": [
+   {
+    "who": "guernica.0712",
+    "from": 17.799999999999997,
+    "to": 20.2,
+    "bubble": "クマとショー、やってみた！"
+   },
+   {
+    "who": "sakusaku_ss0420",
+    "from": 30.0,
+    "to": 32.6,
+    "bubble": "この島の自然を、守りたい！"
+   },
+   {
+    "who": "yuridazo68",
+    "from": 39.0,
+    "to": 42.0,
+    "bubble": "合言葉　ふね"
+   }
+  ],
+  "ranking": {
+   "from": 13.0,
+   "to": 17.4,
+   "title": "前回、いいねが多かったコメント",
+   "rows": [
+    {
+     "name": "ざーふ",
+     "text": "熊を完全に手懐けたようだ❤️‍🔥 熊とショーをやってみたいかも…",
+     "likes": 15
+    },
+    {
+     "name": "さくさくぱんだ",
+     "text": "この島の自然を壊したくないから、 みんなで協力して、自然パークをつくる！ 昔の人のことをもっと調べて資料館を作ったり、ふれあいコーナーとかもいいかも！ もっとみんなで案を出してパークを盛り上げてみたい！！",
+     "likes": 7
+    },
+    {
+     "name": "つき",
+     "text": "ギター作ってステージで弾き語りしたい！",
+     "likes": 3
+    }
+   ],
+   "winnerAt": 99
+  },
+  "wall": {
+   "from": 32.6,
+   "to": 37.8,
+   "title": "ステージの出し物、予約が入った",
+   "step": 0.18,
+   "items": [
+    {
+     "name": "つき",
+     "text": "ギターの弾き語り"
+    },
+    {
+     "name": "じん",
+     "text": "ドームライブ"
+    },
+    {
+     "name": "さくら",
+     "text": "歌って踊る"
+    },
+    {
+     "name": "サクサク",
+     "text": "ファッションショー"
+    },
+    {
+     "name": "隼斗",
+     "text": "ギター演奏"
+    },
+    {
+     "name": "riku",
+     "text": "弾き語り"
+    },
+    {
+     "name": "miku",
+     "text": "イラストの展示"
+    },
+    {
+     "name": "ryoto",
+     "text": "料理ショー"
+    }
+   ]
+  },
+  "likebars": [
+   {
+    "total": 874,
+    "max": 1000,
+    "goals": [
+     {
+      "at": 600,
+      "label": "畑が一晩で実る"
+     },
+     {
+      "at": 750,
+      "label": "灯台が建つ"
+     },
+     {
+      "at": 1000,
+      "label": "もこもこのひつじが流れ着く"
+     }
+    ],
+    "from": 11.0,
+    "to": 13.0,
+    "from0": 700,
+    "y": 1180
+   },
+   {
+    "total": 874,
+    "max": 1000,
+    "goals": [
+     {
+      "at": 600,
+      "label": "畑が一晩で実る"
+     },
+     {
+      "at": 750,
+      "label": "灯台が建つ"
+     },
+     {
+      "at": 1000,
+      "label": "もこもこのひつじが流れ着く"
+     }
+    ],
+    "from": 52.5,
+    "to": 56.0,
+    "from0": 874,
+    "y": 380
+   }
+  ],
+  "images": [
+   {
+    "file": "profile.png",
+    "from": 4.4,
+    "to": 6.4,
+    "w": 900,
+    "y": 600,
+    "tap": [
+     0.24,
+     0.905
+    ],
+    "tapLabel": "フォロー＆いいねで…"
+   },
+   {
+    "file": "profile.png",
+    "from": 52.5,
+    "to": 56.0,
+    "w": 900,
+    "y": 980,
+    "tap": [
+     0.37,
+     0.78
+    ],
+    "tapLabel": "ここから"
+   }
+  ],
+  "captions": [
+   {
+    "text": "101人が、流れ着いた！",
+    "from": 0.4,
+    "to": 2.3,
+    "y": 1290,
+    "size": 72
+   },
+   {
+    "text": "島民、1154人に！",
+    "from": 2.4,
+    "to": 4.4,
+    "y": 1290,
+    "size": 72,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "あなたも、次の動画で流れ着きます",
+    "from": 4.5,
+    "to": 6.4,
+    "y": 1400,
+    "size": 50,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "島のいいねが、750を超えた！",
+    "from": 6.5,
+    "to": 8.6,
+    "y": 340,
+    "size": 60,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "灯台が、建った！",
+    "from": 8.7,
+    "to": 11.0,
+    "y": 340,
+    "size": 80,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "次は1000で、もこもこのひつじが流れ着く",
+    "from": 11.1,
+    "to": 13.0,
+    "y": 340,
+    "size": 50
+   },
+   {
+    "text": "ざーふさん「クマとショーをやってみたい」",
+    "from": 17.5,
+    "to": 20.299999999999997,
+    "y": 330,
+    "size": 44,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "クマが、立った！",
+    "from": 20.4,
+    "to": 23.599999999999998,
+    "y": 330,
+    "size": 80,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "Rinoさんと仲良しが、@で誘いあった",
+    "from": 23.799999999999997,
+    "to": 27.0,
+    "y": 330,
+    "size": 46
+   },
+   {
+    "text": "さくさくぱんださんの「自然パーク」",
+    "from": 27.1,
+    "to": 30.0,
+    "y": 340,
+    "size": 50,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "まずは、高原のクマの家族を見守るところから",
+    "from": 30.0,
+    "to": 32.6,
+    "y": 340,
+    "size": 44
+   },
+   {
+    "text": "明日の夜から、順番にステージへ",
+    "from": 34.2,
+    "to": 37.8,
+    "y": 1560,
+    "size": 46,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "手記を見つけた人が、現れた…",
+    "from": 37.9,
+    "to": 42.0,
+    "y": 360,
+    "size": 56,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "次の質問",
+    "from": 42.1,
+    "to": 52.4,
+    "y": 300,
+    "size": 64,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "島民1154人。次に作るのは？",
+    "from": 42.2,
+    "to": 52.4,
+    "y": 430,
+    "size": 62
+   },
+   {
+    "text": "A みんなの宿舎（雨や嵐が来る前に）",
+    "from": 43.0,
+    "to": 52.4,
+    "y": 640,
+    "size": 46
+   },
+   {
+    "text": "B 自分のお店が並ぶ通り",
+    "from": 43.6,
+    "to": 52.4,
+    "y": 740,
+    "size": 46
+   },
+   {
+    "text": "C スポーツ広場",
+    "from": 44.2,
+    "to": 52.4,
+    "y": 840,
+    "size": 46
+   },
+   {
+    "text": "D 自由に提案",
+    "from": 44.8,
+    "to": 52.4,
+    "y": 940,
+    "size": 46
+   },
+   {
+    "text": "A・B・C・Dでコメントしてね",
+    "from": 45.6,
+    "to": 52.4,
+    "y": 1180,
+    "size": 50,
+    "color": [
+     255,
+     214,
+     74
+    ]
+   },
+   {
+    "text": "いいと思ったコメントには♥を",
+    "from": 46.6,
+    "to": 52.4,
+    "y": 1280,
+    "size": 44
+   },
+   {
+    "text": "いいねは全部の投稿で数えます",
+    "from": 52.6,
+    "to": 56.0,
+    "y": 720,
+    "size": 42
+   }
+  ],
+  "smallTagsMax": 5
+ },
+ "override": {},
+ "cutaway": {
+  "radius": 1.6
+ },
+ "audio": {
+  "narration": [
+   {
+    "at": 0.3,
+    "until": 2.3,
+    "text": "101人が、流れ着いた！"
+   },
+   {
+    "at": 2.4,
+    "until": 4.4,
+    "text": "島民は、1154人に！"
+   },
+   {
+    "at": 4.5,
+    "until": 6.4,
+    "text": "フォローといいねで、あなたも。"
+   },
+   {
+    "at": 6.5,
+    "until": 8.6,
+    "text": "島のいいねが、750を超えた！"
+   },
+   {
+    "at": 8.7,
+    "until": 11.0,
+    "text": "みんなのいいねで、灯台が建った！"
+   },
+   {
+    "at": 11.1,
+    "until": 13.0,
+    "text": "次は1000で、ひつじ！"
+   },
+   {
+    "at": 13.1,
+    "until": 17.4,
+    "text": "前回、いいねが多かったコメント。"
+   },
+   {
+    "at": 17.5,
+    "until": 20.299999999999997,
+    "text": "ざーふさんと、クマのショー！"
+   },
+   {
+    "at": 20.4,
+    "until": 23.599999999999998,
+    "text": "クマが、立った！"
+   },
+   {
+    "at": 23.799999999999997,
+    "until": 27.0,
+    "text": "アットで誘いあって、仲良しに。"
+   },
+   {
+    "at": 27.1,
+    "until": 32.6,
+    "text": "自然パークづくり、まずはクマの家族を見守るところから。"
+   },
+   {
+    "at": 32.7,
+    "until": 37.8,
+    "text": "ステージの出し物にも、予約が入った！"
+   },
+   {
+    "at": 37.9,
+    "until": 42.0,
+    "text": "手記を見つけた人が、現れた…"
+   },
+   {
+    "at": 42.2,
+    "until": 52.4,
+    "text": "次に作るのは？エー、ビー、シー、ディーでコメントしてね。いいと思ったコメントには、いいねを。"
+   },
+   {
+    "at": 52.6,
+    "until": 56.0,
+    "text": "いいねで、島が変わるよ。"
+   }
+  ],
+  "bgm": {
+   "volume": 0.18
+  },
+  "speed": 1.15
+ },
+ "cover": {
+  "at": 21.0,
+  "day": "9日目",
+  "lines": [
+   "クマが、",
+   "ステージに立った！"
+  ]
+ }
+}

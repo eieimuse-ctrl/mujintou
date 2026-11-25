@@ -1,0 +1,19 @@
+{
+ "day": 9,
+ "roster": "../input/islanders.json",
+ "today": [
+  {
+   "id": "guernica.0712",
+   "spot": "plaza",
+   "anim": "cheer",
+   "text": "クマとのショーを終えて、次の演目を考えている"
+  },
+  {
+   "id": "sakusaku_ss0420",
+   "spot": "forestEdge",
+   "anim": "idle",
+   "text": "自然パークの計画を練っている。まずはクマの家族を見守るところから"
+  }
+ ],
+ "missing": {}
+}
