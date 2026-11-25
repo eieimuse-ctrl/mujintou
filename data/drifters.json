@@ -1,80 +1,515 @@
 {
-  "updatedAt": "2026-11-17",
+  "updatedAt": "2026-11-25",
   "drifters": [
     {
-      "id": "sakasaka_1482",
-      "name": "さか",
-      "since": "2026-11-17"
+      "id": "meirigachitodei",
+      "name": "𝕣𝕚𝕟𝕠",
+      "since": "2026-11-24"
     },
     {
-      "id": "horiharu0220",
-      "name": "ほりはる",
-      "since": "2026-11-17"
+      "id": "hrh_.10",
+      "name": "はるひ",
+      "since": "2026-11-24"
     },
     {
-      "id": "shugo.77",
-      "name": "柊伍",
-      "since": "2026-11-17"
+      "id": "aitosadesu",
+      "name": "竹内🍛",
+      "since": "2026-11-24"
     },
     {
-      "id": "_shaun81",
-      "name": "しょうおん",
-      "since": "2026-11-17"
+      "id": "amitan_ka",
+      "name": "たなかあみ",
+      "since": "2026-11-24"
     },
     {
-      "id": "hori_harusabu",
-      "name": "堀はるサブ",
-      "since": "2026-11-17"
+      "id": "ako55056",
+      "name": "あこだよー🍼🎼🍭",
+      "since": "2026-11-24"
     },
     {
-      "id": "musashi.617",
-      "name": "むさし",
-      "since": "2026-11-17"
+      "id": "asai.rento",
+      "name": "あさいれんと",
+      "since": "2026-11-24"
     },
     {
-      "id": "kosei20130324",
-      "name": "こうせい",
-      "since": "2026-11-17"
+      "id": "04yuta07",
+      "name": "ゆうた",
+      "since": "2026-11-24"
     },
     {
-      "id": "s_02y.ayta",
-      "name": "そうた",
-      "since": "2026-11-17"
+      "id": "and_25252525",
+      "name": "Anny（あんな）",
+      "since": "2026-11-24"
     },
     {
-      "id": "hyuga_0619",
-      "name": "ひゅうが",
-      "since": "2026-11-17"
+      "id": "se__lita",
+      "name": "せいた",
+      "since": "2026-11-24"
     },
     {
-      "id": "nintendo_3ds.12",
-      "name": "こうじろう",
-      "since": "2026-11-17"
+      "id": "familey8guy",
+      "name": "Tooma",
+      "since": "2026-11-24"
     },
     {
-      "id": "hayato210165",
-      "name": "はやと",
-      "since": "2026-11-17"
+      "id": "ru_na746",
+      "name": "るな",
+      "since": "2026-11-24"
     },
     {
-      "id": "sasa_mi42151315",
-      "name": "sasa_",
-      "since": "2026-11-17"
+      "id": "aotodayo0214",
+      "name": "にいよ〜",
+      "since": "2026-11-24"
     },
     {
-      "id": "marumegane4",
-      "name": "🐸ま🐸",
-      "since": "2026-11-17"
+      "id": "endst520",
+      "name": "さくら",
+      "since": "2026-11-24"
     },
     {
-      "id": "tako1216yaki",
-      "name": "かなこ",
-      "since": "2026-11-17"
+      "id": "renta_yakyu",
+      "name": "れんたの野球",
+      "since": "2026-11-24"
     },
     {
-      "id": "s.sora1225",
-      "name": "パラグアイ産カペリート (4部)",
-      "since": "2026-11-17"
+      "id": "urgi115",
+      "name": "URG-I11.5大好き",
+      "since": "2026-11-24"
+    },
+    {
+      "id": "aobanakagamma",
+      "name": "Aoba Naka(Akiko Naka)",
+      "since": "2026-11-24"
+    },
+    {
+      "id": "harumakigohan3",
+      "name": "はるまき Urijah",
+      "since": "2026-11-24"
+    },
+    {
+      "id": "c2__k0",
+      "name": "ちさこ",
+      "since": "2026-11-24"
+    },
+    {
+      "id": "sho8_06",
+      "name": "sho",
+      "since": "2026-11-24"
+    },
+    {
+      "id": "cyakoshi9",
+      "name": "GSR",
+      "since": "2026-11-24"
+    },
+    {
+      "id": "k_aio09212026",
+      "name": "村松海應",
+      "since": "2026-11-24"
+    },
+    {
+      "id": "naixumeizuobo",
+      "name": "ハム⭐︎スター",
+      "since": "2026-11-24"
+    },
+    {
+      "id": "makoto63297",
+      "name": "まこと",
+      "since": "2026-11-24"
+    },
+    {
+      "id": "arata2012_1222",
+      "name": "わがてぃ",
+      "since": "2026-11-24"
+    },
+    {
+      "id": "manami.t20101015",
+      "name": "ココア",
+      "since": "2026-11-24"
+    },
+    {
+      "id": "ara08_123",
+      "name": "arata",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "sakugawa.6",
+      "name": "TNR09",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "rkun_13",
+      "name": "Rkun",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "yakiudon072621",
+      "name": "焼きうどん",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "108toma",
+      "name": "とうま",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "kituneya.kyuubi",
+      "name": "狐屋九尾",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "raymon35473",
+      "name": "大森",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "enfp.k0.t_r0.1_",
+      "name": "こたろう",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "aoto_st_x",
+      "name": "S.A 51",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "ikeyama.shinntaro",
+      "name": "sinnta",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "qixi45340",
+      "name": "七夕",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "aya_on1115",
+      "name": "綾音",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "y5u_i13_",
+      "name": "Yui",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "osadi532",
+      "name": "おさディ",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "arata__swimming",
+      "name": "あらた",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "ryoke25",
+      "name": "りょすけ",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "gatp_15618",
+      "name": "haro",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "zx_xz.04",
+      "name": "彩。",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "mizo0802",
+      "name": "溝",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "tstar348a",
+      "name": "tstar",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "11.03230",
+      "name": "Yusei",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "naot.331",
+      "name": "なおと",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "mgvt17",
+      "name": "mgvt1",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "rituk.i222",
+      "name": "りつき",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "tt_.hb",
+      "name": "タツル",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "m9qlx_w",
+      "name": "みく",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "jingshoukoulunye",
+      "name": "みち",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "nokonokodayo0503",
+      "name": "龍生",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "8.ruto3",
+      "name": "🦁ごに🦁",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "metabopannba8",
+      "name": "小倉",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "ha_ru037",
+      "name": "はるひ",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "7k1ra_mry5",
+      "name": "丸谷煌",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "aoshi.1017",
+      "name": "あおし",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "6_u.michiru",
+      "name": "植松 満/Michiru Uematsu",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "ayuki.43",
+      "name": "あゆき",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "soya81563",
+      "name": "SOYA",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "nemusugiru7.11",
+      "name": "夏輝",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "zyaryuunoou_vega",
+      "name": "ヴェガ",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "parupundakesenspu",
+      "name": "parup",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "fuuma_0723",
+      "name": "ふうま",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "sakai82042",
+      "name": "さかい",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "a.kaito_mint",
+      "name": "海翔",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "ryuma_68_onigiri",
+      "name": "遠矢隆真",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "sh0tar0o222",
+      "name": "しょうたろう",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "midehamu",
+      "name": "蒼大とミデハム",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "k4oru13",
+      "name": "佐藤薫",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "koora444444",
+      "name": "泓乐",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "yuu_05290",
+      "name": "侑",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "nob291116",
+      "name": "のぶ",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "nanasinorise0618",
+      "name": "‧.☆宙音☆*°¨̮",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "_.kn01x",
+      "name": "楓乃",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "wolf.ryu.127",
+      "name": "ryu",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "camel.146320",
+      "name": "唐揚げの味噌煮",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "aina10_baseball",
+      "name": "AINA",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "mmmr1008",
+      "name": "ポプコーン💀💙",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "raimu08220",
+      "name": "RIM",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "kaito_110911",
+      "name": "かい",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "nagatakou0903",
+      "name": "kox",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "aoto.0820",
+      "name": "仲山碧音",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "yasuma_s14",
+      "name": "やすま",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "kakazuki_8",
+      "name": "和輝",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "kuma.sub56",
+      "name": "デジタルタトゥークリエイター",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "11zuka_2525",
+      "name": "そら",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "sylv_eon700",
+      "name": "禾の毛皮",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "maamoto.754",
+      "name": "マーモット",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "kii._.714",
+      "name": "きい",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "kenshin.3636",
+      "name": "けんしん",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "ray_mths",
+      "name": "Mitsuhashi Rei",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "_dusy.or.ka",
+      "name": "優斗",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "simokawa171718kabiki",
+      "name": "ヒロカツ",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "hvqtx",
+      "name": "hvqtx",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "armadillo.2561475",
+      "name": "🥀",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "igmpw2026",
+      "name": "igmpw",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "audi_chzjkcharles",
+      "name": "taiga",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "miiiiiiii_____m5",
+      "name": "み",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "sajuyu19",
+      "name": "さら",
+      "since": "2026-11-25"
+    },
+    {
+      "id": "yv1nq_0151",
+      "name": "Yuina",
+      "since": "2026-11-25"
     }
   ]
 }
