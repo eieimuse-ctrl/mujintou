@@ -191,6 +191,12 @@ export function normalizeData(stateRaw, rosterRaw, driftRaw = null) {
     ? { day: int(bs.day, 1), x: num(bs.x), z: num(bs.z), r: num(bs.r) > 0 ? num(bs.r) : 18, friendly: bs.friendly === true, text: str(bs.text, '森を切りひらいて住処を追われたクマが、畑のまわりで島民を追いかけまわしている…') }
     : null;
 
+  // もこもこのひつじ：{ day, x, z, r, count, text }（ワールド座標）。day 以降、その場所のまわりで草を食べている
+  const sp = s.sheep && typeof s.sheep === 'object' ? s.sheep : null;
+  const sheep = sp && int(sp.day, 1) <= day && Number.isFinite(num(sp.x)) && Number.isFinite(num(sp.z))
+    ? { day: int(sp.day, 1), x: num(sp.x), z: num(sp.z), r: num(sp.r) > 0 ? num(sp.r) : 12, count: Math.max(1, Math.min(30, int(sp.count, 8))), text: str(sp.text, '島のいいね1000で流れ着いた、もこもこのひつじ。のんびり草を食べている。') }
+    : null;
+
   // 島のいいね合計（全投稿）と節目のごほうび：{ total, max, goals: [{ at, label }] }。Muse が毎日 total を入れる
   const lk = s.likes && typeof s.likes === 'object' ? s.likes : null;
   const likes = lk && Number.isFinite(num(lk.total))
@@ -206,6 +212,7 @@ export function normalizeData(stateRaw, rosterRaw, driftRaw = null) {
     likes,
     clearings,
     beast,
+    sheep,
     forestRoad,
     stageRequests: Array.isArray(s.stageRequests) ? s.stageRequests.filter((r) => r && typeof r === 'object') : [], // コメントで募集したステージの出し物（show.js）
     toolAge: str(s.toolAge) === 'stone' ? 'stone' : '', // 道具の時代（'stone'＝石の道具。昔の住人の跡をまねて作った）

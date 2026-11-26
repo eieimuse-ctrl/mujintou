@@ -1,0 +1,27 @@
+{
+ "day": 10,
+ "roster": "../../ep9/input/islanders.json",
+ "today": [
+  {
+   "id": "jinsta129",
+   "spot": "plaza",
+   "anim": "work",
+   "text": "自分で建てたみんなの宿舎の、仕上げをしている",
+   "tool": "hammer"
+  },
+  {
+   "id": "onyankopunch",
+   "spot": "plaza",
+   "anim": "work",
+   "text": "大工の本気で、宿舎の屋根をなおしている",
+   "tool": "hammer"
+  },
+  {
+   "id": "rino._.15",
+   "spot": "plaza",
+   "anim": "cheer",
+   "text": "自分の案の場所に宿舎が建って、うれしそう"
+  }
+ ],
+ "missing": {}
+}
