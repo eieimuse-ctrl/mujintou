@@ -225,6 +225,18 @@
         '.ooOoo..',
         'kbkbkbk.',
       ], { y: '#ffd04a', o: '#ff8a1e', O: '#fff3b0', k: '#3a2a1c', b: '#7a4f2c' }),
+      guitar: pixel([
+        '........kk',
+        '.......kbk',
+        '......kbk.',
+        '..oo.kbk..',
+        '.oOOokk...',
+        'oOOkOo....',
+        'oOkOOo....',
+        'oOOOOo....',
+        '.oOOo.....',
+        '..oo......',
+      ], { o: '#7a3f1c', O: '#d9893a', k: '#2a1d14', b: '#b98952' }),
       heart: pixel([
         '.kk.kk.',
         'kRRkRRk',
@@ -399,7 +411,7 @@
       } else if (pr.type === 'beast') {
         // ボクセルのクマ（PWA と同じ形）。path: [[t, x, z], …] を走る
         const inner = new GroupC();
-        for (const b of window.__BEAST.boxes) {
+        for (const b of (pr.model === 'sheep' ? window.__SHEEP : window.__BEAST).boxes) {
           const m = boxMesh(b.p[0], b.p[1], b.p[2], b.s[0], b.s[1], b.s[2], b.c);
           if (b.leg != null) m.userData.leg = b.leg, m.userData.y = b.p[1];
           inner.add(m);
@@ -551,7 +563,7 @@
 
     S = { cast, idx, stateOf, props, propAt, camAt, story, solids, solidAt, cutaway };
     // クマ（props3d の beast）の位置と向き：道すじ path を時刻で補間
-    const beastPr = (story.props3d || []).find((p) => p.type === 'beast');
+    const beastPr = (story.props3d || []).find((p) => p.type === 'beast' && p.model !== 'sheep');
     const beastAt = (t) => {
       const P = beastPr.path; let k = 0; while (k < P.length - 2 && t > P[k + 1][0]) k++;
       const [ta, xa, za] = P[k], [tb, xb, zb] = P[Math.min(k + 1, P.length - 1)];

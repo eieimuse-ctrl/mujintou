@@ -89,6 +89,8 @@ await page.evaluate(async () => {
   window.__BUILD_DEFS.bigfield0 = m.BUILDING_TYPES.bigfield({ growth: 0 }); // 植えたばかりの畑
   const bm = await import('/js/beast.js'); // 森の獣の絵（PWA と同じ）
   window.__BEAST = { frames: bm.BEAST_FRAMES, pal: bm.BEAST_PAL, boxes: bm.BEAST_BOXES };
+  const sm = await import('/js/sheep.js'); // もこもこのひつじ（props3d の beast に model: 'sheep'）
+  window.__SHEEP = { boxes: sm.SHEEP_BOXES };
 });
 const env = await page.evaluate((s) => window.__ep3.setup(s), story);
 console.log(NAME, 'cast', env.n, 'chrome', await browser.version());

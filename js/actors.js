@@ -12,6 +12,7 @@ import { SEA_Y } from './terrain.js';
 import { driftPose } from './drift.js';
 import { beastPose, BEAST_BOXES } from './beast.js';
 import { showAt } from './show.js';
+import { SHEEP_BOXES, sheepPose } from './sheep.js';
 
 const SPRITE_H = 3.9; // スプライト1コマの高さ（ワールド単位）
 const SPRITE_W = (SPRITE_H * FRAME_W) / FRAME_H;
@@ -135,7 +136,7 @@ function pixelTexture(canvas) {
 }
 
 // drifters: 漂流者（data.js の正規化済み）、drifts: その場所と揺れ方（drift.js の layoutDrifters。drifters と同じ並び）
-export function createActors({ scene, islanders, sim, labelLayer, drifters = [], drifts = [], heightAt = null, torchPosts = [], torchEvery = 5, mysteries = [], beast = null, stages = [], day = 1 }) {
+export function createActors({ scene, islanders, sim, labelLayer, drifters = [], drifts = [], heightAt = null, torchPosts = [], torchEvery = 5, mysteries = [], beast = null, sheep = null, stages = [], day = 1 }) {
   let featured = null; // 鑑賞モード：舞台の出演者は名札を必ず出す
   let labelsOn = true; // 名札の表示（ボタンで消せる。消していても、選んだ人の名札は出す）
   const bubbleTex = {};
@@ -318,6 +319,29 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
     sh.renderOrder = 1;
     scene.add(g, sh);
     beastObj = { b: beast, g, sh, legs, now: null, screen: null };
+  }
+
+  // ---- もこもこのひつじ（ボクセル）：群れで草を食べる。タップで説明 ----
+  const flock = [];
+  if (sheep) {
+    const unit = new THREE.BoxGeometry(1, 1, 1);
+    const mats = new Map();
+    for (let k = 0; k < sheep.count; k++) {
+      const g = new THREE.Group();
+      const legs = [];
+      for (const bx of SHEEP_BOXES) {
+        if (!mats.has(bx.c)) mats.set(bx.c, new THREE.MeshLambertMaterial({ color: bx.c }));
+        const m = new THREE.Mesh(unit, mats.get(bx.c));
+        m.position.set(...bx.p);
+        m.scale.set(...bx.s);
+        if (bx.leg != null) legs.push({ m, y: bx.p[1], leg: bx.leg });
+        g.add(m);
+      }
+      const sh = new THREE.Mesh(shadowGeo, shadowMat);
+      sh.renderOrder = 1;
+      scene.add(g, sh);
+      flock.push({ k, g, sh, legs, screen: null });
+    }
   }
 
   // ---- なぞの物（流れ着いた木箱など）：上に「？」を浮かべる。タップでその建物の詳細 ----
@@ -632,6 +656,25 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
         B.screen = { visible: v.z > -1 && v.z < 1 && Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1, x: (v.x * 0.5 + 0.5) * viewport.w, y: (-v.y * 0.5 + 0.5) * viewport.h, r: Math.max(30, 2.6 * k * (pxPerUnitAt1 / Math.max(1, dist))) };
       }
     }
+    // ひつじ：群れの中で歩いては草を食べる（録画中は出さない。動画では小道具で描く）
+    for (const S of flock) {
+      S.g.visible = S.sh.visible = !stagePose;
+      if (stagePose) continue;
+      const q = sheepPose(sheep, S.k, tMs);
+      const y = groundAt(q.x, q.z);
+      v.set(q.x, y, q.z);
+      const dist = camera.position.distanceTo(v);
+      const k = Math.max(1, (CROWD_PX * 0.9) / (2.8 * (pxPerUnitAt1 / Math.max(1, dist))));
+      const step = q.still ? 0 : Math.floor(t * 7 + S.k) % 2;
+      S.g.position.set(q.x, y - 0.05 + step * 0.08 * k, q.z);
+      if (Math.hypot(q.dx, q.dz) > 0.01) S.g.rotation.y = Math.atan2(-q.dz, q.dx);
+      S.g.scale.setScalar(k);
+      for (const L of S.legs) L.m.position.y = L.y + (L.leg === step ? 0.22 : 0);
+      S.sh.position.set(q.x, y + 0.07, q.z);
+      S.sh.scale.setScalar(k * 1.8);
+      v.set(q.x, y + 1.6 * k, q.z).project(camera);
+      S.screen = { visible: v.z > -1 && v.z < 1 && Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1, x: (v.x * 0.5 + 0.5) * viewport.w, y: (-v.y * 0.5 + 0.5) * viewport.h, r: Math.max(24, 1.8 * k * (pxPerUnitAt1 / Math.max(1, dist))) };
+    }
     for (const mk of mysteryMarks) {
       v.set(mk.b.x, mk.top, mk.b.z);
       const dist = camera.position.distanceTo(v);
@@ -742,6 +785,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       if (mk.screen && mk.screen.visible && Math.hypot(mk.screen.x - x, mk.screen.y - y) < 44) return { kind: 'islander', index: mk.a.index };
     }
     if (beastObj?.now && beastObj.screen?.visible && Math.hypot(beastObj.screen.x - x, beastObj.screen.y - y) < beastObj.screen.r) return { kind: 'beast', beast: beastObj.b };
+    for (const S of flock) if (S.screen?.visible && Math.hypot(S.screen.x - x, S.screen.y - y) < S.screen.r) return { kind: 'sheep', sheep };
     for (const mk of mysteryMarks) {
       if (mk.screen && mk.screen.visible && Math.hypot(mk.screen.x - x, mk.screen.y - y) < 44) return { kind: 'building', building: mk.b };
     }
