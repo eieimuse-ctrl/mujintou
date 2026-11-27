@@ -93,7 +93,7 @@ T5 = 32.0
 EX = groups[2]['members']
 A({'who': EX, 't': 0, 'hide': True})
 A({'who': EX, 't': T4, 'hide': False, 'anim': 'idle', 'face': {'at': CAVE}})
-A({'who': EX, 't': T4 + 4.4, 'anim': 'shock', 'face': {'at': CAVE}})
+A({'who': EX, 't': T4 + 2.6, 'anim': 'shock', 'face': {'at': CAVE}})
 A({'who': EX, 't': T5, 'hide': True})
 
 # S5 手記（32.0〜36.0）：ibu13さん（入り江で釣り）
@@ -123,7 +123,7 @@ camera = [
         W([RANCH[0], RANCH[1] + 14], 22, -1.4, 1.1, 2, T3, 46), W(RANCH, 44, -0.2, 0.85, 2, T3 + 3.4, 46), W(RANCH, 46, 1.2, 0.8, 2, T3 + 6.8, 46),
         W([RANCH[0], RANCH[1] + 14], 20, 0.3, 1.15, 2, T3 + 9.0, 42), W(RANCH, 70, 0.0, 0.4, 0, T4, 46)]},
     # 洞窟：探検隊の頭ごし → 入口へ突っこむ → 光る目
-    {'from': T4, 'to': T5, 'hour': 18.4, 'shake': [[T4 + 4.4, T4 + 5.2, 1.2]], 'keys': [W([CAVE[0], CAVE[1] + 14], 30, -0.6, 1.0, 2, T4, 46), W([CAVE[0], CAVE[1] + 6], 18, 0.0, 1.18, 2.5, T4 + 3.0, 40), W([CAVE[0], CAVE[1] + 3], 13, 0.0, 1.22, 2.2, T4 + 5.0, 34), W([CAVE[0], CAVE[1] + 3], 16, 0.15, 1.2, 2.2, T5, 36)]},
+    {'from': T4, 'to': T5, 'hour': 18.0, 'shake': [[T4 + 2.4, T4 + 3.2, 1.0], [T4 + 3.6, T4 + 4.2, 1.8], [T4 + 4.4, T4 + 5.2, 1.4]], 'keys': [W([CAVE[0], CAVE[1] + 14], 30, -0.6, 1.0, 2, T4, 46), W([CAVE[0], CAVE[1] + 8], 22, 0.0, 1.15, 2.5, T4 + 2.4, 42), W([CAVE[0], CAVE[1]], 120, 0.6, 0.75, 0, T4 + 3.6, 50), W([CAVE[0], CAVE[1] + 3], 13, 0.0, 1.22, 2.2, T4 + 5.0, 34), W([CAVE[0], CAVE[1] + 3], 16, 0.15, 1.2, 2.2, T5, 36)]},
     # 手記：入り江のibu13さん → 夕暮れの島
     {'from': T5, 'to': T6, 'hour': 17.6, 'keys': [W(COVE, 26, -0.8, 1.0, 1.6, T5, 44), W(COVE, 12, -0.1, 1.26, 1.6, T6, 36)]},
     # 次の問い：洞窟の前から引いていく
@@ -135,7 +135,7 @@ props = [{'type': 'zzz', 'from': {'rel': i, 'up': 1.6}, 't0': 0, 't1': 0.01, 't2
 for k in range(4):
     props.append({'type': 'heart', 'from': {'xz': [RANCH[0] - 8 + k * 5, RANCH[1] - 2], 'up': 3.0}, 'to': {'xz': [RANCH[0] - 8 + k * 5, RANCH[1] - 2], 'up': 4.2}, 't0': T3 + 10.6 + k * 0.2, 't1': T4, 't2': T4, 'size': 1.4, 'phase': k})
 # 洞窟の奥の光る目（まばたき：2回出たり消えたり）
-for a, b in [(T4 + 4.4, T4 + 6.0), (T4 + 6.3, T5), (T6, 44.0)]:
+for a, b in [(T4 + 4.45, T4 + 6.0), (T4 + 6.3, T5), (T6, 44.0)]:
     props.append({'type': 'eyes', 'from': {'xz': [CAVE[0], CAVE[1] + 2.4], 'up': 1.7}, 't0': a, 't1': a + 0.01, 't2': b, 'size': 0.9})
 
 props3d = [
@@ -147,7 +147,7 @@ def star(i, a, b, text):
     return {'who': i, 'from': a, 'to': b, 'bubble': text} if inr(i) else None
 stars = [x for x in [
     star(KOTA, T3 + 0.4, T3 + 3.2, 'ヒツジさんの為に、牧場つくりたい！'),
-    star(MARU, T4 + 0.4, T4 + 3.0, 'ほかにも動物、いないかな？'),
+    star(MARU, T4 + 0.3, T4 + 2.3, 'ほかにも動物、いないかな？'),
     star(IBU, T5 + 0.3, T6, '釣りをしてたら、手記を見つけた！'),
 ] if x]
 TOPROWS = [{'name': name_of(c['userId']), 'text': re.sub(r'\s+', ' ', c.get('text') or ''), 'likes': c.get('likeCount') or 0} for c in TOP]
@@ -159,7 +159,9 @@ overlay = {
     'names': {**{i: name_of(i) for i in people}, **{i: name_of(i) for i in [KOTA, MARU, IBU]}},
     'titles': [{'text': '11日目', 'from': 0.1, 'to': 2.6}],
     'tagAll': ([[2.4, T1, 0.03]] if arrivals else []),
-    'tagOnly': [{'from': T4 + 0.4, 'to': T4 + 4.2, 'who': [x for x in EX[:6]], 'below': True, 'size': 30}],
+    'tagOnly': [{'from': T4 + 0.4, 'to': T4 + 2.3, 'who': [x for x in EX[:6]], 'below': True, 'size': 30}],
+    'storm': [{'from': T4 + 2.4, 'to': T5, 'ramp': 0.7, 'dark': 0.3, 'clouds': 0.9, 'rain': 1.0, 'flashes': [T4 + 3.6, T4 + 4.4]},
+              {'from': T6, 'to': 48.0, 'ramp': 0.01, 'dark': 0.2, 'clouds': 0.35, 'rain': 0.7, 'flashes': [T6 + 1.2, T6 + 7.5]}],
     'stars': stars,
     'ranking': {'from': T2, 'to': T3, 'title': '前回、いいねが多かったコメント', 'rows': TOPROWS, 'winnerAt': 99},
     'images': [
@@ -175,8 +177,9 @@ overlay = {
         {'text': 'みんなで、牧場をつくる！', 'from': T3 + 0.1, 'to': T3 + 7.2, 'y': 330, 'size': 60, 'color': [255, 214, 74]},
         {'text': 'ひつじを、柵の中へ', 'from': T3 + 7.3, 'to': T3 + 10.4, 'y': 330, 'size': 60},
         {'text': '牧場が、できた！', 'from': T3 + 10.5, 'to': T4, 'y': 330, 'size': 72, 'color': [255, 214, 74]},
-        {'text': '🐸ま🐸さんたちは、ほかの動物を探しに', 'from': T4 + 0.1, 'to': T4 + 4.2, 'y': 330, 'size': 46},
-        {'text': '洞窟の奥に…', 'from': T4 + 3.0, 'to': T4 + 4.4, 'y': 420, 'size': 60},
+        {'text': '🐸ま🐸さんたちは、ほかの動物を探しに', 'from': T4 + 0.1, 'to': T4 + 2.3, 'y': 330, 'size': 46},
+        {'text': '突然、厚い雲が島を囲んだ', 'from': T4 + 2.4, 'to': T4 + 3.6, 'y': 420, 'size': 56, 'color': [220, 230, 255]},
+        {'text': '雷！ 大雨！', 'from': T4 + 3.6, 'to': T4 + 4.4, 'y': 420, 'size': 90, 'color': [255, 240, 120]},
         {'text': '光る目！？', 'from': T4 + 4.4, 'to': T5, 'y': 420, 'size': 90, 'color': [255, 214, 74]},
         {'text': 'さらさんも、手記を見つけた', 'from': T5 + 1.6, 'to': T6, 'y': 1300, 'size': 44},
         {'text': '次の質問', 'from': T6 + 0.1, 'to': 48.0, 'y': 300, 'size': 64, 'color': [255, 214, 74]},
@@ -199,8 +202,9 @@ narr = [
     {'at': T3 + 0.1, 'until': T3 + 7.2, 'text': 'コタつむりさんの案で、みんなで牧場をつくる！'},
     {'at': T3 + 7.3, 'until': T3 + 10.4, 'text': 'ひつじを、柵の中へ。'},
     {'at': T3 + 10.5, 'until': T4, 'text': '牧場が、できた！'},
-    {'at': T4 + 0.1, 'until': T4 + 4.2, 'text': 'ほかの動物を探しに、洞窟へ。'},
-    {'at': T4 + 4.4, 'until': T5, 'text': '奥に、光る目！？'},
+    {'at': T4 + 0.1, 'until': T4 + 2.3, 'text': 'ほかの動物を探しに、洞窟へ。'},
+    {'at': T4 + 2.4, 'until': T4 + 4.4, 'text': '突然、厚い雲。雷と、大雨！'},
+    {'at': T4 + 4.5, 'until': T5, 'text': '洞窟の奥に、光る目！？'},
     {'at': T5 + 0.1, 'until': T6, 'text': 'ibu13さんと、さらさんも、手記を見つけた。'},
     {'at': T6 + 0.2, 'until': 48.0, 'text': '洞窟の奥に、光る目。どうする？なんの目か、予想もコメントで教えてね。'},
     {'at': 48.2, 'until': DUR, 'text': 'いいねで、島が変わるよ。'},
@@ -227,6 +231,32 @@ story = {
     'audio': {'narration': narr, 'bgm': {'volume': 0.18}, 'speed': 1.15},
     'cover': {'at': 29.0, 'day': f'{DAY}日目', 'lines': ['洞窟の奥に、', '光る目…！？']},
 }
+# ---- フック（冒頭 2.4 秒）：嵐の中、洞窟の奥で光る目 → 本編は 2.4 秒うしろへ ----
+HOOK = 2.4
+def shift(o, k=None):
+    TK = {'t', 'from', 'to', 't0', 't1', 't2', 'show', 'hide', 'at', 'until', 'winnerAt'}
+    if isinstance(o, dict):
+        for key, v in list(o.items()):
+            if key in TK and isinstance(v, (int, float)) and not isinstance(v, bool): o[key] = round(v + HOOK, 3)
+            elif key in ('flashes',): o[key] = [round(x + HOOK, 3) for x in v]
+            elif key in ('shake', 'bannerOff', 'tagAll', 'grow', 'rear'): o[key] = [[round(x + HOOK, 3) if j < 2 else x for j, x in enumerate(r)] if isinstance(r, list) else round(r + HOOK, 3) for r in v]
+            elif key == 'path': o[key] = [[round(r[0] + HOOK, 3)] + r[1:] for r in v]
+            elif key in ('look', 'face', 'spot', 'xz', 'from_', 'at') and not isinstance(v, (int, float)): continue
+            else: shift(v, key)
+    elif isinstance(o, list):
+        for x in o: shift(x, k)
+zero = [a for a in story['acts'] if a.get('t') == 0]  # 最初の状態（隠す・位置）はフックの間もそのまま
+for part in ('acts', 'props', 'props3d', 'camera', 'overlay', 'audio', 'cover'): shift(story[part])
+for a in zero: a['t'] = 0
+story['duration'] = DUR + HOOK
+story['camera'].insert(0, {'from': 0, 'to': HOOK, 'hour': 21.0, 'shake': [[0.5, 1.1, 1.8], [1.6, 2.2, 1.2]], 'keys': [W([CAVE[0], CAVE[1] + 3], 22, -0.3, 1.15, 2.4, 0, 40), W([CAVE[0], CAVE[1] + 3], 14, 0.1, 1.22, 2.2, HOOK, 34)]})
+story['props'].append({'type': 'eyes', 'from': {'xz': [CAVE[0], CAVE[1] + 2.4], 'up': 1.7}, 't0': 0.55, 't1': 0.56, 't2': HOOK, 'size': 0.9})
+O2 = story['overlay']
+O2['storm'].insert(0, {'from': 0, 'to': HOOK, 'ramp': 0.01, 'dark': 0.25, 'clouds': 0.45, 'rain': 1.0, 'flashes': [0.5, 1.6]})
+O2['bannerOff'].insert(0, [0, HOOK])
+O2['captions'][:0] = [{'text': '突然の嵐', 'from': 0.05, 'to': 1.2, 'y': 420, 'size': 96, 'color': [220, 230, 255]},
+                      {'text': '洞窟の奥で、何かが光った', 'from': 1.2, 'to': HOOK, 'y': 420, 'size': 58, 'color': [255, 225, 74]}]
+story['audio']['narration'].insert(0, {'at': 0.1, 'until': HOOK, 'text': '突然の嵐。洞窟の奥で、何かが光った。'})
 json.dump(story, open(os.path.join(HERE, 'story', 'ep11.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
 today = []
