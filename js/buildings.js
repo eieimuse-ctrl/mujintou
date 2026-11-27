@@ -456,6 +456,44 @@ function dorm() {
   };
 }
 
+// 牧場（11日目〜）：ひつじの群れを囲う木の柵と、小さな赤い納屋。入口（+z）は開いている
+function ranch() {
+  const b = [];
+  const W = 34, D = 28, GATE = 5;
+  const FENCE = '#a8794a', POST = '#7a4f2c';
+  const rail = (x0, z0, x1, z1) => {
+    const len = Math.hypot(x1 - x0, z1 - z0), cx = (x0 + x1) / 2, cz = (z0 + z1) / 2, alongX = Math.abs(x1 - x0) > Math.abs(z1 - z0);
+    for (const y of [0.7, 1.4]) b.push(box(cx, y, cz, alongX ? len : 0.16, 0.16, alongX ? 0.16 : len, FENCE));
+  };
+  rail(-W / 2, -D / 2, W / 2, -D / 2); // 奥
+  rail(-W / 2, -D / 2, -W / 2, D / 2); rail(W / 2, -D / 2, W / 2, D / 2); // 左右
+  rail(-W / 2, D / 2, -GATE / 2, D / 2); rail(GATE / 2, D / 2, W / 2, D / 2); // 手前（まん中が入口）
+  const posts = [];
+  for (let x = -W / 2; x <= W / 2 + 0.01; x += W / 8) posts.push([x, -D / 2]);
+  for (let z = -D / 2 + D / 7; z < D / 2; z += D / 7) posts.push([-W / 2, z], [W / 2, z]);
+  for (let x = -W / 2; x <= -GATE / 2 + 0.01; x += (W - GATE) / 6) posts.push([x, D / 2]);
+  for (let x = GATE / 2; x <= W / 2 + 0.01; x += (W - GATE) / 6) posts.push([x, D / 2]);
+  for (const [x, z] of posts) b.push(box(x, 0.9, z, 0.32, 1.8, 0.32, POST));
+  // 納屋（奥の左）
+  const bx0 = -W / 2 + 6, bz0 = -D / 2 + 5;
+  b.push(box(bx0, 1.6, bz0, 6, 3.2, 5, '#c2452f'), box(bx0, 1.3, bz0 + 2.52, 2.2, 2.6, 0.06, '#f4efe2'), box(bx0, 1.3, bz0 + 2.56, 1.8, 2.2, 0.06, '#8f3a28'));
+  b.push(box(bx0, 3.6, bz0, 6.6, 0.8, 5.6, '#5e3d24'), box(bx0, 4.25, bz0, 4.6, 0.5, 5.6, '#5e3d24'));
+  // 干し草と水桶
+  for (const [x, z] of [[bx0 + 5, bz0 + 1], [bx0 + 5, bz0 - 1.2], [bx0 + 6.4, bz0]]) b.push(box(x, 0.5, z, 1.4, 1.0, 1.0, '#e2c56a'));
+  b.push(box(W / 2 - 5, 0.45, -2, 3.2, 0.9, 1.1, '#7a4f2c'), box(W / 2 - 5, 0.8, -2, 2.8, 0.1, 0.8, '#5fb4dd'));
+  return {
+    label: '牧場',
+    boxes: b,
+    height: 5,
+    footprint: { x0: -W / 2 + 2.8, x1: -W / 2 + 9.2, z0: -D / 2 + 2.3, z1: -D / 2 + 7.7 }, // 納屋だけ
+    reserve: { x0: -W / 2 - 1, x1: W / 2 + 1, z0: -D / 2 - 1, z1: D / 2 + 1 }, // 柵の中は木を置かない（歩ける）
+    spots: [
+      { x: 0, z: D / 2 + 2.5, fx: 0, fz: 0, jobs: ['農家', '島民'], label: '牧場の入口', spread: 2 },
+      { x: W / 2 + 2, z: 0, fx: 0, fz: 0, jobs: ['農家'], label: '牧場の柵のそば', spread: 2 },
+    ],
+  };
+}
+
 // ステージ（8日目〜）：木の野外ステージ。手前の左右に火の台（かがり火）。舞台の上で15分ごとに出し物（show.js）
 function stage() {
   const b = [];
@@ -483,8 +521,8 @@ function stage() {
   };
 }
 
-export const BUILDING_TYPES = { hut, field, pier, watchtower, still, ruins, workshop, bigcrate, bigfield, bearhouse, stage, lighthouse, cave, dorm };
-export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台', still: '蒸留装置', ruins: '昔の住人の跡', workshop: '石の作業場', bigcrate: '大きな木箱', bigfield: '大きな畑', bearhouse: 'クマの家', stage: 'ステージ', lighthouse: '灯台', cave: '洞窟', dorm: 'みんなの宿舎' };
+export const BUILDING_TYPES = { hut, field, pier, watchtower, still, ruins, workshop, bigcrate, bigfield, bearhouse, stage, lighthouse, cave, dorm, ranch };
+export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台', still: '蒸留装置', ruins: '昔の住人の跡', workshop: '石の作業場', bigcrate: '大きな木箱', bigfield: '大きな畑', bearhouse: 'クマの家', stage: 'ステージ', lighthouse: '灯台', cave: '洞窟', dorm: 'みんなの宿舎', ranch: '牧場' };
 
 // 広場のたき火（建物データではなく、島に最初からある）
 export function campfireBoxes() {
@@ -566,6 +604,8 @@ export function resolveBuildings(defs, terrain) {
           const m = 2.2; // 木や岩を置かない余白
           if (l.x >= f.x0 - m && l.x <= f.x1 + m && l.z >= f.z0 - m && l.z <= f.z1 + m + 2.5) reserved.add(k);
         }
+        const rv = def.reserve; // 木や岩を置かないだけの広い囲い（牧場の柵の中など。歩ける）
+        if (rv && l.x >= rv.x0 && l.x <= rv.x1 && l.z >= rv.z0 && l.z <= rv.z1) reserved.add(k);
         const d = def.deck;
         if (d) {
           if (l.x >= d.x0 && l.x <= d.x1 && l.z >= d.z0 && l.z <= d.z1) {

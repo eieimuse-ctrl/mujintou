@@ -1,0 +1,19 @@
+{
+ "day": 11,
+ "roster": "../../ep10/input/islanders.json",
+ "today": [
+  {
+   "id": "kota_chumuri",
+   "spot": "plaza",
+   "anim": "cheer",
+   "text": "自分の案でできた牧場で、ひつじの世話をしている"
+  },
+  {
+   "id": "marumegane4",
+   "spot": "forestEdge",
+   "anim": "idle",
+   "text": "洞窟の奥の光る目が気になって、入口の前で考えこんでいる"
+  }
+ ],
+ "missing": {}
+}
