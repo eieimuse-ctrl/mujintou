@@ -12,7 +12,7 @@
 環境変数：FONT（本文）、FONT_BLACK（太字）、EMOJI_FONT、BGM（mp3）、VOICEVOX（既定 http://127.0.0.1:50021）
 """
 import json, os, re, sys, hashlib, subprocess, urllib.request, urllib.parse, wave, unicodedata
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageFilter, ImageDraw, ImageFont
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 story_path = os.path.abspath(sys.argv[1])
@@ -343,12 +343,63 @@ for line in open(os.path.join(BUILD, 'track.jsonl'), encoding='utf-8'):
 def head_y(p):
     return (p['hy'] + (p['fy'] - p['hy']) * 0.13) * H
 
+# ---- 嵐（雲・暗さ・雨・稲光）：{"storm": [{"from","to","dark":0.55,"clouds":0.9,"rain":1.0,"ramp":1.0,"flashes":[t…]}]} ----
+_CLOUD = None
+def cloud_img():
+    global _CLOUD
+    if _CLOUD is None:
+        import random as _r
+        rr = _r.Random(7)
+        c = Image.new('RGBA', (W * 2, H), (0, 0, 0, 0)); cd = ImageDraw.Draw(c)
+        for _ in range(220):
+            x, y = rr.uniform(0, W * 2), rr.choice([rr.uniform(-200, 520), rr.uniform(H - 520, H + 200), rr.uniform(-200, H + 200)])
+            r = rr.uniform(120, 360); g = int(rr.uniform(38, 70))
+            cd.ellipse([x - r * 1.4, y - r * 0.7, x + r * 1.4, y + r * 0.7], fill=(g, g + 4, g + 14, int(rr.uniform(140, 230))))
+        _CLOUD = c.filter(ImageFilter.GaussianBlur(40))
+    return _CLOUD
+
+def storm(base, t):
+    for S in O.get('storm', []):
+        if not (S['from'] <= t <= S['to']): continue
+        k = min(1.0, (t - S['from']) / max(0.01, S.get('ramp', 1.0)))
+        if S.get('dark'):
+            dk = Image.new('RGBA', (W, H), (10, 14, 30, int(255 * S['dark'] * k)))
+            base = Image.alpha_composite(base, dk)
+        if S.get('clouds'):
+            cl = cloud_img(); off = int((t * 90) % W)
+            crop = cl.crop((off, 0, off + W, H))
+            a = crop.split()[3].point(lambda v: int(v * S['clouds'] * k))
+            crop.putalpha(a)
+            base = Image.alpha_composite(base, crop)
+        if S.get('rain'):
+            import random as _r
+            rr = _r.Random(int(t * 1000)); rl = Image.new('RGBA', (W, H), (0, 0, 0, 0)); rd = ImageDraw.Draw(rl)
+            for _ in range(int(520 * S['rain'] * k)):
+                x, y = rr.uniform(-200, W), rr.uniform(-100, H); L = rr.uniform(40, 110)
+                rd.line([x, y, x + L * 0.28, y + L], fill=(200, 212, 235, int(rr.uniform(90, 170))), width=2)
+            base = Image.alpha_composite(base, rl)
+        for f in S.get('flashes', []):
+            dt = t - f
+            if 0 <= dt < 0.32:
+                a = (1 - dt / 0.32) * (0.9 if dt < 0.06 or 0.12 < dt < 0.18 else 0.45)
+                base = Image.alpha_composite(base, Image.new('RGBA', (W, H), (235, 240, 255, int(255 * a))))
+                if dt < 0.2:  # 稲妻
+                    import random as _r
+                    rr = _r.Random(int(f * 100)); bl = Image.new('RGBA', (W, H), (0, 0, 0, 0)); bd = ImageDraw.Draw(bl)
+                    x, y = rr.uniform(W * 0.2, W * 0.8), -20; pts = [(x, y)]
+                    while y < H * 0.55:
+                        x += rr.uniform(-70, 70); y += rr.uniform(50, 110); pts.append((x, y))
+                    bd.line(pts, fill=(255, 255, 255, 255), width=9); bd.line(pts, fill=(190, 210, 255, 255), width=4)
+                    base = Image.alpha_composite(base, bl.filter(ImageFilter.GaussianBlur(1)))
+    return base
+
 def compose_frame(i):
     out = os.path.join(COMP, f'f{i:05d}.jpg')
     if os.path.exists(out): return
     t = i / FPS
     base = Image.open(os.path.join(FR, f'f{i:05d}.jpg')).convert('RGBA')
     if base.size != (W, H): base = base.resize((W, H), Image.LANCZOS)
+    if O.get('storm'): base = storm(base, t)
     layer = Image.new('RGBA', (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(layer)
     ppl = track.get(i, {})
     ppos = {k[5:]: v for k, v in ppl.items() if k.startswith('prop:')}  # 名前を付けた小道具の位置
