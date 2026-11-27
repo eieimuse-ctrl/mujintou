@@ -151,7 +151,7 @@ stars = [x for x in [
     star(IBU, T5 + 0.3, T6, '釣りをしてたら、手記を見つけた！'),
 ] if x]
 TOPROWS = [{'name': name_of(c['userId']), 'text': re.sub(r'\s+', ' ', c.get('text') or ''), 'likes': c.get('likeCount') or 0} for c in TOP]
-OPTS = {'A': '松明を持って、みんなで入る', 'B': 'クマに先に行ってもらう', 'C': '入口に柵をして、様子を見る', 'D': '自由に提案'}
+OPTS = {'A': '松明を持って、みんなで入る', 'B': 'クマに先に行ってもらう', 'C': '入口に柵をして、様子を見る', 'D': '自由に（なんの目だと思う？）'}
 overlay = {
     'banner': 'コメントで動く無人島　11日目',
     'bannerOff': [[0, T2], [T6, DUR]],
@@ -185,6 +185,7 @@ overlay = {
         {'text': f'B {OPTS["B"]}', 'from': T6 + 1.6, 'to': 48.0, 'y': 740, 'size': 46},
         {'text': f'C {OPTS["C"]}', 'from': T6 + 2.2, 'to': 48.0, 'y': 840, 'size': 46},
         {'text': f'D {OPTS["D"]}', 'from': T6 + 2.8, 'to': 48.0, 'y': 940, 'size': 46},
+        {'text': 'なんの目か、予想もコメントで教えてね', 'from': T6 + 3.2, 'to': 48.0, 'y': 1030, 'size': 40, 'color': [220, 230, 255]},
         {'text': 'A・B・C・Dでコメントしてね', 'from': T6 + 3.6, 'to': 48.0, 'y': 1180, 'size': 50, 'color': [255, 214, 74]},
         {'text': 'いいと思ったコメントには♥を', 'from': T6 + 4.6, 'to': 48.0, 'y': 1280, 'size': 44},
         {'text': 'いいねは全部の投稿で数えます', 'from': 48.2, 'to': DUR, 'y': 720, 'size': 42},
@@ -201,7 +202,7 @@ narr = [
     {'at': T4 + 0.1, 'until': T4 + 4.2, 'text': 'ほかの動物を探しに、洞窟へ。'},
     {'at': T4 + 4.4, 'until': T5, 'text': '奥に、光る目！？'},
     {'at': T5 + 0.1, 'until': T6, 'text': 'ibu13さんと、さらさんも、手記を見つけた。'},
-    {'at': T6 + 0.2, 'until': 48.0, 'text': '洞窟の奥に、光る目。どうする？エー、ビー、シー、ディーでコメントしてね。'},
+    {'at': T6 + 0.2, 'until': 48.0, 'text': '洞窟の奥に、光る目。どうする？なんの目か、予想もコメントで教えてね。'},
     {'at': 48.2, 'until': DUR, 'text': 'いいねで、島が変わるよ。'},
 ]
 EXIST = [
@@ -245,7 +246,7 @@ state = {
                       'text': f'島民は{n_all}人に。いちばん人気の「牧場」をコタつむりさんの案でつくり、ひつじを柵の中へ。ほかの動物を探しに行った🐸ま🐸さんたちは、洞窟の奥に光る目を見た。',
                       'vote': {'question': '次は、どんな島にしたい？', 'adopted': 'コタつむりさん「ヒツジさんの為に牧場つくりたい」（いいね順・同じ人の採用は3日に1回）', 'note': '自由コメント'}},
     'currentVote': {'id': 'vote-011-cave', 'status': 'open', 'question': '洞窟の奥に、光る目。どうする？',
-                    'description': 'A・B・C・D でコメントしてね。コメントが一番多い案を採用します（Dはいいねが多い案から）',
+                    'description': 'A・B・C・D でコメントしてね。なんの目だと思うか、予想もDで教えてね。コメントが一番多い案を採用します（Dはいいねが多い案から）',
                     'options': [{'key': k, 'label': v} for k, v in OPTS.items()]},
 }
 json.dump(state, open(os.path.join(HERE, 'story', 'ep11_state.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)

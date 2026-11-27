@@ -1,6 +1,6 @@
 {
  "day": 11,
- "roster": "../../ep10/input/islanders.json",
+ "roster": "../input/islanders.json",
  "today": [
   {
    "id": "kota_chumuri",
