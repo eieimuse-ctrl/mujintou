@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""11日目（金曜）のストーリー（約10秒）：晴れた島が、突然厚い雲に囲まれる → 雷・大雨 → 洞窟の奥の光る目。
+"""11日目のストーリー（約10秒）：晴れた島が、突然厚い雲に囲まれる → 雷・大雨 → 洞窟の奥の光る目。
   python3 video-tools/ep11/build_story_s.py   （先に build_story.py を実行しておく）
 出力：ep11/story/ep11s.json → ep3/run.sh で video-tools/out/ep11s.mp4
 """
@@ -28,7 +28,7 @@ story = {
         'banner': '', 'bannerOff': [[0, DUR]], 'commenters': {}, 'names': {}, 'smallTagsMax': 0, 'tagCycle': [],
         'storm': [{'from': 0.5, 'to': 5.2, 'ramp': 1.3, 'dark': 0.35, 'clouds': 1.0, 'rain': 1.0, 'flashes': FL[:3]}, {'from': 5.2001, 'to': DUR, 'ramp': 0.01, 'dark': 0.2, 'clouds': 0.3, 'rain': 0.8, 'flashes': FL[3:]}],
         'captions': [
-            {'text': '金曜日。島が、', 'from': 0.2, 'to': 1.5, 'y': 330, 'size': 66},
+            {'text': '突然、島が', 'from': 0.2, 'to': 1.5, 'y': 330, 'size': 66},
             {'text': '厚い雲に、囲まれた', 'from': 1.0, 'to': 2.3, 'y': 430, 'size': 70, 'color': [220, 230, 255]},
             {'text': '雷', 'from': 2.3, 'to': 3.5, 'y': 520, 'size': 150, 'color': [255, 240, 120]},
             {'text': '大雨', 'from': 3.6, 'to': 5.1, 'y': 520, 'size': 150, 'color': [200, 220, 255]},
@@ -38,7 +38,7 @@ story = {
         ],
     },
     'audio': {'narration': [
-        {'at': 0.2, 'until': 2.2, 'text': '島が、厚い雲に囲まれた。'},
+        {'at': 0.2, 'until': 2.2, 'text': '突然、島が、厚い雲に囲まれた。'},
         {'at': 2.3, 'until': 3.5, 'text': '雷！'},
         {'at': 3.6, 'until': 5.1, 'text': '大雨！'},
         {'at': 5.2, 'until': 7.4, 'text': 'そして、洞窟の奥で、目が光った。'},
