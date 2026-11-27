@@ -45,6 +45,17 @@ function guitarCanvas() {
   return c;
 }
 
+// 洞窟の奥の光る目（11日目〜）
+function eyesCanvas() {
+  const rows = ['YY....YY', 'YY....YY'];
+  const c = document.createElement('canvas');
+  c.width = rows[0].length;
+  c.height = rows.length;
+  const g = c.getContext('2d');
+  rows.forEach((r, y) => [...r].forEach((ch, x) => { if (ch === 'Y') { g.fillStyle = '#ffe14a'; g.fillRect(x, y, 1, 1); } }));
+  return c;
+}
+
 function torchCanvas() {
   const rows = [
     '..y..',
@@ -136,7 +147,7 @@ function pixelTexture(canvas) {
 }
 
 // drifters: 漂流者（data.js の正規化済み）、drifts: その場所と揺れ方（drift.js の layoutDrifters。drifters と同じ並び）
-export function createActors({ scene, islanders, sim, labelLayer, drifters = [], drifts = [], heightAt = null, torchPosts = [], torchEvery = 5, mysteries = [], beast = null, sheep = null, stages = [], day = 1 }) {
+export function createActors({ scene, islanders, sim, labelLayer, drifters = [], drifts = [], heightAt = null, torchPosts = [], torchEvery = 5, mysteries = [], beast = null, sheep = null, caves = [], stages = [], day = 1 }) {
   let featured = null; // 鑑賞モード：舞台の出演者は名札を必ず出す
   let labelsOn = true; // 名札の表示（ボタンで消せる。消していても、選んだ人の名札は出す）
   const bubbleTex = {};
@@ -320,6 +331,16 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
     scene.add(g, sh);
     beastObj = { b: beast, g, sh, legs, now: null, screen: null };
   }
+
+  // ---- 洞窟の奥の光る目：入口の暗がりで、ときどきまばたき。タップで説明 ----
+  const eyesTex = pixelTexture(eyesCanvas());
+  const caveEyes = caves.map((b) => {
+    const r = ((b.rot || 0) * Math.PI) / 180;
+    const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: eyesTex, alphaTest: 0.5, transparent: false, fog: false }));
+    sp.renderOrder = 3;
+    scene.add(sp);
+    return { b, sp, x: b.x + Math.sin(r) * 3.5, z: b.z + Math.cos(r) * 3.5, y: (b.y || 0) + 1.9, screen: null };
+  });
 
   // ---- もこもこのひつじ（ボクセル）：群れで草を食べる。タップで説明 ----
   const flock = [];
@@ -656,6 +677,14 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
         B.screen = { visible: v.z > -1 && v.z < 1 && Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1, x: (v.x * 0.5 + 0.5) * viewport.w, y: (-v.y * 0.5 + 0.5) * viewport.h, r: Math.max(30, 2.6 * k * (pxPerUnitAt1 / Math.max(1, dist))) };
       }
     }
+    for (const E of caveEyes) {
+      const blink = (t % 5.3) < 0.18 || ((t + 1.7) % 7.1) < 0.14; // ときどき、まばたき
+      E.sp.visible = !stagePose && !blink;
+      E.sp.position.set(E.x, E.y, E.z);
+      E.sp.scale.set(1.3, 0.33, 1);
+      v.set(E.x, E.y, E.z).project(camera);
+      E.screen = { visible: v.z > -1 && v.z < 1 && Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1, x: (v.x * 0.5 + 0.5) * viewport.w, y: (-v.y * 0.5 + 0.5) * viewport.h };
+    }
     // ひつじ：群れの中で歩いては草を食べる（録画中は出さない。動画では小道具で描く）
     for (const S of flock) {
       S.g.visible = S.sh.visible = !stagePose;
@@ -785,6 +814,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       if (mk.screen && mk.screen.visible && Math.hypot(mk.screen.x - x, mk.screen.y - y) < 44) return { kind: 'islander', index: mk.a.index };
     }
     if (beastObj?.now && beastObj.screen?.visible && Math.hypot(beastObj.screen.x - x, beastObj.screen.y - y) < beastObj.screen.r) return { kind: 'beast', beast: beastObj.b };
+    for (const E of caveEyes) if (E.screen?.visible && Math.hypot(E.screen.x - x, E.screen.y - y) < 40) return { kind: 'eyes' };
     for (const S of flock) if (S.screen?.visible && Math.hypot(S.screen.x - x, S.screen.y - y) < S.screen.r) return { kind: 'sheep', sheep };
     for (const mk of mysteryMarks) {
       if (mk.screen && mk.screen.visible && Math.hypot(mk.screen.x - x, mk.screen.y - y) < 44) return { kind: 'building', building: mk.b };
