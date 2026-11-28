@@ -2,6 +2,7 @@
 
 import { createSound } from './sound.js';
 import { reveal } from './secrets.js';
+import { openCave } from './cave.js';
 import { loadData } from './data.js';
 import { createUI } from './ui.js';
 import { generateTerrain, generateDeco, buildNav, DISTRICT_INDEX, DISTRICTS, HALF, POND, TERRAIN_SEED } from './terrain.js';
@@ -307,10 +308,18 @@ async function buildIsland({ state, islanders, drifters = [] }) {
     ui.showNote(reveal(n));
   }
 
+  // 洞窟の謎解き（12日目〜）：洞窟の中に入る
+  function enterCave() {
+    if (ui.selectedIndex() >= 0 || document.getElementById('panel').dataset.view === 'detail') ui.closeDetail(true);
+    document.body.dataset.mode = 'cave';
+    openCave({ onClose: () => { delete document.body.dataset.mode; } });
+  }
+
   function handleTap(x, y) {
     const hit = actors.pick(x, y);
     if (hit && hit.kind === 'eyes') {
-      ui.toast(hit.opened ? '光る目の正体は、金の照り返しだった。奥の壁には、昔の住人が描いた海の向こうの島と舟……' : '洞窟の奥で、何かの目が光っている……', 5200);
+      if (hit.opened) return enterCave();
+      ui.toast('洞窟の奥で、何かの目が光っている……', 4200);
       return;
     }
     if (hit && hit.kind === 'sheep') {
@@ -322,9 +331,10 @@ async function buildIsland({ state, islanders, drifters = [] }) {
       ui.toast(hit.beast.text, 4200);
       return;
     }
-    if (ui.inStageView()) return; // 鑑賞中は × でもどる
+    if (ui.inStageView() || document.body.dataset.mode === 'cave') return; // 鑑賞中・洞窟の中は × でもどる
     const tb = hit && hit.kind === 'building' ? hit.building : null;
     if (tb && tb.type === 'stage') return enterStage(tb);
+    if (tb && tb.type === 'cave' && state.day >= 12) return enterCave();
     if (tb && tb.type === 'ruins' && ruinTap()) return showSecret(2);
     if (hit && hit.kind === 'building') {
       selected = -1;
@@ -344,6 +354,7 @@ async function buildIsland({ state, islanders, drifters = [] }) {
     const p = world.pick(nx, ny);
     if (!p) return;
     if (p.type === 'building' && p.building.type === 'stage') return enterStage(p.building);
+    if (p.type === 'building' && p.building.type === 'cave' && state.day >= 12) return enterCave();
     if (p.type === 'building' && p.building.type === 'ruins' && ruinTap()) return showSecret(2);
     if (p.type === 'building') {
       selected = -1;
