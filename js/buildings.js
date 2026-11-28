@@ -519,6 +519,23 @@ function cafe() {
   };
 }
 
+// 洞窟の中（動画の撮影用のセット。島には置かない）：床・奥の壁・左右の壁・天井。正面（+z）が開いている
+function caveroom() {
+  const b = [];
+  const W = 18, D = 20, H = 9;
+  const R1 = '#86786a', R2 = '#6c6157', R3 = '#9a8b7a';
+  b.push(box(0, 0.2, 0, W, 0.4, D, R2));
+  for (let k = 0; k < 6; k++) b.push(box(-W / 2 + 1.5 + k * 3, 0.45 + (k % 2) * 0.1, -D / 2 + 3 + (k % 3) * 4, 2.2, 0.3, 1.6, R3)); // 床の石
+  b.push(box(0, H / 2, -D / 2, W + 2, H, 1.2, R1));
+  for (const s of [-1, 1]) {
+    b.push(box(s * (W / 2 + 0.5), H / 2, 0, 1.2, H, D, R1));
+    for (let k = 0; k < 4; k++) b.push(box(s * (W / 2 - 0.4), 1.2 + k * 2.1, -D / 2 + 3 + k * 4.2, 1.0, 1.4, 2.6, k % 2 ? R3 : R2)); // でこぼこ
+  }
+  b.push(box(0, H + 0.6, -3, W + 2, 1.2, D - 6, R2)); // 天井（手前は開いている）
+  for (const x of [-5, -1, 3, 6]) b.push(box(x, H - 0.6, -2 + (x % 3), 0.8, 1.4 + Math.abs(x % 2), 0.8, R1)); // つらら石
+  return { label: '洞窟の中', boxes: b, height: H + 1.2, footprint: null, spots: [] };
+}
+
 // ステージ（8日目〜）：木の野外ステージ。手前の左右に火の台（かがり火）。舞台の上で15分ごとに出し物（show.js）
 function stage() {
   const b = [];
@@ -546,8 +563,8 @@ function stage() {
   };
 }
 
-export const BUILDING_TYPES = { hut, field, pier, watchtower, still, ruins, workshop, bigcrate, bigfield, bearhouse, stage, lighthouse, cave, dorm, ranch, cafe };
-export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台', still: '蒸留装置', ruins: '昔の住人の跡', workshop: '石の作業場', bigcrate: '大きな木箱', bigfield: '大きな畑', bearhouse: 'クマの家', stage: 'ステージ', lighthouse: '灯台', cave: '洞窟', dorm: 'みんなの宿舎', ranch: '牧場', cafe: 'カフェ' };
+export const BUILDING_TYPES = { hut, field, pier, watchtower, still, ruins, workshop, bigcrate, bigfield, bearhouse, stage, lighthouse, cave, dorm, ranch, cafe, caveroom };
+export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台', still: '蒸留装置', ruins: '昔の住人の跡', workshop: '石の作業場', bigcrate: '大きな木箱', bigfield: '大きな畑', bearhouse: 'クマの家', stage: 'ステージ', lighthouse: '灯台', cave: '洞窟', dorm: 'みんなの宿舎', ranch: '牧場', cafe: 'カフェ', caveroom: '洞窟の中' };
 
 // 広場のたき火（建物データではなく、島に最初からある）
 export function campfireBoxes() {

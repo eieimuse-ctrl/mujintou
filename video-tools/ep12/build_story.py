@@ -53,6 +53,8 @@ BC = [236.0, 124.0]
 CAFE = [0.0, 42.0]                    # カフェ（広場の南。正面は +z）
 CAVE = [92.0, -156.0]                 # 洞窟（入口は +z）
 IN = [CAVE[0], CAVE[1] + 3.2]         # 入口の暗がり
+ROOM = [60.0, -150.0]                 # 洞窟の中（撮影用のセット。奥の壁は z-10、正面 +z が開いている）
+BACK = [ROOM[0], ROOM[1] - 8.6]       # 奥の壁の前
 
 BEACH = json.load(open(os.path.join(HERE, '..', 'ep7', 'beach_spots.json')))
 spots = [list(b) for b in BEACH]
@@ -91,7 +93,10 @@ for k, i in enumerate(torchers):
     A({'who': i, 't': 0, 'hide': True})
     A({'who': i, 't': T4, 'hide': False, 'at': [CAVE[0] + lane * 1.8, CAVE[1] + 26 + row * 2.2], 'anim': 'idle', 'face': {'at': CAVE}, 'torch': True})
     A({'who': i, 't': T4 + 0.3 + row * 0.12, 'to': [CAVE[0] + lane * 1.8, CAVE[1] + 8 + row * 1.7], 'dur': 3.6})
-    A({'who': i, 't': T4 + 4.4 + row * 0.12, 'anim': 'idle', 'face': {'at': CAVE}})
+    # 中へ：入口から奥の壁へ、松明を持って進む
+    A({'who': i, 't': T4 + 4.4, 'at': [ROOM[0] + lane * 3.4, ROOM[1] + 9 + row * 1.4], 'anim': 'walk', 'face': {'at': BACK}, 'torch': True})
+    A({'who': i, 't': T4 + 4.45, 'to': [ROOM[0] + (1 if k % 2 else -1) * (2.0 + (k // 2 % 3) * 0.9), ROOM[1] - 2.5 + (k // 6) * 1.6], 'dur': 2.6})
+    A({'who': i, 't': T4 + 7.2, 'anim': 'idle', 'face': {'at': BACK}})
     A({'who': i, 't': T4 + 7.6, 'anim': 'shock', 'pick': 0.6, 'seed': k})
     A({'who': i, 't': T5 + 0.4, 'anim': 'cheer', 'pick': 0.7, 'seed': k + 3})
     A({'who': i, 't': T6, 'hide': True})
@@ -114,9 +119,10 @@ camera = [
     {'from': T2, 'to': T3, 'hour': 15.5, 'keys': [W(CAFE, 70, -1.0, 0.6, 2, T2, 48), W([CAFE[0], CAFE[1] + 4], 22, -0.3, 1.1, 2.5, T2 + 2.6, 42), W([CAFE[0], CAFE[1] + 5], 16, 0.4, 1.15, 2.5, T2 + 5.0, 38), W([CAFE[0], CAFE[1] + 6], 30, 0.9, 0.95, 2, T3, 44)]},
     {'from': T3, 'to': T4, 'hour': 12, 'keys': [W([60, -110], 420, 0.3, 0.55, 0, T3), W([60, -110], 300, -0.3, 0.8, 0, T4)]},
     # 松明の行列 → 入口 → 目に近づく → 金！
-    {'from': T4, 'to': T5, 'hour': 20.4, 'shake': [[T4 + 7.6, T4 + 8.2, 0.9]], 'keys': [W([CAVE[0], CAVE[1] + 24], 26, 2.6, 1.15, 2, T4, 46), W([CAVE[0], CAVE[1] + 14], 30, 0.8, 1.05, 2.5, T4 + 3.2, 44), W([CAVE[0], CAVE[1] + 7], 18, 0.0, 1.15, 2.5, T4 + 5.2, 40), W(IN, 10, 0.0, 1.24, 2.0, T4 + 7.6, 32), W(IN, 8, 0.15, 1.26, 1.9, T5, 30)]},
+    {'from': T4, 'to': T4 + 4.4, 'hour': 20.4, 'keys': [W([CAVE[0], CAVE[1] + 24], 26, 2.6, 1.15, 2, T4, 46), W([CAVE[0], CAVE[1] + 14], 30, 0.8, 1.05, 2.5, T4 + 3.2, 44), W(IN, 12, 0.0, 1.22, 2.2, T4 + 4.4, 34)]},
+    {'from': T4 + 4.4, 'to': T5, 'hour': 18.7, 'shake': [[T4 + 7.6, T4 + 8.2, 0.9]], 'keys': [W([ROOM[0], ROOM[1] + 1], 18, 0.0, 1.12, 4.0, T4 + 4.4, 48), W([ROOM[0], ROOM[1] - 5], 14, 0.1, 1.15, 3.2, T4 + 7.6, 44), W([BACK[0], BACK[1] + 1.5], 10, -0.05, 1.2, 2.2, T5, 38)]},
     # さらに奥：壁の絵
-    {'from': T5, 'to': T6, 'hour': 20.4, 'keys': [W(IN, 15, -0.1, 1.22, 2.2, T5, 38), W(IN, 12, 0.0, 1.24, 2.2, T5 + 3.0, 34), W([CAVE[0], CAVE[1] + 8], 26, 0.5, 1.05, 2.5, T6, 44)]},
+    {'from': T5, 'to': T6, 'hour': 18.7, 'keys': [W([BACK[0], BACK[1] + 2], 14, 0.0, 1.25, 4.4, T5, 44), W([BACK[0], BACK[1] + 1], 11, 0.0, 1.3, 4.8, T5 + 3.0, 40), W([ROOM[0], ROOM[1] - 2], 17, 0.15, 1.22, 4.0, T6, 46)]},
     # 手記
     {'from': T6, 'to': T7, 'hour': 17.6, 'keys': [W([-2, 12], 24, -0.8, 1.0, 1.6, T6, 44), W([-2, 12], 12, -0.1, 1.26, 1.6, T6 + 2.0, 36)]},
     {'from': T6 + 2.0, 'to': T7, 'hour': 18.0, 'keys': [W([0, 0], 1750, 2.0, 0.5, 0, T6 + 2.0, 40), W([0, 0], 1600, 2.4, 0.55, 0, T7, 40)]},
@@ -128,17 +134,18 @@ camera = [
 props = []
 # フックと洞窟：暗がりの目（金の照り返し）
 props.append({'type': 'eyes', 'from': {'xz': IN, 'up': 1.7}, 't0': 0, 't1': 0.01, 't2': HOOK, 'size': 0.9})
-props.append({'type': 'eyes', 'from': {'xz': IN, 'up': 1.7}, 't0': T4 + 4.4, 't1': T4 + 4.41, 't2': T4 + 7.6, 'size': 0.9})
+props.append({'type': 'eyes', 'from': {'xz': BACK, 'up': 2.2}, 't0': T4 + 4.4, 't1': T4 + 4.41, 't2': T4 + 7.6, 'size': 1.1})
 for k, (dx, up) in enumerate([(-0.9, 1.6), (0.9, 1.6), (0.0, 1.0), (-0.4, 0.6), (0.6, 0.7)]):
-    props.append({'type': 'gold', 'from': {'xz': [IN[0] + dx, IN[1] + 0.15], 'up': up}, 't0': T4 + 7.6 + k * 0.08, 't1': T4 + 7.61 + k * 0.08, 't2': T5, 'size': 0.55})
-props.append({'type': 'mural', 'from': {'xz': [IN[0], IN[1] + 0.12], 'up': 1.3}, 't0': T5 + 0.3, 't1': T5 + 0.31, 't2': T6, 'size': 1.5})
+    props.append({'type': 'gold', 'from': {'xz': [BACK[0] + dx * 1.4, BACK[1] + 1.2], 'up': up * 0.6 + 0.5}, 't0': T4 + 7.6 + k * 0.08, 't1': T4 + 7.61 + k * 0.08, 't2': T6, 'size': 0.7})
+props.append({'type': 'mural', 'from': {'xz': [BACK[0], BACK[1]], 'up': 5.0}, 't0': T5 + 0.3, 't1': T5 + 0.31, 't2': T6, 'size': 3.4})
 # フックの松明の明かり（目に近づく）
 props.append({'type': 'flame', 'from': {'xz': [IN[0] + 1.6, IN[1] + 3.5], 'up': 2.4}, 'to': {'xz': [IN[0] + 0.8, IN[1] + 1.4], 'up': 2.2}, 't0': 0, 't1': HOOK, 't2': HOOK, 'size': 1.1})
 # カフェの音楽（はるまきさん）
 for k in range(4):
     props.append({'type': 'heart', 'from': {'xz': [CAFE[0] - 3 + k * 2, CAFE[1] + 6], 'up': 3.4}, 'to': {'xz': [CAFE[0] - 3 + k * 2, CAFE[1] + 6], 'up': 4.6}, 't0': T2 + 4.0 + k * 0.2, 't1': T3, 't2': T3, 'size': 1.3, 'phase': k})
 
-props3d = [{'type': 'build', 'kind': 'cafe', 'at': CAFE, 'rot': 0, 't0': T2 + 0.2, 't1': T2 + 3.4, 'show': T2, 'hide': T3}]
+props3d = [{'type': 'build', 'kind': 'cafe', 'at': CAFE, 'rot': 0, 't0': T2 + 0.2, 't1': T2 + 3.4, 'show': T2, 'hide': T3},
+           {'type': 'build', 'kind': 'caveroom', 'at': ROOM, 'rot': 0, 't0': 0, 't1': 0.01, 'show': T4 + 4.3, 'hide': T6}]
 
 def star(i, a, b, text):
     return {'who': i, 'from': a, 'to': b, 'bubble': text} if inr(i) else None
@@ -172,7 +179,8 @@ overlay = {
         {'text': '♥14の、きのこの山さんのカフェ', 'from': T2 + 2.0, 'to': T3, 'y': 330, 'size': 52, 'color': [255, 214, 74]},
         {'text': '店内BGMは、はるまきさん', 'from': T2 + 5.6, 'to': T3, 'y': 1300, 'size': 46},
         {'text': '松明を持って、みんなで洞窟へ', 'from': T4 + 0.1, 'to': T4 + 4.4, 'y': 330, 'size': 54, 'color': [255, 214, 74]},
-        {'text': '明かりを近づけると…', 'from': T4 + 4.5, 'to': T4 + 7.6, 'y': 330, 'size': 56},
+        {'text': '洞窟の中へ…', 'from': T4 + 4.5, 'to': T4 + 6.0, 'y': 330, 'size': 60},
+        {'text': '明かりを近づけると…', 'from': T4 + 6.0, 'to': T4 + 7.6, 'y': 330, 'size': 56},
         {'text': '金だった！', 'from': T4 + 7.6, 'to': T5, 'y': 330, 'size': 96, 'color': [255, 214, 74]},
         {'text': 'あおすけさんの予想が、当たった', 'from': T4 + 8.0, 'to': T5, 'y': 1300, 'size': 46},
         {'text': 'さらに奥の壁に…', 'from': T5 + 0.1, 'to': T5 + 2.0, 'y': 330, 'size': 60},
@@ -203,7 +211,7 @@ narr = [
     {'at': T2 + 5.6, 'until': T3, 'text': 'BGMは、はるまきさん。'},
     {'at': T3 + 0.1, 'until': T4, 'text': '昨日の一番人気は、みんなで入る！'},
     {'at': T4 + 0.1, 'until': T4 + 4.4, 'text': '松明を持って、みんなで洞窟へ。'},
-    {'at': T4 + 4.5, 'until': T4 + 7.5, 'text': '明かりを近づけると…'},
+    {'at': T4 + 4.5, 'until': T4 + 7.5, 'text': '中へ入って、明かりを近づけると…'},
     {'at': T4 + 7.6, 'until': T5, 'text': '金だった！あおすけさんの予想が、当たった！'},
     {'at': T5 + 0.1, 'until': T5 + 4.5, 'text': 'さらに奥の壁に、昔の住人の絵！'},
     {'at': T5 + 4.6, 'until': T6, 'text': '海の向こうに、島と舟？'},
