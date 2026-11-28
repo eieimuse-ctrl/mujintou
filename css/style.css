@@ -1573,3 +1573,35 @@ body[data-mode='stage'] #drift-chip { visibility: hidden; }
 .note-final { margin-top: 6px; padding-top: 10px; border-top: 1px dashed #8a5a2b; }
 .note-ask { margin: 4px 0 6px; font-size: 12px; color: #6b4a2b; }
 .note-close { width: 100%; min-height: 44px; border: 2px solid #6b4a2b; background: #fff6dc; color: #3b2d1c; font-weight: 800; font-size: 15px; cursor: pointer; }
+
+/* 洞窟の中（謎解き・12日目〜） */
+body[data-mode='cave'] #hud, body[data-mode='cave'] #panel, body[data-mode='cave'] #like-bar, body[data-mode='cave'] #vote-chip, body[data-mode='cave'] #drift-chip { visibility: hidden; }
+#cave-mode {
+  position: absolute; inset: 0; z-index: 45; display: flex; flex-direction: column; color: #efe6d4;
+  background: radial-gradient(circle at 50% 40%, #241d17 0%, #0d0a08 70%);
+  transition: background 0.8s;
+}
+#cave-mode[data-lit='1'] { background: radial-gradient(circle at 50% 38%, #6b4a2b 0%, #2b2018 45%, #0d0a08 85%); }
+.cv-top { display: flex; align-items: center; gap: 8px; padding: calc(10px + var(--safe-top)) 12px 6px; }
+.cv-title { flex: 1; font-weight: 800; font-size: 17px; letter-spacing: 0.1em; }
+.cv-close { width: 44px; height: 44px; border-radius: 50%; border: 2px solid #efe6d4; background: transparent; color: #efe6d4; font-size: 24px; font-weight: 800; cursor: pointer; }
+.cv-body { flex: 1; overflow: auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 12px 18px calc(24px + var(--safe-bottom)); text-align: center; }
+.cv-kicker { margin: 0; font-size: 12px; font-weight: 800; color: #f2c230; letter-spacing: 0.15em; }
+.cv-text { margin: 0; font-size: 17px; line-height: 1.7; }
+.cv-sub { margin: 0; font-size: 13px; color: #b8ab92; }
+.cv-riddle { margin: 4px 0; padding: 12px 14px; border: 2px solid #6b5a44; background: rgba(61, 52, 42, 0.8); font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif; font-size: 16px; line-height: 1.9; max-width: 340px; }
+.cv-btn { min-height: 48px; padding: 0 22px; border: 2px solid #f2c230; background: #3d2c1a; color: #ffe9a8; font-weight: 800; font-size: 16px; border-radius: 10px; cursor: pointer; }
+.cv-btn-soft { border-color: #6b5a44; color: #b8ab92; background: transparent; font-size: 13px; min-height: 44px; }
+.cv-stones { display: grid; grid-template-columns: repeat(4, 64px); gap: 10px; }
+.cv-stone { width: 64px; height: 64px; display: grid; place-items: center; background: #5b5f68; border: 3px solid #3a3d44; border-radius: 8px; box-shadow: inset 0 -5px 0 #3a3d44; cursor: pointer; }
+.cv-stone.is-on { background: #7a6a3a; border-color: #f2c230; box-shadow: inset 0 3px 0 #3a3d44; transform: translateY(2px); }
+.cv-stones.shake { animation: cvshake 0.35s; }
+@keyframes cvshake { 25% { transform: translateX(-6px); } 50% { transform: translateX(6px); } 75% { transform: translateX(-3px); } }
+.cv-tiles { display: grid; grid-template-columns: repeat(2, 104px); gap: 4px; padding: 6px; background: #3a3d44; border-radius: 8px; }
+.cv-tile { width: 104px; height: 104px; padding: 0; display: grid; place-items: center; background: #6b5a44; border: 0; cursor: pointer; overflow: hidden; }
+.cv-tile canvas { width: 100px; height: 100px; transition: transform 0.2s; }
+.cv-tile.is-on { outline: 3px solid #f2c230; }
+.cv-msg { margin: 0; min-height: 1.6em; font-weight: 800; color: #ffe9a8; }
+.cv-map { width: 280px; height: 180px; border: 3px solid #6b5a44; border-radius: 6px; }
+.cv-word { display: flex; gap: 10px; align-items: baseline; margin: 0; }
+.cv-word b { font-size: 24px; letter-spacing: 0.15em; color: #f2c230; }
