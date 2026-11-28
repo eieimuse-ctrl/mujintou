@@ -1,0 +1,26 @@
+{
+ "day": 12,
+ "roster": "../../ep11/input/islanders.json",
+ "today": [
+  {
+   "id": "chocolatecookie1212",
+   "spot": "plaza",
+   "anim": "work",
+   "text": "自分のカフェで、お客さんにコーヒーを出している",
+   "tool": "ladle"
+  },
+  {
+   "id": "harumakigohan3",
+   "spot": "plaza",
+   "anim": "talk",
+   "text": "カフェの店内BGMを担当している"
+  },
+  {
+   "id": "aosuke_0308",
+   "spot": "forestEdge",
+   "anim": "cheer",
+   "text": "洞窟の光る目の正体（金）を当てて、うれしそう"
+  }
+ ],
+ "missing": {}
+}

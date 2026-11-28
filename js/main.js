@@ -223,7 +223,7 @@ async function buildIsland({ state, islanders, drifters = [] }) {
   for (const k of roadCells) trailCells.add(k);
   const world = createWorld({ canvas, terrain, deco, buildings: built.list, hub, trailCells, torches });
   const stageB = built.list.find((b) => b.type === 'stage') || null;
-  const actors = createActors({ scene: world.scene, islanders, sim, labelLayer, drifters, drifts, heightAt: (x, z) => terrain.heightAt(x, z), torchPosts: torches, torchEvery: 5, mysteries: built.list.filter((b) => b.type === 'bigcrate'), beast: state.beast && { ...state.beast, route: beastRoute }, sheep: state.sheep, caves: state.day >= 11 ? built.list.filter((b) => b.type === 'cave') : [], stages: built.list.filter((b) => b.type === 'stage'), day: state.day });
+  const actors = createActors({ scene: world.scene, islanders, sim, labelLayer, drifters, drifts, heightAt: (x, z) => terrain.heightAt(x, z), torchPosts: torches, torchEvery: 5, mysteries: built.list.filter((b) => b.type === 'bigcrate'), beast: state.beast && { ...state.beast, route: beastRoute }, sheep: state.sheep, caves: state.day >= 11 ? built.list.filter((b) => b.type === 'cave') : [], caveOpened: state.day >= 12, stages: built.list.filter((b) => b.type === 'stage'), day: state.day });
   sim.setShow(() => actors.showNow());
   actors.setLabels(labelsPref);
   labelsActors = actors;
@@ -310,7 +310,7 @@ async function buildIsland({ state, islanders, drifters = [] }) {
   function handleTap(x, y) {
     const hit = actors.pick(x, y);
     if (hit && hit.kind === 'eyes') {
-      ui.toast('洞窟の奥で、何かの目が光っている……', 4200);
+      ui.toast(hit.opened ? '光る目の正体は、金の照り返しだった。奥の壁には、昔の住人が描いた海の向こうの島と舟……' : '洞窟の奥で、何かの目が光っている……', 5200);
       return;
     }
     if (hit && hit.kind === 'sheep') {

@@ -494,6 +494,31 @@ function ranch() {
   };
 }
 
+// カフェ（12日目〜）：きのこの山さんのカフェ。しま模様のひさしと、外のテーブル。正面は +z
+function cafe() {
+  const b = [];
+  const W = 8, D = 6, H = 3.4;
+  b.push(box(0, 0.2, 0, W + 0.6, 0.4, D + 0.6, '#9a9ca3'));
+  b.push(box(0, 0.4 + H / 2, 0, W, H, D, '#f4e3c3'));
+  b.push(box(-1.6, 1.45, D / 2 + 0.06, 1.2, 2.1, 0.12, WOOD), box(1.8, 2.0, D / 2 + 0.06, 2.4, 1.2, 0.12, GLASS));
+  for (let k = 0; k < 8; k++) b.push(box(-W / 2 + 0.5 + k, H + 0.15, D / 2 + 0.9, 1.0, 0.18, 1.8, k % 2 ? '#ffffff' : '#d9503f')); // ひさし
+  b.push(box(0, 0.4 + H + 0.3, 0, W + 0.4, 0.6, D + 0.4, '#7a4f2c'), box(0, 0.4 + H + 0.9, 0, W - 1, 0.5, D - 1.4, '#8f5f38'));
+  b.push(box(0, H + 1.6, D / 2 + 0.2, 3.6, 0.9, 0.15, '#5e3d24'), box(0, H + 1.6, D / 2 + 0.3, 3.0, 0.5, 0.1, '#f2c230')); // 看板
+  for (const x of [-2.6, 2.6]) { // 外のテーブルと傘
+    b.push(box(x, 0.75, D / 2 + 3.6, 1.4, 0.15, 1.4, WOOD_LIGHT), box(x, 0.4, D / 2 + 3.6, 0.2, 0.8, 0.2, WOOD_DARK));
+    b.push(box(x, 1.9, D / 2 + 3.6, 0.12, 2.2, 0.12, '#f4efe2'), box(x, 3.0, D / 2 + 3.6, 2.4, 0.2, 2.4, x < 0 ? '#5fb4dd' : '#86cc4e'));
+  }
+  return {
+    label: 'カフェ',
+    boxes: b,
+    height: H + 2.4,
+    footprint: { x0: -W / 2 - 0.4, x1: W / 2 + 0.4, z0: -D / 2 - 0.4, z1: D / 2 + 1.0 },
+    spots: [
+      { x: 0, z: D / 2 + 5.5, fx: 0, fz: 0, jobs: ['料理人', '島民'], label: 'カフェの前', spread: 1.6 },
+    ],
+  };
+}
+
 // ステージ（8日目〜）：木の野外ステージ。手前の左右に火の台（かがり火）。舞台の上で15分ごとに出し物（show.js）
 function stage() {
   const b = [];
@@ -521,8 +546,8 @@ function stage() {
   };
 }
 
-export const BUILDING_TYPES = { hut, field, pier, watchtower, still, ruins, workshop, bigcrate, bigfield, bearhouse, stage, lighthouse, cave, dorm, ranch };
-export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台', still: '蒸留装置', ruins: '昔の住人の跡', workshop: '石の作業場', bigcrate: '大きな木箱', bigfield: '大きな畑', bearhouse: 'クマの家', stage: 'ステージ', lighthouse: '灯台', cave: '洞窟', dorm: 'みんなの宿舎', ranch: '牧場' };
+export const BUILDING_TYPES = { hut, field, pier, watchtower, still, ruins, workshop, bigcrate, bigfield, bearhouse, stage, lighthouse, cave, dorm, ranch, cafe };
+export const BUILDING_LABELS = { hut: '小屋', field: '畑', pier: '桟橋', watchtower: '見張り台', still: '蒸留装置', ruins: '昔の住人の跡', workshop: '石の作業場', bigcrate: '大きな木箱', bigfield: '大きな畑', bearhouse: 'クマの家', stage: 'ステージ', lighthouse: '灯台', cave: '洞窟', dorm: 'みんなの宿舎', ranch: '牧場', cafe: 'カフェ' };
 
 // 広場のたき火（建物データではなく、島に最初からある）
 export function campfireBoxes() {

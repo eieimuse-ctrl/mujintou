@@ -56,6 +56,27 @@ function eyesCanvas() {
   return c;
 }
 
+// 洞窟の金（12日目〜、光る目の正体）と、奥の壁の絵（昔の住人の、海の向こうの島と舟）
+function goldCanvas() {
+  const rows = ['..kkk...', '.kYWYk..', 'kYYYYYk.', 'kYOYYYOk', '.kOOYOk.', '..kkkk..'];
+  const pal = { k: '#5a3d0a', Y: '#ffd23a', W: '#fff7c0', O: '#d89a12' };
+  const c = document.createElement('canvas'); c.width = 8; c.height = 6;
+  const g = c.getContext('2d');
+  rows.forEach((r, y) => [...r].forEach((ch, x) => { if (pal[ch]) { g.fillStyle = pal[ch]; g.fillRect(x, y, 1, 1); } }));
+  return c;
+}
+function muralCanvas() {
+  const rows = [
+    'pppppppppppppppppppppp', 'p....y...........y...p', 'p...yyy.........yyy..p', 'p....y....~~~....y...p', 'p.........~w~........p', 'p..k...k..~~~...k.k..p',
+    'p.kkk.kkk......kk.kk.p', 'p..k...k.......k...k.p', 'p.k.k.k.k.....k.k.k.kp', 'p.~~~~~~~bbbbb~~~~~~.p', 'p.~~~~~~bbbbbbb~~~~~.p', 'p~~~~~~~~~~~~~~~~~~~~p', 'pppppppppppppppppppppp',
+  ];
+  const pal = { p: '#6b5a44', y: '#f2c230', k: '#e8e0cc', '~': '#5fb4dd', w: '#ffffff', b: '#c98a4a', '.': '#3d342a' };
+  const c = document.createElement('canvas'); c.width = rows[0].length; c.height = rows.length;
+  const g = c.getContext('2d');
+  rows.forEach((r, y) => [...r].forEach((ch, x) => { if (pal[ch]) { g.fillStyle = pal[ch]; g.fillRect(x, y, 1, 1); } }));
+  return c;
+}
+
 function torchCanvas() {
   const rows = [
     '..y..',
@@ -147,7 +168,7 @@ function pixelTexture(canvas) {
 }
 
 // drifters: 漂流者（data.js の正規化済み）、drifts: その場所と揺れ方（drift.js の layoutDrifters。drifters と同じ並び）
-export function createActors({ scene, islanders, sim, labelLayer, drifters = [], drifts = [], heightAt = null, torchPosts = [], torchEvery = 5, mysteries = [], beast = null, sheep = null, caves = [], stages = [], day = 1 }) {
+export function createActors({ scene, islanders, sim, labelLayer, drifters = [], drifts = [], heightAt = null, torchPosts = [], torchEvery = 5, mysteries = [], beast = null, sheep = null, caves = [], caveOpened = false, stages = [], day = 1 }) {
   let featured = null; // 鑑賞モード：舞台の出演者は名札を必ず出す
   let labelsOn = true; // 名札の表示（ボタンで消せる。消していても、選んだ人の名札は出す）
   const bubbleTex = {};
@@ -334,12 +355,22 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
 
   // ---- 洞窟の奥の光る目：入口の暗がりで、ときどきまばたき。タップで説明 ----
   const eyesTex = pixelTexture(eyesCanvas());
+  const goldTex = pixelTexture(goldCanvas());
+  const muralTex = pixelTexture(muralCanvas());
   const caveEyes = caves.map((b) => {
     const r = ((b.rot || 0) * Math.PI) / 180;
-    const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: eyesTex, alphaTest: 0.5, transparent: false, fog: false }));
+    const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: caveOpened ? goldTex : eyesTex, alphaTest: 0.5, transparent: false, fog: false }));
     sp.renderOrder = 3;
     scene.add(sp);
-    return { b, sp, x: b.x + Math.sin(r) * 3.5, z: b.z + Math.cos(r) * 3.5, y: (b.y || 0) + 1.9, screen: null };
+    let mural = null;
+    if (caveOpened) {
+      mural = new THREE.Sprite(new THREE.SpriteMaterial({ map: muralTex, alphaTest: 0.5, transparent: false, fog: false }));
+      mural.renderOrder = 3;
+      mural.position.set(b.x + Math.sin(r) * 3.3, (b.y || 0) + 2.15, b.z + Math.cos(r) * 3.3);
+      mural.scale.set(2.6, 1.53, 1);
+      scene.add(mural);
+    }
+    return { b, sp, mural, x: b.x + Math.sin(r) * 3.5, z: b.z + Math.cos(r) * 3.5, y: (b.y || 0) + 1.9, screen: null };
   });
 
   // ---- もこもこのひつじ（ボクセル）：群れで草を食べる。タップで説明 ----
@@ -678,10 +709,17 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       }
     }
     for (const E of caveEyes) {
-      const blink = (t % 5.3) < 0.18 || ((t + 1.7) % 7.1) < 0.14; // ときどき、まばたき
+      const blink = !caveOpened && ((t % 5.3) < 0.18 || ((t + 1.7) % 7.1) < 0.14); // ときどき、まばたき（金になってからは光り続ける）
       E.sp.visible = !stagePose && !blink;
-      E.sp.position.set(E.x, E.y, E.z);
-      E.sp.scale.set(1.3, 0.33, 1);
+      if (E.mural) E.mural.visible = !stagePose;
+      if (caveOpened) {
+        E.sp.position.set(E.x, E.y - 1.1, E.z);
+        const tw = 1 + 0.06 * Math.sin(t * 5);
+        E.sp.scale.set(1.0 * tw, 0.75 * tw, 1);
+      } else {
+        E.sp.position.set(E.x, E.y, E.z);
+        E.sp.scale.set(1.3, 0.33, 1);
+      }
       v.set(E.x, E.y, E.z).project(camera);
       E.screen = { visible: v.z > -1 && v.z < 1 && Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1, x: (v.x * 0.5 + 0.5) * viewport.w, y: (-v.y * 0.5 + 0.5) * viewport.h };
     }
@@ -814,7 +852,7 @@ export function createActors({ scene, islanders, sim, labelLayer, drifters = [],
       if (mk.screen && mk.screen.visible && Math.hypot(mk.screen.x - x, mk.screen.y - y) < 44) return { kind: 'islander', index: mk.a.index };
     }
     if (beastObj?.now && beastObj.screen?.visible && Math.hypot(beastObj.screen.x - x, beastObj.screen.y - y) < beastObj.screen.r) return { kind: 'beast', beast: beastObj.b };
-    for (const E of caveEyes) if (E.screen?.visible && Math.hypot(E.screen.x - x, E.screen.y - y) < 40) return { kind: 'eyes' };
+    for (const E of caveEyes) if (E.screen?.visible && Math.hypot(E.screen.x - x, E.screen.y - y) < 40) return { kind: 'eyes', opened: caveOpened };
     for (const S of flock) if (S.screen?.visible && Math.hypot(S.screen.x - x, S.screen.y - y) < S.screen.r) return { kind: 'sheep', sheep };
     for (const mk of mysteryMarks) {
       if (mk.screen && mk.screen.visible && Math.hypot(mk.screen.x - x, mk.screen.y - y) < 44) return { kind: 'building', building: mk.b };
