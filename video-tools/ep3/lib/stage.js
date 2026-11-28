@@ -225,6 +225,29 @@
         '.ooOoo..',
         'kbkbkbk.',
       ], { y: '#ffd04a', o: '#ff8a1e', O: '#fff3b0', k: '#3a2a1c', b: '#7a4f2c' }),
+      gold: pixel([
+        '..kkk...',
+        '.kYWYk..',
+        'kYYYYYk.',
+        'kYOYYYOk',
+        '.kOOYOk.',
+        '..kkkk..',
+      ], { k: '#5a3d0a', Y: '#ffd23a', W: '#fff7c0', O: '#d89a12' }),
+      mural: pixel([
+        'pppppppppppppppppppppp',
+        'p....y...........y...p',
+        'p...yyy.........yyy..p',
+        'p....y....~~~....y...p',
+        'p.........~w~........p',
+        'p..k...k..~~~...k.k..p',
+        'p.kkk.kkk......kk.kk.p',
+        'p..k...k.......k...k.p',
+        'p.k.k.k.k.....k.k.k.kp',
+        'p.~~~~~~~bbbbb~~~~~~.p',
+        'p.~~~~~~bbbbbbb~~~~~.p',
+        'p~~~~~~~~~~~~~~~~~~~~p',
+        'pppppppppppppppppppppp',
+      ], { p: '#6b5a44', y: '#f2c230', k: '#e8e0cc', '~': '#5fb4dd', w: '#ffffff', b: '#c98a4a', '.': '#3d342a' }),
       guitar: pixel([
         '........kk',
         '.......kbk',
@@ -325,7 +348,7 @@
         const t2 = art.tex.clone(); t2.repeat.set(-1, 1); t2.offset.set(1, 0); t2.wrapS = 1000; t2.needsUpdate = true;
         art = { ...art, tex: t2 };
       }
-      const sp2 = new SpriteC(new MatC({ map: art.tex, alphaTest: 0.5, transparent: false, depthTest: !['splash', 'question', 'zzz', 'heart', 'eyes', 'hoe', 'rod', 'saw', 'axe'].includes(pr.type), fog: !['question', 'flame', 'eyes'].includes(pr.type) }));
+      const sp2 = new SpriteC(new MatC({ map: art.tex, alphaTest: 0.5, transparent: false, depthTest: !['splash', 'question', 'zzz', 'heart', 'eyes', 'hoe', 'rod', 'saw', 'axe', 'gold', 'mural'].includes(pr.type), fog: !['question', 'flame', 'eyes'].includes(pr.type) }));
       const hgt = pr.size || 1.4;
       sp2.scale.set((hgt * art.w) / art.h, hgt, 1);
       sp2.center.set(0.5, 0);
